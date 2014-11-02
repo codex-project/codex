@@ -19,7 +19,7 @@ $(document).ready(function() {
 	$("blockquote:contains(Hint)").addClass('bs-callout bs-callout-success');
 	$("blockquote:contains(Tip)").addClass('bs-callout bs-callout-success');
 
-	// Change h1 to h2 for search results
+	// Change h1 to h4 for search results
 	$('#search-results h1').replaceWith(function() {
 		return '<h4>'+$(this).text()+'</h4>';
 	});

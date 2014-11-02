@@ -8,3 +8,4 @@
 - Code highlighting
 - Easy TOC / navigation system
 - SEO friendly URLs
+- Simple search
