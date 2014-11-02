@@ -8,6 +8,7 @@
 
 		<!-- CSS -->
 		<link rel="stylesheet" href="/assets/css/bootswatch/flatly.min.css">
+		<link rel="stylesheet" href="/assets/css/prettify/freshcut.css">
 		<link rel="stylesheet" href="/assets/css/codex.css">
 	</head>
 	<body>
@@ -61,6 +62,7 @@
 		<!-- Javascript -->
 		<script src="/assets/js/jquery-2.1.1.min.js"></script>
 		<script src="/assets/js/bootstrap.min.js"></script>
+		<script src="/assets/js/prettify/run_prettify.js"></script>
 		<script src="/assets/js/codex.js"></script>
 	</body>
 </html>
