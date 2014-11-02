@@ -12,4 +12,4 @@
 */
 
 Route::get('/', 'CodexController@index');
-Route::get('{manual}/{version}/{page?}', 'CodexController@show')->where('page', '(.*)');
+Route::get('{manual}/{version?}/{page?}', 'CodexController@show')->where('page', '(.*)');

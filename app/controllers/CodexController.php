@@ -61,10 +61,14 @@ class CodexController extends BaseController
 	 *
 	 * @return Response
 	 */
-	public function show($manual, $version, $page = 'introduction')
+	public function show($manual, $version = null, $page = null)
 	{
+		if (is_null($version)) {
+			return Redirect::to(url($manual.'/'.$this->codex->getDefaultVersion($manual)));
+		}
+
 		$toc            = $this->codex->getToc($manual, $version);
-		$content        = $this->codex->get($manual, $version, $page);
+		$content        = $this->codex->get($manual, $version, $page ?: 'introduction');
 		$currentManual  = $manual;
 		$currentVersion = $version;
 		$manuals        = $this->codex->getManuals();

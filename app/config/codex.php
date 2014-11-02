@@ -9,7 +9,7 @@ return array(
 	|
 	*/
 
-	'storage_path' => public_path().'/codex',
+	'storage_path' => public_path().'/docs',
 
 	/*
 	|--------------------------------------------------------------------------
