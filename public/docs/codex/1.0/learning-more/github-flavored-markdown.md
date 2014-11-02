@@ -1,8 +1,8 @@
 # Github Flavored Markdown
 
-Codex uses [GitHub Flavored Markdown](https://help.github.com/articles/github-flavored-markdown/), or *GFM*, for all documentation markup. It differs from standard Markdown (SM) in a few significant ways, and adds some additional functionality.
+Codex uses **GitHub Flavored Markdown**, or *GFM*, for all documentation markup. It differs from standard Markdown (SM) in a few significant ways, and adds some additional functionality.
 
-If you're not already familiar with Markdown, take a look at [Markdown Basics]().
+If you're not already familiar with Markdown, take a look at [Markdown Basics](/codex/1.0/learning-more/markdown-basics).
 
 ## Differences from traditional Markdown
 
