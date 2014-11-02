@@ -22,7 +22,22 @@ class SearchController extends BaseController
 
 	public function show($manual, $version)
 	{
-		// dd(Config::get('codex.storage_path'));
-		dd ($this->codex->search($manual, $version, Request::get('q')));
+		$toc            = $this->codex->getToc($manual, $version);
+		$search         = Request::get('q');
+		$results        = $this->codex->search($manual, $version, $search);
+		$currentManual  = $manual;
+		$currentVersion = $version;
+		$manuals        = $this->codex->getManuals();
+		$versions       = $this->codex->getVersions($manual);
+
+		return View::make('search.show', compact(
+			'toc',
+			'search',
+			'results',
+			'currentManual',
+			'currentVersion',
+			'manuals',
+			'versions'
+		));
 	}
 }

@@ -135,7 +135,7 @@ class Codex
 	{
 		$results   = [];
 		$directory = $this->storagePath.'/'.$manual.'/'.$version;
-		$files     = preg_grep('/toc\.md$/', glob("$directory/*"),
+		$files     = preg_grep('/toc\.md$/', $this->files->allFiles($directory),
 		 	PREG_GREP_INVERT);
 
 		foreach ($files as $file) {
@@ -143,8 +143,8 @@ class Codex
 
 			if (strpos(strtolower($haystack), strtolower($needle)) !== false) {
 				$results[] = [
-					'title' => $this->getPageTitle($file),
-					'url' => $file,
+					'title' => $this->getPageTitle((string)$file),
+					'url'   => str_replace([$this->config->get('codex.storage_path'), '.md'], '', (string)$file),
 				];
 			}
 		}
