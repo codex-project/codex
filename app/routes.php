@@ -12,4 +12,5 @@
 */
 
 Route::get('/', 'CodexController@index');
+Route::get('search/{manual}/{version}', 'SearchController@show');
 Route::get('{manual}/{version?}/{page?}', 'CodexController@show')->where('page', '(.*)');

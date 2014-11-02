@@ -4,7 +4,7 @@ $(document).ready(function() {
 	$('table').addClass('table table-striped table-bordered table-hover table-condensed');
 
 	// Prettify the <pre> tags
-	$('pre').addClass('prettyprint theme-freshcut');
+	$('[class^="language-"]').closest('pre').addClass('prettyprint theme-freshcut');
 
 	// Dynamic callouts
 	$("blockquote:contains(Attention)").addClass('bs-callout bs-callout-danger');

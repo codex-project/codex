@@ -129,6 +129,40 @@ class Codex
 	}
 
 	/**
+	 * Search manual for given string.
+	 */
+	public function search($manual, $version, $needle)
+	{
+		$results   = [];
+		$directory = $this->storagePath.'/'.$manual.'/'.$version;
+		$files     = preg_grep('/toc\.md$/', glob("$directory/*"),
+		 	PREG_GREP_INVERT);
+
+		foreach ($files as $file) {
+			$haystack = file_get_contents($file);
+
+			if (strpos(strtolower($haystack), strtolower($needle)) !== false) {
+				$results[] = [
+					'title' => $this->getPageTitle($file),
+					'url' => $file,
+				];
+			}
+		}
+
+		return $results;
+	}
+
+	private function getPageTitle($page)
+	{
+		$file  = fopen($page, 'r');
+		$title = fgets($file);
+
+		fclose($file);
+
+		return $title;
+	}
+
+	/**
 	 * Return an array of folders within the supplied path.
 	 *
 	 * @param  string $path
