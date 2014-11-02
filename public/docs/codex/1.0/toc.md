@@ -3,3 +3,4 @@
 - Learning More
 	- [Markdown Basics](/codex/1.0/learning-more/markdown-basics)
 	- [Github Flavored Markdown](/codex/1.0/learning-more/github-flavored-markdown)
+	- [Callouts](/codex/1.0/learning-more/callouts)
