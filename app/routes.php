@@ -11,7 +11,5 @@
 |
 */
 
-Route::get('/', function()
-{
-	return View::make('hello');
-});
+Route::get('/', 'CodexController@index');
+Route::get('{manual}/{version}/{page?}', 'CodexController@show')->where('page', '(.*)');
