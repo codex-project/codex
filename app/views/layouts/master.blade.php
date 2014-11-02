@@ -12,61 +12,7 @@
 		<link rel="stylesheet" href="/assets/css/codex.css">
 	</head>
 	<body>
-		<nav class="navbar navbar-inverse" role="navigation">
-			<div class="container">
-				<div class="navbar-header">
-					<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-						<span class="sr-only">Toggle navigation</span>
-						<span class="icon-bar"></span>
-						<span class="icon-bar"></span>
-						<span class="icon-bar"></span>
-					</button>
-
-					<a href="/" class="navbar-brand">Codex</a>
-				</div>
-
-				<div id="navbar" class="collapse navbar-collapse">
-					<ul class="nav navbar-nav">
-						@if (count($manuals) > 1)
-							<li class="dropdown">
-								<a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-book"></span> {{ $currentManual }} <span class="caret"></span></a>
-								<ul class="dropdown-menu" role="menu">
-									@foreach ($manuals as $manual)
-										<li><a href="/{{ $manual }}">{{ $manual }}</a> </li>
-									@endforeach
-								</ul>
-							</li>
-						@else
-							<li><p class="navbar-text"><span class="glyphicon glyphicon-book"></span> {{ $currentManual }}</p></li>
-						@endif
-
-						@if (count($versions) > 1)
-							<li class="dropdown">
-								<a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-bookmark"></span> {{ $currentVersion }} <span class="caret"></span></a>
-								<ul class="dropdown-menu" role="menu">
-									@foreach ($versions as $version)
-										<li><a href="/{{ $currentManual }}/{{ $version }}">{{ $version }}</a> </li>
-									@endforeach
-								</ul>
-							</li>
-						@else
-							<li><p class="navbar-text"><span class="glyphicon glyphicon-bookmark"></span> {{ $currentVersion }}</p></li>
-						@endif
-					</ul>
-
-					<form class="navbar-form pull-right" role="search">
-						<div class="input-group">
-							<input type="text" name="search" class="form-control">
-							<span class="input-group-btn">
-								<button class="btn btn-primary " type="submit">
-									<span class="glyphicon glyphicon-search"></span> Search
-								</button>
-							</span>
-						</div>
-					</form>
-				</div>
-			</div>
-		</nav>
+		@include('partials.navbar')
 
 		@yield('content')
 
