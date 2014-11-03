@@ -31,6 +31,6 @@ return array(
 	|
 	*/
 
-	'tracking_code' => ''
+	'tracking_code' => $_ENV['tracking_code']
 
 );
