@@ -11,6 +11,7 @@ Codex was built on top of some great open-source projects. There were also a few
 
 ## Inspiration
 - [Laravel's Documentation](http://laravel.com/docs/4.2)
+- [League of Extraordinary Packages Documentation](http://flysystem.thephpleague.com/)
 - [Codeigniter User Guide](https://ellislab.com/codeigniter/user-guide/)
 - [Read The Docs](https://readthedocs.org/)
 - [Sphinx](http://sphinx-doc.org/contents.html)

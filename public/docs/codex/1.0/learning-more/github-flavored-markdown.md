@@ -49,7 +49,7 @@ Standard Markdown converts text with four spaces at the beginning of each line i
 	}
 	```
 
-### Syntax Highlighting
+### Syntax highlighting
 Code blocks can be take a step further by adding syntax highlighting. In your fenced block, add an optional language identifier and we'll run it through syntax highlighting. For example, to syntax highlight PHP code:
 
 	```php
