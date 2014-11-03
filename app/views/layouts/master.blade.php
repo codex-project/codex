@@ -12,6 +12,7 @@
 		<link rel="stylesheet" href="/assets/css/codex.css">
 	</head>
 	<body>
+		@include('partials.analytics_tracking')
 		@include('partials.navbar')
 
 		@yield('content')
