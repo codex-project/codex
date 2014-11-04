@@ -1,9 +1,11 @@
 # Introduction
-[![SensioLabsInsight](https://insight.sensiolabs.com/projects/2cdec527-cb61-4a38-8c44-775d30d55ea0/mini.png)](https://insight.sensiolabs.com/projects/2cdec527-cb61-4a38-8c44-775d30d55ea0)
-[![Build Status](http://img.shields.io/travis/caffeinated/codex/master.svg)](https://travis-ci.org/caffeinated/codex)
-[![License](http://img.shields.io/badge/license-MIT-brightgreen.svg)](https://tldrlegal.com/license/mit-license)
-
 **Codex** is a simple file-based Markdown documentation platform built on top of Laravel. It's completely customizable and dead simple to use to create beautiful documentation.
+
+[![Author](http://img.shields.io/badge/author-kai_desu-blue.svg=flat-square)](https://caffeinated.ninja)
+[![Build Status](http://img.shields.io/travis/caffeinated/codex/master.svg?style=flat-square)](https://travis-ci.org/caffeinated/codex)
+[![License](http://img.shields.io/badge/license-MIT-brightgreen.svg=flat-square)](https://tldrlegal.com/license/mit-license)
+
+[![SensioLabsInsight](https://insight.sensiolabs.com/projects/2cdec527-cb61-4a38-8c44-775d30d55ea0/big.png)](https://insight.sensiolabs.com/projects/2cdec527-cb61-4a38-8c44-775d30d55ea0)
 
 ## Completely Open Source
 I built Codex to be open and available to *everyone*. Documentation is incredibly important that can make or break even the best development projects. This is why the code powering Codex is available on [GitHub](https://github.com/caffeinated/codex) under the [MIT license](https://tldrlegal.com/license/mit-license).
