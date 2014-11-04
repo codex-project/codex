@@ -2,6 +2,7 @@
 **Codex** is a simple file-based Markdown documentation platform built on top of Laravel. It's completely customizable and dead simple to use to create beautiful documentation.
 
 [![Author](http://img.shields.io/badge/author-Shea_Lewis-blue.svg?style=flat-square)](https://caffeinated.ninja)
+[![Source](http://img.shields.io/badge/source-caffeinated/codex-blue.svg?style=flat-square)](https://github.com/caffeinated/codex)
 [![Build Status](http://img.shields.io/travis/caffeinated/codex/master.svg?style=flat-square)](https://travis-ci.org/caffeinated/codex)
 [![License](http://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square)](https://tldrlegal.com/license/mit-license)
 
