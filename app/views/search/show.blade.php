@@ -17,7 +17,7 @@
 						<ol>
 							@foreach ($results as $result)
 								<li>
-									<a href="{{ url($result['url']) }}">{{ markdown($result['title']) }}</a>
+									<a href="{{ url($result['url']) }}">{{ Markdown::parse($result['title']) }}</a>
 								</li>
 							@endforeach
 						</ol>

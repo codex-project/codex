@@ -48,7 +48,7 @@ class Codex
 	*/
 	public function getToc($manual, $version)
 	{
-		return markdown($this->files->get($this->storagePath.'/'.$manual.'/'.$version.'/toc.md'));
+		return Markdown::parse($this->files->get($this->storagePath.'/'.$manual.'/'.$version.'/toc.md'));
 	}
 
 	/**
@@ -64,9 +64,9 @@ class Codex
 		$notFound = $this->storagePath.'/404.md';
 
 		if ($this->files->exists($page)) {
-			return markdown($this->files->get($page));
+			return Markdown::parse($this->files->get($page));
 		} else {
-			return markdown($this->files->get($notFound));
+			return Markdown::parse($this->files->get($notFound));
 		}
 	}
 
