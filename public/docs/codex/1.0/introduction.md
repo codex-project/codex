@@ -1,4 +1,8 @@
 # Introduction
+[![SensioLabsInsight](https://insight.sensiolabs.com/projects/2cdec527-cb61-4a38-8c44-775d30d55ea0/mini.png)](https://insight.sensiolabs.com/projects/2cdec527-cb61-4a38-8c44-775d30d55ea0)
+[![Build Status](http://img.shields.io/travis/caffeinated/codex/master.svg)](https://travis-ci.org/caffeinated/codex)
+[![License](http://img.shields.io/badge/license-MIT-brightgreen.svg)](https://tldrlegal.com/license/mit-license)
+
 **Codex** is a simple file-based Markdown documentation platform built on top of Laravel. It's completely customizable and dead simple to use to create beautiful documentation.
 
 ## Completely Open Source
