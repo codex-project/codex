@@ -6,7 +6,11 @@
 	- [Installation](/codex/1.0/getting-started/installation)
 	- [Configuration](/codex/1.0/getting-started/configuration)
 	- [Documentation Structure](/codex/1.0/getting-started/documentation-structure)
-- Learning More
+- Writing Reference
 	- [Markdown Basics](/codex/1.0/learning-more/markdown-basics)
 	- [Github Flavored Markdown](/codex/1.0/learning-more/github-flavored-markdown)
 	- [Callouts](/codex/1.0/learning-more/callouts)
+- Contributing
+	- [Guidelines](/codex/1.0/contributing/guidelines)
+	- [PSR-1 Coding Style](/codex/1.0/contributing/psr-1-coding-style)
+	- [PSR-2 Coding Style](/codex/1.0/contributing/psr-2-coding-style)

@@ -10,17 +10,17 @@
 			</div>
 
 			<div class="col-md-9 documentation">
-				<h1>Search results for <small>{{ $search }}</small></h1>
+				<h1>Search results for <small>"{{ $search }}"</small></h1>
 
 				<div id="search-results">
 					@if (count($results) > 0)
-						@foreach ($results as $result)
-							<ul>
+						<ol>
+							@foreach ($results as $result)
 								<li>
 									<a href="{{ url($result['url']) }}">{{ markdown($result['title']) }}</a>
 								</li>
-							</ul>							
-						@endforeach
+							@endforeach
+						</ol>
 					@else
 						<p>
 							Shucks, no results found Batman.

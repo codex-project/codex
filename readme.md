@@ -1,6 +1,8 @@
 # Codex
 **Codex** is a simple file-based Markdown documentation platform built on top of Laravel. It's completely customizable and dead simple to use to create beautiful documentation.
 
+Read the full documentation with installation instructions [here](http://codex.caffeinated.ninja).
+
 ## Features
 - Laravel 4.2
 - Github-flavored Markdown
