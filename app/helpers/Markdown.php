@@ -11,6 +11,6 @@ class Markdown
 	public static function parse($text)
 	{
         $basePath = url('');
-		return preg_replace('/href=\"(.*?)\"/', "href=\"$basePath$1\"", (new \Parsedown)->text($text));
+		return preg_replace('/href=\"(\/.*?)\"/', "href=\"$basePath$1\"", (new \Parsedown)->text($text));
 	}
 }
