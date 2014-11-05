@@ -22,6 +22,15 @@ App::after(function($request, $response)
 	//
 });
 
+App::error(function($exception, $code)
+{
+	switch ($code)
+	{
+		case 404:
+			return Response::view('errors.404', [], 404);
+	}
+});
+
 /*
 |--------------------------------------------------------------------------
 | Authentication Filters

@@ -14,7 +14,9 @@
 		<div id="navbar" class="collapse navbar-collapse">
 			@include('partials.navbar_nav')
 
-			@include('partials.search_form')
+			@if (isset($currentManual))
+				@include('partials.search_form')
+			@endif
 		</div>
 	</div>
 </nav>

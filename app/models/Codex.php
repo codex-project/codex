@@ -48,7 +48,13 @@ class Codex
 	*/
 	public function getToc($manual, $version)
 	{
-		return Markdown::parse($this->files->get($this->storagePath.'/'.$manual.'/'.$version.'/toc.md'));
+		$tocFile = $this->storagePath.'/'.$manual.'/'.$version.'/toc.md';
+
+		if ($this->files->exists($tocFile)) {
+			return Markdown::parse($this->files->get($tocFile));
+		} else {
+			return null;
+		}
 	}
 
 	/**
@@ -66,7 +72,7 @@ class Codex
 		if ($this->files->exists($page)) {
 			return Markdown::parse($this->files->get($page));
 		} else {
-			return Markdown::parse($this->files->get($notFound));
+			App::abort(404);
 		}
 	}
 
@@ -170,8 +176,16 @@ class Codex
 	 */
 	private function getDirectories($path)
 	{
+		if ( ! $this->files->exists($path)) {
+			App::abort(404);
+		}
+
 		$directories = $this->files->directories($path);
 		$folders     = [];
+
+		if (count($directories) > 0) {
+
+		}
 
 		foreach ($directories as $dir) {
 			$folder    = explode('/', $dir);

@@ -7,7 +7,11 @@
 		<link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
 		<link rel="icon" href="/favicon.ico" type="image/x-icon">
 
-		<title>Codex - {{ $currentManual }} v{{ $currentVersion }}</title>
+		@if (isset($currentManual))
+			<title>Codex - {{ $currentManual }} v{{ $currentVersion }}</title>
+		@else
+			<title>Codex</title>
+		@endif
 
 		<!-- CSS -->
 		<link rel="stylesheet" href="/assets/css/bootswatch/flatly.min.css">
