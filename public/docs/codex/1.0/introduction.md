@@ -4,6 +4,7 @@
 [![Author](http://img.shields.io/badge/author-Shea_Lewis-blue.svg?style=flat-square)](https://caffeinated.ninja)
 [![Source](http://img.shields.io/badge/source-caffeinated/codex-blue.svg?style=flat-square)](https://github.com/caffeinated/codex)
 [![Build Status](http://img.shields.io/travis/caffeinated/codex/master.svg?style=flat-square)](https://travis-ci.org/caffeinated/codex)
+[![Scrutinizer Code Quality](http://img.shields.io/scrutinizer/g/caffeinated/codex.svg?style=flat-square)](https://scrutinizer-ci.com/g/caffeinated/codex/?branch=master)
 [![License](http://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square)](https://tldrlegal.com/license/mit-license)
 
 [![SensioLabsInsight](https://insight.sensiolabs.com/projects/2cdec527-cb61-4a38-8c44-775d30d55ea0/big.png)](https://insight.sensiolabs.com/projects/2cdec527-cb61-4a38-8c44-775d30d55ea0)
