@@ -221,8 +221,8 @@ class Codex
 		}
 
 		foreach ($directories as $dir) {
+			$dir = str_replace('\\', '/', $dir);
 			$folder    = explode('/', $dir);
-			$folder    = explode('\\', $folder);
 			$folders[] = end($folder);
 		}
 
