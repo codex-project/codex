@@ -5,7 +5,7 @@
 				<a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-book"></span> {{ $currentManual }} <span class="caret"></span></a>
 				<ul class="dropdown-menu" role="menu">
 					@foreach ($manuals as $manual)
-						<li><a href="/{{ $manual }}">{{ $manual }}</a> </li>
+						<li><a href="{{ url('/' + $manual) }}">{{ $manual }}</a> </li>
 					@endforeach
 				</ul>
 			</li>
@@ -20,7 +20,7 @@
 				<a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-bookmark"></span> {{ $currentVersion }} <span class="caret"></span></a>
 				<ul class="dropdown-menu" role="menu">
 					@foreach ($versions as $version)
-						<li><a href="/{{ $currentManual }}/{{ $version }}">{{ $version }}</a> </li>
+						<li><a href="{{ url('/' + $currentManual + '/' + $version) }}">{{ $version }}</a> </li>
 					@endforeach
 				</ul>
 			</li>
