@@ -25,11 +25,23 @@ $(document).ready(function() {
 	});
 
 	// Create anchor tags on header spans within documentation
+	// This can be done better/smarter
 	$(".documentation h2, .documentation h3, .documentation h4, .documentation h5, .documentation h6").each(function() {
 
 		// We want to ignore header spans within blockquotes
 		if ($(this).parent().get(0).tagName != "BLOCKQUOTE") {
-			var anchor = encodeURIComponent($(this).text().toLowerCase().replace(/ /g,"-"));
+			var anchor = $(this).text().toLowerCase().trim();
+
+			var hyphenNeedle = [/ /g];
+			var emptyNeedle = ['[', ']', ':'];
+
+			hyphenNeedle.forEach(function(word) {
+				anchor = anchor.replace(word, "-");
+			});
+
+			emptyNeedle.forEach(function(word) {
+				anchor = anchor.replace(word, "");
+			});
 
 			$(this).append(' <a class="hover-anchor" id="' + anchor + '" href="#' + anchor + '"><small><span class="glyphicon glyphicon-link"></span></small></a>');
 		}
