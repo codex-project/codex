@@ -23,4 +23,16 @@ $(document).ready(function() {
 	$('#search-results h1').replaceWith(function() {
 		return '<h4>'+$(this).text()+'</h4>';
 	});
+
+	// Create anchor tags on header spans within documentation
+	$(".documentation h2, .documentation h3, .documentation h4, .documentation h5, .documentation h6").each(function() {
+
+		// We want to ignore header spans within blockquotes
+		if ($(this).parent().get(0).tagName != "BLOCKQUOTE") {
+			var anchor = encodeURIComponent($(this).text().toLowerCase().replace(/ /g,"-"));
+
+			$(this).append(' <a class="hover-anchor" id="' + anchor + '" href="#' + anchor + '"><small><span class="glyphicon glyphicon-link"></span></small></a>');
+		}
+
+	});
 });
