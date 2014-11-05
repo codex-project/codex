@@ -23,5 +23,4 @@ In short, I want to see beautiful documentation being written everywhere! No exc
 - Simple search
 - Supports Google Analytics
 - Supplied theme built on Bootstrap
-
-> **Note** that while Codex is pretty much feature complete and good to use in production, I am still working on the documentation here. So please bear with me!
+- Automatic header anchors

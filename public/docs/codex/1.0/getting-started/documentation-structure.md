@@ -17,7 +17,7 @@ Manuals and their accompanying versions will be auto-detected by Codex.
 
 ```
 docs/
-	|-- project/
+	|-- manual/
 		|-- 1.0/
 			introduction.md
 			toc.md
@@ -50,7 +50,4 @@ docs/
 
 ## Required Files
 
-There are only two files that are required, and both sit in the root of a project's version directory: `introduction.md` and `toc.md`.
-
-- **`introduction.md`** is used as the root or index file for your documentation.
-- **`toc.md`** is the *table of contents* for your documentation.
+There is only one file that is required, which sits in the root of a manual's version directory: `introduction.md`. **`introduction.md`** is used as the root or index file for your documentation.

@@ -1,6 +1,6 @@
 # Configuration
 
-Codex comes with a custom config file with a few configuration options within the `app/codex.php` file.
+Codex comes with a custom config file with a few configuration options within the `app/config/codex.php` file.
 
 ## Storage Path
 By default, Codex stores documentation files within the `public/docs` directory. This can be configured and moved to another location by changing the `storage_path` configuration key.

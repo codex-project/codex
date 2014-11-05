@@ -6,6 +6,7 @@
 	- [Installation](/codex/1.0/getting-started/installation)
 	- [Configuration](/codex/1.0/getting-started/configuration)
 	- [Documentation Structure](/codex/1.0/getting-started/documentation-structure)
+	- [Navigation](/codex/1.0/getting-started/navigation)
 - Writing Reference
 	- [Markdown Basics](/codex/1.0/learning-more/markdown-basics)
 	- [Github Flavored Markdown](/codex/1.0/learning-more/github-flavored-markdown)
