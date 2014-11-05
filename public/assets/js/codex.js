@@ -43,7 +43,7 @@ $(document).ready(function() {
 				anchor = anchor.replace(word, "");
 			});
 
-			$(this).append(' <a class="hover-anchor" id="' + anchor + '" href="#' + anchor + '"><small><span class="glyphicon glyphicon-link"></span></small></a>');
+			$(this).append(' <a class="header-anchor" id="' + anchor + '" href="#' + anchor + '"></a>');
 		}
 
 	});
