@@ -66,8 +66,7 @@ class Codex
 	*/
 	public function get($manual, $version, $page)
 	{
-		$page     = $this->storagePath.'/'.$manual.'/'.$version.'/'.$page.'.md';
-		$notFound = $this->storagePath.'/404.md';
+		$page = $this->storagePath.'/'.$manual.'/'.$version.'/'.$page.'.md';
 
 		if ($this->files->exists($page)) {
 			return Markdown::parse($this->files->get($page));
