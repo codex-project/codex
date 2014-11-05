@@ -222,6 +222,7 @@ class Codex
 
 		foreach ($directories as $dir) {
 			$folder    = explode('/', $dir);
+			$folder    = explode('\\', $folder);
 			$folders[] = end($folder);
 		}
 
