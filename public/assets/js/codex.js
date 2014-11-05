@@ -33,7 +33,7 @@ $(document).ready(function() {
 			var anchor = $(this).text().toLowerCase().trim();
 
 			var hyphenNeedle = [/ /g];
-			var emptyNeedle = ['[', ']', ':'];
+			var emptyNeedle = ['[', ']', '(', ')', ':'];
 
 			hyphenNeedle.forEach(function(word) {
 				anchor = anchor.replace(word, "-");
