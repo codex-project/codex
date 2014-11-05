@@ -2,6 +2,7 @@
 
 use Illuminate\Config\Repository as Config;
 use Illuminate\Filesystem\Filesystem;
+use Carbon\Carbon;
 
 class Codex
 {
@@ -60,6 +61,7 @@ class Codex
 	/**
 	* Get the given documentation page.
 	*
+	* @param  string $manual
 	* @param  string $version
 	* @param  string $page
 	* @return string
@@ -72,6 +74,27 @@ class Codex
 			return Markdown::parse($this->files->get($page));
 		} else {
 			App::abort(404);
+		}
+	}
+
+	/**
+	 * Gets the given documentation page modification time.
+	 *
+	 * @param  string $manual
+	 * @param  string $version
+	 * @param  string $page
+	 * @return mixed
+	 */
+	public function getUpdatedTimestamp($manual, $version, $page)
+	{
+		$page = $this->storagePath.'/'.$manual.'/'.$version.'/'.$page.'.md';
+
+		if ($this->files->exists($page)) {
+			$timestamp = DateTime::createFromFormat('U', filemtime($page));
+
+			return $timestamp->format($this->config->get('codex.modified_timestamp'));
+		} else {
+			return false;
 		}
 	}
 
@@ -135,6 +158,11 @@ class Codex
 
 	/**
 	 * Search manual for given string.
+	 *
+	 * @param  string $manual
+	 * @param  string $version
+	 * @param  string $needle
+	 * @return array
 	 */
 	public function search($manual, $version, $needle)
 	{
@@ -157,6 +185,13 @@ class Codex
 		return $results;
 	}
 
+	/**
+	 * Return the first line of the supplied page. This will (or rather should)
+	 * always be an <h1> tag.
+	 *
+	 * @param  string $page
+	 * @return string
+	 */
 	private function getPageTitle($page)
 	{
 		$file  = fopen($page, 'r');

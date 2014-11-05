@@ -12,10 +12,22 @@
 
 				<div class="col-md-9 documentation">
 					{{ $content }}
+
+					<hr>
+
+					<p class="pull-right">
+						<small>{{ $lastUpdated }}</small>
+					</p>
 				</div>
 			@else
 				<div class="col-md-12 documentation">
 					{{ $content }}
+
+					<hr>
+
+					<p class="pull-right">
+						<small>{{ $lastUpdated }}</small>
+					</p>
 				</div>
 			@endif
 		</div>

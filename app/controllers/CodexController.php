@@ -69,6 +69,7 @@ class CodexController extends BaseController
 
 		$toc            = $this->codex->getToc($manual, $version);
 		$content        = $this->codex->get($manual, $version, $page ?: 'introduction');
+		$lastUpdated    = $this->codex->getUpdatedTimestamp($manual, $version, $page ?: 'introduction');
 		$currentManual  = $manual;
 		$currentVersion = $version;
 		$manuals        = $this->codex->getManuals();
@@ -77,6 +78,7 @@ class CodexController extends BaseController
 		return View::make('codex.show', compact(
 			'toc',
 			'content',
+			'lastUpdated',
 			'currentManual',
 			'currentVersion',
 			'manuals',

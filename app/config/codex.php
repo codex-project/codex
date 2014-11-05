@@ -31,6 +31,17 @@ return array(
 	|
 	*/
 
-	'tracking_code' => getenv('tracking_code')
+	'tracking_code' => getenv('tracking_code'),
+
+	/*
+	|--------------------------------------------------------------------------
+	| Last Modified Timestamp Format
+	|--------------------------------------------------------------------------
+	|
+	| http://php.net/manual/en/function.date.php#refsect1-function.date-parameters
+	|
+	*/
+
+	'modified_timestamp' => 'l, F d, Y'
 
 );
