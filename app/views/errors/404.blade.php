@@ -7,7 +7,7 @@
 				<h1>Page could not be found</h1>
 
 				<p>
-					The page you requested could not be found. Either use your browsers back page to navigate to the page you had previously come from, or use the button below to return to the home page.
+					The page you requested could not be found. Either use your browsers back button to navigate to the page you had previously come from, or use the button below to return to the home page.
 				</p>
 
 				<p>
