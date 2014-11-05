@@ -163,21 +163,23 @@ class Codex
 	 * @param  string $needle
 	 * @return array
 	 */
-	public function search($manual, $version, $needle)
+	public function search($manual, $version, $needle = '')
 	{
 		$results   = [];
 		$directory = $this->storagePath.'/'.$manual.'/'.$version;
 		$files     = preg_grep('/toc\.md$/', $this->files->allFiles($directory),
 		 	PREG_GREP_INVERT);
 
-		foreach ($files as $file) {
-			$haystack = file_get_contents($file);
+		if ( ! empty($needle)) {
+			foreach ($files as $file) {
+				$haystack = file_get_contents($file);
 
-			if (strpos(strtolower($haystack), strtolower($needle)) !== false) {
-				$results[] = [
-					'title' => $this->getPageTitle((string)$file),
-					'url'   => str_replace([$this->config->get('codex.storage_path'), '.md'], '', (string)$file),
-				];
+				if (strpos(strtolower($haystack), strtolower($needle)) !== false) {
+					$results[] = [
+						'title' => $this->getPageTitle((string)$file),
+						'url'   => str_replace([$this->config->get('codex.storage_path'), '.md'], '', (string)$file),
+					];
+				}
 			}
 		}
 
