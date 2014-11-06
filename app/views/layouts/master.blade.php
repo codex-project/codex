@@ -8,7 +8,7 @@
 		<link rel="icon" href="{{ asset('/favicon.ico') }}" type="image/x-icon">
 
 		@if (isset($currentManual))
-			<title>Codex - {{ $currentManual }} v{{ $currentVersion }}</title>
+			<title>Codex - {{ $currentManual }} {{ $currentVersion }}</title>
 		@else
 			<title>Codex</title>
 		@endif
