@@ -15,8 +15,6 @@ Creates:
 
 When linking to relative pages, Codex will automatically remove the `.md` file extension when it generates URLs.
 
-> **Notice:** If you do link to a page with the `.md` file extension appended, the link will result in a 404 error.
-
 ## Table of contents
 Codex will look for a `toc.md` (table of contents) file within the root of your documentation in order to load and render the main navigation for your documentation. This file is *optional* - if it does not exist, Codex will simply skip over it allow your content to span the full width of the page. This is great for simple one page documentation.
 
