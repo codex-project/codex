@@ -13,11 +13,12 @@ class Markdown
 		$basePath = url('/' . ltrim($pathPrefix, '/'));
 		$rendered = (new \Parsedown)->text($text);
 
-		// Replace absolute relative paths (Paths that start with / but not //)
+		// Replace absolute relative paths (paths that start with / but not //)
 		$rendered = preg_replace('/href=\"(\/[^\/].*).md\"/', "href=\"$basePath$1\"", $rendered);
-		// Replace relative paths (Paths that don't start with / or http://, https://, //, etc)
-		$rendered = preg_replace('/href=\"(?!.*?\/\/)(.*).md\"/', "href=\"$basePath/$1\"", $rendered);
 
+		// Replace relative paths (paths that don't start with / or http://, https://, //, etc)
+		$rendered = preg_replace('/href=\"(?!.*?\/\/)(.*).md\"/', "href=\"$basePath/$1\"", $rendered);
+		
 		return $rendered;
 	}
 }

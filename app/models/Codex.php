@@ -60,9 +60,8 @@ class Codex
 		$tocFile = $this->storagePath.'/'.$manual.'/'.$version.'/toc.md';
 
 		if ($this->files->exists($tocFile)) {
-			return $this->cache->remember("$manual.$version.toc", 5, function() use ($tocFile, $manual, $version) {
-				return Markdown::parse($this->files->get($tocFile), $manual.'/'.$version);
-			});
+			return $this->cached("$manual.$version.toc",
+				Markdown::parse($this->files->get($tocFile), $manual.'/'.$version));
 		} else {
 			return null;
 		}
@@ -81,9 +80,8 @@ class Codex
 		$pageFile = $this->storagePath.'/'.$manual.'/'.$version.'/'.$page.'.md';
 
 		if ($this->files->exists($pageFile)) {
-			return $this->cache->remember("$manual.$version.$pageFile", 5, function() use ($pageFile, $manual, $version, $page) {
-				return Markdown::parse($this->files->get($pageFile), $manual.'/'.$version.'/'.dirname($page));
-			});
+			return $this->cached("$manual.$version.$pageFile",
+				Markdown::parse($this->files->get($pageFile), $manual.'/'.$version.'/'.dirname($page)));
 		} else {
 			App::abort(404);
 		}
@@ -242,5 +240,24 @@ class Codex
 		}
 
 		return $folders;
+	}
+
+	/**
+	 * Returns the cached content if NOT running locally.
+	 *
+	 * @param  string $key
+	 * @param  mixed  $value
+	 * @param  int    $time
+	 * @return mixed
+	 */
+	private function cached($key, $value, $time = 5)
+	{
+		if (App::environment('local') === false) {
+			return $this->cache->remember($key, $time, function() use ($value) {
+				return $value;
+			});
+		} else {
+			return $value;
+		}
 	}
 }
