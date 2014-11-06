@@ -13,7 +13,11 @@
 
 App::before(function($request)
 {
-	App::bind('CodexRepositoryInterface', 'CodexRepositoryFlat');
+	$impl = Config::get('codex.strategy') === 'git'
+		? 'CodexRepositoryGit'
+		: 'CodexRepositoryFlat';
+
+	App::bind('CodexRepositoryInterface', $impl);
 });
 
 // App::after(function($request, $response)

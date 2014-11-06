@@ -38,6 +38,17 @@ return array(
 
 	/*
 	|--------------------------------------------------------------------------
+	| Folder based or Git based
+	|--------------------------------------------------------------------------
+	|
+	| You can configure Codex to work based off tags and branches within
+	| a documentation git repository.
+	*/
+
+	'strategy' => 'git', // or 'git'
+
+	/*
+	|--------------------------------------------------------------------------
 	| Google Analytics Tracking Code
 	|--------------------------------------------------------------------------
 	|
