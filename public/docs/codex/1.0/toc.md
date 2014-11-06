@@ -15,3 +15,4 @@
 	- [Guidelines](contributing/guidelines.md)
 	- [PSR-1 Coding Style](contributing/psr-1-coding-style.md)
 	- [PSR-2 Coding Style](contributing/psr-2-coding-style.md)
+	- [Working Locally](contributing/working-locally.md)
