@@ -60,7 +60,7 @@ class Codex
 		$tocFile = $this->storagePath.'/'.$manual.'/'.$version.'/toc.md';
 
 		if ($this->files->exists($tocFile)) {
-			return $this->cache->remember("$manual.$version", 5, function() use ($tocFile, $manual, $version) {
+			return $this->cache->remember("$manual.$version.toc", 5, function() use ($tocFile, $manual, $version) {
 				return Markdown::parse($this->files->get($tocFile), $manual.'/'.$version);
 			});
 		} else {
