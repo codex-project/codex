@@ -8,9 +8,13 @@ class Markdown
 	 * @param  string $text
 	 * @return string
 	 */
-	public static function parse($text)
+	public static function parse($text, $pathPrefix = '')
 	{
-		$basePath = url('');
-		return preg_replace('/href=\"(\/.*?)\"/', "href=\"$basePath$1\"", (new \Parsedown)->text($text));
+		$basePath = url('/' . ltrim($pathPrefix, '/'));
+		$rendered = (new \Parsedown)->text($text);
+		$rendered = preg_replace('/href=\"(\/[^\/].*)\"/', "href=\"$basePath$1\"", $rendered);
+		$rendered = preg_replace('/href=\"(?!.*?\/\/)(.*)\"/', "href=\"$basePath/$1\"", $rendered);
+
+		return $rendered;
 	}
 }
