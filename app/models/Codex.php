@@ -60,8 +60,8 @@ class Codex
 		$tocFile = $this->storagePath.'/'.$manual.'/'.$version.'/toc.md';
 
 		if ($this->files->exists($tocFile)) {
-			return $this->cache->remember("$manual.$version.toc", 5, function() use ($tocFile) {
-				return Markdown::parse($this->files->get($tocFile));
+			return $this->cache->remember("$manual.$version.ff", 5, function() use ($tocFile, $manual, $version) {
+				return Markdown::parse($this->files->get($tocFile), $manual.'/'.$version);
 			});
 		} else {
 			return null;
@@ -78,11 +78,11 @@ class Codex
 	*/
 	public function get($manual, $version, $page)
 	{
-		$page = $this->storagePath.'/'.$manual.'/'.$version.'/'.$page.'.md';
+		$pageFile = $this->storagePath.'/'.$manual.'/'.$version.'/'.$page.'.md';
 
-		if ($this->files->exists($page)) {
-			return $this->cache->remember("$manual.$version.$page", 5, function() use ($page) {
-				return Markdown::parse($this->files->get($page));
+		if ($this->files->exists($pageFile)) {
+			return $this->cache->remember("$manual.$version.$pageFile", 5, function() use ($pageFile, $manual, $version, $page) {
+				return Markdown::parse($this->files->get($pageFile), $manual.'/'.$version.'/'.dirname($page));
 			});
 		} else {
 			App::abort(404);
