@@ -33,7 +33,7 @@ class CodexController extends BaseController
 	/**
 	 * Create a new controller instance.
 	 *
-	 * @param  Codex $codex
+	 * @param  CodexRepositoryInterface $codex
 	 * @return void
 	 */
 	public function __construct(CodexRepositoryInterface $codex)

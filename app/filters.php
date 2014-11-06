@@ -11,11 +11,10 @@
 |
 */
 
-// App::before(function($request)
-// {
-//
-// });
-
+App::before(function($request)
+{
+	App::bind('CodexRepositoryInterface', 'CodexRepositoryFlat');
+});
 
 // App::after(function($request, $response)
 // {
