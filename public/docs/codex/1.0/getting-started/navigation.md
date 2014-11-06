@@ -4,16 +4,16 @@
 Links to other pages within Codex are done relative to the current file. Just simply link to the Markdown file itself, like so:
 
 ```
-[Introduction](../introduction)
+[Introduction](../introduction.md)
 ```
 
 Creates:
 
-[Introduction](../introduction)
+[Introduction](../introduction.md)
 
 > Note that the relative link is pointing to the **physical file _from_** the current markdown file.
 
-When linking to relative pages, Codex will automatically append the `.md` file extension when it attempts to load a Markdown file. So with that, there is no need to add the extension to the end of your URLs.
+When linking to relative pages, Codex will automatically remove the `.md` file extension when it generates URLs.
 
 > **Notice:** If you do link to a page with the `.md` file extension appended, the link will result in a 404 error.
 
@@ -25,9 +25,9 @@ The `toc.md` file consists of a simple **unordered list** of relative links poin
 
 ```markdown
 - Header
-	- [Page 1](page-1)
-	- [Page 2](page-1)
-	- [Page 3](page-1)
+	- [Page 1](page-1.md)
+	- [Page 2](page-2.md)
+	- [Page 3](page-3.md)
 ```
 
 This can be configured differently if you are creating or modifying the theme for your own needs, as all the styling is done through CSS.
