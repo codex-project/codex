@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Cache\Repository as Cache;
 use Illuminate\Config\Repository as Config;
 use Illuminate\Filesystem\Filesystem;
 
@@ -11,6 +12,13 @@ class Codex
 	* @var Filesystem
 	*/
 	protected $files;
+
+	/**
+	* The cache implementation.
+	*
+	* @var Cache
+	*/
+	protected $cache;
 
 	/**
 	 * The config implementation.
@@ -32,8 +40,9 @@ class Codex
 	* @param  Filesystem $files
 	* @return void
 	*/
-	public function __construct(Config $config, Filesystem $files)
+	public function __construct(Cache $cache, Config $config, Filesystem $files)
 	{
+		$this->cache  = $cache;
 		$this->config = $config;
 		$this->files  = $files;
 
@@ -51,7 +60,9 @@ class Codex
 		$tocFile = $this->storagePath.'/'.$manual.'/'.$version.'/toc.md';
 
 		if ($this->files->exists($tocFile)) {
-			return Markdown::parse($this->files->get($tocFile));
+			return $this->cache->remember("$manual.$version.toc", 5, function() use ($tocFile) {
+				return Markdown::parse($this->files->get($tocFile));
+			});
 		} else {
 			return null;
 		}
@@ -70,7 +81,9 @@ class Codex
 		$page = $this->storagePath.'/'.$manual.'/'.$version.'/'.$page.'.md';
 
 		if ($this->files->exists($page)) {
-			return Markdown::parse($this->files->get($page));
+			return $this->cache->remember("$manual.$version.$page", 5, function() use ($page) {
+				return Markdown::parse($this->files->get($page));
+			});
 		} else {
 			App::abort(404);
 		}
