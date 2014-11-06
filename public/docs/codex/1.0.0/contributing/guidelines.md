@@ -14,7 +14,7 @@ If you find a bug in Codex (and you don't know how to fix it), have trouble foll
 If you’re able to patch the bug or add the feature yourself – fantastic, make a pull request with the code! Be sure you’ve read through the contribution guidelines here and understand the MIT license. Once you’ve submitted a pull request I can compare your branch to the master one and decide whether or not to incorporate (pull in) your changes.
 
 > **Pull Require Pro Tips**
-> - **[Fork](https://guides.github.com/activities/forking/) the repository** and clone is locally. Connect your local to the original 'upstream' repository by adding it as a remote. **Pull in changes** from 'upstream' often so that you stay up to date so that when you submit your pull request, merge conflicts will be less likely. See more detailed instructions [here](https://help.github.com/articles/syncing-a-fork/).
+> - **[Fork](https://guides.github.com/activities/forking/) the repository** and clone it locally. Connect your local to the original 'upstream' repository by adding it as a remote. **Pull in changes** from 'upstream' often so that you stay up to date so that when you submit your pull request, merge conflicts will be less likely. See more detailed instructions [here](https://help.github.com/articles/syncing-a-fork/).
 > - **Create a [branch](http://guides.github.com/introduction/flow/)** for your edits.
 > - **Be clear** about what problem is occurring and how someone can recreate that problem or why your feature will help. Then be equally as clear about the steps you took to make your changes.
 > - **Include screenshots** of the before and after if your changes include differences in HTML/CSS. Drag and drop the images into the body of your pull request.
