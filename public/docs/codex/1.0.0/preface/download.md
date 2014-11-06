@@ -1,7 +1,12 @@
 # Download
 
+## Stable Release
+This is the preferred download if you're looking to use Codex for your documentation needs. The following URL will lead you to the download for **version 1.0.0**.
+
+**[Download Stable v1.0.0](https://github.com/caffeinated/codex/archive/1.0.0.zip)**
+
 ## Development Branch
-You are free to download the development branch (and at the time of this writing, is the only release available). Just please note that while this is the bleeding edge in terms of features and functionality, it comes at the price that things may be broken.
+As this is an open source project, you are free to download the development branch as well. Just please note that while this is the bleeding edge in terms of features and functionality, it comes at the price that things may be broken.
 
 **[Download Development Branch](https://github.com/caffeinated/codex/archive/master.zip)**
 
