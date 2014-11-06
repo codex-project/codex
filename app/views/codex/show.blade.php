@@ -17,13 +17,7 @@
 
 					{{ $content }}
 
-					<hr>
-
-					<p class="pull-right">
-						<small>
-							Powered by <a href="http://codex.caffeinated.ninja">Codex</a> v1.0.0
-						</small>
-					</p>
+					@include('partials.footer')
 				</div>
 			@else
 				<div class="col-md-12 documentation">
@@ -33,13 +27,7 @@
 
 					{{ $content }}
 
-					<hr>
-
-					<p class="pull-right">
-						<small>
-							Powered by <a href="http://codex.caffeinated.ninja">Codex</a> v1.0.0
-						</small>
-					</p>
+					@include('partials.footer')
 				</div>
 			@endif
 		</div>
