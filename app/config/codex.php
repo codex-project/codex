@@ -4,6 +4,22 @@ return array(
 
 	/*
 	|--------------------------------------------------------------------------
+	| Storage Driver
+	|--------------------------------------------------------------------------
+	|
+	| Codex can support a multitude of different storage methods to retrieve
+	| your documentation from. You may specify which one you're using
+	| throughout your Codex installation here. By default, Codex is set to
+	| use the "flat" driver method.
+	|
+	| Supported: "flat"
+	|
+	*/
+
+	'driver' => 'flat',
+
+	/*
+	|--------------------------------------------------------------------------
 	| Storage Path
 	|--------------------------------------------------------------------------
 	|
