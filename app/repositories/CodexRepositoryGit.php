@@ -84,7 +84,7 @@ class CodexRepositoryGit implements CodexRepositoryInterface
 		$this->git->checkout($version);
 
 		if ($this->files->exists($page)) {
-			return Markdown::parse($this->files->get($page), $manual.'/'.$version);
+			return Markdown::parse($this->files->get($page), $manual.'/'.$version.'/'.dirname($page));
 		} else {
 			App::abort(404);
 		}

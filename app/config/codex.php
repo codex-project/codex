@@ -38,7 +38,7 @@ return array(
 
 	/*
 	|--------------------------------------------------------------------------
-	| Folder based or Git based
+	| Flat file based or Git based
 	|--------------------------------------------------------------------------
 	|
 	| You can configure Codex to work based off tags and branches within
