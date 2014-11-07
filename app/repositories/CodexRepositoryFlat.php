@@ -4,7 +4,7 @@ use Illuminate\Cache\Repository as Cache;
 use Illuminate\Config\Repository as Config;
 use Illuminate\Filesystem\Filesystem;
 
-class Codex
+class CodexRepositoryFlat implements CodexRepositoryInterface
 {
 	/**
 	* The filesystem implementation.
@@ -50,7 +50,7 @@ class Codex
 	}
 
 	/**
-	* Get the documentation table of contents page.
+	* Get manual's table of contents file, if it exists.
 	*
 	* @param  string $version
 	* @return string
