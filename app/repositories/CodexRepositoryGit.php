@@ -134,7 +134,9 @@ class CodexRepositoryGit implements CodexRepositoryInterface
 		$manualDir = $this->storagePath.'/'.$manual;
 		$this->git->setRepository($manualDir);
 
-		return $this->git->tag();
+		return array_map(function($branch) {
+			return $branch['name'];
+		}, $this->git->branch());
 	}
 
 	/**
