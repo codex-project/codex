@@ -12,7 +12,7 @@ return array(
 	| throughout your Codex installation here. By default, Codex is set to
 	| use the "flat" driver method.
 	|
-	| Supported: "flat"
+	| Supported: "flat", "git"
 	|
 	*/
 
@@ -35,17 +35,6 @@ return array(
 	*/
 
 	'default_manual' => '',
-
-	/*
-	|--------------------------------------------------------------------------
-	| Flat file based or Git based
-	|--------------------------------------------------------------------------
-	|
-	| You can configure Codex to work based off tags and branches within
-	| a documentation git repository.
-	*/
-
-	'strategy' => 'git', // or 'git'
 
 	/*
 	|--------------------------------------------------------------------------
