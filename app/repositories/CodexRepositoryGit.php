@@ -58,9 +58,9 @@ class CodexRepositoryGit implements CodexRepositoryInterface
 	 */
 	public function getToc($manual, $version)
 	{
-		$tocFile = $this->storagePath.'/'.$manual.'/toc.md';
-		$this->git->setRepository($this->storagePath.'/'.$manual);
-		$this->git->checkout($version);
+		$storagePath = $this->getStoragePath($manual, $version);
+
+		$tocFile = $storagePath.'/toc.md';
 
 		if ($this->files->exists($tocFile)) {
 			return Markdown::parse($this->files->get($tocFile), $manual.'/'.$version);
@@ -79,9 +79,9 @@ class CodexRepositoryGit implements CodexRepositoryInterface
 	 */
 	public function get($manual, $version, $page)
 	{
-		$page = $this->storagePath.'/'.$manual.'/'.$page.'.md';
-		$this->git->setRepository($this->storagePath.'/'.$manual);
-		$this->git->checkout($version);
+		$storagePath = $this->getStoragePath($manual, $version);
+
+		$page = $storagePath.'/'.$page.'.md';
 
 		if ($this->files->exists($page)) {
 			return Markdown::parse($this->files->get($page), $manual.'/'.$version.'/'.dirname($page));
@@ -100,9 +100,9 @@ class CodexRepositoryGit implements CodexRepositoryInterface
 	 */
 	public function getUpdatedTimestamp($manual, $version, $page)
 	{
-		$page = $this->storagePath.'/'.$manual.'/'.$page.'.md';
-		$this->git->setRepository($this->storagePath.'/'.$manual);
-		$this->git->checkout($version);
+		$storagePath = $this->getStoragePath($manual, $version);
+
+		$page = $storagePath.'/'.$page.'.md';
 
 		if ($this->files->exists($page)) {
 			$timestamp = DateTime::createFromFormat('U', filemtime($page));
@@ -185,9 +185,7 @@ class CodexRepositoryGit implements CodexRepositoryInterface
 	public function search($manual, $version, $needle = '')
 	{
 		$results   = [];
-		$directory = $this->storagePath.'/'.$manual;
-		$this->git->setRepository($directory);
-		$this->git->checkout($version);
+		$directory = $this->getStoragePath($manual, $version);
 		$files     = preg_grep('/toc\.md$/', $this->files->allFiles($directory),
 			PREG_GREP_INVERT);
 
@@ -250,5 +248,25 @@ class CodexRepositoryGit implements CodexRepositoryInterface
 		}
 
 		return $folders;
+	}
+
+	/**
+	 * Return the path to the checked out repository for the supplied
+	 * manual and version.
+	 *
+	 * @param string $manual
+	 * @param string $version
+	 * @return string
+	 */
+	private function getStoragePath($manual, $version)
+	{
+		$storagePath = storage_path('codex/'.$manual.'/'.$version);
+		if (!file_exists($storagePath)) {
+			$this->git->clone($this->storagePath.'/'.$manual, $storagePath);
+			$this->git->setRepository($storagePath);
+			$this->git->checkout($version);
+		}
+
+		return $storagePath;
 	}
 }
