@@ -1,17 +1,27 @@
 <?php
 
 use Illuminate\Config\Repository as Config;
+use Illuminate\Cache\Repository as Cache;
 use Illuminate\Filesystem\Filesystem;
 use PHPGit\Git;
 
 class CodexRepositoryGit implements CodexRepositoryInterface
 {
+	use CacheTrait;
+
 	/**
 	 * The filesystem implementation.
 	 *
 	 * @var Filesystem
 	 */
 	protected $files;
+
+	/**
+	 * The cache implementation.
+	 *
+	 * @var Cache
+	 */
+	protected $cache;
 
 	/**
 	 * The config implementation.
@@ -37,12 +47,14 @@ class CodexRepositoryGit implements CodexRepositoryInterface
 	/**
 	 * Create a new codex instance.
 	 *
+	 * @param Cache $cache
 	 * @param Config $config
 	 * @param Filesystem $files
 	 * @param Git $git
 	 */
-	public function __construct(Config $config, Filesystem $files, Git $git)
+	public function __construct(Cache $cache, Config $config, Filesystem $files, Git $git)
 	{
+		$this->cache  = $cache;
 		$this->config = $config;
 		$this->files  = $files;
 		$this->git    = $git;
@@ -63,7 +75,8 @@ class CodexRepositoryGit implements CodexRepositoryInterface
 		$tocFile = $storagePath.'/toc.md';
 
 		if ($this->files->exists($tocFile)) {
-			return Markdown::parse($this->files->get($tocFile), $manual.'/'.$version);
+			return $this->cached("$manual.$version.toc",
+				Markdown::parse($this->files->get($tocFile), $manual.'/'.$version));
 		} else {
 			return null;
 		}
@@ -84,7 +97,8 @@ class CodexRepositoryGit implements CodexRepositoryInterface
 		$page = $storagePath.'/'.$page.'.md';
 
 		if ($this->files->exists($page)) {
-			return Markdown::parse($this->files->get($page), $manual.'/'.$version.'/'.dirname($page));
+			return $this->cached("$manual.$version.$page",
+				Markdown::parse($this->files->get($page), $manual.'/'.$version.'/'.dirname($page)));
 		} else {
 			App::abort(404);
 		}
