@@ -1,6 +1,5 @@
 <?php
 
-use Illuminate\Cache\Repository as Cache;
 use Illuminate\Config\Repository as Config;
 use Illuminate\Filesystem\Filesystem;
 
@@ -9,18 +8,11 @@ class CodexRepositoryFlat implements CodexRepositoryInterface
 	use CacheTrait;
 
 	/**
-	* The filesystem implementation.
-	*
-	* @var Filesystem
-	*/
+	 * The filesystem implementation.
+	 *
+	 * @var Filesystem
+	 */
 	protected $files;
-
-	/**
-	* The cache implementation.
-	*
-	* @var Cache
-	*/
-	protected $cache;
 
 	/**
 	 * The config implementation.
@@ -37,14 +29,14 @@ class CodexRepositoryFlat implements CodexRepositoryInterface
 	protected $storagePath;
 
 	/**
-	* Create a new codex instance.
-	*
-	* @param  Filesystem $files
-	* @return void
-	*/
-	public function __construct(Cache $cache, Config $config, Filesystem $files)
+	 * Create a new codex instance.
+	 *
+	 * @param  Config     $config
+	 * @param  Filesystem $files
+	 * @return void
+	 */
+	public function __construct(Config $config, Filesystem $files)
 	{
-		$this->cache  = $cache;
 		$this->config = $config;
 		$this->files  = $files;
 
@@ -52,11 +44,11 @@ class CodexRepositoryFlat implements CodexRepositoryInterface
 	}
 
 	/**
-	* Get manual's table of contents file, if it exists.
-	*
-	* @param  string $version
-	* @return string
-	*/
+	 * Get manual's table of contents file, if it exists.
+	 *
+	 * @param  string $version
+	 * @return string
+	 */
 	public function getToc($manual, $version)
 	{
 		$tocFile = $this->storagePath.'/'.$manual.'/'.$version.'/toc.md';
@@ -70,13 +62,13 @@ class CodexRepositoryFlat implements CodexRepositoryInterface
 	}
 
 	/**
-	* Get the given documentation page.
-	*
-	* @param  string $manual
-	* @param  string $version
-	* @param  string $page
-	* @return string
-	*/
+	 * Get the given documentation page.
+	 *
+	 * @param  string $manual
+	 * @param  string $version
+	 * @param  string $page
+	 * @return string
+	 */
 	public function get($manual, $version, $page)
 	{
 		$pageFile = $this->storagePath.'/'.$manual.'/'.$version.'/'.$page.'.md';
