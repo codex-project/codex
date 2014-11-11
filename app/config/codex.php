@@ -12,7 +12,7 @@ return array(
 	| throughout your Codex installation here. By default, Codex is set to
 	| use the "flat" driver method.
 	|
-	| Supported: "flat"
+	| Supported: "flat", "git"
 	|
 	*/
 

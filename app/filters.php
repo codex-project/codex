@@ -16,7 +16,6 @@
 //
 // });
 
-
 // App::after(function($request, $response)
 // {
 //

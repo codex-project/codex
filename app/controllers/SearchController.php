@@ -5,17 +5,17 @@ class SearchController extends BaseController
 	/**
 	* The codex model.
 	*
-	* @var Codex
+	* @var CodexRepositoryInterface
 	*/
 	protected $codex;
 
 	/**
 	* Create a new controller instance.
 	*
-	* @param  Codex $codex
+	* @param  CodexRepositoryInterface $codex
 	* @return void
 	*/
-	public function __construct(Codex $codex)
+	public function __construct(CodexRepositoryInterface $codex)
 	{
 		$this->codex = $codex;
 	}
