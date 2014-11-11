@@ -141,9 +141,13 @@ class CodexRepositoryGit implements CodexRepositoryInterface
 		$manualDir = $this->storagePath.'/'.$manual;
 		$this->git->setRepository($manualDir);
 
-		return array_map(function($branch) {
-			return $branch['name'];
-		}, $this->git->branch());
+		return $this->cache->remember("cache.$manual.branches", 10, function() {
+			return array_filter(array_map(function($branch) {
+				return preg_replace('/[\w]+?\//', '', $branch['name']);
+			}, $this->git->branch(['remotes' => true])), function($branch) {
+				return $branch !== 'HEAD';
+			});
+		});
 	}
 
 	/**
@@ -269,14 +273,15 @@ class CodexRepositoryGit implements CodexRepositoryInterface
 	{
 		$storagePath = storage_path('codex/'.$manual.'/'.$version);
 		if (!file_exists($storagePath)) {
-			$this->git->clone($this->storagePath.'/'.$manual, $storagePath);
+			$this->files->copyDirectory($this->storagePath.'/'.$manual, $storagePath, 0);
 			$this->git->setRepository($storagePath);
 			$this->git->checkout($version);
 		} else {
 			$this->cache->remember("$manual.$version.checkout", 10, function() use ($manual, $version, $storagePath) {
 				$this->git->setRepository($storagePath);
-				$this->git->pull($storagePath, $version);
-				$this->git->checkout($version);
+				$this->git->pull('origin', $version);
+
+				return true;
 			});
 		}
 
