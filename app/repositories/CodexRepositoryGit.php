@@ -275,7 +275,7 @@ class CodexRepositoryGit implements CodexRepositoryInterface
 		} else {
 			$this->cache->remember("$manual.$version.checkout", 10, function() use ($manual, $version, $storagePath) {
 				$this->git->setRepository($storagePath);
-				$this->git->pull($storagePath, $version);
+				$this->git->pull('origin', $version);
 			});
 		}
 
