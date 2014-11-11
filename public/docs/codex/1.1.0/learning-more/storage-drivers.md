@@ -11,7 +11,19 @@ master
 1.0
 ```
 
-You can specify the "git" driver in `codex.php` and Codex will automatically create the versions `master`, `2.0`, `1.1`, and `1.0`.
+You can specify the "git" driver in `app/config/codex.php` and Codex will automatically create the versions `master`, `2.0`, `1.1`, and `1.0`.
+
+Once you have specified the git driver, go into `public/docs` or your configured storage path, and delete all existing documentation.
+
+Next, clone your documentation repository
+
+```
+cd public/docs
+rm -rf ./*
+git clone https://github.com/caffeinated/codex-docs codex
+```
+
+Once this is done, you can navigate your browser to your Codex installation and you'll be greeted with all of your git branches available as documentation versions.
 
 
 ## Creating a custom driver
