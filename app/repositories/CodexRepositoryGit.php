@@ -17,13 +17,6 @@ class CodexRepositoryGit implements CodexRepositoryInterface
 	protected $files;
 
 	/**
-	 * The cache implementation.
-	 *
-	 * @var Cache
-	 */
-	protected $cache;
-
-	/**
 	 * The config implementation.
 	 *
 	 * @var Config
@@ -279,6 +272,12 @@ class CodexRepositoryGit implements CodexRepositoryInterface
 			$this->git->clone($this->storagePath.'/'.$manual, $storagePath);
 			$this->git->setRepository($storagePath);
 			$this->git->checkout($version);
+		} else {
+			$this->cache->remember("$manual.$version.checkout", 10, function() use ($manual, $version, $storagePath) {
+				$this->git->setRepository($storagePath);
+				$this->git->pull($storagePath, $version);
+				$this->git->checkout($version);
+			});
 		}
 
 		return $storagePath;
