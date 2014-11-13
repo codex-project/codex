@@ -282,12 +282,12 @@ class CodexRepositoryGit implements CodexRepositoryInterface
 	private function getStoragePath($manual, $version)
 	{
 		$storagePath = storage_path('codex/'.$manual.'/'.$version);
-		if (!file_exists($storagePath)) {
+		if ( ! file_exists($storagePath)) {
 			$this->files->copyDirectory($this->storagePath.'/'.$manual, $storagePath, 0);
 			$this->git->setRepository($storagePath);
 			$this->git->checkout($version);
 		} else {
-			$this->cache->remember("$manual.$version.checkout", 10, function() use ($manual, $version, $storagePath) {
+			$this->cache->remember("$manual.$version.checkout", 10, function() use ($version, $storagePath) {
 				$this->git->setRepository($storagePath);
 				$this->git->pull('origin', $version);
 
