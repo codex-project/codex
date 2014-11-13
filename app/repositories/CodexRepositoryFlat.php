@@ -29,7 +29,7 @@ class CodexRepositoryFlat extends AbstractCodexRepository
 	protected $storagePath;
 
 	/**
-	 * Create a new codex instance.
+	 * Create a new CodexRepositoryFlat instance.
 	 *
 	 * @param  Config     $config
 	 * @param  Filesystem $files

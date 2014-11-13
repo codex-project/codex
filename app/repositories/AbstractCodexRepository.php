@@ -6,21 +6,46 @@ use Illuminate\Filesystem\Filesystem;
 abstract class AbstractCodexRepository implements CodexRepositoryInterface
 {
 	/**
+	 * The config implementation.
+	 *
 	 * @var Config
 	 */
 	protected $config;
 
 	/**
+	 * The filesystem implementation.
+	 *
 	 * @var Filesystem
 	 */
 	protected $files;
 
-	public function __construct(Config $config, Filesyste $files)
+	/**
+	 * Storage path.
+	 *
+	 * @var string
+	 */
+	protected $storagePath;
+
+	/**
+	 * Create a new AbstractCodexRepository instance.
+	 *
+	 * @param  Config     $config
+	 * @param  Filesystem $files
+	 * @return void
+	 */
+	public function __construct(Config $config, Filesystem $files)
 	{
 		$this->config = $config;
 		$this->files  = $files;
+
+		$this->storagePath = $this->config->get('codex.storage_path');
 	}
 
+	/**
+	 * Get the default manual.
+	 *
+	 * @return mixed
+	 */
 	public function getDefaultManual()
 	{
 		$manuals = $this->getManuals();
@@ -38,6 +63,12 @@ abstract class AbstractCodexRepository implements CodexRepositoryInterface
 		}
 	}
 
+	/**
+	 * Get the default version for the given manual.
+	 *
+	 * @param  string $manual
+	 * @return string
+	 */
 	public function getDefaultVersion($manual)
 	{
 		$versions = $this->getVersions($manual);
@@ -55,21 +86,21 @@ abstract class AbstractCodexRepository implements CodexRepositoryInterface
 	}
 
 	/**
-	* Get all manuals from documentation directory.
-	*
-	* @return array
-	*/
+	 * Get all manuals from documentation directory.
+	 *
+	 * @return array
+	 */
 	public function getManuals()
 	{
 		return $this->getDirectories($this->storagePath);
 	}
 
 	/**
-	* Get all versions for the given manual.
-	*
-	* @param  string $manual
-	* @return array
-	*/
+	 * Get all versions for the given manual.
+	 *
+	 * @param  string $manual
+	 * @return array
+	 */
 	public function getVersions($manual)
 	{
 		$manualDir = $this->storagePath.'/'.$manual;
@@ -78,11 +109,11 @@ abstract class AbstractCodexRepository implements CodexRepositoryInterface
 	}
 
 	/**
-	* Return an array of folders within the supplied path.
-	*
-	* @param  string $path
-	* @return array
-	*/
+	 * Return an array of folders within the supplied path.
+	 *
+	 * @param  string $path
+	 * @return array
+	 */
 	public function getDirectories($path)
 	{
 		if ( ! $this->files->exists($path)) {
@@ -106,12 +137,12 @@ abstract class AbstractCodexRepository implements CodexRepositoryInterface
 	}
 
 	/**
-	* Return the first line of the supplied page. This will (or rather should)
-	* always be an <h1> tag.
-	*
-	* @param  string $page
-	* @return string
-	*/
+	 * Return the first line of the supplied page. This will (or rather should)
+	 * always be an <h1> tag.
+	 *
+	 * @param  string $page
+	 * @return string
+	 */
 	protected function getPageTitle($page)
 	{
 		$file  = fopen($page, 'r');
@@ -123,13 +154,13 @@ abstract class AbstractCodexRepository implements CodexRepositoryInterface
 	}
 
 	/**
-	* Gets the given documentation page modification time.
-	*
-	* @param  string $manual
-	* @param  string $version
-	* @param  string $page
-	* @return mixed
-	*/
+	 * Gets the given documentation page modification time.
+	 *
+	 * @param  string $manual
+	 * @param  string $version
+	 * @param  string $page
+	 * @return mixed
+	 */
 	public function getUpdatedTimestamp($manual, $version, $page)
 	{
 		$page = $this->storagePath.'/'.$manual.'/'.$version.'/'.$page.'.md';

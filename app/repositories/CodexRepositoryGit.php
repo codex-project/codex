@@ -38,10 +38,10 @@ class CodexRepositoryGit extends AbstractCodexRepository
 	protected $storagePath;
 
 	/**
-	 * Create a new codex instance.
+	 * Create a new CodexRepositoryGit instance.
 	 *
-	 * @param Cache $cache
-	 * @param Config $config
+	 * @param Cache      $cache
+	 * @param Config     $config
 	 * @param Filesystem $files
 	 * @param Git $git
 	 */
@@ -151,13 +151,13 @@ class CodexRepositoryGit extends AbstractCodexRepository
 	}
 
 	/**
-	* Gets the given documentation page modification time.
-	*
-	* @param  string $manual
-	* @param  string $version
-	* @param  string $page
-	* @return mixed
-	*/
+	 * Gets the given documentation page modification time.
+	 *
+	 * @param  string $manual
+	 * @param  string $version
+	 * @param  string $page
+	 * @return mixed
+	 */
 	public function getUpdatedTimestamp($manual, $version, $page)
 	{
 		$storagePath = $this->getStoragePath($manual, $version);
