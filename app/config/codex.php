@@ -38,6 +38,20 @@ return array(
 
 	/*
 	|--------------------------------------------------------------------------
+	| Version Ordering
+	|--------------------------------------------------------------------------
+	|
+	| Allows you to define if you wish the versions be ordered by numerics
+	| first (1, 2, 3, a, b, c), or alphabetically (a, b, c, 1, 2, 3).
+	|
+	| Supported: "numerical", "alphabetically"
+	|
+	*/
+
+	'version_ordering' => 'numerical',
+
+	/*
+	|--------------------------------------------------------------------------
 	| Google Analytics Tracking Code
 	|--------------------------------------------------------------------------
 	|

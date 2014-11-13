@@ -157,7 +157,16 @@ class CodexRepositoryFlat implements CodexRepositoryInterface
 	{
 		$versions = $this->getVersions($manual);
 
-		return strval(max($versions));
+		switch ($this->config->get('codex.version_ordering')) {
+			case 'numerical':
+				sort($versions, SORT_NATURAL);
+			break;
+			case 'alphabetically':
+				sort($versions, SORT_NUMERIC);
+			break;
+		}
+
+		return $versions[0];
 	}
 
 	/**
