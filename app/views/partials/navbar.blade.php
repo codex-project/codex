@@ -8,7 +8,7 @@
 				<span class="icon-bar"></span>
 			</button>
 
-			<a href="/" class="navbar-brand">Codex</a>
+			<a href="/" class="navbar-brand">{{ $siteName }}</a>
 		</div>
 
 		<div id="navbar" class="collapse navbar-collapse">

@@ -44,6 +44,8 @@ class CodexController extends BaseController
 		$this->defaultVersion = $this->codex->getDefaultVersion($this->defaultManual);
 
 		$this->rootUrl = $this->defaultManual.'/'.$this->defaultVersion;
+
+		parent::__construct();
 	}
 
 	/**
