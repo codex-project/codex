@@ -2,6 +2,11 @@
 
 class BaseController extends Controller
 {
+	public function __construct()
+	{
+		View::share('siteName', Config::get('codex.site_name'));
+	}
+
 	/**
 	 * Setup the layout used by the controller.
 	 *

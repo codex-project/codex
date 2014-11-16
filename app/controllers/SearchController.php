@@ -18,6 +18,8 @@ class SearchController extends BaseController
 	public function __construct(CodexRepositoryInterface $codex)
 	{
 		$this->codex = $codex;
+		
+		parent::__construct();
 	}
 
 	public function show($manual, $version)
