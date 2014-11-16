@@ -25,3 +25,4 @@ In short, I want to see beautiful documentation being written everywhere! No exc
 - Supports Google Analytics
 - Supplied theme built on Bootstrap
 - Automatic header anchors
+- Supports multiple storage methods (Flat and Git available)
