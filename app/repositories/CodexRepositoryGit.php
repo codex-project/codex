@@ -87,11 +87,11 @@ class CodexRepositoryGit extends AbstractCodexRepository
 	{
 		$storagePath = $this->getStoragePath($manual, $version);
 
-		$page = $storagePath.'/'.$page.'.md';
+		$pageFile = $storagePath.'/'.$page.'.md';
 
-		if ($this->files->exists($page)) {
+		if ($this->files->exists($pageFile)) {
 			return $this->cached("$manual.$version.$page",
-				Markdown::parse($this->files->get($page), $manual.'/'.$version.'/'.dirname($page)));
+				Markdown::parse($this->files->get($pageFile), $manual.'/'.$version.'/'.dirname($page)));
 		} else {
 			App::abort(404);
 		}
