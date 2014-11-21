@@ -107,9 +107,9 @@ class CodexRepositoryGit extends AbstractCodexRepository
 	{
 		$manualDir = $this->storagePath.'/'.$manual;
 
-		$this->git->setRepository($manualDir);
-
-		return $this->cache->remember("cache.$manual.branches", 10, function() {
+		return $this->cache->remember("cache.$manual.branches", 10, function() use ($manualDir) {
+			$this->git->setRepository($manualDir);
+			$this->git->fetch('origin');
 			return array_filter(array_map(function($branch) {
 				return preg_replace('/[\w]+?\//', '', $branch['name']);
 			}, $this->git->branch(['remotes' => true])), function($branch) {
