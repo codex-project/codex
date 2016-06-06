@@ -24,6 +24,16 @@ Documentation
 Check out the [official documentation](http://codex-project.ninja).
 
 
+Installation
+------------
+
+```bash
+composer create-project codex/codex --stability=dev
+cd codex
+php artisan serve
+```
+
+
 License
 -------
 Copyright (c) 2015 Robin Radic, [MIT License](LICENSE.md)
