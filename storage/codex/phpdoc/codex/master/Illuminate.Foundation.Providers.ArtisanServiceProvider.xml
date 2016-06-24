@@ -1,0 +1,844 @@
+<file path="codex/vendor/laravel/framework/src/Illuminate/Foundation/Providers/ArtisanServiceProvider.php" generated-path="codex.vendor.laravel.framework.src.Illuminate.Foundation.Providers.ArtisanServiceProvider.html" hash="4c904965a6c65a49d5e5fc0eb4a06b72" package="Default">
+    <docblock line="0">
+      <description/>
+      <long-description/>
+      <tag name="package" line="0" description="Default"/>
+    </docblock>
+    <namespace-alias name="ServiceProvider">\Illuminate\Support\ServiceProvider</namespace-alias>
+    <namespace-alias name="TableCommand">\Illuminate\Queue\Console\TableCommand</namespace-alias>
+    <namespace-alias name="MakeAuthCommand">\Illuminate\Auth\Console\MakeAuthCommand</namespace-alias>
+    <namespace-alias name="UpCommand">\Illuminate\Foundation\Console\UpCommand</namespace-alias>
+    <namespace-alias name="DownCommand">\Illuminate\Foundation\Console\DownCommand</namespace-alias>
+    <namespace-alias name="ClearResetsCommand">\Illuminate\Auth\Console\ClearResetsCommand</namespace-alias>
+    <namespace-alias name="ServeCommand">\Illuminate\Foundation\Console\ServeCommand</namespace-alias>
+    <namespace-alias name="CacheTableCommand">\Illuminate\Cache\Console\CacheTableCommand</namespace-alias>
+    <namespace-alias name="FailedTableCommand">\Illuminate\Queue\Console\FailedTableCommand</namespace-alias>
+    <namespace-alias name="TinkerCommand">\Illuminate\Foundation\Console\TinkerCommand</namespace-alias>
+    <namespace-alias name="JobMakeCommand">\Illuminate\Foundation\Console\JobMakeCommand</namespace-alias>
+    <namespace-alias name="AppNameCommand">\Illuminate\Foundation\Console\AppNameCommand</namespace-alias>
+    <namespace-alias name="OptimizeCommand">\Illuminate\Foundation\Console\OptimizeCommand</namespace-alias>
+    <namespace-alias name="TestMakeCommand">\Illuminate\Foundation\Console\TestMakeCommand</namespace-alias>
+    <namespace-alias name="RouteListCommand">\Illuminate\Foundation\Console\RouteListCommand</namespace-alias>
+    <namespace-alias name="EventMakeCommand">\Illuminate\Foundation\Console\EventMakeCommand</namespace-alias>
+    <namespace-alias name="ModelMakeCommand">\Illuminate\Foundation\Console\ModelMakeCommand</namespace-alias>
+    <namespace-alias name="ViewClearCommand">\Illuminate\Foundation\Console\ViewClearCommand</namespace-alias>
+    <namespace-alias name="SessionTableCommand">\Illuminate\Session\Console\SessionTableCommand</namespace-alias>
+    <namespace-alias name="PolicyMakeCommand">\Illuminate\Foundation\Console\PolicyMakeCommand</namespace-alias>
+    <namespace-alias name="RouteCacheCommand">\Illuminate\Foundation\Console\RouteCacheCommand</namespace-alias>
+    <namespace-alias name="RouteClearCommand">\Illuminate\Foundation\Console\RouteClearCommand</namespace-alias>
+    <namespace-alias name="ControllerMakeCommand">\Illuminate\Routing\Console\ControllerMakeCommand</namespace-alias>
+    <namespace-alias name="MiddlewareMakeCommand">\Illuminate\Routing\Console\MiddlewareMakeCommand</namespace-alias>
+    <namespace-alias name="ConfigCacheCommand">\Illuminate\Foundation\Console\ConfigCacheCommand</namespace-alias>
+    <namespace-alias name="ConfigClearCommand">\Illuminate\Foundation\Console\ConfigClearCommand</namespace-alias>
+    <namespace-alias name="ConsoleMakeCommand">\Illuminate\Foundation\Console\ConsoleMakeCommand</namespace-alias>
+    <namespace-alias name="EnvironmentCommand">\Illuminate\Foundation\Console\EnvironmentCommand</namespace-alias>
+    <namespace-alias name="KeyGenerateCommand">\Illuminate\Foundation\Console\KeyGenerateCommand</namespace-alias>
+    <namespace-alias name="RequestMakeCommand">\Illuminate\Foundation\Console\RequestMakeCommand</namespace-alias>
+    <namespace-alias name="ListenerMakeCommand">\Illuminate\Foundation\Console\ListenerMakeCommand</namespace-alias>
+    <namespace-alias name="ProviderMakeCommand">\Illuminate\Foundation\Console\ProviderMakeCommand</namespace-alias>
+    <namespace-alias name="ClearCompiledCommand">\Illuminate\Foundation\Console\ClearCompiledCommand</namespace-alias>
+    <namespace-alias name="EventGenerateCommand">\Illuminate\Foundation\Console\EventGenerateCommand</namespace-alias>
+    <namespace-alias name="VendorPublishCommand">\Illuminate\Foundation\Console\VendorPublishCommand</namespace-alias>
+    <namespace-alias name="SeederMakeCommand">\Illuminate\Database\Console\Seeds\SeederMakeCommand</namespace-alias>
+    <class final="false" abstract="false" namespace="Illuminate\Foundation\Providers" line="42" package="Default">
+      <extends>\Illuminate\Support\ServiceProvider</extends>
+      <name>ArtisanServiceProvider</name>
+      <full_name>\Illuminate\Foundation\Providers\ArtisanServiceProvider</full_name>
+      <docblock line="42">
+        <description/>
+        <long-description/>
+        <tag name="package" line="42" description="Default"/>
+        <tag name="inherited_from" description="\Illuminate\Support\ServiceProvider" refers="\Illuminate\Support\ServiceProvider" link="/classes/Illuminate.Support.ServiceProvider.html"/>
+      </docblock>
+      <property static="false" visibility="protected" namespace="Illuminate\Foundation\Providers" line="49" package="Default">
+        <name>$defer</name>
+        <full_name>\Illuminate\Foundation\Providers\ArtisanServiceProvider::defer</full_name>
+        <default>true</default>
+        <docblock line="49">
+          <description>Indicates if loading of the provider is deferred.</description>
+          <long-description/>
+          <tag name="var" line="49" description="" type="boolean" variable="">
+            <type>boolean</type>
+          </tag>
+          <tag name="inherited_from" description="\Illuminate\Support\ServiceProvider::defer" refers="\Illuminate\Support\ServiceProvider::defer" link="/classes/Illuminate.Support.ServiceProvider.html#property_defer"/>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" namespace="Illuminate\Foundation\Providers" line="56" package="Default">
+        <name>$commands</name>
+        <full_name>\Illuminate\Foundation\Providers\ArtisanServiceProvider::commands</full_name>
+        <default>array('ClearCompiled' =&gt; 'command.clear-compiled', 'ClearResets' =&gt; 'command.auth.resets.clear', 'ConfigCache' =&gt; 'command.config.cache', 'ConfigClear' =&gt; 'command.config.clear', 'Down' =&gt; 'command.down', 'Environment' =&gt; 'command.environment', 'KeyGenerate' =&gt; 'command.key.generate', 'Optimize' =&gt; 'command.optimize', 'RouteCache' =&gt; 'command.route.cache', 'RouteClear' =&gt; 'command.route.clear', 'RouteList' =&gt; 'command.route.list', 'Tinker' =&gt; 'command.tinker', 'Up' =&gt; 'command.up', 'ViewClear' =&gt; 'command.view.clear')</default>
+        <docblock line="56">
+          <description>The commands to be registered.</description>
+          <long-description/>
+          <tag name="var" line="56" description="" type="array" variable="">
+            <type>array</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" namespace="Illuminate\Foundation\Providers" line="78" package="Default">
+        <name>$devCommands</name>
+        <full_name>\Illuminate\Foundation\Providers\ArtisanServiceProvider::devCommands</full_name>
+        <default>array('AppName' =&gt; 'command.app.name', 'AuthMake' =&gt; 'command.auth.make', 'CacheTable' =&gt; 'command.cache.table', 'ConsoleMake' =&gt; 'command.console.make', 'ControllerMake' =&gt; 'command.controller.make', 'EventGenerate' =&gt; 'command.event.generate', 'EventMake' =&gt; 'command.event.make', 'JobMake' =&gt; 'command.job.make', 'ListenerMake' =&gt; 'command.listener.make', 'MiddlewareMake' =&gt; 'command.middleware.make', 'ModelMake' =&gt; 'command.model.make', 'PolicyMake' =&gt; 'command.policy.make', 'ProviderMake' =&gt; 'command.provider.make', 'QueueFailedTable' =&gt; 'command.queue.failed-table', 'QueueTable' =&gt; 'command.queue.table', 'RequestMake' =&gt; 'command.request.make', 'SeederMake' =&gt; 'command.seeder.make', 'SessionTable' =&gt; 'command.session.table', 'Serve' =&gt; 'command.serve', 'TestMake' =&gt; 'command.test.make', 'VendorPublish' =&gt; 'command.vendor.publish')</default>
+        <docblock line="78">
+          <description>The commands to be registered.</description>
+          <long-description/>
+          <tag name="var" line="78" description="" type="array" variable="">
+            <type>array</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" namespace="Illuminate\Foundation\Providers" line="15" package="Default">
+        <name>$app</name>
+        <full_name>\Illuminate\Support\ServiceProvider::app</full_name>
+        <default/>
+        <docblock line="15">
+          <description>The application instance.</description>
+          <long-description/>
+          <tag name="var" line="15" description="" type="\Illuminate\Contracts\Foundation\Application" variable="">
+            <type>\Illuminate\Contracts\Foundation\Application</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" namespace="Illuminate\Foundation\Providers" line="22" package="Default">
+        <name>$defer</name>
+        <full_name>\Illuminate\Support\ServiceProvider::defer</full_name>
+        <default>false</default>
+        <docblock line="22">
+          <description>Indicates if loading of the provider is deferred.</description>
+          <long-description/>
+          <tag name="var" line="22" description="" type="boolean" variable="">
+            <type>boolean</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="true" visibility="protected" namespace="Illuminate\Foundation\Providers" line="29" package="Default">
+        <name>$publishes</name>
+        <full_name>\Illuminate\Support\ServiceProvider::publishes</full_name>
+        <default>array()</default>
+        <docblock line="29">
+          <description>The paths that should be published.</description>
+          <long-description/>
+          <tag name="var" line="29" description="" type="array" variable="">
+            <type>array</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="true" visibility="protected" namespace="Illuminate\Foundation\Providers" line="36" package="Default">
+        <name>$publishGroups</name>
+        <full_name>\Illuminate\Support\ServiceProvider::publishGroups</full_name>
+        <default>array()</default>
+        <docblock line="36">
+          <description>The paths that should be published by group.</description>
+          <long-description/>
+          <tag name="var" line="36" description="" type="array" variable="">
+            <type>array</type>
+          </tag>
+        </docblock>
+      </property>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Foundation\Providers" line="107" package="Default">
+        <name>register</name>
+        <full_name>\Illuminate\Foundation\Providers\ArtisanServiceProvider::register()</full_name>
+        <docblock line="107">
+          <description>Register the service provider.</description>
+          <long-description/>
+          <tag name="return" line="107" description="" type="void">
+            <type>void</type>
+          </tag>
+          <tag name="inherited_from" description="\Illuminate\Support\ServiceProvider::register()" refers="\Illuminate\Support\ServiceProvider::register()" link="/classes/Illuminate.Support.ServiceProvider.html#method_register"/>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Foundation\Providers" line="120" package="Default">
+        <name>registerCommands</name>
+        <full_name>\Illuminate\Foundation\Providers\ArtisanServiceProvider::registerCommands()</full_name>
+        <docblock line="120">
+          <description>Register the given commands.</description>
+          <long-description/>
+          <tag name="param" line="120" description="" type="array" variable="$commands">
+            <type>array</type>
+          </tag>
+          <tag name="return" line="120" description="" type="void">
+            <type>void</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$commands</name>
+          <default/>
+          <type>array</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Foundation\Providers" line="136" package="Default">
+        <name>registerAppNameCommand</name>
+        <full_name>\Illuminate\Foundation\Providers\ArtisanServiceProvider::registerAppNameCommand()</full_name>
+        <docblock line="136">
+          <description>Register the command.</description>
+          <long-description/>
+          <tag name="return" line="136" description="" type="void">
+            <type>void</type>
+          </tag>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Foundation\Providers" line="148" package="Default">
+        <name>registerAuthMakeCommand</name>
+        <full_name>\Illuminate\Foundation\Providers\ArtisanServiceProvider::registerAuthMakeCommand()</full_name>
+        <docblock line="148">
+          <description>Register the command.</description>
+          <long-description/>
+          <tag name="return" line="148" description="" type="void">
+            <type>void</type>
+          </tag>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Foundation\Providers" line="160" package="Default">
+        <name>registerCacheTableCommand</name>
+        <full_name>\Illuminate\Foundation\Providers\ArtisanServiceProvider::registerCacheTableCommand()</full_name>
+        <docblock line="160">
+          <description>Register the command.</description>
+          <long-description/>
+          <tag name="return" line="160" description="" type="void">
+            <type>void</type>
+          </tag>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Foundation\Providers" line="172" package="Default">
+        <name>registerClearCompiledCommand</name>
+        <full_name>\Illuminate\Foundation\Providers\ArtisanServiceProvider::registerClearCompiledCommand()</full_name>
+        <docblock line="172">
+          <description>Register the command.</description>
+          <long-description/>
+          <tag name="return" line="172" description="" type="void">
+            <type>void</type>
+          </tag>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Foundation\Providers" line="184" package="Default">
+        <name>registerClearResetsCommand</name>
+        <full_name>\Illuminate\Foundation\Providers\ArtisanServiceProvider::registerClearResetsCommand()</full_name>
+        <docblock line="184">
+          <description>Register the command.</description>
+          <long-description/>
+          <tag name="return" line="184" description="" type="void">
+            <type>void</type>
+          </tag>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Foundation\Providers" line="196" package="Default">
+        <name>registerConfigCacheCommand</name>
+        <full_name>\Illuminate\Foundation\Providers\ArtisanServiceProvider::registerConfigCacheCommand()</full_name>
+        <docblock line="196">
+          <description>Register the command.</description>
+          <long-description/>
+          <tag name="return" line="196" description="" type="void">
+            <type>void</type>
+          </tag>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Foundation\Providers" line="208" package="Default">
+        <name>registerConfigClearCommand</name>
+        <full_name>\Illuminate\Foundation\Providers\ArtisanServiceProvider::registerConfigClearCommand()</full_name>
+        <docblock line="208">
+          <description>Register the command.</description>
+          <long-description/>
+          <tag name="return" line="208" description="" type="void">
+            <type>void</type>
+          </tag>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Foundation\Providers" line="220" package="Default">
+        <name>registerConsoleMakeCommand</name>
+        <full_name>\Illuminate\Foundation\Providers\ArtisanServiceProvider::registerConsoleMakeCommand()</full_name>
+        <docblock line="220">
+          <description>Register the command.</description>
+          <long-description/>
+          <tag name="return" line="220" description="" type="void">
+            <type>void</type>
+          </tag>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Foundation\Providers" line="232" package="Default">
+        <name>registerControllerMakeCommand</name>
+        <full_name>\Illuminate\Foundation\Providers\ArtisanServiceProvider::registerControllerMakeCommand()</full_name>
+        <docblock line="232">
+          <description>Register the command.</description>
+          <long-description/>
+          <tag name="return" line="232" description="" type="void">
+            <type>void</type>
+          </tag>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Foundation\Providers" line="244" package="Default">
+        <name>registerEventGenerateCommand</name>
+        <full_name>\Illuminate\Foundation\Providers\ArtisanServiceProvider::registerEventGenerateCommand()</full_name>
+        <docblock line="244">
+          <description>Register the command.</description>
+          <long-description/>
+          <tag name="return" line="244" description="" type="void">
+            <type>void</type>
+          </tag>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Foundation\Providers" line="256" package="Default">
+        <name>registerEventMakeCommand</name>
+        <full_name>\Illuminate\Foundation\Providers\ArtisanServiceProvider::registerEventMakeCommand()</full_name>
+        <docblock line="256">
+          <description>Register the command.</description>
+          <long-description/>
+          <tag name="return" line="256" description="" type="void">
+            <type>void</type>
+          </tag>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Foundation\Providers" line="268" package="Default">
+        <name>registerDownCommand</name>
+        <full_name>\Illuminate\Foundation\Providers\ArtisanServiceProvider::registerDownCommand()</full_name>
+        <docblock line="268">
+          <description>Register the command.</description>
+          <long-description/>
+          <tag name="return" line="268" description="" type="void">
+            <type>void</type>
+          </tag>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Foundation\Providers" line="280" package="Default">
+        <name>registerEnvironmentCommand</name>
+        <full_name>\Illuminate\Foundation\Providers\ArtisanServiceProvider::registerEnvironmentCommand()</full_name>
+        <docblock line="280">
+          <description>Register the command.</description>
+          <long-description/>
+          <tag name="return" line="280" description="" type="void">
+            <type>void</type>
+          </tag>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Foundation\Providers" line="292" package="Default">
+        <name>registerJobMakeCommand</name>
+        <full_name>\Illuminate\Foundation\Providers\ArtisanServiceProvider::registerJobMakeCommand()</full_name>
+        <docblock line="292">
+          <description>Register the command.</description>
+          <long-description/>
+          <tag name="return" line="292" description="" type="void">
+            <type>void</type>
+          </tag>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Foundation\Providers" line="304" package="Default">
+        <name>registerKeyGenerateCommand</name>
+        <full_name>\Illuminate\Foundation\Providers\ArtisanServiceProvider::registerKeyGenerateCommand()</full_name>
+        <docblock line="304">
+          <description>Register the command.</description>
+          <long-description/>
+          <tag name="return" line="304" description="" type="void">
+            <type>void</type>
+          </tag>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Foundation\Providers" line="316" package="Default">
+        <name>registerListenerMakeCommand</name>
+        <full_name>\Illuminate\Foundation\Providers\ArtisanServiceProvider::registerListenerMakeCommand()</full_name>
+        <docblock line="316">
+          <description>Register the command.</description>
+          <long-description/>
+          <tag name="return" line="316" description="" type="void">
+            <type>void</type>
+          </tag>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Foundation\Providers" line="328" package="Default">
+        <name>registerMiddlewareMakeCommand</name>
+        <full_name>\Illuminate\Foundation\Providers\ArtisanServiceProvider::registerMiddlewareMakeCommand()</full_name>
+        <docblock line="328">
+          <description>Register the command.</description>
+          <long-description/>
+          <tag name="return" line="328" description="" type="void">
+            <type>void</type>
+          </tag>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Foundation\Providers" line="340" package="Default">
+        <name>registerModelMakeCommand</name>
+        <full_name>\Illuminate\Foundation\Providers\ArtisanServiceProvider::registerModelMakeCommand()</full_name>
+        <docblock line="340">
+          <description>Register the command.</description>
+          <long-description/>
+          <tag name="return" line="340" description="" type="void">
+            <type>void</type>
+          </tag>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Foundation\Providers" line="352" package="Default">
+        <name>registerOptimizeCommand</name>
+        <full_name>\Illuminate\Foundation\Providers\ArtisanServiceProvider::registerOptimizeCommand()</full_name>
+        <docblock line="352">
+          <description>Register the command.</description>
+          <long-description/>
+          <tag name="return" line="352" description="" type="void">
+            <type>void</type>
+          </tag>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Foundation\Providers" line="364" package="Default">
+        <name>registerProviderMakeCommand</name>
+        <full_name>\Illuminate\Foundation\Providers\ArtisanServiceProvider::registerProviderMakeCommand()</full_name>
+        <docblock line="364">
+          <description>Register the command.</description>
+          <long-description/>
+          <tag name="return" line="364" description="" type="void">
+            <type>void</type>
+          </tag>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Foundation\Providers" line="376" package="Default">
+        <name>registerQueueFailedTableCommand</name>
+        <full_name>\Illuminate\Foundation\Providers\ArtisanServiceProvider::registerQueueFailedTableCommand()</full_name>
+        <docblock line="376">
+          <description>Register the command.</description>
+          <long-description/>
+          <tag name="return" line="376" description="" type="void">
+            <type>void</type>
+          </tag>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Foundation\Providers" line="388" package="Default">
+        <name>registerQueueTableCommand</name>
+        <full_name>\Illuminate\Foundation\Providers\ArtisanServiceProvider::registerQueueTableCommand()</full_name>
+        <docblock line="388">
+          <description>Register the command.</description>
+          <long-description/>
+          <tag name="return" line="388" description="" type="void">
+            <type>void</type>
+          </tag>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Foundation\Providers" line="400" package="Default">
+        <name>registerRequestMakeCommand</name>
+        <full_name>\Illuminate\Foundation\Providers\ArtisanServiceProvider::registerRequestMakeCommand()</full_name>
+        <docblock line="400">
+          <description>Register the command.</description>
+          <long-description/>
+          <tag name="return" line="400" description="" type="void">
+            <type>void</type>
+          </tag>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Foundation\Providers" line="412" package="Default">
+        <name>registerSeederMakeCommand</name>
+        <full_name>\Illuminate\Foundation\Providers\ArtisanServiceProvider::registerSeederMakeCommand()</full_name>
+        <docblock line="412">
+          <description>Register the command.</description>
+          <long-description/>
+          <tag name="return" line="412" description="" type="void">
+            <type>void</type>
+          </tag>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Foundation\Providers" line="424" package="Default">
+        <name>registerSessionTableCommand</name>
+        <full_name>\Illuminate\Foundation\Providers\ArtisanServiceProvider::registerSessionTableCommand()</full_name>
+        <docblock line="424">
+          <description>Register the command.</description>
+          <long-description/>
+          <tag name="return" line="424" description="" type="void">
+            <type>void</type>
+          </tag>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Foundation\Providers" line="436" package="Default">
+        <name>registerRouteCacheCommand</name>
+        <full_name>\Illuminate\Foundation\Providers\ArtisanServiceProvider::registerRouteCacheCommand()</full_name>
+        <docblock line="436">
+          <description>Register the command.</description>
+          <long-description/>
+          <tag name="return" line="436" description="" type="void">
+            <type>void</type>
+          </tag>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Foundation\Providers" line="448" package="Default">
+        <name>registerRouteClearCommand</name>
+        <full_name>\Illuminate\Foundation\Providers\ArtisanServiceProvider::registerRouteClearCommand()</full_name>
+        <docblock line="448">
+          <description>Register the command.</description>
+          <long-description/>
+          <tag name="return" line="448" description="" type="void">
+            <type>void</type>
+          </tag>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Foundation\Providers" line="460" package="Default">
+        <name>registerRouteListCommand</name>
+        <full_name>\Illuminate\Foundation\Providers\ArtisanServiceProvider::registerRouteListCommand()</full_name>
+        <docblock line="460">
+          <description>Register the command.</description>
+          <long-description/>
+          <tag name="return" line="460" description="" type="void">
+            <type>void</type>
+          </tag>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Foundation\Providers" line="472" package="Default">
+        <name>registerServeCommand</name>
+        <full_name>\Illuminate\Foundation\Providers\ArtisanServiceProvider::registerServeCommand()</full_name>
+        <docblock line="472">
+          <description>Register the command.</description>
+          <long-description/>
+          <tag name="return" line="472" description="" type="void">
+            <type>void</type>
+          </tag>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Foundation\Providers" line="484" package="Default">
+        <name>registerTestMakeCommand</name>
+        <full_name>\Illuminate\Foundation\Providers\ArtisanServiceProvider::registerTestMakeCommand()</full_name>
+        <docblock line="484">
+          <description>Register the command.</description>
+          <long-description/>
+          <tag name="return" line="484" description="" type="void">
+            <type>void</type>
+          </tag>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Foundation\Providers" line="496" package="Default">
+        <name>registerTinkerCommand</name>
+        <full_name>\Illuminate\Foundation\Providers\ArtisanServiceProvider::registerTinkerCommand()</full_name>
+        <docblock line="496">
+          <description>Register the command.</description>
+          <long-description/>
+          <tag name="return" line="496" description="" type="void">
+            <type>void</type>
+          </tag>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Foundation\Providers" line="508" package="Default">
+        <name>registerUpCommand</name>
+        <full_name>\Illuminate\Foundation\Providers\ArtisanServiceProvider::registerUpCommand()</full_name>
+        <docblock line="508">
+          <description>Register the command.</description>
+          <long-description/>
+          <tag name="return" line="508" description="" type="void">
+            <type>void</type>
+          </tag>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Foundation\Providers" line="520" package="Default">
+        <name>registerVendorPublishCommand</name>
+        <full_name>\Illuminate\Foundation\Providers\ArtisanServiceProvider::registerVendorPublishCommand()</full_name>
+        <docblock line="520">
+          <description>Register the command.</description>
+          <long-description/>
+          <tag name="return" line="520" description="" type="void">
+            <type>void</type>
+          </tag>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Foundation\Providers" line="532" package="Default">
+        <name>registerViewClearCommand</name>
+        <full_name>\Illuminate\Foundation\Providers\ArtisanServiceProvider::registerViewClearCommand()</full_name>
+        <docblock line="532">
+          <description>Register the command.</description>
+          <long-description/>
+          <tag name="return" line="532" description="" type="void">
+            <type>void</type>
+          </tag>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Foundation\Providers" line="544" package="Default">
+        <name>registerPolicyMakeCommand</name>
+        <full_name>\Illuminate\Foundation\Providers\ArtisanServiceProvider::registerPolicyMakeCommand()</full_name>
+        <docblock line="544">
+          <description>Register the command.</description>
+          <long-description/>
+          <tag name="return" line="544" description="" type="void">
+            <type>void</type>
+          </tag>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Foundation\Providers" line="556" package="Default">
+        <name>provides</name>
+        <full_name>\Illuminate\Foundation\Providers\ArtisanServiceProvider::provides()</full_name>
+        <docblock line="556">
+          <description>Get the services provided by the provider.</description>
+          <long-description/>
+          <tag name="return" line="556" description="" type="array">
+            <type>array</type>
+          </tag>
+          <tag name="inherited_from" description="\Illuminate\Support\ServiceProvider::provides()" refers="\Illuminate\Support\ServiceProvider::provides()" link="/classes/Illuminate.Support.ServiceProvider.html#method_provides"/>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Foundation\Providers" line="44" package="Default">
+        <name>__construct</name>
+        <full_name>\Illuminate\Support\ServiceProvider::__construct()</full_name>
+        <docblock line="44">
+          <description>Create a new service provider instance.</description>
+          <long-description/>
+          <tag name="param" line="44" description="" type="\Illuminate\Contracts\Foundation\Application" variable="$app">
+            <type>\Illuminate\Contracts\Foundation\Application</type>
+          </tag>
+          <tag name="return" line="44" description="" type="void">
+            <type>void</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$app</name>
+          <default/>
+          <type>\Illuminate\Contracts\Foundation\Application</type>
+        </argument>
+        <inherited_from>\Illuminate\Support\ServiceProvider</inherited_from>
+      </method>
+      <method final="false" abstract="true" static="false" visibility="public" namespace="Illuminate\Foundation\Providers" line="54" package="Default">
+        <name>register</name>
+        <full_name>\Illuminate\Support\ServiceProvider::register()</full_name>
+        <docblock line="54">
+          <description>Register the service provider.</description>
+          <long-description/>
+          <tag name="return" line="54" description="" type="void">
+            <type>void</type>
+          </tag>
+        </docblock>
+        <inherited_from>\Illuminate\Support\ServiceProvider</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Foundation\Providers" line="63" package="Default">
+        <name>mergeConfigFrom</name>
+        <full_name>\Illuminate\Support\ServiceProvider::mergeConfigFrom()</full_name>
+        <docblock line="63">
+          <description>Merge the given configuration with the existing configuration.</description>
+          <long-description/>
+          <tag name="param" line="63" description="" type="string" variable="$path">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="63" description="" type="string" variable="$key">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="63" description="" type="void">
+            <type>void</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$path</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$key</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <inherited_from>\Illuminate\Support\ServiceProvider</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Foundation\Providers" line="77" package="Default">
+        <name>loadViewsFrom</name>
+        <full_name>\Illuminate\Support\ServiceProvider::loadViewsFrom()</full_name>
+        <docblock line="77">
+          <description>Register a view file namespace.</description>
+          <long-description/>
+          <tag name="param" line="77" description="" type="string" variable="$path">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="77" description="" type="string" variable="$namespace">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="77" description="" type="void">
+            <type>void</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$path</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$namespace</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <inherited_from>\Illuminate\Support\ServiceProvider</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Foundation\Providers" line="93" package="Default">
+        <name>loadTranslationsFrom</name>
+        <full_name>\Illuminate\Support\ServiceProvider::loadTranslationsFrom()</full_name>
+        <docblock line="93">
+          <description>Register a translation file namespace.</description>
+          <long-description/>
+          <tag name="param" line="93" description="" type="string" variable="$path">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="93" description="" type="string" variable="$namespace">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="93" description="" type="void">
+            <type>void</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$path</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$namespace</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <inherited_from>\Illuminate\Support\ServiceProvider</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Foundation\Providers" line="105" package="Default">
+        <name>publishes</name>
+        <full_name>\Illuminate\Support\ServiceProvider::publishes()</full_name>
+        <docblock line="105">
+          <description>Register paths to be published by the publish command.</description>
+          <long-description/>
+          <tag name="param" line="105" description="" type="array" variable="$paths">
+            <type>array</type>
+          </tag>
+          <tag name="param" line="105" description="" type="string" variable="$group">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="105" description="" type="void">
+            <type>void</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$paths</name>
+          <default/>
+          <type>array</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$group</name>
+          <default>null</default>
+          <type>string</type>
+        </argument>
+        <inherited_from>\Illuminate\Support\ServiceProvider</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="true" visibility="public" namespace="Illuminate\Foundation\Providers" line="131" package="Default">
+        <name>pathsToPublish</name>
+        <full_name>\Illuminate\Support\ServiceProvider::pathsToPublish()</full_name>
+        <docblock line="131">
+          <description>Get the paths to publish.</description>
+          <long-description/>
+          <tag name="param" line="131" description="" type="string" variable="$provider">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="131" description="" type="string" variable="$group">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="131" description="" type="array">
+            <type>array</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$provider</name>
+          <default>null</default>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$group</name>
+          <default>null</default>
+          <type>string</type>
+        </argument>
+        <inherited_from>\Illuminate\Support\ServiceProvider</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Foundation\Providers" line="168" package="Default">
+        <name>commands</name>
+        <full_name>\Illuminate\Support\ServiceProvider::commands()</full_name>
+        <docblock line="168">
+          <description>Register the package's custom Artisan commands.</description>
+          <long-description/>
+          <tag name="param" line="168" description="" type="array|mixed" variable="$commands">
+            <type>array</type>
+            <type>mixed</type>
+          </tag>
+          <tag name="return" line="168" description="" type="void">
+            <type>void</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$commands</name>
+          <default/>
+          <type>array|mixed</type>
+        </argument>
+        <inherited_from>\Illuminate\Support\ServiceProvider</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Foundation\Providers" line="187" package="Default">
+        <name>provides</name>
+        <full_name>\Illuminate\Support\ServiceProvider::provides()</full_name>
+        <docblock line="187">
+          <description>Get the services provided by the provider.</description>
+          <long-description/>
+          <tag name="return" line="187" description="" type="array">
+            <type>array</type>
+          </tag>
+        </docblock>
+        <inherited_from>\Illuminate\Support\ServiceProvider</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Foundation\Providers" line="197" package="Default">
+        <name>when</name>
+        <full_name>\Illuminate\Support\ServiceProvider::when()</full_name>
+        <docblock line="197">
+          <description>Get the events that trigger this service provider to register.</description>
+          <long-description/>
+          <tag name="return" line="197" description="" type="array">
+            <type>array</type>
+          </tag>
+        </docblock>
+        <inherited_from>\Illuminate\Support\ServiceProvider</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Foundation\Providers" line="207" package="Default">
+        <name>isDeferred</name>
+        <full_name>\Illuminate\Support\ServiceProvider::isDeferred()</full_name>
+        <docblock line="207">
+          <description>Determine if the provider is deferred.</description>
+          <long-description/>
+          <tag name="return" line="207" description="" type="boolean">
+            <type>boolean</type>
+          </tag>
+        </docblock>
+        <inherited_from>\Illuminate\Support\ServiceProvider</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="true" visibility="public" namespace="Illuminate\Foundation\Providers" line="217" package="Default">
+        <name>compiles</name>
+        <full_name>\Illuminate\Support\ServiceProvider::compiles()</full_name>
+        <docblock line="217">
+          <description>Get a list of files that should be compiled for the package.</description>
+          <long-description/>
+          <tag name="return" line="217" description="" type="array">
+            <type>array</type>
+          </tag>
+        </docblock>
+        <inherited_from>\Illuminate\Support\ServiceProvider</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Foundation\Providers" line="231" package="Default">
+        <name>__call</name>
+        <full_name>\Illuminate\Support\ServiceProvider::__call()</full_name>
+        <docblock line="231">
+          <description>Dynamically handle missing method calls.</description>
+          <long-description/>
+          <tag name="param" line="231" description="" type="string" variable="$method">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="231" description="" type="array" variable="$parameters">
+            <type>array</type>
+          </tag>
+          <tag name="return" line="231" description="" type="mixed">
+            <type>mixed</type>
+          </tag>
+          <tag name="throws" line="231" description="" type="\BadMethodCallException">
+            <type>\BadMethodCallException</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$method</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$parameters</name>
+          <default/>
+          <type>array</type>
+        </argument>
+        <inherited_from>\Illuminate\Support\ServiceProvider</inherited_from>
+      </method>
+    </class>
+    <parse_markers>
+      <error line="0" code="PPC:ERR-50000">No summary was found for this file</error>
+      <error line="42" code="PPC:ERR-50005">No summary for class \Illuminate\Foundation\Providers\ArtisanServiceProvider</error>
+    </parse_markers>
+    <source>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</source>
+  <type>class</type></file>

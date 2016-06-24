@@ -1,0 +1,1948 @@
+<file path="codex/vendor/laravel/framework/src/Illuminate/Foundation/Http/FormRequest.php" generated-path="codex.vendor.laravel.framework.src.Illuminate.Foundation.Http.FormRequest.html" hash="0ab3492969963c2d3d5d07562783f98a" package="Default">
+    <docblock line="0">
+      <description/>
+      <long-description/>
+      <tag name="package" line="0" description="Default"/>
+    </docblock>
+    <namespace-alias name="Request">\Illuminate\Http\Request</namespace-alias>
+    <namespace-alias name="Response">\Illuminate\Http\Response</namespace-alias>
+    <namespace-alias name="JsonResponse">\Illuminate\Http\JsonResponse</namespace-alias>
+    <namespace-alias name="Redirector">\Illuminate\Routing\Redirector</namespace-alias>
+    <namespace-alias name="Container">\Illuminate\Container\Container</namespace-alias>
+    <namespace-alias name="Validator">\Illuminate\Contracts\Validation\Validator</namespace-alias>
+    <namespace-alias name="HttpResponseException">\Illuminate\Http\Exception\HttpResponseException</namespace-alias>
+    <namespace-alias name="ValidatesWhenResolvedTrait">\Illuminate\Validation\ValidatesWhenResolvedTrait</namespace-alias>
+    <namespace-alias name="ValidatesWhenResolved">\Illuminate\Contracts\Validation\ValidatesWhenResolved</namespace-alias>
+    <namespace-alias name="ValidationFactory">\Illuminate\Contracts\Validation\Factory</namespace-alias>
+    <class final="false" abstract="false" namespace="Illuminate\Foundation\Http" line="16" package="Default">
+      <extends>\Illuminate\Http\Request</extends>
+      <implements>\Illuminate\Contracts\Validation\ValidatesWhenResolved</implements>
+      <name>FormRequest</name>
+      <full_name>\Illuminate\Foundation\Http\FormRequest</full_name>
+      <docblock line="16">
+        <description/>
+        <long-description/>
+        <tag name="package" line="16" description="Default"/>
+        <tag name="inherited_from" description="\Illuminate\Http\Request" refers="\Illuminate\Http\Request" link="/classes/Illuminate.Http.Request.html"/>
+      </docblock>
+      <property static="false" visibility="protected" namespace="Illuminate\Foundation\Http" line="25" package="Default">
+        <name>$container</name>
+        <full_name>\Illuminate\Foundation\Http\FormRequest::container</full_name>
+        <default/>
+        <docblock line="25">
+          <description>The container instance.</description>
+          <long-description/>
+          <tag name="var" line="25" description="" type="\Illuminate\Container\Container" variable="">
+            <type>\Illuminate\Container\Container</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" namespace="Illuminate\Foundation\Http" line="32" package="Default">
+        <name>$redirector</name>
+        <full_name>\Illuminate\Foundation\Http\FormRequest::redirector</full_name>
+        <default/>
+        <docblock line="32">
+          <description>The redirector instance.</description>
+          <long-description/>
+          <tag name="var" line="32" description="" type="\Illuminate\Routing\Redirector" variable="">
+            <type>\Illuminate\Routing\Redirector</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" namespace="Illuminate\Foundation\Http" line="39" package="Default">
+        <name>$redirect</name>
+        <full_name>\Illuminate\Foundation\Http\FormRequest::redirect</full_name>
+        <default/>
+        <docblock line="39">
+          <description>The URI to redirect to if validation fails.</description>
+          <long-description/>
+          <tag name="var" line="39" description="" type="string" variable="">
+            <type>string</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" namespace="Illuminate\Foundation\Http" line="46" package="Default">
+        <name>$redirectRoute</name>
+        <full_name>\Illuminate\Foundation\Http\FormRequest::redirectRoute</full_name>
+        <default/>
+        <docblock line="46">
+          <description>The route to redirect to if validation fails.</description>
+          <long-description/>
+          <tag name="var" line="46" description="" type="string" variable="">
+            <type>string</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" namespace="Illuminate\Foundation\Http" line="53" package="Default">
+        <name>$redirectAction</name>
+        <full_name>\Illuminate\Foundation\Http\FormRequest::redirectAction</full_name>
+        <default/>
+        <docblock line="53">
+          <description>The controller action to redirect to if validation fails.</description>
+          <long-description/>
+          <tag name="var" line="53" description="" type="string" variable="">
+            <type>string</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" namespace="Illuminate\Foundation\Http" line="60" package="Default">
+        <name>$errorBag</name>
+        <full_name>\Illuminate\Foundation\Http\FormRequest::errorBag</full_name>
+        <default>'default'</default>
+        <docblock line="60">
+          <description>The key to be used for the view error bag.</description>
+          <long-description/>
+          <tag name="var" line="60" description="" type="string" variable="">
+            <type>string</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" namespace="Illuminate\Foundation\Http" line="67" package="Default">
+        <name>$dontFlash</name>
+        <full_name>\Illuminate\Foundation\Http\FormRequest::dontFlash</full_name>
+        <default>array('password', 'password_confirmation')</default>
+        <docblock line="67">
+          <description>The input keys that should not be flashed on redirect.</description>
+          <long-description/>
+          <tag name="var" line="67" description="" type="array" variable="">
+            <type>array</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" namespace="Illuminate\Foundation\Http" line="25" package="Default">
+        <name>$json</name>
+        <full_name>\Illuminate\Http\Request::json</full_name>
+        <default/>
+        <docblock line="25">
+          <description>The decoded JSON content for the request.</description>
+          <long-description/>
+          <tag name="var" line="25" description="" type="string" variable="">
+            <type>string</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" namespace="Illuminate\Foundation\Http" line="32" package="Default">
+        <name>$convertedFiles</name>
+        <full_name>\Illuminate\Http\Request::convertedFiles</full_name>
+        <default/>
+        <docblock line="32">
+          <description>All of the converted files for the request.</description>
+          <long-description/>
+          <tag name="var" line="32" description="" type="array" variable="">
+            <type>array</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" namespace="Illuminate\Foundation\Http" line="39" package="Default">
+        <name>$userResolver</name>
+        <full_name>\Illuminate\Http\Request::userResolver</full_name>
+        <default/>
+        <docblock line="39">
+          <description>The user resolver callback.</description>
+          <long-description/>
+          <tag name="var" line="39" description="" type="\Closure" variable="">
+            <type>\Closure</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" namespace="Illuminate\Foundation\Http" line="46" package="Default">
+        <name>$routeResolver</name>
+        <full_name>\Illuminate\Http\Request::routeResolver</full_name>
+        <default/>
+        <docblock line="46">
+          <description>The route resolver callback.</description>
+          <long-description/>
+          <tag name="var" line="46" description="" type="\Closure" variable="">
+            <type>\Closure</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="true" visibility="protected" namespace="Illuminate\Foundation\Http" line="15" package="Default">
+        <name>$macros</name>
+        <full_name>\Illuminate\Support\Traits\Macroable::macros</full_name>
+        <default>array()</default>
+        <docblock line="15">
+          <description>The registered string macros.</description>
+          <long-description/>
+          <tag name="var" line="15" description="" type="array" variable="">
+            <type>array</type>
+          </tag>
+        </docblock>
+      </property>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Foundation\Http" line="74" package="Default">
+        <name>getValidatorInstance</name>
+        <full_name>\Illuminate\Foundation\Http\FormRequest::getValidatorInstance()</full_name>
+        <docblock line="74">
+          <description>Get the validator instance for the request.</description>
+          <long-description/>
+          <tag name="return" line="74" description="" type="\Illuminate\Contracts\Validation\Validator">
+            <type>\Illuminate\Contracts\Validation\Validator</type>
+          </tag>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Foundation\Http" line="95" package="Default">
+        <name>failedValidation</name>
+        <full_name>\Illuminate\Foundation\Http\FormRequest::failedValidation()</full_name>
+        <docblock line="95">
+          <description>Handle a failed validation attempt.</description>
+          <long-description/>
+          <tag name="param" line="95" description="" type="\Illuminate\Contracts\Validation\Validator" variable="$validator">
+            <type>\Illuminate\Contracts\Validation\Validator</type>
+          </tag>
+          <tag name="return" line="95" description="" type="void">
+            <type>void</type>
+          </tag>
+          <tag name="throws" line="95" description="" type="\Illuminate\Http\Exception\HttpResponseException">
+            <type>\Illuminate\Http\Exception\HttpResponseException</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$validator</name>
+          <default/>
+          <type>\Illuminate\Contracts\Validation\Validator</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Foundation\Http" line="107" package="Default">
+        <name>passesAuthorization</name>
+        <full_name>\Illuminate\Foundation\Http\FormRequest::passesAuthorization()</full_name>
+        <docblock line="107">
+          <description>Determine if the request passes the authorization check.</description>
+          <long-description/>
+          <tag name="return" line="107" description="" type="boolean">
+            <type>boolean</type>
+          </tag>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Foundation\Http" line="123" package="Default">
+        <name>failedAuthorization</name>
+        <full_name>\Illuminate\Foundation\Http\FormRequest::failedAuthorization()</full_name>
+        <docblock line="123">
+          <description>Handle a failed authorization attempt.</description>
+          <long-description/>
+          <tag name="return" line="123" description="" type="void">
+            <type>void</type>
+          </tag>
+          <tag name="throws" line="123" description="" type="\Illuminate\Http\Exception\HttpResponseException">
+            <type>\Illuminate\Http\Exception\HttpResponseException</type>
+          </tag>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Foundation\Http" line="134" package="Default">
+        <name>response</name>
+        <full_name>\Illuminate\Foundation\Http\FormRequest::response()</full_name>
+        <docblock line="134">
+          <description>Get the proper failed validation response for the request.</description>
+          <long-description/>
+          <tag name="param" line="134" description="" type="array" variable="$errors">
+            <type>array</type>
+          </tag>
+          <tag name="return" line="134" description="" type="\Symfony\Component\HttpFoundation\Response">
+            <type>\Symfony\Component\HttpFoundation\Response</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$errors</name>
+          <default/>
+          <type>array</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Foundation\Http" line="150" package="Default">
+        <name>forbiddenResponse</name>
+        <full_name>\Illuminate\Foundation\Http\FormRequest::forbiddenResponse()</full_name>
+        <docblock line="150">
+          <description>Get the response for a forbidden operation.</description>
+          <long-description/>
+          <tag name="return" line="150" description="" type="\Illuminate\Http\Response">
+            <type>\Illuminate\Http\Response</type>
+          </tag>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Foundation\Http" line="161" package="Default">
+        <name>formatErrors</name>
+        <full_name>\Illuminate\Foundation\Http\FormRequest::formatErrors()</full_name>
+        <docblock line="161">
+          <description>Format the errors from the given Validator instance.</description>
+          <long-description/>
+          <tag name="param" line="161" description="" type="\Illuminate\Contracts\Validation\Validator" variable="$validator">
+            <type>\Illuminate\Contracts\Validation\Validator</type>
+          </tag>
+          <tag name="return" line="161" description="" type="array">
+            <type>array</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$validator</name>
+          <default/>
+          <type>\Illuminate\Contracts\Validation\Validator</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Foundation\Http" line="171" package="Default">
+        <name>getRedirectUrl</name>
+        <full_name>\Illuminate\Foundation\Http\FormRequest::getRedirectUrl()</full_name>
+        <docblock line="171">
+          <description>Get the URL to redirect to on a validation error.</description>
+          <long-description/>
+          <tag name="return" line="171" description="" type="string">
+            <type>string</type>
+          </tag>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Foundation\Http" line="192" package="Default">
+        <name>setRedirector</name>
+        <full_name>\Illuminate\Foundation\Http\FormRequest::setRedirector()</full_name>
+        <docblock line="192">
+          <description>Set the Redirector instance.</description>
+          <long-description/>
+          <tag name="param" line="192" description="" type="\Illuminate\Routing\Redirector" variable="$redirector">
+            <type>\Illuminate\Routing\Redirector</type>
+          </tag>
+          <tag name="return" line="192" description="" type="\Illuminate\Foundation\Http\FormRequest">
+            <type>\Illuminate\Foundation\Http\FormRequest</type>
+          </tag>
+          <tag name="fluent" description="This method is part of a fluent interface and will return the same instance"/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$redirector</name>
+          <default/>
+          <type>\Illuminate\Routing\Redirector</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Foundation\Http" line="205" package="Default">
+        <name>setContainer</name>
+        <full_name>\Illuminate\Foundation\Http\FormRequest::setContainer()</full_name>
+        <docblock line="205">
+          <description>Set the container implementation.</description>
+          <long-description/>
+          <tag name="param" line="205" description="" type="\Illuminate\Container\Container" variable="$container">
+            <type>\Illuminate\Container\Container</type>
+          </tag>
+          <tag name="return" line="205" description="" type="\Illuminate\Foundation\Http\FormRequest">
+            <type>\Illuminate\Foundation\Http\FormRequest</type>
+          </tag>
+          <tag name="fluent" description="This method is part of a fluent interface and will return the same instance"/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$container</name>
+          <default/>
+          <type>\Illuminate\Container\Container</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Foundation\Http" line="217" package="Default">
+        <name>messages</name>
+        <full_name>\Illuminate\Foundation\Http\FormRequest::messages()</full_name>
+        <docblock line="217">
+          <description>Get custom messages for validator errors.</description>
+          <long-description/>
+          <tag name="return" line="217" description="" type="array">
+            <type>array</type>
+          </tag>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Foundation\Http" line="227" package="Default">
+        <name>attributes</name>
+        <full_name>\Illuminate\Foundation\Http\FormRequest::attributes()</full_name>
+        <docblock line="227">
+          <description>Get custom attributes for validator errors.</description>
+          <long-description/>
+          <tag name="return" line="227" description="" type="array">
+            <type>array</type>
+          </tag>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Foundation\Http" line="18" package="Default">
+        <name>validate</name>
+        <full_name>\Illuminate\Validation\ValidatesWhenResolvedTrait::validate()</full_name>
+        <docblock line="18">
+          <description>Validate the class instance.</description>
+          <long-description/>
+          <tag name="return" line="18" description="" type="void">
+            <type>void</type>
+          </tag>
+        </docblock>
+        <inherited_from>\Illuminate\Validation\ValidatesWhenResolvedTrait</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Foundation\Http" line="34" package="Default">
+        <name>getValidatorInstance</name>
+        <full_name>\Illuminate\Validation\ValidatesWhenResolvedTrait::getValidatorInstance()</full_name>
+        <docblock line="34">
+          <description>Get the validator instance for the request.</description>
+          <long-description/>
+          <tag name="return" line="34" description="" type="\Illuminate\Validation\Validator">
+            <type>\Illuminate\Validation\Validator</type>
+          </tag>
+        </docblock>
+        <inherited_from>\Illuminate\Validation\ValidatesWhenResolvedTrait</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Foundation\Http" line="47" package="Default">
+        <name>failedValidation</name>
+        <full_name>\Illuminate\Validation\ValidatesWhenResolvedTrait::failedValidation()</full_name>
+        <docblock line="47">
+          <description>Handle a failed validation attempt.</description>
+          <long-description/>
+          <tag name="param" line="47" description="" type="\Illuminate\Validation\Validator" variable="$validator">
+            <type>\Illuminate\Validation\Validator</type>
+          </tag>
+          <tag name="return" line="47" description="" type="void">
+            <type>void</type>
+          </tag>
+          <tag name="throws" line="47" description="" type="\Illuminate\Contracts\Validation\ValidationException">
+            <type>\Illuminate\Contracts\Validation\ValidationException</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$validator</name>
+          <default/>
+          <type>\Illuminate\Validation\Validator</type>
+        </argument>
+        <inherited_from>\Illuminate\Validation\ValidatesWhenResolvedTrait</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Foundation\Http" line="57" package="Default">
+        <name>passesAuthorization</name>
+        <full_name>\Illuminate\Validation\ValidatesWhenResolvedTrait::passesAuthorization()</full_name>
+        <docblock line="57">
+          <description>Determine if the request passes the authorization check.</description>
+          <long-description/>
+          <tag name="return" line="57" description="" type="boolean">
+            <type>boolean</type>
+          </tag>
+        </docblock>
+        <inherited_from>\Illuminate\Validation\ValidatesWhenResolvedTrait</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Foundation\Http" line="73" package="Default">
+        <name>failedAuthorization</name>
+        <full_name>\Illuminate\Validation\ValidatesWhenResolvedTrait::failedAuthorization()</full_name>
+        <docblock line="73">
+          <description>Handle a failed authorization attempt.</description>
+          <long-description/>
+          <tag name="return" line="73" description="" type="void">
+            <type>void</type>
+          </tag>
+          <tag name="throws" line="73" description="" type="\Illuminate\Contracts\Validation\UnauthorizedException">
+            <type>\Illuminate\Contracts\Validation\UnauthorizedException</type>
+          </tag>
+        </docblock>
+        <inherited_from>\Illuminate\Validation\ValidatesWhenResolvedTrait</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="true" visibility="public" namespace="Illuminate\Foundation\Http" line="53" package="Default">
+        <name>capture</name>
+        <full_name>\Illuminate\Http\Request::capture()</full_name>
+        <docblock line="53">
+          <description>Create a new Illuminate HTTP request from server variables.</description>
+          <long-description/>
+          <tag name="return" line="53" description="" type="static">
+            <type>static</type>
+          </tag>
+        </docblock>
+        <inherited_from>\Illuminate\Http\Request</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Foundation\Http" line="65" package="Default">
+        <name>instance</name>
+        <full_name>\Illuminate\Http\Request::instance()</full_name>
+        <docblock line="65">
+          <description>Return the Request instance.</description>
+          <long-description/>
+          <tag name="return" line="65" description="" type="\Illuminate\Foundation\Http\FormRequest">
+            <type>\Illuminate\Foundation\Http\FormRequest</type>
+          </tag>
+          <tag name="fluent" description="This method is part of a fluent interface and will return the same instance"/>
+        </docblock>
+        <inherited_from>\Illuminate\Http\Request</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Foundation\Http" line="75" package="Default">
+        <name>method</name>
+        <full_name>\Illuminate\Http\Request::method()</full_name>
+        <docblock line="75">
+          <description>Get the request method.</description>
+          <long-description/>
+          <tag name="return" line="75" description="" type="string">
+            <type>string</type>
+          </tag>
+        </docblock>
+        <inherited_from>\Illuminate\Http\Request</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Foundation\Http" line="85" package="Default">
+        <name>root</name>
+        <full_name>\Illuminate\Http\Request::root()</full_name>
+        <docblock line="85">
+          <description>Get the root URL for the application.</description>
+          <long-description/>
+          <tag name="return" line="85" description="" type="string">
+            <type>string</type>
+          </tag>
+        </docblock>
+        <inherited_from>\Illuminate\Http\Request</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Foundation\Http" line="95" package="Default">
+        <name>url</name>
+        <full_name>\Illuminate\Http\Request::url()</full_name>
+        <docblock line="95">
+          <description>Get the URL (no query string) for the request.</description>
+          <long-description/>
+          <tag name="return" line="95" description="" type="string">
+            <type>string</type>
+          </tag>
+        </docblock>
+        <inherited_from>\Illuminate\Http\Request</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Foundation\Http" line="105" package="Default">
+        <name>fullUrl</name>
+        <full_name>\Illuminate\Http\Request::fullUrl()</full_name>
+        <docblock line="105">
+          <description>Get the full URL for the request.</description>
+          <long-description/>
+          <tag name="return" line="105" description="" type="string">
+            <type>string</type>
+          </tag>
+        </docblock>
+        <inherited_from>\Illuminate\Http\Request</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Foundation\Http" line="120" package="Default">
+        <name>fullUrlWithQuery</name>
+        <full_name>\Illuminate\Http\Request::fullUrlWithQuery()</full_name>
+        <docblock line="120">
+          <description>Get the full URL for the request with the added query string parameters.</description>
+          <long-description/>
+          <tag name="param" line="120" description="" type="array" variable="$query">
+            <type>array</type>
+          </tag>
+          <tag name="return" line="120" description="" type="string">
+            <type>string</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$query</name>
+          <default/>
+          <type>array</type>
+        </argument>
+        <inherited_from>\Illuminate\Http\Request</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Foundation\Http" line="132" package="Default">
+        <name>path</name>
+        <full_name>\Illuminate\Http\Request::path()</full_name>
+        <docblock line="132">
+          <description>Get the current path info for the request.</description>
+          <long-description/>
+          <tag name="return" line="132" description="" type="string">
+            <type>string</type>
+          </tag>
+        </docblock>
+        <inherited_from>\Illuminate\Http\Request</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Foundation\Http" line="144" package="Default">
+        <name>decodedPath</name>
+        <full_name>\Illuminate\Http\Request::decodedPath()</full_name>
+        <docblock line="144">
+          <description>Get the current encoded path info for the request.</description>
+          <long-description/>
+          <tag name="return" line="144" description="" type="string">
+            <type>string</type>
+          </tag>
+        </docblock>
+        <inherited_from>\Illuminate\Http\Request</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Foundation\Http" line="156" package="Default">
+        <name>segment</name>
+        <full_name>\Illuminate\Http\Request::segment()</full_name>
+        <docblock line="156">
+          <description>Get a segment from the URI (1 based index).</description>
+          <long-description/>
+          <tag name="param" line="156" description="" type="integer" variable="$index">
+            <type>integer</type>
+          </tag>
+          <tag name="param" line="156" description="" type="string|null" variable="$default">
+            <type>string</type>
+            <type>null</type>
+          </tag>
+          <tag name="return" line="156" description="" type="string|null">
+            <type>string</type>
+            <type>null</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$index</name>
+          <default/>
+          <type>integer</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$default</name>
+          <default>null</default>
+          <type>string|null</type>
+        </argument>
+        <inherited_from>\Illuminate\Http\Request</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Foundation\Http" line="166" package="Default">
+        <name>segments</name>
+        <full_name>\Illuminate\Http\Request::segments()</full_name>
+        <docblock line="166">
+          <description>Get all of the segments for the request path.</description>
+          <long-description/>
+          <tag name="return" line="166" description="" type="array">
+            <type>array</type>
+          </tag>
+        </docblock>
+        <inherited_from>\Illuminate\Http\Request</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Foundation\Http" line="181" package="Default">
+        <name>is</name>
+        <full_name>\Illuminate\Http\Request::is()</full_name>
+        <docblock line="181">
+          <description>Determine if the current request URI matches a pattern.</description>
+          <long-description/>
+          <tag name="param" line="181" description="&lt;p&gt;string&lt;/p&gt;" type="mixed" variable="">
+            <type>mixed</type>
+          </tag>
+          <tag name="return" line="181" description="" type="boolean">
+            <type>boolean</type>
+          </tag>
+        </docblock>
+        <inherited_from>\Illuminate\Http\Request</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Foundation\Http" line="198" package="Default">
+        <name>fullUrlIs</name>
+        <full_name>\Illuminate\Http\Request::fullUrlIs()</full_name>
+        <docblock line="198">
+          <description>Determine if the current request URL and query string matches a pattern.</description>
+          <long-description/>
+          <tag name="param" line="198" description="&lt;p&gt;string&lt;/p&gt;" type="mixed" variable="">
+            <type>mixed</type>
+          </tag>
+          <tag name="return" line="198" description="" type="boolean">
+            <type>boolean</type>
+          </tag>
+        </docblock>
+        <inherited_from>\Illuminate\Http\Request</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Foundation\Http" line="216" package="Default">
+        <name>ajax</name>
+        <full_name>\Illuminate\Http\Request::ajax()</full_name>
+        <docblock line="216">
+          <description>Determine if the request is the result of an AJAX call.</description>
+          <long-description/>
+          <tag name="return" line="216" description="" type="boolean">
+            <type>boolean</type>
+          </tag>
+        </docblock>
+        <inherited_from>\Illuminate\Http\Request</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Foundation\Http" line="226" package="Default">
+        <name>pjax</name>
+        <full_name>\Illuminate\Http\Request::pjax()</full_name>
+        <docblock line="226">
+          <description>Determine if the request is the result of an PJAX call.</description>
+          <long-description/>
+          <tag name="return" line="226" description="" type="boolean">
+            <type>boolean</type>
+          </tag>
+        </docblock>
+        <inherited_from>\Illuminate\Http\Request</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Foundation\Http" line="236" package="Default">
+        <name>secure</name>
+        <full_name>\Illuminate\Http\Request::secure()</full_name>
+        <docblock line="236">
+          <description>Determine if the request is over HTTPS.</description>
+          <long-description/>
+          <tag name="return" line="236" description="" type="boolean">
+            <type>boolean</type>
+          </tag>
+        </docblock>
+        <inherited_from>\Illuminate\Http\Request</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Foundation\Http" line="246" package="Default">
+        <name>ip</name>
+        <full_name>\Illuminate\Http\Request::ip()</full_name>
+        <docblock line="246">
+          <description>Returns the client IP address.</description>
+          <long-description/>
+          <tag name="return" line="246" description="" type="string">
+            <type>string</type>
+          </tag>
+        </docblock>
+        <inherited_from>\Illuminate\Http\Request</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Foundation\Http" line="256" package="Default">
+        <name>ips</name>
+        <full_name>\Illuminate\Http\Request::ips()</full_name>
+        <docblock line="256">
+          <description>Returns the client IP addresses.</description>
+          <long-description/>
+          <tag name="return" line="256" description="" type="array">
+            <type>array</type>
+          </tag>
+        </docblock>
+        <inherited_from>\Illuminate\Http\Request</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Foundation\Http" line="267" package="Default">
+        <name>exists</name>
+        <full_name>\Illuminate\Http\Request::exists()</full_name>
+        <docblock line="267">
+          <description>Determine if the request contains a given input item key.</description>
+          <long-description/>
+          <tag name="param" line="267" description="" type="string|array" variable="$key">
+            <type>string</type>
+            <type>array</type>
+          </tag>
+          <tag name="return" line="267" description="" type="boolean">
+            <type>boolean</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$key</name>
+          <default/>
+          <type>string|array</type>
+        </argument>
+        <inherited_from>\Illuminate\Http\Request</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Foundation\Http" line="288" package="Default">
+        <name>has</name>
+        <full_name>\Illuminate\Http\Request::has()</full_name>
+        <docblock line="288">
+          <description>Determine if the request contains a non-empty value for an input item.</description>
+          <long-description/>
+          <tag name="param" line="288" description="" type="string|array" variable="$key">
+            <type>string</type>
+            <type>array</type>
+          </tag>
+          <tag name="return" line="288" description="" type="boolean">
+            <type>boolean</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$key</name>
+          <default/>
+          <type>string|array</type>
+        </argument>
+        <inherited_from>\Illuminate\Http\Request</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Foundation\Http" line="307" package="Default">
+        <name>isEmptyString</name>
+        <full_name>\Illuminate\Http\Request::isEmptyString()</full_name>
+        <docblock line="307">
+          <description>Determine if the given input key is an empty string for "has".</description>
+          <long-description/>
+          <tag name="param" line="307" description="" type="string" variable="$key">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="307" description="" type="boolean">
+            <type>boolean</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$key</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <inherited_from>\Illuminate\Http\Request</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Foundation\Http" line="321" package="Default">
+        <name>all</name>
+        <full_name>\Illuminate\Http\Request::all()</full_name>
+        <docblock line="321">
+          <description>Get all of the input and files for the request.</description>
+          <long-description/>
+          <tag name="return" line="321" description="" type="array">
+            <type>array</type>
+          </tag>
+        </docblock>
+        <inherited_from>\Illuminate\Http\Request</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Foundation\Http" line="333" package="Default">
+        <name>input</name>
+        <full_name>\Illuminate\Http\Request::input()</full_name>
+        <docblock line="333">
+          <description>Retrieve an input item from the request.</description>
+          <long-description/>
+          <tag name="param" line="333" description="" type="string" variable="$key">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="333" description="" type="string|array|null" variable="$default">
+            <type>string</type>
+            <type>array</type>
+            <type>null</type>
+          </tag>
+          <tag name="return" line="333" description="" type="string|array">
+            <type>string</type>
+            <type>array</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$key</name>
+          <default>null</default>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$default</name>
+          <default>null</default>
+          <type>string|array|null</type>
+        </argument>
+        <inherited_from>\Illuminate\Http\Request</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Foundation\Http" line="346" package="Default">
+        <name>only</name>
+        <full_name>\Illuminate\Http\Request::only()</full_name>
+        <docblock line="346">
+          <description>Get a subset of the items from the input data.</description>
+          <long-description/>
+          <tag name="param" line="346" description="" type="array|mixed" variable="$keys">
+            <type>array</type>
+            <type>mixed</type>
+          </tag>
+          <tag name="return" line="346" description="" type="array">
+            <type>array</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$keys</name>
+          <default/>
+          <type>array|mixed</type>
+        </argument>
+        <inherited_from>\Illuminate\Http\Request</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Foundation\Http" line="367" package="Default">
+        <name>except</name>
+        <full_name>\Illuminate\Http\Request::except()</full_name>
+        <docblock line="367">
+          <description>Get all of the input except for a specified array of items.</description>
+          <long-description/>
+          <tag name="param" line="367" description="" type="array|mixed" variable="$keys">
+            <type>array</type>
+            <type>mixed</type>
+          </tag>
+          <tag name="return" line="367" description="" type="array">
+            <type>array</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$keys</name>
+          <default/>
+          <type>array|mixed</type>
+        </argument>
+        <inherited_from>\Illuminate\Http\Request</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Foundation\Http" line="384" package="Default">
+        <name>intersect</name>
+        <full_name>\Illuminate\Http\Request::intersect()</full_name>
+        <docblock line="384">
+          <description>Intersect an array of items with the input data.</description>
+          <long-description/>
+          <tag name="param" line="384" description="" type="array|mixed" variable="$keys">
+            <type>array</type>
+            <type>mixed</type>
+          </tag>
+          <tag name="return" line="384" description="" type="array">
+            <type>array</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$keys</name>
+          <default/>
+          <type>array|mixed</type>
+        </argument>
+        <inherited_from>\Illuminate\Http\Request</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Foundation\Http" line="396" package="Default">
+        <name>query</name>
+        <full_name>\Illuminate\Http\Request::query()</full_name>
+        <docblock line="396">
+          <description>Retrieve a query string item from the request.</description>
+          <long-description/>
+          <tag name="param" line="396" description="" type="string" variable="$key">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="396" description="" type="string|array|null" variable="$default">
+            <type>string</type>
+            <type>array</type>
+            <type>null</type>
+          </tag>
+          <tag name="return" line="396" description="" type="string|array">
+            <type>string</type>
+            <type>array</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$key</name>
+          <default>null</default>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$default</name>
+          <default>null</default>
+          <type>string|array|null</type>
+        </argument>
+        <inherited_from>\Illuminate\Http\Request</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Foundation\Http" line="407" package="Default">
+        <name>hasCookie</name>
+        <full_name>\Illuminate\Http\Request::hasCookie()</full_name>
+        <docblock line="407">
+          <description>Determine if a cookie is set on the request.</description>
+          <long-description/>
+          <tag name="param" line="407" description="" type="string" variable="$key">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="407" description="" type="boolean">
+            <type>boolean</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$key</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <inherited_from>\Illuminate\Http\Request</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Foundation\Http" line="419" package="Default">
+        <name>cookie</name>
+        <full_name>\Illuminate\Http\Request::cookie()</full_name>
+        <docblock line="419">
+          <description>Retrieve a cookie from the request.</description>
+          <long-description/>
+          <tag name="param" line="419" description="" type="string" variable="$key">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="419" description="" type="string|array|null" variable="$default">
+            <type>string</type>
+            <type>array</type>
+            <type>null</type>
+          </tag>
+          <tag name="return" line="419" description="" type="string|array">
+            <type>string</type>
+            <type>array</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$key</name>
+          <default>null</default>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$default</name>
+          <default>null</default>
+          <type>string|array|null</type>
+        </argument>
+        <inherited_from>\Illuminate\Http\Request</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Foundation\Http" line="429" package="Default">
+        <name>allFiles</name>
+        <full_name>\Illuminate\Http\Request::allFiles()</full_name>
+        <docblock line="429">
+          <description>Get an array of all of the files on the request.</description>
+          <long-description/>
+          <tag name="return" line="429" description="" type="array">
+            <type>array</type>
+          </tag>
+        </docblock>
+        <inherited_from>\Illuminate\Http\Request</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Foundation\Http" line="444" package="Default">
+        <name>convertUploadedFiles</name>
+        <full_name>\Illuminate\Http\Request::convertUploadedFiles()</full_name>
+        <docblock line="444">
+          <description>Convert the given array of Symfony UploadedFiles to custom Laravel UploadedFiles.</description>
+          <long-description/>
+          <tag name="param" line="444" description="" type="array" variable="$files">
+            <type>array</type>
+          </tag>
+          <tag name="return" line="444" description="" type="array">
+            <type>array</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$files</name>
+          <default/>
+          <type>array</type>
+        </argument>
+        <inherited_from>\Illuminate\Http\Request</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Foundation\Http" line="464" package="Default">
+        <name>file</name>
+        <full_name>\Illuminate\Http\Request::file()</full_name>
+        <docblock line="464">
+          <description>Retrieve a file from the request.</description>
+          <long-description/>
+          <tag name="param" line="464" description="" type="string" variable="$key">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="464" description="" type="mixed" variable="$default">
+            <type>mixed</type>
+          </tag>
+          <tag name="return" line="464" description="" type="\Symfony\Component\HttpFoundation\File\UploadedFile|array|null">
+            <type>\Symfony\Component\HttpFoundation\File\UploadedFile</type>
+            <type>array</type>
+            <type>null</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$key</name>
+          <default>null</default>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$default</name>
+          <default>null</default>
+          <type>mixed</type>
+        </argument>
+        <inherited_from>\Illuminate\Http\Request</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Foundation\Http" line="475" package="Default">
+        <name>hasFile</name>
+        <full_name>\Illuminate\Http\Request::hasFile()</full_name>
+        <docblock line="475">
+          <description>Determine if the uploaded data contains a file.</description>
+          <long-description/>
+          <tag name="param" line="475" description="" type="string" variable="$key">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="475" description="" type="boolean">
+            <type>boolean</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$key</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <inherited_from>\Illuminate\Http\Request</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Foundation\Http" line="496" package="Default">
+        <name>isValidFile</name>
+        <full_name>\Illuminate\Http\Request::isValidFile()</full_name>
+        <docblock line="496">
+          <description>Check that the given file is a valid file instance.</description>
+          <long-description/>
+          <tag name="param" line="496" description="" type="mixed" variable="$file">
+            <type>mixed</type>
+          </tag>
+          <tag name="return" line="496" description="" type="boolean">
+            <type>boolean</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$file</name>
+          <default/>
+          <type>mixed</type>
+        </argument>
+        <inherited_from>\Illuminate\Http\Request</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Foundation\Http" line="507" package="Default">
+        <name>hasHeader</name>
+        <full_name>\Illuminate\Http\Request::hasHeader()</full_name>
+        <docblock line="507">
+          <description>Determine if a header is set on the request.</description>
+          <long-description/>
+          <tag name="param" line="507" description="" type="string" variable="$key">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="507" description="" type="boolean">
+            <type>boolean</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$key</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <inherited_from>\Illuminate\Http\Request</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Foundation\Http" line="519" package="Default">
+        <name>header</name>
+        <full_name>\Illuminate\Http\Request::header()</full_name>
+        <docblock line="519">
+          <description>Retrieve a header from the request.</description>
+          <long-description/>
+          <tag name="param" line="519" description="" type="string" variable="$key">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="519" description="" type="string|array|null" variable="$default">
+            <type>string</type>
+            <type>array</type>
+            <type>null</type>
+          </tag>
+          <tag name="return" line="519" description="" type="string|array">
+            <type>string</type>
+            <type>array</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$key</name>
+          <default>null</default>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$default</name>
+          <default>null</default>
+          <type>string|array|null</type>
+        </argument>
+        <inherited_from>\Illuminate\Http\Request</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Foundation\Http" line="531" package="Default">
+        <name>server</name>
+        <full_name>\Illuminate\Http\Request::server()</full_name>
+        <docblock line="531">
+          <description>Retrieve a server variable from the request.</description>
+          <long-description/>
+          <tag name="param" line="531" description="" type="string" variable="$key">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="531" description="" type="string|array|null" variable="$default">
+            <type>string</type>
+            <type>array</type>
+            <type>null</type>
+          </tag>
+          <tag name="return" line="531" description="" type="string|array">
+            <type>string</type>
+            <type>array</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$key</name>
+          <default>null</default>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$default</name>
+          <default>null</default>
+          <type>string|array|null</type>
+        </argument>
+        <inherited_from>\Illuminate\Http\Request</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Foundation\Http" line="543" package="Default">
+        <name>old</name>
+        <full_name>\Illuminate\Http\Request::old()</full_name>
+        <docblock line="543">
+          <description>Retrieve an old input item.</description>
+          <long-description/>
+          <tag name="param" line="543" description="" type="string" variable="$key">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="543" description="" type="string|array|null" variable="$default">
+            <type>string</type>
+            <type>array</type>
+            <type>null</type>
+          </tag>
+          <tag name="return" line="543" description="" type="string|array">
+            <type>string</type>
+            <type>array</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$key</name>
+          <default>null</default>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$default</name>
+          <default>null</default>
+          <type>string|array|null</type>
+        </argument>
+        <inherited_from>\Illuminate\Http\Request</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Foundation\Http" line="555" package="Default">
+        <name>flash</name>
+        <full_name>\Illuminate\Http\Request::flash()</full_name>
+        <docblock line="555">
+          <description>Flash the input for the current request to the session.</description>
+          <long-description/>
+          <tag name="param" line="555" description="" type="string" variable="$filter">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="555" description="" type="array" variable="$keys">
+            <type>array</type>
+          </tag>
+          <tag name="return" line="555" description="" type="void">
+            <type>void</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$filter</name>
+          <default>null</default>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$keys</name>
+          <default>array()</default>
+          <type>array</type>
+        </argument>
+        <inherited_from>\Illuminate\Http\Request</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Foundation\Http" line="568" package="Default">
+        <name>flashOnly</name>
+        <full_name>\Illuminate\Http\Request::flashOnly()</full_name>
+        <docblock line="568">
+          <description>Flash only some of the input to the session.</description>
+          <long-description/>
+          <tag name="param" line="568" description="" type="array|mixed" variable="$keys">
+            <type>array</type>
+            <type>mixed</type>
+          </tag>
+          <tag name="return" line="568" description="" type="void">
+            <type>void</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$keys</name>
+          <default/>
+          <type>array|mixed</type>
+        </argument>
+        <inherited_from>\Illuminate\Http\Request</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Foundation\Http" line="581" package="Default">
+        <name>flashExcept</name>
+        <full_name>\Illuminate\Http\Request::flashExcept()</full_name>
+        <docblock line="581">
+          <description>Flash only some of the input to the session.</description>
+          <long-description/>
+          <tag name="param" line="581" description="" type="array|mixed" variable="$keys">
+            <type>array</type>
+            <type>mixed</type>
+          </tag>
+          <tag name="return" line="581" description="" type="void">
+            <type>void</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$keys</name>
+          <default/>
+          <type>array|mixed</type>
+        </argument>
+        <inherited_from>\Illuminate\Http\Request</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Foundation\Http" line="593" package="Default">
+        <name>flush</name>
+        <full_name>\Illuminate\Http\Request::flush()</full_name>
+        <docblock line="593">
+          <description>Flush all of the old input from the session.</description>
+          <long-description/>
+          <tag name="return" line="593" description="" type="void">
+            <type>void</type>
+          </tag>
+        </docblock>
+        <inherited_from>\Illuminate\Http\Request</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Foundation\Http" line="606" package="Default">
+        <name>retrieveItem</name>
+        <full_name>\Illuminate\Http\Request::retrieveItem()</full_name>
+        <docblock line="606">
+          <description>Retrieve a parameter item from a given source.</description>
+          <long-description/>
+          <tag name="param" line="606" description="" type="string" variable="$source">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="606" description="" type="string" variable="$key">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="606" description="" type="string|array|null" variable="$default">
+            <type>string</type>
+            <type>array</type>
+            <type>null</type>
+          </tag>
+          <tag name="return" line="606" description="" type="string|array">
+            <type>string</type>
+            <type>array</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$source</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$key</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$default</name>
+          <default/>
+          <type>string|array|null</type>
+        </argument>
+        <inherited_from>\Illuminate\Http\Request</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Foundation\Http" line="621" package="Default">
+        <name>merge</name>
+        <full_name>\Illuminate\Http\Request::merge()</full_name>
+        <docblock line="621">
+          <description>Merge new input into the current request's input array.</description>
+          <long-description/>
+          <tag name="param" line="621" description="" type="array" variable="$input">
+            <type>array</type>
+          </tag>
+          <tag name="return" line="621" description="" type="void">
+            <type>void</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$input</name>
+          <default/>
+          <type>array</type>
+        </argument>
+        <inherited_from>\Illuminate\Http\Request</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Foundation\Http" line="632" package="Default">
+        <name>replace</name>
+        <full_name>\Illuminate\Http\Request::replace()</full_name>
+        <docblock line="632">
+          <description>Replace the input for the current request.</description>
+          <long-description/>
+          <tag name="param" line="632" description="" type="array" variable="$input">
+            <type>array</type>
+          </tag>
+          <tag name="return" line="632" description="" type="void">
+            <type>void</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$input</name>
+          <default/>
+          <type>array</type>
+        </argument>
+        <inherited_from>\Illuminate\Http\Request</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Foundation\Http" line="644" package="Default">
+        <name>json</name>
+        <full_name>\Illuminate\Http\Request::json()</full_name>
+        <docblock line="644">
+          <description>Get the JSON payload for the request.</description>
+          <long-description/>
+          <tag name="param" line="644" description="" type="string" variable="$key">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="644" description="" type="mixed" variable="$default">
+            <type>mixed</type>
+          </tag>
+          <tag name="return" line="644" description="" type="mixed">
+            <type>mixed</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$key</name>
+          <default>null</default>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$default</name>
+          <default>null</default>
+          <type>mixed</type>
+        </argument>
+        <inherited_from>\Illuminate\Http\Request</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Foundation\Http" line="662" package="Default">
+        <name>getInputSource</name>
+        <full_name>\Illuminate\Http\Request::getInputSource()</full_name>
+        <docblock line="662">
+          <description>Get the input source for the request.</description>
+          <long-description/>
+          <tag name="return" line="662" description="" type="\Symfony\Component\HttpFoundation\ParameterBag">
+            <type>\Symfony\Component\HttpFoundation\ParameterBag</type>
+          </tag>
+        </docblock>
+        <inherited_from>\Illuminate\Http\Request</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="true" visibility="public" namespace="Illuminate\Foundation\Http" line="678" package="Default">
+        <name>matchesType</name>
+        <full_name>\Illuminate\Http\Request::matchesType()</full_name>
+        <docblock line="678">
+          <description>Determine if the given content types match.</description>
+          <long-description/>
+          <tag name="param" line="678" description="" type="string" variable="$actual">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="678" description="" type="string" variable="$type">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="678" description="" type="boolean">
+            <type>boolean</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$actual</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$type</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <inherited_from>\Illuminate\Http\Request</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Foundation\Http" line="694" package="Default">
+        <name>isJson</name>
+        <full_name>\Illuminate\Http\Request::isJson()</full_name>
+        <docblock line="694">
+          <description>Determine if the request is sending JSON.</description>
+          <long-description/>
+          <tag name="return" line="694" description="" type="boolean">
+            <type>boolean</type>
+          </tag>
+        </docblock>
+        <inherited_from>\Illuminate\Http\Request</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Foundation\Http" line="704" package="Default">
+        <name>wantsJson</name>
+        <full_name>\Illuminate\Http\Request::wantsJson()</full_name>
+        <docblock line="704">
+          <description>Determine if the current request is asking for JSON in return.</description>
+          <long-description/>
+          <tag name="return" line="704" description="" type="boolean">
+            <type>boolean</type>
+          </tag>
+        </docblock>
+        <inherited_from>\Illuminate\Http\Request</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Foundation\Http" line="717" package="Default">
+        <name>accepts</name>
+        <full_name>\Illuminate\Http\Request::accepts()</full_name>
+        <docblock line="717">
+          <description>Determines whether the current requests accepts a given content type.</description>
+          <long-description/>
+          <tag name="param" line="717" description="" type="string|array" variable="$contentTypes">
+            <type>string</type>
+            <type>array</type>
+          </tag>
+          <tag name="return" line="717" description="" type="boolean">
+            <type>boolean</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$contentTypes</name>
+          <default/>
+          <type>string|array</type>
+        </argument>
+        <inherited_from>\Illuminate\Http\Request</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Foundation\Http" line="748" package="Default">
+        <name>prefers</name>
+        <full_name>\Illuminate\Http\Request::prefers()</full_name>
+        <docblock line="748">
+          <description>Return the most suitable content type from the given array based on content negotiation.</description>
+          <long-description/>
+          <tag name="param" line="748" description="" type="string|array" variable="$contentTypes">
+            <type>string</type>
+            <type>array</type>
+          </tag>
+          <tag name="return" line="748" description="" type="string|null">
+            <type>string</type>
+            <type>null</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$contentTypes</name>
+          <default/>
+          <type>string|array</type>
+        </argument>
+        <inherited_from>\Illuminate\Http\Request</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Foundation\Http" line="778" package="Default">
+        <name>acceptsJson</name>
+        <full_name>\Illuminate\Http\Request::acceptsJson()</full_name>
+        <docblock line="778">
+          <description>Determines whether a request accepts JSON.</description>
+          <long-description/>
+          <tag name="return" line="778" description="" type="boolean">
+            <type>boolean</type>
+          </tag>
+        </docblock>
+        <inherited_from>\Illuminate\Http\Request</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Foundation\Http" line="788" package="Default">
+        <name>acceptsHtml</name>
+        <full_name>\Illuminate\Http\Request::acceptsHtml()</full_name>
+        <docblock line="788">
+          <description>Determines whether a request accepts HTML.</description>
+          <long-description/>
+          <tag name="return" line="788" description="" type="boolean">
+            <type>boolean</type>
+          </tag>
+        </docblock>
+        <inherited_from>\Illuminate\Http\Request</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Foundation\Http" line="799" package="Default">
+        <name>format</name>
+        <full_name>\Illuminate\Http\Request::format()</full_name>
+        <docblock line="799">
+          <description>Get the data format expected in the response.</description>
+          <long-description/>
+          <tag name="param" line="799" description="" type="string" variable="$default">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="799" description="" type="string">
+            <type>string</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$default</name>
+          <default>'html'</default>
+          <type>string</type>
+        </argument>
+        <inherited_from>\Illuminate\Http\Request</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Foundation\Http" line="815" package="Default">
+        <name>bearerToken</name>
+        <full_name>\Illuminate\Http\Request::bearerToken()</full_name>
+        <docblock line="815">
+          <description>Get the bearer token from the request headers.</description>
+          <long-description/>
+          <tag name="return" line="815" description="" type="string|null">
+            <type>string</type>
+            <type>null</type>
+          </tag>
+        </docblock>
+        <inherited_from>\Illuminate\Http\Request</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="true" visibility="public" namespace="Illuminate\Foundation\Http" line="830" package="Default">
+        <name>createFromBase</name>
+        <full_name>\Illuminate\Http\Request::createFromBase()</full_name>
+        <docblock line="830">
+          <description>Create an Illuminate request from a Symfony instance.</description>
+          <long-description/>
+          <tag name="param" line="830" description="" type="\Symfony\Component\HttpFoundation\Request" variable="$request">
+            <type>\Symfony\Component\HttpFoundation\Request</type>
+          </tag>
+          <tag name="return" line="830" description="" type="\Illuminate\Http\Request">
+            <type>\Illuminate\Http\Request</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$request</name>
+          <default/>
+          <type>\Symfony\Component\HttpFoundation\Request</type>
+        </argument>
+        <inherited_from>\Illuminate\Http\Request</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Foundation\Http" line="855" package="Default">
+        <name>duplicate</name>
+        <full_name>\Illuminate\Http\Request::duplicate()</full_name>
+        <docblock line="855">
+          <description>{@inheritdoc}</description>
+          <long-description/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$query</name>
+          <default>null</default>
+          <type>array</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$request</name>
+          <default>null</default>
+          <type>array</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$attributes</name>
+          <default>null</default>
+          <type>array</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$cookies</name>
+          <default>null</default>
+          <type>array</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$files</name>
+          <default>null</default>
+          <type>array</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$server</name>
+          <default>null</default>
+          <type>array</type>
+        </argument>
+        <inherited_from>\Illuminate\Http\Request</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Foundation\Http" line="867" package="Default">
+        <name>session</name>
+        <full_name>\Illuminate\Http\Request::session()</full_name>
+        <docblock line="867">
+          <description>Get the session associated with the request.</description>
+          <long-description/>
+          <tag name="return" line="867" description="" type="\Illuminate\Session\Store">
+            <type>\Illuminate\Session\Store</type>
+          </tag>
+          <tag name="throws" line="867" description="" type="\RuntimeException">
+            <type>\RuntimeException</type>
+          </tag>
+        </docblock>
+        <inherited_from>\Illuminate\Http\Request</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Foundation\Http" line="882" package="Default">
+        <name>user</name>
+        <full_name>\Illuminate\Http\Request::user()</full_name>
+        <docblock line="882">
+          <description>Get the user making the request.</description>
+          <long-description/>
+          <tag name="param" line="882" description="" type="string|null" variable="$guard">
+            <type>string</type>
+            <type>null</type>
+          </tag>
+          <tag name="return" line="882" description="" type="mixed">
+            <type>mixed</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$guard</name>
+          <default>null</default>
+          <type>string|null</type>
+        </argument>
+        <inherited_from>\Illuminate\Http\Request</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Foundation\Http" line="894" package="Default">
+        <name>route</name>
+        <full_name>\Illuminate\Http\Request::route()</full_name>
+        <docblock line="894">
+          <description>Get the route handling the request.</description>
+          <long-description/>
+          <tag name="param" line="894" description="" type="string|null" variable="$param">
+            <type>string</type>
+            <type>null</type>
+          </tag>
+          <tag name="return" line="894" description="" type="\Illuminate\Routing\Route|object|string">
+            <type>\Illuminate\Routing\Route</type>
+            <type>object</type>
+            <type>string</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$param</name>
+          <default>null</default>
+          <type>string|null</type>
+        </argument>
+        <inherited_from>\Illuminate\Http\Request</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Foundation\Http" line="912" package="Default">
+        <name>fingerprint</name>
+        <full_name>\Illuminate\Http\Request::fingerprint()</full_name>
+        <docblock line="912">
+          <description>Get a unique fingerprint for the request / route / IP address.</description>
+          <long-description/>
+          <tag name="return" line="912" description="" type="string">
+            <type>string</type>
+          </tag>
+          <tag name="throws" line="912" description="" type="\RuntimeException">
+            <type>\RuntimeException</type>
+          </tag>
+        </docblock>
+        <inherited_from>\Illuminate\Http\Request</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Foundation\Http" line="931" package="Default">
+        <name>getUserResolver</name>
+        <full_name>\Illuminate\Http\Request::getUserResolver()</full_name>
+        <docblock line="931">
+          <description>Get the user resolver callback.</description>
+          <long-description/>
+          <tag name="return" line="931" description="" type="\Closure">
+            <type>\Closure</type>
+          </tag>
+        </docblock>
+        <inherited_from>\Illuminate\Http\Request</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Foundation\Http" line="944" package="Default">
+        <name>setUserResolver</name>
+        <full_name>\Illuminate\Http\Request::setUserResolver()</full_name>
+        <docblock line="944">
+          <description>Set the user resolver callback.</description>
+          <long-description/>
+          <tag name="param" line="944" description="" type="\Closure" variable="$callback">
+            <type>\Closure</type>
+          </tag>
+          <tag name="return" line="944" description="" type="\Illuminate\Foundation\Http\FormRequest">
+            <type>\Illuminate\Foundation\Http\FormRequest</type>
+          </tag>
+          <tag name="fluent" description="This method is part of a fluent interface and will return the same instance"/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$callback</name>
+          <default/>
+          <type>\Closure</type>
+        </argument>
+        <inherited_from>\Illuminate\Http\Request</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Foundation\Http" line="956" package="Default">
+        <name>getRouteResolver</name>
+        <full_name>\Illuminate\Http\Request::getRouteResolver()</full_name>
+        <docblock line="956">
+          <description>Get the route resolver callback.</description>
+          <long-description/>
+          <tag name="return" line="956" description="" type="\Closure">
+            <type>\Closure</type>
+          </tag>
+        </docblock>
+        <inherited_from>\Illuminate\Http\Request</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Foundation\Http" line="969" package="Default">
+        <name>setRouteResolver</name>
+        <full_name>\Illuminate\Http\Request::setRouteResolver()</full_name>
+        <docblock line="969">
+          <description>Set the route resolver callback.</description>
+          <long-description/>
+          <tag name="param" line="969" description="" type="\Closure" variable="$callback">
+            <type>\Closure</type>
+          </tag>
+          <tag name="return" line="969" description="" type="\Illuminate\Foundation\Http\FormRequest">
+            <type>\Illuminate\Foundation\Http\FormRequest</type>
+          </tag>
+          <tag name="fluent" description="This method is part of a fluent interface and will return the same instance"/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$callback</name>
+          <default/>
+          <type>\Closure</type>
+        </argument>
+        <inherited_from>\Illuminate\Http\Request</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Foundation\Http" line="981" package="Default">
+        <name>toArray</name>
+        <full_name>\Illuminate\Http\Request::toArray()</full_name>
+        <docblock line="981">
+          <description>Get all of the input and files for the request.</description>
+          <long-description/>
+          <tag name="return" line="981" description="" type="array">
+            <type>array</type>
+          </tag>
+        </docblock>
+        <inherited_from>\Illuminate\Http\Request</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Foundation\Http" line="992" package="Default">
+        <name>offsetExists</name>
+        <full_name>\Illuminate\Http\Request::offsetExists()</full_name>
+        <docblock line="992">
+          <description>Determine if the given offset exists.</description>
+          <long-description/>
+          <tag name="param" line="992" description="" type="string" variable="$offset">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="992" description="" type="boolean">
+            <type>boolean</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$offset</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <inherited_from>\Illuminate\Http\Request</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Foundation\Http" line="1003" package="Default">
+        <name>offsetGet</name>
+        <full_name>\Illuminate\Http\Request::offsetGet()</full_name>
+        <docblock line="1003">
+          <description>Get the value at the given offset.</description>
+          <long-description/>
+          <tag name="param" line="1003" description="" type="string" variable="$offset">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="1003" description="" type="mixed">
+            <type>mixed</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$offset</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <inherited_from>\Illuminate\Http\Request</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Foundation\Http" line="1015" package="Default">
+        <name>offsetSet</name>
+        <full_name>\Illuminate\Http\Request::offsetSet()</full_name>
+        <docblock line="1015">
+          <description>Set the value at the given offset.</description>
+          <long-description/>
+          <tag name="param" line="1015" description="" type="string" variable="$offset">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="1015" description="" type="mixed" variable="$value">
+            <type>mixed</type>
+          </tag>
+          <tag name="return" line="1015" description="" type="void">
+            <type>void</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$offset</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$value</name>
+          <default/>
+          <type>mixed</type>
+        </argument>
+        <inherited_from>\Illuminate\Http\Request</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Foundation\Http" line="1026" package="Default">
+        <name>offsetUnset</name>
+        <full_name>\Illuminate\Http\Request::offsetUnset()</full_name>
+        <docblock line="1026">
+          <description>Remove the value at the given offset.</description>
+          <long-description/>
+          <tag name="param" line="1026" description="" type="string" variable="$offset">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="1026" description="" type="void">
+            <type>void</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$offset</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <inherited_from>\Illuminate\Http\Request</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Foundation\Http" line="1037" package="Default">
+        <name>__isset</name>
+        <full_name>\Illuminate\Http\Request::__isset()</full_name>
+        <docblock line="1037">
+          <description>Check if an input element is set on the request.</description>
+          <long-description/>
+          <tag name="param" line="1037" description="" type="string" variable="$key">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="1037" description="" type="boolean">
+            <type>boolean</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$key</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <inherited_from>\Illuminate\Http\Request</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Foundation\Http" line="1048" package="Default">
+        <name>__get</name>
+        <full_name>\Illuminate\Http\Request::__get()</full_name>
+        <docblock line="1048">
+          <description>Get an input element from the request.</description>
+          <long-description/>
+          <tag name="param" line="1048" description="" type="string" variable="$key">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="1048" description="" type="mixed">
+            <type>mixed</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$key</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <inherited_from>\Illuminate\Http\Request</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="true" visibility="public" namespace="Illuminate\Foundation\Http" line="24" package="Default">
+        <name>macro</name>
+        <full_name>\Illuminate\Support\Traits\Macroable::macro()</full_name>
+        <docblock line="24">
+          <description>Register a custom macro.</description>
+          <long-description/>
+          <tag name="param" line="24" description="" type="string" variable="$name">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="24" description="" type="callable" variable="$macro">
+            <type>callable</type>
+          </tag>
+          <tag name="return" line="24" description="" type="void">
+            <type>void</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$name</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$macro</name>
+          <default/>
+          <type>callable</type>
+        </argument>
+        <inherited_from>\Illuminate\Support\Traits\Macroable</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="true" visibility="public" namespace="Illuminate\Foundation\Http" line="35" package="Default">
+        <name>hasMacro</name>
+        <full_name>\Illuminate\Support\Traits\Macroable::hasMacro()</full_name>
+        <docblock line="35">
+          <description>Checks if macro is registered.</description>
+          <long-description/>
+          <tag name="param" line="35" description="" type="string" variable="$name">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="35" description="" type="boolean">
+            <type>boolean</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$name</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <inherited_from>\Illuminate\Support\Traits\Macroable</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="true" visibility="public" namespace="Illuminate\Foundation\Http" line="49" package="Default">
+        <name>__callStatic</name>
+        <full_name>\Illuminate\Support\Traits\Macroable::__callStatic()</full_name>
+        <docblock line="49">
+          <description>Dynamically handle calls to the class.</description>
+          <long-description/>
+          <tag name="param" line="49" description="" type="string" variable="$method">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="49" description="" type="array" variable="$parameters">
+            <type>array</type>
+          </tag>
+          <tag name="return" line="49" description="" type="mixed">
+            <type>mixed</type>
+          </tag>
+          <tag name="throws" line="49" description="" type="\BadMethodCallException">
+            <type>\BadMethodCallException</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$method</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$parameters</name>
+          <default/>
+          <type>array</type>
+        </argument>
+        <inherited_from>\Illuminate\Support\Traits\Macroable</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Foundation\Http" line="71" package="Default">
+        <name>__call</name>
+        <full_name>\Illuminate\Support\Traits\Macroable::__call()</full_name>
+        <docblock line="71">
+          <description>Dynamically handle calls to the class.</description>
+          <long-description/>
+          <tag name="param" line="71" description="" type="string" variable="$method">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="71" description="" type="array" variable="$parameters">
+            <type>array</type>
+          </tag>
+          <tag name="return" line="71" description="" type="mixed">
+            <type>mixed</type>
+          </tag>
+          <tag name="throws" line="71" description="" type="\BadMethodCallException">
+            <type>\BadMethodCallException</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$method</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$parameters</name>
+          <default/>
+          <type>array</type>
+        </argument>
+        <inherited_from>\Illuminate\Support\Traits\Macroable</inherited_from>
+      </method>
+    </class>
+    <parse_markers>
+      <error line="0" code="PPC:ERR-50000">No summary was found for this file</error>
+      <error line="16" code="PPC:ERR-50005">No summary for class \Illuminate\Foundation\Http\FormRequest</error>
+    </parse_markers>
+    <source>eJzFWE1z2zYQvetX4OAZURm76aQ5xbVbt40Sd9qLE6cH25OByJWEmiRYAJTtNv7vXYAA+AGSYjz1lBeJJLD7dvftYpff/1Bsi9kspxnIgsZAztO0zFhOFVwveZknVDGeX79XqjiezUrZWqCfXl/AXyVIdTzwUhY8l9D/9lfJ88EVF7xULN+giIQJiBUXwZKfea4oy0HU/3rXCBoref2JpsyaY//2iDS43t7HUHi7HUL/NNgUSgb5xxa0bTzdQfJRUBY6aAxZe/+0rUuqnfRAqCT1U/sQYxenVEqy5CKzESNwryBPJHH3LCtSyCBXXkAbxuyfGcFLYxkz0yx6+eKF+SUvyMctkNjFh7BcKprH8I197Vb9uKOCXI8H1659aX4LwRXSAhJyENfR71MuPIOmaw/ZN6RcNPjZp/3y4pwo7kHo/2xNdj5CZE1ZKnsBSSUQwz7FA0ajAfC8irWPYDjegqcpBhwJqJU9K5KzuMrLPii38KAVrkATNyFrZIHCxzsGdwSEwNsV3TxBt9n7E92QEzJPYE3LVM37EbC8KJXGIVEzVURueZkmJOdKo1pjXm5RILrBmdOLhgpBH4bAJOjvpRaEaK7mBWb6HRfJ/JD4/58xJGsmMuPw+U2I9B2oyjGuNvpk8T4TVaEI4AlQpciD7B0uuwNmrMu8IssGlF97blFEC7O6qkH6OljbgndCDtSWyaNTXweOTjN6C1FQBt+8MVVwYa3XFxIxykBtefIZ7plUMjLC0HPeEfPFoqFWX9bgUG1M0zS6CiXcHGJKZHjAqmhuYaPUYy/0sQbkZNtl1pSWeqtX61oc7kUhyhTk/KZeiUe9pBuQjc1UIddXmM7SullfFt9jQJX3NE9SINTkLcatkckoCLIipEhBBc3IV1AErdx16OKJtuMs6SpQW8HvZEvBlLN8HxMrC2uAUQ2wxtdlpsFCciwwvToj63RhX/QGF3MOc/WtLjJIyY4qE53B8PwCCgT6ADS5G3lLdC0AaR7REikv2N9V1OItxLdDab3iPN3npkryWVNokK/DmebAwJMzrZZwM5pVa5rqVnMards+GmL2/8XJcWdPpCCybMWSBHwbHg3Tyh0QiKjAcz3MfcfnveeFLQbmRCP2JJXBafLhIVvz/AHrRIZisS013moMJQ5z21/lKmVx7SyfZJU2q6yPm64U/knvowX58sWR7o5iR6xHlWiIndrNzVkmsloOyetXr8arvKsEroc8OlXcIcFT0LWflwJL/aKle+xC0Extz3Xf4YSBCb278/3CVwt1FclZ6MTbbmgve1okocQTkGhSmbhOaS9aw+Vo/HsY3ol9I4h+zXzptmEP9frb7wbNWpoybSyrPELWgmfmfsN2aNanoJ163rNxrE1sOqU+XKacaI6ufoFh5+9VI4FhjxaauGdad7SXApcXv3XHAV1fm6XE+HKICKN9ebOHbGVPt3ssRVp3js0ExI244R3kmo9cRN1usbNl6MRC+c1k9ssb5YAAnkY9Is1gNSrXTHf92ybIr8alUQXV1DawcbSime2FgB3jpRwmwwdLhosJw3lPgoTzOWmO4l3KGDtG64Ss6YIxb4htSA041CWPJlTwPaDpHL1hn0ca30rcB5n+ujhQNzofTUjj+8iT3OIlRbXMWuSAT2ojTsLvM1M9ogtGXEqFBdXNLObYqEfUquYOFYqeWtgxrx6F+gve1c0EbPXw9B+jC6ayEXyPs38BZBaknA==</source>
+  <type>class</type></file>

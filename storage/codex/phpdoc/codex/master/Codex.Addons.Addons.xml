@@ -1,0 +1,715 @@
+<file path="codex/workbench/codex/core/src/Addons/Addons.php" generated-path="codex.workbench.codex.core.src.Addons.Addons.html" hash="6b9fb262bd5a2737fe33590fd85f8b02" package="Default">
+    <docblock line="0">
+      <description/>
+      <long-description/>
+      <tag name="package" line="0" description="Default"/>
+    </docblock>
+    <namespace-alias name="BadMethodCallException">\BadMethodCallException</namespace-alias>
+    <namespace-alias name="Annotations">\Codex\Addons\Annotations</namespace-alias>
+    <namespace-alias name="ClassFileInfo">\Codex\Addons\Scanner\ClassFileInfo</namespace-alias>
+    <namespace-alias name="Container">\Illuminate\Container\Container</namespace-alias>
+    <namespace-alias name="Arrayable">\Illuminate\Contracts\Support\Arrayable</namespace-alias>
+    <namespace-alias name="Macroable">\Illuminate\Support\Traits\Macroable</namespace-alias>
+    <namespace-alias name="Filesystem">\Sebwite\Filesystem\Filesystem</namespace-alias>
+    <class final="false" abstract="false" namespace="Codex\Addons" line="26" package="Codex\Core">
+      <extends/>
+      <implements>\Illuminate\Contracts\Support\Arrayable</implements>
+      <name>Addons</name>
+      <full_name>\Codex\Addons\Addons</full_name>
+      <docblock line="26">
+        <description>This is the class Addons.</description>
+        <long-description/>
+        <tag name="package" line="26" description="Codex\Core"/>
+        <tag name="author" line="26" description="CLI"/>
+        <tag name="copyright" line="26" description="Copyright (c) 2015, CLI. All rights reserved"/>
+      </docblock>
+      <constant namespace="Codex\Addons" line="31" package="Codex\Core">
+        <name>HOOK</name>
+        <full_name>\Codex\Addons\Addons::HOOK</full_name>
+        <value>'hook'</value>
+        <docblock line="31">
+          <description/>
+          <long-description/>
+        </docblock>
+      </constant>
+      <constant namespace="Codex\Addons" line="32" package="Codex\Core">
+        <name>THEME</name>
+        <full_name>\Codex\Addons\Addons::THEME</full_name>
+        <value>'theme'</value>
+        <docblock line="32">
+          <description/>
+          <long-description/>
+        </docblock>
+      </constant>
+      <constant namespace="Codex\Addons" line="33" package="Codex\Core">
+        <name>PROCESSOR</name>
+        <full_name>\Codex\Addons\Addons::PROCESSOR</full_name>
+        <value>'processor'</value>
+        <docblock line="33">
+          <description/>
+          <long-description/>
+        </docblock>
+      </constant>
+      <property static="true" visibility="protected" namespace="Codex\Addons" line="36" package="Codex\Core">
+        <name>$instance</name>
+        <full_name>\Codex\Addons\Addons::instance</full_name>
+        <default/>
+        <docblock line="36">
+          <description/>
+          <long-description/>
+          <tag name="var" line="36" description="" type="\Codex\Addons\Addons" variable="">
+            <type>\Codex\Addons\Addons</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" namespace="Codex\Addons" line="39" package="Codex\Core">
+        <name>$processors</name>
+        <full_name>\Codex\Addons\Addons::processors</full_name>
+        <default/>
+        <docblock line="39">
+          <description/>
+          <long-description/>
+          <tag name="var" line="39" description="" type="\Codex\Support\Collection" variable="">
+            <type>\Codex\Support\Collection</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" namespace="Codex\Addons" line="43" package="Codex\Core">
+        <name>$hooks</name>
+        <full_name>\Codex\Addons\Addons::hooks</full_name>
+        <default/>
+        <docblock line="43">
+          <description/>
+          <long-description/>
+          <tag name="var" line="43" description="" type="\Codex\Support\Collection" variable="">
+            <type>\Codex\Support\Collection</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" namespace="Codex\Addons" line="46" package="Codex\Core">
+        <name>$defaults</name>
+        <full_name>\Codex\Addons\Addons::defaults</full_name>
+        <default/>
+        <docblock line="46">
+          <description/>
+          <long-description/>
+          <tag name="var" line="46" description="" type="\Codex\Support\Collection" variable="">
+            <type>\Codex\Support\Collection</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" namespace="Codex\Addons" line="49" package="Codex\Core">
+        <name>$fs</name>
+        <full_name>\Codex\Addons\Addons::fs</full_name>
+        <default/>
+        <docblock line="49">
+          <description/>
+          <long-description/>
+          <tag name="var" line="49" description="" type="\Sebwite\Filesystem\Filesystem" variable="">
+            <type>\Sebwite\Filesystem\Filesystem</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" namespace="Codex\Addons" line="51" package="Codex\Core">
+        <name>$paths</name>
+        <full_name>\Codex\Addons\Addons::paths</full_name>
+        <default/>
+        <docblock line="51">
+          <description/>
+          <long-description/>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" namespace="Codex\Addons" line="53" package="Codex\Core">
+        <name>$registered</name>
+        <full_name>\Codex\Addons\Addons::registered</full_name>
+        <default>array()</default>
+        <docblock line="53">
+          <description/>
+          <long-description/>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" namespace="Codex\Addons" line="55" package="Codex\Core">
+        <name>$scanner</name>
+        <full_name>\Codex\Addons\Addons::scanner</full_name>
+        <default/>
+        <docblock line="55">
+          <description/>
+          <long-description/>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" namespace="Codex\Addons" line="58" package="Codex\Core">
+        <name>$app</name>
+        <full_name>\Codex\Addons\Addons::app</full_name>
+        <default/>
+        <docblock line="58">
+          <description/>
+          <long-description/>
+          <tag name="var" line="58" description="" type="\Illuminate\Foundation\Application" variable="">
+            <type>\Illuminate\Foundation\Application</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" namespace="Codex\Addons" line="60" package="Codex\Core">
+        <name>$views</name>
+        <full_name>\Codex\Addons\Addons::views</full_name>
+        <default>array('layouts' =&gt; array('base' =&gt; 'codex::layouts.base', 'default' =&gt; 'codex::layouts.default'), 'layout' =&gt; 'codex::layouts.default', 'document' =&gt; 'codex::document', 'error' =&gt; 'codex::error', 'menus' =&gt; array('sidebar' =&gt; 'codex::menus.sidebar', 'projects' =&gt; 'codex::menus.header-dropdown', 'versions' =&gt; 'codex::menus.header-dropdown'), 'processors' =&gt; array('header' =&gt; 'codex::processors.header', 'toc' =&gt; 'codex::processors.toc'))</default>
+        <docblock line="60">
+          <description/>
+          <long-description/>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" namespace="Codex\Addons" line="79" package="Codex\Core">
+        <name>$collections</name>
+        <full_name>\Codex\Addons\Addons::collections</full_name>
+        <default>array('processors', 'themes', 'hooks')</default>
+        <docblock line="79">
+          <description/>
+          <long-description/>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" namespace="Codex\Addons" line="82" package="Codex\Core">
+        <name>$manifestPath</name>
+        <full_name>\Codex\Addons\Addons::manifestPath</full_name>
+        <default/>
+        <docblock line="82">
+          <description/>
+          <long-description/>
+          <tag name="var" line="82" description="" type="string" variable="">
+            <type>string</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" namespace="Codex\Addons" line="85" package="Codex\Core">
+        <name>$manifest</name>
+        <full_name>\Codex\Addons\Addons::manifest</full_name>
+        <default/>
+        <docblock line="85">
+          <description/>
+          <long-description/>
+          <tag name="var" line="85" description="" type="\Codex\Addons\Manifest" variable="">
+            <type>\Codex\Addons\Manifest</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="true" visibility="protected" namespace="Codex\Addons" line="15" package="Default">
+        <name>$macros</name>
+        <full_name>\Illuminate\Support\Traits\Macroable::macros</full_name>
+        <default>array()</default>
+        <docblock line="15">
+          <description>The registered string macros.</description>
+          <long-description/>
+          <tag name="var" line="15" description="" type="array" variable="">
+            <type>array</type>
+          </tag>
+        </docblock>
+      </property>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Codex\Addons" line="87" package="Codex\Core">
+        <name>__construct</name>
+        <full_name>\Codex\Addons\Addons::__construct()</full_name>
+        <docblock line="87">
+          <description/>
+          <long-description/>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="true" visibility="public" namespace="Codex\Addons" line="97" package="Codex\Core">
+        <name>__callStatic</name>
+        <full_name>\Codex\Addons\Addons::__callStatic()</full_name>
+        <docblock line="97">
+          <description/>
+          <long-description/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$method</name>
+          <default/>
+          <type/>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$parameters</name>
+          <default>array()</default>
+          <type>array</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="true" visibility="public" namespace="Codex\Addons" line="107" package="Codex\Core">
+        <name>getInstance</name>
+        <full_name>\Codex\Addons\Addons::getInstance()</full_name>
+        <docblock line="107">
+          <description/>
+          <long-description/>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Codex\Addons" line="116" package="Codex\Core">
+        <name>view</name>
+        <full_name>\Codex\Addons\Addons::view()</full_name>
+        <docblock line="116">
+          <description/>
+          <long-description/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$name</name>
+          <default/>
+          <type/>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$view</name>
+          <default>null</default>
+          <type/>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Codex\Addons" line="126" package="Codex\Core">
+        <name>register</name>
+        <full_name>\Codex\Addons\Addons::register()</full_name>
+        <docblock line="126">
+          <description/>
+          <long-description/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$file</name>
+          <default/>
+          <type>\Codex\Addons\Scanner\ClassFileInfo</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Codex\Addons" line="163" package="Codex\Core">
+        <name>registerAtPath</name>
+        <full_name>\Codex\Addons\Addons::registerAtPath()</full_name>
+        <docblock line="163">
+          <description/>
+          <long-description/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$filePath</name>
+          <default/>
+          <type/>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Codex\Addons" line="174" package="Codex\Core">
+        <name>registerInPath</name>
+        <full_name>\Codex\Addons\Addons::registerInPath()</full_name>
+        <docblock line="174">
+          <description/>
+          <long-description/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$path</name>
+          <default/>
+          <type/>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Codex\Addons" line="185" package="Codex\Core">
+        <name>findAndRegisterAll</name>
+        <full_name>\Codex\Addons\Addons::findAndRegisterAll()</full_name>
+        <docblock line="185">
+          <description/>
+          <long-description/>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Codex\Addons" line="193" package="Codex\Core">
+        <name>mergeDefaultProjectConfig</name>
+        <full_name>\Codex\Addons\Addons::mergeDefaultProjectConfig()</full_name>
+        <docblock line="193">
+          <description/>
+          <long-description/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$config</name>
+          <default/>
+          <type/>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$method</name>
+          <default>'array_replace_recursive'</default>
+          <type/>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Codex\Addons" line="198" package="Codex\Core">
+        <name>mergeDefaults</name>
+        <full_name>\Codex\Addons\Addons::mergeDefaults()</full_name>
+        <docblock line="198">
+          <description/>
+          <long-description/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$key</name>
+          <default/>
+          <type/>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$config</name>
+          <default/>
+          <type/>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$method</name>
+          <default/>
+          <type/>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Codex\Addons" line="207" package="Codex\Core">
+        <name>mergeDefaultDocumentAttributes</name>
+        <full_name>\Codex\Addons\Addons::mergeDefaultDocumentAttributes()</full_name>
+        <docblock line="207">
+          <description/>
+          <long-description/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$config</name>
+          <default/>
+          <type/>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$method</name>
+          <default>'array_replace_recursive'</default>
+          <type/>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Codex\Addons" line="212" package="Codex\Core">
+        <name>toArray</name>
+        <full_name>\Codex\Addons\Addons::toArray()</full_name>
+        <docblock line="212">
+          <description>Get the instance as an array.</description>
+          <long-description/>
+          <tag name="inherited_from" description="\Illuminate\Contracts\Support\Arrayable::toArray()" refers="\Illuminate\Contracts\Support\Arrayable::toArray()" link="/classes/Illuminate.Contracts.Support.Arrayable.html#method_toArray"/>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Codex\Addons" line="224" package="Codex\Core">
+        <name>getFs</name>
+        <full_name>\Codex\Addons\Addons::getFs()</full_name>
+        <docblock line="224">
+          <description/>
+          <long-description/>
+          <tag name="return" line="224" description="" type="\Sebwite\Filesystem\Filesystem">
+            <type>\Sebwite\Filesystem\Filesystem</type>
+          </tag>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Codex\Addons" line="232" package="Codex\Core">
+        <name>getScanner</name>
+        <full_name>\Codex\Addons\Addons::getScanner()</full_name>
+        <docblock line="232">
+          <description/>
+          <long-description/>
+          <tag name="return" line="232" description="" type="\Codex\Addons\AddonScanner">
+            <type>\Codex\Addons\AddonScanner</type>
+          </tag>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Codex\Addons" line="240" package="Codex\Core">
+        <name>getViews</name>
+        <full_name>\Codex\Addons\Addons::getViews()</full_name>
+        <docblock line="240">
+          <description/>
+          <long-description/>
+          <tag name="return" line="240" description="" type="array">
+            <type>array</type>
+          </tag>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Codex\Addons" line="248" package="Codex\Core">
+        <name>getRegistered</name>
+        <full_name>\Codex\Addons\Addons::getRegistered()</full_name>
+        <docblock line="248">
+          <description/>
+          <long-description/>
+          <tag name="return" line="248" description="" type="array">
+            <type>array</type>
+          </tag>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Codex\Addons" line="256" package="Codex\Core">
+        <name>getManifestPath</name>
+        <full_name>\Codex\Addons\Addons::getManifestPath()</full_name>
+        <docblock line="256">
+          <description/>
+          <long-description/>
+          <tag name="return" line="256" description="" type="mixed">
+            <type>mixed</type>
+          </tag>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Codex\Addons" line="264" package="Codex\Core">
+        <name>setManifestPath</name>
+        <full_name>\Codex\Addons\Addons::setManifestPath()</full_name>
+        <docblock line="264">
+          <description/>
+          <long-description/>
+          <tag name="param" line="264" description="" type="mixed" variable="$manifestPath">
+            <type>mixed</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$manifestPath</name>
+          <default/>
+          <type>mixed</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Codex\Addons" line="270" package="Codex\Core">
+        <name>loadManifest</name>
+        <full_name>\Codex\Addons\Addons::loadManifest()</full_name>
+        <docblock line="270">
+          <description/>
+          <long-description/>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Codex\Addons" line="278" package="Codex\Core">
+        <name>getManifest</name>
+        <full_name>\Codex\Addons\Addons::getManifest()</full_name>
+        <docblock line="278">
+          <description/>
+          <long-description/>
+          <tag name="return" line="278" description="" type="\Codex\Addons\Manifest">
+            <type>\Codex\Addons\Manifest</type>
+          </tag>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Codex\Addons" line="287" package="Codex\Core">
+        <name>__call</name>
+        <full_name>\Codex\Addons\Addons::__call()</full_name>
+        <docblock line="287">
+          <description/>
+          <long-description/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$method</name>
+          <default/>
+          <type/>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$parameters</name>
+          <default>array()</default>
+          <type>array</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Codex\Addons" line="306" package="Codex\Core">
+        <name>__get</name>
+        <full_name>\Codex\Addons\Addons::__get()</full_name>
+        <docblock line="306">
+          <description/>
+          <long-description/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$name</name>
+          <default/>
+          <type/>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="true" visibility="public" namespace="Codex\Addons" line="24" package="Default">
+        <name>macro</name>
+        <full_name>\Illuminate\Support\Traits\Macroable::macro()</full_name>
+        <docblock line="24">
+          <description>Register a custom macro.</description>
+          <long-description/>
+          <tag name="param" line="24" description="" type="string" variable="$name">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="24" description="" type="callable" variable="$macro">
+            <type>callable</type>
+          </tag>
+          <tag name="return" line="24" description="" type="void">
+            <type>void</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$name</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$macro</name>
+          <default/>
+          <type>callable</type>
+        </argument>
+        <inherited_from>\Illuminate\Support\Traits\Macroable</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="true" visibility="public" namespace="Codex\Addons" line="35" package="Default">
+        <name>hasMacro</name>
+        <full_name>\Illuminate\Support\Traits\Macroable::hasMacro()</full_name>
+        <docblock line="35">
+          <description>Checks if macro is registered.</description>
+          <long-description/>
+          <tag name="param" line="35" description="" type="string" variable="$name">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="35" description="" type="boolean">
+            <type>boolean</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$name</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <inherited_from>\Illuminate\Support\Traits\Macroable</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="true" visibility="public" namespace="Codex\Addons" line="49" package="Default">
+        <name>__callStatic</name>
+        <full_name>\Illuminate\Support\Traits\Macroable::__callStatic()</full_name>
+        <docblock line="49">
+          <description>Dynamically handle calls to the class.</description>
+          <long-description/>
+          <tag name="param" line="49" description="" type="string" variable="$method">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="49" description="" type="array" variable="$parameters">
+            <type>array</type>
+          </tag>
+          <tag name="return" line="49" description="" type="mixed">
+            <type>mixed</type>
+          </tag>
+          <tag name="throws" line="49" description="" type="\BadMethodCallException">
+            <type>\BadMethodCallException</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$method</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$parameters</name>
+          <default/>
+          <type>array</type>
+        </argument>
+        <inherited_from>\Illuminate\Support\Traits\Macroable</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Codex\Addons" line="71" package="Default">
+        <name>__call</name>
+        <full_name>\Illuminate\Support\Traits\Macroable::__call()</full_name>
+        <docblock line="71">
+          <description>Dynamically handle calls to the class.</description>
+          <long-description/>
+          <tag name="param" line="71" description="" type="string" variable="$method">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="71" description="" type="array" variable="$parameters">
+            <type>array</type>
+          </tag>
+          <tag name="return" line="71" description="" type="mixed">
+            <type>mixed</type>
+          </tag>
+          <tag name="throws" line="71" description="" type="\BadMethodCallException">
+            <type>\BadMethodCallException</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$method</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$parameters</name>
+          <default/>
+          <type>array</type>
+        </argument>
+        <inherited_from>\Illuminate\Support\Traits\Macroable</inherited_from>
+      </method>
+      <method final="false" static="false" visibility="public" line="26">
+        <name>hooks</name>
+        <docblock>
+          <description/>
+          <long-description/>
+          <tag name="magic" line="26"/>
+          <tag name="return" line="26" type="">
+            <type/>
+          </tag>
+          <tag name="method" line="26" description="" method_name="hooks"/>
+        </docblock>
+      </method>
+      <method final="false" static="false" visibility="public" line="26">
+        <name>processors</name>
+        <docblock>
+          <description/>
+          <long-description/>
+          <tag name="magic" line="26"/>
+          <tag name="return" line="26" type="">
+            <type/>
+          </tag>
+          <tag name="method" line="26" description="" method_name="processors"/>
+        </docblock>
+      </method>
+      <property final="false" static="false" visibility="public" line="26">
+        <name>$processors</name>
+        <default/>
+        <docblock>
+          <description/>
+          <long-description/>
+          <tag name="var" description="" type="\Codex\Addons\ProcessorAddons" line="26">
+            <type by_reference="false">\Codex\Addons\ProcessorAddons</type>
+          </tag>
+          <tag name="magic" line="26"/>
+          <tag name="property" line="26" description="" type="\Codex\Addons\ProcessorAddons" variable="$processors">
+            <type>\Codex\Addons\ProcessorAddons</type>
+          </tag>
+        </docblock>
+      </property>
+      <property final="false" static="false" visibility="public" line="26">
+        <name>$hooks</name>
+        <default/>
+        <docblock>
+          <description/>
+          <long-description/>
+          <tag name="var" description="" type="\Codex\Addons\HookAddons" line="26">
+            <type by_reference="false">\Codex\Addons\HookAddons</type>
+          </tag>
+          <tag name="magic" line="26"/>
+          <tag name="property" line="26" description="" type="\Codex\Addons\HookAddons" variable="$hooks">
+            <type>\Codex\Addons\HookAddons</type>
+          </tag>
+        </docblock>
+      </property>
+    </class>
+    <parse_markers>
+      <error line="0" code="PPC:ERR-50000">No summary was found for this file</error>
+      <error line="87" code="PPC:ERR-50008">No summary for method __construct()</error>
+      <error line="97" code="PPC:ERR-50015">Argument $method is missing from the Docblock of __callStatic</error>
+      <error line="97" code="PPC:ERR-50015">Argument $parameters is missing from the Docblock of __callStatic</error>
+      <error line="97" code="PPC:ERR-50008">No summary for method __callStatic()</error>
+      <error line="107" code="PPC:ERR-50008">No summary for method getInstance()</error>
+      <error line="116" code="PPC:ERR-50015">Argument $name is missing from the Docblock of view</error>
+      <error line="116" code="PPC:ERR-50015">Argument $view is missing from the Docblock of view</error>
+      <error line="116" code="PPC:ERR-50008">No summary for method view()</error>
+      <error line="126" code="PPC:ERR-50015">Argument $file is missing from the Docblock of register</error>
+      <error line="126" code="PPC:ERR-50008">No summary for method register()</error>
+      <error line="163" code="PPC:ERR-50015">Argument $filePath is missing from the Docblock of registerAtPath</error>
+      <error line="163" code="PPC:ERR-50008">No summary for method registerAtPath()</error>
+      <error line="174" code="PPC:ERR-50015">Argument $path is missing from the Docblock of registerInPath</error>
+      <error line="174" code="PPC:ERR-50008">No summary for method registerInPath()</error>
+      <error line="185" code="PPC:ERR-50008">No summary for method findAndRegisterAll()</error>
+      <error line="193" code="PPC:ERR-50015">Argument $config is missing from the Docblock of mergeDefaultProjectConfig</error>
+      <error line="193" code="PPC:ERR-50015">Argument $method is missing from the Docblock of mergeDefaultProjectConfig</error>
+      <error line="193" code="PPC:ERR-50008">No summary for method mergeDefaultProjectConfig()</error>
+      <error line="198" code="PPC:ERR-50015">Argument $key is missing from the Docblock of mergeDefaults</error>
+      <error line="198" code="PPC:ERR-50015">Argument $config is missing from the Docblock of mergeDefaults</error>
+      <error line="198" code="PPC:ERR-50015">Argument $method is missing from the Docblock of mergeDefaults</error>
+      <error line="198" code="PPC:ERR-50008">No summary for method mergeDefaults()</error>
+      <error line="207" code="PPC:ERR-50015">Argument $config is missing from the Docblock of mergeDefaultDocumentAttributes</error>
+      <error line="207" code="PPC:ERR-50015">Argument $method is missing from the Docblock of mergeDefaultDocumentAttributes</error>
+      <error line="207" code="PPC:ERR-50008">No summary for method mergeDefaultDocumentAttributes()</error>
+      <error line="212" code="PPC:ERR-50008">No summary for method toArray()</error>
+      <error line="224" code="PPC:ERR-50008">No summary for method getFs()</error>
+      <error line="232" code="PPC:ERR-50008">No summary for method getScanner()</error>
+      <error line="240" code="PPC:ERR-50008">No summary for method getViews()</error>
+      <error line="248" code="PPC:ERR-50008">No summary for method getRegistered()</error>
+      <error line="256" code="PPC:ERR-50008">No summary for method getManifestPath()</error>
+      <error line="264" code="PPC:ERR-50008">No summary for method setManifestPath()</error>
+      <error line="270" code="PPC:ERR-50008">No summary for method loadManifest()</error>
+      <error line="278" code="PPC:ERR-50008">No summary for method getManifest()</error>
+      <error line="287" code="PPC:ERR-50015">Argument $method is missing from the Docblock of __call</error>
+      <error line="287" code="PPC:ERR-50015">Argument $parameters is missing from the Docblock of __call</error>
+      <error line="287" code="PPC:ERR-50008">No summary for method __call()</error>
+      <error line="306" code="PPC:ERR-50015">Argument $name is missing from the Docblock of __get</error>
+      <error line="306" code="PPC:ERR-50008">No summary for method __get()</error>
+      <error line="36" code="PPC:ERR-50007">No summary for property $instance</error>
+      <error line="39" code="PPC:ERR-50007">No summary for property $processors</error>
+      <error line="43" code="PPC:ERR-50007">No summary for property $hooks</error>
+      <error line="46" code="PPC:ERR-50007">No summary for property $defaults</error>
+      <error line="49" code="PPC:ERR-50007">No summary for property $fs</error>
+      <error line="51" code="PPC:ERR-50007">No summary for property $paths</error>
+      <error line="53" code="PPC:ERR-50007">No summary for property $registered</error>
+      <error line="55" code="PPC:ERR-50007">No summary for property $scanner</error>
+      <error line="58" code="PPC:ERR-50007">No summary for property $app</error>
+      <error line="60" code="PPC:ERR-50007">No summary for property $views</error>
+      <error line="79" code="PPC:ERR-50007">No summary for property $collections</error>
+      <error line="82" code="PPC:ERR-50007">No summary for property $manifestPath</error>
+      <error line="85" code="PPC:ERR-50007">No summary for property $manifest</error>
+    </parse_markers>
+    <source>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</source>
+  <type>class</type></file>

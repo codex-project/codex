@@ -1,0 +1,976 @@
+<file path="codex/vendor/laravel/framework/src/Illuminate/Database/Console/Migrations/RefreshCommand.php" generated-path="codex.vendor.laravel.framework.src.Illuminate.Database.Console.Migrations.RefreshCommand.html" hash="7246373ecb9a63cba1459de29f0f3642" package="Default">
+    <docblock line="0">
+      <description/>
+      <long-description/>
+      <tag name="package" line="0" description="Default"/>
+    </docblock>
+    <namespace-alias name="Command">\Illuminate\Console\Command</namespace-alias>
+    <namespace-alias name="ConfirmableTrait">\Illuminate\Console\ConfirmableTrait</namespace-alias>
+    <namespace-alias name="InputOption">\Symfony\Component\Console\Input\InputOption</namespace-alias>
+    <class final="false" abstract="false" namespace="Illuminate\Database\Console\Migrations" line="9" package="Default">
+      <extends>\Illuminate\Console\Command</extends>
+      <name>RefreshCommand</name>
+      <full_name>\Illuminate\Database\Console\Migrations\RefreshCommand</full_name>
+      <docblock line="9">
+        <description/>
+        <long-description/>
+        <tag name="package" line="9" description="Default"/>
+        <tag name="inherited_from" description="\Illuminate\Console\Command" refers="\Illuminate\Console\Command" link="/classes/Illuminate.Console.Command.html"/>
+      </docblock>
+      <property static="false" visibility="protected" namespace="Illuminate\Database\Console\Migrations" line="18" package="Default">
+        <name>$name</name>
+        <full_name>\Illuminate\Database\Console\Migrations\RefreshCommand::name</full_name>
+        <default>'migrate:refresh'</default>
+        <docblock line="18">
+          <description>The console command name.</description>
+          <long-description/>
+          <tag name="var" line="18" description="" type="string" variable="">
+            <type>string</type>
+          </tag>
+          <tag name="inherited_from" description="\Illuminate\Console\Command::name" refers="\Illuminate\Console\Command::name" link="/classes/Illuminate.Console.Command.html#property_name"/>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" namespace="Illuminate\Database\Console\Migrations" line="25" package="Default">
+        <name>$description</name>
+        <full_name>\Illuminate\Database\Console\Migrations\RefreshCommand::description</full_name>
+        <default>'Reset and re-run all migrations'</default>
+        <docblock line="25">
+          <description>The console command description.</description>
+          <long-description/>
+          <tag name="var" line="25" description="" type="string" variable="">
+            <type>string</type>
+          </tag>
+          <tag name="inherited_from" description="\Illuminate\Console\Command::description" refers="\Illuminate\Console\Command::description" link="/classes/Illuminate.Console.Command.html#property_description"/>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" namespace="Illuminate\Database\Console\Migrations" line="23" package="Default">
+        <name>$laravel</name>
+        <full_name>\Illuminate\Console\Command::laravel</full_name>
+        <default/>
+        <docblock line="23">
+          <description>The Laravel application instance.</description>
+          <long-description/>
+          <tag name="var" line="23" description="" type="\Illuminate\Contracts\Foundation\Application" variable="">
+            <type>\Illuminate\Contracts\Foundation\Application</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" namespace="Illuminate\Database\Console\Migrations" line="30" package="Default">
+        <name>$input</name>
+        <full_name>\Illuminate\Console\Command::input</full_name>
+        <default/>
+        <docblock line="30">
+          <description>The input interface implementation.</description>
+          <long-description/>
+          <tag name="var" line="30" description="" type="\Symfony\Component\Console\Input\InputInterface" variable="">
+            <type>\Symfony\Component\Console\Input\InputInterface</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" namespace="Illuminate\Database\Console\Migrations" line="37" package="Default">
+        <name>$output</name>
+        <full_name>\Illuminate\Console\Command::output</full_name>
+        <default/>
+        <docblock line="37">
+          <description>The output interface implementation.</description>
+          <long-description/>
+          <tag name="var" line="37" description="" type="\Illuminate\Console\OutputStyle" variable="">
+            <type>\Illuminate\Console\OutputStyle</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" namespace="Illuminate\Database\Console\Migrations" line="44" package="Default">
+        <name>$signature</name>
+        <full_name>\Illuminate\Console\Command::signature</full_name>
+        <default/>
+        <docblock line="44">
+          <description>The name and signature of the console command.</description>
+          <long-description/>
+          <tag name="var" line="44" description="" type="string" variable="">
+            <type>string</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" namespace="Illuminate\Database\Console\Migrations" line="51" package="Default">
+        <name>$name</name>
+        <full_name>\Illuminate\Console\Command::name</full_name>
+        <default/>
+        <docblock line="51">
+          <description>The console command name.</description>
+          <long-description/>
+          <tag name="var" line="51" description="" type="string" variable="">
+            <type>string</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" namespace="Illuminate\Database\Console\Migrations" line="58" package="Default">
+        <name>$description</name>
+        <full_name>\Illuminate\Console\Command::description</full_name>
+        <default/>
+        <docblock line="58">
+          <description>The console command description.</description>
+          <long-description/>
+          <tag name="var" line="58" description="" type="string" variable="">
+            <type>string</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" namespace="Illuminate\Database\Console\Migrations" line="65" package="Default">
+        <name>$verbosity</name>
+        <full_name>\Illuminate\Console\Command::verbosity</full_name>
+        <default>\Symfony\Component\Console\Output\OutputInterface::VERBOSITY_NORMAL</default>
+        <docblock line="65">
+          <description>The default verbosity of output commands.</description>
+          <long-description/>
+          <tag name="var" line="65" description="" type="integer" variable="">
+            <type>integer</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" namespace="Illuminate\Database\Console\Migrations" line="72" package="Default">
+        <name>$verbosityMap</name>
+        <full_name>\Illuminate\Console\Command::verbosityMap</full_name>
+        <default>array('v' =&gt; \Symfony\Component\Console\Output\OutputInterface::VERBOSITY_VERBOSE, 'vv' =&gt; \Symfony\Component\Console\Output\OutputInterface::VERBOSITY_VERY_VERBOSE, 'vvv' =&gt; \Symfony\Component\Console\Output\OutputInterface::VERBOSITY_DEBUG, 'quiet' =&gt; \Symfony\Component\Console\Output\OutputInterface::VERBOSITY_QUIET, 'normal' =&gt; \Symfony\Component\Console\Output\OutputInterface::VERBOSITY_NORMAL)</default>
+        <docblock line="72">
+          <description>The mapping between human readable verbosity levels and Symfony's OutputInterface.</description>
+          <long-description/>
+          <tag name="var" line="72" description="" type="array" variable="">
+            <type>array</type>
+          </tag>
+        </docblock>
+      </property>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Console\Migrations" line="32" package="Default">
+        <name>fire</name>
+        <full_name>\Illuminate\Database\Console\Migrations\RefreshCommand::fire()</full_name>
+        <docblock line="32">
+          <description>Execute the console command.</description>
+          <long-description/>
+          <tag name="return" line="32" description="" type="void">
+            <type>void</type>
+          </tag>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Database\Console\Migrations" line="67" package="Default">
+        <name>needsSeeding</name>
+        <full_name>\Illuminate\Database\Console\Migrations\RefreshCommand::needsSeeding()</full_name>
+        <docblock line="67">
+          <description>Determine if the developer has requested database seeding.</description>
+          <long-description/>
+          <tag name="return" line="67" description="" type="boolean">
+            <type>boolean</type>
+          </tag>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Database\Console\Migrations" line="78" package="Default">
+        <name>runSeeder</name>
+        <full_name>\Illuminate\Database\Console\Migrations\RefreshCommand::runSeeder()</full_name>
+        <docblock line="78">
+          <description>Run the database seeder command.</description>
+          <long-description/>
+          <tag name="param" line="78" description="" type="string" variable="$database">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="78" description="" type="void">
+            <type>void</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$database</name>
+          <default/>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Database\Console\Migrations" line="94" package="Default">
+        <name>getOptions</name>
+        <full_name>\Illuminate\Database\Console\Migrations\RefreshCommand::getOptions()</full_name>
+        <docblock line="94">
+          <description>Get the console command options.</description>
+          <long-description/>
+          <tag name="return" line="94" description="" type="array">
+            <type>array</type>
+          </tag>
+          <tag name="inherited_from" description="\Illuminate\Console\Command::getOptions()" refers="\Illuminate\Console\Command::getOptions()" link="/classes/Illuminate.Console.Command.html#method_getOptions"/>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Console\Migrations" line="16" package="Default">
+        <name>confirmToProceed</name>
+        <full_name>\Illuminate\Console\ConfirmableTrait::confirmToProceed()</full_name>
+        <docblock line="16">
+          <description>Confirm before proceeding with the action.</description>
+          <long-description/>
+          <tag name="param" line="16" description="" type="string" variable="$warning">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="16" description="" type="\Closure|boolean|null" variable="$callback">
+            <type>\Closure</type>
+            <type>boolean</type>
+            <type>null</type>
+          </tag>
+          <tag name="return" line="16" description="" type="boolean">
+            <type>boolean</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$warning</name>
+          <default>'Application In Production!'</default>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$callback</name>
+          <default>null</default>
+          <type>\Closure|boolean|null</type>
+        </argument>
+        <inherited_from>\Illuminate\Console\ConfirmableTrait</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Database\Console\Migrations" line="49" package="Default">
+        <name>getDefaultConfirmCallback</name>
+        <full_name>\Illuminate\Console\ConfirmableTrait::getDefaultConfirmCallback()</full_name>
+        <docblock line="49">
+          <description>Get the default confirmation callback.</description>
+          <long-description/>
+          <tag name="return" line="49" description="" type="\Closure">
+            <type>\Closure</type>
+          </tag>
+        </docblock>
+        <inherited_from>\Illuminate\Console\ConfirmableTrait</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Console\Migrations" line="85" package="Default">
+        <name>__construct</name>
+        <full_name>\Illuminate\Console\Command::__construct()</full_name>
+        <docblock line="85">
+          <description>Create a new console command instance.</description>
+          <long-description/>
+          <tag name="return" line="85" description="" type="void">
+            <type>void</type>
+          </tag>
+        </docblock>
+        <inherited_from>\Illuminate\Console\Command</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Database\Console\Migrations" line="108" package="Default">
+        <name>configureUsingFluentDefinition</name>
+        <full_name>\Illuminate\Console\Command::configureUsingFluentDefinition()</full_name>
+        <docblock line="108">
+          <description>Configure the console command using a fluent definition.</description>
+          <long-description/>
+          <tag name="return" line="108" description="" type="void">
+            <type>void</type>
+          </tag>
+        </docblock>
+        <inherited_from>\Illuminate\Console\Command</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Database\Console\Migrations" line="128" package="Default">
+        <name>specifyParameters</name>
+        <full_name>\Illuminate\Console\Command::specifyParameters()</full_name>
+        <docblock line="128">
+          <description>Specify the arguments and options on the command.</description>
+          <long-description/>
+          <tag name="return" line="128" description="" type="void">
+            <type>void</type>
+          </tag>
+        </docblock>
+        <inherited_from>\Illuminate\Console\Command</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Console\Migrations" line="149" package="Default">
+        <name>run</name>
+        <full_name>\Illuminate\Console\Command::run()</full_name>
+        <docblock line="149">
+          <description>Run the console command.</description>
+          <long-description/>
+          <tag name="param" line="149" description="" type="\Symfony\Component\Console\Input\InputInterface" variable="$input">
+            <type>\Symfony\Component\Console\Input\InputInterface</type>
+          </tag>
+          <tag name="param" line="149" description="" type="\Symfony\Component\Console\Output\OutputInterface" variable="$output">
+            <type>\Symfony\Component\Console\Output\OutputInterface</type>
+          </tag>
+          <tag name="return" line="149" description="" type="integer">
+            <type>integer</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$input</name>
+          <default/>
+          <type>\Symfony\Component\Console\Input\InputInterface</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$output</name>
+          <default/>
+          <type>\Symfony\Component\Console\Output\OutputInterface</type>
+        </argument>
+        <inherited_from>\Illuminate\Console\Command</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Database\Console\Migrations" line="165" package="Default">
+        <name>execute</name>
+        <full_name>\Illuminate\Console\Command::execute()</full_name>
+        <docblock line="165">
+          <description>Execute the console command.</description>
+          <long-description/>
+          <tag name="param" line="165" description="" type="\Symfony\Component\Console\Input\InputInterface" variable="$input">
+            <type>\Symfony\Component\Console\Input\InputInterface</type>
+          </tag>
+          <tag name="param" line="165" description="" type="\Symfony\Component\Console\Output\OutputInterface" variable="$output">
+            <type>\Symfony\Component\Console\Output\OutputInterface</type>
+          </tag>
+          <tag name="return" line="165" description="" type="mixed">
+            <type>mixed</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$input</name>
+          <default/>
+          <type>\Symfony\Component\Console\Input\InputInterface</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$output</name>
+          <default/>
+          <type>\Symfony\Component\Console\Output\OutputInterface</type>
+        </argument>
+        <inherited_from>\Illuminate\Console\Command</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Console\Migrations" line="179" package="Default">
+        <name>call</name>
+        <full_name>\Illuminate\Console\Command::call()</full_name>
+        <docblock line="179">
+          <description>Call another console command.</description>
+          <long-description/>
+          <tag name="param" line="179" description="" type="string" variable="$command">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="179" description="" type="array" variable="$arguments">
+            <type>array</type>
+          </tag>
+          <tag name="return" line="179" description="" type="integer">
+            <type>integer</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$command</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$arguments</name>
+          <default>array()</default>
+          <type>array</type>
+        </argument>
+        <inherited_from>\Illuminate\Console\Command</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Console\Migrations" line="195" package="Default">
+        <name>callSilent</name>
+        <full_name>\Illuminate\Console\Command::callSilent()</full_name>
+        <docblock line="195">
+          <description>Call another console command silently.</description>
+          <long-description/>
+          <tag name="param" line="195" description="" type="string" variable="$command">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="195" description="" type="array" variable="$arguments">
+            <type>array</type>
+          </tag>
+          <tag name="return" line="195" description="" type="integer">
+            <type>integer</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$command</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$arguments</name>
+          <default>array()</default>
+          <type>array</type>
+        </argument>
+        <inherited_from>\Illuminate\Console\Command</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Console\Migrations" line="210" package="Default">
+        <name>argument</name>
+        <full_name>\Illuminate\Console\Command::argument()</full_name>
+        <docblock line="210">
+          <description>Get the value of a command argument.</description>
+          <long-description/>
+          <tag name="param" line="210" description="" type="string" variable="$key">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="210" description="" type="string|array">
+            <type>string</type>
+            <type>array</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$key</name>
+          <default>null</default>
+          <type>string</type>
+        </argument>
+        <inherited_from>\Illuminate\Console\Command</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Console\Migrations" line="225" package="Default">
+        <name>option</name>
+        <full_name>\Illuminate\Console\Command::option()</full_name>
+        <docblock line="225">
+          <description>Get the value of a command option.</description>
+          <long-description/>
+          <tag name="param" line="225" description="" type="string" variable="$key">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="225" description="" type="string|array">
+            <type>string</type>
+            <type>array</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$key</name>
+          <default>null</default>
+          <type>string</type>
+        </argument>
+        <inherited_from>\Illuminate\Console\Command</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Console\Migrations" line="241" package="Default">
+        <name>confirm</name>
+        <full_name>\Illuminate\Console\Command::confirm()</full_name>
+        <docblock line="241">
+          <description>Confirm a question with the user.</description>
+          <long-description/>
+          <tag name="param" line="241" description="" type="string" variable="$question">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="241" description="" type="boolean" variable="$default">
+            <type>boolean</type>
+          </tag>
+          <tag name="return" line="241" description="" type="boolean">
+            <type>boolean</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$question</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$default</name>
+          <default>false</default>
+          <type>boolean</type>
+        </argument>
+        <inherited_from>\Illuminate\Console\Command</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Console\Migrations" line="253" package="Default">
+        <name>ask</name>
+        <full_name>\Illuminate\Console\Command::ask()</full_name>
+        <docblock line="253">
+          <description>Prompt the user for input.</description>
+          <long-description/>
+          <tag name="param" line="253" description="" type="string" variable="$question">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="253" description="" type="string" variable="$default">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="253" description="" type="string">
+            <type>string</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$question</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$default</name>
+          <default>null</default>
+          <type>string</type>
+        </argument>
+        <inherited_from>\Illuminate\Console\Command</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Console\Migrations" line="266" package="Default">
+        <name>anticipate</name>
+        <full_name>\Illuminate\Console\Command::anticipate()</full_name>
+        <docblock line="266">
+          <description>Prompt the user for input with auto completion.</description>
+          <long-description/>
+          <tag name="param" line="266" description="" type="string" variable="$question">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="266" description="" type="array" variable="$choices">
+            <type>array</type>
+          </tag>
+          <tag name="param" line="266" description="" type="string" variable="$default">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="266" description="" type="string">
+            <type>string</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$question</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$choices</name>
+          <default/>
+          <type>array</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$default</name>
+          <default>null</default>
+          <type>string</type>
+        </argument>
+        <inherited_from>\Illuminate\Console\Command</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Console\Migrations" line="279" package="Default">
+        <name>askWithCompletion</name>
+        <full_name>\Illuminate\Console\Command::askWithCompletion()</full_name>
+        <docblock line="279">
+          <description>Prompt the user for input with auto completion.</description>
+          <long-description/>
+          <tag name="param" line="279" description="" type="string" variable="$question">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="279" description="" type="array" variable="$choices">
+            <type>array</type>
+          </tag>
+          <tag name="param" line="279" description="" type="string" variable="$default">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="279" description="" type="string">
+            <type>string</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$question</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$choices</name>
+          <default/>
+          <type>array</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$default</name>
+          <default>null</default>
+          <type>string</type>
+        </argument>
+        <inherited_from>\Illuminate\Console\Command</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Console\Migrations" line="295" package="Default">
+        <name>secret</name>
+        <full_name>\Illuminate\Console\Command::secret()</full_name>
+        <docblock line="295">
+          <description>Prompt the user for input but hide the answer from the console.</description>
+          <long-description/>
+          <tag name="param" line="295" description="" type="string" variable="$question">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="295" description="" type="boolean" variable="$fallback">
+            <type>boolean</type>
+          </tag>
+          <tag name="return" line="295" description="" type="string">
+            <type>string</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$question</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$fallback</name>
+          <default>true</default>
+          <type>boolean</type>
+        </argument>
+        <inherited_from>\Illuminate\Console\Command</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Console\Migrations" line="314" package="Default">
+        <name>choice</name>
+        <full_name>\Illuminate\Console\Command::choice()</full_name>
+        <docblock line="314">
+          <description>Give the user a single choice from an array of answers.</description>
+          <long-description/>
+          <tag name="param" line="314" description="" type="string" variable="$question">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="314" description="" type="array" variable="$choices">
+            <type>array</type>
+          </tag>
+          <tag name="param" line="314" description="" type="string" variable="$default">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="314" description="" type="mixed" variable="$attempts">
+            <type>mixed</type>
+          </tag>
+          <tag name="param" line="314" description="" type="boolean" variable="$multiple">
+            <type>boolean</type>
+          </tag>
+          <tag name="return" line="314" description="" type="string">
+            <type>string</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$question</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$choices</name>
+          <default/>
+          <type>array</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$default</name>
+          <default>null</default>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$attempts</name>
+          <default>null</default>
+          <type>mixed</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$multiple</name>
+          <default>null</default>
+          <type>boolean</type>
+        </argument>
+        <inherited_from>\Illuminate\Console\Command</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Console\Migrations" line="331" package="Default">
+        <name>table</name>
+        <full_name>\Illuminate\Console\Command::table()</full_name>
+        <docblock line="331">
+          <description>Format input to textual table.</description>
+          <long-description/>
+          <tag name="param" line="331" description="" type="array" variable="$headers">
+            <type>array</type>
+          </tag>
+          <tag name="param" line="331" description="" type="\Illuminate\Contracts\Support\Arrayable|array" variable="$rows">
+            <type>\Illuminate\Contracts\Support\Arrayable</type>
+            <type>array</type>
+          </tag>
+          <tag name="param" line="331" description="" type="string" variable="$style">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="331" description="" type="void">
+            <type>void</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$headers</name>
+          <default/>
+          <type>array</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$rows</name>
+          <default/>
+          <type>\Illuminate\Contracts\Support\Arrayable|array</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$style</name>
+          <default>'default'</default>
+          <type>string</type>
+        </argument>
+        <inherited_from>\Illuminate\Console\Command</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Console\Migrations" line="349" package="Default">
+        <name>info</name>
+        <full_name>\Illuminate\Console\Command::info()</full_name>
+        <docblock line="349">
+          <description>Write a string as information output.</description>
+          <long-description/>
+          <tag name="param" line="349" description="" type="string" variable="$string">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="349" description="" type="null|integer|string" variable="$verbosity">
+            <type>null</type>
+            <type>integer</type>
+            <type>string</type>
+          </tag>
+          <tag name="return" line="349" description="" type="void">
+            <type>void</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$string</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$verbosity</name>
+          <default>null</default>
+          <type>null|integer|string</type>
+        </argument>
+        <inherited_from>\Illuminate\Console\Command</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Console\Migrations" line="362" package="Default">
+        <name>line</name>
+        <full_name>\Illuminate\Console\Command::line()</full_name>
+        <docblock line="362">
+          <description>Write a string as standard output.</description>
+          <long-description/>
+          <tag name="param" line="362" description="" type="string" variable="$string">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="362" description="" type="string" variable="$style">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="362" description="" type="null|integer|string" variable="$verbosity">
+            <type>null</type>
+            <type>integer</type>
+            <type>string</type>
+          </tag>
+          <tag name="return" line="362" description="" type="void">
+            <type>void</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$string</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$style</name>
+          <default>null</default>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$verbosity</name>
+          <default>null</default>
+          <type>null|integer|string</type>
+        </argument>
+        <inherited_from>\Illuminate\Console\Command</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Console\Migrations" line="376" package="Default">
+        <name>comment</name>
+        <full_name>\Illuminate\Console\Command::comment()</full_name>
+        <docblock line="376">
+          <description>Write a string as comment output.</description>
+          <long-description/>
+          <tag name="param" line="376" description="" type="string" variable="$string">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="376" description="" type="null|integer|string" variable="$verbosity">
+            <type>null</type>
+            <type>integer</type>
+            <type>string</type>
+          </tag>
+          <tag name="return" line="376" description="" type="void">
+            <type>void</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$string</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$verbosity</name>
+          <default>null</default>
+          <type>null|integer|string</type>
+        </argument>
+        <inherited_from>\Illuminate\Console\Command</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Console\Migrations" line="388" package="Default">
+        <name>question</name>
+        <full_name>\Illuminate\Console\Command::question()</full_name>
+        <docblock line="388">
+          <description>Write a string as question output.</description>
+          <long-description/>
+          <tag name="param" line="388" description="" type="string" variable="$string">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="388" description="" type="null|integer|string" variable="$verbosity">
+            <type>null</type>
+            <type>integer</type>
+            <type>string</type>
+          </tag>
+          <tag name="return" line="388" description="" type="void">
+            <type>void</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$string</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$verbosity</name>
+          <default>null</default>
+          <type>null|integer|string</type>
+        </argument>
+        <inherited_from>\Illuminate\Console\Command</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Console\Migrations" line="400" package="Default">
+        <name>error</name>
+        <full_name>\Illuminate\Console\Command::error()</full_name>
+        <docblock line="400">
+          <description>Write a string as error output.</description>
+          <long-description/>
+          <tag name="param" line="400" description="" type="string" variable="$string">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="400" description="" type="null|integer|string" variable="$verbosity">
+            <type>null</type>
+            <type>integer</type>
+            <type>string</type>
+          </tag>
+          <tag name="return" line="400" description="" type="void">
+            <type>void</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$string</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$verbosity</name>
+          <default>null</default>
+          <type>null|integer|string</type>
+        </argument>
+        <inherited_from>\Illuminate\Console\Command</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Console\Migrations" line="412" package="Default">
+        <name>warn</name>
+        <full_name>\Illuminate\Console\Command::warn()</full_name>
+        <docblock line="412">
+          <description>Write a string as warning output.</description>
+          <long-description/>
+          <tag name="param" line="412" description="" type="string" variable="$string">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="412" description="" type="null|integer|string" variable="$verbosity">
+            <type>null</type>
+            <type>integer</type>
+            <type>string</type>
+          </tag>
+          <tag name="return" line="412" description="" type="void">
+            <type>void</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$string</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$verbosity</name>
+          <default>null</default>
+          <type>null|integer|string</type>
+        </argument>
+        <inherited_from>\Illuminate\Console\Command</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Database\Console\Migrations" line="429" package="Default">
+        <name>parseVerbosity</name>
+        <full_name>\Illuminate\Console\Command::parseVerbosity()</full_name>
+        <docblock line="429">
+          <description>Get the verbosity level in terms of Symfony's OutputInterface level.</description>
+          <long-description/>
+          <tag name="param" line="429" description="" type="string|integer" variable="$level">
+            <type>string</type>
+            <type>integer</type>
+          </tag>
+          <tag name="return" line="429" description="" type="integer">
+            <type>integer</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$level</name>
+          <default>null</default>
+          <type>string|integer</type>
+        </argument>
+        <inherited_from>\Illuminate\Console\Command</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Database\Console\Migrations" line="446" package="Default">
+        <name>setVerbosity</name>
+        <full_name>\Illuminate\Console\Command::setVerbosity()</full_name>
+        <docblock line="446">
+          <description>Set the verbosity level.</description>
+          <long-description/>
+          <tag name="param" line="446" description="" type="string|integer" variable="$level">
+            <type>string</type>
+            <type>integer</type>
+          </tag>
+          <tag name="return" line="446" description="" type="void">
+            <type>void</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$level</name>
+          <default/>
+          <type>string|integer</type>
+        </argument>
+        <inherited_from>\Illuminate\Console\Command</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Database\Console\Migrations" line="456" package="Default">
+        <name>getArguments</name>
+        <full_name>\Illuminate\Console\Command::getArguments()</full_name>
+        <docblock line="456">
+          <description>Get the console command arguments.</description>
+          <long-description/>
+          <tag name="return" line="456" description="" type="array">
+            <type>array</type>
+          </tag>
+        </docblock>
+        <inherited_from>\Illuminate\Console\Command</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Database\Console\Migrations" line="466" package="Default">
+        <name>getOptions</name>
+        <full_name>\Illuminate\Console\Command::getOptions()</full_name>
+        <docblock line="466">
+          <description>Get the console command options.</description>
+          <long-description/>
+          <tag name="return" line="466" description="" type="array">
+            <type>array</type>
+          </tag>
+        </docblock>
+        <inherited_from>\Illuminate\Console\Command</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Console\Migrations" line="476" package="Default">
+        <name>getOutput</name>
+        <full_name>\Illuminate\Console\Command::getOutput()</full_name>
+        <docblock line="476">
+          <description>Get the output implementation.</description>
+          <long-description/>
+          <tag name="return" line="476" description="" type="\Symfony\Component\Console\Output\OutputInterface">
+            <type>\Symfony\Component\Console\Output\OutputInterface</type>
+          </tag>
+        </docblock>
+        <inherited_from>\Illuminate\Console\Command</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Console\Migrations" line="486" package="Default">
+        <name>getLaravel</name>
+        <full_name>\Illuminate\Console\Command::getLaravel()</full_name>
+        <docblock line="486">
+          <description>Get the Laravel application instance.</description>
+          <long-description/>
+          <tag name="return" line="486" description="" type="\Illuminate\Contracts\Foundation\Application">
+            <type>\Illuminate\Contracts\Foundation\Application</type>
+          </tag>
+        </docblock>
+        <inherited_from>\Illuminate\Console\Command</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Console\Migrations" line="497" package="Default">
+        <name>setLaravel</name>
+        <full_name>\Illuminate\Console\Command::setLaravel()</full_name>
+        <docblock line="497">
+          <description>Set the Laravel application instance.</description>
+          <long-description/>
+          <tag name="param" line="497" description="" type="\Illuminate\Contracts\Container\Container" variable="$laravel">
+            <type>\Illuminate\Contracts\Container\Container</type>
+          </tag>
+          <tag name="return" line="497" description="" type="void">
+            <type>void</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$laravel</name>
+          <default/>
+          <type>\Illuminate\Contracts\Container\Container</type>
+        </argument>
+        <inherited_from>\Illuminate\Console\Command</inherited_from>
+      </method>
+    </class>
+    <parse_markers>
+      <error line="0" code="PPC:ERR-50000">No summary was found for this file</error>
+      <error line="9" code="PPC:ERR-50005">No summary for class \Illuminate\Database\Console\Migrations\RefreshCommand</error>
+    </parse_markers>
+    <source>eJylVttO20AQffdXTCUkJygh76FAEdAqEoUK0vYBULWxJ8m29q67uw6gwr939mLjXMyl9UNie2fnzOXMWb8/KOZFFAmWoy5YgjDKsjLnghm8PmaGTZjG6yMptMzw+jOfKWY4Pe1GUamXjCubI5nnTKS77etiylXOJhmOFePGG17e51Mp7u3uQgoUprYfiaI0/ve8sNgEnWRMa7jAqUI9D4CAdwZFqiE8R38ioMs6X4d0S4PtbfcP2zCeIyQekP69P1uSnWBQ2X1YMAXaKC5m4dXA/RdKGkwMprBlt8EexLmrFQ6VjzJ+HWiKOlHc5fkP2I3dNoQL1GjAulXYV6UAlmWQ1z3cENLJHSalQTDroa2Fo9CUSsBC8nQ5nnKS8QSmpUhcIFR67HTdkm+JvfgUOu9gy8y57u8nvj9j+UXJBDHtdLsNU3t5rN363WNU326lgaWUcfDHLVn6+zMMjOnElU3c3W3snEqVPLvNGSzvKZiZP7fFri/vCDlS7TsNUlBn4h5cLWUZ9/t1oLC3/5Razy75YNx7d9ur99408QYDR6xAu5pYXANqTYPFKZB7+FlqYgZMFMcpsNlM4YziAkkPMMVbkMQARY9Nt5YUNXsqx9rxy7kjIi44UZBcUEcXKDjBwa1iRUG+jKQJdexa8ZkDF6DLJKH4LO3hO8bEU5ZpCRrRUuUWQRAvrA9isna3FExVnp1ni/2GMq+atZc8GLhuu3V719IRy/UQmM1CX9IPDfE6y4MRTao1QdWpI+s2qd8YgMboHqNBRVrrCuaqgwvMpC39nGmq2+8StVWJel60j6NtsCdSZi1CU8/2cj4rMx78hKxkGBCLGnfh4WHTAqo4pLqe4AUJWLPr4De06lPBFMshKGZDJ14WsPU8N7VkJdstfyjttaUFB0OIqxPVO4v/V4yabE8nQ1fat4mKC9q/d7evUJrN3flEJ82GUwN8GXQbyZhS7P6l6tdF0G0cW0756knveyDKLOtB4/thOPx2ePr15Mf5l/Ho/OzwlFIeN2lFGQj0wKQ39P2wE9/0ohUAX6JnvJ+dn52Q54+uq7YwdhJZ5dUexrdzFFb6KOG0dHibgJzCvD4LdzyRij+d8nT+ZqTJBDrBSoHTTUiBPS9lNBIpT0hWdaUzXo6Z/gV6LssstTj+e6MNhZj/+oz8WLmvKukBlZQmDL9DqMlZcfMx+gs/vys6</source>
+  <type>class</type></file>

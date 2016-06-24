@@ -1,0 +1,665 @@
+<file path="codex/vendor/laravel/framework/src/Illuminate/Queue/BeanstalkdQueue.php" generated-path="codex.vendor.laravel.framework.src.Illuminate.Queue.BeanstalkdQueue.html" hash="45baaae1466837dd36719d8b3b99e103" package="Default">
+    <docblock line="0">
+      <description/>
+      <long-description/>
+      <tag name="package" line="0" description="Default"/>
+    </docblock>
+    <namespace-alias name="Pheanstalk">\Pheanstalk\Pheanstalk</namespace-alias>
+    <namespace-alias name="PheanstalkJob">\Pheanstalk\Job</namespace-alias>
+    <namespace-alias name="BeanstalkdJob">\Illuminate\Queue\Jobs\BeanstalkdJob</namespace-alias>
+    <namespace-alias name="QueueContract">\Illuminate\Contracts\Queue\Queue</namespace-alias>
+    <class final="false" abstract="false" namespace="Illuminate\Queue" line="10" package="Default">
+      <extends>\Illuminate\Queue\Queue</extends>
+      <implements>\Illuminate\Contracts\Queue\Queue</implements>
+      <name>BeanstalkdQueue</name>
+      <full_name>\Illuminate\Queue\BeanstalkdQueue</full_name>
+      <docblock line="10">
+        <description/>
+        <long-description/>
+        <tag name="package" line="10" description="Default"/>
+        <tag name="inherited_from" description="\Illuminate\Queue\Queue" refers="\Illuminate\Queue\Queue" link="/classes/Illuminate.Queue.Queue.html"/>
+      </docblock>
+      <property static="false" visibility="protected" namespace="Illuminate\Queue" line="17" package="Default">
+        <name>$pheanstalk</name>
+        <full_name>\Illuminate\Queue\BeanstalkdQueue::pheanstalk</full_name>
+        <default/>
+        <docblock line="17">
+          <description>The Pheanstalk instance.</description>
+          <long-description/>
+          <tag name="var" line="17" description="" type="\Pheanstalk\Pheanstalk" variable="">
+            <type>\Pheanstalk\Pheanstalk</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" namespace="Illuminate\Queue" line="24" package="Default">
+        <name>$default</name>
+        <full_name>\Illuminate\Queue\BeanstalkdQueue::default</full_name>
+        <default/>
+        <docblock line="24">
+          <description>The name of the default tube.</description>
+          <long-description/>
+          <tag name="var" line="24" description="" type="string" variable="">
+            <type>string</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" namespace="Illuminate\Queue" line="31" package="Default">
+        <name>$timeToRun</name>
+        <full_name>\Illuminate\Queue\BeanstalkdQueue::timeToRun</full_name>
+        <default/>
+        <docblock line="31">
+          <description>The "time to run" for all pushed jobs.</description>
+          <long-description/>
+          <tag name="var" line="31" description="" type="integer" variable="">
+            <type>integer</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" namespace="Illuminate\Queue" line="20" package="Default">
+        <name>$container</name>
+        <full_name>\Illuminate\Queue\Queue::container</full_name>
+        <default/>
+        <docblock line="20">
+          <description>The IoC container instance.</description>
+          <long-description/>
+          <tag name="var" line="20" description="" type="\Illuminate\Container\Container" variable="">
+            <type>\Illuminate\Container\Container</type>
+          </tag>
+        </docblock>
+      </property>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Queue" line="41" package="Default">
+        <name>__construct</name>
+        <full_name>\Illuminate\Queue\BeanstalkdQueue::__construct()</full_name>
+        <docblock line="41">
+          <description>Create a new Beanstalkd queue instance.</description>
+          <long-description/>
+          <tag name="param" line="41" description="" type="\Pheanstalk\Pheanstalk" variable="$pheanstalk">
+            <type>\Pheanstalk\Pheanstalk</type>
+          </tag>
+          <tag name="param" line="41" description="" type="string" variable="$default">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="41" description="" type="integer" variable="$timeToRun">
+            <type>integer</type>
+          </tag>
+          <tag name="return" line="41" description="" type="void">
+            <type>void</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$pheanstalk</name>
+          <default/>
+          <type>\Pheanstalk\Pheanstalk</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$default</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$timeToRun</name>
+          <default/>
+          <type>integer</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Queue" line="56" package="Default">
+        <name>push</name>
+        <full_name>\Illuminate\Queue\BeanstalkdQueue::push()</full_name>
+        <docblock line="56">
+          <description>Push a new job onto the queue.</description>
+          <long-description/>
+          <tag name="param" line="56" description="" type="string" variable="$job">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="56" description="" type="mixed" variable="$data">
+            <type>mixed</type>
+          </tag>
+          <tag name="param" line="56" description="" type="string" variable="$queue">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="56" description="" type="mixed">
+            <type>mixed</type>
+          </tag>
+          <tag name="inherited_from" description="\Illuminate\Contracts\Queue\Queue::push()" refers="\Illuminate\Contracts\Queue\Queue::push()" link="/classes/Illuminate.Contracts.Queue.Queue.html#method_push"/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$job</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$data</name>
+          <default>''</default>
+          <type>mixed</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$queue</name>
+          <default>null</default>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Queue" line="69" package="Default">
+        <name>pushRaw</name>
+        <full_name>\Illuminate\Queue\BeanstalkdQueue::pushRaw()</full_name>
+        <docblock line="69">
+          <description>Push a raw payload onto the queue.</description>
+          <long-description/>
+          <tag name="param" line="69" description="" type="string" variable="$payload">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="69" description="" type="string" variable="$queue">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="69" description="" type="array" variable="$options">
+            <type>array</type>
+          </tag>
+          <tag name="return" line="69" description="" type="mixed">
+            <type>mixed</type>
+          </tag>
+          <tag name="inherited_from" description="\Illuminate\Contracts\Queue\Queue::pushRaw()" refers="\Illuminate\Contracts\Queue\Queue::pushRaw()" link="/classes/Illuminate.Contracts.Queue.Queue.html#method_pushRaw"/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$payload</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$queue</name>
+          <default>null</default>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$options</name>
+          <default>array()</default>
+          <type>array</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Queue" line="85" package="Default">
+        <name>later</name>
+        <full_name>\Illuminate\Queue\BeanstalkdQueue::later()</full_name>
+        <docblock line="85">
+          <description>Push a new job onto the queue after a delay.</description>
+          <long-description/>
+          <tag name="param" line="85" description="" type="\DateTime|integer" variable="$delay">
+            <type>\DateTime</type>
+            <type>integer</type>
+          </tag>
+          <tag name="param" line="85" description="" type="string" variable="$job">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="85" description="" type="mixed" variable="$data">
+            <type>mixed</type>
+          </tag>
+          <tag name="param" line="85" description="" type="string" variable="$queue">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="85" description="" type="mixed">
+            <type>mixed</type>
+          </tag>
+          <tag name="inherited_from" description="\Illuminate\Contracts\Queue\Queue::later()" refers="\Illuminate\Contracts\Queue\Queue::later()" link="/classes/Illuminate.Contracts.Queue.Queue.html#method_later"/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$delay</name>
+          <default/>
+          <type>\DateTime|integer</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$job</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$data</name>
+          <default>''</default>
+          <type>mixed</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$queue</name>
+          <default>null</default>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Queue" line="100" package="Default">
+        <name>pop</name>
+        <full_name>\Illuminate\Queue\BeanstalkdQueue::pop()</full_name>
+        <docblock line="100">
+          <description>Pop the next job off of the queue.</description>
+          <long-description/>
+          <tag name="param" line="100" description="" type="string" variable="$queue">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="100" description="" type="\Illuminate\Contracts\Queue\Job|null">
+            <type>\Illuminate\Contracts\Queue\Job</type>
+            <type>null</type>
+          </tag>
+          <tag name="inherited_from" description="\Illuminate\Contracts\Queue\Queue::pop()" refers="\Illuminate\Contracts\Queue\Queue::pop()" link="/classes/Illuminate.Contracts.Queue.Queue.html#method_pop"/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$queue</name>
+          <default>null</default>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Queue" line="118" package="Default">
+        <name>deleteMessage</name>
+        <full_name>\Illuminate\Queue\BeanstalkdQueue::deleteMessage()</full_name>
+        <docblock line="118">
+          <description>Delete a message from the Beanstalk queue.</description>
+          <long-description/>
+          <tag name="param" line="118" description="" type="string" variable="$queue">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="118" description="" type="string" variable="$id">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="118" description="" type="void">
+            <type>void</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$queue</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$id</name>
+          <default/>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Queue" line="129" package="Default">
+        <name>getQueue</name>
+        <full_name>\Illuminate\Queue\BeanstalkdQueue::getQueue()</full_name>
+        <docblock line="129">
+          <description>Get the queue or return the default.</description>
+          <long-description/>
+          <tag name="param" line="129" description="" type="string|null" variable="$queue">
+            <type>string</type>
+            <type>null</type>
+          </tag>
+          <tag name="return" line="129" description="" type="string">
+            <type>string</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$queue</name>
+          <default/>
+          <type>string|null</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Queue" line="139" package="Default">
+        <name>getPheanstalk</name>
+        <full_name>\Illuminate\Queue\BeanstalkdQueue::getPheanstalk()</full_name>
+        <docblock line="139">
+          <description>Get the underlying Pheanstalk instance.</description>
+          <long-description/>
+          <tag name="return" line="139" description="" type="\Pheanstalk\Pheanstalk">
+            <type>\Pheanstalk\Pheanstalk</type>
+          </tag>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Queue" line="30" package="Default">
+        <name>pushOn</name>
+        <full_name>\Illuminate\Queue\Queue::pushOn()</full_name>
+        <docblock line="30">
+          <description>Push a new job onto the queue.</description>
+          <long-description/>
+          <tag name="param" line="30" description="" type="string" variable="$queue">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="30" description="" type="string" variable="$job">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="30" description="" type="mixed" variable="$data">
+            <type>mixed</type>
+          </tag>
+          <tag name="return" line="30" description="" type="mixed">
+            <type>mixed</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$queue</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$job</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$data</name>
+          <default>''</default>
+          <type>mixed</type>
+        </argument>
+        <inherited_from>\Illuminate\Queue\Queue</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Queue" line="44" package="Default">
+        <name>laterOn</name>
+        <full_name>\Illuminate\Queue\Queue::laterOn()</full_name>
+        <docblock line="44">
+          <description>Push a new job onto the queue after a delay.</description>
+          <long-description/>
+          <tag name="param" line="44" description="" type="string" variable="$queue">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="44" description="" type="\DateTime|integer" variable="$delay">
+            <type>\DateTime</type>
+            <type>integer</type>
+          </tag>
+          <tag name="param" line="44" description="" type="string" variable="$job">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="44" description="" type="mixed" variable="$data">
+            <type>mixed</type>
+          </tag>
+          <tag name="return" line="44" description="" type="mixed">
+            <type>mixed</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$queue</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$delay</name>
+          <default/>
+          <type>\DateTime|integer</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$job</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$data</name>
+          <default>''</default>
+          <type>mixed</type>
+        </argument>
+        <inherited_from>\Illuminate\Queue\Queue</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Queue" line="57" package="Default">
+        <name>bulk</name>
+        <full_name>\Illuminate\Queue\Queue::bulk()</full_name>
+        <docblock line="57">
+          <description>Push an array of jobs onto the queue.</description>
+          <long-description/>
+          <tag name="param" line="57" description="" type="array" variable="$jobs">
+            <type>array</type>
+          </tag>
+          <tag name="param" line="57" description="" type="mixed" variable="$data">
+            <type>mixed</type>
+          </tag>
+          <tag name="param" line="57" description="" type="string" variable="$queue">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="57" description="" type="mixed">
+            <type>mixed</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$jobs</name>
+          <default/>
+          <type>array</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$data</name>
+          <default>''</default>
+          <type>mixed</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$queue</name>
+          <default>null</default>
+          <type>string</type>
+        </argument>
+        <inherited_from>\Illuminate\Queue\Queue</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Queue" line="72" package="Default">
+        <name>createPayload</name>
+        <full_name>\Illuminate\Queue\Queue::createPayload()</full_name>
+        <docblock line="72">
+          <description>Create a payload string from the given job and data.</description>
+          <long-description/>
+          <tag name="param" line="72" description="" type="string" variable="$job">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="72" description="" type="mixed" variable="$data">
+            <type>mixed</type>
+          </tag>
+          <tag name="param" line="72" description="" type="string" variable="$queue">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="72" description="" type="string">
+            <type>string</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$job</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$data</name>
+          <default>''</default>
+          <type>mixed</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$queue</name>
+          <default>null</default>
+          <type>string</type>
+        </argument>
+        <inherited_from>\Illuminate\Queue\Queue</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Queue" line="93" package="Default">
+        <name>createPlainPayload</name>
+        <full_name>\Illuminate\Queue\Queue::createPlainPayload()</full_name>
+        <docblock line="93">
+          <description>Create a typical, "plain" queue payload array.</description>
+          <long-description/>
+          <tag name="param" line="93" description="" type="string" variable="$job">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="93" description="" type="mixed" variable="$data">
+            <type>mixed</type>
+          </tag>
+          <tag name="return" line="93" description="" type="array">
+            <type>array</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$job</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$data</name>
+          <default/>
+          <type>mixed</type>
+        </argument>
+        <inherited_from>\Illuminate\Queue\Queue</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Queue" line="104" package="Default">
+        <name>prepareQueueableEntities</name>
+        <full_name>\Illuminate\Queue\Queue::prepareQueueableEntities()</full_name>
+        <docblock line="104">
+          <description>Prepare any queueable entities for storage in the queue.</description>
+          <long-description/>
+          <tag name="param" line="104" description="" type="mixed" variable="$data">
+            <type>mixed</type>
+          </tag>
+          <tag name="return" line="104" description="" type="mixed">
+            <type>mixed</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$data</name>
+          <default/>
+          <type>mixed</type>
+        </argument>
+        <inherited_from>\Illuminate\Queue\Queue</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Queue" line="129" package="Default">
+        <name>prepareQueueableEntity</name>
+        <full_name>\Illuminate\Queue\Queue::prepareQueueableEntity()</full_name>
+        <docblock line="129">
+          <description>Prepare a single queueable entity for storage on the queue.</description>
+          <long-description/>
+          <tag name="param" line="129" description="" type="mixed" variable="$value">
+            <type>mixed</type>
+          </tag>
+          <tag name="return" line="129" description="" type="mixed">
+            <type>mixed</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$value</name>
+          <default/>
+          <type>mixed</type>
+        </argument>
+        <inherited_from>\Illuminate\Queue\Queue</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Queue" line="145" package="Default">
+        <name>createClosurePayload</name>
+        <full_name>\Illuminate\Queue\Queue::createClosurePayload()</full_name>
+        <docblock line="145">
+          <description>Create a payload string for the given Closure job.</description>
+          <long-description/>
+          <tag name="param" line="145" description="" type="\Closure" variable="$job">
+            <type>\Closure</type>
+          </tag>
+          <tag name="param" line="145" description="" type="mixed" variable="$data">
+            <type>mixed</type>
+          </tag>
+          <tag name="return" line="145" description="" type="array">
+            <type>array</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$job</name>
+          <default/>
+          <type>\Closure</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$data</name>
+          <default/>
+          <type>mixed</type>
+        </argument>
+        <inherited_from>\Illuminate\Queue\Queue</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Queue" line="160" package="Default">
+        <name>setMeta</name>
+        <full_name>\Illuminate\Queue\Queue::setMeta()</full_name>
+        <docblock line="160">
+          <description>Set additional meta on a payload string.</description>
+          <long-description/>
+          <tag name="param" line="160" description="" type="string" variable="$payload">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="160" description="" type="string" variable="$key">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="160" description="" type="string" variable="$value">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="160" description="" type="string">
+            <type>string</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$payload</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$key</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$value</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <inherited_from>\Illuminate\Queue\Queue</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Queue" line="173" package="Default">
+        <name>getSeconds</name>
+        <full_name>\Illuminate\Queue\Queue::getSeconds()</full_name>
+        <docblock line="173">
+          <description>Calculate the number of seconds with the given delay.</description>
+          <long-description/>
+          <tag name="param" line="173" description="" type="\DateTime|integer" variable="$delay">
+            <type>\DateTime</type>
+            <type>integer</type>
+          </tag>
+          <tag name="return" line="173" description="" type="integer">
+            <type>integer</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$delay</name>
+          <default/>
+          <type>\DateTime|integer</type>
+        </argument>
+        <inherited_from>\Illuminate\Queue\Queue</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Queue" line="187" package="Default">
+        <name>getTime</name>
+        <full_name>\Illuminate\Queue\Queue::getTime()</full_name>
+        <docblock line="187">
+          <description>Get the current UNIX timestamp.</description>
+          <long-description/>
+          <tag name="return" line="187" description="" type="integer">
+            <type>integer</type>
+          </tag>
+        </docblock>
+        <inherited_from>\Illuminate\Queue\Queue</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Queue" line="198" package="Default">
+        <name>setContainer</name>
+        <full_name>\Illuminate\Queue\Queue::setContainer()</full_name>
+        <docblock line="198">
+          <description>Set the IoC container instance.</description>
+          <long-description/>
+          <tag name="param" line="198" description="" type="\Illuminate\Container\Container" variable="$container">
+            <type>\Illuminate\Container\Container</type>
+          </tag>
+          <tag name="return" line="198" description="" type="void">
+            <type>void</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$container</name>
+          <default/>
+          <type>\Illuminate\Container\Container</type>
+        </argument>
+        <inherited_from>\Illuminate\Queue\Queue</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Queue" line="209" package="Default">
+        <name>setEncrypter</name>
+        <full_name>\Illuminate\Queue\Queue::setEncrypter()</full_name>
+        <docblock line="209">
+          <description>Set the encrypter instance.</description>
+          <long-description/>
+          <tag name="param" line="209" description="" type="\Illuminate\Contracts\Encryption\Encrypter" variable="$crypt">
+            <type>\Illuminate\Contracts\Encryption\Encrypter</type>
+          </tag>
+          <tag name="return" line="209" description="" type="void">
+            <type>void</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$crypt</name>
+          <default/>
+          <type>\Illuminate\Contracts\Encryption\Encrypter</type>
+        </argument>
+        <inherited_from>\Illuminate\Queue\Queue</inherited_from>
+      </method>
+    </class>
+    <parse_markers>
+      <error line="0" code="PPC:ERR-50000">No summary was found for this file</error>
+      <error line="10" code="PPC:ERR-50005">No summary for class \Illuminate\Queue\BeanstalkdQueue</error>
+    </parse_markers>
+    <source>eJzNVltP2zAUfu+vOEJIpCiMPQODMcomJia6rntA64RM4tBsrp05DqUa/PcdO07qukkvPK0PzcXn5u/7fHJOzrJx1ulwMqF5RiIKV4wVk5QTRUdfC1rQ406nyCn0x5TwXBH2ezS/PfaXPot7ILnzBl+URn5YbZqPPlR2cZPhheBKkkjl1sX86/jmplrFAiNG8hzmwUpD+qQoj601pJOM0QnlynPv/O0A/g73980V9mE4dvcEqb7yiL6x65XZ+0ciYdSIizU5NNdMCkUjRWPYzRzkmrJqFkAkoPA+pgkpmAJV3DenzpVM+UNbKuvenGdHpZhICZAF34FESCCMQVbkY3T9hcQ0Jky5asum4w3FoODL+S4kRS6BAKdThyL4U7LSBm5GJJlAC77gQum7lLhADYG/jtsAp+J6WVJVSA6PIo0Xt1ncszSCpOCRSgWHu7tIYGZZRCpwSnIqCuvcoZOoa6KVatO/XTVO84PTiud3DmeeSR1CGzlQe2bzArSdqzVt9LLETB/5trwg54DnQRjlGWbaCKnRRRd/bZI+oRg08kSRVkcT3kfduK6EXasz0FnDMj7ucW8vtOHwgReM+RDb4BU+GGFApoF9jIww+2TGBIndyN0qancNcpJMISv9t0XPum0Ikl0lUpKZxldkGpL8dSAaCGx+D7/QpqgS4OsfP9eAWsvs4BTb9xC7VQXwA1Wm0wYWza6mQAV1ICPdupD5UTo66l1+PP9+PbzrD65uBlfD2+bV3uX1+W24dEjq+OvoaxY+kERRbIjYgBmZtfalHmpniCmfy3ZijP+bs8KwOBmURYWw5aGpKDHNZs1Jse2+dFtoP9urw4lVScx119LZVC3zFN8oNus4t1h0l9XSLhKRGVFwHCNKmSRJ9W3e7Iw3kjdaMd/gDPSsGVl9hEUWrOavWmwB2uVM76uRrClR0fiGs1nldXAqaU7lIw3euhHSBIwg6g85IrQw/XWdyhxqF4cBtKu7MmJCUk5luFxWLWW3O5fsNXPYo4ya2QOH25w8UEikmBgG69yv4tJfTWOf5rVTRGxK+1LWZUEOdaSWMWG7PltGD3S4Nn1/osppejgC2sqd2XM1KkaqbTJvGk49BPyyWz4zZX1nR968tG5bBY+pZDPNzyazfHU6Nxjnl7cxtww2/VhW5b90/gEaEf8K</source>
+  <type>class</type></file>

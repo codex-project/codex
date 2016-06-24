@@ -1,0 +1,997 @@
+<file path="codex/vendor/laravel/framework/src/Illuminate/Pagination/Paginator.php" generated-path="codex.vendor.laravel.framework.src.Illuminate.Pagination.Paginator.html" hash="7fa47157712e119538d3c61d0b133d73" package="Default">
+    <docblock line="0">
+      <description/>
+      <long-description/>
+      <tag name="package" line="0" description="Default"/>
+    </docblock>
+    <namespace-alias name="Countable">\Countable</namespace-alias>
+    <namespace-alias name="ArrayAccess">\ArrayAccess</namespace-alias>
+    <namespace-alias name="JsonSerializable">\JsonSerializable</namespace-alias>
+    <namespace-alias name="IteratorAggregate">\IteratorAggregate</namespace-alias>
+    <namespace-alias name="Collection">\Illuminate\Support\Collection</namespace-alias>
+    <namespace-alias name="Jsonable">\Illuminate\Contracts\Support\Jsonable</namespace-alias>
+    <namespace-alias name="Arrayable">\Illuminate\Contracts\Support\Arrayable</namespace-alias>
+    <namespace-alias name="Presenter">\Illuminate\Contracts\Pagination\Presenter</namespace-alias>
+    <namespace-alias name="PaginatorContract">\Illuminate\Contracts\Pagination\Paginator</namespace-alias>
+    <class final="false" abstract="false" namespace="Illuminate\Pagination" line="15" package="Default">
+      <extends>\Illuminate\Pagination\AbstractPaginator</extends>
+      <implements>\Illuminate\Contracts\Support\Arrayable</implements>
+      <implements>\ArrayAccess</implements>
+      <implements>\Countable</implements>
+      <implements>\IteratorAggregate</implements>
+      <implements>\JsonSerializable</implements>
+      <implements>\Illuminate\Contracts\Support\Jsonable</implements>
+      <implements>\Illuminate\Contracts\Pagination\Paginator</implements>
+      <name>Paginator</name>
+      <full_name>\Illuminate\Pagination\Paginator</full_name>
+      <docblock line="15">
+        <description/>
+        <long-description/>
+        <tag name="package" line="15" description="Default"/>
+        <tag name="inherited_from" description="\Illuminate\Pagination\AbstractPaginator" refers="\Illuminate\Pagination\AbstractPaginator" link="/classes/Illuminate.Pagination.AbstractPaginator.html"/>
+      </docblock>
+      <property static="false" visibility="protected" namespace="Illuminate\Pagination" line="22" package="Default">
+        <name>$hasMore</name>
+        <full_name>\Illuminate\Pagination\Paginator::hasMore</full_name>
+        <default/>
+        <docblock line="22">
+          <description>Determine if there are more items in the data source.</description>
+          <long-description/>
+          <tag name="return" line="22" description="" type="boolean">
+            <type>boolean</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" namespace="Illuminate\Pagination" line="18" package="Default">
+        <name>$items</name>
+        <full_name>\Illuminate\Pagination\AbstractPaginator::items</full_name>
+        <default/>
+        <docblock line="18">
+          <description>All of the items being paginated.</description>
+          <long-description/>
+          <tag name="var" line="18" description="" type="\Illuminate\Support\Collection" variable="">
+            <type>\Illuminate\Support\Collection</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" namespace="Illuminate\Pagination" line="25" package="Default">
+        <name>$perPage</name>
+        <full_name>\Illuminate\Pagination\AbstractPaginator::perPage</full_name>
+        <default/>
+        <docblock line="25">
+          <description>The number of items to be shown per page.</description>
+          <long-description/>
+          <tag name="var" line="25" description="" type="integer" variable="">
+            <type>integer</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" namespace="Illuminate\Pagination" line="32" package="Default">
+        <name>$currentPage</name>
+        <full_name>\Illuminate\Pagination\AbstractPaginator::currentPage</full_name>
+        <default/>
+        <docblock line="32">
+          <description>The current page being "viewed".</description>
+          <long-description/>
+          <tag name="var" line="32" description="" type="integer" variable="">
+            <type>integer</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" namespace="Illuminate\Pagination" line="39" package="Default">
+        <name>$path</name>
+        <full_name>\Illuminate\Pagination\AbstractPaginator::path</full_name>
+        <default>'/'</default>
+        <docblock line="39">
+          <description>The base path to assign to all URLs.</description>
+          <long-description/>
+          <tag name="var" line="39" description="" type="string" variable="">
+            <type>string</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" namespace="Illuminate\Pagination" line="46" package="Default">
+        <name>$query</name>
+        <full_name>\Illuminate\Pagination\AbstractPaginator::query</full_name>
+        <default>array()</default>
+        <docblock line="46">
+          <description>The query parameters to add to all URLs.</description>
+          <long-description/>
+          <tag name="var" line="46" description="" type="array" variable="">
+            <type>array</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" namespace="Illuminate\Pagination" line="53" package="Default">
+        <name>$fragment</name>
+        <full_name>\Illuminate\Pagination\AbstractPaginator::fragment</full_name>
+        <default>null</default>
+        <docblock line="53">
+          <description>The URL fragment to add to all URLs.</description>
+          <long-description/>
+          <tag name="var" line="53" description="" type="string|null" variable="">
+            <type>string</type>
+            <type>null</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" namespace="Illuminate\Pagination" line="60" package="Default">
+        <name>$pageName</name>
+        <full_name>\Illuminate\Pagination\AbstractPaginator::pageName</full_name>
+        <default>'page'</default>
+        <docblock line="60">
+          <description>The query string variable used to store the page.</description>
+          <long-description/>
+          <tag name="var" line="60" description="" type="string" variable="">
+            <type>string</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="true" visibility="protected" namespace="Illuminate\Pagination" line="67" package="Default">
+        <name>$currentPathResolver</name>
+        <full_name>\Illuminate\Pagination\AbstractPaginator::currentPathResolver</full_name>
+        <default/>
+        <docblock line="67">
+          <description>The current page resolver callback.</description>
+          <long-description/>
+          <tag name="var" line="67" description="" type="\Closure" variable="">
+            <type>\Closure</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="true" visibility="protected" namespace="Illuminate\Pagination" line="74" package="Default">
+        <name>$currentPageResolver</name>
+        <full_name>\Illuminate\Pagination\AbstractPaginator::currentPageResolver</full_name>
+        <default/>
+        <docblock line="74">
+          <description>The current page resolver callback.</description>
+          <long-description/>
+          <tag name="var" line="74" description="" type="\Closure" variable="">
+            <type>\Closure</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="true" visibility="protected" namespace="Illuminate\Pagination" line="81" package="Default">
+        <name>$presenterResolver</name>
+        <full_name>\Illuminate\Pagination\AbstractPaginator::presenterResolver</full_name>
+        <default/>
+        <docblock line="81">
+          <description>The default presenter resolver.</description>
+          <long-description/>
+          <tag name="var" line="81" description="" type="\Closure" variable="">
+            <type>\Closure</type>
+          </tag>
+        </docblock>
+      </property>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Pagination" line="33" package="Default">
+        <name>__construct</name>
+        <full_name>\Illuminate\Pagination\Paginator::__construct()</full_name>
+        <docblock line="33">
+          <description>Create a new paginator instance.</description>
+          <long-description/>
+          <tag name="param" line="33" description="" type="mixed" variable="$items">
+            <type>mixed</type>
+          </tag>
+          <tag name="param" line="33" description="" type="integer" variable="$perPage">
+            <type>integer</type>
+          </tag>
+          <tag name="param" line="33" description="" type="integer|null" variable="$currentPage">
+            <type>integer</type>
+            <type>null</type>
+          </tag>
+          <tag name="param" line="33" description="&lt;p&gt;(path, query, fragment, pageName)&lt;/p&gt;" type="array" variable="$options">
+            <type>array</type>
+          </tag>
+          <tag name="return" line="33" description="" type="void">
+            <type>void</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$items</name>
+          <default/>
+          <type>mixed</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$perPage</name>
+          <default/>
+          <type>integer</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$currentPage</name>
+          <default>null</default>
+          <type>integer|null</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$options</name>
+          <default>array()</default>
+          <type>array</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Pagination" line="53" package="Default">
+        <name>setCurrentPage</name>
+        <full_name>\Illuminate\Pagination\Paginator::setCurrentPage()</full_name>
+        <docblock line="53">
+          <description>Get the current page for the request.</description>
+          <long-description/>
+          <tag name="param" line="53" description="" type="integer" variable="$currentPage">
+            <type>integer</type>
+          </tag>
+          <tag name="return" line="53" description="" type="integer">
+            <type>integer</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$currentPage</name>
+          <default/>
+          <type>integer</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Pagination" line="65" package="Default">
+        <name>checkForMorePages</name>
+        <full_name>\Illuminate\Pagination\Paginator::checkForMorePages()</full_name>
+        <docblock line="65">
+          <description>Check for more pages. The last item will be sliced off.</description>
+          <long-description/>
+          <tag name="return" line="65" description="" type="void">
+            <type>void</type>
+          </tag>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Pagination" line="77" package="Default">
+        <name>nextPageUrl</name>
+        <full_name>\Illuminate\Pagination\Paginator::nextPageUrl()</full_name>
+        <docblock line="77">
+          <description>Get the URL for the next page.</description>
+          <long-description/>
+          <tag name="return" line="77" description="" type="string|null">
+            <type>string</type>
+            <type>null</type>
+          </tag>
+          <tag name="inherited_from" description="\Illuminate\Contracts\Pagination\Paginator::nextPageUrl()" refers="\Illuminate\Contracts\Pagination\Paginator::nextPageUrl()" link="/classes/Illuminate.Contracts.Pagination.Paginator.html#method_nextPageUrl"/>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Pagination" line="89" package="Default">
+        <name>hasMorePages</name>
+        <full_name>\Illuminate\Pagination\Paginator::hasMorePages()</full_name>
+        <docblock line="89">
+          <description>Determine if there are more items in the data source.</description>
+          <long-description/>
+          <tag name="return" line="89" description="" type="boolean">
+            <type>boolean</type>
+          </tag>
+          <tag name="inherited_from" description="\Illuminate\Contracts\Pagination\Paginator::hasMorePages()" refers="\Illuminate\Contracts\Pagination\Paginator::hasMorePages()" link="/classes/Illuminate.Contracts.Pagination.Paginator.html#method_hasMorePages"/>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Pagination" line="100" package="Default">
+        <name>links</name>
+        <full_name>\Illuminate\Pagination\Paginator::links()</full_name>
+        <docblock line="100">
+          <description>Render the paginator using the given presenter.</description>
+          <long-description/>
+          <tag name="param" line="100" description="" type="\Illuminate\Contracts\Pagination\Presenter|null" variable="$presenter">
+            <type>\Illuminate\Contracts\Pagination\Presenter</type>
+            <type>null</type>
+          </tag>
+          <tag name="return" line="100" description="" type="string">
+            <type>string</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$presenter</name>
+          <default>null</default>
+          <type>\Illuminate\Contracts\Pagination\Presenter|null</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Pagination" line="111" package="Default">
+        <name>render</name>
+        <full_name>\Illuminate\Pagination\Paginator::render()</full_name>
+        <docblock line="111">
+          <description>Render the paginator using the given presenter.</description>
+          <long-description/>
+          <tag name="param" line="111" description="" type="\Illuminate\Contracts\Pagination\Presenter|null" variable="$presenter">
+            <type>\Illuminate\Contracts\Pagination\Presenter</type>
+            <type>null</type>
+          </tag>
+          <tag name="return" line="111" description="" type="string">
+            <type>string</type>
+          </tag>
+          <tag name="inherited_from" description="\Illuminate\Contracts\Pagination\Paginator::render()" refers="\Illuminate\Contracts\Pagination\Paginator::render()" link="/classes/Illuminate.Contracts.Pagination.Paginator.html#method_render"/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$presenter</name>
+          <default>null</default>
+          <type>\Illuminate\Contracts\Pagination\Presenter|null</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Pagination" line="127" package="Default">
+        <name>toArray</name>
+        <full_name>\Illuminate\Pagination\Paginator::toArray()</full_name>
+        <docblock line="127">
+          <description>Get the instance as an array.</description>
+          <long-description/>
+          <tag name="return" line="127" description="" type="array">
+            <type>array</type>
+          </tag>
+          <tag name="inherited_from" description="\Illuminate\Contracts\Support\Arrayable::toArray()" refers="\Illuminate\Contracts\Support\Arrayable::toArray()" link="/classes/Illuminate.Contracts.Support.Arrayable.html#method_toArray"/>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Pagination" line="142" package="Default">
+        <name>jsonSerialize</name>
+        <full_name>\Illuminate\Pagination\Paginator::jsonSerialize()</full_name>
+        <docblock line="142">
+          <description>Convert the object into something JSON serializable.</description>
+          <long-description/>
+          <tag name="return" line="142" description="" type="array">
+            <type>array</type>
+          </tag>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Pagination" line="153" package="Default">
+        <name>toJson</name>
+        <full_name>\Illuminate\Pagination\Paginator::toJson()</full_name>
+        <docblock line="153">
+          <description>Convert the object to its JSON representation.</description>
+          <long-description/>
+          <tag name="param" line="153" description="" type="integer" variable="$options">
+            <type>integer</type>
+          </tag>
+          <tag name="return" line="153" description="" type="string">
+            <type>string</type>
+          </tag>
+          <tag name="inherited_from" description="\Illuminate\Contracts\Support\Jsonable::toJson()" refers="\Illuminate\Contracts\Support\Jsonable::toJson()" link="/classes/Illuminate.Contracts.Support.Jsonable.html#method_toJson"/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$options</name>
+          <default>0</default>
+          <type>integer</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Pagination" line="89" package="Default">
+        <name>isValidPageNumber</name>
+        <full_name>\Illuminate\Pagination\AbstractPaginator::isValidPageNumber()</full_name>
+        <docblock line="89">
+          <description>Determine if the given value is a valid page number.</description>
+          <long-description/>
+          <tag name="param" line="89" description="" type="integer" variable="$page">
+            <type>integer</type>
+          </tag>
+          <tag name="return" line="89" description="" type="boolean">
+            <type>boolean</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$page</name>
+          <default/>
+          <type>integer</type>
+        </argument>
+        <inherited_from>\Illuminate\Pagination\AbstractPaginator</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Pagination" line="101" package="Default">
+        <name>getUrlRange</name>
+        <full_name>\Illuminate\Pagination\AbstractPaginator::getUrlRange()</full_name>
+        <docblock line="101">
+          <description>Create a range of pagination URLs.</description>
+          <long-description/>
+          <tag name="param" line="101" description="" type="integer" variable="$start">
+            <type>integer</type>
+          </tag>
+          <tag name="param" line="101" description="" type="integer" variable="$end">
+            <type>integer</type>
+          </tag>
+          <tag name="return" line="101" description="" type="string">
+            <type>string</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$start</name>
+          <default/>
+          <type>integer</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$end</name>
+          <default/>
+          <type>integer</type>
+        </argument>
+        <inherited_from>\Illuminate\Pagination\AbstractPaginator</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Pagination" line="118" package="Default">
+        <name>url</name>
+        <full_name>\Illuminate\Pagination\AbstractPaginator::url()</full_name>
+        <docblock line="118">
+          <description>Get a URL for a given page number.</description>
+          <long-description/>
+          <tag name="param" line="118" description="" type="integer" variable="$page">
+            <type>integer</type>
+          </tag>
+          <tag name="return" line="118" description="" type="string">
+            <type>string</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$page</name>
+          <default/>
+          <type>integer</type>
+        </argument>
+        <inherited_from>\Illuminate\Pagination\AbstractPaginator</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Pagination" line="144" package="Default">
+        <name>previousPageUrl</name>
+        <full_name>\Illuminate\Pagination\AbstractPaginator::previousPageUrl()</full_name>
+        <docblock line="144">
+          <description>Get the URL for the previous page.</description>
+          <long-description/>
+          <tag name="return" line="144" description="" type="string|null">
+            <type>string</type>
+            <type>null</type>
+          </tag>
+        </docblock>
+        <inherited_from>\Illuminate\Pagination\AbstractPaginator</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Pagination" line="157" package="Default">
+        <name>fragment</name>
+        <full_name>\Illuminate\Pagination\AbstractPaginator::fragment()</full_name>
+        <docblock line="157">
+          <description>Get / set the URL fragment to be appended to URLs.</description>
+          <long-description/>
+          <tag name="param" line="157" description="" type="string|null" variable="$fragment">
+            <type>string</type>
+            <type>null</type>
+          </tag>
+          <tag name="return" line="157" description="" type="$this|string|null">
+            <type>\Illuminate\Pagination\Paginator</type>
+            <type>string</type>
+            <type>null</type>
+          </tag>
+          <tag name="fluent" description="This method is part of a fluent interface and will return the same instance"/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$fragment</name>
+          <default>null</default>
+          <type>string|null</type>
+        </argument>
+        <inherited_from>\Illuminate\Pagination\AbstractPaginator</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Pagination" line="175" package="Default">
+        <name>appends</name>
+        <full_name>\Illuminate\Pagination\AbstractPaginator::appends()</full_name>
+        <docblock line="175">
+          <description>Add a set of query string values to the paginator.</description>
+          <long-description/>
+          <tag name="param" line="175" description="" type="array|string" variable="$key">
+            <type>array</type>
+            <type>string</type>
+          </tag>
+          <tag name="param" line="175" description="" type="string|null" variable="$value">
+            <type>string</type>
+            <type>null</type>
+          </tag>
+          <tag name="return" line="175" description="" type="\Illuminate\Pagination\Paginator">
+            <type>\Illuminate\Pagination\Paginator</type>
+          </tag>
+          <tag name="fluent" description="This method is part of a fluent interface and will return the same instance"/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$key</name>
+          <default/>
+          <type>array|string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$value</name>
+          <default>null</default>
+          <type>string|null</type>
+        </argument>
+        <inherited_from>\Illuminate\Pagination\AbstractPaginator</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Pagination" line="190" package="Default">
+        <name>appendArray</name>
+        <full_name>\Illuminate\Pagination\AbstractPaginator::appendArray()</full_name>
+        <docblock line="190">
+          <description>Add an array of query string values.</description>
+          <long-description/>
+          <tag name="param" line="190" description="" type="array" variable="$keys">
+            <type>array</type>
+          </tag>
+          <tag name="return" line="190" description="" type="\Illuminate\Pagination\Paginator">
+            <type>\Illuminate\Pagination\Paginator</type>
+          </tag>
+          <tag name="fluent" description="This method is part of a fluent interface and will return the same instance"/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$keys</name>
+          <default/>
+          <type>array</type>
+        </argument>
+        <inherited_from>\Illuminate\Pagination\AbstractPaginator</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Pagination" line="206" package="Default">
+        <name>addQuery</name>
+        <full_name>\Illuminate\Pagination\AbstractPaginator::addQuery()</full_name>
+        <docblock line="206">
+          <description>Add a query string value to the paginator.</description>
+          <long-description/>
+          <tag name="param" line="206" description="" type="string" variable="$key">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="206" description="" type="string" variable="$value">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="206" description="" type="\Illuminate\Pagination\Paginator">
+            <type>\Illuminate\Pagination\Paginator</type>
+          </tag>
+          <tag name="fluent" description="This method is part of a fluent interface and will return the same instance"/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$key</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$value</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <inherited_from>\Illuminate\Pagination\AbstractPaginator</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Pagination" line="220" package="Default">
+        <name>buildFragment</name>
+        <full_name>\Illuminate\Pagination\AbstractPaginator::buildFragment()</full_name>
+        <docblock line="220">
+          <description>Build the full fragment portion of a URL.</description>
+          <long-description/>
+          <tag name="return" line="220" description="" type="string">
+            <type>string</type>
+          </tag>
+        </docblock>
+        <inherited_from>\Illuminate\Pagination\AbstractPaginator</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Pagination" line="230" package="Default">
+        <name>items</name>
+        <full_name>\Illuminate\Pagination\AbstractPaginator::items()</full_name>
+        <docblock line="230">
+          <description>Get the slice of items being paginated.</description>
+          <long-description/>
+          <tag name="return" line="230" description="" type="array">
+            <type>array</type>
+          </tag>
+        </docblock>
+        <inherited_from>\Illuminate\Pagination\AbstractPaginator</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Pagination" line="240" package="Default">
+        <name>firstItem</name>
+        <full_name>\Illuminate\Pagination\AbstractPaginator::firstItem()</full_name>
+        <docblock line="240">
+          <description>Get the number of the first item in the slice.</description>
+          <long-description/>
+          <tag name="return" line="240" description="" type="integer">
+            <type>integer</type>
+          </tag>
+        </docblock>
+        <inherited_from>\Illuminate\Pagination\AbstractPaginator</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Pagination" line="254" package="Default">
+        <name>lastItem</name>
+        <full_name>\Illuminate\Pagination\AbstractPaginator::lastItem()</full_name>
+        <docblock line="254">
+          <description>Get the number of the last item in the slice.</description>
+          <long-description/>
+          <tag name="return" line="254" description="" type="integer">
+            <type>integer</type>
+          </tag>
+        </docblock>
+        <inherited_from>\Illuminate\Pagination\AbstractPaginator</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Pagination" line="268" package="Default">
+        <name>perPage</name>
+        <full_name>\Illuminate\Pagination\AbstractPaginator::perPage()</full_name>
+        <docblock line="268">
+          <description>Get the number of items shown per page.</description>
+          <long-description/>
+          <tag name="return" line="268" description="" type="integer">
+            <type>integer</type>
+          </tag>
+        </docblock>
+        <inherited_from>\Illuminate\Pagination\AbstractPaginator</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Pagination" line="278" package="Default">
+        <name>currentPage</name>
+        <full_name>\Illuminate\Pagination\AbstractPaginator::currentPage()</full_name>
+        <docblock line="278">
+          <description>Get the current page.</description>
+          <long-description/>
+          <tag name="return" line="278" description="" type="integer">
+            <type>integer</type>
+          </tag>
+        </docblock>
+        <inherited_from>\Illuminate\Pagination\AbstractPaginator</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Pagination" line="288" package="Default">
+        <name>hasPages</name>
+        <full_name>\Illuminate\Pagination\AbstractPaginator::hasPages()</full_name>
+        <docblock line="288">
+          <description>Determine if there are enough items to split into multiple pages.</description>
+          <long-description/>
+          <tag name="return" line="288" description="" type="boolean">
+            <type>boolean</type>
+          </tag>
+        </docblock>
+        <inherited_from>\Illuminate\Pagination\AbstractPaginator</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="true" visibility="public" namespace="Illuminate\Pagination" line="299" package="Default">
+        <name>resolveCurrentPath</name>
+        <full_name>\Illuminate\Pagination\AbstractPaginator::resolveCurrentPath()</full_name>
+        <docblock line="299">
+          <description>Resolve the current request path or return the default value.</description>
+          <long-description/>
+          <tag name="param" line="299" description="" type="string" variable="$default">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="299" description="" type="string">
+            <type>string</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$default</name>
+          <default>'/'</default>
+          <type>string</type>
+        </argument>
+        <inherited_from>\Illuminate\Pagination\AbstractPaginator</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="true" visibility="public" namespace="Illuminate\Pagination" line="314" package="Default">
+        <name>currentPathResolver</name>
+        <full_name>\Illuminate\Pagination\AbstractPaginator::currentPathResolver()</full_name>
+        <docblock line="314">
+          <description>Set the current request path resolver callback.</description>
+          <long-description/>
+          <tag name="param" line="314" description="" type="\Closure" variable="$resolver">
+            <type>\Closure</type>
+          </tag>
+          <tag name="return" line="314" description="" type="void">
+            <type>void</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$resolver</name>
+          <default/>
+          <type>\Closure</type>
+        </argument>
+        <inherited_from>\Illuminate\Pagination\AbstractPaginator</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="true" visibility="public" namespace="Illuminate\Pagination" line="326" package="Default">
+        <name>resolveCurrentPage</name>
+        <full_name>\Illuminate\Pagination\AbstractPaginator::resolveCurrentPage()</full_name>
+        <docblock line="326">
+          <description>Resolve the current page or return the default value.</description>
+          <long-description/>
+          <tag name="param" line="326" description="" type="string" variable="$pageName">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="326" description="" type="integer" variable="$default">
+            <type>integer</type>
+          </tag>
+          <tag name="return" line="326" description="" type="integer">
+            <type>integer</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$pageName</name>
+          <default>'page'</default>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$default</name>
+          <default>1</default>
+          <type>integer</type>
+        </argument>
+        <inherited_from>\Illuminate\Pagination\AbstractPaginator</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="true" visibility="public" namespace="Illuminate\Pagination" line="341" package="Default">
+        <name>currentPageResolver</name>
+        <full_name>\Illuminate\Pagination\AbstractPaginator::currentPageResolver()</full_name>
+        <docblock line="341">
+          <description>Set the current page resolver callback.</description>
+          <long-description/>
+          <tag name="param" line="341" description="" type="\Closure" variable="$resolver">
+            <type>\Closure</type>
+          </tag>
+          <tag name="return" line="341" description="" type="void">
+            <type>void</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$resolver</name>
+          <default/>
+          <type>\Closure</type>
+        </argument>
+        <inherited_from>\Illuminate\Pagination\AbstractPaginator</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="true" visibility="public" namespace="Illuminate\Pagination" line="352" package="Default">
+        <name>presenter</name>
+        <full_name>\Illuminate\Pagination\AbstractPaginator::presenter()</full_name>
+        <docblock line="352">
+          <description>Set the default Presenter resolver.</description>
+          <long-description/>
+          <tag name="param" line="352" description="" type="\Closure" variable="$resolver">
+            <type>\Closure</type>
+          </tag>
+          <tag name="return" line="352" description="" type="void">
+            <type>void</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$resolver</name>
+          <default/>
+          <type>\Closure</type>
+        </argument>
+        <inherited_from>\Illuminate\Pagination\AbstractPaginator</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Pagination" line="362" package="Default">
+        <name>getPageName</name>
+        <full_name>\Illuminate\Pagination\AbstractPaginator::getPageName()</full_name>
+        <docblock line="362">
+          <description>Get the query string variable used to store the page.</description>
+          <long-description/>
+          <tag name="return" line="362" description="" type="string">
+            <type>string</type>
+          </tag>
+        </docblock>
+        <inherited_from>\Illuminate\Pagination\AbstractPaginator</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Pagination" line="373" package="Default">
+        <name>setPageName</name>
+        <full_name>\Illuminate\Pagination\AbstractPaginator::setPageName()</full_name>
+        <docblock line="373">
+          <description>Set the query string variable used to store the page.</description>
+          <long-description/>
+          <tag name="param" line="373" description="" type="string" variable="$name">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="373" description="" type="\Illuminate\Pagination\Paginator">
+            <type>\Illuminate\Pagination\Paginator</type>
+          </tag>
+          <tag name="fluent" description="This method is part of a fluent interface and will return the same instance"/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$name</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <inherited_from>\Illuminate\Pagination\AbstractPaginator</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Pagination" line="386" package="Default">
+        <name>setPath</name>
+        <full_name>\Illuminate\Pagination\AbstractPaginator::setPath()</full_name>
+        <docblock line="386">
+          <description>Set the base path to assign to all URLs.</description>
+          <long-description/>
+          <tag name="param" line="386" description="" type="string" variable="$path">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="386" description="" type="\Illuminate\Pagination\Paginator">
+            <type>\Illuminate\Pagination\Paginator</type>
+          </tag>
+          <tag name="fluent" description="This method is part of a fluent interface and will return the same instance"/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$path</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <inherited_from>\Illuminate\Pagination\AbstractPaginator</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Pagination" line="398" package="Default">
+        <name>getIterator</name>
+        <full_name>\Illuminate\Pagination\AbstractPaginator::getIterator()</full_name>
+        <docblock line="398">
+          <description>Get an iterator for the items.</description>
+          <long-description/>
+          <tag name="return" line="398" description="" type="\ArrayIterator">
+            <type>\ArrayIterator</type>
+          </tag>
+        </docblock>
+        <inherited_from>\Illuminate\Pagination\AbstractPaginator</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Pagination" line="408" package="Default">
+        <name>isEmpty</name>
+        <full_name>\Illuminate\Pagination\AbstractPaginator::isEmpty()</full_name>
+        <docblock line="408">
+          <description>Determine if the list of items is empty or not.</description>
+          <long-description/>
+          <tag name="return" line="408" description="" type="boolean">
+            <type>boolean</type>
+          </tag>
+        </docblock>
+        <inherited_from>\Illuminate\Pagination\AbstractPaginator</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Pagination" line="418" package="Default">
+        <name>count</name>
+        <full_name>\Illuminate\Pagination\AbstractPaginator::count()</full_name>
+        <docblock line="418">
+          <description>Get the number of items for the current page.</description>
+          <long-description/>
+          <tag name="return" line="418" description="" type="integer">
+            <type>integer</type>
+          </tag>
+        </docblock>
+        <inherited_from>\Illuminate\Pagination\AbstractPaginator</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Pagination" line="428" package="Default">
+        <name>getCollection</name>
+        <full_name>\Illuminate\Pagination\AbstractPaginator::getCollection()</full_name>
+        <docblock line="428">
+          <description>Get the paginator's underlying collection.</description>
+          <long-description/>
+          <tag name="return" line="428" description="" type="\Illuminate\Support\Collection">
+            <type>\Illuminate\Support\Collection</type>
+          </tag>
+        </docblock>
+        <inherited_from>\Illuminate\Pagination\AbstractPaginator</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Pagination" line="439" package="Default">
+        <name>setCollection</name>
+        <full_name>\Illuminate\Pagination\AbstractPaginator::setCollection()</full_name>
+        <docblock line="439">
+          <description>Set the paginator's underlying collection.</description>
+          <long-description/>
+          <tag name="param" line="439" description="" type="\Illuminate\Support\Collection" variable="$collection">
+            <type>\Illuminate\Support\Collection</type>
+          </tag>
+          <tag name="return" line="439" description="" type="\Illuminate\Pagination\Paginator">
+            <type>\Illuminate\Pagination\Paginator</type>
+          </tag>
+          <tag name="fluent" description="This method is part of a fluent interface and will return the same instance"/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$collection</name>
+          <default/>
+          <type>\Illuminate\Support\Collection</type>
+        </argument>
+        <inherited_from>\Illuminate\Pagination\AbstractPaginator</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Pagination" line="452" package="Default">
+        <name>offsetExists</name>
+        <full_name>\Illuminate\Pagination\AbstractPaginator::offsetExists()</full_name>
+        <docblock line="452">
+          <description>Determine if the given item exists.</description>
+          <long-description/>
+          <tag name="param" line="452" description="" type="mixed" variable="$key">
+            <type>mixed</type>
+          </tag>
+          <tag name="return" line="452" description="" type="boolean">
+            <type>boolean</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$key</name>
+          <default/>
+          <type>mixed</type>
+        </argument>
+        <inherited_from>\Illuminate\Pagination\AbstractPaginator</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Pagination" line="463" package="Default">
+        <name>offsetGet</name>
+        <full_name>\Illuminate\Pagination\AbstractPaginator::offsetGet()</full_name>
+        <docblock line="463">
+          <description>Get the item at the given offset.</description>
+          <long-description/>
+          <tag name="param" line="463" description="" type="mixed" variable="$key">
+            <type>mixed</type>
+          </tag>
+          <tag name="return" line="463" description="" type="mixed">
+            <type>mixed</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$key</name>
+          <default/>
+          <type>mixed</type>
+        </argument>
+        <inherited_from>\Illuminate\Pagination\AbstractPaginator</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Pagination" line="475" package="Default">
+        <name>offsetSet</name>
+        <full_name>\Illuminate\Pagination\AbstractPaginator::offsetSet()</full_name>
+        <docblock line="475">
+          <description>Set the item at the given offset.</description>
+          <long-description/>
+          <tag name="param" line="475" description="" type="mixed" variable="$key">
+            <type>mixed</type>
+          </tag>
+          <tag name="param" line="475" description="" type="mixed" variable="$value">
+            <type>mixed</type>
+          </tag>
+          <tag name="return" line="475" description="" type="void">
+            <type>void</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$key</name>
+          <default/>
+          <type>mixed</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$value</name>
+          <default/>
+          <type>mixed</type>
+        </argument>
+        <inherited_from>\Illuminate\Pagination\AbstractPaginator</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Pagination" line="486" package="Default">
+        <name>offsetUnset</name>
+        <full_name>\Illuminate\Pagination\AbstractPaginator::offsetUnset()</full_name>
+        <docblock line="486">
+          <description>Unset the item at the given key.</description>
+          <long-description/>
+          <tag name="param" line="486" description="" type="mixed" variable="$key">
+            <type>mixed</type>
+          </tag>
+          <tag name="return" line="486" description="" type="void">
+            <type>void</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$key</name>
+          <default/>
+          <type>mixed</type>
+        </argument>
+        <inherited_from>\Illuminate\Pagination\AbstractPaginator</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Pagination" line="496" package="Default">
+        <name>toHtml</name>
+        <full_name>\Illuminate\Pagination\AbstractPaginator::toHtml()</full_name>
+        <docblock line="496">
+          <description>Render the contents of the paginator to HTML.</description>
+          <long-description/>
+          <tag name="return" line="496" description="" type="string">
+            <type>string</type>
+          </tag>
+          <tag name="inherited_from" description="\Illuminate\Contracts\Support\Htmlable::toHtml()" refers="\Illuminate\Contracts\Support\Htmlable::toHtml()" link="/classes/Illuminate.Contracts.Support.Htmlable.html#method_toHtml"/>
+        </docblock>
+        <inherited_from>\Illuminate\Pagination\AbstractPaginator</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Pagination" line="508" package="Default">
+        <name>__call</name>
+        <full_name>\Illuminate\Pagination\AbstractPaginator::__call()</full_name>
+        <docblock line="508">
+          <description>Make dynamic calls into the collection.</description>
+          <long-description/>
+          <tag name="param" line="508" description="" type="string" variable="$method">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="508" description="" type="array" variable="$parameters">
+            <type>array</type>
+          </tag>
+          <tag name="return" line="508" description="" type="mixed">
+            <type>mixed</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$method</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$parameters</name>
+          <default/>
+          <type>array</type>
+        </argument>
+        <inherited_from>\Illuminate\Pagination\AbstractPaginator</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Pagination" line="518" package="Default">
+        <name>__toString</name>
+        <full_name>\Illuminate\Pagination\AbstractPaginator::__toString()</full_name>
+        <docblock line="518">
+          <description>Render the contents of the paginator when casting to string.</description>
+          <long-description/>
+          <tag name="return" line="518" description="" type="string">
+            <type>string</type>
+          </tag>
+        </docblock>
+        <inherited_from>\Illuminate\Pagination\AbstractPaginator</inherited_from>
+      </method>
+    </class>
+    <parse_markers>
+      <error line="0" code="PPC:ERR-50000">No summary was found for this file</error>
+      <error line="15" code="PPC:ERR-50005">No summary for class \Illuminate\Pagination\Paginator</error>
+    </parse_markers>
+    <source>eJzVV99v2zYQfvdfcQOCRs60pn11lmSZhw0tuqxI2r00hUHLZ5uNRGoklTbr8r/vSNEU9ctpC+xhAhJLvNPx7rvjd6cfz8ttOZkIVqAuWYbwIs+rggtm8OY129gbLsXJZFJphLmshGHLHE/c44VS7P4iy1DreuGlluIaFWc5/7tRe2FQMSPVxWajcEOG/XKz0XVVllKZm7nMc8zqDTsqcymMYpnRQdluFm2yT9U5+ohuE+zNa4UaBXn9her1rVTANISHnSpBl+VMRxLATwbFSsPFUjuVRsKLMseC9tYQfE5jnNMmB2kf2LSXgXqlvuu5Nvk8AbqOj47cLxzBL0gmKVYEvgazRYXA6K+Q9I8bLDRwYddhxQwDLSuV4VP/8s7GTwpNpQQspcz92rH7LZU0lF1cwcGW6d/JJmHTcWCukOIABgI/QtngIrRhYmCvkilWABT8E5mFA+djV8iFIVGJigDAAeE/ospz0sgqpQj6IS1mM0AqsrQZ15CUzGxT+KtCdZ/CWrGNTVpqPcZLOkrTLhh3kq/aYFTLnGewroSrd1gsMjJsVJWZpA4jDT6nLd/gFKzDqXcq+HQK797X+9ZptdeaQGbZFpKgRSV6cIv3cHoGB3csr3AaqdvrwGy5/uHss9V6IKO11knQeZhMOqreS6vrb0+6Km33/aJGM2/WkzjGac+CBbx51T19dwqHx4dwDsooXiSRKLWCKcxi9Z7Fup5PfdGEEpNraGiIjHvxLFqdzQp2iz5N05MeINkWs9tfpbIlbqPRiY/noVfvv6Fx58nH7grIZs0tKqQC02as6Ou6HqpaX3SkMHIAQ9nty0Gnljo12Ho8nwGhZ3g2mxF3yvwOY6sxRN61XQ70n8RUK6t1WRVLVG0PCP6Egpi2N5vB8zE45xZ5h5+jLIumfgpvCEuiYOMoDD5yOu1LBE3nj6CQ6/UYg/UPbR/AgVx3catD9ZRHyGWWwZO4CqdwBkn7NA2UVSjY6JFOkQ0jeZZC7/39Fff26lUoNEEdyYE1hgQRExcbR5R7Wcwasru/VXkPB+ooSRsLj1eXgdolUpGpPoskU/genk9jWhoO97/taJ3w23F14m+HFTrgsNtXNCBgnZymC1aakuDWNvwOBZWjn1PGGOLmiyedXQ8MJocrYG/0ORe3OgkmI2O+Ze1HRLmQk+at0RL+P4Ljo/sKdOx54XphRTEo8ORJ4Npm+apmXdXr5vEuGcvzBU20amHdSsateDKZDnf92GT0QD3ADm3Xbob9WUpjh9vyzVYhhqiTnd1eDQQ7oRAeZbBdx7YzDRP1ODR2dJ1wb4KMdGP22LF914L1kFh2YQnz0A1SLeZNpjR+eKrq6bQoLG3btOTpXlgQ58UvtViVjBNWd4OKVsBlpRvl9g5rJYtYf82VNvQVUTizRsYy2zC9qG3EEmWs6PtQwK9Rfz/apqWgKquzKJcfqKXaWUUS/RZIRukcv7z+45KGk+ZD5tsT+yH6JMJHWDkE8RWek9+cvtecxwp9HTsG2T+4+Yn8G7jESPtRl0ST/7ORsGzsCxSZXOGuiXbgSIMjIeaHyb+NleKD</source>
+  <type>class</type></file>

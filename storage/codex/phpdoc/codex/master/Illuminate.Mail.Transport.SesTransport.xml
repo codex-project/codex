@@ -1,0 +1,155 @@
+<file path="codex/vendor/laravel/framework/src/Illuminate/Mail/Transport/SesTransport.php" generated-path="codex.vendor.laravel.framework.src.Illuminate.Mail.Transport.SesTransport.html" hash="461c74529ddfc3715980f1e833548824" package="Default">
+    <docblock line="0">
+      <description/>
+      <long-description/>
+      <tag name="package" line="0" description="Default"/>
+    </docblock>
+    <namespace-alias name="SesClient">\Aws\Ses\SesClient</namespace-alias>
+    <namespace-alias name="Swift_Mime_Message">\Swift_Mime_Message</namespace-alias>
+    <class final="false" abstract="false" namespace="Illuminate\Mail\Transport" line="8" package="Default">
+      <extends>\Illuminate\Mail\Transport\Transport</extends>
+      <name>SesTransport</name>
+      <full_name>\Illuminate\Mail\Transport\SesTransport</full_name>
+      <docblock line="8">
+        <description/>
+        <long-description/>
+        <tag name="package" line="8" description="Default"/>
+        <tag name="inherited_from" description="\Illuminate\Mail\Transport\Transport" refers="\Illuminate\Mail\Transport\Transport" link="/classes/Illuminate.Mail.Transport.Transport.html"/>
+      </docblock>
+      <property static="false" visibility="protected" namespace="Illuminate\Mail\Transport" line="15" package="Default">
+        <name>$ses</name>
+        <full_name>\Illuminate\Mail\Transport\SesTransport::ses</full_name>
+        <default/>
+        <docblock line="15">
+          <description>The Amazon SES instance.</description>
+          <long-description/>
+          <tag name="var" line="15" description="" type="\Aws\Ses\SesClient" variable="">
+            <type>\Aws\Ses\SesClient</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="false" visibility="public" namespace="Illuminate\Mail\Transport" line="17" package="Default">
+        <name>$plugins</name>
+        <full_name>\Illuminate\Mail\Transport\Transport::plugins</full_name>
+        <default>array()</default>
+        <docblock line="17">
+          <description>The plug-ins registered with the transport.</description>
+          <long-description/>
+          <tag name="var" line="17" description="" type="array" variable="">
+            <type>array</type>
+          </tag>
+        </docblock>
+      </property>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Mail\Transport" line="23" package="Default">
+        <name>__construct</name>
+        <full_name>\Illuminate\Mail\Transport\SesTransport::__construct()</full_name>
+        <docblock line="23">
+          <description>Create a new SES transport instance.</description>
+          <long-description/>
+          <tag name="param" line="23" description="" type="\Aws\Ses\SesClient" variable="$ses">
+            <type>\Aws\Ses\SesClient</type>
+          </tag>
+          <tag name="return" line="23" description="" type="void">
+            <type>void</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$ses</name>
+          <default/>
+          <type>\Aws\Ses\SesClient</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Mail\Transport" line="31" package="Default">
+        <name>send</name>
+        <full_name>\Illuminate\Mail\Transport\SesTransport::send()</full_name>
+        <docblock line="31">
+          <description>{@inheritdoc}</description>
+          <long-description/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$message</name>
+          <default/>
+          <type>\Swift_Mime_Message</type>
+        </argument>
+        <argument line="0" by_reference="true">
+          <name>$failedRecipients</name>
+          <default>null</default>
+          <type/>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Mail\Transport" line="22" package="Default">
+        <name>isStarted</name>
+        <full_name>\Illuminate\Mail\Transport\Transport::isStarted()</full_name>
+        <docblock line="22">
+          <description>{@inheritdoc}</description>
+          <long-description/>
+        </docblock>
+        <inherited_from>\Illuminate\Mail\Transport\Transport</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Mail\Transport" line="30" package="Default">
+        <name>start</name>
+        <full_name>\Illuminate\Mail\Transport\Transport::start()</full_name>
+        <docblock line="30">
+          <description>{@inheritdoc}</description>
+          <long-description/>
+        </docblock>
+        <inherited_from>\Illuminate\Mail\Transport\Transport</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Mail\Transport" line="38" package="Default">
+        <name>stop</name>
+        <full_name>\Illuminate\Mail\Transport\Transport::stop()</full_name>
+        <docblock line="38">
+          <description>{@inheritdoc}</description>
+          <long-description/>
+        </docblock>
+        <inherited_from>\Illuminate\Mail\Transport\Transport</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Mail\Transport" line="49" package="Default">
+        <name>registerPlugin</name>
+        <full_name>\Illuminate\Mail\Transport\Transport::registerPlugin()</full_name>
+        <docblock line="49">
+          <description>Register a plug-in with the transport.</description>
+          <long-description/>
+          <tag name="param" line="49" description="" type="\Swift_Events_EventListener" variable="$plugin">
+            <type>\Swift_Events_EventListener</type>
+          </tag>
+          <tag name="return" line="49" description="" type="void">
+            <type>void</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$plugin</name>
+          <default/>
+          <type>\Swift_Events_EventListener</type>
+        </argument>
+        <inherited_from>\Illuminate\Mail\Transport\Transport</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Mail\Transport" line="60" package="Default">
+        <name>beforeSendPerformed</name>
+        <full_name>\Illuminate\Mail\Transport\Transport::beforeSendPerformed()</full_name>
+        <docblock line="60">
+          <description>Iterate through registered plugins and execute plugins' methods.</description>
+          <long-description/>
+          <tag name="param" line="60" description="" type="\Swift_Mime_Message" variable="$message">
+            <type>\Swift_Mime_Message</type>
+          </tag>
+          <tag name="return" line="60" description="" type="void">
+            <type>void</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$message</name>
+          <default/>
+          <type>\Swift_Mime_Message</type>
+        </argument>
+        <inherited_from>\Illuminate\Mail\Transport\Transport</inherited_from>
+      </method>
+    </class>
+    <parse_markers>
+      <error line="0" code="PPC:ERR-50000">No summary was found for this file</error>
+      <error line="8" code="PPC:ERR-50005">No summary for class \Illuminate\Mail\Transport\SesTransport</error>
+      <error line="31" code="PPC:ERR-50015">Argument $message is missing from the Docblock of send</error>
+      <error line="31" code="PPC:ERR-50015">Argument $failedRecipients is missing from the Docblock of send</error>
+    </parse_markers>
+    <source>eJx9kk1vwjAMhu/9FT6g0aIx7vtgTIxJOyBNK7eBUEhdGq1JqsQd+xD/fUkoRYxtltqk9qv3sZNe31ZFFUWKSbQV4wiPZVlLoRjhfMpEOZ8ZpmylDV1FUW0R7jZ2nmJ4xqVA5fI+nW5ETsupkLicorVsjU7PS2YtOGVrAvhOqDILbSb6isDFoNcLK/RgVjiKZJ9aQTpJQShLTHG8aOp72eiNGZiftNOUB2GtjCbkhBl0LFrX0Q/U2KAbFBgo3AQYtY3+ia2YYRJ+IUOAtDqDVBsFb1pkxz3Vq1JwyGvFSbgZl0uuHcvUnOKDl7dKgn53Pj46VAjbH7oK3DQD+fT2ZKyvkVAFGkGZ5tt/4dZdRnx6d9CRu805nHVy9xtg9oxcVL41D1d1Wf7R3QpzbTB1vk9o3FZiFu/dkuYGfDTHc5jJv1T2zDYT6YDxS6v00U11bTh24WYIr/jROvaHayQPQxMncHsJR4UHo2WcJOfHVg7RjBnsjkFBcc+IhdrBjXRKRqh1/MNtcfhcJPv72Ebff5f25g==</source>
+  <type>class</type></file>

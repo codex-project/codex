@@ -1,0 +1,189 @@
+<file path="codex/workbench/codex/core/src/Addons/AddonScanner.php" generated-path="codex.workbench.codex.core.src.Addons.AddonScanner.html" hash="6513d5e1c2d9e0015d83232b045a70c7" package="Default">
+    <docblock line="0">
+      <description/>
+      <long-description/>
+      <tag name="package" line="0" description="Default"/>
+    </docblock>
+    <namespace-alias name="ClassFileInfo">\Codex\Addons\Scanner\ClassFileInfo</namespace-alias>
+    <namespace-alias name="ClassInspector">\Codex\Addons\Scanner\ClassInspector</namespace-alias>
+    <namespace-alias name="Scanner">\Codex\Addons\Scanner\Scanner</namespace-alias>
+    <namespace-alias name="Collection">\Codex\Support\Collection</namespace-alias>
+    <namespace-alias name="AnnotationReader">\Doctrine\Common\Annotations\AnnotationReader</namespace-alias>
+    <namespace-alias name="AnnotationRegistry">\Doctrine\Common\Annotations\AnnotationRegistry</namespace-alias>
+    <namespace-alias name="Filesystem">\Sebwite\Filesystem\Filesystem</namespace-alias>
+    <namespace-alias name="Util">\Sebwite\Support\Util</namespace-alias>
+    <namespace-alias name="SplFileInfo">\Symfony\Component\Finder\SplFileInfo</namespace-alias>
+    <class final="false" abstract="false" namespace="Codex\Addons" line="14" package="Default">
+      <extends/>
+      <name>AddonScanner</name>
+      <full_name>\Codex\Addons\AddonScanner</full_name>
+      <docblock line="14">
+        <description/>
+        <long-description/>
+        <tag name="package" line="14" description="Default"/>
+      </docblock>
+      <property static="false" visibility="protected" namespace="Codex\Addons" line="17" package="Default">
+        <name>$manifest</name>
+        <full_name>\Codex\Addons\AddonScanner::manifest</full_name>
+        <default/>
+        <docblock line="17">
+          <description/>
+          <long-description/>
+          <tag name="var" line="17" description="" type="\Codex\Support\Collection" variable="">
+            <type>\Codex\Support\Collection</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" namespace="Codex\Addons" line="20" package="Default">
+        <name>$fs</name>
+        <full_name>\Codex\Addons\AddonScanner::fs</full_name>
+        <default/>
+        <docblock line="20">
+          <description/>
+          <long-description/>
+          <tag name="var" line="20" description="" type="\Sebwite\Filesystem\Filesystem" variable="">
+            <type>\Sebwite\Filesystem\Filesystem</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" namespace="Codex\Addons" line="23" package="Default">
+        <name>$reader</name>
+        <full_name>\Codex\Addons\AddonScanner::reader</full_name>
+        <default/>
+        <docblock line="23">
+          <description/>
+          <long-description/>
+          <tag name="var" line="23" description="" type="\Doctrine\Common\Annotations\AnnotationReader" variable="">
+            <type>\Doctrine\Common\Annotations\AnnotationReader</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" namespace="Codex\Addons" line="26" package="Default">
+        <name>$annotations</name>
+        <full_name>\Codex\Addons\AddonScanner::annotations</full_name>
+        <default>array(\Codex\Addons\Annotations\Hook::class, \Codex\Addons\Annotations\Processor::class)</default>
+        <docblock line="26">
+          <description/>
+          <long-description/>
+          <tag name="var" line="26" description="" type="array" variable="">
+            <type>array</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" namespace="Codex\Addons" line="31" package="Default">
+        <name>$addons</name>
+        <full_name>\Codex\Addons\AddonScanner::addons</full_name>
+        <default/>
+        <docblock line="31">
+          <description/>
+          <long-description/>
+        </docblock>
+      </property>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Codex\Addons" line="33" package="Default">
+        <name>__construct</name>
+        <full_name>\Codex\Addons\AddonScanner::__construct()</full_name>
+        <docblock line="33">
+          <description/>
+          <long-description/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$addons</name>
+          <default/>
+          <type>\Codex\Addons\Addons</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Codex\Addons" line="46" package="Default">
+        <name>getAddonPaths</name>
+        <full_name>\Codex\Addons\AddonScanner::getAddonPaths()</full_name>
+        <docblock line="46">
+          <description/>
+          <long-description/>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Codex\Addons" line="55" package="Default">
+        <name>getManifestPath</name>
+        <full_name>\Codex\Addons\AddonScanner::getManifestPath()</full_name>
+        <docblock line="55">
+          <description/>
+          <long-description/>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Codex\Addons" line="60" package="Default">
+        <name>getManifest</name>
+        <full_name>\Codex\Addons\AddonScanner::getManifest()</full_name>
+        <docblock line="60">
+          <description/>
+          <long-description/>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Codex\Addons" line="65" package="Default">
+        <name>findAll</name>
+        <full_name>\Codex\Addons\AddonScanner::findAll()</full_name>
+        <docblock line="65">
+          <description/>
+          <long-description/>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Codex\Addons" line="75" package="Default">
+        <name>scanDirectory</name>
+        <full_name>\Codex\Addons\AddonScanner::scanDirectory()</full_name>
+        <docblock line="75">
+          <description/>
+          <long-description/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$path</name>
+          <default/>
+          <type/>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Codex\Addons" line="85" package="Default">
+        <name>scanFile</name>
+        <full_name>\Codex\Addons\AddonScanner::scanFile()</full_name>
+        <docblock line="85">
+          <description/>
+          <long-description/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$path</name>
+          <default/>
+          <type/>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Codex\Addons" line="93" package="Default">
+        <name>createAnnotationScanner</name>
+        <full_name>\Codex\Addons\AddonScanner::createAnnotationScanner()</full_name>
+        <docblock line="93">
+          <description/>
+          <long-description/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$annotationClass</name>
+          <default/>
+          <type/>
+        </argument>
+      </method>
+    </class>
+    <parse_markers>
+      <error line="0" code="PPC:ERR-50000">No summary was found for this file</error>
+      <error line="14" code="PPC:ERR-50005">No summary for class \Codex\Addons\AddonScanner</error>
+      <error line="33" code="PPC:ERR-50015">Argument $addons is missing from the Docblock of __construct</error>
+      <error line="33" code="PPC:ERR-50008">No summary for method __construct()</error>
+      <error line="46" code="PPC:ERR-50008">No summary for method getAddonPaths()</error>
+      <error line="55" code="PPC:ERR-50008">No summary for method getManifestPath()</error>
+      <error line="60" code="PPC:ERR-50008">No summary for method getManifest()</error>
+      <error line="65" code="PPC:ERR-50008">No summary for method findAll()</error>
+      <error line="75" code="PPC:ERR-50015">Argument $path is missing from the Docblock of scanDirectory</error>
+      <error line="75" code="PPC:ERR-50008">No summary for method scanDirectory()</error>
+      <error line="85" code="PPC:ERR-50015">Argument $path is missing from the Docblock of scanFile</error>
+      <error line="85" code="PPC:ERR-50008">No summary for method scanFile()</error>
+      <error line="93" code="PPC:ERR-50015">Argument $annotationClass is missing from the Docblock of createAnnotationScanner</error>
+      <error line="93" code="PPC:ERR-50008">No summary for method createAnnotationScanner()</error>
+      <error line="17" code="PPC:ERR-50007">No summary for property $manifest</error>
+      <error line="20" code="PPC:ERR-50007">No summary for property $fs</error>
+      <error line="23" code="PPC:ERR-50007">No summary for property $reader</error>
+      <error line="26" code="PPC:ERR-50007">No summary for property $annotations</error>
+      <error line="31" code="PPC:ERR-50007">No summary for property $addons</error>
+    </parse_markers>
+    <source>eJylVt9vmzAQfuev8KRKMVHavKdrtypdtT5sqlr1KUTIBZNYAxvZZh2q+r/PPzCYAGm78ZAY/N13d9+dDz5/KfdlQFGBRYkSDNYsxX+iqzRlVJwHQSX6j6KHBFGKebTOkRA3JMe3NGPnb+BuqShxIhk/Amz+fcRDVZaMy2jN8lyZE0bt7jVLJCcUq42iYDS6opRJpPeFt77HKHV877XYESF5bW0e8NMzkTjSSYpaSFx4yz7EBfooSd7s1EXGaK39lYxiKpUtTXWaZd6pFiRaHWCUaPIPXgKgruV8Dr7+RhxEU1KA+dIgS86keoJTcFIgSjIspCLucxxNZYQoEwOKj2g+wsibYvRZEeeoHkGjjhxcgI3Z1pfv9Dtjv1YrI+BiFHDHWYKFYLyH2jYx+N5cs5vn1VNOEpBV1Kocx4nalLxKJLQd6wxCg39pfZ/IPRGnl3ZT3V90zAcQVycFofgZdDWF4QCbiebeYruyjWCtyC32sCzaojXJmEInewA7R6eXu5w9VTmGcXx9ex/H4AzMlp6ky/mZGhazECAlQqYiuUNyD8KWs9OiXwt3rlYrblaY6zRgS+Fl8hrY39Fa7LA0JdA2Ah7qT7IuGYX80YgMw9NLIr4VpaxhOBnsuF3OUAoH0emLY1lxOmGmbuGs1EHOFmADtg3DdFbOWCc2yKvvyrZUz6W1eq+Pj/O/wZ2pwXaV5wNeU15zfvWhm+y7g6Ka3iqP9VXLa6ZHXGC+a3pJLBypUMP0mnDzzqmh4QuP1tGYH01zjPLfMk7UvcTd8WgmP3QV6A6cbl3a+GoP3RvCbLZ68ujl/+drj+loqmak/lSfDcqbfu2tVqqQa/fwhrPCMz7vS2SXdkh570MLXgD/zzcl7ivCzc3epwXsQlr0B6LH0aTfWneudVwLz8dBz7dvi1afySp29TMuRsfUJ0BEbPp3iJ+u7wHSNNrg4Xas7CfCRudE73fclEzOyp6nYaStRK/BX0s8JTY=</source>
+  <type>class</type></file>

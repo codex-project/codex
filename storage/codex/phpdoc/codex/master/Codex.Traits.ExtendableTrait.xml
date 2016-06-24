@@ -1,0 +1,154 @@
+<file path="codex/workbench/codex/core/src/Traits/ExtendableTrait.php" generated-path="codex.workbench.codex.core.src.Traits.ExtendableTrait.html" hash="92d7683d466430137e1306b4b29b35e2" package="Default">
+    <docblock line="0">
+      <description>Part of the Codex Project PHP packages.</description>
+      <long-description>License and copyright information bundled with this package in the LICENSE file</long-description>
+      <tag name="package" line="0" description="Default"/>
+    </docblock>
+    <namespace-alias name="BadMethodCallException">\BadMethodCallException</namespace-alias>
+    <namespace-alias name="Closure">\Closure</namespace-alias>
+    <namespace-alias name="Str">\Sebwite\Support\Str</namespace-alias>
+    <trait namespace="Codex\Traits" line="16" package="Default">
+      <name>ExtendableTrait</name>
+      <full_name>\Codex\Traits\ExtendableTrait</full_name>
+      <docblock line="16">
+        <description/>
+        <long-description/>
+        <tag name="package" line="16" description="Default"/>
+      </docblock>
+      <property static="false" visibility="protected" namespace="Codex\Traits" line="20" package="Default">
+        <name>$_macros</name>
+        <full_name>\Codex\Traits\ExtendableTrait::_macros</full_name>
+        <default>array()</default>
+        <docblock line="20">
+          <description/>
+          <long-description/>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" namespace="Codex\Traits" line="22" package="Default">
+        <name>$_extensions</name>
+        <full_name>\Codex\Traits\ExtendableTrait::_extensions</full_name>
+        <default>array()</default>
+        <docblock line="22">
+          <description/>
+          <long-description/>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" namespace="Codex\Traits" line="24" package="Default">
+        <name>$extensionInstances</name>
+        <full_name>\Codex\Traits\ExtendableTrait::extensionInstances</full_name>
+        <default>array()</default>
+        <docblock line="24">
+          <description/>
+          <long-description/>
+        </docblock>
+      </property>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Codex\Traits" line="30" package="Default">
+        <name>extensions</name>
+        <full_name>\Codex\Traits\ExtendableTrait::extensions()</full_name>
+        <docblock line="30">
+          <description>Returns all registered extensions for this class</description>
+          <long-description/>
+          <tag name="return" line="30" description="The registered extensions for this class" type="array">
+            <type>array</type>
+          </tag>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Codex\Traits" line="42" package="Default">
+        <name>getExtenableProperty</name>
+        <full_name>\Codex\Traits\ExtendableTrait::getExtenableProperty()</full_name>
+        <docblock line="42">
+          <description>This will return the property. It checks if the property name exists and will return it. If it doesn't exist, it will return the property prefixed with _ (underscore)</description>
+          <long-description/>
+          <tag name="param" line="42" description="&lt;p&gt;The property name&lt;/p&gt;" type="string" variable="$type">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="42" description="" type="mixed">
+            <type>mixed</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$type</name>
+          <default/>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Codex\Traits" line="54" package="Default">
+        <name>extend</name>
+        <full_name>\Codex\Traits\ExtendableTrait::extend()</full_name>
+        <docblock line="54">
+          <description>Extend the class with a class or method.</description>
+          <long-description/>
+          <tag name="param" line="54" description="&lt;p&gt;The name to register the extension under&lt;/p&gt;" type="string" variable="$name">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="54" description="&lt;p&gt;The extension that should be used&lt;/p&gt;" type="string|\Closure" variable="$extension">
+            <type>string</type>
+            <type>\Closure</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$name</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$extension</name>
+          <default/>
+          <type>string|\Closure</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Codex\Traits" line="143" package="Default">
+        <name>__call</name>
+        <full_name>\Codex\Traits\ExtendableTrait::__call()</full_name>
+        <docblock line="143">
+          <description>Allows macro extensions to be called</description>
+          <long-description/>
+          <tag name="param" line="143" description="&lt;p&gt;The name of the extension&lt;/p&gt;" type="string" variable="$name">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="143" description="&lt;p&gt;The optional parameters&lt;/p&gt;" type="array" variable="$params">
+            <type>array</type>
+          </tag>
+          <tag name="return" line="143" description="" type="mixed">
+            <type>mixed</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$name</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$params</name>
+          <default>array()</default>
+          <type>array</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Codex\Traits" line="158" package="Default">
+        <name>__get</name>
+        <full_name>\Codex\Traits\ExtendableTrait::__get()</full_name>
+        <docblock line="158">
+          <description>Allows class extensions to return it's value.</description>
+          <long-description/>
+          <tag name="param" line="158" description="&lt;p&gt;The name of the extension&lt;/p&gt;" type="string" variable="$name">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="158" description="" type="mixed">
+            <type>mixed</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$name</name>
+          <default/>
+          <type>string</type>
+        </argument>
+      </method>
+    </trait>
+    <parse_markers>
+      <error line="16" code="PPC:ERR-50010">No summary for trait ""</error>
+      <error line="20" code="PPC:ERR-50007">No summary for property $_macros</error>
+      <error line="22" code="PPC:ERR-50007">No summary for property $_extensions</error>
+      <error line="24" code="PPC:ERR-50007">No summary for property $extensionInstances</error>
+    </parse_markers>
+    <source>eJzFWFtP6zgQfu+vmFMhmqAC77BwLhXSIp2zQgdeVqXqcZNpmyW1s7Z7oGL733dsJ86l6QUtR5sXmthz8cw334z57WM2zzrnJycdOIE7JjWIKeg5wkDE+AJ3UvyFkYa73+8gY9ETm6E6o61m99ckQq4QGI8hEtlKJrO5hoRPhVwwnQgOkyWPU4zhOdFzUpqoQgftska+3g5u/ri/gWmSIqk873Q6nC1Q0bbcg8cHyRKtLmllSba+sPgb6rmIByxNb14izIyhS7s2SIVaSnQv9zghq/h4v8wyIfXjvZakQxtlcPOikcdskqJV3nntAD1WheCaJRylXSABs5BJoSkGdI6j8YJFUii4giGMWpbRaFbk0dYtfsctV5rxCOs7bSLMcwLfUS8lKaKDgsRZojRK0lAxQYF2UY1SplQh90laQWBSshU8UJTfIH3u/F1O0iSC6ZJHNo+lVBDaDS5i5qkaGy9QzjBwv59wpYIjY+D0eobaxtyEnBCVodSroOdi2QvDPhwqUjpCYuGl9WK9EbkHc6rnxMbNemegluVKzuBWQzTH6ElBMq0tgcEeHZaCpSyqqzoSTZJT+gOxQMV72m3smy/bbNEPnCYvRQWMIaCCQKkiITHMvfVpy5hkC1BaJnwGR3qVoU1ezbmmTG5zYWzszOBxazytlWZGj7zFK2987ILiktN33oXwMXfzArrjV/tz3b1sIiPP56tXu96WNleWNoAWki5oLH8htC5s5Z/tDJx/jmwy7WPCaN+08LVgzXg4gc1Lq8Z/HnNeqdSu1Vi+6TnToOZimcYwQUMku5NhJePAetivqG1mguAZQKLGzpGgshGOj+EDUdrFReQYS1VW+9D71AshrGjy2nyh+YzmThxUqBs6zaPnUjwDx2d4vOU/WZrEn+VsuUCuPT8H3QHjXOj85DC0GkfDV2t9PQKmYOj9H1EQI2bomEqLpRJZvPJVqQrhM/hTLCFiHARPV5TXLDVNY0O1AxEvFrrhZe0E69rbweQzzPE1oiIpI1+qXgOmdID3ykCN994tC2XE65lwkdqThVJ4Wyba1PtslIv/ISMFMPdmYwvjmCGCTgNWT6WgA8c0YTG4IMySn8jB8gISe6gmByWcvnKW7ib1kpJKTsrHLetCQ8x1cCJkb9aKCZtNlu5wZ3tf8JOIZ6OIgvDNWPdIrNizs8lGhzAiE5rkTLjflJ98yvHFUGpK8nGIwlHwbRPm+aGMyJhwKcfmCGMbpMArOr2eJDx+EEWrIsfGtoG4D2bYqJwvbFZsk3ILtZZxG4RbrG3h23r/M5sHxo8vjNpDHu9SwxafCtweClzbieZUnhMkuMY0fPBi+GDww9ofMj1y8P4BRAZ2UD9zI5NLX0xyGfED8mhFaTHjv1GdT+x0fIrNMtLUj3PoevMbnfmwqvAYcFUx/ZvnLd+5Weyj5m12/m81clj22ismJdokAaOBdhfsckWhy1K65QQEoH4ZiAoCjoq6qJWav6YE4en1gj2h1z2sQbBHflEH6MHVtZPu++VRWKnFXZU1LH3wrsOoDbEHDuL+RASfYrgrEWxgRbvkc6L81oRpdPN3PmrbPuMWtV0URh+JcXhCzJRpWYTXBS6EXO2eFx0xNdnY+3Moot8CpoIrjX4LquIq6Ah4g23L4Oyh29YBpUm5W+dJmwk/lFTWWgfJD3vmmM17bvvcsnV7rafvQn5l7h1uqN9TBdVqqL6vO7XXOpXv8HX/yPE5TcWzahK3MuxGVwdTgR5Au4eIfZBtJch3IMfGXWY8Nj4XyXfGClutVPgrriGbrbZloNlsrOYp5+b2fy0FXfcRhlbZyN7+wU3R5PlZdyv55ZluEJxyl9D8Xwo9BTSrL/FdOeoNuaNAt5POr7qq1DO1jwlbymnd+Rd+zmX3</source>
+  <type>trait</type></file>

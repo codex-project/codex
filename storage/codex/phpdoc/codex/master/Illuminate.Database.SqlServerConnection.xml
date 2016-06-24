@@ -1,0 +1,1776 @@
+<file path="codex/vendor/laravel/framework/src/Illuminate/Database/SqlServerConnection.php" generated-path="codex.vendor.laravel.framework.src.Illuminate.Database.SqlServerConnection.html" hash="e0da614179fd4917cd7736e30c47ea5d" package="Default">
+    <docblock line="0">
+      <description/>
+      <long-description/>
+      <tag name="package" line="0" description="Default"/>
+    </docblock>
+    <namespace-alias name="Closure">\Closure</namespace-alias>
+    <namespace-alias name="Exception">\Exception</namespace-alias>
+    <namespace-alias name="Throwable">\Throwable</namespace-alias>
+    <namespace-alias name="DoctrineDriver">\Doctrine\DBAL\Driver\PDOSqlsrv\Driver</namespace-alias>
+    <namespace-alias name="SqlServerProcessor">\Illuminate\Database\Query\Processors\SqlServerProcessor</namespace-alias>
+    <namespace-alias name="QueryGrammar">\Illuminate\Database\Query\Grammars\SqlServerGrammar</namespace-alias>
+    <namespace-alias name="SchemaGrammar">\Illuminate\Database\Schema\Grammars\SqlServerGrammar</namespace-alias>
+    <class final="false" abstract="false" namespace="Illuminate\Database" line="13" package="Default">
+      <extends>\Illuminate\Database\Connection</extends>
+      <name>SqlServerConnection</name>
+      <full_name>\Illuminate\Database\SqlServerConnection</full_name>
+      <docblock line="13">
+        <description/>
+        <long-description/>
+        <tag name="package" line="13" description="Default"/>
+        <tag name="inherited_from" description="\Illuminate\Database\Connection" refers="\Illuminate\Database\Connection" link="/classes/Illuminate.Database.Connection.html"/>
+      </docblock>
+      <property static="false" visibility="protected" namespace="Illuminate\Database" line="30" package="Default">
+        <name>$pdo</name>
+        <full_name>\Illuminate\Database\Connection::pdo</full_name>
+        <default/>
+        <docblock line="30">
+          <description>The active PDO connection.</description>
+          <long-description/>
+          <tag name="var" line="30" description="" type="\PDO" variable="">
+            <type>\PDO</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" namespace="Illuminate\Database" line="37" package="Default">
+        <name>$readPdo</name>
+        <full_name>\Illuminate\Database\Connection::readPdo</full_name>
+        <default/>
+        <docblock line="37">
+          <description>The active PDO connection used for reads.</description>
+          <long-description/>
+          <tag name="var" line="37" description="" type="\PDO" variable="">
+            <type>\PDO</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" namespace="Illuminate\Database" line="44" package="Default">
+        <name>$reconnector</name>
+        <full_name>\Illuminate\Database\Connection::reconnector</full_name>
+        <default/>
+        <docblock line="44">
+          <description>The reconnector instance for the connection.</description>
+          <long-description/>
+          <tag name="var" line="44" description="" type="callable" variable="">
+            <type>callable</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" namespace="Illuminate\Database" line="51" package="Default">
+        <name>$queryGrammar</name>
+        <full_name>\Illuminate\Database\Connection::queryGrammar</full_name>
+        <default/>
+        <docblock line="51">
+          <description>The query grammar implementation.</description>
+          <long-description/>
+          <tag name="var" line="51" description="" type="\Illuminate\Database\Query\Grammars\Grammar" variable="">
+            <type>\Illuminate\Database\Query\Grammars\Grammar</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" namespace="Illuminate\Database" line="58" package="Default">
+        <name>$schemaGrammar</name>
+        <full_name>\Illuminate\Database\Connection::schemaGrammar</full_name>
+        <default/>
+        <docblock line="58">
+          <description>The schema grammar implementation.</description>
+          <long-description/>
+          <tag name="var" line="58" description="" type="\Illuminate\Database\Schema\Grammars\Grammar" variable="">
+            <type>\Illuminate\Database\Schema\Grammars\Grammar</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" namespace="Illuminate\Database" line="65" package="Default">
+        <name>$postProcessor</name>
+        <full_name>\Illuminate\Database\Connection::postProcessor</full_name>
+        <default/>
+        <docblock line="65">
+          <description>The query post processor implementation.</description>
+          <long-description/>
+          <tag name="var" line="65" description="" type="\Illuminate\Database\Query\Processors\Processor" variable="">
+            <type>\Illuminate\Database\Query\Processors\Processor</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" namespace="Illuminate\Database" line="72" package="Default">
+        <name>$events</name>
+        <full_name>\Illuminate\Database\Connection::events</full_name>
+        <default/>
+        <docblock line="72">
+          <description>The event dispatcher instance.</description>
+          <long-description/>
+          <tag name="var" line="72" description="" type="\Illuminate\Contracts\Events\Dispatcher" variable="">
+            <type>\Illuminate\Contracts\Events\Dispatcher</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" namespace="Illuminate\Database" line="79" package="Default">
+        <name>$fetchMode</name>
+        <full_name>\Illuminate\Database\Connection::fetchMode</full_name>
+        <default>\PDO::FETCH_OBJ</default>
+        <docblock line="79">
+          <description>The default fetch mode of the connection.</description>
+          <long-description/>
+          <tag name="var" line="79" description="" type="integer" variable="">
+            <type>integer</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" namespace="Illuminate\Database" line="86" package="Default">
+        <name>$fetchArgument</name>
+        <full_name>\Illuminate\Database\Connection::fetchArgument</full_name>
+        <default/>
+        <docblock line="86">
+          <description>The argument for the fetch mode.</description>
+          <long-description/>
+          <tag name="var" line="86" description="" type="mixed" variable="">
+            <type>mixed</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" namespace="Illuminate\Database" line="93" package="Default">
+        <name>$fetchConstructorArgument</name>
+        <full_name>\Illuminate\Database\Connection::fetchConstructorArgument</full_name>
+        <default>array()</default>
+        <docblock line="93">
+          <description>The constructor arguments for the PDO::FETCH_CLASS fetch mode.</description>
+          <long-description/>
+          <tag name="var" line="93" description="" type="array" variable="">
+            <type>array</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" namespace="Illuminate\Database" line="100" package="Default">
+        <name>$transactions</name>
+        <full_name>\Illuminate\Database\Connection::transactions</full_name>
+        <default>0</default>
+        <docblock line="100">
+          <description>The number of active transactions.</description>
+          <long-description/>
+          <tag name="var" line="100" description="" type="integer" variable="">
+            <type>integer</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" namespace="Illuminate\Database" line="107" package="Default">
+        <name>$queryLog</name>
+        <full_name>\Illuminate\Database\Connection::queryLog</full_name>
+        <default>array()</default>
+        <docblock line="107">
+          <description>All of the queries run against the connection.</description>
+          <long-description/>
+          <tag name="var" line="107" description="" type="array" variable="">
+            <type>array</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" namespace="Illuminate\Database" line="114" package="Default">
+        <name>$loggingQueries</name>
+        <full_name>\Illuminate\Database\Connection::loggingQueries</full_name>
+        <default>false</default>
+        <docblock line="114">
+          <description>Indicates whether queries are being logged.</description>
+          <long-description/>
+          <tag name="var" line="114" description="" type="boolean" variable="">
+            <type>boolean</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" namespace="Illuminate\Database" line="121" package="Default">
+        <name>$pretending</name>
+        <full_name>\Illuminate\Database\Connection::pretending</full_name>
+        <default>false</default>
+        <docblock line="121">
+          <description>Indicates if the connection is in a "dry run".</description>
+          <long-description/>
+          <tag name="var" line="121" description="" type="boolean" variable="">
+            <type>boolean</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" namespace="Illuminate\Database" line="128" package="Default">
+        <name>$database</name>
+        <full_name>\Illuminate\Database\Connection::database</full_name>
+        <default/>
+        <docblock line="128">
+          <description>The name of the connected database.</description>
+          <long-description/>
+          <tag name="var" line="128" description="" type="string" variable="">
+            <type>string</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" namespace="Illuminate\Database" line="135" package="Default">
+        <name>$doctrineConnection</name>
+        <full_name>\Illuminate\Database\Connection::doctrineConnection</full_name>
+        <default/>
+        <docblock line="135">
+          <description>The instance of Doctrine connection.</description>
+          <long-description/>
+          <tag name="var" line="135" description="" type="\Doctrine\DBAL\Connection" variable="">
+            <type>\Doctrine\DBAL\Connection</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" namespace="Illuminate\Database" line="142" package="Default">
+        <name>$tablePrefix</name>
+        <full_name>\Illuminate\Database\Connection::tablePrefix</full_name>
+        <default>''</default>
+        <docblock line="142">
+          <description>The table prefix for the connection.</description>
+          <long-description/>
+          <tag name="var" line="142" description="" type="string" variable="">
+            <type>string</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" namespace="Illuminate\Database" line="149" package="Default">
+        <name>$config</name>
+        <full_name>\Illuminate\Database\Connection::config</full_name>
+        <default>array()</default>
+        <docblock line="149">
+          <description>The database connection configuration options.</description>
+          <long-description/>
+          <tag name="var" line="149" description="" type="array" variable="">
+            <type>array</type>
+          </tag>
+        </docblock>
+      </property>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database" line="23" package="Default">
+        <name>transaction</name>
+        <full_name>\Illuminate\Database\SqlServerConnection::transaction()</full_name>
+        <docblock line="23">
+          <description>Execute a Closure within a transaction.</description>
+          <long-description/>
+          <tag name="param" line="23" description="" type="\Closure" variable="$callback">
+            <type>\Closure</type>
+          </tag>
+          <tag name="return" line="23" description="" type="mixed">
+            <type>mixed</type>
+          </tag>
+          <tag name="throws" line="23" description="" type="\Exception|\Throwable">
+            <type>\Exception</type>
+            <type>\Throwable</type>
+          </tag>
+          <tag name="inherited_from" description="\Illuminate\Database\Connection::transaction()" refers="\Illuminate\Database\Connection::transaction()" link="/classes/Illuminate.Database.Connection.html#method_transaction"/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$callback</name>
+          <default/>
+          <type>\Closure</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Database" line="61" package="Default">
+        <name>getDefaultQueryGrammar</name>
+        <full_name>\Illuminate\Database\SqlServerConnection::getDefaultQueryGrammar()</full_name>
+        <docblock line="61">
+          <description>Get the default query grammar instance.</description>
+          <long-description/>
+          <tag name="return" line="61" description="" type="\Illuminate\Database\Query\Grammars\SqlServerGrammar">
+            <type>\Illuminate\Database\Query\Grammars\SqlServerGrammar</type>
+          </tag>
+          <tag name="inherited_from" description="\Illuminate\Database\Connection::getDefaultQueryGrammar()" refers="\Illuminate\Database\Connection::getDefaultQueryGrammar()" link="/classes/Illuminate.Database.Connection.html#method_getDefaultQueryGrammar"/>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Database" line="71" package="Default">
+        <name>getDefaultSchemaGrammar</name>
+        <full_name>\Illuminate\Database\SqlServerConnection::getDefaultSchemaGrammar()</full_name>
+        <docblock line="71">
+          <description>Get the default schema grammar instance.</description>
+          <long-description/>
+          <tag name="return" line="71" description="" type="\Illuminate\Database\Schema\Grammars\SqlServerGrammar">
+            <type>\Illuminate\Database\Schema\Grammars\SqlServerGrammar</type>
+          </tag>
+          <tag name="inherited_from" description="\Illuminate\Database\Connection::getDefaultSchemaGrammar()" refers="\Illuminate\Database\Connection::getDefaultSchemaGrammar()" link="/classes/Illuminate.Database.Connection.html#method_getDefaultSchemaGrammar"/>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Database" line="81" package="Default">
+        <name>getDefaultPostProcessor</name>
+        <full_name>\Illuminate\Database\SqlServerConnection::getDefaultPostProcessor()</full_name>
+        <docblock line="81">
+          <description>Get the default post processor instance.</description>
+          <long-description/>
+          <tag name="return" line="81" description="" type="\Illuminate\Database\Query\Processors\SqlServerProcessor">
+            <type>\Illuminate\Database\Query\Processors\SqlServerProcessor</type>
+          </tag>
+          <tag name="inherited_from" description="\Illuminate\Database\Connection::getDefaultPostProcessor()" refers="\Illuminate\Database\Connection::getDefaultPostProcessor()" link="/classes/Illuminate.Database.Connection.html#method_getDefaultPostProcessor"/>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Database" line="91" package="Default">
+        <name>getDoctrineDriver</name>
+        <full_name>\Illuminate\Database\SqlServerConnection::getDoctrineDriver()</full_name>
+        <docblock line="91">
+          <description>Get the Doctrine DBAL driver.</description>
+          <long-description/>
+          <tag name="return" line="91" description="" type="\Doctrine\DBAL\Driver\PDOSqlsrv\Driver">
+            <type>\Doctrine\DBAL\Driver\PDOSqlsrv\Driver</type>
+          </tag>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database" line="160" package="Default">
+        <name>__construct</name>
+        <full_name>\Illuminate\Database\Connection::__construct()</full_name>
+        <docblock line="160">
+          <description>Create a new database connection instance.</description>
+          <long-description/>
+          <tag name="param" line="160" description="" type="\PDO|\Closure" variable="$pdo">
+            <type>\PDO</type>
+            <type>\Closure</type>
+          </tag>
+          <tag name="param" line="160" description="" type="string" variable="$database">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="160" description="" type="string" variable="$tablePrefix">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="160" description="" type="array" variable="$config">
+            <type>array</type>
+          </tag>
+          <tag name="return" line="160" description="" type="void">
+            <type>void</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$pdo</name>
+          <default/>
+          <type>\PDO|\Closure</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$database</name>
+          <default>''</default>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$tablePrefix</name>
+          <default>''</default>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$config</name>
+          <default>array()</default>
+          <type>array</type>
+        </argument>
+        <inherited_from>\Illuminate\Database\Connection</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database" line="186" package="Default">
+        <name>useDefaultQueryGrammar</name>
+        <full_name>\Illuminate\Database\Connection::useDefaultQueryGrammar()</full_name>
+        <docblock line="186">
+          <description>Set the query grammar to the default implementation.</description>
+          <long-description/>
+          <tag name="return" line="186" description="" type="void">
+            <type>void</type>
+          </tag>
+        </docblock>
+        <inherited_from>\Illuminate\Database\Connection</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Database" line="196" package="Default">
+        <name>getDefaultQueryGrammar</name>
+        <full_name>\Illuminate\Database\Connection::getDefaultQueryGrammar()</full_name>
+        <docblock line="196">
+          <description>Get the default query grammar instance.</description>
+          <long-description/>
+          <tag name="return" line="196" description="" type="\Illuminate\Database\Query\Grammars\Grammar">
+            <type>\Illuminate\Database\Query\Grammars\Grammar</type>
+          </tag>
+        </docblock>
+        <inherited_from>\Illuminate\Database\Connection</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database" line="206" package="Default">
+        <name>useDefaultSchemaGrammar</name>
+        <full_name>\Illuminate\Database\Connection::useDefaultSchemaGrammar()</full_name>
+        <docblock line="206">
+          <description>Set the schema grammar to the default implementation.</description>
+          <long-description/>
+          <tag name="return" line="206" description="" type="void">
+            <type>void</type>
+          </tag>
+        </docblock>
+        <inherited_from>\Illuminate\Database\Connection</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Database" line="216" package="Default">
+        <name>getDefaultSchemaGrammar</name>
+        <full_name>\Illuminate\Database\Connection::getDefaultSchemaGrammar()</full_name>
+        <docblock line="216">
+          <description>Get the default schema grammar instance.</description>
+          <long-description/>
+          <tag name="return" line="216" description="" type="\Illuminate\Database\Schema\Grammars\Grammar">
+            <type>\Illuminate\Database\Schema\Grammars\Grammar</type>
+          </tag>
+        </docblock>
+        <inherited_from>\Illuminate\Database\Connection</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database" line="226" package="Default">
+        <name>useDefaultPostProcessor</name>
+        <full_name>\Illuminate\Database\Connection::useDefaultPostProcessor()</full_name>
+        <docblock line="226">
+          <description>Set the query post processor to the default implementation.</description>
+          <long-description/>
+          <tag name="return" line="226" description="" type="void">
+            <type>void</type>
+          </tag>
+        </docblock>
+        <inherited_from>\Illuminate\Database\Connection</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Database" line="236" package="Default">
+        <name>getDefaultPostProcessor</name>
+        <full_name>\Illuminate\Database\Connection::getDefaultPostProcessor()</full_name>
+        <docblock line="236">
+          <description>Get the default post processor instance.</description>
+          <long-description/>
+          <tag name="return" line="236" description="" type="\Illuminate\Database\Query\Processors\Processor">
+            <type>\Illuminate\Database\Query\Processors\Processor</type>
+          </tag>
+        </docblock>
+        <inherited_from>\Illuminate\Database\Connection</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database" line="246" package="Default">
+        <name>getSchemaBuilder</name>
+        <full_name>\Illuminate\Database\Connection::getSchemaBuilder()</full_name>
+        <docblock line="246">
+          <description>Get a schema builder instance for the connection.</description>
+          <long-description/>
+          <tag name="return" line="246" description="" type="\Illuminate\Database\Schema\Builder">
+            <type>\Illuminate\Database\Schema\Builder</type>
+          </tag>
+        </docblock>
+        <inherited_from>\Illuminate\Database\Connection</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database" line="261" package="Default">
+        <name>table</name>
+        <full_name>\Illuminate\Database\Connection::table()</full_name>
+        <docblock line="261">
+          <description>Begin a fluent query against a database table.</description>
+          <long-description/>
+          <tag name="param" line="261" description="" type="string" variable="$table">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="261" description="" type="\Illuminate\Database\Query\Builder">
+            <type>\Illuminate\Database\Query\Builder</type>
+          </tag>
+          <tag name="inherited_from" description="\Illuminate\Database\ConnectionInterface::table()" refers="\Illuminate\Database\ConnectionInterface::table()" link="/classes/Illuminate.Database.ConnectionInterface.html#method_table"/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$table</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <inherited_from>\Illuminate\Database\Connection</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database" line="271" package="Default">
+        <name>query</name>
+        <full_name>\Illuminate\Database\Connection::query()</full_name>
+        <docblock line="271">
+          <description>Get a new query builder instance.</description>
+          <long-description/>
+          <tag name="return" line="271" description="" type="\Illuminate\Database\Query\Builder">
+            <type>\Illuminate\Database\Query\Builder</type>
+          </tag>
+        </docblock>
+        <inherited_from>\Illuminate\Database\Connection</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database" line="284" package="Default">
+        <name>raw</name>
+        <full_name>\Illuminate\Database\Connection::raw()</full_name>
+        <docblock line="284">
+          <description>Get a new raw query expression.</description>
+          <long-description/>
+          <tag name="param" line="284" description="" type="mixed" variable="$value">
+            <type>mixed</type>
+          </tag>
+          <tag name="return" line="284" description="" type="\Illuminate\Database\Query\Expression">
+            <type>\Illuminate\Database\Query\Expression</type>
+          </tag>
+          <tag name="inherited_from" description="\Illuminate\Database\ConnectionInterface::raw()" refers="\Illuminate\Database\ConnectionInterface::raw()" link="/classes/Illuminate.Database.ConnectionInterface.html#method_raw"/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$value</name>
+          <default/>
+          <type>mixed</type>
+        </argument>
+        <inherited_from>\Illuminate\Database\Connection</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database" line="296" package="Default">
+        <name>selectOne</name>
+        <full_name>\Illuminate\Database\Connection::selectOne()</full_name>
+        <docblock line="296">
+          <description>Run a select statement and return a single result.</description>
+          <long-description/>
+          <tag name="param" line="296" description="" type="string" variable="$query">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="296" description="" type="array" variable="$bindings">
+            <type>array</type>
+          </tag>
+          <tag name="return" line="296" description="" type="mixed">
+            <type>mixed</type>
+          </tag>
+          <tag name="inherited_from" description="\Illuminate\Database\ConnectionInterface::selectOne()" refers="\Illuminate\Database\ConnectionInterface::selectOne()" link="/classes/Illuminate.Database.ConnectionInterface.html#method_selectOne"/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$query</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$bindings</name>
+          <default>array()</default>
+          <type>array</type>
+        </argument>
+        <inherited_from>\Illuminate\Database\Connection</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database" line="310" package="Default">
+        <name>selectFromWriteConnection</name>
+        <full_name>\Illuminate\Database\Connection::selectFromWriteConnection()</full_name>
+        <docblock line="310">
+          <description>Run a select statement against the database.</description>
+          <long-description/>
+          <tag name="param" line="310" description="" type="string" variable="$query">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="310" description="" type="array" variable="$bindings">
+            <type>array</type>
+          </tag>
+          <tag name="return" line="310" description="" type="array">
+            <type>array</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$query</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$bindings</name>
+          <default>array()</default>
+          <type>array</type>
+        </argument>
+        <inherited_from>\Illuminate\Database\Connection</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database" line="323" package="Default">
+        <name>select</name>
+        <full_name>\Illuminate\Database\Connection::select()</full_name>
+        <docblock line="323">
+          <description>Run a select statement against the database.</description>
+          <long-description/>
+          <tag name="param" line="323" description="" type="string" variable="$query">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="323" description="" type="array" variable="$bindings">
+            <type>array</type>
+          </tag>
+          <tag name="param" line="323" description="" type="boolean" variable="$useReadPdo">
+            <type>boolean</type>
+          </tag>
+          <tag name="return" line="323" description="" type="array">
+            <type>array</type>
+          </tag>
+          <tag name="inherited_from" description="\Illuminate\Database\ConnectionInterface::select()" refers="\Illuminate\Database\ConnectionInterface::select()" link="/classes/Illuminate.Database.ConnectionInterface.html#method_select"/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$query</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$bindings</name>
+          <default>array()</default>
+          <type>array</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$useReadPdo</name>
+          <default>true</default>
+          <type>boolean</type>
+        </argument>
+        <inherited_from>\Illuminate\Database\Connection</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database" line="353" package="Default">
+        <name>cursor</name>
+        <full_name>\Illuminate\Database\Connection::cursor()</full_name>
+        <docblock line="353">
+          <description>Run a select statement against the database and returns a generator.</description>
+          <long-description/>
+          <tag name="param" line="353" description="" type="string" variable="$query">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="353" description="" type="array" variable="$bindings">
+            <type>array</type>
+          </tag>
+          <tag name="param" line="353" description="" type="boolean" variable="$useReadPdo">
+            <type>boolean</type>
+          </tag>
+          <tag name="return" line="353" description="" type="\Generator">
+            <type>\Generator</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$query</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$bindings</name>
+          <default>array()</default>
+          <type>array</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$useReadPdo</name>
+          <default>true</default>
+          <type>boolean</type>
+        </argument>
+        <inherited_from>\Illuminate\Database\Connection</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Database" line="384" package="Default">
+        <name>getPdoForSelect</name>
+        <full_name>\Illuminate\Database\Connection::getPdoForSelect()</full_name>
+        <docblock line="384">
+          <description>Get the PDO connection to use for a select query.</description>
+          <long-description/>
+          <tag name="param" line="384" description="" type="boolean" variable="$useReadPdo">
+            <type>boolean</type>
+          </tag>
+          <tag name="return" line="384" description="" type="\PDO">
+            <type>\PDO</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$useReadPdo</name>
+          <default>true</default>
+          <type>boolean</type>
+        </argument>
+        <inherited_from>\Illuminate\Database\Connection</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database" line="396" package="Default">
+        <name>insert</name>
+        <full_name>\Illuminate\Database\Connection::insert()</full_name>
+        <docblock line="396">
+          <description>Run an insert statement against the database.</description>
+          <long-description/>
+          <tag name="param" line="396" description="" type="string" variable="$query">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="396" description="" type="array" variable="$bindings">
+            <type>array</type>
+          </tag>
+          <tag name="return" line="396" description="" type="boolean">
+            <type>boolean</type>
+          </tag>
+          <tag name="inherited_from" description="\Illuminate\Database\ConnectionInterface::insert()" refers="\Illuminate\Database\ConnectionInterface::insert()" link="/classes/Illuminate.Database.ConnectionInterface.html#method_insert"/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$query</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$bindings</name>
+          <default>array()</default>
+          <type>array</type>
+        </argument>
+        <inherited_from>\Illuminate\Database\Connection</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database" line="408" package="Default">
+        <name>update</name>
+        <full_name>\Illuminate\Database\Connection::update()</full_name>
+        <docblock line="408">
+          <description>Run an update statement against the database.</description>
+          <long-description/>
+          <tag name="param" line="408" description="" type="string" variable="$query">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="408" description="" type="array" variable="$bindings">
+            <type>array</type>
+          </tag>
+          <tag name="return" line="408" description="" type="integer">
+            <type>integer</type>
+          </tag>
+          <tag name="inherited_from" description="\Illuminate\Database\ConnectionInterface::update()" refers="\Illuminate\Database\ConnectionInterface::update()" link="/classes/Illuminate.Database.ConnectionInterface.html#method_update"/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$query</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$bindings</name>
+          <default>array()</default>
+          <type>array</type>
+        </argument>
+        <inherited_from>\Illuminate\Database\Connection</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database" line="420" package="Default">
+        <name>delete</name>
+        <full_name>\Illuminate\Database\Connection::delete()</full_name>
+        <docblock line="420">
+          <description>Run a delete statement against the database.</description>
+          <long-description/>
+          <tag name="param" line="420" description="" type="string" variable="$query">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="420" description="" type="array" variable="$bindings">
+            <type>array</type>
+          </tag>
+          <tag name="return" line="420" description="" type="integer">
+            <type>integer</type>
+          </tag>
+          <tag name="inherited_from" description="\Illuminate\Database\ConnectionInterface::delete()" refers="\Illuminate\Database\ConnectionInterface::delete()" link="/classes/Illuminate.Database.ConnectionInterface.html#method_delete"/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$query</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$bindings</name>
+          <default>array()</default>
+          <type>array</type>
+        </argument>
+        <inherited_from>\Illuminate\Database\Connection</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database" line="432" package="Default">
+        <name>statement</name>
+        <full_name>\Illuminate\Database\Connection::statement()</full_name>
+        <docblock line="432">
+          <description>Execute an SQL statement and return the boolean result.</description>
+          <long-description/>
+          <tag name="param" line="432" description="" type="string" variable="$query">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="432" description="" type="array" variable="$bindings">
+            <type>array</type>
+          </tag>
+          <tag name="return" line="432" description="" type="boolean">
+            <type>boolean</type>
+          </tag>
+          <tag name="inherited_from" description="\Illuminate\Database\ConnectionInterface::statement()" refers="\Illuminate\Database\ConnectionInterface::statement()" link="/classes/Illuminate.Database.ConnectionInterface.html#method_statement"/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$query</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$bindings</name>
+          <default>array()</default>
+          <type>array</type>
+        </argument>
+        <inherited_from>\Illuminate\Database\Connection</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database" line="452" package="Default">
+        <name>affectingStatement</name>
+        <full_name>\Illuminate\Database\Connection::affectingStatement()</full_name>
+        <docblock line="452">
+          <description>Run an SQL statement and get the number of rows affected.</description>
+          <long-description/>
+          <tag name="param" line="452" description="" type="string" variable="$query">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="452" description="" type="array" variable="$bindings">
+            <type>array</type>
+          </tag>
+          <tag name="return" line="452" description="" type="integer">
+            <type>integer</type>
+          </tag>
+          <tag name="inherited_from" description="\Illuminate\Database\ConnectionInterface::affectingStatement()" refers="\Illuminate\Database\ConnectionInterface::affectingStatement()" link="/classes/Illuminate.Database.ConnectionInterface.html#method_affectingStatement"/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$query</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$bindings</name>
+          <default>array()</default>
+          <type>array</type>
+        </argument>
+        <inherited_from>\Illuminate\Database\Connection</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database" line="476" package="Default">
+        <name>unprepared</name>
+        <full_name>\Illuminate\Database\Connection::unprepared()</full_name>
+        <docblock line="476">
+          <description>Run a raw, unprepared query against the PDO connection.</description>
+          <long-description/>
+          <tag name="param" line="476" description="" type="string" variable="$query">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="476" description="" type="boolean">
+            <type>boolean</type>
+          </tag>
+          <tag name="inherited_from" description="\Illuminate\Database\ConnectionInterface::unprepared()" refers="\Illuminate\Database\ConnectionInterface::unprepared()" link="/classes/Illuminate.Database.ConnectionInterface.html#method_unprepared"/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$query</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <inherited_from>\Illuminate\Database\Connection</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database" line="493" package="Default">
+        <name>prepareBindings</name>
+        <full_name>\Illuminate\Database\Connection::prepareBindings()</full_name>
+        <docblock line="493">
+          <description>Prepare the query bindings for execution.</description>
+          <long-description/>
+          <tag name="param" line="493" description="" type="array" variable="$bindings">
+            <type>array</type>
+          </tag>
+          <tag name="return" line="493" description="" type="array">
+            <type>array</type>
+          </tag>
+          <tag name="inherited_from" description="\Illuminate\Database\ConnectionInterface::prepareBindings()" refers="\Illuminate\Database\ConnectionInterface::prepareBindings()" link="/classes/Illuminate.Database.ConnectionInterface.html#method_prepareBindings"/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$bindings</name>
+          <default/>
+          <type>array</type>
+        </argument>
+        <inherited_from>\Illuminate\Database\Connection</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database" line="519" package="Default">
+        <name>transaction</name>
+        <full_name>\Illuminate\Database\Connection::transaction()</full_name>
+        <docblock line="519">
+          <description>Execute a Closure within a transaction.</description>
+          <long-description/>
+          <tag name="param" line="519" description="" type="\Closure" variable="$callback">
+            <type>\Closure</type>
+          </tag>
+          <tag name="return" line="519" description="" type="mixed">
+            <type>mixed</type>
+          </tag>
+          <tag name="throws" line="519" description="" type="\Exception|\Throwable">
+            <type>\Exception</type>
+            <type>\Throwable</type>
+          </tag>
+          <tag name="inherited_from" description="\Illuminate\Database\ConnectionInterface::transaction()" refers="\Illuminate\Database\ConnectionInterface::transaction()" link="/classes/Illuminate.Database.ConnectionInterface.html#method_transaction"/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$callback</name>
+          <default/>
+          <type>\Closure</type>
+        </argument>
+        <inherited_from>\Illuminate\Database\Connection</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database" line="554" package="Default">
+        <name>beginTransaction</name>
+        <full_name>\Illuminate\Database\Connection::beginTransaction()</full_name>
+        <docblock line="554">
+          <description>Start a new database transaction.</description>
+          <long-description/>
+          <tag name="return" line="554" description="" type="void">
+            <type>void</type>
+          </tag>
+          <tag name="throws" line="554" description="" type="\Exception">
+            <type>\Exception</type>
+          </tag>
+          <tag name="inherited_from" description="\Illuminate\Database\ConnectionInterface::beginTransaction()" refers="\Illuminate\Database\ConnectionInterface::beginTransaction()" link="/classes/Illuminate.Database.ConnectionInterface.html#method_beginTransaction"/>
+        </docblock>
+        <inherited_from>\Illuminate\Database\Connection</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database" line="580" package="Default">
+        <name>commit</name>
+        <full_name>\Illuminate\Database\Connection::commit()</full_name>
+        <docblock line="580">
+          <description>Commit the active database transaction.</description>
+          <long-description/>
+          <tag name="return" line="580" description="" type="void">
+            <type>void</type>
+          </tag>
+          <tag name="inherited_from" description="\Illuminate\Database\ConnectionInterface::commit()" refers="\Illuminate\Database\ConnectionInterface::commit()" link="/classes/Illuminate.Database.ConnectionInterface.html#method_commit"/>
+        </docblock>
+        <inherited_from>\Illuminate\Database\Connection</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database" line="596" package="Default">
+        <name>rollBack</name>
+        <full_name>\Illuminate\Database\Connection::rollBack()</full_name>
+        <docblock line="596">
+          <description>Rollback the active database transaction.</description>
+          <long-description/>
+          <tag name="return" line="596" description="" type="void">
+            <type>void</type>
+          </tag>
+          <tag name="inherited_from" description="\Illuminate\Database\ConnectionInterface::rollBack()" refers="\Illuminate\Database\ConnectionInterface::rollBack()" link="/classes/Illuminate.Database.ConnectionInterface.html#method_rollBack"/>
+        </docblock>
+        <inherited_from>\Illuminate\Database\Connection</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database" line="616" package="Default">
+        <name>transactionLevel</name>
+        <full_name>\Illuminate\Database\Connection::transactionLevel()</full_name>
+        <docblock line="616">
+          <description>Get the number of active transactions.</description>
+          <long-description/>
+          <tag name="return" line="616" description="" type="integer">
+            <type>integer</type>
+          </tag>
+          <tag name="inherited_from" description="\Illuminate\Database\ConnectionInterface::transactionLevel()" refers="\Illuminate\Database\ConnectionInterface::transactionLevel()" link="/classes/Illuminate.Database.ConnectionInterface.html#method_transactionLevel"/>
+        </docblock>
+        <inherited_from>\Illuminate\Database\Connection</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database" line="627" package="Default">
+        <name>pretend</name>
+        <full_name>\Illuminate\Database\Connection::pretend()</full_name>
+        <docblock line="627">
+          <description>Execute the given callback in "dry run" mode.</description>
+          <long-description/>
+          <tag name="param" line="627" description="" type="\Closure" variable="$callback">
+            <type>\Closure</type>
+          </tag>
+          <tag name="return" line="627" description="" type="array">
+            <type>array</type>
+          </tag>
+          <tag name="inherited_from" description="\Illuminate\Database\ConnectionInterface::pretend()" refers="\Illuminate\Database\ConnectionInterface::pretend()" link="/classes/Illuminate.Database.ConnectionInterface.html#method_pretend"/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$callback</name>
+          <default/>
+          <type>\Closure</type>
+        </argument>
+        <inherited_from>\Illuminate\Database\Connection</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Database" line="659" package="Default">
+        <name>run</name>
+        <full_name>\Illuminate\Database\Connection::run()</full_name>
+        <docblock line="659">
+          <description>Run a SQL statement and log its execution context.</description>
+          <long-description/>
+          <tag name="param" line="659" description="" type="string" variable="$query">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="659" description="" type="array" variable="$bindings">
+            <type>array</type>
+          </tag>
+          <tag name="param" line="659" description="" type="\Closure" variable="$callback">
+            <type>\Closure</type>
+          </tag>
+          <tag name="return" line="659" description="" type="mixed">
+            <type>mixed</type>
+          </tag>
+          <tag name="throws" line="659" description="" type="\Illuminate\Database\QueryException">
+            <type>\Illuminate\Database\QueryException</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$query</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$bindings</name>
+          <default/>
+          <type>array</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$callback</name>
+          <default/>
+          <type>\Closure</type>
+        </argument>
+        <inherited_from>\Illuminate\Database\Connection</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Database" line="700" package="Default">
+        <name>runQueryCallback</name>
+        <full_name>\Illuminate\Database\Connection::runQueryCallback()</full_name>
+        <docblock line="700">
+          <description>Run a SQL statement.</description>
+          <long-description/>
+          <tag name="param" line="700" description="" type="string" variable="$query">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="700" description="" type="array" variable="$bindings">
+            <type>array</type>
+          </tag>
+          <tag name="param" line="700" description="" type="\Closure" variable="$callback">
+            <type>\Closure</type>
+          </tag>
+          <tag name="return" line="700" description="" type="mixed">
+            <type>mixed</type>
+          </tag>
+          <tag name="throws" line="700" description="" type="\Illuminate\Database\QueryException">
+            <type>\Illuminate\Database\QueryException</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$query</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$bindings</name>
+          <default/>
+          <type>array</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$callback</name>
+          <default/>
+          <type>\Closure</type>
+        </argument>
+        <inherited_from>\Illuminate\Database\Connection</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Database" line="732" package="Default">
+        <name>tryAgainIfCausedByLostConnection</name>
+        <full_name>\Illuminate\Database\Connection::tryAgainIfCausedByLostConnection()</full_name>
+        <docblock line="732">
+          <description>Handle a query exception that occurred during query execution.</description>
+          <long-description/>
+          <tag name="param" line="732" description="" type="\Illuminate\Database\QueryException" variable="$e">
+            <type>\Illuminate\Database\QueryException</type>
+          </tag>
+          <tag name="param" line="732" description="" type="string" variable="$query">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="732" description="" type="array" variable="$bindings">
+            <type>array</type>
+          </tag>
+          <tag name="param" line="732" description="" type="\Closure" variable="$callback">
+            <type>\Closure</type>
+          </tag>
+          <tag name="return" line="732" description="" type="mixed">
+            <type>mixed</type>
+          </tag>
+          <tag name="throws" line="732" description="" type="\Illuminate\Database\QueryException">
+            <type>\Illuminate\Database\QueryException</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$e</name>
+          <default/>
+          <type>\Illuminate\Database\QueryException</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$query</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$bindings</name>
+          <default/>
+          <type>array</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$callback</name>
+          <default/>
+          <type>\Closure</type>
+        </argument>
+        <inherited_from>\Illuminate\Database\Connection</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database" line="748" package="Default">
+        <name>disconnect</name>
+        <full_name>\Illuminate\Database\Connection::disconnect()</full_name>
+        <docblock line="748">
+          <description>Disconnect from the underlying PDO connection.</description>
+          <long-description/>
+          <tag name="return" line="748" description="" type="void">
+            <type>void</type>
+          </tag>
+        </docblock>
+        <inherited_from>\Illuminate\Database\Connection</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database" line="760" package="Default">
+        <name>reconnect</name>
+        <full_name>\Illuminate\Database\Connection::reconnect()</full_name>
+        <docblock line="760">
+          <description>Reconnect to the database.</description>
+          <long-description/>
+          <tag name="return" line="760" description="" type="void">
+            <type>void</type>
+          </tag>
+          <tag name="throws" line="760" description="" type="\LogicException">
+            <type>\LogicException</type>
+          </tag>
+        </docblock>
+        <inherited_from>\Illuminate\Database\Connection</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Database" line="774" package="Default">
+        <name>reconnectIfMissingConnection</name>
+        <full_name>\Illuminate\Database\Connection::reconnectIfMissingConnection()</full_name>
+        <docblock line="774">
+          <description>Reconnect to the database if a PDO connection is missing.</description>
+          <long-description/>
+          <tag name="return" line="774" description="" type="void">
+            <type>void</type>
+          </tag>
+        </docblock>
+        <inherited_from>\Illuminate\Database\Connection</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database" line="789" package="Default">
+        <name>logQuery</name>
+        <full_name>\Illuminate\Database\Connection::logQuery()</full_name>
+        <docblock line="789">
+          <description>Log a query in the connection's query log.</description>
+          <long-description/>
+          <tag name="param" line="789" description="" type="string" variable="$query">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="789" description="" type="array" variable="$bindings">
+            <type>array</type>
+          </tag>
+          <tag name="param" line="789" description="" type="float|null" variable="$time">
+            <type>float</type>
+            <type>null</type>
+          </tag>
+          <tag name="return" line="789" description="" type="void">
+            <type>void</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$query</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$bindings</name>
+          <default/>
+          <type>array</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$time</name>
+          <default>null</default>
+          <type>float|null</type>
+        </argument>
+        <inherited_from>\Illuminate\Database\Connection</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database" line="808" package="Default">
+        <name>listen</name>
+        <full_name>\Illuminate\Database\Connection::listen()</full_name>
+        <docblock line="808">
+          <description>Register a database query listener with the connection.</description>
+          <long-description/>
+          <tag name="param" line="808" description="" type="\Closure" variable="$callback">
+            <type>\Closure</type>
+          </tag>
+          <tag name="return" line="808" description="" type="void">
+            <type>void</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$callback</name>
+          <default/>
+          <type>\Closure</type>
+        </argument>
+        <inherited_from>\Illuminate\Database\Connection</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Database" line="821" package="Default">
+        <name>fireConnectionEvent</name>
+        <full_name>\Illuminate\Database\Connection::fireConnectionEvent()</full_name>
+        <docblock line="821">
+          <description>Fire an event for this connection.</description>
+          <long-description/>
+          <tag name="param" line="821" description="" type="string" variable="$event">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="821" description="" type="void">
+            <type>void</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$event</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <inherited_from>\Illuminate\Database\Connection</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Database" line="843" package="Default">
+        <name>getElapsedTime</name>
+        <full_name>\Illuminate\Database\Connection::getElapsedTime()</full_name>
+        <docblock line="843">
+          <description>Get the elapsed time since a given starting point.</description>
+          <long-description/>
+          <tag name="param" line="843" description="" type="integer" variable="$start">
+            <type>integer</type>
+          </tag>
+          <tag name="return" line="843" description="" type="float">
+            <type>float</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$start</name>
+          <default/>
+          <type>integer</type>
+        </argument>
+        <inherited_from>\Illuminate\Database\Connection</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database" line="853" package="Default">
+        <name>isDoctrineAvailable</name>
+        <full_name>\Illuminate\Database\Connection::isDoctrineAvailable()</full_name>
+        <docblock line="853">
+          <description>Is Doctrine available?</description>
+          <long-description/>
+          <tag name="return" line="853" description="" type="boolean">
+            <type>boolean</type>
+          </tag>
+        </docblock>
+        <inherited_from>\Illuminate\Database\Connection</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database" line="865" package="Default">
+        <name>getDoctrineColumn</name>
+        <full_name>\Illuminate\Database\Connection::getDoctrineColumn()</full_name>
+        <docblock line="865">
+          <description>Get a Doctrine Schema Column instance.</description>
+          <long-description/>
+          <tag name="param" line="865" description="" type="string" variable="$table">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="865" description="" type="string" variable="$column">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="865" description="" type="\Doctrine\DBAL\Schema\Column">
+            <type>\Doctrine\DBAL\Schema\Column</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$table</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$column</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <inherited_from>\Illuminate\Database\Connection</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database" line="877" package="Default">
+        <name>getDoctrineSchemaManager</name>
+        <full_name>\Illuminate\Database\Connection::getDoctrineSchemaManager()</full_name>
+        <docblock line="877">
+          <description>Get the Doctrine DBAL schema manager for the connection.</description>
+          <long-description/>
+          <tag name="return" line="877" description="" type="\Doctrine\DBAL\Schema\AbstractSchemaManager">
+            <type>\Doctrine\DBAL\Schema\AbstractSchemaManager</type>
+          </tag>
+        </docblock>
+        <inherited_from>\Illuminate\Database\Connection</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database" line="887" package="Default">
+        <name>getDoctrineConnection</name>
+        <full_name>\Illuminate\Database\Connection::getDoctrineConnection()</full_name>
+        <docblock line="887">
+          <description>Get the Doctrine DBAL database connection instance.</description>
+          <long-description/>
+          <tag name="return" line="887" description="" type="\Doctrine\DBAL\Connection">
+            <type>\Doctrine\DBAL\Connection</type>
+          </tag>
+        </docblock>
+        <inherited_from>\Illuminate\Database\Connection</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database" line="905" package="Default">
+        <name>getPdo</name>
+        <full_name>\Illuminate\Database\Connection::getPdo()</full_name>
+        <docblock line="905">
+          <description>Get the current PDO connection.</description>
+          <long-description/>
+          <tag name="return" line="905" description="" type="\PDO">
+            <type>\PDO</type>
+          </tag>
+        </docblock>
+        <inherited_from>\Illuminate\Database\Connection</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database" line="919" package="Default">
+        <name>getReadPdo</name>
+        <full_name>\Illuminate\Database\Connection::getReadPdo()</full_name>
+        <docblock line="919">
+          <description>Get the current PDO connection used for reading.</description>
+          <long-description/>
+          <tag name="return" line="919" description="" type="\PDO">
+            <type>\PDO</type>
+          </tag>
+        </docblock>
+        <inherited_from>\Illuminate\Database\Connection</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database" line="936" package="Default">
+        <name>setPdo</name>
+        <full_name>\Illuminate\Database\Connection::setPdo()</full_name>
+        <docblock line="936">
+          <description>Set the PDO connection.</description>
+          <long-description/>
+          <tag name="param" line="936" description="" type="\PDO|null" variable="$pdo">
+            <type>\PDO</type>
+            <type>null</type>
+          </tag>
+          <tag name="return" line="936" description="" type="\Illuminate\Database\SqlServerConnection">
+            <type>\Illuminate\Database\SqlServerConnection</type>
+          </tag>
+          <tag name="throws" line="936" description="" type="\RuntimeException">
+            <type>\RuntimeException</type>
+          </tag>
+          <tag name="fluent" description="This method is part of a fluent interface and will return the same instance"/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$pdo</name>
+          <default/>
+          <type>\PDO|null</type>
+        </argument>
+        <inherited_from>\Illuminate\Database\Connection</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database" line="953" package="Default">
+        <name>setReadPdo</name>
+        <full_name>\Illuminate\Database\Connection::setReadPdo()</full_name>
+        <docblock line="953">
+          <description>Set the PDO connection used for reading.</description>
+          <long-description/>
+          <tag name="param" line="953" description="" type="\PDO|null" variable="$pdo">
+            <type>\PDO</type>
+            <type>null</type>
+          </tag>
+          <tag name="return" line="953" description="" type="\Illuminate\Database\SqlServerConnection">
+            <type>\Illuminate\Database\SqlServerConnection</type>
+          </tag>
+          <tag name="fluent" description="This method is part of a fluent interface and will return the same instance"/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$pdo</name>
+          <default/>
+          <type>\PDO|null</type>
+        </argument>
+        <inherited_from>\Illuminate\Database\Connection</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database" line="966" package="Default">
+        <name>setReconnector</name>
+        <full_name>\Illuminate\Database\Connection::setReconnector()</full_name>
+        <docblock line="966">
+          <description>Set the reconnect instance on the connection.</description>
+          <long-description/>
+          <tag name="param" line="966" description="" type="callable" variable="$reconnector">
+            <type>callable</type>
+          </tag>
+          <tag name="return" line="966" description="" type="\Illuminate\Database\SqlServerConnection">
+            <type>\Illuminate\Database\SqlServerConnection</type>
+          </tag>
+          <tag name="fluent" description="This method is part of a fluent interface and will return the same instance"/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$reconnector</name>
+          <default/>
+          <type>callable</type>
+        </argument>
+        <inherited_from>\Illuminate\Database\Connection</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database" line="978" package="Default">
+        <name>getName</name>
+        <full_name>\Illuminate\Database\Connection::getName()</full_name>
+        <docblock line="978">
+          <description>Get the database connection name.</description>
+          <long-description/>
+          <tag name="return" line="978" description="" type="string|null">
+            <type>string</type>
+            <type>null</type>
+          </tag>
+        </docblock>
+        <inherited_from>\Illuminate\Database\Connection</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database" line="989" package="Default">
+        <name>getConfig</name>
+        <full_name>\Illuminate\Database\Connection::getConfig()</full_name>
+        <docblock line="989">
+          <description>Get an option from the configuration options.</description>
+          <long-description/>
+          <tag name="param" line="989" description="" type="string" variable="$option">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="989" description="" type="mixed">
+            <type>mixed</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$option</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <inherited_from>\Illuminate\Database\Connection</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database" line="999" package="Default">
+        <name>getDriverName</name>
+        <full_name>\Illuminate\Database\Connection::getDriverName()</full_name>
+        <docblock line="999">
+          <description>Get the PDO driver name.</description>
+          <long-description/>
+          <tag name="return" line="999" description="" type="string">
+            <type>string</type>
+          </tag>
+        </docblock>
+        <inherited_from>\Illuminate\Database\Connection</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database" line="1009" package="Default">
+        <name>getQueryGrammar</name>
+        <full_name>\Illuminate\Database\Connection::getQueryGrammar()</full_name>
+        <docblock line="1009">
+          <description>Get the query grammar used by the connection.</description>
+          <long-description/>
+          <tag name="return" line="1009" description="" type="\Illuminate\Database\Query\Grammars\Grammar">
+            <type>\Illuminate\Database\Query\Grammars\Grammar</type>
+          </tag>
+        </docblock>
+        <inherited_from>\Illuminate\Database\Connection</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database" line="1020" package="Default">
+        <name>setQueryGrammar</name>
+        <full_name>\Illuminate\Database\Connection::setQueryGrammar()</full_name>
+        <docblock line="1020">
+          <description>Set the query grammar used by the connection.</description>
+          <long-description/>
+          <tag name="param" line="1020" description="" type="\Illuminate\Database\Query\Grammars\Grammar" variable="$grammar">
+            <type>\Illuminate\Database\Query\Grammars\Grammar</type>
+          </tag>
+          <tag name="return" line="1020" description="" type="void">
+            <type>void</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$grammar</name>
+          <default/>
+          <type>\Illuminate\Database\Query\Grammars\Grammar</type>
+        </argument>
+        <inherited_from>\Illuminate\Database\Connection</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database" line="1030" package="Default">
+        <name>getSchemaGrammar</name>
+        <full_name>\Illuminate\Database\Connection::getSchemaGrammar()</full_name>
+        <docblock line="1030">
+          <description>Get the schema grammar used by the connection.</description>
+          <long-description/>
+          <tag name="return" line="1030" description="" type="\Illuminate\Database\Schema\Grammars\Grammar">
+            <type>\Illuminate\Database\Schema\Grammars\Grammar</type>
+          </tag>
+        </docblock>
+        <inherited_from>\Illuminate\Database\Connection</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database" line="1041" package="Default">
+        <name>setSchemaGrammar</name>
+        <full_name>\Illuminate\Database\Connection::setSchemaGrammar()</full_name>
+        <docblock line="1041">
+          <description>Set the schema grammar used by the connection.</description>
+          <long-description/>
+          <tag name="param" line="1041" description="" type="\Illuminate\Database\Schema\Grammars\Grammar" variable="$grammar">
+            <type>\Illuminate\Database\Schema\Grammars\Grammar</type>
+          </tag>
+          <tag name="return" line="1041" description="" type="void">
+            <type>void</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$grammar</name>
+          <default/>
+          <type>\Illuminate\Database\Schema\Grammars\Grammar</type>
+        </argument>
+        <inherited_from>\Illuminate\Database\Connection</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database" line="1051" package="Default">
+        <name>getPostProcessor</name>
+        <full_name>\Illuminate\Database\Connection::getPostProcessor()</full_name>
+        <docblock line="1051">
+          <description>Get the query post processor used by the connection.</description>
+          <long-description/>
+          <tag name="return" line="1051" description="" type="\Illuminate\Database\Query\Processors\Processor">
+            <type>\Illuminate\Database\Query\Processors\Processor</type>
+          </tag>
+        </docblock>
+        <inherited_from>\Illuminate\Database\Connection</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database" line="1062" package="Default">
+        <name>setPostProcessor</name>
+        <full_name>\Illuminate\Database\Connection::setPostProcessor()</full_name>
+        <docblock line="1062">
+          <description>Set the query post processor used by the connection.</description>
+          <long-description/>
+          <tag name="param" line="1062" description="" type="\Illuminate\Database\Query\Processors\Processor" variable="$processor">
+            <type>\Illuminate\Database\Query\Processors\Processor</type>
+          </tag>
+          <tag name="return" line="1062" description="" type="void">
+            <type>void</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$processor</name>
+          <default/>
+          <type>\Illuminate\Database\Query\Processors\Processor</type>
+        </argument>
+        <inherited_from>\Illuminate\Database\Connection</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database" line="1072" package="Default">
+        <name>getEventDispatcher</name>
+        <full_name>\Illuminate\Database\Connection::getEventDispatcher()</full_name>
+        <docblock line="1072">
+          <description>Get the event dispatcher used by the connection.</description>
+          <long-description/>
+          <tag name="return" line="1072" description="" type="\Illuminate\Contracts\Events\Dispatcher">
+            <type>\Illuminate\Contracts\Events\Dispatcher</type>
+          </tag>
+        </docblock>
+        <inherited_from>\Illuminate\Database\Connection</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database" line="1083" package="Default">
+        <name>setEventDispatcher</name>
+        <full_name>\Illuminate\Database\Connection::setEventDispatcher()</full_name>
+        <docblock line="1083">
+          <description>Set the event dispatcher instance on the connection.</description>
+          <long-description/>
+          <tag name="param" line="1083" description="" type="\Illuminate\Contracts\Events\Dispatcher" variable="$events">
+            <type>\Illuminate\Contracts\Events\Dispatcher</type>
+          </tag>
+          <tag name="return" line="1083" description="" type="void">
+            <type>void</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$events</name>
+          <default/>
+          <type>\Illuminate\Contracts\Events\Dispatcher</type>
+        </argument>
+        <inherited_from>\Illuminate\Database\Connection</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database" line="1093" package="Default">
+        <name>pretending</name>
+        <full_name>\Illuminate\Database\Connection::pretending()</full_name>
+        <docblock line="1093">
+          <description>Determine if the connection in a "dry run".</description>
+          <long-description/>
+          <tag name="return" line="1093" description="" type="boolean">
+            <type>boolean</type>
+          </tag>
+        </docblock>
+        <inherited_from>\Illuminate\Database\Connection</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database" line="1103" package="Default">
+        <name>getFetchMode</name>
+        <full_name>\Illuminate\Database\Connection::getFetchMode()</full_name>
+        <docblock line="1103">
+          <description>Get the default fetch mode for the connection.</description>
+          <long-description/>
+          <tag name="return" line="1103" description="" type="integer">
+            <type>integer</type>
+          </tag>
+        </docblock>
+        <inherited_from>\Illuminate\Database\Connection</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database" line="1113" package="Default">
+        <name>getFetchArgument</name>
+        <full_name>\Illuminate\Database\Connection::getFetchArgument()</full_name>
+        <docblock line="1113">
+          <description>Get the fetch argument to be applied when selecting.</description>
+          <long-description/>
+          <tag name="return" line="1113" description="" type="mixed">
+            <type>mixed</type>
+          </tag>
+        </docblock>
+        <inherited_from>\Illuminate\Database\Connection</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database" line="1123" package="Default">
+        <name>getFetchConstructorArgument</name>
+        <full_name>\Illuminate\Database\Connection::getFetchConstructorArgument()</full_name>
+        <docblock line="1123">
+          <description>Get custom constructor arguments for the PDO::FETCH_CLASS fetch mode.</description>
+          <long-description/>
+          <tag name="return" line="1123" description="" type="array">
+            <type>array</type>
+          </tag>
+        </docblock>
+        <inherited_from>\Illuminate\Database\Connection</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database" line="1136" package="Default">
+        <name>setFetchMode</name>
+        <full_name>\Illuminate\Database\Connection::setFetchMode()</full_name>
+        <docblock line="1136">
+          <description>Set the default fetch mode for the connection, and optional arguments for the given fetch mode.</description>
+          <long-description/>
+          <tag name="param" line="1136" description="" type="integer" variable="$fetchMode">
+            <type>integer</type>
+          </tag>
+          <tag name="param" line="1136" description="" type="mixed" variable="$fetchArgument">
+            <type>mixed</type>
+          </tag>
+          <tag name="param" line="1136" description="" type="array" variable="$fetchConstructorArgument">
+            <type>array</type>
+          </tag>
+          <tag name="return" line="1136" description="" type="integer">
+            <type>integer</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$fetchMode</name>
+          <default/>
+          <type>integer</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$fetchArgument</name>
+          <default>null</default>
+          <type>mixed</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$fetchConstructorArgument</name>
+          <default>array()</default>
+          <type>array</type>
+        </argument>
+        <inherited_from>\Illuminate\Database\Connection</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database" line="1148" package="Default">
+        <name>getQueryLog</name>
+        <full_name>\Illuminate\Database\Connection::getQueryLog()</full_name>
+        <docblock line="1148">
+          <description>Get the connection query log.</description>
+          <long-description/>
+          <tag name="return" line="1148" description="" type="array">
+            <type>array</type>
+          </tag>
+        </docblock>
+        <inherited_from>\Illuminate\Database\Connection</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database" line="1158" package="Default">
+        <name>flushQueryLog</name>
+        <full_name>\Illuminate\Database\Connection::flushQueryLog()</full_name>
+        <docblock line="1158">
+          <description>Clear the query log.</description>
+          <long-description/>
+          <tag name="return" line="1158" description="" type="void">
+            <type>void</type>
+          </tag>
+        </docblock>
+        <inherited_from>\Illuminate\Database\Connection</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database" line="1168" package="Default">
+        <name>enableQueryLog</name>
+        <full_name>\Illuminate\Database\Connection::enableQueryLog()</full_name>
+        <docblock line="1168">
+          <description>Enable the query log on the connection.</description>
+          <long-description/>
+          <tag name="return" line="1168" description="" type="void">
+            <type>void</type>
+          </tag>
+        </docblock>
+        <inherited_from>\Illuminate\Database\Connection</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database" line="1178" package="Default">
+        <name>disableQueryLog</name>
+        <full_name>\Illuminate\Database\Connection::disableQueryLog()</full_name>
+        <docblock line="1178">
+          <description>Disable the query log on the connection.</description>
+          <long-description/>
+          <tag name="return" line="1178" description="" type="void">
+            <type>void</type>
+          </tag>
+        </docblock>
+        <inherited_from>\Illuminate\Database\Connection</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database" line="1188" package="Default">
+        <name>logging</name>
+        <full_name>\Illuminate\Database\Connection::logging()</full_name>
+        <docblock line="1188">
+          <description>Determine whether we're logging queries.</description>
+          <long-description/>
+          <tag name="return" line="1188" description="" type="boolean">
+            <type>boolean</type>
+          </tag>
+        </docblock>
+        <inherited_from>\Illuminate\Database\Connection</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database" line="1198" package="Default">
+        <name>getDatabaseName</name>
+        <full_name>\Illuminate\Database\Connection::getDatabaseName()</full_name>
+        <docblock line="1198">
+          <description>Get the name of the connected database.</description>
+          <long-description/>
+          <tag name="return" line="1198" description="" type="string">
+            <type>string</type>
+          </tag>
+        </docblock>
+        <inherited_from>\Illuminate\Database\Connection</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database" line="1209" package="Default">
+        <name>setDatabaseName</name>
+        <full_name>\Illuminate\Database\Connection::setDatabaseName()</full_name>
+        <docblock line="1209">
+          <description>Set the name of the connected database.</description>
+          <long-description/>
+          <tag name="param" line="1209" description="" type="string" variable="$database">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="1209" description="" type="string">
+            <type>string</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$database</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <inherited_from>\Illuminate\Database\Connection</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database" line="1219" package="Default">
+        <name>getTablePrefix</name>
+        <full_name>\Illuminate\Database\Connection::getTablePrefix()</full_name>
+        <docblock line="1219">
+          <description>Get the table prefix for the connection.</description>
+          <long-description/>
+          <tag name="return" line="1219" description="" type="string">
+            <type>string</type>
+          </tag>
+        </docblock>
+        <inherited_from>\Illuminate\Database\Connection</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database" line="1230" package="Default">
+        <name>setTablePrefix</name>
+        <full_name>\Illuminate\Database\Connection::setTablePrefix()</full_name>
+        <docblock line="1230">
+          <description>Set the table prefix in use by the connection.</description>
+          <long-description/>
+          <tag name="param" line="1230" description="" type="string" variable="$prefix">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="1230" description="" type="void">
+            <type>void</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$prefix</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <inherited_from>\Illuminate\Database\Connection</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database" line="1243" package="Default">
+        <name>withTablePrefix</name>
+        <full_name>\Illuminate\Database\Connection::withTablePrefix()</full_name>
+        <docblock line="1243">
+          <description>Set the table prefix and return the grammar.</description>
+          <long-description/>
+          <tag name="param" line="1243" description="" type="\Illuminate\Database\Grammar" variable="$grammar">
+            <type>\Illuminate\Database\Grammar</type>
+          </tag>
+          <tag name="return" line="1243" description="" type="\Illuminate\Database\Grammar">
+            <type>\Illuminate\Database\Grammar</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$grammar</name>
+          <default/>
+          <type>\Illuminate\Database\Grammar</type>
+        </argument>
+        <inherited_from>\Illuminate\Database\Connection</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Database" line="16" package="Default">
+        <name>causedByLostConnection</name>
+        <full_name>\Illuminate\Database\DetectsLostConnections::causedByLostConnection()</full_name>
+        <docblock line="16">
+          <description>Determine if the given exception was caused by a lost connection.</description>
+          <long-description/>
+          <tag name="param" line="16" description="" type="\Exception" variable="$e">
+            <type>\Exception</type>
+          </tag>
+          <tag name="return" line="16" description="" type="boolean">
+            <type>boolean</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$e</name>
+          <default/>
+          <type>\Exception</type>
+        </argument>
+        <inherited_from>\Illuminate\Database\DetectsLostConnections</inherited_from>
+      </method>
+    </class>
+    <parse_markers>
+      <error line="0" code="PPC:ERR-50000">No summary was found for this file</error>
+      <error line="13" code="PPC:ERR-50005">No summary for class \Illuminate\Database\SqlServerConnection</error>
+    </parse_markers>
+    <source>eJy1VktP4zAQvudXzKFSU7TQOyzsQotQtTy6UGkvubjJtIk2tYPt0KJd/vuOH0mTQksF2lxaj+f1fTMe++u3Ii2CgLMFqoLFCKM8LxcZZxqjIdNsyhSeBEGpEAa5UKWklVlcrmIsdCa4W05SKZZsmvvdoYi1zDi5uDi/joYye0IZjYd3D4+5kk9eAEzVik7ijN/IIPpZonyOxlLEqJSQKiJPDyjJppa9Z3wl2WLBmqZeYvKwKn693dFDnOKC7fbkdGpXQZwzRdJKcyA4x9gQB7jSyBMFa1HwJwD6+gcH9hcOiGaMS43AKvZhmek04yTQknHFrN2RV6+svheM4gNElRF0YpbnUxb/rlUk6lJyWGQrTDbNtammgqgu8t+oLrBX6tvfopzmWQyzkjtIjZzCKnYdumdNHETzZTMIOwRGHZ7NUbsOuKU+DHtwegpdZXul22tYmM/nTQiR6+PjZsR1pJPa5CWo/65jjRMR9g7PkMgNuxeXV6NbmNyf33bJrtbu9+EXdvMcVLYo8mdAXwmdIswpVQ5VtGZJnqFPch2nMM1FxbbzxnhiIC/RKzBunHqCnZiDFN6nCdPA1nSkBO0yDVxwBDGzqnHK+BwVECtQoFSZ0piAFnYz8f17VHsxibZp7UhUZa7hdF0vV5wmJztYHNzd3IwmNY1v0E+Zj1rw1+i/GPEyI7INfrAEEEouDK9zoFgKaD6pqlOdt7IAYr0FkOYQGi5N3SQe2j62GmuiyW+mDddNV1MEIjDJibPUWyT4hLkgLkEhETsjo5mQZiujc14U1PfMOFRrVh2wsD410MHN7t3C3v3d9fXF+eDH6za01bIwOtigtYpVH8v/GGut4M+e7xWn4rcbM+sKtWdwxkxLPZrZCnM/IjOuNOMxvppZ3nn0gQnenklSaBqnVMp6LJnx4pJpzvlwcyBV8Bxv5lRPDLVjibNsFXJctq6J3r74lb0RPkfAezfP/gy07qcPUNCy35uDQiht8nJX9WeaYOcbYH8axpRQbbaNBov3jYfGbszVmwbM4wcSe69tBbrXS2kfWK2H1C5Am08uB+Yl+Ae7fB2Z</source>
+  <type>class</type></file>

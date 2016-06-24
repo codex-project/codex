@@ -1,0 +1,1423 @@
+<file path="codex/vendor/laravel/framework/src/Illuminate/Database/Eloquent/Relations/MorphOneOrMany.php" generated-path="codex.vendor.laravel.framework.src.Illuminate.Database.Eloquent.Relations.MorphOneOrMany.html" hash="7021dd61e5d5462c72f443dcd86fc2cf" package="Default">
+    <docblock line="0">
+      <description/>
+      <long-description/>
+      <tag name="package" line="0" description="Default"/>
+    </docblock>
+    <namespace-alias name="Model">\Illuminate\Database\Eloquent\Model</namespace-alias>
+    <namespace-alias name="Builder">\Illuminate\Database\Eloquent\Builder</namespace-alias>
+    <class final="false" abstract="true" namespace="Illuminate\Database\Eloquent\Relations" line="8" package="Default">
+      <extends>\Illuminate\Database\Eloquent\Relations\HasOneOrMany</extends>
+      <name>MorphOneOrMany</name>
+      <full_name>\Illuminate\Database\Eloquent\Relations\MorphOneOrMany</full_name>
+      <docblock line="8">
+        <description/>
+        <long-description/>
+        <tag name="package" line="8" description="Default"/>
+        <tag name="inherited_from" description="\Illuminate\Database\Eloquent\Relations\HasOneOrMany" refers="\Illuminate\Database\Eloquent\Relations\HasOneOrMany" link="/classes/Illuminate.Database.Eloquent.Relations.HasOneOrMany.html"/>
+      </docblock>
+      <property static="false" visibility="protected" namespace="Illuminate\Database\Eloquent\Relations" line="15" package="Default">
+        <name>$morphType</name>
+        <full_name>\Illuminate\Database\Eloquent\Relations\MorphOneOrMany::morphType</full_name>
+        <default/>
+        <docblock line="15">
+          <description>The foreign key type for the relationship.</description>
+          <long-description/>
+          <tag name="var" line="15" description="" type="string" variable="">
+            <type>string</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" namespace="Illuminate\Database\Eloquent\Relations" line="22" package="Default">
+        <name>$morphClass</name>
+        <full_name>\Illuminate\Database\Eloquent\Relations\MorphOneOrMany::morphClass</full_name>
+        <default/>
+        <docblock line="22">
+          <description>The class name of the parent model.</description>
+          <long-description/>
+          <tag name="var" line="22" description="" type="string" variable="">
+            <type>string</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" namespace="Illuminate\Database\Eloquent\Relations" line="17" package="Default">
+        <name>$foreignKey</name>
+        <full_name>\Illuminate\Database\Eloquent\Relations\HasOneOrMany::foreignKey</full_name>
+        <default/>
+        <docblock line="17">
+          <description>The foreign key of the parent model.</description>
+          <long-description/>
+          <tag name="var" line="17" description="" type="string" variable="">
+            <type>string</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" namespace="Illuminate\Database\Eloquent\Relations" line="24" package="Default">
+        <name>$localKey</name>
+        <full_name>\Illuminate\Database\Eloquent\Relations\HasOneOrMany::localKey</full_name>
+        <default/>
+        <docblock line="24">
+          <description>The local key of the parent model.</description>
+          <long-description/>
+          <tag name="var" line="24" description="" type="string" variable="">
+            <type>string</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="true" visibility="protected" namespace="Illuminate\Database\Eloquent\Relations" line="31" package="Default">
+        <name>$selfJoinCount</name>
+        <full_name>\Illuminate\Database\Eloquent\Relations\HasOneOrMany::selfJoinCount</full_name>
+        <default>0</default>
+        <docblock line="31">
+          <description>The count of self joins.</description>
+          <long-description/>
+          <tag name="var" line="31" description="" type="integer" variable="">
+            <type>integer</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" namespace="Illuminate\Database\Eloquent\Relations" line="19" package="Default">
+        <name>$query</name>
+        <full_name>\Illuminate\Database\Eloquent\Relations\Relation::query</full_name>
+        <default/>
+        <docblock line="19">
+          <description>The Eloquent query builder instance.</description>
+          <long-description/>
+          <tag name="var" line="19" description="" type="\Illuminate\Database\Eloquent\Builder" variable="">
+            <type>\Illuminate\Database\Eloquent\Builder</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" namespace="Illuminate\Database\Eloquent\Relations" line="26" package="Default">
+        <name>$parent</name>
+        <full_name>\Illuminate\Database\Eloquent\Relations\Relation::parent</full_name>
+        <default/>
+        <docblock line="26">
+          <description>The parent model instance.</description>
+          <long-description/>
+          <tag name="var" line="26" description="" type="\Illuminate\Database\Eloquent\Model" variable="">
+            <type>\Illuminate\Database\Eloquent\Model</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" namespace="Illuminate\Database\Eloquent\Relations" line="33" package="Default">
+        <name>$related</name>
+        <full_name>\Illuminate\Database\Eloquent\Relations\Relation::related</full_name>
+        <default/>
+        <docblock line="33">
+          <description>The related model instance.</description>
+          <long-description/>
+          <tag name="var" line="33" description="" type="\Illuminate\Database\Eloquent\Model" variable="">
+            <type>\Illuminate\Database\Eloquent\Model</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="true" visibility="protected" namespace="Illuminate\Database\Eloquent\Relations" line="40" package="Default">
+        <name>$constraints</name>
+        <full_name>\Illuminate\Database\Eloquent\Relations\Relation::constraints</full_name>
+        <default>true</default>
+        <docblock line="40">
+          <description>Indicates if the relation is adding constraints.</description>
+          <long-description/>
+          <tag name="var" line="40" description="" type="boolean" variable="">
+            <type>boolean</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="true" visibility="protected" namespace="Illuminate\Database\Eloquent\Relations" line="47" package="Default">
+        <name>$morphMap</name>
+        <full_name>\Illuminate\Database\Eloquent\Relations\Relation::morphMap</full_name>
+        <default>array()</default>
+        <docblock line="47">
+          <description>An array to map class names to their morph names in database.</description>
+          <long-description/>
+          <tag name="var" line="47" description="" type="array" variable="">
+            <type>array</type>
+          </tag>
+        </docblock>
+      </property>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Eloquent\Relations" line="34" package="Default">
+        <name>__construct</name>
+        <full_name>\Illuminate\Database\Eloquent\Relations\MorphOneOrMany::__construct()</full_name>
+        <docblock line="34">
+          <description>Create a new morph one or many relationship instance.</description>
+          <long-description/>
+          <tag name="param" line="34" description="" type="\Illuminate\Database\Eloquent\Builder" variable="$query">
+            <type>\Illuminate\Database\Eloquent\Builder</type>
+          </tag>
+          <tag name="param" line="34" description="" type="\Illuminate\Database\Eloquent\Model" variable="$parent">
+            <type>\Illuminate\Database\Eloquent\Model</type>
+          </tag>
+          <tag name="param" line="34" description="" type="string" variable="$type">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="34" description="" type="string" variable="$id">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="34" description="" type="string" variable="$localKey">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="34" description="" type="void">
+            <type>void</type>
+          </tag>
+          <tag name="inherited_from" description="\Illuminate\Database\Eloquent\Relations\HasOneOrMany::__construct()" refers="\Illuminate\Database\Eloquent\Relations\HasOneOrMany::__construct()" link="/classes/Illuminate.Database.Eloquent.Relations.HasOneOrMany.html#method___construct"/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$query</name>
+          <default/>
+          <type>\Illuminate\Database\Eloquent\Builder</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$parent</name>
+          <default/>
+          <type>\Illuminate\Database\Eloquent\Model</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$type</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$id</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$localKey</name>
+          <default/>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Eloquent\Relations" line="48" package="Default">
+        <name>addConstraints</name>
+        <full_name>\Illuminate\Database\Eloquent\Relations\MorphOneOrMany::addConstraints()</full_name>
+        <docblock line="48">
+          <description>Set the base constraints on the relation query.</description>
+          <long-description/>
+          <tag name="return" line="48" description="" type="void">
+            <type>void</type>
+          </tag>
+          <tag name="inherited_from" description="\Illuminate\Database\Eloquent\Relations\HasOneOrMany::addConstraints()" refers="\Illuminate\Database\Eloquent\Relations\HasOneOrMany::addConstraints()" link="/classes/Illuminate.Database.Eloquent.Relations.HasOneOrMany.html#method_addConstraints"/>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Eloquent\Relations" line="65" package="Default">
+        <name>getRelationQuery</name>
+        <full_name>\Illuminate\Database\Eloquent\Relations\MorphOneOrMany::getRelationQuery()</full_name>
+        <docblock line="65">
+          <description>Get the relationship query.</description>
+          <long-description/>
+          <tag name="param" line="65" description="" type="\Illuminate\Database\Eloquent\Builder" variable="$query">
+            <type>\Illuminate\Database\Eloquent\Builder</type>
+          </tag>
+          <tag name="param" line="65" description="" type="\Illuminate\Database\Eloquent\Builder" variable="$parent">
+            <type>\Illuminate\Database\Eloquent\Builder</type>
+          </tag>
+          <tag name="param" line="65" description="" type="array|mixed" variable="$columns">
+            <type>array</type>
+            <type>mixed</type>
+          </tag>
+          <tag name="return" line="65" description="" type="\Illuminate\Database\Eloquent\Builder">
+            <type>\Illuminate\Database\Eloquent\Builder</type>
+          </tag>
+          <tag name="inherited_from" description="\Illuminate\Database\Eloquent\Relations\HasOneOrMany::getRelationQuery()" refers="\Illuminate\Database\Eloquent\Relations\HasOneOrMany::getRelationQuery()" link="/classes/Illuminate.Database.Eloquent.Relations.HasOneOrMany.html#method_getRelationQuery"/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$query</name>
+          <default/>
+          <type>\Illuminate\Database\Eloquent\Builder</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$parent</name>
+          <default/>
+          <type>\Illuminate\Database\Eloquent\Builder</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$columns</name>
+          <default>array('*')</default>
+          <type>array|mixed</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Eloquent\Relations" line="78" package="Default">
+        <name>addEagerConstraints</name>
+        <full_name>\Illuminate\Database\Eloquent\Relations\MorphOneOrMany::addEagerConstraints()</full_name>
+        <docblock line="78">
+          <description>Set the constraints for an eager load of the relation.</description>
+          <long-description/>
+          <tag name="param" line="78" description="" type="array" variable="$models">
+            <type>array</type>
+          </tag>
+          <tag name="return" line="78" description="" type="void">
+            <type>void</type>
+          </tag>
+          <tag name="inherited_from" description="\Illuminate\Database\Eloquent\Relations\HasOneOrMany::addEagerConstraints()" refers="\Illuminate\Database\Eloquent\Relations\HasOneOrMany::addEagerConstraints()" link="/classes/Illuminate.Database.Eloquent.Relations.HasOneOrMany.html#method_addEagerConstraints"/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$models</name>
+          <default/>
+          <type>array</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Eloquent\Relations" line="91" package="Default">
+        <name>save</name>
+        <full_name>\Illuminate\Database\Eloquent\Relations\MorphOneOrMany::save()</full_name>
+        <docblock line="91">
+          <description>Attach a model instance to the parent model.</description>
+          <long-description/>
+          <tag name="param" line="91" description="" type="\Illuminate\Database\Eloquent\Model" variable="$model">
+            <type>\Illuminate\Database\Eloquent\Model</type>
+          </tag>
+          <tag name="return" line="91" description="" type="\Illuminate\Database\Eloquent\Model">
+            <type>\Illuminate\Database\Eloquent\Model</type>
+          </tag>
+          <tag name="inherited_from" description="\Illuminate\Database\Eloquent\Relations\HasOneOrMany::save()" refers="\Illuminate\Database\Eloquent\Relations\HasOneOrMany::save()" link="/classes/Illuminate.Database.Eloquent.Relations.HasOneOrMany.html#method_save"/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$model</name>
+          <default/>
+          <type>\Illuminate\Database\Eloquent\Model</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Eloquent\Relations" line="105" package="Default">
+        <name>findOrNew</name>
+        <full_name>\Illuminate\Database\Eloquent\Relations\MorphOneOrMany::findOrNew()</full_name>
+        <docblock line="105">
+          <description>Find a related model by its primary key or return new instance of the related model.</description>
+          <long-description/>
+          <tag name="param" line="105" description="" type="mixed" variable="$id">
+            <type>mixed</type>
+          </tag>
+          <tag name="param" line="105" description="" type="array" variable="$columns">
+            <type>array</type>
+          </tag>
+          <tag name="return" line="105" description="" type="\Illuminate\Support\Collection|\Illuminate\Database\Eloquent\Model">
+            <type>\Illuminate\Support\Collection</type>
+            <type>\Illuminate\Database\Eloquent\Model</type>
+          </tag>
+          <tag name="inherited_from" description="\Illuminate\Database\Eloquent\Relations\HasOneOrMany::findOrNew()" refers="\Illuminate\Database\Eloquent\Relations\HasOneOrMany::findOrNew()" link="/classes/Illuminate.Database.Eloquent.Relations.HasOneOrMany.html#method_findOrNew"/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$id</name>
+          <default/>
+          <type>mixed</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$columns</name>
+          <default>array('*')</default>
+          <type>array</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Eloquent\Relations" line="125" package="Default">
+        <name>firstOrNew</name>
+        <full_name>\Illuminate\Database\Eloquent\Relations\MorphOneOrMany::firstOrNew()</full_name>
+        <docblock line="125">
+          <description>Get the first related model record matching the attributes or instantiate it.</description>
+          <long-description/>
+          <tag name="param" line="125" description="" type="array" variable="$attributes">
+            <type>array</type>
+          </tag>
+          <tag name="return" line="125" description="" type="\Illuminate\Database\Eloquent\Model">
+            <type>\Illuminate\Database\Eloquent\Model</type>
+          </tag>
+          <tag name="inherited_from" description="\Illuminate\Database\Eloquent\Relations\HasOneOrMany::firstOrNew()" refers="\Illuminate\Database\Eloquent\Relations\HasOneOrMany::firstOrNew()" link="/classes/Illuminate.Database.Eloquent.Relations.HasOneOrMany.html#method_firstOrNew"/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$attributes</name>
+          <default/>
+          <type>array</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Eloquent\Relations" line="145" package="Default">
+        <name>firstOrCreate</name>
+        <full_name>\Illuminate\Database\Eloquent\Relations\MorphOneOrMany::firstOrCreate()</full_name>
+        <docblock line="145">
+          <description>Get the first related record matching the attributes or create it.</description>
+          <long-description/>
+          <tag name="param" line="145" description="" type="array" variable="$attributes">
+            <type>array</type>
+          </tag>
+          <tag name="return" line="145" description="" type="\Illuminate\Database\Eloquent\Model">
+            <type>\Illuminate\Database\Eloquent\Model</type>
+          </tag>
+          <tag name="inherited_from" description="\Illuminate\Database\Eloquent\Relations\HasOneOrMany::firstOrCreate()" refers="\Illuminate\Database\Eloquent\Relations\HasOneOrMany::firstOrCreate()" link="/classes/Illuminate.Database.Eloquent.Relations.HasOneOrMany.html#method_firstOrCreate"/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$attributes</name>
+          <default/>
+          <type>array</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Eloquent\Relations" line="161" package="Default">
+        <name>updateOrCreate</name>
+        <full_name>\Illuminate\Database\Eloquent\Relations\MorphOneOrMany::updateOrCreate()</full_name>
+        <docblock line="161">
+          <description>Create or update a related record matching the attributes, and fill it with values.</description>
+          <long-description/>
+          <tag name="param" line="161" description="" type="array" variable="$attributes">
+            <type>array</type>
+          </tag>
+          <tag name="param" line="161" description="" type="array" variable="$values">
+            <type>array</type>
+          </tag>
+          <tag name="return" line="161" description="" type="\Illuminate\Database\Eloquent\Model">
+            <type>\Illuminate\Database\Eloquent\Model</type>
+          </tag>
+          <tag name="inherited_from" description="\Illuminate\Database\Eloquent\Relations\HasOneOrMany::updateOrCreate()" refers="\Illuminate\Database\Eloquent\Relations\HasOneOrMany::updateOrCreate()" link="/classes/Illuminate.Database.Eloquent.Relations.HasOneOrMany.html#method_updateOrCreate"/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$attributes</name>
+          <default/>
+          <type>array</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$values</name>
+          <default>array()</default>
+          <type>array</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Eloquent\Relations" line="178" package="Default">
+        <name>create</name>
+        <full_name>\Illuminate\Database\Eloquent\Relations\MorphOneOrMany::create()</full_name>
+        <docblock line="178">
+          <description>Create a new instance of the related model.</description>
+          <long-description/>
+          <tag name="param" line="178" description="" type="array" variable="$attributes">
+            <type>array</type>
+          </tag>
+          <tag name="return" line="178" description="" type="\Illuminate\Database\Eloquent\Model">
+            <type>\Illuminate\Database\Eloquent\Model</type>
+          </tag>
+          <tag name="inherited_from" description="\Illuminate\Database\Eloquent\Relations\HasOneOrMany::create()" refers="\Illuminate\Database\Eloquent\Relations\HasOneOrMany::create()" link="/classes/Illuminate.Database.Eloquent.Relations.HasOneOrMany.html#method_create"/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$attributes</name>
+          <default/>
+          <type>array</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Database\Eloquent\Relations" line="198" package="Default">
+        <name>setForeignAttributesForCreate</name>
+        <full_name>\Illuminate\Database\Eloquent\Relations\MorphOneOrMany::setForeignAttributesForCreate()</full_name>
+        <docblock line="198">
+          <description>Set the foreign ID and type for creating a related model.</description>
+          <long-description/>
+          <tag name="param" line="198" description="" type="\Illuminate\Database\Eloquent\Model" variable="$model">
+            <type>\Illuminate\Database\Eloquent\Model</type>
+          </tag>
+          <tag name="return" line="198" description="" type="void">
+            <type>void</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$model</name>
+          <default/>
+          <type>\Illuminate\Database\Eloquent\Model</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Eloquent\Relations" line="210" package="Default">
+        <name>getMorphType</name>
+        <full_name>\Illuminate\Database\Eloquent\Relations\MorphOneOrMany::getMorphType()</full_name>
+        <docblock line="210">
+          <description>Get the foreign key "type" name.</description>
+          <long-description/>
+          <tag name="return" line="210" description="" type="string">
+            <type>string</type>
+          </tag>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Eloquent\Relations" line="220" package="Default">
+        <name>getPlainMorphType</name>
+        <full_name>\Illuminate\Database\Eloquent\Relations\MorphOneOrMany::getPlainMorphType()</full_name>
+        <docblock line="220">
+          <description>Get the plain morph type name without the table.</description>
+          <long-description/>
+          <tag name="return" line="220" description="" type="string">
+            <type>string</type>
+          </tag>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Eloquent\Relations" line="230" package="Default">
+        <name>getMorphClass</name>
+        <full_name>\Illuminate\Database\Eloquent\Relations\MorphOneOrMany::getMorphClass()</full_name>
+        <docblock line="230">
+          <description>Get the class name of the parent model.</description>
+          <long-description/>
+          <tag name="return" line="230" description="" type="string">
+            <type>string</type>
+          </tag>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Eloquent\Relations" line="56" package="Default">
+        <name>__construct</name>
+        <full_name>\Illuminate\Database\Eloquent\Relations\Relation::__construct()</full_name>
+        <docblock line="56">
+          <description>Create a new relation instance.</description>
+          <long-description/>
+          <tag name="param" line="56" description="" type="\Illuminate\Database\Eloquent\Builder" variable="$query">
+            <type>\Illuminate\Database\Eloquent\Builder</type>
+          </tag>
+          <tag name="param" line="56" description="" type="\Illuminate\Database\Eloquent\Model" variable="$parent">
+            <type>\Illuminate\Database\Eloquent\Model</type>
+          </tag>
+          <tag name="return" line="56" description="" type="void">
+            <type>void</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$query</name>
+          <default/>
+          <type>\Illuminate\Database\Eloquent\Builder</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$parent</name>
+          <default/>
+          <type>\Illuminate\Database\Eloquent\Model</type>
+        </argument>
+        <inherited_from>\Illuminate\Database\Eloquent\Relations\Relation</inherited_from>
+      </method>
+      <method final="false" abstract="true" static="false" visibility="public" namespace="Illuminate\Database\Eloquent\Relations" line="70" package="Default">
+        <name>addConstraints</name>
+        <full_name>\Illuminate\Database\Eloquent\Relations\Relation::addConstraints()</full_name>
+        <docblock line="70">
+          <description>Set the base constraints on the relation query.</description>
+          <long-description/>
+          <tag name="return" line="70" description="" type="void">
+            <type>void</type>
+          </tag>
+        </docblock>
+        <inherited_from>\Illuminate\Database\Eloquent\Relations\Relation</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Eloquent\Relations" line="159" package="Default">
+        <name>getRelationQuery</name>
+        <full_name>\Illuminate\Database\Eloquent\Relations\Relation::getRelationQuery()</full_name>
+        <docblock line="159">
+          <description>Add the constraints for a relationship query.</description>
+          <long-description/>
+          <tag name="param" line="159" description="" type="\Illuminate\Database\Eloquent\Builder" variable="$query">
+            <type>\Illuminate\Database\Eloquent\Builder</type>
+          </tag>
+          <tag name="param" line="159" description="" type="\Illuminate\Database\Eloquent\Builder" variable="$parent">
+            <type>\Illuminate\Database\Eloquent\Builder</type>
+          </tag>
+          <tag name="param" line="159" description="" type="array|mixed" variable="$columns">
+            <type>array</type>
+            <type>mixed</type>
+          </tag>
+          <tag name="return" line="159" description="" type="\Illuminate\Database\Eloquent\Builder">
+            <type>\Illuminate\Database\Eloquent\Builder</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$query</name>
+          <default/>
+          <type>\Illuminate\Database\Eloquent\Builder</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$parent</name>
+          <default/>
+          <type>\Illuminate\Database\Eloquent\Builder</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$columns</name>
+          <default>array('*')</default>
+          <type>array|mixed</type>
+        </argument>
+        <inherited_from>\Illuminate\Database\Eloquent\Relations\Relation</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Eloquent\Relations" line="89" package="Default">
+        <name>getRelationQueryForSelfRelation</name>
+        <full_name>\Illuminate\Database\Eloquent\Relations\HasOneOrMany::getRelationQueryForSelfRelation()</full_name>
+        <docblock line="89">
+          <description>Add the constraints for a relationship query on the same table.</description>
+          <long-description/>
+          <tag name="param" line="89" description="" type="\Illuminate\Database\Eloquent\Builder" variable="$query">
+            <type>\Illuminate\Database\Eloquent\Builder</type>
+          </tag>
+          <tag name="param" line="89" description="" type="\Illuminate\Database\Eloquent\Builder" variable="$parent">
+            <type>\Illuminate\Database\Eloquent\Builder</type>
+          </tag>
+          <tag name="param" line="89" description="" type="array|mixed" variable="$columns">
+            <type>array</type>
+            <type>mixed</type>
+          </tag>
+          <tag name="return" line="89" description="" type="\Illuminate\Database\Eloquent\Builder">
+            <type>\Illuminate\Database\Eloquent\Builder</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$query</name>
+          <default/>
+          <type>\Illuminate\Database\Eloquent\Builder</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$parent</name>
+          <default/>
+          <type>\Illuminate\Database\Eloquent\Builder</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$columns</name>
+          <default>array('*')</default>
+          <type>array|mixed</type>
+        </argument>
+        <inherited_from>\Illuminate\Database\Eloquent\Relations\HasOneOrMany</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Eloquent\Relations" line="107" package="Default">
+        <name>getRelationCountHash</name>
+        <full_name>\Illuminate\Database\Eloquent\Relations\HasOneOrMany::getRelationCountHash()</full_name>
+        <docblock line="107">
+          <description>Get a relationship join table hash.</description>
+          <long-description/>
+          <tag name="return" line="107" description="" type="string">
+            <type>string</type>
+          </tag>
+        </docblock>
+        <inherited_from>\Illuminate\Database\Eloquent\Relations\HasOneOrMany</inherited_from>
+      </method>
+      <method final="false" abstract="true" static="false" visibility="public" namespace="Illuminate\Database\Eloquent\Relations" line="78" package="Default">
+        <name>addEagerConstraints</name>
+        <full_name>\Illuminate\Database\Eloquent\Relations\Relation::addEagerConstraints()</full_name>
+        <docblock line="78">
+          <description>Set the constraints for an eager load of the relation.</description>
+          <long-description/>
+          <tag name="param" line="78" description="" type="array" variable="$models">
+            <type>array</type>
+          </tag>
+          <tag name="return" line="78" description="" type="void">
+            <type>void</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$models</name>
+          <default/>
+          <type>array</type>
+        </argument>
+        <inherited_from>\Illuminate\Database\Eloquent\Relations\Relation</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Eloquent\Relations" line="131" package="Default">
+        <name>matchOne</name>
+        <full_name>\Illuminate\Database\Eloquent\Relations\HasOneOrMany::matchOne()</full_name>
+        <docblock line="131">
+          <description>Match the eagerly loaded results to their single parents.</description>
+          <long-description/>
+          <tag name="param" line="131" description="" type="array" variable="$models">
+            <type>array</type>
+          </tag>
+          <tag name="param" line="131" description="" type="\Illuminate\Database\Eloquent\Collection" variable="$results">
+            <type>\Illuminate\Database\Eloquent\Collection</type>
+          </tag>
+          <tag name="param" line="131" description="" type="string" variable="$relation">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="131" description="" type="array">
+            <type>array</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$models</name>
+          <default/>
+          <type>array</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$results</name>
+          <default/>
+          <type>\Illuminate\Database\Eloquent\Collection</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$relation</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <inherited_from>\Illuminate\Database\Eloquent\Relations\HasOneOrMany</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Eloquent\Relations" line="144" package="Default">
+        <name>matchMany</name>
+        <full_name>\Illuminate\Database\Eloquent\Relations\HasOneOrMany::matchMany()</full_name>
+        <docblock line="144">
+          <description>Match the eagerly loaded results to their many parents.</description>
+          <long-description/>
+          <tag name="param" line="144" description="" type="array" variable="$models">
+            <type>array</type>
+          </tag>
+          <tag name="param" line="144" description="" type="\Illuminate\Database\Eloquent\Collection" variable="$results">
+            <type>\Illuminate\Database\Eloquent\Collection</type>
+          </tag>
+          <tag name="param" line="144" description="" type="string" variable="$relation">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="144" description="" type="array">
+            <type>array</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$models</name>
+          <default/>
+          <type>array</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$results</name>
+          <default/>
+          <type>\Illuminate\Database\Eloquent\Collection</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$relation</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <inherited_from>\Illuminate\Database\Eloquent\Relations\HasOneOrMany</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Database\Eloquent\Relations" line="158" package="Default">
+        <name>matchOneOrMany</name>
+        <full_name>\Illuminate\Database\Eloquent\Relations\HasOneOrMany::matchOneOrMany()</full_name>
+        <docblock line="158">
+          <description>Match the eagerly loaded results to their many parents.</description>
+          <long-description/>
+          <tag name="param" line="158" description="" type="array" variable="$models">
+            <type>array</type>
+          </tag>
+          <tag name="param" line="158" description="" type="\Illuminate\Database\Eloquent\Collection" variable="$results">
+            <type>\Illuminate\Database\Eloquent\Collection</type>
+          </tag>
+          <tag name="param" line="158" description="" type="string" variable="$relation">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="158" description="" type="string" variable="$type">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="158" description="" type="array">
+            <type>array</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$models</name>
+          <default/>
+          <type>array</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$results</name>
+          <default/>
+          <type>\Illuminate\Database\Eloquent\Collection</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$relation</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$type</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <inherited_from>\Illuminate\Database\Eloquent\Relations\HasOneOrMany</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Database\Eloquent\Relations" line="186" package="Default">
+        <name>getRelationValue</name>
+        <full_name>\Illuminate\Database\Eloquent\Relations\HasOneOrMany::getRelationValue()</full_name>
+        <docblock line="186">
+          <description>Get the value of a relationship by one or many type.</description>
+          <long-description/>
+          <tag name="param" line="186" description="" type="array" variable="$dictionary">
+            <type>array</type>
+          </tag>
+          <tag name="param" line="186" description="" type="string" variable="$key">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="186" description="" type="string" variable="$type">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="186" description="" type="mixed">
+            <type>mixed</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$dictionary</name>
+          <default/>
+          <type>array</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$key</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$type</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <inherited_from>\Illuminate\Database\Eloquent\Relations\HasOneOrMany</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Database\Eloquent\Relations" line="199" package="Default">
+        <name>buildDictionary</name>
+        <full_name>\Illuminate\Database\Eloquent\Relations\HasOneOrMany::buildDictionary()</full_name>
+        <docblock line="199">
+          <description>Build model dictionary keyed by the relation's foreign key.</description>
+          <long-description/>
+          <tag name="param" line="199" description="" type="\Illuminate\Database\Eloquent\Collection" variable="$results">
+            <type>\Illuminate\Database\Eloquent\Collection</type>
+          </tag>
+          <tag name="return" line="199" description="" type="array">
+            <type>array</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$results</name>
+          <default/>
+          <type>\Illuminate\Database\Eloquent\Collection</type>
+        </argument>
+        <inherited_from>\Illuminate\Database\Eloquent\Relations\HasOneOrMany</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Eloquent\Relations" line="221" package="Default">
+        <name>save</name>
+        <full_name>\Illuminate\Database\Eloquent\Relations\HasOneOrMany::save()</full_name>
+        <docblock line="221">
+          <description>Attach a model instance to the parent model.</description>
+          <long-description/>
+          <tag name="param" line="221" description="" type="\Illuminate\Database\Eloquent\Model" variable="$model">
+            <type>\Illuminate\Database\Eloquent\Model</type>
+          </tag>
+          <tag name="return" line="221" description="" type="\Illuminate\Database\Eloquent\Model">
+            <type>\Illuminate\Database\Eloquent\Model</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$model</name>
+          <default/>
+          <type>\Illuminate\Database\Eloquent\Model</type>
+        </argument>
+        <inherited_from>\Illuminate\Database\Eloquent\Relations\HasOneOrMany</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Eloquent\Relations" line="234" package="Default">
+        <name>saveMany</name>
+        <full_name>\Illuminate\Database\Eloquent\Relations\HasOneOrMany::saveMany()</full_name>
+        <docblock line="234">
+          <description>Attach a collection of models to the parent instance.</description>
+          <long-description/>
+          <tag name="param" line="234" description="" type="\Traversable|array" variable="$models">
+            <type>\Traversable</type>
+            <type>array</type>
+          </tag>
+          <tag name="return" line="234" description="" type="\Traversable|array">
+            <type>\Traversable</type>
+            <type>array</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$models</name>
+          <default/>
+          <type>\Traversable|array</type>
+        </argument>
+        <inherited_from>\Illuminate\Database\Eloquent\Relations\HasOneOrMany</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Eloquent\Relations" line="250" package="Default">
+        <name>findOrNew</name>
+        <full_name>\Illuminate\Database\Eloquent\Relations\HasOneOrMany::findOrNew()</full_name>
+        <docblock line="250">
+          <description>Find a model by its primary key or return new instance of the related model.</description>
+          <long-description/>
+          <tag name="param" line="250" description="" type="mixed" variable="$id">
+            <type>mixed</type>
+          </tag>
+          <tag name="param" line="250" description="" type="array" variable="$columns">
+            <type>array</type>
+          </tag>
+          <tag name="return" line="250" description="" type="\Illuminate\Support\Collection|\Illuminate\Database\Eloquent\Model">
+            <type>\Illuminate\Support\Collection</type>
+            <type>\Illuminate\Database\Eloquent\Model</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$id</name>
+          <default/>
+          <type>mixed</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$columns</name>
+          <default>array('*')</default>
+          <type>array</type>
+        </argument>
+        <inherited_from>\Illuminate\Database\Eloquent\Relations\HasOneOrMany</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Eloquent\Relations" line="267" package="Default">
+        <name>firstOrNew</name>
+        <full_name>\Illuminate\Database\Eloquent\Relations\HasOneOrMany::firstOrNew()</full_name>
+        <docblock line="267">
+          <description>Get the first related model record matching the attributes or instantiate it.</description>
+          <long-description/>
+          <tag name="param" line="267" description="" type="array" variable="$attributes">
+            <type>array</type>
+          </tag>
+          <tag name="return" line="267" description="" type="\Illuminate\Database\Eloquent\Model">
+            <type>\Illuminate\Database\Eloquent\Model</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$attributes</name>
+          <default/>
+          <type>array</type>
+        </argument>
+        <inherited_from>\Illuminate\Database\Eloquent\Relations\HasOneOrMany</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Eloquent\Relations" line="284" package="Default">
+        <name>firstOrCreate</name>
+        <full_name>\Illuminate\Database\Eloquent\Relations\HasOneOrMany::firstOrCreate()</full_name>
+        <docblock line="284">
+          <description>Get the first related record matching the attributes or create it.</description>
+          <long-description/>
+          <tag name="param" line="284" description="" type="array" variable="$attributes">
+            <type>array</type>
+          </tag>
+          <tag name="return" line="284" description="" type="\Illuminate\Database\Eloquent\Model">
+            <type>\Illuminate\Database\Eloquent\Model</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$attributes</name>
+          <default/>
+          <type>array</type>
+        </argument>
+        <inherited_from>\Illuminate\Database\Eloquent\Relations\HasOneOrMany</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Eloquent\Relations" line="300" package="Default">
+        <name>updateOrCreate</name>
+        <full_name>\Illuminate\Database\Eloquent\Relations\HasOneOrMany::updateOrCreate()</full_name>
+        <docblock line="300">
+          <description>Create or update a related record matching the attributes, and fill it with values.</description>
+          <long-description/>
+          <tag name="param" line="300" description="" type="array" variable="$attributes">
+            <type>array</type>
+          </tag>
+          <tag name="param" line="300" description="" type="array" variable="$values">
+            <type>array</type>
+          </tag>
+          <tag name="return" line="300" description="" type="\Illuminate\Database\Eloquent\Model">
+            <type>\Illuminate\Database\Eloquent\Model</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$attributes</name>
+          <default/>
+          <type>array</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$values</name>
+          <default>array()</default>
+          <type>array</type>
+        </argument>
+        <inherited_from>\Illuminate\Database\Eloquent\Relations\HasOneOrMany</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Eloquent\Relations" line="317" package="Default">
+        <name>create</name>
+        <full_name>\Illuminate\Database\Eloquent\Relations\HasOneOrMany::create()</full_name>
+        <docblock line="317">
+          <description>Create a new instance of the related model.</description>
+          <long-description/>
+          <tag name="param" line="317" description="" type="array" variable="$attributes">
+            <type>array</type>
+          </tag>
+          <tag name="return" line="317" description="" type="\Illuminate\Database\Eloquent\Model">
+            <type>\Illuminate\Database\Eloquent\Model</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$attributes</name>
+          <default/>
+          <type>array</type>
+        </argument>
+        <inherited_from>\Illuminate\Database\Eloquent\Relations\HasOneOrMany</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Eloquent\Relations" line="337" package="Default">
+        <name>createMany</name>
+        <full_name>\Illuminate\Database\Eloquent\Relations\HasOneOrMany::createMany()</full_name>
+        <docblock line="337">
+          <description>Create an array of new instances of the related model.</description>
+          <long-description/>
+          <tag name="param" line="337" description="" type="array" variable="$records">
+            <type>array</type>
+          </tag>
+          <tag name="return" line="337" description="" type="array">
+            <type>array</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$records</name>
+          <default/>
+          <type>array</type>
+        </argument>
+        <inherited_from>\Illuminate\Database\Eloquent\Relations\HasOneOrMany</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Eloquent\Relations" line="354" package="Default">
+        <name>update</name>
+        <full_name>\Illuminate\Database\Eloquent\Relations\HasOneOrMany::update()</full_name>
+        <docblock line="354">
+          <description>Perform an update on all the related models.</description>
+          <long-description/>
+          <tag name="param" line="354" description="" type="array" variable="$attributes">
+            <type>array</type>
+          </tag>
+          <tag name="return" line="354" description="" type="integer">
+            <type>integer</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$attributes</name>
+          <default/>
+          <type>array</type>
+        </argument>
+        <inherited_from>\Illuminate\Database\Eloquent\Relations\HasOneOrMany</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Eloquent\Relations" line="368" package="Default">
+        <name>getHasCompareKey</name>
+        <full_name>\Illuminate\Database\Eloquent\Relations\HasOneOrMany::getHasCompareKey()</full_name>
+        <docblock line="368">
+          <description>Get the key for comparing against the parent key in "has" query.</description>
+          <long-description/>
+          <tag name="return" line="368" description="" type="string">
+            <type>string</type>
+          </tag>
+        </docblock>
+        <inherited_from>\Illuminate\Database\Eloquent\Relations\HasOneOrMany</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Eloquent\Relations" line="378" package="Default">
+        <name>getForeignKey</name>
+        <full_name>\Illuminate\Database\Eloquent\Relations\HasOneOrMany::getForeignKey()</full_name>
+        <docblock line="378">
+          <description>Get the foreign key for the relationship.</description>
+          <long-description/>
+          <tag name="return" line="378" description="" type="string">
+            <type>string</type>
+          </tag>
+        </docblock>
+        <inherited_from>\Illuminate\Database\Eloquent\Relations\HasOneOrMany</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Eloquent\Relations" line="388" package="Default">
+        <name>getPlainForeignKey</name>
+        <full_name>\Illuminate\Database\Eloquent\Relations\HasOneOrMany::getPlainForeignKey()</full_name>
+        <docblock line="388">
+          <description>Get the plain foreign key.</description>
+          <long-description/>
+          <tag name="return" line="388" description="" type="string">
+            <type>string</type>
+          </tag>
+        </docblock>
+        <inherited_from>\Illuminate\Database\Eloquent\Relations\HasOneOrMany</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Eloquent\Relations" line="400" package="Default">
+        <name>getParentKey</name>
+        <full_name>\Illuminate\Database\Eloquent\Relations\HasOneOrMany::getParentKey()</full_name>
+        <docblock line="400">
+          <description>Get the key value of the parent's local key.</description>
+          <long-description/>
+          <tag name="return" line="400" description="" type="mixed">
+            <type>mixed</type>
+          </tag>
+        </docblock>
+        <inherited_from>\Illuminate\Database\Eloquent\Relations\HasOneOrMany</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Eloquent\Relations" line="241" package="Default">
+        <name>getQualifiedParentKeyName</name>
+        <full_name>\Illuminate\Database\Eloquent\Relations\Relation::getQualifiedParentKeyName()</full_name>
+        <docblock line="241">
+          <description>Get the fully qualified parent key name.</description>
+          <long-description/>
+          <tag name="return" line="241" description="" type="string">
+            <type>string</type>
+          </tag>
+        </docblock>
+        <inherited_from>\Illuminate\Database\Eloquent\Relations\Relation</inherited_from>
+      </method>
+      <method final="false" abstract="true" static="false" visibility="public" namespace="Illuminate\Database\Eloquent\Relations" line="87" package="Default">
+        <name>initRelation</name>
+        <full_name>\Illuminate\Database\Eloquent\Relations\Relation::initRelation()</full_name>
+        <docblock line="87">
+          <description>Initialize the relation on a set of models.</description>
+          <long-description/>
+          <tag name="param" line="87" description="" type="array" variable="$models">
+            <type>array</type>
+          </tag>
+          <tag name="param" line="87" description="" type="string" variable="$relation">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="87" description="" type="array">
+            <type>array</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$models</name>
+          <default/>
+          <type>array</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$relation</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <inherited_from>\Illuminate\Database\Eloquent\Relations\Relation</inherited_from>
+      </method>
+      <method final="false" abstract="true" static="false" visibility="public" namespace="Illuminate\Database\Eloquent\Relations" line="97" package="Default">
+        <name>match</name>
+        <full_name>\Illuminate\Database\Eloquent\Relations\Relation::match()</full_name>
+        <docblock line="97">
+          <description>Match the eagerly loaded results to their parents.</description>
+          <long-description/>
+          <tag name="param" line="97" description="" type="array" variable="$models">
+            <type>array</type>
+          </tag>
+          <tag name="param" line="97" description="" type="\Illuminate\Database\Eloquent\Collection" variable="$results">
+            <type>\Illuminate\Database\Eloquent\Collection</type>
+          </tag>
+          <tag name="param" line="97" description="" type="string" variable="$relation">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="97" description="" type="array">
+            <type>array</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$models</name>
+          <default/>
+          <type>array</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$results</name>
+          <default/>
+          <type>\Illuminate\Database\Eloquent\Collection</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$relation</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <inherited_from>\Illuminate\Database\Eloquent\Relations\Relation</inherited_from>
+      </method>
+      <method final="false" abstract="true" static="false" visibility="public" namespace="Illuminate\Database\Eloquent\Relations" line="104" package="Default">
+        <name>getResults</name>
+        <full_name>\Illuminate\Database\Eloquent\Relations\Relation::getResults()</full_name>
+        <docblock line="104">
+          <description>Get the results of the relationship.</description>
+          <long-description/>
+          <tag name="return" line="104" description="" type="mixed">
+            <type>mixed</type>
+          </tag>
+        </docblock>
+        <inherited_from>\Illuminate\Database\Eloquent\Relations\Relation</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Eloquent\Relations" line="111" package="Default">
+        <name>getEager</name>
+        <full_name>\Illuminate\Database\Eloquent\Relations\Relation::getEager()</full_name>
+        <docblock line="111">
+          <description>Get the relationship for eager loading.</description>
+          <long-description/>
+          <tag name="return" line="111" description="" type="\Illuminate\Database\Eloquent\Collection">
+            <type>\Illuminate\Database\Eloquent\Collection</type>
+          </tag>
+        </docblock>
+        <inherited_from>\Illuminate\Database\Eloquent\Relations\Relation</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Eloquent\Relations" line="121" package="Default">
+        <name>touch</name>
+        <full_name>\Illuminate\Database\Eloquent\Relations\Relation::touch()</full_name>
+        <docblock line="121">
+          <description>Touch all of the related models for the relationship.</description>
+          <long-description/>
+          <tag name="return" line="121" description="" type="void">
+            <type>void</type>
+          </tag>
+        </docblock>
+        <inherited_from>\Illuminate\Database\Eloquent\Relations\Relation</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Eloquent\Relations" line="134" package="Default">
+        <name>rawUpdate</name>
+        <full_name>\Illuminate\Database\Eloquent\Relations\Relation::rawUpdate()</full_name>
+        <docblock line="134">
+          <description>Run a raw update against the base query.</description>
+          <long-description/>
+          <tag name="param" line="134" description="" type="array" variable="$attributes">
+            <type>array</type>
+          </tag>
+          <tag name="return" line="134" description="" type="integer">
+            <type>integer</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$attributes</name>
+          <default>array()</default>
+          <type>array</type>
+        </argument>
+        <inherited_from>\Illuminate\Database\Eloquent\Relations\Relation</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Eloquent\Relations" line="146" package="Default">
+        <name>getRelationCountQuery</name>
+        <full_name>\Illuminate\Database\Eloquent\Relations\Relation::getRelationCountQuery()</full_name>
+        <docblock line="146">
+          <description>Add the constraints for a relationship count query.</description>
+          <long-description/>
+          <tag name="param" line="146" description="" type="\Illuminate\Database\Eloquent\Builder" variable="$query">
+            <type>\Illuminate\Database\Eloquent\Builder</type>
+          </tag>
+          <tag name="param" line="146" description="" type="\Illuminate\Database\Eloquent\Builder" variable="$parent">
+            <type>\Illuminate\Database\Eloquent\Builder</type>
+          </tag>
+          <tag name="return" line="146" description="" type="\Illuminate\Database\Eloquent\Builder">
+            <type>\Illuminate\Database\Eloquent\Builder</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$query</name>
+          <default/>
+          <type>\Illuminate\Database\Eloquent\Builder</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$parent</name>
+          <default/>
+          <type>\Illuminate\Database\Eloquent\Builder</type>
+        </argument>
+        <inherited_from>\Illuminate\Database\Eloquent\Relations\Relation</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="true" visibility="public" namespace="Illuminate\Database\Eloquent\Relations" line="174" package="Default">
+        <name>noConstraints</name>
+        <full_name>\Illuminate\Database\Eloquent\Relations\Relation::noConstraints()</full_name>
+        <docblock line="174">
+          <description>Run a callback with constraints disabled on the relation.</description>
+          <long-description/>
+          <tag name="param" line="174" description="" type="\Closure" variable="$callback">
+            <type>\Closure</type>
+          </tag>
+          <tag name="return" line="174" description="" type="mixed">
+            <type>mixed</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$callback</name>
+          <default/>
+          <type>\Closure</type>
+        </argument>
+        <inherited_from>\Illuminate\Database\Eloquent\Relations\Relation</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Database\Eloquent\Relations" line="199" package="Default">
+        <name>getKeys</name>
+        <full_name>\Illuminate\Database\Eloquent\Relations\Relation::getKeys()</full_name>
+        <docblock line="199">
+          <description>Get all of the primary keys for an array of models.</description>
+          <long-description/>
+          <tag name="param" line="199" description="" type="array" variable="$models">
+            <type>array</type>
+          </tag>
+          <tag name="param" line="199" description="" type="string" variable="$key">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="199" description="" type="array">
+            <type>array</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$models</name>
+          <default/>
+          <type>array</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$key</name>
+          <default>null</default>
+          <type>string</type>
+        </argument>
+        <inherited_from>\Illuminate\Database\Eloquent\Relations\Relation</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Eloquent\Relations" line="211" package="Default">
+        <name>getQuery</name>
+        <full_name>\Illuminate\Database\Eloquent\Relations\Relation::getQuery()</full_name>
+        <docblock line="211">
+          <description>Get the underlying query for the relation.</description>
+          <long-description/>
+          <tag name="return" line="211" description="" type="\Illuminate\Database\Eloquent\Builder">
+            <type>\Illuminate\Database\Eloquent\Builder</type>
+          </tag>
+        </docblock>
+        <inherited_from>\Illuminate\Database\Eloquent\Relations\Relation</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Eloquent\Relations" line="221" package="Default">
+        <name>getBaseQuery</name>
+        <full_name>\Illuminate\Database\Eloquent\Relations\Relation::getBaseQuery()</full_name>
+        <docblock line="221">
+          <description>Get the base query builder driving the Eloquent builder.</description>
+          <long-description/>
+          <tag name="return" line="221" description="" type="\Illuminate\Database\Query\Builder">
+            <type>\Illuminate\Database\Query\Builder</type>
+          </tag>
+        </docblock>
+        <inherited_from>\Illuminate\Database\Eloquent\Relations\Relation</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Eloquent\Relations" line="231" package="Default">
+        <name>getParent</name>
+        <full_name>\Illuminate\Database\Eloquent\Relations\Relation::getParent()</full_name>
+        <docblock line="231">
+          <description>Get the parent model of the relation.</description>
+          <long-description/>
+          <tag name="return" line="231" description="" type="\Illuminate\Database\Eloquent\Model">
+            <type>\Illuminate\Database\Eloquent\Model</type>
+          </tag>
+        </docblock>
+        <inherited_from>\Illuminate\Database\Eloquent\Relations\Relation</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Eloquent\Relations" line="251" package="Default">
+        <name>getRelated</name>
+        <full_name>\Illuminate\Database\Eloquent\Relations\Relation::getRelated()</full_name>
+        <docblock line="251">
+          <description>Get the related model of the relation.</description>
+          <long-description/>
+          <tag name="return" line="251" description="" type="\Illuminate\Database\Eloquent\Model">
+            <type>\Illuminate\Database\Eloquent\Model</type>
+          </tag>
+        </docblock>
+        <inherited_from>\Illuminate\Database\Eloquent\Relations\Relation</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Eloquent\Relations" line="261" package="Default">
+        <name>createdAt</name>
+        <full_name>\Illuminate\Database\Eloquent\Relations\Relation::createdAt()</full_name>
+        <docblock line="261">
+          <description>Get the name of the "created at" column.</description>
+          <long-description/>
+          <tag name="return" line="261" description="" type="string">
+            <type>string</type>
+          </tag>
+        </docblock>
+        <inherited_from>\Illuminate\Database\Eloquent\Relations\Relation</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Eloquent\Relations" line="271" package="Default">
+        <name>updatedAt</name>
+        <full_name>\Illuminate\Database\Eloquent\Relations\Relation::updatedAt()</full_name>
+        <docblock line="271">
+          <description>Get the name of the "updated at" column.</description>
+          <long-description/>
+          <tag name="return" line="271" description="" type="string">
+            <type>string</type>
+          </tag>
+        </docblock>
+        <inherited_from>\Illuminate\Database\Eloquent\Relations\Relation</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Eloquent\Relations" line="281" package="Default">
+        <name>relatedUpdatedAt</name>
+        <full_name>\Illuminate\Database\Eloquent\Relations\Relation::relatedUpdatedAt()</full_name>
+        <docblock line="281">
+          <description>Get the name of the related model's "updated at" column.</description>
+          <long-description/>
+          <tag name="return" line="281" description="" type="string">
+            <type>string</type>
+          </tag>
+        </docblock>
+        <inherited_from>\Illuminate\Database\Eloquent\Relations\Relation</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Eloquent\Relations" line="292" package="Default">
+        <name>wrap</name>
+        <full_name>\Illuminate\Database\Eloquent\Relations\Relation::wrap()</full_name>
+        <docblock line="292">
+          <description>Wrap the given value with the parent query's grammar.</description>
+          <long-description/>
+          <tag name="param" line="292" description="" type="string" variable="$value">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="292" description="" type="string">
+            <type>string</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$value</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <inherited_from>\Illuminate\Database\Eloquent\Relations\Relation</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="true" visibility="public" namespace="Illuminate\Database\Eloquent\Relations" line="304" package="Default">
+        <name>morphMap</name>
+        <full_name>\Illuminate\Database\Eloquent\Relations\Relation::morphMap()</full_name>
+        <docblock line="304">
+          <description>Set or get the morph map for polymorphic relations.</description>
+          <long-description/>
+          <tag name="param" line="304" description="" type="array|null" variable="$map">
+            <type>array</type>
+            <type>null</type>
+          </tag>
+          <tag name="param" line="304" description="" type="boolean" variable="$merge">
+            <type>boolean</type>
+          </tag>
+          <tag name="return" line="304" description="" type="array">
+            <type>array</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$map</name>
+          <default>null</default>
+          <type>array|null</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$merge</name>
+          <default>true</default>
+          <type>boolean</type>
+        </argument>
+        <inherited_from>\Illuminate\Database\Eloquent\Relations\Relation</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="true" visibility="protected" namespace="Illuminate\Database\Eloquent\Relations" line="321" package="Default">
+        <name>buildMorphMapFromModels</name>
+        <full_name>\Illuminate\Database\Eloquent\Relations\Relation::buildMorphMapFromModels()</full_name>
+        <docblock line="321">
+          <description>Builds a table-keyed array from model class names.</description>
+          <long-description/>
+          <tag name="param" line="321" description="" type="array&lt;mixed,string&gt;|null" variable="$models">
+            <type>array&lt;mixed,string&gt;</type>
+            <type>null</type>
+          </tag>
+          <tag name="return" line="321" description="" type="array|null">
+            <type>array</type>
+            <type>null</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$models</name>
+          <default>null</default>
+          <type>array&lt;mixed,string&gt;|null</type>
+        </argument>
+        <inherited_from>\Illuminate\Database\Eloquent\Relations\Relation</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Eloquent\Relations" line="341" package="Default">
+        <name>__call</name>
+        <full_name>\Illuminate\Database\Eloquent\Relations\Relation::__call()</full_name>
+        <docblock line="341">
+          <description>Handle dynamic method calls to the relationship.</description>
+          <long-description/>
+          <tag name="param" line="341" description="" type="string" variable="$method">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="341" description="" type="array" variable="$parameters">
+            <type>array</type>
+          </tag>
+          <tag name="return" line="341" description="" type="mixed">
+            <type>mixed</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$method</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$parameters</name>
+          <default/>
+          <type>array</type>
+        </argument>
+        <inherited_from>\Illuminate\Database\Eloquent\Relations\Relation</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Eloquent\Relations" line="357" package="Default">
+        <name>__clone</name>
+        <full_name>\Illuminate\Database\Eloquent\Relations\Relation::__clone()</full_name>
+        <docblock line="357">
+          <description>Force a clone of the underlying query builder when cloning.</description>
+          <long-description/>
+          <tag name="return" line="357" description="" type="void">
+            <type>void</type>
+          </tag>
+        </docblock>
+        <inherited_from>\Illuminate\Database\Eloquent\Relations\Relation</inherited_from>
+      </method>
+    </class>
+    <parse_markers>
+      <error line="0" code="PPC:ERR-50000">No summary was found for this file</error>
+      <error line="8" code="PPC:ERR-50005">No summary for class \Illuminate\Database\Eloquent\Relations\MorphOneOrMany</error>
+    </parse_markers>
+    <source>eJztWFtPHDcUft9fcRQhMYuW8A4NvZBLUbQlbSL1oVTIzHgZK17P1PYAq4T/3uPbrHc8k70Aah7KC9qxz8Xf953jyw8/1mU9Ggkyp6omOYVzzps5E0TTy9dEk2ui6OUbXv3TUKEv/6CcaFYJdTIaNWrN5GlVUH6yft4vDeMFleiSXCstSa4h50QpmFayLi8EvZBTIhZA7zUVhYJfiWo/jr6MAP+ODg7sfziATyWFWSUpuxHwmS5AL2r7ATQOyJB/yeqX3iIY/nRLJGB8Jm78pyP7v5aVprmmBezNTUKf0CHm2hPWZW2ghGpm49VE4gphbpDYNd6Z8ZoGPJMU4QQCgt6BnQiVwMAS5gaseKXAhNJE5DRJAfMjc4DLTfgB2MPfcrGdsRUBmjokurZu+ThsWBocZMXgEK9ywt/TZVKS6kYKuK1aI49qc81ZDrNG5AYWuLrKERwtm1xnYYFufRNwOfuUJy65iUljsgw4tl6d+szfni6ZOjxtFQKvnJ0nrjvFkmrmuCCHpzdUT9uBbByZuRnHx3HGIdNljqvJnVjrh0Q0H6m2ujQcgXNHmNAKpbNSH2D9J3LZFFxSFGdL51kXKzaDDAWpWX58vBdlMY7mxCvvuovAiXC1KR+e3pVU0qxLxyRF34PkgOqH652Ha6WY+qF5/kpaGvfXEpGSLL7O2T12DkBY0ZVQXeo2CvFNblGoYRf43SwiqZ72d6tNnwvK/a/9g/2/k9Kxhjga+E5CpHL3LmMp+BXu7aiD4WKJ68RsJEQAJTe4Ql6RInT6IJEhYVh2wLR07C0JLZtU1BsTM64D59J77IIa1U5iGEzS3vRk2P2sNclL3J1sqHYDAl2t3xe32lesi+1UPo1M+tFW5JZmfhewARLJ2q+Hp4pqXKlk141u8UL1fuAI9DTglo37kesqN1Bmo/u4Q/i+ZaJAdK3qsN4dytcLYKjRWrI5wYIypx+Uq/dujgktDbFog/kQD6GjpLtw0PQGveZjU9eV1JdnFefUgvz1sSTNEIIL+Ru9y9zmt6bLmE2HqSvRcI4GAYhXgRnjbdXReNzdj3rMPIKHpwjvuR9NNqijI/izpFZW5tRCoK74wkoB1xPvLRO4o0gUwo11gtoCUWncmvnCsuVPtV3XSPMEUIBAuKriie3xF91ipBKYMj8ZnhG8x5UDa9dvUqd4xkUPc/KZKjcYrYJpOodGMCQPVWaHkVEeTpyrXQZX9tal2BaPwg/uRLskZ2WDTtp8mDVUIWHvnjGpdKdQJM0riT+IzkvDiJlH2lRM0TjvmpkjNtPrmvrS9qk7kc3eqdy3+2WsLRXum3pkb1SP7rPdlR57+1/036vo18s9d5fJ70DpHo//WOy5Z2VF3o/gxV/WEemmLty1fTNyJnjaLBAbjmcoDXdMl3BLeEPVDkR1Zjg/T02jW98wjxMf34c3u3V6Iejbnts+ONBzWiMz2YjCBRiYYs9YfbeHDZkku5+nnr+U8g1r6JFd/pk6/HN096fv7Ft39SdVYbiaBljOX9s+0b51WgU4UjbS5CPuWunVtX2/XN6nvonSJhetL53LlXf3ni6y8cNSvmbYcmwHYtCDH5SHzuh9zfF3tv9yf5K83I1jh/ELbD8V7zpUGIW+MES8sCocekPre/hNX1qiO2QHmKCUTvLrsqwNeP652KrFVorZV6pGJzrfMevu9bc/9U2YWLecLV/ct8feP8euB39FIw+jfwG6Dcit</source>
+  <type>class</type></file>

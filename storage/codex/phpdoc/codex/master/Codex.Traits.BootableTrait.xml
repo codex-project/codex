@@ -1,0 +1,130 @@
+<file path="codex/workbench/codex/core/src/Traits/BootableTrait.php" generated-path="codex.workbench.codex.core.src.Traits.BootableTrait.html" hash="cb81d0339140aab7e3ae3097e8b33cd3" package="Default">
+    <docblock line="0">
+      <description>Part of the Codex Project PHP packages.</description>
+      <long-description>License and copyright information bundled with this package in the LICENSE file</long-description>
+      <tag name="package" line="0" description="Default"/>
+    </docblock>
+    <namespace-alias name="Bootable">\Codex\Contracts\Traits\Bootable</namespace-alias>
+    <namespace-alias name="Hookable">\Codex\Contracts\Traits\Hookable</namespace-alias>
+    <namespace-alias name="ContractMissingException">\Codex\Exception\ContractMissingException</namespace-alias>
+    <trait namespace="Codex\Traits" line="24" package="Codex\Traits">
+      <name>BootableTrait</name>
+      <full_name>\Codex\Traits\BootableTrait</full_name>
+      <docblock line="24">
+        <description>The BootableTrait works similar to Eloquent Models. The traits that are added can include a bootTraitName function which will be called on initialisation of the object. Requires the EventTrait to be present aswell.</description>
+        <long-description/>
+        <tag name="package" line="24" description="Codex\Traits"/>
+        <tag name="author" line="24" description="CLI"/>
+        <tag name="copyright" line="24" description="Copyright (c) 2015, CLI. All rights reserved"/>
+        <tag name="see" line="24" description="The required EventTrait" link="\Codex\Traits\EventTrait"/>
+      </docblock>
+      <property static="true" visibility="protected" namespace="Codex\Traits" line="27" package="Codex\Traits">
+        <name>$booted</name>
+        <full_name>\Codex\Traits\BootableTrait::booted</full_name>
+        <default>array()</default>
+        <docblock line="27">
+          <description/>
+          <long-description/>
+        </docblock>
+      </property>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Codex\Traits" line="34" package="Codex\Traits">
+        <name>bootIfNotBooted</name>
+        <full_name>\Codex\Traits\BootableTrait::bootIfNotBooted()</full_name>
+        <docblock line="34">
+          <description>Check if the model needs to be booted and if so, do it.</description>
+          <long-description/>
+          <tag name="throws" line="34" description="" type="\Codex\Exception\ContractMissingException">
+            <type>\Codex\Exception\ContractMissingException</type>
+          </tag>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="true" visibility="protected" namespace="Codex\Traits" line="61" package="Codex\Traits">
+        <name>boot</name>
+        <full_name>\Codex\Traits\BootableTrait::boot()</full_name>
+        <docblock line="61">
+          <description>The "boot" method of the model.</description>
+          <long-description/>
+          <tag name="return" line="61" description="" type="void">
+            <type>void</type>
+          </tag>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="true" visibility="protected" namespace="Codex\Traits" line="71" package="Codex\Traits">
+        <name>bootTraits</name>
+        <full_name>\Codex\Traits\BootableTrait::bootTraits()</full_name>
+        <docblock line="71">
+          <description>Boot all of the bootable traits on the model.</description>
+          <long-description/>
+          <tag name="return" line="71" description="" type="void">
+            <type>void</type>
+          </tag>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="true" visibility="public" namespace="Codex\Traits" line="85" package="Codex\Traits">
+        <name>clearBooted</name>
+        <full_name>\Codex\Traits\BootableTrait::clearBooted()</full_name>
+        <docblock line="85">
+          <description>Clear the list of booted models so they will be re-booted.</description>
+          <long-description/>
+          <tag name="return" line="85" description="" type="void">
+            <type>void</type>
+          </tag>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Codex\Traits" line="94" package="Codex\Traits">
+        <name>__wakeup</name>
+        <full_name>\Codex\Traits\BootableTrait::__wakeup()</full_name>
+        <docblock line="94">
+          <description>The wakeup magic method is used to boot the bootable stuff</description>
+          <long-description/>
+          <tag name="throws" line="94" description="" type="\Codex\Exception\ContractMissingException">
+            <type>\Codex\Exception\ContractMissingException</type>
+          </tag>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="true" visibility="public" namespace="Codex\Traits" line="106" package="Codex\Traits">
+        <name>booting</name>
+        <full_name>\Codex\Traits\BootableTrait::booting()</full_name>
+        <docblock line="106">
+          <description>Register a listener for the "booting" event of this class</description>
+          <long-description/>
+          <tag name="param" line="106" description="" type="string|\Closure" variable="$callback">
+            <type>string</type>
+            <type>\Closure</type>
+          </tag>
+          <tag name="return" line="106" description="The class name" type="string">
+            <type>string</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$callback</name>
+          <default/>
+          <type>string|\Closure</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="true" visibility="public" namespace="Codex\Traits" line="120" package="Codex\Traits">
+        <name>booted</name>
+        <full_name>\Codex\Traits\BootableTrait::booted()</full_name>
+        <docblock line="120">
+          <description>Register a listener for the "booted" event of this class</description>
+          <long-description/>
+          <tag name="param" line="120" description="" type="string|\Closure" variable="$callback">
+            <type>string</type>
+            <type>\Closure</type>
+          </tag>
+          <tag name="return" line="120" description="The class name" type="string">
+            <type>string</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$callback</name>
+          <default/>
+          <type>string|\Closure</type>
+        </argument>
+      </method>
+    </trait>
+    <parse_markers>
+      <error line="27" code="PPC:ERR-50007">No summary for property $booted</error>
+    </parse_markers>
+    <source>eJzNVt9v2zYQftdfcQsMRAocZyuwF2ftuhoGGiANgq5vcWDQ0tnmLIkqScUpuvzvOx5JR5HnLNs6YHqyxfvx3fcd7/TTz826Sc5OThI4gWuhLagl2DXCRBV4D9da/Ya5hev319CIfCNWaEZk6qwvZY61QRB1Ablqvmi5WluQ9VLpSlipali0dVFiAVtp1xRUmhiDrDjJ5cVkevXrFJayRAp5liRJLSo0ZBYQzD5pIa05p5PWxHcTVVstcmvC6eydUlYsSjx/zui9Upu+0fQ+x8Zh3Zl/kMbIerU7oMyBnU8EOCbikLBVemPAyEqWQoNVMC3V5xZrCx8oemlG7GM5PdUrLAhNfBUFcZKLmljIy7agN7CguBzzisqHZVvnTOB2LfM10VeWsEByKR2byjlKK0Upjec5SKYWTqsRfMTPrdRo+OX0jvB4uASQojR04iAKs8WyjGK+jcqEp0s+n4vWrpWG3fnlBb9+FD64xb9pnsGr73/4cehMR/ALlcAHBlx+fYcF+xtEmHWTzTqAHXvaF1N0CuFOYVaf6pF8TRIHotHKEhHkYywRlMPA0Ut/X8MN3J57IxbVPScwWWO+AelJrJxyUCMWJhAWnF2bk41RQygUSDsK7jHKW7vWamtiNX/dWcHxrId5J77Le7G8UvYdA0gzNvyaRAkGeSmMoaJWaOf8Ox24S5aFCt1DgFP4jg/nsmpKrIhEsuM3Q4hXYjzmFxlknfju4ZrgUAXjsaxDztM3lT+Mtmk/9vku8MNL4UV1/wt4/dhdeD185Ik29b00Hodmuon83+7DOmhKYlndYkcgFtJBPH2zpDbnJk+PnR+BPR7CUpQGs55DjO/M0v7hn0fDohPsqRAPexfC3bsj53UEFdK1L+KE4cux1/gabatruFOyONDT4R4+ae29fu5W5WdBGrDuI3TqAY3DCGwR1IzDVtXfHG+E1ENN2w4FDekUfBvTbjFzjXmrjbzDlO8mz+1wRbOMJi+JxOOr3zjcb57yOd5LQ/n2AwxhEFR5DaztMYxC8oWg0U4bJPXxs/3WDJC3QhdzXyVHT2/guUS3naZ5bJznWmhSoluJpAFtKf6oCGOUJaGlqdzhl91u03jqDV6uVrsoSaO+VLlLfGBi9u5l3AeHL8FWbLBtoBIrShG4oK8Y0rjg5eC68En7Gdsul99oI/j6doXN5x7N/h7wF35vXRwq7COuSBLU9NnhtMGaflJLcCFHYfIcAbrZ4a8XVcwd0VemEVpUVLImh99nk1KZlj5vBq6JFvQ1cUBIb8/0+qnoGvYlygZo6S7BIXl1KJDH32UosTtUHyN0ZucOng/C2P4xhVj8Xxmkzvg3BPIe+dv8PSR/AOBHyFw=</source>
+  <type>trait</type></file>

@@ -158,6 +158,14 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
 
+        /*
+         * Codex Service Providers...
+         */
+
+        Codex\CodexServiceProvider::class,
+        Codex\Addon\Phpdoc\PhpdocServiceProvider::class,
+        Codex\Addon\Auth\AuthServiceProvider::class,
+        Codex\Addon\Git\GitServiceProvider::class
     ],
 
     /*

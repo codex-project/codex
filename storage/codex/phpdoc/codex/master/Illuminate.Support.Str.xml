@@ -1,0 +1,874 @@
+<file path="codex/vendor/laravel/framework/src/Illuminate/Support/Str.php" generated-path="codex.vendor.laravel.framework.src.Illuminate.Support.Str.html" hash="1e3c43d0b4bd230f6bb3d5cb75c401b5" package="Default">
+    <docblock line="0">
+      <description/>
+      <long-description/>
+      <tag name="package" line="0" description="Default"/>
+    </docblock>
+    <namespace-alias name="Macroable">\Illuminate\Support\Traits\Macroable</namespace-alias>
+    <class final="false" abstract="false" namespace="Illuminate\Support" line="7" package="Default">
+      <extends/>
+      <name>Str</name>
+      <full_name>\Illuminate\Support\Str</full_name>
+      <docblock line="7">
+        <description/>
+        <long-description/>
+        <tag name="package" line="7" description="Default"/>
+      </docblock>
+      <property static="true" visibility="protected" namespace="Illuminate\Support" line="16" package="Default">
+        <name>$snakeCache</name>
+        <full_name>\Illuminate\Support\Str::snakeCache</full_name>
+        <default>array()</default>
+        <docblock line="16">
+          <description>The cache of snake-cased words.</description>
+          <long-description/>
+          <tag name="var" line="16" description="" type="array" variable="">
+            <type>array</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="true" visibility="protected" namespace="Illuminate\Support" line="23" package="Default">
+        <name>$camelCache</name>
+        <full_name>\Illuminate\Support\Str::camelCache</full_name>
+        <default>array()</default>
+        <docblock line="23">
+          <description>The cache of camel-cased words.</description>
+          <long-description/>
+          <tag name="var" line="23" description="" type="array" variable="">
+            <type>array</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="true" visibility="protected" namespace="Illuminate\Support" line="30" package="Default">
+        <name>$studlyCache</name>
+        <full_name>\Illuminate\Support\Str::studlyCache</full_name>
+        <default>array()</default>
+        <docblock line="30">
+          <description>The cache of studly-cased words.</description>
+          <long-description/>
+          <tag name="var" line="30" description="" type="array" variable="">
+            <type>array</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="true" visibility="protected" namespace="Illuminate\Support" line="15" package="Default">
+        <name>$macros</name>
+        <full_name>\Illuminate\Support\Traits\Macroable::macros</full_name>
+        <default>array()</default>
+        <docblock line="15">
+          <description>The registered string macros.</description>
+          <long-description/>
+          <tag name="var" line="15" description="" type="array" variable="">
+            <type>array</type>
+          </tag>
+        </docblock>
+      </property>
+      <method final="false" abstract="false" static="true" visibility="public" namespace="Illuminate\Support" line="38" package="Default">
+        <name>ascii</name>
+        <full_name>\Illuminate\Support\Str::ascii()</full_name>
+        <docblock line="38">
+          <description>Transliterate a UTF-8 value to ASCII.</description>
+          <long-description/>
+          <tag name="param" line="38" description="" type="string" variable="$value">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="38" description="" type="string">
+            <type>string</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$value</name>
+          <default/>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="true" visibility="public" namespace="Illuminate\Support" line="53" package="Default">
+        <name>camel</name>
+        <full_name>\Illuminate\Support\Str::camel()</full_name>
+        <docblock line="53">
+          <description>Convert a value to camel case.</description>
+          <long-description/>
+          <tag name="param" line="53" description="" type="string" variable="$value">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="53" description="" type="string">
+            <type>string</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$value</name>
+          <default/>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="true" visibility="public" namespace="Illuminate\Support" line="69" package="Default">
+        <name>contains</name>
+        <full_name>\Illuminate\Support\Str::contains()</full_name>
+        <docblock line="69">
+          <description>Determine if a given string contains a given substring.</description>
+          <long-description/>
+          <tag name="param" line="69" description="" type="string" variable="$haystack">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="69" description="" type="string|array" variable="$needles">
+            <type>string</type>
+            <type>array</type>
+          </tag>
+          <tag name="return" line="69" description="" type="boolean">
+            <type>boolean</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$haystack</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$needles</name>
+          <default/>
+          <type>string|array</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="true" visibility="public" namespace="Illuminate\Support" line="87" package="Default">
+        <name>endsWith</name>
+        <full_name>\Illuminate\Support\Str::endsWith()</full_name>
+        <docblock line="87">
+          <description>Determine if a given string ends with a given substring.</description>
+          <long-description/>
+          <tag name="param" line="87" description="" type="string" variable="$haystack">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="87" description="" type="string|array" variable="$needles">
+            <type>string</type>
+            <type>array</type>
+          </tag>
+          <tag name="return" line="87" description="" type="boolean">
+            <type>boolean</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$haystack</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$needles</name>
+          <default/>
+          <type>string|array</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="true" visibility="public" namespace="Illuminate\Support" line="105" package="Default">
+        <name>finish</name>
+        <full_name>\Illuminate\Support\Str::finish()</full_name>
+        <docblock line="105">
+          <description>Cap a string with a single instance of a given value.</description>
+          <long-description/>
+          <tag name="param" line="105" description="" type="string" variable="$value">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="105" description="" type="string" variable="$cap">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="105" description="" type="string">
+            <type>string</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$value</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$cap</name>
+          <default/>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="true" visibility="public" namespace="Illuminate\Support" line="119" package="Default">
+        <name>is</name>
+        <full_name>\Illuminate\Support\Str::is()</full_name>
+        <docblock line="119">
+          <description>Determine if a given string matches a given pattern.</description>
+          <long-description/>
+          <tag name="param" line="119" description="" type="string" variable="$pattern">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="119" description="" type="string" variable="$value">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="119" description="" type="boolean">
+            <type>boolean</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$pattern</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$value</name>
+          <default/>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="true" visibility="public" namespace="Illuminate\Support" line="141" package="Default">
+        <name>length</name>
+        <full_name>\Illuminate\Support\Str::length()</full_name>
+        <docblock line="141">
+          <description>Return the length of the given string.</description>
+          <long-description/>
+          <tag name="param" line="141" description="" type="string" variable="$value">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="141" description="" type="integer">
+            <type>integer</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$value</name>
+          <default/>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="true" visibility="public" namespace="Illuminate\Support" line="154" package="Default">
+        <name>limit</name>
+        <full_name>\Illuminate\Support\Str::limit()</full_name>
+        <docblock line="154">
+          <description>Limit the number of characters in a string.</description>
+          <long-description/>
+          <tag name="param" line="154" description="" type="string" variable="$value">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="154" description="" type="integer" variable="$limit">
+            <type>integer</type>
+          </tag>
+          <tag name="param" line="154" description="" type="string" variable="$end">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="154" description="" type="string">
+            <type>string</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$value</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$limit</name>
+          <default>100</default>
+          <type>integer</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$end</name>
+          <default>'...'</default>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="true" visibility="public" namespace="Illuminate\Support" line="169" package="Default">
+        <name>lower</name>
+        <full_name>\Illuminate\Support\Str::lower()</full_name>
+        <docblock line="169">
+          <description>Convert the given string to lower-case.</description>
+          <long-description/>
+          <tag name="param" line="169" description="" type="string" variable="$value">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="169" description="" type="string">
+            <type>string</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$value</name>
+          <default/>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="true" visibility="public" namespace="Illuminate\Support" line="182" package="Default">
+        <name>words</name>
+        <full_name>\Illuminate\Support\Str::words()</full_name>
+        <docblock line="182">
+          <description>Limit the number of words in a string.</description>
+          <long-description/>
+          <tag name="param" line="182" description="" type="string" variable="$value">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="182" description="" type="integer" variable="$words">
+            <type>integer</type>
+          </tag>
+          <tag name="param" line="182" description="" type="string" variable="$end">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="182" description="" type="string">
+            <type>string</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$value</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$words</name>
+          <default>100</default>
+          <type>integer</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$end</name>
+          <default>'...'</default>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="true" visibility="public" namespace="Illuminate\Support" line="200" package="Default">
+        <name>parseCallback</name>
+        <full_name>\Illuminate\Support\Str::parseCallback()</full_name>
+        <docblock line="200">
+          <description>Parse a Class@method style callback into class and method.</description>
+          <long-description/>
+          <tag name="param" line="200" description="" type="string" variable="$callback">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="200" description="" type="string" variable="$default">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="200" description="" type="array">
+            <type>array</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$callback</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$default</name>
+          <default/>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="true" visibility="public" namespace="Illuminate\Support" line="212" package="Default">
+        <name>plural</name>
+        <full_name>\Illuminate\Support\Str::plural()</full_name>
+        <docblock line="212">
+          <description>Get the plural form of an English word.</description>
+          <long-description/>
+          <tag name="param" line="212" description="" type="string" variable="$value">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="212" description="" type="integer" variable="$count">
+            <type>integer</type>
+          </tag>
+          <tag name="return" line="212" description="" type="string">
+            <type>string</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$value</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$count</name>
+          <default>2</default>
+          <type>integer</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="true" visibility="public" namespace="Illuminate\Support" line="223" package="Default">
+        <name>random</name>
+        <full_name>\Illuminate\Support\Str::random()</full_name>
+        <docblock line="223">
+          <description>Generate a more truly "random" alpha-numeric string.</description>
+          <long-description/>
+          <tag name="param" line="223" description="" type="integer" variable="$length">
+            <type>integer</type>
+          </tag>
+          <tag name="return" line="223" description="" type="string">
+            <type>string</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$length</name>
+          <default>16</default>
+          <type>integer</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="true" visibility="public" namespace="Illuminate\Support" line="246" package="Default">
+        <name>randomBytes</name>
+        <full_name>\Illuminate\Support\Str::randomBytes()</full_name>
+        <docblock line="246">
+          <description>Generate a more truly "random" bytes.</description>
+          <long-description/>
+          <tag name="param" line="246" description="" type="integer" variable="$length">
+            <type>integer</type>
+          </tag>
+          <tag name="return" line="246" description="" type="string">
+            <type>string</type>
+          </tag>
+          <tag name="deprecated" line="246" description="since version 5.2. Use random_bytes instead."/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$length</name>
+          <default>16</default>
+          <type>integer</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="true" visibility="public" namespace="Illuminate\Support" line="259" package="Default">
+        <name>quickRandom</name>
+        <full_name>\Illuminate\Support\Str::quickRandom()</full_name>
+        <docblock line="259">
+          <description>Generate a "random" alpha-numeric string.</description>
+          <long-description>Should not be considered sufficient for cryptography, etc.</long-description>
+          <tag name="param" line="259" description="" type="integer" variable="$length">
+            <type>integer</type>
+          </tag>
+          <tag name="return" line="259" description="" type="string">
+            <type>string</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$length</name>
+          <default>16</default>
+          <type>integer</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="true" visibility="public" namespace="Illuminate\Support" line="279" package="Default">
+        <name>equals</name>
+        <full_name>\Illuminate\Support\Str::equals()</full_name>
+        <docblock line="279">
+          <description>Compares two strings using a constant-time algorithm.</description>
+          <long-description>Note: This method will leak length information.
+
+Note: Adapted from Symfony\Component\Security\Core\Util\StringUtils.</long-description>
+          <tag name="param" line="279" description="" type="string" variable="$knownString">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="279" description="" type="string" variable="$userInput">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="279" description="" type="boolean">
+            <type>boolean</type>
+          </tag>
+          <tag name="deprecated" line="279" description="since version 5.2. Use hash_equals instead."/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$knownString</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$userInput</name>
+          <default/>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="true" visibility="public" namespace="Illuminate\Support" line="292" package="Default">
+        <name>replaceFirst</name>
+        <full_name>\Illuminate\Support\Str::replaceFirst()</full_name>
+        <docblock line="292">
+          <description>Replace the first occurrence of a given value in the string.</description>
+          <long-description/>
+          <tag name="param" line="292" description="" type="string" variable="$search">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="292" description="" type="string" variable="$replace">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="292" description="" type="string" variable="$subject">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="292" description="" type="string">
+            <type>string</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$search</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$replace</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$subject</name>
+          <default/>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="true" visibility="public" namespace="Illuminate\Support" line="311" package="Default">
+        <name>replaceLast</name>
+        <full_name>\Illuminate\Support\Str::replaceLast()</full_name>
+        <docblock line="311">
+          <description>Replace the last occurrence of a given value in the string.</description>
+          <long-description/>
+          <tag name="param" line="311" description="" type="string" variable="$search">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="311" description="" type="string" variable="$replace">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="311" description="" type="string" variable="$subject">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="311" description="" type="string">
+            <type>string</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$search</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$replace</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$subject</name>
+          <default/>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="true" visibility="public" namespace="Illuminate\Support" line="328" package="Default">
+        <name>upper</name>
+        <full_name>\Illuminate\Support\Str::upper()</full_name>
+        <docblock line="328">
+          <description>Convert the given string to upper-case.</description>
+          <long-description/>
+          <tag name="param" line="328" description="" type="string" variable="$value">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="328" description="" type="string">
+            <type>string</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$value</name>
+          <default/>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="true" visibility="public" namespace="Illuminate\Support" line="339" package="Default">
+        <name>title</name>
+        <full_name>\Illuminate\Support\Str::title()</full_name>
+        <docblock line="339">
+          <description>Convert the given string to title case.</description>
+          <long-description/>
+          <tag name="param" line="339" description="" type="string" variable="$value">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="339" description="" type="string">
+            <type>string</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$value</name>
+          <default/>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="true" visibility="public" namespace="Illuminate\Support" line="350" package="Default">
+        <name>singular</name>
+        <full_name>\Illuminate\Support\Str::singular()</full_name>
+        <docblock line="350">
+          <description>Get the singular form of an English word.</description>
+          <long-description/>
+          <tag name="param" line="350" description="" type="string" variable="$value">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="350" description="" type="string">
+            <type>string</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$value</name>
+          <default/>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="true" visibility="public" namespace="Illuminate\Support" line="362" package="Default">
+        <name>slug</name>
+        <full_name>\Illuminate\Support\Str::slug()</full_name>
+        <docblock line="362">
+          <description>Generate a URL friendly "slug" from a given string.</description>
+          <long-description/>
+          <tag name="param" line="362" description="" type="string" variable="$title">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="362" description="" type="string" variable="$separator">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="362" description="" type="string">
+            <type>string</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$title</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$separator</name>
+          <default>'-'</default>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="true" visibility="public" namespace="Illuminate\Support" line="387" package="Default">
+        <name>snake</name>
+        <full_name>\Illuminate\Support\Str::snake()</full_name>
+        <docblock line="387">
+          <description>Convert a string to snake case.</description>
+          <long-description/>
+          <tag name="param" line="387" description="" type="string" variable="$value">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="387" description="" type="string" variable="$delimiter">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="387" description="" type="string">
+            <type>string</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$value</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$delimiter</name>
+          <default>'_'</default>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="true" visibility="public" namespace="Illuminate\Support" line="411" package="Default">
+        <name>startsWith</name>
+        <full_name>\Illuminate\Support\Str::startsWith()</full_name>
+        <docblock line="411">
+          <description>Determine if a given string starts with a given substring.</description>
+          <long-description/>
+          <tag name="param" line="411" description="" type="string" variable="$haystack">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="411" description="" type="string|array" variable="$needles">
+            <type>string</type>
+            <type>array</type>
+          </tag>
+          <tag name="return" line="411" description="" type="boolean">
+            <type>boolean</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$haystack</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$needles</name>
+          <default/>
+          <type>string|array</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="true" visibility="public" namespace="Illuminate\Support" line="428" package="Default">
+        <name>studly</name>
+        <full_name>\Illuminate\Support\Str::studly()</full_name>
+        <docblock line="428">
+          <description>Convert a value to studly caps case.</description>
+          <long-description/>
+          <tag name="param" line="428" description="" type="string" variable="$value">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="428" description="" type="string">
+            <type>string</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$value</name>
+          <default/>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="true" visibility="public" namespace="Illuminate\Support" line="449" package="Default">
+        <name>substr</name>
+        <full_name>\Illuminate\Support\Str::substr()</full_name>
+        <docblock line="449">
+          <description>Returns the portion of string specified by the start and length parameters.</description>
+          <long-description/>
+          <tag name="param" line="449" description="" type="string" variable="$string">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="449" description="" type="integer" variable="$start">
+            <type>integer</type>
+          </tag>
+          <tag name="param" line="449" description="" type="integer|null" variable="$length">
+            <type>integer</type>
+            <type>null</type>
+          </tag>
+          <tag name="return" line="449" description="" type="string">
+            <type>string</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$string</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$start</name>
+          <default/>
+          <type>integer</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$length</name>
+          <default>null</default>
+          <type>integer|null</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="true" visibility="public" namespace="Illuminate\Support" line="460" package="Default">
+        <name>ucfirst</name>
+        <full_name>\Illuminate\Support\Str::ucfirst()</full_name>
+        <docblock line="460">
+          <description>Make a string's first character uppercase.</description>
+          <long-description/>
+          <tag name="param" line="460" description="" type="string" variable="$string">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="460" description="" type="string">
+            <type>string</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$string</name>
+          <default/>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="true" visibility="protected" namespace="Illuminate\Support" line="474" package="Default">
+        <name>charsArray</name>
+        <full_name>\Illuminate\Support\Str::charsArray()</full_name>
+        <docblock line="474">
+          <description>Returns the replacements for the ascii method.</description>
+          <long-description>Note: Adapted from Stringy\Stringy.</long-description>
+          <tag name="see" line="474" description="" link="https://github.com/danielstjules/Stringy/blob/2.3.1/LICENSE.txt"/>
+          <tag name="return" line="474" description="" type="array">
+            <type>array</type>
+          </tag>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="true" visibility="public" namespace="Illuminate\Support" line="24" package="Default">
+        <name>macro</name>
+        <full_name>\Illuminate\Support\Traits\Macroable::macro()</full_name>
+        <docblock line="24">
+          <description>Register a custom macro.</description>
+          <long-description/>
+          <tag name="param" line="24" description="" type="string" variable="$name">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="24" description="" type="callable" variable="$macro">
+            <type>callable</type>
+          </tag>
+          <tag name="return" line="24" description="" type="void">
+            <type>void</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$name</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$macro</name>
+          <default/>
+          <type>callable</type>
+        </argument>
+        <inherited_from>\Illuminate\Support\Traits\Macroable</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="true" visibility="public" namespace="Illuminate\Support" line="35" package="Default">
+        <name>hasMacro</name>
+        <full_name>\Illuminate\Support\Traits\Macroable::hasMacro()</full_name>
+        <docblock line="35">
+          <description>Checks if macro is registered.</description>
+          <long-description/>
+          <tag name="param" line="35" description="" type="string" variable="$name">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="35" description="" type="boolean">
+            <type>boolean</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$name</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <inherited_from>\Illuminate\Support\Traits\Macroable</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="true" visibility="public" namespace="Illuminate\Support" line="49" package="Default">
+        <name>__callStatic</name>
+        <full_name>\Illuminate\Support\Traits\Macroable::__callStatic()</full_name>
+        <docblock line="49">
+          <description>Dynamically handle calls to the class.</description>
+          <long-description/>
+          <tag name="param" line="49" description="" type="string" variable="$method">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="49" description="" type="array" variable="$parameters">
+            <type>array</type>
+          </tag>
+          <tag name="return" line="49" description="" type="mixed">
+            <type>mixed</type>
+          </tag>
+          <tag name="throws" line="49" description="" type="\BadMethodCallException">
+            <type>\BadMethodCallException</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$method</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$parameters</name>
+          <default/>
+          <type>array</type>
+        </argument>
+        <inherited_from>\Illuminate\Support\Traits\Macroable</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Support" line="71" package="Default">
+        <name>__call</name>
+        <full_name>\Illuminate\Support\Traits\Macroable::__call()</full_name>
+        <docblock line="71">
+          <description>Dynamically handle calls to the class.</description>
+          <long-description/>
+          <tag name="param" line="71" description="" type="string" variable="$method">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="71" description="" type="array" variable="$parameters">
+            <type>array</type>
+          </tag>
+          <tag name="return" line="71" description="" type="mixed">
+            <type>mixed</type>
+          </tag>
+          <tag name="throws" line="71" description="" type="\BadMethodCallException">
+            <type>\BadMethodCallException</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$method</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$parameters</name>
+          <default/>
+          <type>array</type>
+        </argument>
+        <inherited_from>\Illuminate\Support\Traits\Macroable</inherited_from>
+      </method>
+    </class>
+    <parse_markers>
+      <error line="0" code="PPC:ERR-50000">No summary was found for this file</error>
+      <error line="7" code="PPC:ERR-50005">No summary for class \Illuminate\Support\Str</error>
+    </parse_markers>
+    <source>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</source>
+  <type>class</type></file>

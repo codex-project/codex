@@ -1,0 +1,799 @@
+<file path="codex/workbench/codex/core/src/Projects/ProjectGenerator.php" generated-path="codex.workbench.codex.core.src.Projects.ProjectGenerator.html" hash="3656bba5298896559e6320596b4de204" package="Default">
+    <docblock line="0">
+      <description>Created by IntelliJ IDEA.</description>
+      <long-description>User: radic
+Date: 6/10/16
+Time: 8:00 PM</long-description>
+      <tag name="package" line="0" description="Default"/>
+    </docblock>
+    <namespace-alias name="Codex">\Codex\Contracts\Codex</namespace-alias>
+    <namespace-alias name="Extendable">\Codex\Support\Extendable</namespace-alias>
+    <namespace-alias name="Factory">\Illuminate\Contracts\View\Factory</namespace-alias>
+    <namespace-alias name="Filesystem">\Sebwite\Filesystem\Filesystem</namespace-alias>
+    <class final="false" abstract="false" namespace="Codex\Projects" line="19" package="Codex\Projects">
+      <extends>\Codex\Support\Extendable</extends>
+      <name>ProjectGenerator</name>
+      <full_name>\Codex\Projects\ProjectGenerator</full_name>
+      <docblock line="19">
+        <description>Class Generator</description>
+        <long-description/>
+        <tag name="package" line="19" description="Codex\Projects"/>
+        <tag name="inherited_from" description="\Codex\Support\Extendable" refers="\Codex\Support\Extendable" link="/classes/Codex.Support.Extendable.html"/>
+      </docblock>
+      <property static="false" visibility="protected" namespace="Codex\Projects" line="22" package="Codex\Projects">
+        <name>$codex</name>
+        <full_name>\Codex\Projects\ProjectGenerator::codex</full_name>
+        <default/>
+        <docblock line="22">
+          <description/>
+          <long-description/>
+          <tag name="var" line="22" description="" type="\Codex\Contracts\Codex" variable="">
+            <type>\Codex\Contracts\Codex</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" namespace="Codex\Projects" line="25" package="Codex\Projects">
+        <name>$view</name>
+        <full_name>\Codex\Projects\ProjectGenerator::view</full_name>
+        <default/>
+        <docblock line="25">
+          <description/>
+          <long-description/>
+          <tag name="var" line="25" description="" type="\Illuminate\Contracts\View\Factory" variable="">
+            <type>\Illuminate\Contracts\View\Factory</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" namespace="Codex\Projects" line="28" package="Codex\Projects">
+        <name>$fs</name>
+        <full_name>\Codex\Projects\ProjectGenerator::fs</full_name>
+        <default/>
+        <docblock line="28">
+          <description/>
+          <long-description/>
+          <tag name="var" line="28" description="" type="\Sebwite\Filesystem\Filesystem" variable="">
+            <type>\Sebwite\Filesystem\Filesystem</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" namespace="Codex\Projects" line="30" package="Codex\Projects">
+        <name>$vars</name>
+        <full_name>\Codex\Projects\ProjectGenerator::vars</full_name>
+        <default>array('open' =&gt; "&lt;?php \n")</default>
+        <docblock line="30">
+          <description/>
+          <long-description/>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" namespace="Codex\Projects" line="34" package="Codex\Projects">
+        <name>$name</name>
+        <full_name>\Codex\Projects\ProjectGenerator::name</full_name>
+        <default/>
+        <docblock line="34">
+          <description/>
+          <long-description/>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" namespace="Codex\Projects" line="36" package="Codex\Projects">
+        <name>$views</name>
+        <full_name>\Codex\Projects\ProjectGenerator::views</full_name>
+        <default>array('config' =&gt; 'codex-stubs::config', 'index' =&gt; 'codex-stubs::index', 'menu' =&gt; 'codex-stubs::menu')</default>
+        <docblock line="36">
+          <description/>
+          <long-description/>
+        </docblock>
+      </property>
+      <property static="true" visibility="protected" namespace="Codex\Projects" line="27" package="Codex\Traits">
+        <name>$booted</name>
+        <full_name>\Codex\Traits\BootableTrait::booted</full_name>
+        <default>array()</default>
+        <docblock line="27">
+          <description/>
+          <long-description/>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" namespace="Codex\Projects" line="20" package="Default">
+        <name>$_macros</name>
+        <full_name>\Codex\Traits\ExtendableTrait::_macros</full_name>
+        <default>array()</default>
+        <docblock line="20">
+          <description/>
+          <long-description/>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" namespace="Codex\Projects" line="22" package="Default">
+        <name>$_extensions</name>
+        <full_name>\Codex\Traits\ExtendableTrait::_extensions</full_name>
+        <default>array()</default>
+        <docblock line="22">
+          <description/>
+          <long-description/>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" namespace="Codex\Projects" line="24" package="Default">
+        <name>$extensionInstances</name>
+        <full_name>\Codex\Traits\ExtendableTrait::extensionInstances</full_name>
+        <default>array()</default>
+        <docblock line="24">
+          <description/>
+          <long-description/>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" namespace="Codex\Projects" line="23" package="Codex\Core">
+        <name>$codex</name>
+        <full_name>\Codex\Traits\CodexTrait::codex</full_name>
+        <default/>
+        <docblock line="23">
+          <description/>
+          <long-description/>
+          <tag name="var" line="23" description="" type="\Codex\Contracts\Codex|\Codex\Codex" variable="">
+            <type>\Codex\Contracts\Codex</type>
+            <type>\Codex\Codex</type>
+          </tag>
+        </docblock>
+      </property>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Codex\Projects" line="49" package="Codex\Projects">
+        <name>__construct</name>
+        <full_name>\Codex\Projects\ProjectGenerator::__construct()</full_name>
+        <docblock line="49">
+          <description>ProjectGenerator constructor.</description>
+          <long-description/>
+          <tag name="param" line="49" description="" type="\Codex\Contracts\Codex|\Codex\Codex" variable="$codex">
+            <type>\Codex\Contracts\Codex</type>
+            <type>\Codex\Codex</type>
+          </tag>
+          <tag name="param" line="49" description="" type="\Illuminate\Contracts\View\Factory|\Illuminate\View\Factory" variable="$view">
+            <type>\Illuminate\Contracts\View\Factory</type>
+            <type>\Illuminate\View\Factory</type>
+          </tag>
+          <tag name="param" line="49" description="" type="\Sebwite\Filesystem\Filesystem" variable="$fs">
+            <type>\Sebwite\Filesystem\Filesystem</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$codex</name>
+          <default/>
+          <type>\Codex\Contracts\Codex|\Codex\Codex</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$view</name>
+          <default/>
+          <type>\Illuminate\Contracts\View\Factory|\Illuminate\View\Factory</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$fs</name>
+          <default/>
+          <type>\Sebwite\Filesystem\Filesystem</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Codex\Projects" line="58" package="Codex\Projects">
+        <name>registerViewExtension</name>
+        <full_name>\Codex\Projects\ProjectGenerator::registerViewExtension()</full_name>
+        <docblock line="58">
+          <description/>
+          <long-description/>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Codex\Projects" line="66" package="Codex\Projects">
+        <name>set</name>
+        <full_name>\Codex\Projects\ProjectGenerator::set()</full_name>
+        <docblock line="66">
+          <description/>
+          <long-description/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$key</name>
+          <default/>
+          <type/>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$value</name>
+          <default>null</default>
+          <type/>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Codex\Projects" line="76" package="Codex\Projects">
+        <name>merge</name>
+        <full_name>\Codex\Projects\ProjectGenerator::merge()</full_name>
+        <docblock line="76">
+          <description/>
+          <long-description/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$data</name>
+          <default/>
+          <type>array</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Codex\Projects" line="87" package="Codex\Projects">
+        <name>setName</name>
+        <full_name>\Codex\Projects\ProjectGenerator::setName()</full_name>
+        <docblock line="87">
+          <description/>
+          <long-description/>
+          <tag name="param" line="87" description="" type="" variable="$name"/>
+          <tag name="return" line="87" description="" type="\Codex\Projects\ProjectGenerator">
+            <type>\Codex\Projects\ProjectGenerator</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$name</name>
+          <default/>
+          <type/>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Codex\Projects" line="93" package="Codex\Projects">
+        <name>setView</name>
+        <full_name>\Codex\Projects\ProjectGenerator::setView()</full_name>
+        <docblock line="93">
+          <description/>
+          <long-description/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$name</name>
+          <default/>
+          <type/>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$view</name>
+          <default/>
+          <type/>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Codex\Projects" line="99" package="Codex\Projects">
+        <name>generate</name>
+        <full_name>\Codex\Projects\ProjectGenerator::generate()</full_name>
+        <docblock line="99">
+          <description/>
+          <long-description/>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Codex\Projects" line="108" package="Codex\Projects">
+        <name>renderTo</name>
+        <full_name>\Codex\Projects\ProjectGenerator::renderTo()</full_name>
+        <docblock line="108">
+          <description/>
+          <long-description/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$dest</name>
+          <default/>
+          <type/>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$view</name>
+          <default/>
+          <type/>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$data</name>
+          <default>array()</default>
+          <type>array</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Codex\Projects" line="113" package="Codex\Projects">
+        <name>render</name>
+        <full_name>\Codex\Projects\ProjectGenerator::render()</full_name>
+        <docblock line="113">
+          <description/>
+          <long-description/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$view</name>
+          <default/>
+          <type/>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$data</name>
+          <default>array()</default>
+          <type>array</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="true" visibility="public" namespace="Codex\Projects" line="23" package="Default">
+        <name>getEventName</name>
+        <full_name>\Codex\Traits\HookableTrait::getEventName()</full_name>
+        <docblock line="23">
+          <description>Returns the transformed (namespaced) event name for a hook</description>
+          <long-description/>
+          <tag name="param" line="23" description="&lt;p&gt;The hook name&lt;/p&gt;" type="string" variable="$event">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="23" description="The transformed event name" type="string">
+            <type>string</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$event</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <inherited_from>\Codex\Traits\HookableTrait</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="true" visibility="public" namespace="Codex\Projects" line="37" package="Default">
+        <name>hook</name>
+        <full_name>\Codex\Traits\HookableTrait::hook()</full_name>
+        <docblock line="37">
+          <description>Create a Codex Hook</description>
+          <long-description/>
+          <tag name="param" line="37" description="&lt;p&gt;The hook name&lt;/p&gt;" type="string" variable="$event">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="37" description="&lt;p&gt;The callback to execute&lt;/p&gt;" type="string|\Closure" variable="$callback">
+            <type>string</type>
+            <type>\Closure</type>
+          </tag>
+          <tag name="param" line="37" description="&lt;p&gt;(optional) The priority&lt;/p&gt;" type="integer" variable="$priority">
+            <type>integer</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$event</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$callback</name>
+          <default/>
+          <type>string|\Closure</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$priority</name>
+          <default>1</default>
+          <type>integer</type>
+        </argument>
+        <inherited_from>\Codex\Traits\HookableTrait</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Codex\Projects" line="51" package="Default">
+        <name>hookPoint</name>
+        <full_name>\Codex\Traits\HookableTrait::hookPoint()</full_name>
+        <docblock line="51">
+          <description>Defines a point where hooks can hook</description>
+          <long-description/>
+          <tag name="param" line="51" description="&lt;p&gt;The hook name&lt;/p&gt;" type="string" variable="$event">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="51" description="&lt;p&gt;(optional) The arguments to pass along&lt;/p&gt;" type="array" variable="$args">
+            <type>array</type>
+          </tag>
+          <tag name="param" line="51" description="&lt;p&gt;(optional) If this hook can halt&lt;/p&gt;" type="boolean" variable="$halt">
+            <type>boolean</type>
+          </tag>
+          <tag name="return" line="51" description="" type="array|null">
+            <type>array</type>
+            <type>null</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$event</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$args</name>
+          <default>array()</default>
+          <type>array</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$halt</name>
+          <default>true</default>
+          <type>boolean</type>
+        </argument>
+        <inherited_from>\Codex\Traits\HookableTrait</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Codex\Projects" line="65" package="Default">
+        <name>fireEvent</name>
+        <full_name>\Codex\Traits\HookableTrait::fireEvent()</full_name>
+        <docblock line="65">
+          <description>Fires an event for hooks</description>
+          <long-description/>
+          <tag name="param" line="65" description="&lt;p&gt;The hook name&lt;/p&gt;" type="string" variable="$event">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="65" description="&lt;p&gt;(optional) The arguments to pass along&lt;/p&gt;" type="array" variable="$args">
+            <type>array</type>
+          </tag>
+          <tag name="param" line="65" description="&lt;p&gt;(optional) If this hook can halt&lt;/p&gt;" type="boolean" variable="$halt">
+            <type>boolean</type>
+          </tag>
+          <tag name="return" line="65" description="" type="array|null">
+            <type>array</type>
+            <type>null</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$event</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$args</name>
+          <default>array()</default>
+          <type>array</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$halt</name>
+          <default>true</default>
+          <type>boolean</type>
+        </argument>
+        <inherited_from>\Codex\Traits\HookableTrait</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="true" visibility="public" namespace="Codex\Projects" line="31" package="Codex\Core">
+        <name>observe</name>
+        <full_name>\Codex\Traits\ObservableTrait::observe()</full_name>
+        <docblock line="31">
+          <description>Register an observer with the Model.</description>
+          <long-description/>
+          <tag name="param" line="31" description="" type="object|string" variable="$class">
+            <type>object</type>
+            <type>string</type>
+          </tag>
+          <tag name="param" line="31" description="" type="integer" variable="$priority">
+            <type>integer</type>
+          </tag>
+          <tag name="return" line="31" description="" type="void">
+            <type>void</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$class</name>
+          <default/>
+          <type>object|string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$priority</name>
+          <default>0</default>
+          <type>integer</type>
+        </argument>
+        <inherited_from>\Codex\Traits\ObservableTrait</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Codex\Projects" line="49" package="Codex\Core">
+        <name>getObservableEvents</name>
+        <full_name>\Codex\Traits\ObservableTrait::getObservableEvents()</full_name>
+        <docblock line="49">
+          <description>Get the observable event names.</description>
+          <long-description/>
+          <tag name="return" line="49" description="The event names that can be observed" type="array">
+            <type>array</type>
+          </tag>
+        </docblock>
+        <inherited_from>\Codex\Traits\ObservableTrait</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Codex\Projects" line="57" package="Codex\Core">
+        <name>flushEventListeners</name>
+        <full_name>\Codex\Traits\ObservableTrait::flushEventListeners()</full_name>
+        <docblock line="57">
+          <description>Remove all of the event listeners for the model.</description>
+          <long-description/>
+        </docblock>
+        <inherited_from>\Codex\Traits\ObservableTrait</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Codex\Projects" line="72" package="Codex\Core">
+        <name>addObservableEvents</name>
+        <full_name>\Codex\Traits\ObservableTrait::addObservableEvents()</full_name>
+        <docblock line="72">
+          <description>Adds one or more observable event names</description>
+          <long-description/>
+          <tag name="param" line="72" description="&lt;p&gt;The observable event names&lt;/p&gt;" type="array|string" variable="$observables">
+            <type>array</type>
+            <type>string</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$observables</name>
+          <default/>
+          <type>array|string</type>
+        </argument>
+        <inherited_from>\Codex\Traits\ObservableTrait</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Codex\Projects" line="86" package="Codex\Core">
+        <name>setObservableEvents</name>
+        <full_name>\Codex\Traits\ObservableTrait::setObservableEvents()</full_name>
+        <docblock line="86">
+          <description>Set the observable event names.</description>
+          <long-description/>
+          <tag name="param" line="86" description="" type="array" variable="$observables">
+            <type>array</type>
+          </tag>
+          <tag name="return" line="86" description="" type="\Codex\Projects\ProjectGenerator">
+            <type>\Codex\Projects\ProjectGenerator</type>
+          </tag>
+          <tag name="fluent" description="This method is part of a fluent interface and will return the same instance"/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$observables</name>
+          <default/>
+          <type>array</type>
+        </argument>
+        <inherited_from>\Codex\Traits\ObservableTrait</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Codex\Projects" line="105" package="Codex\Core">
+        <name>removeObservableEvents</name>
+        <full_name>\Codex\Traits\ObservableTrait::removeObservableEvents()</full_name>
+        <docblock line="105">
+          <description>Remove an observable event name.</description>
+          <long-description/>
+          <tag name="param" line="105" description="" type="array|mixed" variable="$observables">
+            <type>array</type>
+            <type>mixed</type>
+          </tag>
+          <tag name="return" line="105" description="" type="void">
+            <type>void</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$observables</name>
+          <default/>
+          <type>array|mixed</type>
+        </argument>
+        <inherited_from>\Codex\Traits\ObservableTrait</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Codex\Projects" line="34" package="Codex\Traits">
+        <name>bootIfNotBooted</name>
+        <full_name>\Codex\Traits\BootableTrait::bootIfNotBooted()</full_name>
+        <docblock line="34">
+          <description>Check if the model needs to be booted and if so, do it.</description>
+          <long-description/>
+          <tag name="throws" line="34" description="" type="\Codex\Exception\ContractMissingException">
+            <type>\Codex\Exception\ContractMissingException</type>
+          </tag>
+        </docblock>
+        <inherited_from>\Codex\Traits\BootableTrait</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="true" visibility="protected" namespace="Codex\Projects" line="61" package="Codex\Traits">
+        <name>boot</name>
+        <full_name>\Codex\Traits\BootableTrait::boot()</full_name>
+        <docblock line="61">
+          <description>The "boot" method of the model.</description>
+          <long-description/>
+          <tag name="return" line="61" description="" type="void">
+            <type>void</type>
+          </tag>
+        </docblock>
+        <inherited_from>\Codex\Traits\BootableTrait</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="true" visibility="protected" namespace="Codex\Projects" line="71" package="Codex\Traits">
+        <name>bootTraits</name>
+        <full_name>\Codex\Traits\BootableTrait::bootTraits()</full_name>
+        <docblock line="71">
+          <description>Boot all of the bootable traits on the model.</description>
+          <long-description/>
+          <tag name="return" line="71" description="" type="void">
+            <type>void</type>
+          </tag>
+        </docblock>
+        <inherited_from>\Codex\Traits\BootableTrait</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="true" visibility="public" namespace="Codex\Projects" line="85" package="Codex\Traits">
+        <name>clearBooted</name>
+        <full_name>\Codex\Traits\BootableTrait::clearBooted()</full_name>
+        <docblock line="85">
+          <description>Clear the list of booted models so they will be re-booted.</description>
+          <long-description/>
+          <tag name="return" line="85" description="" type="void">
+            <type>void</type>
+          </tag>
+        </docblock>
+        <inherited_from>\Codex\Traits\BootableTrait</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Codex\Projects" line="94" package="Codex\Traits">
+        <name>__wakeup</name>
+        <full_name>\Codex\Traits\BootableTrait::__wakeup()</full_name>
+        <docblock line="94">
+          <description>The wakeup magic method is used to boot the bootable stuff</description>
+          <long-description/>
+          <tag name="throws" line="94" description="" type="\Codex\Exception\ContractMissingException">
+            <type>\Codex\Exception\ContractMissingException</type>
+          </tag>
+        </docblock>
+        <inherited_from>\Codex\Traits\BootableTrait</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="true" visibility="public" namespace="Codex\Projects" line="106" package="Codex\Traits">
+        <name>booting</name>
+        <full_name>\Codex\Traits\BootableTrait::booting()</full_name>
+        <docblock line="106">
+          <description>Register a listener for the "booting" event of this class</description>
+          <long-description/>
+          <tag name="param" line="106" description="" type="string|\Closure" variable="$callback">
+            <type>string</type>
+            <type>\Closure</type>
+          </tag>
+          <tag name="return" line="106" description="The class name" type="string">
+            <type>string</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$callback</name>
+          <default/>
+          <type>string|\Closure</type>
+        </argument>
+        <inherited_from>\Codex\Traits\BootableTrait</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="true" visibility="public" namespace="Codex\Projects" line="120" package="Codex\Traits">
+        <name>booted</name>
+        <full_name>\Codex\Traits\BootableTrait::booted()</full_name>
+        <docblock line="120">
+          <description>Register a listener for the "booted" event of this class</description>
+          <long-description/>
+          <tag name="param" line="120" description="" type="string|\Closure" variable="$callback">
+            <type>string</type>
+            <type>\Closure</type>
+          </tag>
+          <tag name="return" line="120" description="The class name" type="string">
+            <type>string</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$callback</name>
+          <default/>
+          <type>string|\Closure</type>
+        </argument>
+        <inherited_from>\Codex\Traits\BootableTrait</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Codex\Projects" line="30" package="Default">
+        <name>extensions</name>
+        <full_name>\Codex\Traits\ExtendableTrait::extensions()</full_name>
+        <docblock line="30">
+          <description>Returns all registered extensions for this class</description>
+          <long-description/>
+          <tag name="return" line="30" description="The registered extensions for this class" type="array">
+            <type>array</type>
+          </tag>
+        </docblock>
+        <inherited_from>\Codex\Traits\ExtendableTrait</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Codex\Projects" line="42" package="Default">
+        <name>getExtenableProperty</name>
+        <full_name>\Codex\Traits\ExtendableTrait::getExtenableProperty()</full_name>
+        <docblock line="42">
+          <description>This will return the property. It checks if the property name exists and will return it. If it doesn't exist, it will return the property prefixed with _ (underscore)</description>
+          <long-description/>
+          <tag name="param" line="42" description="&lt;p&gt;The property name&lt;/p&gt;" type="string" variable="$type">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="42" description="" type="mixed">
+            <type>mixed</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$type</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <inherited_from>\Codex\Traits\ExtendableTrait</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Codex\Projects" line="54" package="Default">
+        <name>extend</name>
+        <full_name>\Codex\Traits\ExtendableTrait::extend()</full_name>
+        <docblock line="54">
+          <description>Extend the class with a class or method.</description>
+          <long-description/>
+          <tag name="param" line="54" description="&lt;p&gt;The name to register the extension under&lt;/p&gt;" type="string" variable="$name">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="54" description="&lt;p&gt;The extension that should be used&lt;/p&gt;" type="string|\Closure" variable="$extension">
+            <type>string</type>
+            <type>\Closure</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$name</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$extension</name>
+          <default/>
+          <type>string|\Closure</type>
+        </argument>
+        <inherited_from>\Codex\Traits\ExtendableTrait</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Codex\Projects" line="143" package="Default">
+        <name>__call</name>
+        <full_name>\Codex\Traits\ExtendableTrait::__call()</full_name>
+        <docblock line="143">
+          <description>Allows macro extensions to be called</description>
+          <long-description/>
+          <tag name="param" line="143" description="&lt;p&gt;The name of the extension&lt;/p&gt;" type="string" variable="$name">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="143" description="&lt;p&gt;The optional parameters&lt;/p&gt;" type="array" variable="$params">
+            <type>array</type>
+          </tag>
+          <tag name="return" line="143" description="" type="mixed">
+            <type>mixed</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$name</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$params</name>
+          <default>array()</default>
+          <type>array</type>
+        </argument>
+        <inherited_from>\Codex\Traits\ExtendableTrait</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Codex\Projects" line="158" package="Default">
+        <name>__get</name>
+        <full_name>\Codex\Traits\ExtendableTrait::__get()</full_name>
+        <docblock line="158">
+          <description>Allows class extensions to return it's value.</description>
+          <long-description/>
+          <tag name="param" line="158" description="&lt;p&gt;The name of the extension&lt;/p&gt;" type="string" variable="$name">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="158" description="" type="mixed">
+            <type>mixed</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$name</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <inherited_from>\Codex\Traits\ExtendableTrait</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Codex\Projects" line="29" package="Codex\Core">
+        <name>getCodex</name>
+        <full_name>\Codex\Traits\CodexTrait::getCodex()</full_name>
+        <docblock line="29">
+          <description>getCodex method</description>
+          <long-description/>
+          <tag name="return" line="29" description="" type="\Codex\Codex|\Codex\Contracts\Codex">
+            <type>\Codex\Codex</type>
+            <type>\Codex\Contracts\Codex</type>
+          </tag>
+        </docblock>
+        <inherited_from>\Codex\Traits\CodexTrait</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Codex\Projects" line="41" package="Codex\Core">
+        <name>setCodex</name>
+        <full_name>\Codex\Traits\CodexTrait::setCodex()</full_name>
+        <docblock line="41">
+          <description>Set the codex value</description>
+          <long-description/>
+          <tag name="param" line="41" description="" type="\Codex\Contracts\Codex" variable="$codex">
+            <type>\Codex\Contracts\Codex</type>
+          </tag>
+          <tag name="return" line="41" description="" type="\Codex\Traits\CodexTrait">
+            <type>\Codex\Traits\CodexTrait</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$codex</name>
+          <default/>
+          <type>\Codex\Contracts\Codex</type>
+        </argument>
+        <inherited_from>\Codex\Traits\CodexTrait</inherited_from>
+      </method>
+    </class>
+    <parse_markers>
+      <error line="58" code="PPC:ERR-50008">No summary for method registerViewExtension()</error>
+      <error line="66" code="PPC:ERR-50015">Argument $key is missing from the Docblock of set</error>
+      <error line="66" code="PPC:ERR-50015">Argument $value is missing from the Docblock of set</error>
+      <error line="66" code="PPC:ERR-50008">No summary for method set()</error>
+      <error line="76" code="PPC:ERR-50015">Argument $data is missing from the Docblock of merge</error>
+      <error line="76" code="PPC:ERR-50008">No summary for method merge()</error>
+      <error line="87" code="PPC:ERR-50008">No summary for method setName()</error>
+      <error line="93" code="PPC:ERR-50015">Argument $name is missing from the Docblock of setView</error>
+      <error line="93" code="PPC:ERR-50015">Argument $view is missing from the Docblock of setView</error>
+      <error line="93" code="PPC:ERR-50008">No summary for method setView()</error>
+      <error line="99" code="PPC:ERR-50008">No summary for method generate()</error>
+      <error line="108" code="PPC:ERR-50015">Argument $dest is missing from the Docblock of renderTo</error>
+      <error line="108" code="PPC:ERR-50015">Argument $view is missing from the Docblock of renderTo</error>
+      <error line="108" code="PPC:ERR-50015">Argument $data is missing from the Docblock of renderTo</error>
+      <error line="108" code="PPC:ERR-50008">No summary for method renderTo()</error>
+      <error line="113" code="PPC:ERR-50015">Argument $view is missing from the Docblock of render</error>
+      <error line="113" code="PPC:ERR-50015">Argument $data is missing from the Docblock of render</error>
+      <error line="113" code="PPC:ERR-50008">No summary for method render()</error>
+      <error line="22" code="PPC:ERR-50007">No summary for property $codex</error>
+      <error line="25" code="PPC:ERR-50007">No summary for property $view</error>
+      <error line="28" code="PPC:ERR-50007">No summary for property $fs</error>
+      <error line="30" code="PPC:ERR-50007">No summary for property $vars</error>
+      <error line="34" code="PPC:ERR-50007">No summary for property $name</error>
+      <error line="36" code="PPC:ERR-50007">No summary for property $views</error>
+    </parse_markers>
+    <source>eJydVW1v2zYQ/u5fQRQGJAeynX4pBqf2OiTtkAEbArTbl9gwaOlss5EogaTSGm3++44vkmnKL9n4xda9PPfc8e74/tdqW/XGV1c9ckVuBVAFGVntyD1XkOfsD3J/9/G3kVb+LUFMiKAZS/XnHVpOyLvx2+vx23da8IUVKPhlcn1NHv5EwbjHaQGyoimQ2zKD7/MHUX6FVMmbXq+WjfC25EpQlM7N942n+lxXVSnU/ON3BTyjqxys9j7P64JxJOB5/8Pg2/wT/i3Fzpp9htU3hjafWA5yJxUU3l/k0CSdUynJ78BBUHTWog9I+oluQt4mqdSYO1HrRcBwlGTPtfejR/BgFPLhmQoyP5ov0ZjarhKlQkSsfj+1hQjcL2Z9DOoZ9R2ks4U5hrKWDsNHpkKSKXk0cn2isgIekemMvHmvm4rM+ZvEaBddb90aRzCRbQCalnzNNgY2MnUZSlWv5GTiFMnelHFUH7G0cs+wAF4fsTPiA8KmQ/S56l44xpdK1LryI2fU2GL7CFqcuPCfrdjcvnfsvYcgF6/9p29y0A+mniHehcvXPNbSOblGqFc5S8m65qliJSfLZZt7bLOwzBNyEBg/97iIOTBgP9pr6Kstk8OZccU7b7o+UGskotW2kwPtWuqPqe3QQCdgwzC20CUxUymRfDzo2G3L8umhZFzFUeUGfbJprnnSpgpZ5Hxfwr5tK3MiZJj4lspWi+QZX1Ih6C6OdCNGiZ/6cLYB1RrLeJAQZANeFmxN4hByOiVrmuMKHHhhg6IOZzTL9iSb2NEqpxlEXoCXg6SDXpCg4v4T7BK9EPIaMB1e53mYMlvHjX7qLI4Ts0tFI3oECOhcDh0yqujSRN97JsSn0klBHwGqFtyGuzmXWAFiA7G5F9LXwU60r2NsDJcCqhyfu4CT8b65TMHbNm5YzZoMl4vzDxfS2ZHFQv2FULEBPJGJVuna29X8nwuGIXTb2xCJnddTNdNr/tEYLrqj/eqIbkihO2DNchjOsLtrAXdMgNlMcd+N+ANVWwxd4c/yKw5/bJ+T2L4IIy2Xo6xMZTRI/ALhgBRUj3g06G4SgS8/iC9l7F6tEb6Ch+MsH5sHbZGQx8U5CBtmrB+l0a7IOzjmtXotinkCR0XWQbFvYwNzcb052H4GUiXNmveGRL/dZHHmPqpaxf+j6CbgXmiJxC6+HbBXLGff6TJpp7KTbdfBa+b62QyBz6zl21J86f0LHKhv8A==</source>
+  <type>class</type></file>

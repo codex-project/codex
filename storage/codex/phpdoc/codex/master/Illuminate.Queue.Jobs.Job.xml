@@ -1,0 +1,350 @@
+<file path="codex/vendor/laravel/framework/src/Illuminate/Queue/Jobs/Job.php" generated-path="codex.vendor.laravel.framework.src.Illuminate.Queue.Jobs.Job.html" hash="241d8f72e858ed9bd7ab56e4b6808e1a" package="Default">
+    <docblock line="0">
+      <description/>
+      <long-description/>
+      <tag name="package" line="0" description="Default"/>
+    </docblock>
+    <namespace-alias name="DateTime">\DateTime</namespace-alias>
+    <namespace-alias name="Str">\Illuminate\Support\Str</namespace-alias>
+    <class final="false" abstract="true" namespace="Illuminate\Queue\Jobs" line="8" package="Default">
+      <extends/>
+      <name>Job</name>
+      <full_name>\Illuminate\Queue\Jobs\Job</full_name>
+      <docblock line="8">
+        <description/>
+        <long-description/>
+        <tag name="package" line="8" description="Default"/>
+      </docblock>
+      <property static="false" visibility="protected" namespace="Illuminate\Queue\Jobs" line="15" package="Default">
+        <name>$instance</name>
+        <full_name>\Illuminate\Queue\Jobs\Job::instance</full_name>
+        <default/>
+        <docblock line="15">
+          <description>The job handler instance.</description>
+          <long-description/>
+          <tag name="var" line="15" description="" type="mixed" variable="">
+            <type>mixed</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" namespace="Illuminate\Queue\Jobs" line="22" package="Default">
+        <name>$container</name>
+        <full_name>\Illuminate\Queue\Jobs\Job::container</full_name>
+        <default/>
+        <docblock line="22">
+          <description>The IoC container instance.</description>
+          <long-description/>
+          <tag name="var" line="22" description="" type="\Illuminate\Container\Container" variable="">
+            <type>\Illuminate\Container\Container</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" namespace="Illuminate\Queue\Jobs" line="29" package="Default">
+        <name>$queue</name>
+        <full_name>\Illuminate\Queue\Jobs\Job::queue</full_name>
+        <default/>
+        <docblock line="29">
+          <description>The name of the queue the job belongs to.</description>
+          <long-description/>
+          <tag name="var" line="29" description="" type="string" variable="">
+            <type>string</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" namespace="Illuminate\Queue\Jobs" line="36" package="Default">
+        <name>$deleted</name>
+        <full_name>\Illuminate\Queue\Jobs\Job::deleted</full_name>
+        <default>false</default>
+        <docblock line="36">
+          <description>Indicates if the job has been deleted.</description>
+          <long-description/>
+          <tag name="var" line="36" description="" type="boolean" variable="">
+            <type>boolean</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" namespace="Illuminate\Queue\Jobs" line="43" package="Default">
+        <name>$released</name>
+        <full_name>\Illuminate\Queue\Jobs\Job::released</full_name>
+        <default>false</default>
+        <docblock line="43">
+          <description>Indicates if the job has been released.</description>
+          <long-description/>
+          <tag name="var" line="43" description="" type="boolean" variable="">
+            <type>boolean</type>
+          </tag>
+        </docblock>
+      </property>
+      <method final="false" abstract="true" static="false" visibility="public" namespace="Illuminate\Queue\Jobs" line="50" package="Default">
+        <name>fire</name>
+        <full_name>\Illuminate\Queue\Jobs\Job::fire()</full_name>
+        <docblock line="50">
+          <description>Fire the job.</description>
+          <long-description/>
+          <tag name="return" line="50" description="" type="void">
+            <type>void</type>
+          </tag>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Queue\Jobs" line="57" package="Default">
+        <name>delete</name>
+        <full_name>\Illuminate\Queue\Jobs\Job::delete()</full_name>
+        <docblock line="57">
+          <description>Delete the job from the queue.</description>
+          <long-description/>
+          <tag name="return" line="57" description="" type="void">
+            <type>void</type>
+          </tag>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Queue\Jobs" line="67" package="Default">
+        <name>isDeleted</name>
+        <full_name>\Illuminate\Queue\Jobs\Job::isDeleted()</full_name>
+        <docblock line="67">
+          <description>Determine if the job has been deleted.</description>
+          <long-description/>
+          <tag name="return" line="67" description="" type="boolean">
+            <type>boolean</type>
+          </tag>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Queue\Jobs" line="78" package="Default">
+        <name>release</name>
+        <full_name>\Illuminate\Queue\Jobs\Job::release()</full_name>
+        <docblock line="78">
+          <description>Release the job back into the queue.</description>
+          <long-description/>
+          <tag name="param" line="78" description="" type="integer" variable="$delay">
+            <type>integer</type>
+          </tag>
+          <tag name="return" line="78" description="" type="void">
+            <type>void</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$delay</name>
+          <default>0</default>
+          <type>integer</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Queue\Jobs" line="88" package="Default">
+        <name>isReleased</name>
+        <full_name>\Illuminate\Queue\Jobs\Job::isReleased()</full_name>
+        <docblock line="88">
+          <description>Determine if the job was released back into the queue.</description>
+          <long-description/>
+          <tag name="return" line="88" description="" type="boolean">
+            <type>boolean</type>
+          </tag>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Queue\Jobs" line="98" package="Default">
+        <name>isDeletedOrReleased</name>
+        <full_name>\Illuminate\Queue\Jobs\Job::isDeletedOrReleased()</full_name>
+        <docblock line="98">
+          <description>Determine if the job has been deleted or released.</description>
+          <long-description/>
+          <tag name="return" line="98" description="" type="boolean">
+            <type>boolean</type>
+          </tag>
+        </docblock>
+      </method>
+      <method final="false" abstract="true" static="false" visibility="public" namespace="Illuminate\Queue\Jobs" line="108" package="Default">
+        <name>attempts</name>
+        <full_name>\Illuminate\Queue\Jobs\Job::attempts()</full_name>
+        <docblock line="108">
+          <description>Get the number of times the job has been attempted.</description>
+          <long-description/>
+          <tag name="return" line="108" description="" type="integer">
+            <type>integer</type>
+          </tag>
+        </docblock>
+      </method>
+      <method final="false" abstract="true" static="false" visibility="public" namespace="Illuminate\Queue\Jobs" line="115" package="Default">
+        <name>getRawBody</name>
+        <full_name>\Illuminate\Queue\Jobs\Job::getRawBody()</full_name>
+        <docblock line="115">
+          <description>Get the raw body string for the job.</description>
+          <long-description/>
+          <tag name="return" line="115" description="" type="string">
+            <type>string</type>
+          </tag>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Queue\Jobs" line="123" package="Default">
+        <name>resolveAndFire</name>
+        <full_name>\Illuminate\Queue\Jobs\Job::resolveAndFire()</full_name>
+        <docblock line="123">
+          <description>Resolve and fire the job handler method.</description>
+          <long-description/>
+          <tag name="param" line="123" description="" type="array" variable="$payload">
+            <type>array</type>
+          </tag>
+          <tag name="return" line="123" description="" type="void">
+            <type>void</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$payload</name>
+          <default/>
+          <type>array</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Queue\Jobs" line="138" package="Default">
+        <name>parseJob</name>
+        <full_name>\Illuminate\Queue\Jobs\Job::parseJob()</full_name>
+        <docblock line="138">
+          <description>Parse the job declaration into class and method.</description>
+          <long-description/>
+          <tag name="param" line="138" description="" type="string" variable="$job">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="138" description="" type="array">
+            <type>array</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$job</name>
+          <default/>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Queue\Jobs" line="151" package="Default">
+        <name>resolve</name>
+        <full_name>\Illuminate\Queue\Jobs\Job::resolve()</full_name>
+        <docblock line="151">
+          <description>Resolve the given job handler.</description>
+          <long-description/>
+          <tag name="param" line="151" description="" type="string" variable="$class">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="151" description="" type="mixed">
+            <type>mixed</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$class</name>
+          <default/>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Queue\Jobs" line="162" package="Default">
+        <name>resolveQueueableEntities</name>
+        <full_name>\Illuminate\Queue\Jobs\Job::resolveQueueableEntities()</full_name>
+        <docblock line="162">
+          <description>Resolve all of the queueable entities in the given payload.</description>
+          <long-description/>
+          <tag name="param" line="162" description="" type="mixed" variable="$data">
+            <type>mixed</type>
+          </tag>
+          <tag name="return" line="162" description="" type="mixed">
+            <type>mixed</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$data</name>
+          <default/>
+          <type>mixed</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Queue\Jobs" line="187" package="Default">
+        <name>resolveQueueableEntity</name>
+        <full_name>\Illuminate\Queue\Jobs\Job::resolveQueueableEntity()</full_name>
+        <docblock line="187">
+          <description>Resolve a single queueable entity from the resolver.</description>
+          <long-description/>
+          <tag name="param" line="187" description="" type="mixed" variable="$value">
+            <type>mixed</type>
+          </tag>
+          <tag name="return" line="187" description="" type="\Illuminate\Contracts\Queue\QueueableEntity">
+            <type>\Illuminate\Contracts\Queue\QueueableEntity</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$value</name>
+          <default/>
+          <type>mixed</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Queue\Jobs" line="203" package="Default">
+        <name>failed</name>
+        <full_name>\Illuminate\Queue\Jobs\Job::failed()</full_name>
+        <docblock line="203">
+          <description>Call the failed method on the job instance.</description>
+          <long-description/>
+          <tag name="return" line="203" description="" type="void">
+            <type>void</type>
+          </tag>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Queue\Jobs" line="221" package="Default">
+        <name>getEntityResolver</name>
+        <full_name>\Illuminate\Queue\Jobs\Job::getEntityResolver()</full_name>
+        <docblock line="221">
+          <description>Get an entity resolver instance.</description>
+          <long-description/>
+          <tag name="return" line="221" description="" type="\Illuminate\Contracts\Queue\EntityResolver">
+            <type>\Illuminate\Contracts\Queue\EntityResolver</type>
+          </tag>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Queue\Jobs" line="232" package="Default">
+        <name>getSeconds</name>
+        <full_name>\Illuminate\Queue\Jobs\Job::getSeconds()</full_name>
+        <docblock line="232">
+          <description>Calculate the number of seconds with the given delay.</description>
+          <long-description/>
+          <tag name="param" line="232" description="" type="\DateTime|integer" variable="$delay">
+            <type>\DateTime</type>
+            <type>integer</type>
+          </tag>
+          <tag name="return" line="232" description="" type="integer">
+            <type>integer</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$delay</name>
+          <default/>
+          <type>\DateTime|integer</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Queue\Jobs" line="246" package="Default">
+        <name>getTime</name>
+        <full_name>\Illuminate\Queue\Jobs\Job::getTime()</full_name>
+        <docblock line="246">
+          <description>Get the current system time.</description>
+          <long-description/>
+          <tag name="return" line="246" description="" type="integer">
+            <type>integer</type>
+          </tag>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Queue\Jobs" line="256" package="Default">
+        <name>getName</name>
+        <full_name>\Illuminate\Queue\Jobs\Job::getName()</full_name>
+        <docblock line="256">
+          <description>Get the name of the queued job class.</description>
+          <long-description/>
+          <tag name="return" line="256" description="" type="string">
+            <type>string</type>
+          </tag>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Queue\Jobs" line="266" package="Default">
+        <name>getQueue</name>
+        <full_name>\Illuminate\Queue\Jobs\Job::getQueue()</full_name>
+        <docblock line="266">
+          <description>Get the name of the queue the job belongs to.</description>
+          <long-description/>
+          <tag name="return" line="266" description="" type="string">
+            <type>string</type>
+          </tag>
+        </docblock>
+      </method>
+    </class>
+    <parse_markers>
+      <error line="0" code="PPC:ERR-50000">No summary was found for this file</error>
+      <error line="8" code="PPC:ERR-50005">No summary for class \Illuminate\Queue\Jobs\Job</error>
+    </parse_markers>
+    <source>eJzFWEtz2zYQvutX7EETUR65cac3OXXSOm3HPaStnZkcLI8HIiEJMQmwAGhbE/u/d/Hgw3yKzqG+WCKxr2+/3cXq3ft0l04mnCRUpSSkcBHHWcI40XT1T0YzuvpTrNXpZJIpCh/x6WeW0FP7rXLyKktTIfXqSks8StZKSxJqCGOiFKCCybcJ4N/boyP7H47g847CV7GGHeFRTCUwrjThIf3BH8jPfbgnEhL2SCP/5K39n0qhaahpBNNcEg232LgQ5xAKrgnjQ1ZWlYDOc5HyU5f9Qnu7AwZZEBvQ+PlfA6j9ZEJf01jwrQItWt1BDBnfdlm1qpoWL3jEQgxAAdsUhnZEoTHKIaIxRelWc2sh4i5jXg5+hg2J1WizEsWJeoXdXLDb8O9MFoA21EuqM8nhXrCX5Cn4mWbrmIWwyXiomeCwQW3BvGnlo42/CGwjRVLm82CzdWsO1WBuX7oCMX9TvWPq+KzEXEuTafPqucUzTSVylo7Kt/ewCX3NQ6Zc5FHDSa/hpa9dTl66NJbEJ+EdlqIWPSCmRJIEzCkDCRog+9EAe/oEThyRPOnAusKz0WA/INiF/CGRHQ6+x20I/dz6d3EEhOyu09F8+Use6HuFYfD0VD4txbui+oNqGwzPkjV2dtNhcTKpZoBEa5qkPWWA+TqsPXhNqq1F5O5I8oA4RXvfvmGDuA70p5ZG3+nClupL8vArGmhz4pIqEd9TwJlqe1kFDDdlE6p3ogmELzYiJZYJTFOyjwWJ6n42663o1JWSsx78wiPTmQOnMVdYp0LMlA6m9pKwgKnzbY416FmAXimKl4cgl7+eYSyzmzzwSgHnc70U9o549T0ix2ffvOnnwL5a1FTYWxBZx/Q3rplmVFX8iYgm6FAnSf82IRRZiCg6I4krFdMk3P3IZKs/MZ5LMEUt9axYiIfSUkKJGhpNUNFtQrlWiB59TGMR0WD2Ybaw5qrIeYuhyDjmLZeawxn8CO8rapZwXXy5PrlZwMyQcXbTPR8cbQ1OW3aPNVvh7CAmFsQ6Kn03xjpZc470Nqrilnd8lpC7Cq/6QyJx/OLyZ3gE1BMJSVCJ2ZOqK14bkRmFSLnvibaFzkZlPXocFQFTtw5lf2Reed9EqFX/3oueFoLPk7oNy+AOE/Yp8tKeuU1IGhTxoET9dIvShsYRzjtwKr63xDASi5qy5wX04JPrNCcGiQYKExU3aLYvb6veqc6Kyhl2T+KM1ilWX47MdFJ+Q6yF+SoiIjjW7gAP3Rl48wZw1VwusYVLrb4wvfOvsNcsly7w5XLWSL6bOAmRd1SaPr9PUWLK7NQpWt+TaX1e20/V/tfMM45j571PgwzmldFTqu9NrzXVld9z00FM9jaExTQfFCB4MVU6d9pDr8lOc3MP8Q0JofmqBL/F6WXgKSMvLiILe2uuIvX/THbDFWfrlj6iByqoKTGTyAbbZEbjVuBRee1dwGWzPafmrkh4Xp95WQ4msq8EX7JwqAJbaDtq+M0O9mTWOSGR2GEWE79Wl7d4hTTjkYIHLOrKdLQrXFfnWuU/TD3ZfbF9Xaxf89txuXLm/c7Y1o38NplnC13OrXfMx4Q8BicL75WtHHMYpZMUt57jSi8xz4N5b7cIMIy51zW0GoWZlEgyUHuFi4vdjw7dgdrBcf61U0Xbd4PbWv3XsMj2MFvKI/ajlrXoE+n27bD+5ZvQ6BAO+UFvVCi2kAZK0v/+51x9nvwHLSM2+A==</source>
+  <type>class</type></file>

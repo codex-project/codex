@@ -1,0 +1,333 @@
+<file path="codex/vendor/laravel/framework/src/Illuminate/Foundation/Exceptions/Handler.php" generated-path="codex.vendor.laravel.framework.src.Illuminate.Foundation.Exceptions.Handler.html" hash="fb655118b88389247e981072413a74ed" package="Default">
+    <docblock line="0">
+      <description/>
+      <long-description/>
+      <tag name="package" line="0" description="Default"/>
+    </docblock>
+    <namespace-alias name="Exception">\Exception</namespace-alias>
+    <namespace-alias name="LoggerInterface">\Psr\Log\LoggerInterface</namespace-alias>
+    <namespace-alias name="Response">\Illuminate\Http\Response</namespace-alias>
+    <namespace-alias name="AuthenticationException">\Illuminate\Auth\AuthenticationException</namespace-alias>
+    <namespace-alias name="ValidationException">\Illuminate\Validation\ValidationException</namespace-alias>
+    <namespace-alias name="AuthorizationException">\Illuminate\Auth\Access\AuthorizationException</namespace-alias>
+    <namespace-alias name="HttpResponseException">\Illuminate\Http\Exception\HttpResponseException</namespace-alias>
+    <namespace-alias name="FlattenException">\Symfony\Component\Debug\Exception\FlattenException</namespace-alias>
+    <namespace-alias name="ModelNotFoundException">\Illuminate\Database\Eloquent\ModelNotFoundException</namespace-alias>
+    <namespace-alias name="HttpException">\Symfony\Component\HttpKernel\Exception\HttpException</namespace-alias>
+    <namespace-alias name="ConsoleApplication">\Symfony\Component\Console\Application</namespace-alias>
+    <namespace-alias name="SymfonyResponse">\Symfony\Component\HttpFoundation\Response</namespace-alias>
+    <namespace-alias name="NotFoundHttpException">\Symfony\Component\HttpKernel\Exception\NotFoundHttpException</namespace-alias>
+    <namespace-alias name="SymfonyExceptionHandler">\Symfony\Component\Debug\ExceptionHandler</namespace-alias>
+    <namespace-alias name="ExceptionHandlerContract">\Illuminate\Contracts\Debug\ExceptionHandler</namespace-alias>
+    <class final="false" abstract="false" namespace="Illuminate\Foundation\Exceptions" line="21" package="Default">
+      <extends/>
+      <implements>\Illuminate\Contracts\Debug\ExceptionHandler</implements>
+      <name>Handler</name>
+      <full_name>\Illuminate\Foundation\Exceptions\Handler</full_name>
+      <docblock line="21">
+        <description/>
+        <long-description/>
+        <tag name="package" line="21" description="Default"/>
+      </docblock>
+      <property static="false" visibility="protected" namespace="Illuminate\Foundation\Exceptions" line="28" package="Default">
+        <name>$log</name>
+        <full_name>\Illuminate\Foundation\Exceptions\Handler::log</full_name>
+        <default/>
+        <docblock line="28">
+          <description>The log implementation.</description>
+          <long-description/>
+          <tag name="var" line="28" description="" type="\Psr\Log\LoggerInterface" variable="">
+            <type>\Psr\Log\LoggerInterface</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" namespace="Illuminate\Foundation\Exceptions" line="35" package="Default">
+        <name>$dontReport</name>
+        <full_name>\Illuminate\Foundation\Exceptions\Handler::dontReport</full_name>
+        <default>array()</default>
+        <docblock line="35">
+          <description>A list of the exception types that should not be reported.</description>
+          <long-description/>
+          <tag name="var" line="35" description="" type="array" variable="">
+            <type>array</type>
+          </tag>
+        </docblock>
+      </property>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Foundation\Exceptions" line="43" package="Default">
+        <name>__construct</name>
+        <full_name>\Illuminate\Foundation\Exceptions\Handler::__construct()</full_name>
+        <docblock line="43">
+          <description>Create a new exception handler instance.</description>
+          <long-description/>
+          <tag name="param" line="43" description="" type="\Psr\Log\LoggerInterface" variable="$log">
+            <type>\Psr\Log\LoggerInterface</type>
+          </tag>
+          <tag name="return" line="43" description="" type="void">
+            <type>void</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$log</name>
+          <default/>
+          <type>\Psr\Log\LoggerInterface</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Foundation\Exceptions" line="54" package="Default">
+        <name>report</name>
+        <full_name>\Illuminate\Foundation\Exceptions\Handler::report()</full_name>
+        <docblock line="54">
+          <description>Report or log an exception.</description>
+          <long-description/>
+          <tag name="param" line="54" description="" type="\Exception" variable="$e">
+            <type>\Exception</type>
+          </tag>
+          <tag name="return" line="54" description="" type="void">
+            <type>void</type>
+          </tag>
+          <tag name="inherited_from" description="\Illuminate\Contracts\Debug\ExceptionHandler::report()" refers="\Illuminate\Contracts\Debug\ExceptionHandler::report()" link="/classes/Illuminate.Contracts.Debug.ExceptionHandler.html#method_report"/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$e</name>
+          <default/>
+          <type>\Exception</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Foundation\Exceptions" line="67" package="Default">
+        <name>shouldReport</name>
+        <full_name>\Illuminate\Foundation\Exceptions\Handler::shouldReport()</full_name>
+        <docblock line="67">
+          <description>Determine if the exception should be reported.</description>
+          <long-description/>
+          <tag name="param" line="67" description="" type="\Exception" variable="$e">
+            <type>\Exception</type>
+          </tag>
+          <tag name="return" line="67" description="" type="boolean">
+            <type>boolean</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$e</name>
+          <default/>
+          <type>\Exception</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Foundation\Exceptions" line="78" package="Default">
+        <name>shouldntReport</name>
+        <full_name>\Illuminate\Foundation\Exceptions\Handler::shouldntReport()</full_name>
+        <docblock line="78">
+          <description>Determine if the exception is in the "do not report" list.</description>
+          <long-description/>
+          <tag name="param" line="78" description="" type="\Exception" variable="$e">
+            <type>\Exception</type>
+          </tag>
+          <tag name="return" line="78" description="" type="boolean">
+            <type>boolean</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$e</name>
+          <default/>
+          <type>\Exception</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Foundation\Exceptions" line="98" package="Default">
+        <name>render</name>
+        <full_name>\Illuminate\Foundation\Exceptions\Handler::render()</full_name>
+        <docblock line="98">
+          <description>Render an exception into a response.</description>
+          <long-description/>
+          <tag name="param" line="98" description="" type="\Illuminate\Http\Request" variable="$request">
+            <type>\Illuminate\Http\Request</type>
+          </tag>
+          <tag name="param" line="98" description="" type="\Exception" variable="$e">
+            <type>\Exception</type>
+          </tag>
+          <tag name="return" line="98" description="" type="\Symfony\Component\HttpFoundation\Response">
+            <type>\Symfony\Component\HttpFoundation\Response</type>
+          </tag>
+          <tag name="inherited_from" description="\Illuminate\Contracts\Debug\ExceptionHandler::render()" refers="\Illuminate\Contracts\Debug\ExceptionHandler::render()" link="/classes/Illuminate.Contracts.Debug.ExceptionHandler.html#method_render"/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$request</name>
+          <default/>
+          <type>\Illuminate\Http\Request</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$e</name>
+          <default/>
+          <type>\Exception</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Foundation\Exceptions" line="126" package="Default">
+        <name>toIlluminateResponse</name>
+        <full_name>\Illuminate\Foundation\Exceptions\Handler::toIlluminateResponse()</full_name>
+        <docblock line="126">
+          <description>Map exception into an illuminate response.</description>
+          <long-description/>
+          <tag name="param" line="126" description="" type="\Symfony\Component\HttpFoundation\Response" variable="$response">
+            <type>\Symfony\Component\HttpFoundation\Response</type>
+          </tag>
+          <tag name="param" line="126" description="" type="\Exception" variable="$e">
+            <type>\Exception</type>
+          </tag>
+          <tag name="return" line="126" description="" type="\Illuminate\Http\Response">
+            <type>\Illuminate\Http\Response</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$response</name>
+          <default/>
+          <type>\Symfony\Component\HttpFoundation\Response</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$e</name>
+          <default/>
+          <type>\Exception</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Foundation\Exceptions" line="140" package="Default">
+        <name>renderForConsole</name>
+        <full_name>\Illuminate\Foundation\Exceptions\Handler::renderForConsole()</full_name>
+        <docblock line="140">
+          <description>Render an exception to the console.</description>
+          <long-description/>
+          <tag name="param" line="140" description="" type="\Symfony\Component\Console\Output\OutputInterface" variable="$output">
+            <type>\Symfony\Component\Console\Output\OutputInterface</type>
+          </tag>
+          <tag name="param" line="140" description="" type="\Exception" variable="$e">
+            <type>\Exception</type>
+          </tag>
+          <tag name="return" line="140" description="" type="void">
+            <type>void</type>
+          </tag>
+          <tag name="inherited_from" description="\Illuminate\Contracts\Debug\ExceptionHandler::renderForConsole()" refers="\Illuminate\Contracts\Debug\ExceptionHandler::renderForConsole()" link="/classes/Illuminate.Contracts.Debug.ExceptionHandler.html#method_renderForConsole"/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$output</name>
+          <default/>
+          <type>\Symfony\Component\Console\Output\OutputInterface</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$e</name>
+          <default/>
+          <type>\Exception</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Foundation\Exceptions" line="151" package="Default">
+        <name>renderHttpException</name>
+        <full_name>\Illuminate\Foundation\Exceptions\Handler::renderHttpException()</full_name>
+        <docblock line="151">
+          <description>Render the given HttpException.</description>
+          <long-description/>
+          <tag name="param" line="151" description="" type="\Symfony\Component\HttpKernel\Exception\HttpException" variable="$e">
+            <type>\Symfony\Component\HttpKernel\Exception\HttpException</type>
+          </tag>
+          <tag name="return" line="151" description="" type="\Symfony\Component\HttpFoundation\Response">
+            <type>\Symfony\Component\HttpFoundation\Response</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$e</name>
+          <default/>
+          <type>\Symfony\Component\HttpKernel\Exception\HttpException</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Foundation\Exceptions" line="168" package="Default">
+        <name>convertExceptionToResponse</name>
+        <full_name>\Illuminate\Foundation\Exceptions\Handler::convertExceptionToResponse()</full_name>
+        <docblock line="168">
+          <description>Create a Symfony response for the given exception.</description>
+          <long-description/>
+          <tag name="param" line="168" description="" type="\Exception" variable="$e">
+            <type>\Exception</type>
+          </tag>
+          <tag name="return" line="168" description="" type="\Symfony\Component\HttpFoundation\Response">
+            <type>\Symfony\Component\HttpFoundation\Response</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$e</name>
+          <default/>
+          <type>\Exception</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Foundation\Exceptions" line="186" package="Default">
+        <name>unauthenticated</name>
+        <full_name>\Illuminate\Foundation\Exceptions\Handler::unauthenticated()</full_name>
+        <docblock line="186">
+          <description>Convert an authentication exception into an unauthenticated response.</description>
+          <long-description/>
+          <tag name="param" line="186" description="" type="\Illuminate\Http\Request" variable="$request">
+            <type>\Illuminate\Http\Request</type>
+          </tag>
+          <tag name="param" line="186" description="" type="\Illuminate\Auth\AuthenticationException" variable="$e">
+            <type>\Illuminate\Auth\AuthenticationException</type>
+          </tag>
+          <tag name="return" line="186" description="" type="\Symfony\Component\HttpFoundation\Response">
+            <type>\Symfony\Component\HttpFoundation\Response</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$request</name>
+          <default/>
+          <type>\Illuminate\Http\Request</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$e</name>
+          <default/>
+          <type>\Illuminate\Auth\AuthenticationException</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Foundation\Exceptions" line="202" package="Default">
+        <name>decorate</name>
+        <full_name>\Illuminate\Foundation\Exceptions\Handler::decorate()</full_name>
+        <docblock line="202">
+          <description>Get the html response content.</description>
+          <long-description/>
+          <tag name="param" line="202" description="" type="string" variable="$content">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="202" description="" type="string" variable="$css">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="202" description="" type="string">
+            <type>string</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$content</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$css</name>
+          <default/>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Foundation\Exceptions" line="231" package="Default">
+        <name>isHttpException</name>
+        <full_name>\Illuminate\Foundation\Exceptions\Handler::isHttpException()</full_name>
+        <docblock line="231">
+          <description>Determine if the given exception is an HTTP exception.</description>
+          <long-description/>
+          <tag name="param" line="231" description="" type="\Exception" variable="$e">
+            <type>\Exception</type>
+          </tag>
+          <tag name="return" line="231" description="" type="boolean">
+            <type>boolean</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$e</name>
+          <default/>
+          <type>\Exception</type>
+        </argument>
+      </method>
+    </class>
+    <parse_markers>
+      <error line="0" code="PPC:ERR-50000">No summary was found for this file</error>
+      <error line="21" code="PPC:ERR-50005">No summary for class \Illuminate\Foundation\Exceptions\Handler</error>
+    </parse_markers>
+    <source>eJy1WWtz2zYW/a5fgTjeSs7Altym3VlJ9jZrx5u0TZNpvDvTqTMZiLwSuQUJBgBla1X9916A4FuU5DbVjC0aj/s89+ASnv4zCZJeL2YRqIR5QF5znkZhzDTc3Yg09pkORXz38sGDxDypSa+XKiDFwMT++U7Jux/EwvwsQL6ONcg5SssmKyJfaZ3c/YSqUFJ79kWqA/sLYh16VnNDT2XxfxkPnXXlY/fyTLbngVL2Wcjw/3u2WGOLaftnbnpj0/tVNBfx6u5KRDiN1t9dwyxdVDbfcKY17FB2zTSbMQV3L7n4lBoRb4QP/EehbRr2KjTWfQ8yBt4wee/OK3RIcIxQknAXdcIUccOV0V2qK1jJY2SEuMX1jB9ofO76QU404v2KxT4HWTGhOdVKAPqrJfO02iGrOZbvwaLwOFOK5GvDKOEQoWHde3rrHsHP8Nkz+02ekdsACBeLcrON55mbzld9u2SS3HUUnFs0tN+JFBo8DT45RrFoY0PfC8JDpYmYE6w4ArmdRK8SUDjGNFGBSLlPYqHJDIiEREiUt9UkJiVbden30emf7G5yQX750LblSgImgTASw33FlCCPZ6w0iz1oaU6YZBHpjAexrherJehUxmQpQr9uaTpDkJN5GntW7cePHsJVy9TTg6ZEI/DE7soSaD7HOgjV6aVJ3oULthnetNx0MRDSJprFpaudnhX4QTXwaE+ylA1KIcfQND6ck4FzIEt3ZuQAV55UltX9PL0EKYU0iybFkk2H19eAwcMyA6OrjjUHsF3gOigQMyH4zkDUXNsVDifwCanFJIdv6fCj3AwVQtiOHfnCllPm7pEtwc/lclFvDa8L43f5Xa9RW80fI5ALyMFRzlPyy9bDcDy2LPjhxNW3+cwFVrYXIMQq8pFKjw3LNPFloQhFtSMzbV1WSRPWKExqk5sKHJtJnTOuoLs2Y9/QfFzNW6wFkpJ0nnYmqt3i4BmO3EqOZfb0uNTeHXzI7il+49Egt4GSvTRQi/3WHDdz4Sw+htPLBeh8+aDKCgQw6m3x2/ubFuUAotEcClvbgYHT+wbbOoZQPaGkzkgdujuazC7nsgJIY1ZuA78S14N1trvOTn/rfj4ffUVJ09kDlG5pjckXX7TT9QfS2qtDJ4tRqJr56RSdbdCirJ1CjZvL8NsSuDXef1gJnvRLkLrQcCvKFW1dHdzxhiUt1sDvQul+Bjm8rTacUiv+Q0ml6z1s3yGyPXq5EbtZpVjmUN3ebwFmmmL02dZvbeI9NsGpukKqaMwFwBAbmD/Gua2EJtdX1t6HOqgh6DFHAKbSnNte9jr0iPzl71VvU52k2n1VO1NhRz57w2dcuBHSqR84NbvTNDC5ab/xneQ1WI0ezS3fF0YTtkW4hLjOZY8sgd0vtZ/z9GwjfxsB1dVvQbyykDUvAm0IT+qkuQzhfoBBhgfsAtXgyPbU6mztZGyOushTFoR8emmFtLdik9YvUNwnF5dozweam1ccJq+yOtpymOxk1N2suZ8wi/c9l6vCI9MwVpDzJ9+PPh8Udji8Ew2G+JqXP9gnW/ezUJVr87fdjCo7Li4GaMk8XAz6LEnOfHNV0a/R37EPnpCmQTEQdK27GxrkKmqkmx1z1Zn3esVBBQDZW2CbXBv3OqVDhXK6Df6dqNsCkCzehotZrVnbcs42GrO/ol0/8Jbyr8VgdwPaZU5Hm+/24eH5P/YwOCG//UbKsXsWa/WdQqrbyz79/1iLTFeLL+59Sp6Pzg/kEQl+KNE/w2ALo3jQ52IRxv0DyOPfoC1FBDriJXF4GZy7kq60DOMFJsit655XqpnCbG5fesoqcyqoFdZxwTCdTl++velNn1y/vbr9+d1L681lb5p9mYVT0+NcFvumEWhGzE39xZEUM6HVUe7zxVEsQjyqHmgs5oJzcX9EhpWdytTzZS0NQ1NiyUqGi0CTgXdCvhydjyj5mQVCPCGvY++MvOAYXTOvTJBBLjHHxBQywf4AMOQ+IjI/6P/1/pr8kA2P0RWdjIdDH5bARQLybGXEnnkiGq7ScOi2n9n8uXjmHzO29gQXcvx0NBpNZsz7dSFNrYyf3tzcTDYz4a+oHy6pz6mvqe/TlFPBKQ9pcE6DL2nwFQ2e0+BrGnxDEwnUQ4spnioRnYfAfQWacljgyU7D2DRGGh40Q/qiCZ1x4f36KcXMUh1Q7a8jJhGT49EkYb6PEMCnjWYzDuuZkOj6KVrKWYI+5w8TN2H+m+I2FGrDaOH2mWGUiGFV1GO2VqkXamesP48pRBRRJ+KFsWTJ5BopRJ/aRI5jdIbxiR25B5OhfGjDw7W5USoWxjDZ5Ap0sDa+nuIr4SIec5jryaYVMqcHC3p8Phr9bauST+MZmHsd+mnM5tjPrh0Mx/0+ujWbSco8NH0Vld5aMehGiORSyFFpsjYkj7TFnVXWQC0SMznbOonA1yKabBrJU8CxHDPr5ywK+WocxgHIUE9Kj2ojzql8rEPgs0Y8Nhl2qhDdtABM1qSCW/IUACYkhxA5HyUPpL4JkWH2ZNEio0lj+qman5oS1C7QuPY+9HUw/sffUdaE5DA1R6Vobi4JzVDBsMIF02HJMFNTVyVF1FhyOswmcb0lJ+Stg+9AG22cuQnFE/vV7e27P9vbHXL/2byOOODit30HVvnnU+b0pvc7lrdB8w==</source>
+  <type>class</type></file>

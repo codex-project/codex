@@ -1,0 +1,1186 @@
+<file path="sebwite/workbench/sebwite/filesystem/src/Filesystem.php" generated-path="sebwite.workbench.sebwite.filesystem.src.Filesystem.html" hash="36ed26653ce1ce24187d74dd5bdb7cba" package="Default">
+    <docblock line="0">
+      <description>Part of the Sebwite PHP packages.</description>
+      <long-description>MIT License and copyright information bundled with this package in the LICENSE file</long-description>
+      <tag name="package" line="0" description="Default"/>
+    </docblock>
+    <namespace-alias name="IlluminateFilesystem">\Illuminate\Filesystem\Filesystem</namespace-alias>
+    <namespace-alias name="RecursiveDirectoryIterator">\RecursiveDirectoryIterator</namespace-alias>
+    <namespace-alias name="RecursiveIteratorIterator">\RecursiveIteratorIterator</namespace-alias>
+    <namespace-alias name="RegexIterator">\RegexIterator</namespace-alias>
+    <namespace-alias name="Arr">\Sebwite\Support\Arr</namespace-alias>
+    <namespace-alias name="Path">\Sebwite\Support\Path</namespace-alias>
+    <namespace-alias name="SymfonyFilesystem">\Symfony\Component\Filesystem\Filesystem</namespace-alias>
+    <class final="false" abstract="false" namespace="Sebwite\Filesystem" line="29" package="Sebwite\Support">
+      <extends>\Illuminate\Filesystem\Filesystem</extends>
+      <name>Filesystem</name>
+      <full_name>\Sebwite\Filesystem\Filesystem</full_name>
+      <docblock line="29">
+        <description>Sebwite Support Filesystem</description>
+        <long-description/>
+        <tag name="author" line="29" description="Sebwite Dev Team"/>
+        <tag name="copyright" line="29" description="Copyright (c) 2015, Sebwite"/>
+        <tag name="license" line="29" description="MIT License" link="https://tldrlegal.com/license/mit-license"/>
+        <tag name="package" line="29" description="Sebwite\Support"/>
+        <tag name="mixin" line="29" description="\Illuminate\Filesystem\Filesystem"/>
+        <tag name="mixin" line="29" description="\Symfony\Component\Filesystem\Filesystem"/>
+        <tag name="inherited_from" description="\Illuminate\Filesystem\Filesystem" refers="\Illuminate\Filesystem\Filesystem" link="/classes/Illuminate.Filesystem.Filesystem.html"/>
+      </docblock>
+      <constant namespace="Sebwite\Filesystem" line="32" package="Sebwite\Support">
+        <name>GLOB_ROOTFIRST</name>
+        <full_name>\Sebwite\Filesystem\Filesystem::GLOB_ROOTFIRST</full_name>
+        <value>32768</value>
+        <docblock line="32">
+          <description/>
+          <long-description/>
+        </docblock>
+      </constant>
+      <constant namespace="Sebwite\Filesystem" line="33" package="Sebwite\Support">
+        <name>GLOB_CHILDFIRST</name>
+        <full_name>\Sebwite\Filesystem\Filesystem::GLOB_CHILDFIRST</full_name>
+        <value>65536</value>
+        <docblock line="33">
+          <description/>
+          <long-description/>
+        </docblock>
+      </constant>
+      <property static="false" visibility="protected" namespace="Sebwite\Filesystem" line="38" package="Sebwite\Support">
+        <name>$symfony</name>
+        <full_name>\Sebwite\Filesystem\Filesystem::symfony</full_name>
+        <default/>
+        <docblock line="38">
+          <description/>
+          <long-description/>
+          <tag name="var" line="38" description="" type="\Symfony\Component\Filesystem\Filesystem" variable="">
+            <type>\Symfony\Component\Filesystem\Filesystem</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" namespace="Sebwite\Filesystem" line="40" package="Sebwite\Support">
+        <name>$illuminate</name>
+        <full_name>\Sebwite\Filesystem\Filesystem::illuminate</full_name>
+        <default/>
+        <docblock line="40">
+          <description/>
+          <long-description/>
+        </docblock>
+      </property>
+      <property static="true" visibility="protected" namespace="Sebwite\Filesystem" line="45" package="Sebwite\Support">
+        <name>$tempClass</name>
+        <full_name>\Sebwite\Filesystem\Filesystem::tempClass</full_name>
+        <default>\Sebwite\Filesystem\Temp::class</default>
+        <docblock line="45">
+          <description/>
+          <long-description/>
+          <tag name="var" line="45" description="" type="\Sebwite\Filesystem\Temp" variable="">
+            <type>\Sebwite\Filesystem\Temp</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="true" visibility="protected" namespace="Sebwite\Filesystem" line="15" package="Default">
+        <name>$macros</name>
+        <full_name>\Illuminate\Support\Traits\Macroable::macros</full_name>
+        <default>array()</default>
+        <docblock line="15">
+          <description>The registered string macros.</description>
+          <long-description/>
+          <tag name="var" line="15" description="" type="array" variable="">
+            <type>array</type>
+          </tag>
+        </docblock>
+      </property>
+      <method final="false" abstract="false" static="true" visibility="public" namespace="Sebwite\Filesystem" line="50" package="Sebwite\Support">
+        <name>getTempClass</name>
+        <full_name>\Sebwite\Filesystem\Filesystem::getTempClass()</full_name>
+        <docblock line="50">
+          <description/>
+          <long-description/>
+          <tag name="return" line="50" description="" type="mixed">
+            <type>mixed</type>
+          </tag>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="true" visibility="public" namespace="Sebwite\Filesystem" line="61" package="Sebwite\Support">
+        <name>setTempClass</name>
+        <full_name>\Sebwite\Filesystem\Filesystem::setTempClass()</full_name>
+        <docblock line="61">
+          <description>Set the tempDirClass value</description>
+          <long-description/>
+          <tag name="param" line="61" description="" type="mixed" variable="$tempClass">
+            <type>mixed</type>
+          </tag>
+          <tag name="return" line="61" description="" type="\Sebwite\Filesystem\Filesystem">
+            <type>\Sebwite\Filesystem\Filesystem</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$tempClass</name>
+          <default/>
+          <type>mixed</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Sebwite\Filesystem" line="71" package="Sebwite\Support">
+        <name>createTemp</name>
+        <full_name>\Sebwite\Filesystem\Filesystem::createTemp()</full_name>
+        <docblock line="71">
+          <description>createTempDir method</description>
+          <long-description/>
+          <tag name="param" line="71" description="" type="string" variable="$prefix">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="71" description="" type="\Sebwite\Filesystem\Temp">
+            <type>\Sebwite\Filesystem\Temp</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$prefix</name>
+          <default>''</default>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Sebwite\Filesystem" line="77" package="Sebwite\Support">
+        <name>ensureDirectory</name>
+        <full_name>\Sebwite\Filesystem\Filesystem::ensureDirectory()</full_name>
+        <docblock line="77">
+          <description/>
+          <long-description/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$path</name>
+          <default/>
+          <type/>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$recursive</name>
+          <default>true</default>
+          <type/>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$mode</name>
+          <default>493</default>
+          <type/>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$force</name>
+          <default>true</default>
+          <type/>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Sebwite\Filesystem" line="94" package="Sebwite\Support">
+        <name>__construct</name>
+        <full_name>\Sebwite\Filesystem\Filesystem::__construct()</full_name>
+        <docblock line="94">
+          <description>Create a new filesystem instance.</description>
+          <long-description/>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="true" visibility="public" namespace="Sebwite\Filesystem" line="105" package="Sebwite\Support">
+        <name>create</name>
+        <full_name>\Sebwite\Filesystem\Filesystem::create()</full_name>
+        <docblock line="105">
+          <description>create method</description>
+          <long-description/>
+          <tag name="return" line="105" description="" type="static">
+            <type>static</type>
+          </tag>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Sebwite\Filesystem" line="117" package="Sebwite\Support">
+        <name>globule</name>
+        <full_name>\Sebwite\Filesystem\Filesystem::globule()</full_name>
+        <docblock line="117">
+          <description>Recursively find pathnames matching the given pattern, uses braces.</description>
+          <long-description/>
+          <tag name="param" line="117" description="" type="" variable="$pattern"/>
+          <tag name="return" line="117" description="" type="array">
+            <type>array</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$pattern</name>
+          <default/>
+          <type/>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Sebwite\Filesystem" line="131" package="Sebwite\Support">
+        <name>search</name>
+        <full_name>\Sebwite\Filesystem\Filesystem::search()</full_name>
+        <docblock line="131">
+          <description>Search the given folder recursively for files using
+a regular expression pattern.</description>
+          <long-description/>
+          <tag name="param" line="131" description="" type="string" variable="$folder">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="131" description="" type="string" variable="$pattern">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="131" description="" type="array">
+            <type>array</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$folder</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$pattern</name>
+          <default/>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Sebwite\Filesystem" line="158" package="Sebwite\Support">
+        <name>rsearch</name>
+        <full_name>\Sebwite\Filesystem\Filesystem::rsearch()</full_name>
+        <docblock line="158">
+          <description>Search the given folder recursively for files using
+a regular expression pattern.</description>
+          <long-description/>
+          <tag name="deprecated" line="158" description="Use the search method instead"/>
+          <tag name="param" line="158" description="" type="" variable="$folder"/>
+          <tag name="param" line="158" description="" type="" variable="$pattern"/>
+          <tag name="return" line="158" description="" type="array">
+            <type>array</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$folder</name>
+          <default/>
+          <type/>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$pattern</name>
+          <default/>
+          <type/>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Sebwite\Filesystem" line="185" package="Sebwite\Support">
+        <name>rglob</name>
+        <full_name>\Sebwite\Filesystem\Filesystem::rglob()</full_name>
+        <docblock line="185">
+          <description>Extended `glob()` functionality that supports double star `**` (globstar) wildcard.</description>
+          <long-description>PHP's `glob()` implementation doesn't allow for `**` wildcard. In Bash 4 it can be enabled with `globstar` setting.
+
+In case the `**` wildcard is not used in the pattern then this method just calls PHP's `glob()`.
+
+For full documentation see PHP's [`glob()` documentation](http://php.net/manual/en/function.glob.php).</long-description>
+          <tag name="package" line="185" description="Foundation"/>
+          <tag name="subpackage" line="185" description="Utils"/>
+          <tag name="author" line="185" description="Michał Dudek" link="mailto:michal@michaldudek.pl"/>
+          <tag name="see" line="185" description="" link="http://www.michaldudek.pl/Foundation/MD/Foundation/Utils/FilesystemUtils.html"/>
+          <tag name="copyright" line="185" description="Copyright (c) 2013, Michał Dudek"/>
+          <tag name="license" line="185" description="MIT" link="http://opensource.org/licenses/MIT"/>
+          <tag name="param" line="185" description="&lt;p&gt;The pattern. Supports &lt;code&gt;**&lt;/code&gt; wildcard.&lt;/p&gt;" type="string" variable="$pattern">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="185" description="&lt;p&gt;[optional] &lt;code&gt;glob()&lt;/code&gt; flags. See &lt;code&gt;glob()&lt;/code&gt;'s documentation. Default: &lt;code&gt;0&lt;/code&gt;.&lt;/p&gt;" type="integer" variable="$flags">
+            <type>integer</type>
+          </tag>
+          <tag name="return" line="185" description="" type="array|boolean">
+            <type>array</type>
+            <type>boolean</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$pattern</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$flags</name>
+          <default>0</default>
+          <type>integer</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Sebwite\Filesystem" line="280" package="Sebwite\Support">
+        <name>isPhar</name>
+        <full_name>\Sebwite\Filesystem\Filesystem::isPhar()</full_name>
+        <docblock line="280">
+          <description/>
+          <long-description/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$path</name>
+          <default/>
+          <type/>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Sebwite\Filesystem" line="291" package="Sebwite\Support">
+        <name>__call</name>
+        <full_name>\Sebwite\Filesystem\Filesystem::__call()</full_name>
+        <docblock line="291">
+          <description>Magic call method.</description>
+          <long-description/>
+          <tag name="param" line="291" description="" type="string" variable="$method">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="291" description="" type="mixed" variable="$parameters">
+            <type>mixed</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$method</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$parameters</name>
+          <default/>
+          <type>mixed</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Sebwite\Filesystem" line="21" package="Default">
+        <name>exists</name>
+        <full_name>\Illuminate\Filesystem\Filesystem::exists()</full_name>
+        <docblock line="21">
+          <description>Determine if a file or directory exists.</description>
+          <long-description/>
+          <tag name="param" line="21" description="" type="string" variable="$path">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="21" description="" type="boolean">
+            <type>boolean</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$path</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <inherited_from>\Illuminate\Filesystem\Filesystem</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Sebwite\Filesystem" line="35" package="Default">
+        <name>get</name>
+        <full_name>\Illuminate\Filesystem\Filesystem::get()</full_name>
+        <docblock line="35">
+          <description>Get the contents of a file.</description>
+          <long-description/>
+          <tag name="param" line="35" description="" type="string" variable="$path">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="35" description="" type="boolean" variable="$lock">
+            <type>boolean</type>
+          </tag>
+          <tag name="return" line="35" description="" type="string">
+            <type>string</type>
+          </tag>
+          <tag name="throws" line="35" description="" type="\Illuminate\Contracts\Filesystem\FileNotFoundException">
+            <type>\Illuminate\Contracts\Filesystem\FileNotFoundException</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$path</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$lock</name>
+          <default>false</default>
+          <type>boolean</type>
+        </argument>
+        <inherited_from>\Illuminate\Filesystem\Filesystem</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Sebwite\Filesystem" line="50" package="Default">
+        <name>sharedGet</name>
+        <full_name>\Illuminate\Filesystem\Filesystem::sharedGet()</full_name>
+        <docblock line="50">
+          <description>Get contents of a file with shared access.</description>
+          <long-description/>
+          <tag name="param" line="50" description="" type="string" variable="$path">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="50" description="" type="string">
+            <type>string</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$path</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <inherited_from>\Illuminate\Filesystem\Filesystem</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Sebwite\Filesystem" line="79" package="Default">
+        <name>getRequire</name>
+        <full_name>\Illuminate\Filesystem\Filesystem::getRequire()</full_name>
+        <docblock line="79">
+          <description>Get the returned value of a file.</description>
+          <long-description/>
+          <tag name="param" line="79" description="" type="string" variable="$path">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="79" description="" type="mixed">
+            <type>mixed</type>
+          </tag>
+          <tag name="throws" line="79" description="" type="\Illuminate\Contracts\Filesystem\FileNotFoundException">
+            <type>\Illuminate\Contracts\Filesystem\FileNotFoundException</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$path</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <inherited_from>\Illuminate\Filesystem\Filesystem</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Sebwite\Filesystem" line="94" package="Default">
+        <name>requireOnce</name>
+        <full_name>\Illuminate\Filesystem\Filesystem::requireOnce()</full_name>
+        <docblock line="94">
+          <description>Require the given file once.</description>
+          <long-description/>
+          <tag name="param" line="94" description="" type="string" variable="$file">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="94" description="" type="mixed">
+            <type>mixed</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$file</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <inherited_from>\Illuminate\Filesystem\Filesystem</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Sebwite\Filesystem" line="107" package="Default">
+        <name>put</name>
+        <full_name>\Illuminate\Filesystem\Filesystem::put()</full_name>
+        <docblock line="107">
+          <description>Write the contents of a file.</description>
+          <long-description/>
+          <tag name="param" line="107" description="" type="string" variable="$path">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="107" description="" type="string" variable="$contents">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="107" description="" type="boolean" variable="$lock">
+            <type>boolean</type>
+          </tag>
+          <tag name="return" line="107" description="" type="integer">
+            <type>integer</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$path</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$contents</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$lock</name>
+          <default>false</default>
+          <type>boolean</type>
+        </argument>
+        <inherited_from>\Illuminate\Filesystem\Filesystem</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Sebwite\Filesystem" line="119" package="Default">
+        <name>prepend</name>
+        <full_name>\Illuminate\Filesystem\Filesystem::prepend()</full_name>
+        <docblock line="119">
+          <description>Prepend to a file.</description>
+          <long-description/>
+          <tag name="param" line="119" description="" type="string" variable="$path">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="119" description="" type="string" variable="$data">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="119" description="" type="integer">
+            <type>integer</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$path</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$data</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <inherited_from>\Illuminate\Filesystem\Filesystem</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Sebwite\Filesystem" line="135" package="Default">
+        <name>append</name>
+        <full_name>\Illuminate\Filesystem\Filesystem::append()</full_name>
+        <docblock line="135">
+          <description>Append to a file.</description>
+          <long-description/>
+          <tag name="param" line="135" description="" type="string" variable="$path">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="135" description="" type="string" variable="$data">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="135" description="" type="integer">
+            <type>integer</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$path</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$data</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <inherited_from>\Illuminate\Filesystem\Filesystem</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Sebwite\Filesystem" line="146" package="Default">
+        <name>delete</name>
+        <full_name>\Illuminate\Filesystem\Filesystem::delete()</full_name>
+        <docblock line="146">
+          <description>Delete the file at a given path.</description>
+          <long-description/>
+          <tag name="param" line="146" description="" type="string|array" variable="$paths">
+            <type>string</type>
+            <type>array</type>
+          </tag>
+          <tag name="return" line="146" description="" type="boolean">
+            <type>boolean</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$paths</name>
+          <default/>
+          <type>string|array</type>
+        </argument>
+        <inherited_from>\Illuminate\Filesystem\Filesystem</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Sebwite\Filesystem" line="172" package="Default">
+        <name>move</name>
+        <full_name>\Illuminate\Filesystem\Filesystem::move()</full_name>
+        <docblock line="172">
+          <description>Move a file to a new location.</description>
+          <long-description/>
+          <tag name="param" line="172" description="" type="string" variable="$path">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="172" description="" type="string" variable="$target">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="172" description="" type="boolean">
+            <type>boolean</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$path</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$target</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <inherited_from>\Illuminate\Filesystem\Filesystem</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Sebwite\Filesystem" line="184" package="Default">
+        <name>copy</name>
+        <full_name>\Illuminate\Filesystem\Filesystem::copy()</full_name>
+        <docblock line="184">
+          <description>Copy a file to a new location.</description>
+          <long-description/>
+          <tag name="param" line="184" description="" type="string" variable="$path">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="184" description="" type="string" variable="$target">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="184" description="" type="boolean">
+            <type>boolean</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$path</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$target</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <inherited_from>\Illuminate\Filesystem\Filesystem</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Sebwite\Filesystem" line="195" package="Default">
+        <name>name</name>
+        <full_name>\Illuminate\Filesystem\Filesystem::name()</full_name>
+        <docblock line="195">
+          <description>Extract the file name from a file path.</description>
+          <long-description/>
+          <tag name="param" line="195" description="" type="string" variable="$path">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="195" description="" type="string">
+            <type>string</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$path</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <inherited_from>\Illuminate\Filesystem\Filesystem</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Sebwite\Filesystem" line="206" package="Default">
+        <name>basename</name>
+        <full_name>\Illuminate\Filesystem\Filesystem::basename()</full_name>
+        <docblock line="206">
+          <description>Extract the trailing name component from a file path.</description>
+          <long-description/>
+          <tag name="param" line="206" description="" type="string" variable="$path">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="206" description="" type="string">
+            <type>string</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$path</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <inherited_from>\Illuminate\Filesystem\Filesystem</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Sebwite\Filesystem" line="217" package="Default">
+        <name>dirname</name>
+        <full_name>\Illuminate\Filesystem\Filesystem::dirname()</full_name>
+        <docblock line="217">
+          <description>Extract the parent directory from a file path.</description>
+          <long-description/>
+          <tag name="param" line="217" description="" type="string" variable="$path">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="217" description="" type="string">
+            <type>string</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$path</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <inherited_from>\Illuminate\Filesystem\Filesystem</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Sebwite\Filesystem" line="228" package="Default">
+        <name>extension</name>
+        <full_name>\Illuminate\Filesystem\Filesystem::extension()</full_name>
+        <docblock line="228">
+          <description>Extract the file extension from a file path.</description>
+          <long-description/>
+          <tag name="param" line="228" description="" type="string" variable="$path">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="228" description="" type="string">
+            <type>string</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$path</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <inherited_from>\Illuminate\Filesystem\Filesystem</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Sebwite\Filesystem" line="239" package="Default">
+        <name>type</name>
+        <full_name>\Illuminate\Filesystem\Filesystem::type()</full_name>
+        <docblock line="239">
+          <description>Get the file type of a given file.</description>
+          <long-description/>
+          <tag name="param" line="239" description="" type="string" variable="$path">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="239" description="" type="string">
+            <type>string</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$path</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <inherited_from>\Illuminate\Filesystem\Filesystem</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Sebwite\Filesystem" line="250" package="Default">
+        <name>mimeType</name>
+        <full_name>\Illuminate\Filesystem\Filesystem::mimeType()</full_name>
+        <docblock line="250">
+          <description>Get the mime-type of a given file.</description>
+          <long-description/>
+          <tag name="param" line="250" description="" type="string" variable="$path">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="250" description="" type="string|false">
+            <type>string</type>
+            <type>false</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$path</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <inherited_from>\Illuminate\Filesystem\Filesystem</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Sebwite\Filesystem" line="261" package="Default">
+        <name>size</name>
+        <full_name>\Illuminate\Filesystem\Filesystem::size()</full_name>
+        <docblock line="261">
+          <description>Get the file size of a given file.</description>
+          <long-description/>
+          <tag name="param" line="261" description="" type="string" variable="$path">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="261" description="" type="integer">
+            <type>integer</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$path</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <inherited_from>\Illuminate\Filesystem\Filesystem</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Sebwite\Filesystem" line="272" package="Default">
+        <name>lastModified</name>
+        <full_name>\Illuminate\Filesystem\Filesystem::lastModified()</full_name>
+        <docblock line="272">
+          <description>Get the file's last modification time.</description>
+          <long-description/>
+          <tag name="param" line="272" description="" type="string" variable="$path">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="272" description="" type="integer">
+            <type>integer</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$path</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <inherited_from>\Illuminate\Filesystem\Filesystem</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Sebwite\Filesystem" line="283" package="Default">
+        <name>isDirectory</name>
+        <full_name>\Illuminate\Filesystem\Filesystem::isDirectory()</full_name>
+        <docblock line="283">
+          <description>Determine if the given path is a directory.</description>
+          <long-description/>
+          <tag name="param" line="283" description="" type="string" variable="$directory">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="283" description="" type="boolean">
+            <type>boolean</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$directory</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <inherited_from>\Illuminate\Filesystem\Filesystem</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Sebwite\Filesystem" line="294" package="Default">
+        <name>isWritable</name>
+        <full_name>\Illuminate\Filesystem\Filesystem::isWritable()</full_name>
+        <docblock line="294">
+          <description>Determine if the given path is writable.</description>
+          <long-description/>
+          <tag name="param" line="294" description="" type="string" variable="$path">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="294" description="" type="boolean">
+            <type>boolean</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$path</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <inherited_from>\Illuminate\Filesystem\Filesystem</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Sebwite\Filesystem" line="305" package="Default">
+        <name>isFile</name>
+        <full_name>\Illuminate\Filesystem\Filesystem::isFile()</full_name>
+        <docblock line="305">
+          <description>Determine if the given path is a file.</description>
+          <long-description/>
+          <tag name="param" line="305" description="" type="string" variable="$file">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="305" description="" type="boolean">
+            <type>boolean</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$file</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <inherited_from>\Illuminate\Filesystem\Filesystem</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Sebwite\Filesystem" line="317" package="Default">
+        <name>glob</name>
+        <full_name>\Illuminate\Filesystem\Filesystem::glob()</full_name>
+        <docblock line="317">
+          <description>Find path names matching a given pattern.</description>
+          <long-description/>
+          <tag name="param" line="317" description="" type="string" variable="$pattern">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="317" description="" type="integer" variable="$flags">
+            <type>integer</type>
+          </tag>
+          <tag name="return" line="317" description="" type="array">
+            <type>array</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$pattern</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$flags</name>
+          <default>0</default>
+          <type>integer</type>
+        </argument>
+        <inherited_from>\Illuminate\Filesystem\Filesystem</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Sebwite\Filesystem" line="328" package="Default">
+        <name>files</name>
+        <full_name>\Illuminate\Filesystem\Filesystem::files()</full_name>
+        <docblock line="328">
+          <description>Get an array of all files in a directory.</description>
+          <long-description/>
+          <tag name="param" line="328" description="" type="string" variable="$directory">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="328" description="" type="array">
+            <type>array</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$directory</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <inherited_from>\Illuminate\Filesystem\Filesystem</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Sebwite\Filesystem" line="351" package="Default">
+        <name>allFiles</name>
+        <full_name>\Illuminate\Filesystem\Filesystem::allFiles()</full_name>
+        <docblock line="351">
+          <description>Get all of the files from the given directory (recursive).</description>
+          <long-description/>
+          <tag name="param" line="351" description="" type="string" variable="$directory">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="351" description="" type="boolean" variable="$hidden">
+            <type>boolean</type>
+          </tag>
+          <tag name="return" line="351" description="" type="array">
+            <type>array</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$directory</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$hidden</name>
+          <default>false</default>
+          <type>boolean</type>
+        </argument>
+        <inherited_from>\Illuminate\Filesystem\Filesystem</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Sebwite\Filesystem" line="362" package="Default">
+        <name>directories</name>
+        <full_name>\Illuminate\Filesystem\Filesystem::directories()</full_name>
+        <docblock line="362">
+          <description>Get all of the directories within a given directory.</description>
+          <long-description/>
+          <tag name="param" line="362" description="" type="string" variable="$directory">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="362" description="" type="array">
+            <type>array</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$directory</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <inherited_from>\Illuminate\Filesystem\Filesystem</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Sebwite\Filesystem" line="382" package="Default">
+        <name>makeDirectory</name>
+        <full_name>\Illuminate\Filesystem\Filesystem::makeDirectory()</full_name>
+        <docblock line="382">
+          <description>Create a directory.</description>
+          <long-description/>
+          <tag name="param" line="382" description="" type="string" variable="$path">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="382" description="" type="integer" variable="$mode">
+            <type>integer</type>
+          </tag>
+          <tag name="param" line="382" description="" type="boolean" variable="$recursive">
+            <type>boolean</type>
+          </tag>
+          <tag name="param" line="382" description="" type="boolean" variable="$force">
+            <type>boolean</type>
+          </tag>
+          <tag name="return" line="382" description="" type="boolean">
+            <type>boolean</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$path</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$mode</name>
+          <default>493</default>
+          <type>integer</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$recursive</name>
+          <default>false</default>
+          <type>boolean</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$force</name>
+          <default>false</default>
+          <type>boolean</type>
+        </argument>
+        <inherited_from>\Illuminate\Filesystem\Filesystem</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Sebwite\Filesystem" line="399" package="Default">
+        <name>copyDirectory</name>
+        <full_name>\Illuminate\Filesystem\Filesystem::copyDirectory()</full_name>
+        <docblock line="399">
+          <description>Copy a directory from one location to another.</description>
+          <long-description/>
+          <tag name="param" line="399" description="" type="string" variable="$directory">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="399" description="" type="string" variable="$destination">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="399" description="" type="integer" variable="$options">
+            <type>integer</type>
+          </tag>
+          <tag name="return" line="399" description="" type="boolean">
+            <type>boolean</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$directory</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$destination</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$options</name>
+          <default>null</default>
+          <type>integer</type>
+        </argument>
+        <inherited_from>\Illuminate\Filesystem\Filesystem</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Sebwite\Filesystem" line="452" package="Default">
+        <name>deleteDirectory</name>
+        <full_name>\Illuminate\Filesystem\Filesystem::deleteDirectory()</full_name>
+        <docblock line="452">
+          <description>Recursively delete a directory.</description>
+          <long-description>The directory itself may be optionally preserved.</long-description>
+          <tag name="param" line="452" description="" type="string" variable="$directory">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="452" description="" type="boolean" variable="$preserve">
+            <type>boolean</type>
+          </tag>
+          <tag name="return" line="452" description="" type="boolean">
+            <type>boolean</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$directory</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$preserve</name>
+          <default>false</default>
+          <type>boolean</type>
+        </argument>
+        <inherited_from>\Illuminate\Filesystem\Filesystem</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Sebwite\Filesystem" line="489" package="Default">
+        <name>cleanDirectory</name>
+        <full_name>\Illuminate\Filesystem\Filesystem::cleanDirectory()</full_name>
+        <docblock line="489">
+          <description>Empty the specified directory of all files and folders.</description>
+          <long-description/>
+          <tag name="param" line="489" description="" type="string" variable="$directory">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="489" description="" type="boolean">
+            <type>boolean</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$directory</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <inherited_from>\Illuminate\Filesystem\Filesystem</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="true" visibility="public" namespace="Sebwite\Filesystem" line="24" package="Default">
+        <name>macro</name>
+        <full_name>\Illuminate\Support\Traits\Macroable::macro()</full_name>
+        <docblock line="24">
+          <description>Register a custom macro.</description>
+          <long-description/>
+          <tag name="param" line="24" description="" type="string" variable="$name">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="24" description="" type="callable" variable="$macro">
+            <type>callable</type>
+          </tag>
+          <tag name="return" line="24" description="" type="void">
+            <type>void</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$name</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$macro</name>
+          <default/>
+          <type>callable</type>
+        </argument>
+        <inherited_from>\Illuminate\Support\Traits\Macroable</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="true" visibility="public" namespace="Sebwite\Filesystem" line="35" package="Default">
+        <name>hasMacro</name>
+        <full_name>\Illuminate\Support\Traits\Macroable::hasMacro()</full_name>
+        <docblock line="35">
+          <description>Checks if macro is registered.</description>
+          <long-description/>
+          <tag name="param" line="35" description="" type="string" variable="$name">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="35" description="" type="boolean">
+            <type>boolean</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$name</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <inherited_from>\Illuminate\Support\Traits\Macroable</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="true" visibility="public" namespace="Sebwite\Filesystem" line="49" package="Default">
+        <name>__callStatic</name>
+        <full_name>\Illuminate\Support\Traits\Macroable::__callStatic()</full_name>
+        <docblock line="49">
+          <description>Dynamically handle calls to the class.</description>
+          <long-description/>
+          <tag name="param" line="49" description="" type="string" variable="$method">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="49" description="" type="array" variable="$parameters">
+            <type>array</type>
+          </tag>
+          <tag name="return" line="49" description="" type="mixed">
+            <type>mixed</type>
+          </tag>
+          <tag name="throws" line="49" description="" type="\BadMethodCallException">
+            <type>\BadMethodCallException</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$method</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$parameters</name>
+          <default/>
+          <type>array</type>
+        </argument>
+        <inherited_from>\Illuminate\Support\Traits\Macroable</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Sebwite\Filesystem" line="71" package="Default">
+        <name>__call</name>
+        <full_name>\Illuminate\Support\Traits\Macroable::__call()</full_name>
+        <docblock line="71">
+          <description>Dynamically handle calls to the class.</description>
+          <long-description/>
+          <tag name="param" line="71" description="" type="string" variable="$method">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="71" description="" type="array" variable="$parameters">
+            <type>array</type>
+          </tag>
+          <tag name="return" line="71" description="" type="mixed">
+            <type>mixed</type>
+          </tag>
+          <tag name="throws" line="71" description="" type="\BadMethodCallException">
+            <type>\BadMethodCallException</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$method</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$parameters</name>
+          <default/>
+          <type>array</type>
+        </argument>
+        <inherited_from>\Illuminate\Support\Traits\Macroable</inherited_from>
+      </method>
+    </class>
+    <parse_markers>
+      <error line="50" code="PPC:ERR-50008">No summary for method getTempClass()</error>
+      <error line="77" code="PPC:ERR-50015">Argument $path is missing from the Docblock of ensureDirectory</error>
+      <error line="77" code="PPC:ERR-50015">Argument $recursive is missing from the Docblock of ensureDirectory</error>
+      <error line="77" code="PPC:ERR-50015">Argument $mode is missing from the Docblock of ensureDirectory</error>
+      <error line="77" code="PPC:ERR-50015">Argument $force is missing from the Docblock of ensureDirectory</error>
+      <error line="77" code="PPC:ERR-50008">No summary for method ensureDirectory()</error>
+      <error line="280" code="PPC:ERR-50015">Argument $path is missing from the Docblock of isPhar</error>
+      <error line="280" code="PPC:ERR-50008">No summary for method isPhar()</error>
+      <error line="38" code="PPC:ERR-50007">No summary for property $symfony</error>
+      <error line="40" code="PPC:ERR-50007">No summary for property $illuminate</error>
+      <error line="45" code="PPC:ERR-50007">No summary for property $tempClass</error>
+    </parse_markers>
+    <source>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</source>
+  <type>class</type></file>

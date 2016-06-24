@@ -1,0 +1,401 @@
+<file path="sebwite/workbench/sebwite/git/src/Flysystem/Bitbucket/BitbucketAdapter.php" generated-path="sebwite.workbench.sebwite.git.src.Flysystem.Bitbucket.BitbucketAdapter.html" hash="5d4d9785fd4dd5af92bf3195f8be9931" package="Default">
+    <docblock line="0">
+      <description/>
+      <long-description/>
+      <tag name="package" line="0" description="Default"/>
+    </docblock>
+    <namespace-alias name="AbstractAdapter">\League\Flysystem\Adapter\AbstractAdapter</namespace-alias>
+    <namespace-alias name="StreamedCopyTrait">\League\Flysystem\Adapter\Polyfill\StreamedCopyTrait</namespace-alias>
+    <namespace-alias name="StreamedTrait">\League\Flysystem\Adapter\Polyfill\StreamedTrait</namespace-alias>
+    <namespace-alias name="Config">\League\Flysystem\Config</namespace-alias>
+    <namespace-alias name="Util">\League\Flysystem\Util</namespace-alias>
+    <namespace-alias name="ApiInterface">\Sebwite\Git\Flysystem\ApiInterface</namespace-alias>
+    <class final="false" abstract="false" namespace="Sebwite\Git\Flysystem\Bitbucket" line="15" package="Default">
+      <extends>\League\Flysystem\Adapter\AbstractAdapter</extends>
+      <name>BitbucketAdapter</name>
+      <full_name>\Sebwite\Git\Flysystem\Bitbucket\BitbucketAdapter</full_name>
+      <docblock line="15">
+        <description/>
+        <long-description/>
+        <tag name="package" line="15" description="Default"/>
+      </docblock>
+      <property static="false" visibility="private" namespace="Sebwite\Git\Flysystem\Bitbucket" line="20" package="Default">
+        <name>$api</name>
+        <full_name>\Sebwite\Git\Flysystem\Bitbucket\BitbucketAdapter::api</full_name>
+        <default/>
+        <docblock line="20">
+          <description/>
+          <long-description/>
+          <tag name="var" line="20" description="" type="\Sebwite\Git\Flysystem\ApiInterface" variable="">
+            <type>\Sebwite\Git\Flysystem\ApiInterface</type>
+          </tag>
+        </docblock>
+      </property>
+      <method final="true" abstract="false" static="false" visibility="public" namespace="Sebwite\Git\Flysystem\Bitbucket" line="25" package="Default">
+        <name>getApi</name>
+        <full_name>\Sebwite\Git\Flysystem\Bitbucket\BitbucketAdapter::getApi()</full_name>
+        <docblock line="25">
+          <description/>
+          <long-description/>
+          <tag name="return" line="25" description="" type="\Sebwite\Git\Flysystem\ApiInterface">
+            <type>\Sebwite\Git\Flysystem\ApiInterface</type>
+          </tag>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Sebwite\Git\Flysystem\Bitbucket" line="33" package="Default">
+        <name>__construct</name>
+        <full_name>\Sebwite\Git\Flysystem\Bitbucket\BitbucketAdapter::__construct()</full_name>
+        <docblock line="33">
+          <description/>
+          <long-description/>
+          <tag name="param" line="33" description="" type="\Sebwite\Git\Flysystem\ApiInterface" variable="$api">
+            <type>\Sebwite\Git\Flysystem\ApiInterface</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$api</name>
+          <default/>
+          <type>\Sebwite\Git\Flysystem\ApiInterface</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Sebwite\Git\Flysystem\Bitbucket" line="46" package="Default">
+        <name>setVisibility</name>
+        <full_name>\Sebwite\Git\Flysystem\Bitbucket\BitbucketAdapter::setVisibility()</full_name>
+        <docblock line="46">
+          <description>Set the visibility for a file.</description>
+          <long-description/>
+          <tag name="param" line="46" description="" type="string" variable="$path">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="46" description="" type="string" variable="$visibility">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="46" description="file meta data" type="array|false">
+            <type>array</type>
+            <type>false</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$path</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$visibility</name>
+          <default/>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Sebwite\Git\Flysystem\Bitbucket" line="58" package="Default">
+        <name>has</name>
+        <full_name>\Sebwite\Git\Flysystem\Bitbucket\BitbucketAdapter::has()</full_name>
+        <docblock line="58">
+          <description>Check that a file or directory exists in the repository</description>
+          <long-description/>
+          <tag name="param" line="58" description="" type="string" variable="$path">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="58" description="" type="array|boolean|null">
+            <type>array</type>
+            <type>boolean</type>
+            <type>null</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$path</name>
+          <default/>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Sebwite\Git\Flysystem\Bitbucket" line="70" package="Default">
+        <name>read</name>
+        <full_name>\Sebwite\Git\Flysystem\Bitbucket\BitbucketAdapter::read()</full_name>
+        <docblock line="70">
+          <description>Read a file</description>
+          <long-description/>
+          <tag name="param" line="70" description="" type="string" variable="$path">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="70" description="" type="array|false">
+            <type>array</type>
+            <type>false</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$path</name>
+          <default/>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Sebwite\Git\Flysystem\Bitbucket" line="83" package="Default">
+        <name>listContents</name>
+        <full_name>\Sebwite\Git\Flysystem\Bitbucket\BitbucketAdapter::listContents()</full_name>
+        <docblock line="83">
+          <description>List contents of a directory.</description>
+          <long-description/>
+          <tag name="param" line="83" description="" type="string" variable="$path">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="83" description="" type="boolean" variable="$recursive">
+            <type>boolean</type>
+          </tag>
+          <tag name="return" line="83" description="" type="array">
+            <type>array</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$path</name>
+          <default>'/'</default>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$recursive</name>
+          <default>false</default>
+          <type>boolean</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Sebwite\Git\Flysystem\Bitbucket" line="95" package="Default">
+        <name>getMetadata</name>
+        <full_name>\Sebwite\Git\Flysystem\Bitbucket\BitbucketAdapter::getMetadata()</full_name>
+        <docblock line="95">
+          <description>Get all the meta data of a file or directory.</description>
+          <long-description/>
+          <tag name="param" line="95" description="" type="string" variable="$path">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="95" description="" type="array|false">
+            <type>array</type>
+            <type>false</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$path</name>
+          <default/>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Sebwite\Git\Flysystem\Bitbucket" line="107" package="Default">
+        <name>getSize</name>
+        <full_name>\Sebwite\Git\Flysystem\Bitbucket\BitbucketAdapter::getSize()</full_name>
+        <docblock line="107">
+          <description>Get all the meta data of a file or directory.</description>
+          <long-description/>
+          <tag name="param" line="107" description="" type="string" variable="$path">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="107" description="" type="array|false">
+            <type>array</type>
+            <type>false</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$path</name>
+          <default/>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Sebwite\Git\Flysystem\Bitbucket" line="119" package="Default">
+        <name>getMimetype</name>
+        <full_name>\Sebwite\Git\Flysystem\Bitbucket\BitbucketAdapter::getMimetype()</full_name>
+        <docblock line="119">
+          <description>Get the mimetype of a file.</description>
+          <long-description/>
+          <tag name="param" line="119" description="" type="string" variable="$path">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="119" description="" type="array|false">
+            <type>array</type>
+            <type>false</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$path</name>
+          <default/>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Sebwite\Git\Flysystem\Bitbucket" line="131" package="Default">
+        <name>getTimestamp</name>
+        <full_name>\Sebwite\Git\Flysystem\Bitbucket\BitbucketAdapter::getTimestamp()</full_name>
+        <docblock line="131">
+          <description>Get the timestamp of a file.</description>
+          <long-description/>
+          <tag name="param" line="131" description="" type="string" variable="$path">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="131" description="" type="array|false">
+            <type>array</type>
+            <type>false</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$path</name>
+          <default/>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Sebwite\Git\Flysystem\Bitbucket" line="143" package="Default">
+        <name>getVisibility</name>
+        <full_name>\Sebwite\Git\Flysystem\Bitbucket\BitbucketAdapter::getVisibility()</full_name>
+        <docblock line="143">
+          <description>Get the visibility of a file.</description>
+          <long-description/>
+          <tag name="param" line="143" description="" type="string" variable="$path">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="143" description="" type="array|false">
+            <type>array</type>
+            <type>false</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$path</name>
+          <default/>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Sebwite\Git\Flysystem\Bitbucket" line="154" package="Default">
+        <name>write</name>
+        <full_name>\Sebwite\Git\Flysystem\Bitbucket\BitbucketAdapter::write()</full_name>
+        <docblock line="154">
+          <description/>
+          <long-description/>
+          <tag name="inheritdoc" line="154" description=""/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$path</name>
+          <default/>
+          <type/>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$contents</name>
+          <default/>
+          <type/>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$config</name>
+          <default/>
+          <type>\League\Flysystem\Config</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Sebwite\Git\Flysystem\Bitbucket" line="169" package="Default">
+        <name>update</name>
+        <full_name>\Sebwite\Git\Flysystem\Bitbucket\BitbucketAdapter::update()</full_name>
+        <docblock line="169">
+          <description/>
+          <long-description/>
+          <tag name="inheritdoc" line="169" description=""/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$path</name>
+          <default/>
+          <type/>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$contents</name>
+          <default/>
+          <type/>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$config</name>
+          <default/>
+          <type>\League\Flysystem\Config</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Sebwite\Git\Flysystem\Bitbucket" line="177" package="Default">
+        <name>rename</name>
+        <full_name>\Sebwite\Git\Flysystem\Bitbucket\BitbucketAdapter::rename()</full_name>
+        <docblock line="177">
+          <description/>
+          <long-description/>
+          <tag name="inheritdoc" line="177" description=""/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$path</name>
+          <default/>
+          <type/>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$newpath</name>
+          <default/>
+          <type/>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Sebwite\Git\Flysystem\Bitbucket" line="185" package="Default">
+        <name>delete</name>
+        <full_name>\Sebwite\Git\Flysystem\Bitbucket\BitbucketAdapter::delete()</full_name>
+        <docblock line="185">
+          <description/>
+          <long-description/>
+          <tag name="inheritdoc" line="185" description=""/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$path</name>
+          <default/>
+          <type/>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Sebwite\Git\Flysystem\Bitbucket" line="193" package="Default">
+        <name>createDir</name>
+        <full_name>\Sebwite\Git\Flysystem\Bitbucket\BitbucketAdapter::createDir()</full_name>
+        <docblock line="193">
+          <description/>
+          <long-description/>
+          <tag name="inheritdoc" line="193" description=""/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$dirname</name>
+          <default/>
+          <type/>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$config</name>
+          <default/>
+          <type>\League\Flysystem\Config</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Sebwite\Git\Flysystem\Bitbucket" line="201" package="Default">
+        <name>deleteDir</name>
+        <full_name>\Sebwite\Git\Flysystem\Bitbucket\BitbucketAdapter::deleteDir()</full_name>
+        <docblock line="201">
+          <description/>
+          <long-description/>
+          <tag name="inheritdoc" line="201" description=""/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$dirname</name>
+          <default/>
+          <type/>
+        </argument>
+      </method>
+    </class>
+    <markers>
+      <todo line="48">Implement setVisibility() method.</todo>
+    </markers>
+    <parse_markers>
+      <error line="0" code="PPC:ERR-50000">No summary was found for this file</error>
+      <error line="15" code="PPC:ERR-50005">No summary for class \Sebwite\Git\Flysystem\Bitbucket\BitbucketAdapter</error>
+      <error line="25" code="PPC:ERR-50008">No summary for method getApi()</error>
+      <error line="33" code="PPC:ERR-50008">No summary for method __construct()</error>
+      <error line="154" code="PPC:ERR-50015">Argument $path is missing from the Docblock of write</error>
+      <error line="154" code="PPC:ERR-50015">Argument $contents is missing from the Docblock of write</error>
+      <error line="154" code="PPC:ERR-50015">Argument $config is missing from the Docblock of write</error>
+      <error line="154" code="PPC:ERR-50008">No summary for method write()</error>
+      <error line="169" code="PPC:ERR-50015">Argument $path is missing from the Docblock of update</error>
+      <error line="169" code="PPC:ERR-50015">Argument $contents is missing from the Docblock of update</error>
+      <error line="169" code="PPC:ERR-50015">Argument $config is missing from the Docblock of update</error>
+      <error line="169" code="PPC:ERR-50008">No summary for method update()</error>
+      <error line="177" code="PPC:ERR-50015">Argument $path is missing from the Docblock of rename</error>
+      <error line="177" code="PPC:ERR-50015">Argument $newpath is missing from the Docblock of rename</error>
+      <error line="177" code="PPC:ERR-50008">No summary for method rename()</error>
+      <error line="185" code="PPC:ERR-50015">Argument $path is missing from the Docblock of delete</error>
+      <error line="185" code="PPC:ERR-50008">No summary for method delete()</error>
+      <error line="193" code="PPC:ERR-50015">Argument $dirname is missing from the Docblock of createDir</error>
+      <error line="193" code="PPC:ERR-50015">Argument $config is missing from the Docblock of createDir</error>
+      <error line="193" code="PPC:ERR-50008">No summary for method createDir()</error>
+      <error line="201" code="PPC:ERR-50015">Argument $dirname is missing from the Docblock of deleteDir</error>
+      <error line="201" code="PPC:ERR-50008">No summary for method deleteDir()</error>
+      <error line="20" code="PPC:ERR-50007">No summary for property $api</error>
+    </parse_markers>
+    <source>eJzVV21v0zAQ/p5f4Q+V0qJB+bzBYOwFIQZDtCChFU1uclktnMSyLxsF9t85J2niJk1oeZlENClrfC/P8/h8uTx5phbK8xIeg1E8ADaB+a1AmL0UODuTS7M0CPHshcB5FnwBPPC8zAA7B36dgWNwFHKFoGdHc4OaB1j+Pui3fpfKZSSknE1QA0EIj1O1nGoucFfHPqfjNInEdcfiBxSyWNrM/EiJVwmljEgcIj9+8MBj9m/sBZIbwyplSmgMviIkoWENJbzvHqMrT+Ri3mMbuOemlIo9v+GauRBsYruotLjhCGzAlajt8zsjNw2Y6WTNs1wr3CORcMlUNpciYFGWBCjShF0TCyWGo9ykwGuvMtgAF8I8PMwT2sd37bSKax6v47UA11I3k15dBWlCUmUBDlueTSg1Bva05L4ZygSQ4QLYjTBiLqTAJYtSzTgxl/CotGrgJhAiuWYDxXHRsVSHa4YoReJa8+WPiEvaZ5uKxYCchRx5rwgG8GMVepgj2HOzNXUYj9n04uRin72KlYQYEmyEGNnEizR81KHP8QKCL6QQx1ITRuqEQkOAqV5SEQuDhokkF1GDSo2wC1sLt1mXeZrKH0kmZa8YC24KCfoLcVWtDw8LtKVPV0W8Bx6WXP+QRb67vQzoQIe9FC7dSt/ff3366er44u309O10wp4ethnSf2cEnDoZNZeK6ucuruekBwtKY5ZGxLva292L3+4aG5B7po24aannatOriiRU6wzoEPtjf88JTk9yebfd+nZMN1pnMbyk9sClzKu7OqGFUK3DsL1gv1suROcNgbAYdiv80vGkdvxvCE/EN/iXZHOigqguFdQ872cvy7T9HcBfofM3n/gMjLGRpnWkzvO+Ioxkb5DH6p4ZT1d5d97Rc27wg6JipHGoEeRXZJ1X+/2ybb6pW0NKq5sd1GtxedDt/LJBj/cr1/WGsKGpucKugl4+rkukNZyJZAFaYJgGvQRvyQaqrKuXyB4rpuj8Cd3bg5k9Z9TO7S74B64WJpNIK0Ea0wcGDv1VSOr7fl7/dDfUDezdZvVH5UBrLxGxoTMHWdUKALlaQ79e8kcjB4+T+9I1+mwj1L9roHdeS9XCvXPY3VLPLK/unQUtQTjl8/sQNNjvuwpCArc9p/SvZAxBAvY3wL+SJ6BJC+FE6OGAXl+W5Za6XhallrfeytOv2rFPz/zOdrubCi66bbS4s1+ZpxdnFPQn0w2EeQ==</source>
+  <type>class</type></file>

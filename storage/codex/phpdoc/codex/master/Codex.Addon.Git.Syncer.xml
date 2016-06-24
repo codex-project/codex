@@ -1,0 +1,616 @@
+<file path="codex/workbench/codex/addon-git/src/Syncer.php" generated-path="codex.workbench.codex.addon-git.src.Syncer.html" hash="89e319b2b3e0eb26bf602eb989a25b50" package="Default">
+    <docblock line="0">
+      <description/>
+      <long-description/>
+      <tag name="package" line="0" description="Default"/>
+    </docblock>
+    <namespace-alias name="Closure">\Closure</namespace-alias>
+    <namespace-alias name="Project">\Codex\Projects\Project</namespace-alias>
+    <namespace-alias name="HookableTrait">\Codex\Traits\HookableTrait</namespace-alias>
+    <namespace-alias name="Repository">\Illuminate\Contracts\Cache\Repository</namespace-alias>
+    <namespace-alias name="Manager">\Sebwite\Git\Contracts\Manager</namespace-alias>
+    <namespace-alias name="Str">\Sebwite\Support\Str</namespace-alias>
+    <namespace-alias name="expression">\vierbergenlars\SemVer\expression</namespace-alias>
+    <namespace-alias name="SemVerException">\vierbergenlars\SemVer\SemVerException</namespace-alias>
+    <namespace-alias name="version">\vierbergenlars\SemVer\version</namespace-alias>
+    <class final="false" abstract="false" namespace="Codex\Addon\Git" line="21" package="Codex\Hooks">
+      <extends/>
+      <name>Syncer</name>
+      <full_name>\Codex\Addon\Git\Syncer</full_name>
+      <docblock line="21">
+        <description>This is the class Syncer.</description>
+        <long-description/>
+        <tag name="package" line="21" description="Codex\Hooks"/>
+        <tag name="author" line="21" description="Codex"/>
+        <tag name="copyright" line="21" description="Copyright (c) 2015, Codex. All rights reserved"/>
+      </docblock>
+      <property static="false" visibility="protected" namespace="Codex\Addon\Git" line="28" package="Codex\Hooks">
+        <name>$fs</name>
+        <full_name>\Codex\Addon\Git\Syncer::fs</full_name>
+        <default/>
+        <docblock line="28">
+          <description/>
+          <long-description/>
+          <tag name="var" line="28" description="" type="\Illuminate\Contracts\Filesystem\Filesystem" variable="">
+            <type>\Illuminate\Contracts\Filesystem\Filesystem</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" namespace="Codex\Addon\Git" line="33" package="Codex\Hooks">
+        <name>$remote</name>
+        <full_name>\Codex\Addon\Git\Syncer::remote</full_name>
+        <default/>
+        <docblock line="33">
+          <description/>
+          <long-description/>
+          <tag name="var" line="33" description="" type="string" variable="">
+            <type>string</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" namespace="Codex\Addon\Git" line="36" package="Codex\Hooks">
+        <name>$git</name>
+        <full_name>\Codex\Addon\Git\Syncer::git</full_name>
+        <default/>
+        <docblock line="36">
+          <description/>
+          <long-description/>
+          <tag name="var" line="36" description="" type="\Sebwite\Git\Contracts\Manager|\Sebwite\Git\Manager" variable="">
+            <type>\Sebwite\Git\Contracts\Manager</type>
+            <type>\Sebwite\Git\Manager</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" namespace="Codex\Addon\Git" line="39" package="Codex\Hooks">
+        <name>$project</name>
+        <full_name>\Codex\Addon\Git\Syncer::project</full_name>
+        <default/>
+        <docblock line="39">
+          <description/>
+          <long-description/>
+          <tag name="var" line="39" description="" type="\Codex\Projects\Project" variable="">
+            <type>\Codex\Projects\Project</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" namespace="Codex\Addon\Git" line="42" package="Codex\Hooks">
+        <name>$cache</name>
+        <full_name>\Codex\Addon\Git\Syncer::cache</full_name>
+        <default/>
+        <docblock line="42">
+          <description/>
+          <long-description/>
+          <tag name="var" line="42" description="" type="\Illuminate\Contracts\Cache\Repository" variable="">
+            <type>\Illuminate\Contracts\Cache\Repository</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" namespace="Codex\Addon\Git" line="45" package="Codex\Hooks">
+        <name>$codex</name>
+        <full_name>\Codex\Addon\Git\Syncer::codex</full_name>
+        <default/>
+        <docblock line="45">
+          <description/>
+          <long-description/>
+          <tag name="var" line="45" description="" type="\Codex\Codex|\Codex\Contracts\Codex" variable="">
+            <type>\Codex\Codex</type>
+            <type>\Codex\Contracts\Codex</type>
+          </tag>
+        </docblock>
+      </property>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Codex\Addon\Git" line="54" package="Codex\Hooks">
+        <name>__construct</name>
+        <full_name>\Codex\Addon\Git\Syncer::__construct()</full_name>
+        <docblock line="54">
+          <description>Syncer constructor.</description>
+          <long-description/>
+          <tag name="param" line="54" description="" type="\Codex\Projects\Project" variable="$project">
+            <type>\Codex\Projects\Project</type>
+          </tag>
+          <tag name="param" line="54" description="" type="\Sebwite\Git\Contracts\Manager|\Sebwite\Git\Manager" variable="$git">
+            <type>\Sebwite\Git\Contracts\Manager</type>
+            <type>\Sebwite\Git\Manager</type>
+          </tag>
+          <tag name="param" line="54" description="" type="\Illuminate\Contracts\Cache\Repository" variable="$cache">
+            <type>\Illuminate\Contracts\Cache\Repository</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$project</name>
+          <default/>
+          <type>\Codex\Projects\Project</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$git</name>
+          <default/>
+          <type>\Sebwite\Git\Contracts\Manager|\Sebwite\Git\Manager</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$cache</name>
+          <default/>
+          <type>\Illuminate\Contracts\Cache\Repository</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Codex\Addon\Git" line="73" package="Codex\Hooks">
+        <name>setting</name>
+        <full_name>\Codex\Addon\Git\Syncer::setting()</full_name>
+        <docblock line="73">
+          <description>setting method</description>
+          <long-description/>
+          <tag name="param" line="73" description="" type="" variable="$key"/>
+          <tag name="param" line="73" description="" type="null" variable="$default">
+            <type>null</type>
+          </tag>
+          <tag name="return" line="73" description="" type="mixed">
+            <type>mixed</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$key</name>
+          <default/>
+          <type/>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$default</name>
+          <default>null</default>
+          <type>null</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Codex\Addon\Git" line="85" package="Codex\Hooks">
+        <name>client</name>
+        <full_name>\Codex\Addon\Git\Syncer::client()</full_name>
+        <docblock line="85">
+          <description>client method</description>
+          <long-description/>
+          <tag name="param" line="85" description="" type="null" variable="$connection">
+            <type>null</type>
+          </tag>
+          <tag name="return" line="85" description="" type="\Sebwite\Git\Remotes\Remote">
+            <type>\Sebwite\Git\Remotes\Remote</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$connection</name>
+          <default>null</default>
+          <type>null</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Codex\Addon\Git" line="96" package="Codex\Hooks">
+        <name>ensureDirectory</name>
+        <full_name>\Codex\Addon\Git\Syncer::ensureDirectory()</full_name>
+        <docblock line="96">
+          <description>ensureDirectory method</description>
+          <long-description/>
+          <tag name="param" line="96" description="" type="" variable="$path"/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$path</name>
+          <default/>
+          <type/>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Codex\Addon\Git" line="112" package="Codex\Hooks">
+        <name>log</name>
+        <full_name>\Codex\Addon\Git\Syncer::log()</full_name>
+        <docblock line="112">
+          <description>log method</description>
+          <long-description/>
+          <tag name="param" line="112" description="" type="" variable="$level"/>
+          <tag name="param" line="112" description="" type="" variable="$message"/>
+          <tag name="param" line="112" description="" type="array" variable="$context">
+            <type>array</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$level</name>
+          <default/>
+          <type/>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$message</name>
+          <default/>
+          <type/>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$context</name>
+          <default>array()</default>
+          <type>array</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Codex\Addon\Git" line="124" package="Codex\Hooks">
+        <name>fire</name>
+        <full_name>\Codex\Addon\Git\Syncer::fire()</full_name>
+        <docblock line="124">
+          <description>fire method</description>
+          <long-description/>
+          <tag name="param" line="124" description="" type="" variable="$name"/>
+          <tag name="param" line="124" description="" type="array" variable="$context">
+            <type>array</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$name</name>
+          <default/>
+          <type/>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$context</name>
+          <default>array()</default>
+          <type>array</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Codex\Addon\Git" line="137" package="Codex\Hooks">
+        <name>syncAll</name>
+        <full_name>\Codex\Addon\Git\Syncer::syncAll()</full_name>
+        <docblock line="137">
+          <description>syncAll method</description>
+          <long-description/>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Codex\Addon\Git" line="165" package="Codex\Hooks">
+        <name>syncRef</name>
+        <full_name>\Codex\Addon\Git\Syncer::syncRef()</full_name>
+        <docblock line="165">
+          <description>syncRef method</description>
+          <long-description/>
+          <tag name="param" line="165" description="" type="" variable="$ref"/>
+          <tag name="param" line="165" description="" type="" variable="$type"/>
+          <tag name="param" line="165" description="" type="\Closure|null" variable="$progress">
+            <type>\Closure</type>
+            <type>null</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$ref</name>
+          <default/>
+          <type/>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$type</name>
+          <default/>
+          <type/>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$progress</name>
+          <default>null</default>
+          <type>\Closure|null</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Codex\Addon\Git" line="196" package="Codex\Hooks">
+        <name>getBranchesToSync</name>
+        <full_name>\Codex\Addon\Git\Syncer::getBranchesToSync()</full_name>
+        <docblock line="196">
+          <description>getBranchesToSync method</description>
+          <long-description/>
+          <tag name="return" line="196" description="" type="array">
+            <type>array</type>
+          </tag>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Codex\Addon\Git" line="234" package="Codex\Hooks">
+        <name>getVersionsToSync</name>
+        <full_name>\Codex\Addon\Git\Syncer::getVersionsToSync()</full_name>
+        <docblock line="234">
+          <description>getVersionsToSync method</description>
+          <long-description/>
+          <tag name="return" line="234" description="" type="array">
+            <type>array</type>
+          </tag>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Codex\Addon\Git" line="283" package="Codex\Hooks">
+        <name>getFs</name>
+        <full_name>\Codex\Addon\Git\Syncer::getFs()</full_name>
+        <docblock line="283">
+          <description/>
+          <long-description/>
+          <tag name="return" line="283" description="" type="\Illuminate\Contracts\Filesystem\Filesystem">
+            <type>\Illuminate\Contracts\Filesystem\Filesystem</type>
+          </tag>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Codex\Addon\Git" line="293" package="Codex\Hooks">
+        <name>setFs</name>
+        <full_name>\Codex\Addon\Git\Syncer::setFs()</full_name>
+        <docblock line="293">
+          <description>Set the fs value</description>
+          <long-description/>
+          <tag name="param" line="293" description="" type="\Illuminate\Contracts\Filesystem\Filesystem" variable="$fs">
+            <type>\Illuminate\Contracts\Filesystem\Filesystem</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$fs</name>
+          <default/>
+          <type>\Illuminate\Contracts\Filesystem\Filesystem</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Codex\Addon\Git" line="301" package="Codex\Hooks">
+        <name>getRemote</name>
+        <full_name>\Codex\Addon\Git\Syncer::getRemote()</full_name>
+        <docblock line="301">
+          <description/>
+          <long-description/>
+          <tag name="return" line="301" description="" type="string">
+            <type>string</type>
+          </tag>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Codex\Addon\Git" line="311" package="Codex\Hooks">
+        <name>setRemote</name>
+        <full_name>\Codex\Addon\Git\Syncer::setRemote()</full_name>
+        <docblock line="311">
+          <description>Set the remote value</description>
+          <long-description/>
+          <tag name="param" line="311" description="" type="string" variable="$remote">
+            <type>string</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$remote</name>
+          <default/>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Codex\Addon\Git" line="319" package="Codex\Hooks">
+        <name>getGit</name>
+        <full_name>\Codex\Addon\Git\Syncer::getGit()</full_name>
+        <docblock line="319">
+          <description/>
+          <long-description/>
+          <tag name="return" line="319" description="" type="\Sebwite\Git\Manager">
+            <type>\Sebwite\Git\Manager</type>
+          </tag>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Codex\Addon\Git" line="329" package="Codex\Hooks">
+        <name>setGit</name>
+        <full_name>\Codex\Addon\Git\Syncer::setGit()</full_name>
+        <docblock line="329">
+          <description>Set the git value</description>
+          <long-description/>
+          <tag name="param" line="329" description="" type="\Sebwite\Git\Contracts\Manager" variable="$git">
+            <type>\Sebwite\Git\Contracts\Manager</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$git</name>
+          <default/>
+          <type>\Sebwite\Git\Contracts\Manager</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Codex\Addon\Git" line="337" package="Codex\Hooks">
+        <name>getProject</name>
+        <full_name>\Codex\Addon\Git\Syncer::getProject()</full_name>
+        <docblock line="337">
+          <description/>
+          <long-description/>
+          <tag name="return" line="337" description="" type="\Codex\Projects\Project">
+            <type>\Codex\Projects\Project</type>
+          </tag>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Codex\Addon\Git" line="347" package="Codex\Hooks">
+        <name>setProject</name>
+        <full_name>\Codex\Addon\Git\Syncer::setProject()</full_name>
+        <docblock line="347">
+          <description>Set the project value</description>
+          <long-description/>
+          <tag name="param" line="347" description="" type="\Codex\Projects\Project" variable="$project">
+            <type>\Codex\Projects\Project</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$project</name>
+          <default/>
+          <type>\Codex\Projects\Project</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Codex\Addon\Git" line="355" package="Codex\Hooks">
+        <name>getCache</name>
+        <full_name>\Codex\Addon\Git\Syncer::getCache()</full_name>
+        <docblock line="355">
+          <description/>
+          <long-description/>
+          <tag name="return" line="355" description="" type="\Illuminate\Contracts\Cache\Repository">
+            <type>\Illuminate\Contracts\Cache\Repository</type>
+          </tag>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Codex\Addon\Git" line="365" package="Codex\Hooks">
+        <name>setCache</name>
+        <full_name>\Codex\Addon\Git\Syncer::setCache()</full_name>
+        <docblock line="365">
+          <description>Set the cache value</description>
+          <long-description/>
+          <tag name="param" line="365" description="" type="\Illuminate\Contracts\Cache\Repository" variable="$cache">
+            <type>\Illuminate\Contracts\Cache\Repository</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$cache</name>
+          <default/>
+          <type>\Illuminate\Contracts\Cache\Repository</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Codex\Addon\Git" line="373" package="Codex\Hooks">
+        <name>getCodex</name>
+        <full_name>\Codex\Addon\Git\Syncer::getCodex()</full_name>
+        <docblock line="373">
+          <description/>
+          <long-description/>
+          <tag name="return" line="373" description="" type="\Codex\Codex|\Codex\Contracts\Codex">
+            <type>\Codex\Codex</type>
+            <type>\Codex\Contracts\Codex</type>
+          </tag>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Codex\Addon\Git" line="384" package="Codex\Hooks">
+        <name>createDownloader</name>
+        <full_name>\Codex\Addon\Git\Syncer::createDownloader()</full_name>
+        <docblock line="384">
+          <description/>
+          <long-description/>
+          <tag name="param" line="384" description="" type="" variable="$name"/>
+          <tag name="return" line="384" description="" type="\Codex\Addon\Git\Downloader\DownloadInterface|\Codex\Addon\Git\Downloader\AbstractDownloader|\Codex\Addon\Git\Downloader\GitDownloader">
+            <type>\Codex\Addon\Git\Downloader\DownloadInterface</type>
+            <type>\Codex\Addon\Git\Downloader\AbstractDownloader</type>
+            <type>\Codex\Addon\Git\Downloader\GitDownloader</type>
+          </tag>
+          <tag name="throws" line="384" description="" type="\Illuminate\Contracts\Container\BindingResolutionException">
+            <type>\Illuminate\Contracts\Container\BindingResolutionException</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$name</name>
+          <default/>
+          <type/>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="true" visibility="public" namespace="Codex\Addon\Git" line="23" package="Default">
+        <name>getEventName</name>
+        <full_name>\Codex\Traits\HookableTrait::getEventName()</full_name>
+        <docblock line="23">
+          <description>Returns the transformed (namespaced) event name for a hook</description>
+          <long-description/>
+          <tag name="param" line="23" description="&lt;p&gt;The hook name&lt;/p&gt;" type="string" variable="$event">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="23" description="The transformed event name" type="string">
+            <type>string</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$event</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <inherited_from>\Codex\Traits\HookableTrait</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="true" visibility="public" namespace="Codex\Addon\Git" line="37" package="Default">
+        <name>hook</name>
+        <full_name>\Codex\Traits\HookableTrait::hook()</full_name>
+        <docblock line="37">
+          <description>Create a Codex Hook</description>
+          <long-description/>
+          <tag name="param" line="37" description="&lt;p&gt;The hook name&lt;/p&gt;" type="string" variable="$event">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="37" description="&lt;p&gt;The callback to execute&lt;/p&gt;" type="string|\Closure" variable="$callback">
+            <type>string</type>
+            <type>\Closure</type>
+          </tag>
+          <tag name="param" line="37" description="&lt;p&gt;(optional) The priority&lt;/p&gt;" type="integer" variable="$priority">
+            <type>integer</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$event</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$callback</name>
+          <default/>
+          <type>string|\Closure</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$priority</name>
+          <default>1</default>
+          <type>integer</type>
+        </argument>
+        <inherited_from>\Codex\Traits\HookableTrait</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Codex\Addon\Git" line="51" package="Default">
+        <name>hookPoint</name>
+        <full_name>\Codex\Traits\HookableTrait::hookPoint()</full_name>
+        <docblock line="51">
+          <description>Defines a point where hooks can hook</description>
+          <long-description/>
+          <tag name="param" line="51" description="&lt;p&gt;The hook name&lt;/p&gt;" type="string" variable="$event">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="51" description="&lt;p&gt;(optional) The arguments to pass along&lt;/p&gt;" type="array" variable="$args">
+            <type>array</type>
+          </tag>
+          <tag name="param" line="51" description="&lt;p&gt;(optional) If this hook can halt&lt;/p&gt;" type="boolean" variable="$halt">
+            <type>boolean</type>
+          </tag>
+          <tag name="return" line="51" description="" type="array|null">
+            <type>array</type>
+            <type>null</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$event</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$args</name>
+          <default>array()</default>
+          <type>array</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$halt</name>
+          <default>true</default>
+          <type>boolean</type>
+        </argument>
+        <inherited_from>\Codex\Traits\HookableTrait</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Codex\Addon\Git" line="65" package="Default">
+        <name>fireEvent</name>
+        <full_name>\Codex\Traits\HookableTrait::fireEvent()</full_name>
+        <docblock line="65">
+          <description>Fires an event for hooks</description>
+          <long-description/>
+          <tag name="param" line="65" description="&lt;p&gt;The hook name&lt;/p&gt;" type="string" variable="$event">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="65" description="&lt;p&gt;(optional) The arguments to pass along&lt;/p&gt;" type="array" variable="$args">
+            <type>array</type>
+          </tag>
+          <tag name="param" line="65" description="&lt;p&gt;(optional) If this hook can halt&lt;/p&gt;" type="boolean" variable="$halt">
+            <type>boolean</type>
+          </tag>
+          <tag name="return" line="65" description="" type="array|null">
+            <type>array</type>
+            <type>null</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$event</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$args</name>
+          <default>array()</default>
+          <type>array</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$halt</name>
+          <default>true</default>
+          <type>boolean</type>
+        </argument>
+        <inherited_from>\Codex\Traits\HookableTrait</inherited_from>
+      </method>
+    </class>
+    <parse_markers>
+      <error line="0" code="PPC:ERR-50000">No summary was found for this file</error>
+      <error line="283" code="PPC:ERR-50008">No summary for method getFs()</error>
+      <error line="301" code="PPC:ERR-50008">No summary for method getRemote()</error>
+      <error line="319" code="PPC:ERR-50008">No summary for method getGit()</error>
+      <error line="337" code="PPC:ERR-50008">No summary for method getProject()</error>
+      <error line="355" code="PPC:ERR-50008">No summary for method getCache()</error>
+      <error line="373" code="PPC:ERR-50008">No summary for method getCodex()</error>
+      <error line="384" code="PPC:ERR-50008">No summary for method createDownloader()</error>
+      <error line="28" code="PPC:ERR-50007">No summary for property $fs</error>
+      <error line="33" code="PPC:ERR-50007">No summary for property $remote</error>
+      <error line="36" code="PPC:ERR-50007">No summary for property $git</error>
+      <error line="39" code="PPC:ERR-50007">No summary for property $project</error>
+      <error line="42" code="PPC:ERR-50007">No summary for property $cache</error>
+      <error line="45" code="PPC:ERR-50007">No summary for property $codex</error>
+    </parse_markers>
+    <source>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</source>
+  <type>class</type></file>

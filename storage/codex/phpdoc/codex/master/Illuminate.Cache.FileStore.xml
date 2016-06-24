@@ -1,0 +1,409 @@
+<file path="codex/vendor/laravel/framework/src/Illuminate/Cache/FileStore.php" generated-path="codex.vendor.laravel.framework.src.Illuminate.Cache.FileStore.html" hash="c98e534dd1018b1dbd046eaa2cde97fb" package="Default">
+    <docblock line="0">
+      <description/>
+      <long-description/>
+      <tag name="package" line="0" description="Default"/>
+    </docblock>
+    <namespace-alias name="Exception">\Exception</namespace-alias>
+    <namespace-alias name="Arr">\Illuminate\Support\Arr</namespace-alias>
+    <namespace-alias name="Filesystem">\Illuminate\Filesystem\Filesystem</namespace-alias>
+    <namespace-alias name="Store">\Illuminate\Contracts\Cache\Store</namespace-alias>
+    <class final="false" abstract="false" namespace="Illuminate\Cache" line="10" package="Default">
+      <extends/>
+      <implements>\Illuminate\Contracts\Cache\Store</implements>
+      <name>FileStore</name>
+      <full_name>\Illuminate\Cache\FileStore</full_name>
+      <docblock line="10">
+        <description/>
+        <long-description/>
+        <tag name="package" line="10" description="Default"/>
+      </docblock>
+      <property static="false" visibility="protected" namespace="Illuminate\Cache" line="19" package="Default">
+        <name>$files</name>
+        <full_name>\Illuminate\Cache\FileStore::files</full_name>
+        <default/>
+        <docblock line="19">
+          <description>The Illuminate Filesystem instance.</description>
+          <long-description/>
+          <tag name="var" line="19" description="" type="\Illuminate\Filesystem\Filesystem" variable="">
+            <type>\Illuminate\Filesystem\Filesystem</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" namespace="Illuminate\Cache" line="26" package="Default">
+        <name>$directory</name>
+        <full_name>\Illuminate\Cache\FileStore::directory</full_name>
+        <default/>
+        <docblock line="26">
+          <description>The file cache directory.</description>
+          <long-description/>
+          <tag name="var" line="26" description="" type="string" variable="">
+            <type>string</type>
+          </tag>
+        </docblock>
+      </property>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Cache" line="35" package="Default">
+        <name>__construct</name>
+        <full_name>\Illuminate\Cache\FileStore::__construct()</full_name>
+        <docblock line="35">
+          <description>Create a new file cache store instance.</description>
+          <long-description/>
+          <tag name="param" line="35" description="" type="\Illuminate\Filesystem\Filesystem" variable="$files">
+            <type>\Illuminate\Filesystem\Filesystem</type>
+          </tag>
+          <tag name="param" line="35" description="" type="string" variable="$directory">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="35" description="" type="void">
+            <type>void</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$files</name>
+          <default/>
+          <type>\Illuminate\Filesystem\Filesystem</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$directory</name>
+          <default/>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Cache" line="47" package="Default">
+        <name>get</name>
+        <full_name>\Illuminate\Cache\FileStore::get()</full_name>
+        <docblock line="47">
+          <description>Retrieve an item from the cache by key.</description>
+          <long-description/>
+          <tag name="param" line="47" description="" type="string|array" variable="$key">
+            <type>string</type>
+            <type>array</type>
+          </tag>
+          <tag name="return" line="47" description="" type="mixed">
+            <type>mixed</type>
+          </tag>
+          <tag name="inherited_from" description="\Illuminate\Contracts\Cache\Store::get()" refers="\Illuminate\Contracts\Cache\Store::get()" link="/classes/Illuminate.Contracts.Cache.Store.html#method_get"/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$key</name>
+          <default/>
+          <type>string|array</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Cache" line="58" package="Default">
+        <name>getPayload</name>
+        <full_name>\Illuminate\Cache\FileStore::getPayload()</full_name>
+        <docblock line="58">
+          <description>Retrieve an item and expiry time from the cache by key.</description>
+          <long-description/>
+          <tag name="param" line="58" description="" type="string" variable="$key">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="58" description="" type="array">
+            <type>array</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$key</name>
+          <default/>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Cache" line="100" package="Default">
+        <name>put</name>
+        <full_name>\Illuminate\Cache\FileStore::put()</full_name>
+        <docblock line="100">
+          <description>Store an item in the cache for a given number of minutes.</description>
+          <long-description/>
+          <tag name="param" line="100" description="" type="string" variable="$key">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="100" description="" type="mixed" variable="$value">
+            <type>mixed</type>
+          </tag>
+          <tag name="param" line="100" description="" type="integer" variable="$minutes">
+            <type>integer</type>
+          </tag>
+          <tag name="return" line="100" description="" type="void">
+            <type>void</type>
+          </tag>
+          <tag name="inherited_from" description="\Illuminate\Contracts\Cache\Store::put()" refers="\Illuminate\Contracts\Cache\Store::put()" link="/classes/Illuminate.Contracts.Cache.Store.html#method_put"/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$key</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$value</name>
+          <default/>
+          <type>mixed</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$minutes</name>
+          <default/>
+          <type>integer</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Cache" line="115" package="Default">
+        <name>createCacheDirectory</name>
+        <full_name>\Illuminate\Cache\FileStore::createCacheDirectory()</full_name>
+        <docblock line="115">
+          <description>Create the file cache directory if necessary.</description>
+          <long-description/>
+          <tag name="param" line="115" description="" type="string" variable="$path">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="115" description="" type="void">
+            <type>void</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$path</name>
+          <default/>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Cache" line="129" package="Default">
+        <name>increment</name>
+        <full_name>\Illuminate\Cache\FileStore::increment()</full_name>
+        <docblock line="129">
+          <description>Increment the value of an item in the cache.</description>
+          <long-description/>
+          <tag name="param" line="129" description="" type="string" variable="$key">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="129" description="" type="mixed" variable="$value">
+            <type>mixed</type>
+          </tag>
+          <tag name="return" line="129" description="" type="integer">
+            <type>integer</type>
+          </tag>
+          <tag name="inherited_from" description="\Illuminate\Contracts\Cache\Store::increment()" refers="\Illuminate\Contracts\Cache\Store::increment()" link="/classes/Illuminate.Contracts.Cache.Store.html#method_increment"/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$key</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$value</name>
+          <default>1</default>
+          <type>mixed</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Cache" line="147" package="Default">
+        <name>decrement</name>
+        <full_name>\Illuminate\Cache\FileStore::decrement()</full_name>
+        <docblock line="147">
+          <description>Decrement the value of an item in the cache.</description>
+          <long-description/>
+          <tag name="param" line="147" description="" type="string" variable="$key">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="147" description="" type="mixed" variable="$value">
+            <type>mixed</type>
+          </tag>
+          <tag name="return" line="147" description="" type="integer">
+            <type>integer</type>
+          </tag>
+          <tag name="inherited_from" description="\Illuminate\Contracts\Cache\Store::decrement()" refers="\Illuminate\Contracts\Cache\Store::decrement()" link="/classes/Illuminate.Contracts.Cache.Store.html#method_decrement"/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$key</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$value</name>
+          <default>1</default>
+          <type>mixed</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Cache" line="159" package="Default">
+        <name>forever</name>
+        <full_name>\Illuminate\Cache\FileStore::forever()</full_name>
+        <docblock line="159">
+          <description>Store an item in the cache indefinitely.</description>
+          <long-description/>
+          <tag name="param" line="159" description="" type="string" variable="$key">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="159" description="" type="mixed" variable="$value">
+            <type>mixed</type>
+          </tag>
+          <tag name="return" line="159" description="" type="void">
+            <type>void</type>
+          </tag>
+          <tag name="inherited_from" description="\Illuminate\Contracts\Cache\Store::forever()" refers="\Illuminate\Contracts\Cache\Store::forever()" link="/classes/Illuminate.Contracts.Cache.Store.html#method_forever"/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$key</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$value</name>
+          <default/>
+          <type>mixed</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Cache" line="170" package="Default">
+        <name>forget</name>
+        <full_name>\Illuminate\Cache\FileStore::forget()</full_name>
+        <docblock line="170">
+          <description>Remove an item from the cache.</description>
+          <long-description/>
+          <tag name="param" line="170" description="" type="string" variable="$key">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="170" description="" type="boolean">
+            <type>boolean</type>
+          </tag>
+          <tag name="inherited_from" description="\Illuminate\Contracts\Cache\Store::forget()" refers="\Illuminate\Contracts\Cache\Store::forget()" link="/classes/Illuminate.Contracts.Cache.Store.html#method_forget"/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$key</name>
+          <default/>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Cache" line="186" package="Default">
+        <name>flush</name>
+        <full_name>\Illuminate\Cache\FileStore::flush()</full_name>
+        <docblock line="186">
+          <description>Remove all items from the cache.</description>
+          <long-description/>
+          <tag name="return" line="186" description="" type="void">
+            <type>void</type>
+          </tag>
+          <tag name="inherited_from" description="\Illuminate\Contracts\Cache\Store::flush()" refers="\Illuminate\Contracts\Cache\Store::flush()" link="/classes/Illuminate.Contracts.Cache.Store.html#method_flush"/>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Cache" line="201" package="Default">
+        <name>path</name>
+        <full_name>\Illuminate\Cache\FileStore::path()</full_name>
+        <docblock line="201">
+          <description>Get the full path for the given cache key.</description>
+          <long-description/>
+          <tag name="param" line="201" description="" type="string" variable="$key">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="201" description="" type="string">
+            <type>string</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$key</name>
+          <default/>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Cache" line="214" package="Default">
+        <name>expiration</name>
+        <full_name>\Illuminate\Cache\FileStore::expiration()</full_name>
+        <docblock line="214">
+          <description>Get the expiration time based on the given minutes.</description>
+          <long-description/>
+          <tag name="param" line="214" description="" type="integer" variable="$minutes">
+            <type>integer</type>
+          </tag>
+          <tag name="return" line="214" description="" type="integer">
+            <type>integer</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$minutes</name>
+          <default/>
+          <type>integer</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Cache" line="230" package="Default">
+        <name>getFilesystem</name>
+        <full_name>\Illuminate\Cache\FileStore::getFilesystem()</full_name>
+        <docblock line="230">
+          <description>Get the Filesystem instance.</description>
+          <long-description/>
+          <tag name="return" line="230" description="" type="\Illuminate\Filesystem\Filesystem">
+            <type>\Illuminate\Filesystem\Filesystem</type>
+          </tag>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Cache" line="240" package="Default">
+        <name>getDirectory</name>
+        <full_name>\Illuminate\Cache\FileStore::getDirectory()</full_name>
+        <docblock line="240">
+          <description>Get the working directory of the cache.</description>
+          <long-description/>
+          <tag name="return" line="240" description="" type="string">
+            <type>string</type>
+          </tag>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Cache" line="250" package="Default">
+        <name>getPrefix</name>
+        <full_name>\Illuminate\Cache\FileStore::getPrefix()</full_name>
+        <docblock line="250">
+          <description>Get the cache key prefix.</description>
+          <long-description/>
+          <tag name="return" line="250" description="" type="string">
+            <type>string</type>
+          </tag>
+          <tag name="inherited_from" description="\Illuminate\Contracts\Cache\Store::getPrefix()" refers="\Illuminate\Contracts\Cache\Store::getPrefix()" link="/classes/Illuminate.Contracts.Cache.Store.html#method_getPrefix"/>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Cache" line="15" package="Default">
+        <name>many</name>
+        <full_name>\Illuminate\Cache\RetrievesMultipleKeys::many()</full_name>
+        <docblock line="15">
+          <description>Retrieve multiple items from the cache by key.</description>
+          <long-description>Items not found in the cache will have a null value.</long-description>
+          <tag name="param" line="15" description="" type="array" variable="$keys">
+            <type>array</type>
+          </tag>
+          <tag name="return" line="15" description="" type="array">
+            <type>array</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$keys</name>
+          <default/>
+          <type>array</type>
+        </argument>
+        <inherited_from>\Illuminate\Cache\RetrievesMultipleKeys</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Cache" line="33" package="Default">
+        <name>putMany</name>
+        <full_name>\Illuminate\Cache\RetrievesMultipleKeys::putMany()</full_name>
+        <docblock line="33">
+          <description>Store multiple items in the cache for a given number of minutes.</description>
+          <long-description/>
+          <tag name="param" line="33" description="" type="array" variable="$values">
+            <type>array</type>
+          </tag>
+          <tag name="param" line="33" description="" type="integer" variable="$minutes">
+            <type>integer</type>
+          </tag>
+          <tag name="return" line="33" description="" type="void">
+            <type>void</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$values</name>
+          <default/>
+          <type>array</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$minutes</name>
+          <default/>
+          <type>integer</type>
+        </argument>
+        <inherited_from>\Illuminate\Cache\RetrievesMultipleKeys</inherited_from>
+      </method>
+    </class>
+    <parse_markers>
+      <error line="0" code="PPC:ERR-50000">No summary was found for this file</error>
+      <error line="10" code="PPC:ERR-50005">No summary for class \Illuminate\Cache\FileStore</error>
+    </parse_markers>
+    <source>eJzNWG1v2zYQ/u5fcQMCWE5dJ+mHBWvnbEO7DcGwrlg7bMBSBLR8jrlQokBSedma/77jiyTqLU7SfZi/2DLvjnfP3T086utvim0xmeQsQ12wFOFUiDLjOTN49pqlW3w1mZQa4fubFAvDZf7KPUZS78uikMqcfadUb+0HLlDfaoNZ9LMn9VrmRrHUaL/j2Xsjld03FUxrsIruH+BZITDD3Ghwf0z+mQB9rLVf0SiOV6h/LoXhJPYT3moyYdcP9vfdN+zDh228MTQ+Ac+1YXmKiyBaaXx7xRSc7QopSB+470JJg6nBNextrMSwG3YJUhsvrLkiealuBzfXFFl+MbZDrdvf5bVCGySDHK/j7bQHcyzggimWwe6YIYTXVfT+QuRaLaHQlCqHK8nX7XjKleApbMo8tSUG5+epJPdUmZok2tDvN48sz5y6LwP72TNbrp+fODlY1vh3lmt1KxIBaEXuejBWpQUsB27d2CiZgdlWcK5u4RL7qWuh8YkpxW7JAZLsopHxG7wfjgs0idXsRhsMUOO9fOlkfHj08x27FZKtvdYcpmtm2HT24AhZvga8KTghZHiGT4l4OFYHw0gpx+G2/O/muGBmazPno7VPXi50gAvuAE43zmNX92uJOp8aiolrQwV0jSBXV1yWWtxSTHYpONgEqaUVu+ZCxFb/KnUtm5dCLOAXUlHXXKM1OxXCuu/NEKs5rpKRJxZZEohN2jUHNnPR//b29A+HOrVnVugGe3pWJjY21fUei9qgoZw1WDm8nHEkxHS5ouQkrVUnUbu6bHWQK6XE4T0nwyVSKR3O4eiwZWHW9NcdYWfSLST1aUG7zzr+BPT+9EUJyxMHJBWpDbp+/hhZHcprWipFLvv65BouHNkpWqMijuCMkAzphDUKNNhNQZ2eVnY/EBqwRUHqqUAyXRZOWoo1eJaxKpeIhW4bJLWGZrKSQHH65OFGKjqygOnYCMVCRUi+X9jekaVpMso3kNgokhmcLKtsdkGt0iZVTRZRO3wu7HtWh4qjzDUqzgT/G5NQTHXt2LqYdXrwLd6Yqi3opz3jHXp5ma0ICaplOmBKQwBQ2oxFgdzMGM8tCBYn5psxtkl96YSvbaPmlj8KVNTGFB8pOvOes6QtBjKkQfBLdAs8T5UbIGKDVj/UirWbEU+vEOhPspARL8mIFRbwuwtGyZLS7rLcytWe23oJKXKRJFXnPQefvxkcwJeHMUYhKanMaPYyic9NlZNRvvbTUEXWPGYtD9oFv8K8j/KjGDusudPJRnbFRIndVU4d6OIOOzz6pC9KX63zsMG8NtWjfbfeMFTT40mtsmjK04vHWAe91BGFGzTfVA2ajJ4pAwYCNTrPPTVWrjuKHEtamMbMyOhn2zzHFLVmA3NgN1F2391Y94/W8eC7cFvW+aITsj8+E/LZXheC3myMirxOxi6jrdqqdJocHx973FroeQSHcTytethB6YuCSnyoG/7Deg8Y84o6Rsq5JphWUVNhHfXKWbHrpuC6I09cdbbHlpAk9D1zaoHCP87gWdigX6RRX5HeHGJtRy4fB2jIio6V7xv8H8O+xofCXkXqURpJ1z48P3oK+fJ8jRs6vAyKx03HDwJhJ5cS99MQr1qxjFyQ+rR7eM/tIJOjt5+nXAJWUopdgYxdedyNbsfwb6lrkLicco+v2iURNPyMGDQGZ6KgtmFC4y7oaGKw2Old4D0406LU22SIsttRcB2xfOfu28PBlg+zw3sHiaDAUfdt2Ck2uo13LEYF14I1cqrRfdVSvdt5DvwYrlkbmlrBHd9+4sMw/fiWfOI99d53Ls3wUldf/4qq3G3K3XfPNSWPBmajznUhOBX2lmk7begtO6qu6C/83erFEC13UF9MD6YL+y5MrjGh3/Ow38wtOONjBVmB1rkgwYrpZtL1+O2YGd3kNzb29fi6j93Q+NbjKj9Mh8vPM6glaav2HO1Kv1pcLpdwCJ8+BQMn8FX9Gen9RuC+Vg9nqDW6C9+HvFgMVh/5brH/aqiR7DHCALXt8vxaqkvbFs1gGt443MtYQ/3S97Tp+/sd3flKrnK27nGqMDp5bz7PvXfOxphv02nlzd3kX3CdqUQ=</source>
+  <type>class</type></file>

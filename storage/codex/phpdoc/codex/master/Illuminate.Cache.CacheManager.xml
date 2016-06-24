@@ -1,0 +1,442 @@
+<file path="codex/vendor/laravel/framework/src/Illuminate/Cache/CacheManager.php" generated-path="codex.vendor.laravel.framework.src.Illuminate.Cache.CacheManager.html" hash="0c590b9f7b86d75b768d284dda32bb3d" package="Default">
+    <docblock line="0">
+      <description/>
+      <long-description/>
+      <tag name="package" line="0" description="Default"/>
+    </docblock>
+    <namespace-alias name="Closure">\Closure</namespace-alias>
+    <namespace-alias name="Arr">\Illuminate\Support\Arr</namespace-alias>
+    <namespace-alias name="InvalidArgumentException">\InvalidArgumentException</namespace-alias>
+    <namespace-alias name="Store">\Illuminate\Contracts\Cache\Store</namespace-alias>
+    <namespace-alias name="FactoryContract">\Illuminate\Contracts\Cache\Factory</namespace-alias>
+    <class final="false" abstract="false" namespace="Illuminate\Cache" line="11" package="Default">
+      <extends/>
+      <implements>\Illuminate\Contracts\Cache\Factory</implements>
+      <name>CacheManager</name>
+      <full_name>\Illuminate\Cache\CacheManager</full_name>
+      <docblock line="11">
+        <description/>
+        <long-description/>
+        <tag name="package" line="11" description="Default"/>
+      </docblock>
+      <property static="false" visibility="protected" namespace="Illuminate\Cache" line="18" package="Default">
+        <name>$app</name>
+        <full_name>\Illuminate\Cache\CacheManager::app</full_name>
+        <default/>
+        <docblock line="18">
+          <description>The application instance.</description>
+          <long-description/>
+          <tag name="var" line="18" description="" type="\Illuminate\Foundation\Application" variable="">
+            <type>\Illuminate\Foundation\Application</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" namespace="Illuminate\Cache" line="25" package="Default">
+        <name>$stores</name>
+        <full_name>\Illuminate\Cache\CacheManager::stores</full_name>
+        <default>array()</default>
+        <docblock line="25">
+          <description>The array of resolved cache stores.</description>
+          <long-description/>
+          <tag name="var" line="25" description="" type="array" variable="">
+            <type>array</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" namespace="Illuminate\Cache" line="32" package="Default">
+        <name>$customCreators</name>
+        <full_name>\Illuminate\Cache\CacheManager::customCreators</full_name>
+        <default>array()</default>
+        <docblock line="32">
+          <description>The registered custom driver creators.</description>
+          <long-description/>
+          <tag name="var" line="32" description="" type="array" variable="">
+            <type>array</type>
+          </tag>
+        </docblock>
+      </property>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Cache" line="40" package="Default">
+        <name>__construct</name>
+        <full_name>\Illuminate\Cache\CacheManager::__construct()</full_name>
+        <docblock line="40">
+          <description>Create a new Cache manager instance.</description>
+          <long-description/>
+          <tag name="param" line="40" description="" type="\Illuminate\Foundation\Application" variable="$app">
+            <type>\Illuminate\Foundation\Application</type>
+          </tag>
+          <tag name="return" line="40" description="" type="void">
+            <type>void</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$app</name>
+          <default/>
+          <type>\Illuminate\Foundation\Application</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Cache" line="51" package="Default">
+        <name>store</name>
+        <full_name>\Illuminate\Cache\CacheManager::store()</full_name>
+        <docblock line="51">
+          <description>Get a cache store instance by name.</description>
+          <long-description/>
+          <tag name="param" line="51" description="" type="string|null" variable="$name">
+            <type>string</type>
+            <type>null</type>
+          </tag>
+          <tag name="return" line="51" description="" type="mixed">
+            <type>mixed</type>
+          </tag>
+          <tag name="inherited_from" description="\Illuminate\Contracts\Cache\Factory::store()" refers="\Illuminate\Contracts\Cache\Factory::store()" link="/classes/Illuminate.Contracts.Cache.Factory.html#method_store"/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$name</name>
+          <default>null</default>
+          <type>string|null</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Cache" line="64" package="Default">
+        <name>driver</name>
+        <full_name>\Illuminate\Cache\CacheManager::driver()</full_name>
+        <docblock line="64">
+          <description>Get a cache driver instance.</description>
+          <long-description/>
+          <tag name="param" line="64" description="" type="string" variable="$driver">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="64" description="" type="mixed">
+            <type>mixed</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$driver</name>
+          <default>null</default>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Cache" line="75" package="Default">
+        <name>get</name>
+        <full_name>\Illuminate\Cache\CacheManager::get()</full_name>
+        <docblock line="75">
+          <description>Attempt to get the store from the local cache.</description>
+          <long-description/>
+          <tag name="param" line="75" description="" type="string" variable="$name">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="75" description="" type="\Illuminate\Contracts\Cache\Repository">
+            <type>\Illuminate\Contracts\Cache\Repository</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$name</name>
+          <default/>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Cache" line="88" package="Default">
+        <name>resolve</name>
+        <full_name>\Illuminate\Cache\CacheManager::resolve()</full_name>
+        <docblock line="88">
+          <description>Resolve the given store.</description>
+          <long-description/>
+          <tag name="param" line="88" description="" type="string" variable="$name">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="88" description="" type="\Illuminate\Contracts\Cache\Repository">
+            <type>\Illuminate\Contracts\Cache\Repository</type>
+          </tag>
+          <tag name="throws" line="88" description="" type="\InvalidArgumentException">
+            <type>\InvalidArgumentException</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$name</name>
+          <default/>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Cache" line="115" package="Default">
+        <name>callCustomCreator</name>
+        <full_name>\Illuminate\Cache\CacheManager::callCustomCreator()</full_name>
+        <docblock line="115">
+          <description>Call a custom driver creator.</description>
+          <long-description/>
+          <tag name="param" line="115" description="" type="array" variable="$config">
+            <type>array</type>
+          </tag>
+          <tag name="return" line="115" description="" type="mixed">
+            <type>mixed</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$config</name>
+          <default/>
+          <type>array</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Cache" line="126" package="Default">
+        <name>createApcDriver</name>
+        <full_name>\Illuminate\Cache\CacheManager::createApcDriver()</full_name>
+        <docblock line="126">
+          <description>Create an instance of the APC cache driver.</description>
+          <long-description/>
+          <tag name="param" line="126" description="" type="array" variable="$config">
+            <type>array</type>
+          </tag>
+          <tag name="return" line="126" description="" type="\Illuminate\Cache\ApcStore">
+            <type>\Illuminate\Cache\ApcStore</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$config</name>
+          <default/>
+          <type>array</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Cache" line="138" package="Default">
+        <name>createArrayDriver</name>
+        <full_name>\Illuminate\Cache\CacheManager::createArrayDriver()</full_name>
+        <docblock line="138">
+          <description>Create an instance of the array cache driver.</description>
+          <long-description/>
+          <tag name="return" line="138" description="" type="\Illuminate\Cache\ArrayStore">
+            <type>\Illuminate\Cache\ArrayStore</type>
+          </tag>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Cache" line="149" package="Default">
+        <name>createFileDriver</name>
+        <full_name>\Illuminate\Cache\CacheManager::createFileDriver()</full_name>
+        <docblock line="149">
+          <description>Create an instance of the file cache driver.</description>
+          <long-description/>
+          <tag name="param" line="149" description="" type="array" variable="$config">
+            <type>array</type>
+          </tag>
+          <tag name="return" line="149" description="" type="\Illuminate\Cache\FileStore">
+            <type>\Illuminate\Cache\FileStore</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$config</name>
+          <default/>
+          <type>array</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Cache" line="160" package="Default">
+        <name>createMemcachedDriver</name>
+        <full_name>\Illuminate\Cache\CacheManager::createMemcachedDriver()</full_name>
+        <docblock line="160">
+          <description>Create an instance of the Memcached cache driver.</description>
+          <long-description/>
+          <tag name="param" line="160" description="" type="array" variable="$config">
+            <type>array</type>
+          </tag>
+          <tag name="return" line="160" description="" type="\Illuminate\Cache\MemcachedStore">
+            <type>\Illuminate\Cache\MemcachedStore</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$config</name>
+          <default/>
+          <type>array</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Cache" line="174" package="Default">
+        <name>createNullDriver</name>
+        <full_name>\Illuminate\Cache\CacheManager::createNullDriver()</full_name>
+        <docblock line="174">
+          <description>Create an instance of the Null cache driver.</description>
+          <long-description/>
+          <tag name="return" line="174" description="" type="\Illuminate\Cache\NullStore">
+            <type>\Illuminate\Cache\NullStore</type>
+          </tag>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Cache" line="185" package="Default">
+        <name>createRedisDriver</name>
+        <full_name>\Illuminate\Cache\CacheManager::createRedisDriver()</full_name>
+        <docblock line="185">
+          <description>Create an instance of the Redis cache driver.</description>
+          <long-description/>
+          <tag name="param" line="185" description="" type="array" variable="$config">
+            <type>array</type>
+          </tag>
+          <tag name="return" line="185" description="" type="\Illuminate\Cache\RedisStore">
+            <type>\Illuminate\Cache\RedisStore</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$config</name>
+          <default/>
+          <type>array</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Cache" line="200" package="Default">
+        <name>createDatabaseDriver</name>
+        <full_name>\Illuminate\Cache\CacheManager::createDatabaseDriver()</full_name>
+        <docblock line="200">
+          <description>Create an instance of the database cache driver.</description>
+          <long-description/>
+          <tag name="param" line="200" description="" type="array" variable="$config">
+            <type>array</type>
+          </tag>
+          <tag name="return" line="200" description="" type="\Illuminate\Cache\DatabaseStore">
+            <type>\Illuminate\Cache\DatabaseStore</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$config</name>
+          <default/>
+          <type>array</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Cache" line="217" package="Default">
+        <name>repository</name>
+        <full_name>\Illuminate\Cache\CacheManager::repository()</full_name>
+        <docblock line="217">
+          <description>Create a new cache repository with the given implementation.</description>
+          <long-description/>
+          <tag name="param" line="217" description="" type="\Illuminate\Contracts\Cache\Store" variable="$store">
+            <type>\Illuminate\Contracts\Cache\Store</type>
+          </tag>
+          <tag name="return" line="217" description="" type="\Illuminate\Cache\Repository">
+            <type>\Illuminate\Cache\Repository</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$store</name>
+          <default/>
+          <type>\Illuminate\Contracts\Cache\Store</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Cache" line="236" package="Default">
+        <name>getPrefix</name>
+        <full_name>\Illuminate\Cache\CacheManager::getPrefix()</full_name>
+        <docblock line="236">
+          <description>Get the cache prefix.</description>
+          <long-description/>
+          <tag name="param" line="236" description="" type="array" variable="$config">
+            <type>array</type>
+          </tag>
+          <tag name="return" line="236" description="" type="string">
+            <type>string</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$config</name>
+          <default/>
+          <type>array</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Cache" line="247" package="Default">
+        <name>getConfig</name>
+        <full_name>\Illuminate\Cache\CacheManager::getConfig()</full_name>
+        <docblock line="247">
+          <description>Get the cache connection configuration.</description>
+          <long-description/>
+          <tag name="param" line="247" description="" type="string" variable="$name">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="247" description="" type="array">
+            <type>array</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$name</name>
+          <default/>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Cache" line="257" package="Default">
+        <name>getDefaultDriver</name>
+        <full_name>\Illuminate\Cache\CacheManager::getDefaultDriver()</full_name>
+        <docblock line="257">
+          <description>Get the default cache driver name.</description>
+          <long-description/>
+          <tag name="return" line="257" description="" type="string">
+            <type>string</type>
+          </tag>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Cache" line="268" package="Default">
+        <name>setDefaultDriver</name>
+        <full_name>\Illuminate\Cache\CacheManager::setDefaultDriver()</full_name>
+        <docblock line="268">
+          <description>Set the default cache driver name.</description>
+          <long-description/>
+          <tag name="param" line="268" description="" type="string" variable="$name">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="268" description="" type="void">
+            <type>void</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$name</name>
+          <default/>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Cache" line="280" package="Default">
+        <name>extend</name>
+        <full_name>\Illuminate\Cache\CacheManager::extend()</full_name>
+        <docblock line="280">
+          <description>Register a custom driver creator Closure.</description>
+          <long-description/>
+          <tag name="param" line="280" description="" type="string" variable="$driver">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="280" description="" type="\Closure" variable="$callback">
+            <type>\Closure</type>
+          </tag>
+          <tag name="return" line="280" description="" type="\Illuminate\Cache\CacheManager">
+            <type>\Illuminate\Cache\CacheManager</type>
+          </tag>
+          <tag name="fluent" description="This method is part of a fluent interface and will return the same instance"/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$driver</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$callback</name>
+          <default/>
+          <type>\Closure</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Cache" line="294" package="Default">
+        <name>__call</name>
+        <full_name>\Illuminate\Cache\CacheManager::__call()</full_name>
+        <docblock line="294">
+          <description>Dynamically call the default driver instance.</description>
+          <long-description/>
+          <tag name="param" line="294" description="" type="string" variable="$method">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="294" description="" type="array" variable="$parameters">
+            <type>array</type>
+          </tag>
+          <tag name="return" line="294" description="" type="mixed">
+            <type>mixed</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$method</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$parameters</name>
+          <default/>
+          <type>array</type>
+        </argument>
+      </method>
+    </class>
+    <parse_markers>
+      <error line="0" code="PPC:ERR-50000">No summary was found for this file</error>
+      <error line="11" code="PPC:ERR-50005">No summary for class \Illuminate\Cache\CacheManager</error>
+    </parse_markers>
+    <source>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</source>
+  <type>class</type></file>

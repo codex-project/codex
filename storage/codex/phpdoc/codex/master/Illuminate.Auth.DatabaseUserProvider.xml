@@ -1,0 +1,246 @@
+<file path="codex/vendor/laravel/framework/src/Illuminate/Auth/DatabaseUserProvider.php" generated-path="codex.vendor.laravel.framework.src.Illuminate.Auth.DatabaseUserProvider.html" hash="9fc92bfebcfb2e7b51928aa63ad40e0e" package="Default">
+    <docblock line="0">
+      <description/>
+      <long-description/>
+      <tag name="package" line="0" description="Default"/>
+    </docblock>
+    <namespace-alias name="Str">\Illuminate\Support\Str</namespace-alias>
+    <namespace-alias name="UserProvider">\Illuminate\Contracts\Auth\UserProvider</namespace-alias>
+    <namespace-alias name="ConnectionInterface">\Illuminate\Database\ConnectionInterface</namespace-alias>
+    <namespace-alias name="HasherContract">\Illuminate\Contracts\Hashing\Hasher</namespace-alias>
+    <namespace-alias name="UserContract">\Illuminate\Contracts\Auth\Authenticatable</namespace-alias>
+    <class final="false" abstract="false" namespace="Illuminate\Auth" line="11" package="Default">
+      <extends/>
+      <implements>\Illuminate\Contracts\Auth\UserProvider</implements>
+      <name>DatabaseUserProvider</name>
+      <full_name>\Illuminate\Auth\DatabaseUserProvider</full_name>
+      <docblock line="11">
+        <description/>
+        <long-description/>
+        <tag name="package" line="11" description="Default"/>
+      </docblock>
+      <property static="false" visibility="protected" namespace="Illuminate\Auth" line="18" package="Default">
+        <name>$conn</name>
+        <full_name>\Illuminate\Auth\DatabaseUserProvider::conn</full_name>
+        <default/>
+        <docblock line="18">
+          <description>The active database connection.</description>
+          <long-description/>
+          <tag name="var" line="18" description="" type="\Illuminate\Database\ConnectionInterface" variable="">
+            <type>\Illuminate\Database\ConnectionInterface</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" namespace="Illuminate\Auth" line="25" package="Default">
+        <name>$hasher</name>
+        <full_name>\Illuminate\Auth\DatabaseUserProvider::hasher</full_name>
+        <default/>
+        <docblock line="25">
+          <description>The hasher implementation.</description>
+          <long-description/>
+          <tag name="var" line="25" description="" type="\Illuminate\Contracts\Hashing\Hasher" variable="">
+            <type>\Illuminate\Contracts\Hashing\Hasher</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" namespace="Illuminate\Auth" line="32" package="Default">
+        <name>$table</name>
+        <full_name>\Illuminate\Auth\DatabaseUserProvider::table</full_name>
+        <default/>
+        <docblock line="32">
+          <description>The table containing the users.</description>
+          <long-description/>
+          <tag name="var" line="32" description="" type="string" variable="">
+            <type>string</type>
+          </tag>
+        </docblock>
+      </property>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Auth" line="42" package="Default">
+        <name>__construct</name>
+        <full_name>\Illuminate\Auth\DatabaseUserProvider::__construct()</full_name>
+        <docblock line="42">
+          <description>Create a new database user provider.</description>
+          <long-description/>
+          <tag name="param" line="42" description="" type="\Illuminate\Database\ConnectionInterface" variable="$conn">
+            <type>\Illuminate\Database\ConnectionInterface</type>
+          </tag>
+          <tag name="param" line="42" description="" type="\Illuminate\Contracts\Hashing\Hasher" variable="$hasher">
+            <type>\Illuminate\Contracts\Hashing\Hasher</type>
+          </tag>
+          <tag name="param" line="42" description="" type="string" variable="$table">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="42" description="" type="void">
+            <type>void</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$conn</name>
+          <default/>
+          <type>\Illuminate\Database\ConnectionInterface</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$hasher</name>
+          <default/>
+          <type>\Illuminate\Contracts\Hashing\Hasher</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$table</name>
+          <default/>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Auth" line="55" package="Default">
+        <name>retrieveById</name>
+        <full_name>\Illuminate\Auth\DatabaseUserProvider::retrieveById()</full_name>
+        <docblock line="55">
+          <description>Retrieve a user by their unique identifier.</description>
+          <long-description/>
+          <tag name="param" line="55" description="" type="mixed" variable="$identifier">
+            <type>mixed</type>
+          </tag>
+          <tag name="return" line="55" description="" type="\Illuminate\Contracts\Auth\Authenticatable|null">
+            <type>\Illuminate\Contracts\Auth\Authenticatable</type>
+            <type>null</type>
+          </tag>
+          <tag name="inherited_from" description="\Illuminate\Contracts\Auth\UserProvider::retrieveById()" refers="\Illuminate\Contracts\Auth\UserProvider::retrieveById()" link="/classes/Illuminate.Contracts.Auth.UserProvider.html#method_retrieveById"/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$identifier</name>
+          <default/>
+          <type>mixed</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Auth" line="69" package="Default">
+        <name>retrieveByToken</name>
+        <full_name>\Illuminate\Auth\DatabaseUserProvider::retrieveByToken()</full_name>
+        <docblock line="69">
+          <description>Retrieve a user by their unique identifier and "remember me" token.</description>
+          <long-description/>
+          <tag name="param" line="69" description="" type="mixed" variable="$identifier">
+            <type>mixed</type>
+          </tag>
+          <tag name="param" line="69" description="" type="string" variable="$token">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="69" description="" type="\Illuminate\Contracts\Auth\Authenticatable|null">
+            <type>\Illuminate\Contracts\Auth\Authenticatable</type>
+            <type>null</type>
+          </tag>
+          <tag name="inherited_from" description="\Illuminate\Contracts\Auth\UserProvider::retrieveByToken()" refers="\Illuminate\Contracts\Auth\UserProvider::retrieveByToken()" link="/classes/Illuminate.Contracts.Auth.UserProvider.html#method_retrieveByToken"/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$identifier</name>
+          <default/>
+          <type>mixed</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$token</name>
+          <default/>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Auth" line="86" package="Default">
+        <name>updateRememberToken</name>
+        <full_name>\Illuminate\Auth\DatabaseUserProvider::updateRememberToken()</full_name>
+        <docblock line="86">
+          <description>Update the "remember me" token for the given user in storage.</description>
+          <long-description/>
+          <tag name="param" line="86" description="" type="\Illuminate\Contracts\Auth\Authenticatable" variable="$user">
+            <type>\Illuminate\Contracts\Auth\Authenticatable</type>
+          </tag>
+          <tag name="param" line="86" description="" type="string" variable="$token">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="86" description="" type="void">
+            <type>void</type>
+          </tag>
+          <tag name="inherited_from" description="\Illuminate\Contracts\Auth\UserProvider::updateRememberToken()" refers="\Illuminate\Contracts\Auth\UserProvider::updateRememberToken()" link="/classes/Illuminate.Contracts.Auth.UserProvider.html#method_updateRememberToken"/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$user</name>
+          <default/>
+          <type>\Illuminate\Contracts\Auth\Authenticatable</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$token</name>
+          <default/>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Auth" line="99" package="Default">
+        <name>retrieveByCredentials</name>
+        <full_name>\Illuminate\Auth\DatabaseUserProvider::retrieveByCredentials()</full_name>
+        <docblock line="99">
+          <description>Retrieve a user by the given credentials.</description>
+          <long-description/>
+          <tag name="param" line="99" description="" type="array" variable="$credentials">
+            <type>array</type>
+          </tag>
+          <tag name="return" line="99" description="" type="\Illuminate\Contracts\Auth\Authenticatable|null">
+            <type>\Illuminate\Contracts\Auth\Authenticatable</type>
+            <type>null</type>
+          </tag>
+          <tag name="inherited_from" description="\Illuminate\Contracts\Auth\UserProvider::retrieveByCredentials()" refers="\Illuminate\Contracts\Auth\UserProvider::retrieveByCredentials()" link="/classes/Illuminate.Contracts.Auth.UserProvider.html#method_retrieveByCredentials"/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$credentials</name>
+          <default/>
+          <type>array</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Auth" line="126" package="Default">
+        <name>getGenericUser</name>
+        <full_name>\Illuminate\Auth\DatabaseUserProvider::getGenericUser()</full_name>
+        <docblock line="126">
+          <description>Get the generic user.</description>
+          <long-description/>
+          <tag name="param" line="126" description="" type="mixed" variable="$user">
+            <type>mixed</type>
+          </tag>
+          <tag name="return" line="126" description="" type="\Illuminate\Auth\GenericUser|null">
+            <type>\Illuminate\Auth\GenericUser</type>
+            <type>null</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$user</name>
+          <default/>
+          <type>mixed</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Auth" line="140" package="Default">
+        <name>validateCredentials</name>
+        <full_name>\Illuminate\Auth\DatabaseUserProvider::validateCredentials()</full_name>
+        <docblock line="140">
+          <description>Validate a user against the given credentials.</description>
+          <long-description/>
+          <tag name="param" line="140" description="" type="\Illuminate\Contracts\Auth\Authenticatable" variable="$user">
+            <type>\Illuminate\Contracts\Auth\Authenticatable</type>
+          </tag>
+          <tag name="param" line="140" description="" type="array" variable="$credentials">
+            <type>array</type>
+          </tag>
+          <tag name="return" line="140" description="" type="boolean">
+            <type>boolean</type>
+          </tag>
+          <tag name="inherited_from" description="\Illuminate\Contracts\Auth\UserProvider::validateCredentials()" refers="\Illuminate\Contracts\Auth\UserProvider::validateCredentials()" link="/classes/Illuminate.Contracts.Auth.UserProvider.html#method_validateCredentials"/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$user</name>
+          <default/>
+          <type>\Illuminate\Contracts\Auth\Authenticatable</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$credentials</name>
+          <default/>
+          <type>array</type>
+        </argument>
+      </method>
+    </class>
+    <parse_markers>
+      <error line="0" code="PPC:ERR-50000">No summary was found for this file</error>
+      <error line="11" code="PPC:ERR-50005">No summary for class \Illuminate\Auth\DatabaseUserProvider</error>
+    </parse_markers>
+    <source>eJy9Vk1z20YMvetXIB7NiPLI8T2unLTu1NWlk8lHL3HGsyJBcWNqyS6XUtTW/73A7vJDJGXJTSY8WLK4AB7eA7D46XWe5KOREmsschEiLNK0XEslDN79XJrkajQqi71f35d5nmlz997oq+67m0wZLUJTWNu7jwXqtzrbyAj7Z38VRixFYY0UhkZmaqEM6phQPOH4d1EkUq3sJ2oQBbhv1YljmPgPKiNDDp8iO2CYjfkoTEVRQAWvnQPIdZ7imsydUfX76J8R0HN5fm4/4Rw+JOSZctogRN4RhHWeL/2x6vSbjdBwdyI33ujSfuY6M/QeIxize0I/ACRxVNXgxUkYDlF+KL6LMozAUU0IjZCKXAFpAKSTLgZhFEbToUOBrLN+nBuNBBsEKNw2pHMQNrY69YLlQos1nEw9OJafMj9YqBVBXWOXK/i06rcaTakVbDIZ7fNQLlMZQlwqCw3u7wkR+ShDEwwhtoBnnR6psMx81Kl17YqYn7FJZHFxzaYwryqr89JJOq/l6Lz2NTdv6oJfPvZUe4eUP25YNyvVcse1ITWUSv5VIpBs1KyxPCzeWn6lqoBxc7JL4rA+Q9PgX1Wm6ZN8a4/3l90iCloxexTabOZtKj1nQZvA6cV1LNW+J1/a/PgEvMUKzS0q1DLk4RPYENNvJxaEiuBM02hYL+m/NZ6ByR6wPyGOE96rafbzY+T4wKHaPM58+P+rTG3Az8X1looYg4mMJjPo6d47VrF5byFM9rE0p2OpCxN8J8U/5hEPQB6tA2pCnGn7bkWXknI1IRVJlWmxwlMm45GL1BH7vFI4Ot5Km9M7n43TuH1du6AHpX6OxAMys28rAue6qDUPpkOWDmrwqas9zK89vM/PbFYvVajRhhZp/7b0LAutxY5vp+boj+m6myZg4EC0MXT1uLyE37jiYYuwlWkKIooARZi0cgR0SwpVreWAZpXe8ZYmwGoDtJ4RRy/bTmnFUOwzFArwK4albwNvq6IZyJgPxFlJs86RPKt6TRpuBNF2uHJNB2d88Ayy5Re6V8mlMA73khYLI1P5Nw1Cr9VtKXREjgojVIhFg2/sUBwfOK0pQL1qaQnabDIJ4wfc2YLaiLTEaYtbfijJ4AXQYv7qld+1ioAtZjDJaafdZjqaTLtGDcaq+p2JD3G1d/hx1HxrE/ZHtmV+BelDyKMdq9dXgn4sEL0WieB695NoLUyY1Duf8zncAbCIQWVmVtfQl5IKykvJlVvY+4wuVa5n3HcoWEQuIgaqsjqs20WrEVn047oOa6ta3SKeue86yW/RuOx9GfLhY7fx3vAd6Hnb6S0IA11er9h1ow+i7jQ1F51j48V8bhXoVlglDu3lbW9uYEyhzUVTY31W/hSpjNyKb8OJFRe4ed6k/OYL7YRRu8yyp+fnxmfSnp5Dt9rxiTrOUyLBLunNoU9Nt38+WJBuLadxlGD4EDg/3SvvrXdDF15Vqo+j/wBFNfnk</source>
+  <type>class</type></file>

@@ -1,0 +1,242 @@
+<file path="codex/vendor/laravel/framework/src/Illuminate/Cookie/Middleware/EncryptCookies.php" generated-path="codex.vendor.laravel.framework.src.Illuminate.Cookie.Middleware.EncryptCookies.html" hash="f0f055ca04253d4e4e142d75476d9c2b" package="Default">
+    <docblock line="0">
+      <description/>
+      <long-description/>
+      <tag name="package" line="0" description="Default"/>
+    </docblock>
+    <namespace-alias name="Closure">\Closure</namespace-alias>
+    <namespace-alias name="Cookie">\Symfony\Component\HttpFoundation\Cookie</namespace-alias>
+    <namespace-alias name="Request">\Symfony\Component\HttpFoundation\Request</namespace-alias>
+    <namespace-alias name="Response">\Symfony\Component\HttpFoundation\Response</namespace-alias>
+    <namespace-alias name="DecryptException">\Illuminate\Contracts\Encryption\DecryptException</namespace-alias>
+    <namespace-alias name="EncrypterContract">\Illuminate\Contracts\Encryption\Encrypter</namespace-alias>
+    <class final="false" abstract="false" namespace="Illuminate\Cookie\Middleware" line="12" package="Default">
+      <extends/>
+      <name>EncryptCookies</name>
+      <full_name>\Illuminate\Cookie\Middleware\EncryptCookies</full_name>
+      <docblock line="12">
+        <description/>
+        <long-description/>
+        <tag name="package" line="12" description="Default"/>
+      </docblock>
+      <property static="false" visibility="protected" namespace="Illuminate\Cookie\Middleware" line="19" package="Default">
+        <name>$encrypter</name>
+        <full_name>\Illuminate\Cookie\Middleware\EncryptCookies::encrypter</full_name>
+        <default/>
+        <docblock line="19">
+          <description>The encrypter instance.</description>
+          <long-description/>
+          <tag name="var" line="19" description="" type="\Illuminate\Contracts\Encryption\Encrypter" variable="">
+            <type>\Illuminate\Contracts\Encryption\Encrypter</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" namespace="Illuminate\Cookie\Middleware" line="26" package="Default">
+        <name>$except</name>
+        <full_name>\Illuminate\Cookie\Middleware\EncryptCookies::except</full_name>
+        <default>array()</default>
+        <docblock line="26">
+          <description>The names of the cookies that should not be encrypted.</description>
+          <long-description/>
+          <tag name="var" line="26" description="" type="array" variable="">
+            <type>array</type>
+          </tag>
+        </docblock>
+      </property>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Cookie\Middleware" line="34" package="Default">
+        <name>__construct</name>
+        <full_name>\Illuminate\Cookie\Middleware\EncryptCookies::__construct()</full_name>
+        <docblock line="34">
+          <description>Create a new CookieGuard instance.</description>
+          <long-description/>
+          <tag name="param" line="34" description="" type="\Illuminate\Contracts\Encryption\Encrypter" variable="$encrypter">
+            <type>\Illuminate\Contracts\Encryption\Encrypter</type>
+          </tag>
+          <tag name="return" line="34" description="" type="void">
+            <type>void</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$encrypter</name>
+          <default/>
+          <type>\Illuminate\Contracts\Encryption\Encrypter</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Cookie\Middleware" line="45" package="Default">
+        <name>disableFor</name>
+        <full_name>\Illuminate\Cookie\Middleware\EncryptCookies::disableFor()</full_name>
+        <docblock line="45">
+          <description>Disable encryption for the given cookie name(s).</description>
+          <long-description/>
+          <tag name="param" line="45" description="" type="string|array" variable="$cookieName">
+            <type>string</type>
+            <type>array</type>
+          </tag>
+          <tag name="return" line="45" description="" type="void">
+            <type>void</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$cookieName</name>
+          <default/>
+          <type>string|array</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Cookie\Middleware" line="57" package="Default">
+        <name>handle</name>
+        <full_name>\Illuminate\Cookie\Middleware\EncryptCookies::handle()</full_name>
+        <docblock line="57">
+          <description>Handle an incoming request.</description>
+          <long-description/>
+          <tag name="param" line="57" description="" type="\Illuminate\Http\Request" variable="$request">
+            <type>\Illuminate\Http\Request</type>
+          </tag>
+          <tag name="param" line="57" description="" type="\Closure" variable="$next">
+            <type>\Closure</type>
+          </tag>
+          <tag name="return" line="57" description="" type="mixed">
+            <type>mixed</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$request</name>
+          <default/>
+          <type>\Illuminate\Http\Request</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$next</name>
+          <default/>
+          <type>\Closure</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Cookie\Middleware" line="68" package="Default">
+        <name>decrypt</name>
+        <full_name>\Illuminate\Cookie\Middleware\EncryptCookies::decrypt()</full_name>
+        <docblock line="68">
+          <description>Decrypt the cookies on the request.</description>
+          <long-description/>
+          <tag name="param" line="68" description="" type="\Symfony\Component\HttpFoundation\Request" variable="$request">
+            <type>\Symfony\Component\HttpFoundation\Request</type>
+          </tag>
+          <tag name="return" line="68" description="" type="\Symfony\Component\HttpFoundation\Request">
+            <type>\Symfony\Component\HttpFoundation\Request</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$request</name>
+          <default/>
+          <type>\Symfony\Component\HttpFoundation\Request</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Cookie\Middleware" line="91" package="Default">
+        <name>decryptCookie</name>
+        <full_name>\Illuminate\Cookie\Middleware\EncryptCookies::decryptCookie()</full_name>
+        <docblock line="91">
+          <description>Decrypt the given cookie and return the value.</description>
+          <long-description/>
+          <tag name="param" line="91" description="" type="string|array" variable="$cookie">
+            <type>string</type>
+            <type>array</type>
+          </tag>
+          <tag name="return" line="91" description="" type="string|array">
+            <type>string</type>
+            <type>array</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$cookie</name>
+          <default/>
+          <type>string|array</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Cookie\Middleware" line="104" package="Default">
+        <name>decryptArray</name>
+        <full_name>\Illuminate\Cookie\Middleware\EncryptCookies::decryptArray()</full_name>
+        <docblock line="104">
+          <description>Decrypt an array based cookie.</description>
+          <long-description/>
+          <tag name="param" line="104" description="" type="array" variable="$cookie">
+            <type>array</type>
+          </tag>
+          <tag name="return" line="104" description="" type="array">
+            <type>array</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$cookie</name>
+          <default/>
+          <type>array</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Cookie\Middleware" line="123" package="Default">
+        <name>encrypt</name>
+        <full_name>\Illuminate\Cookie\Middleware\EncryptCookies::encrypt()</full_name>
+        <docblock line="123">
+          <description>Encrypt the cookies on an outgoing response.</description>
+          <long-description/>
+          <tag name="param" line="123" description="" type="\Symfony\Component\HttpFoundation\Response" variable="$response">
+            <type>\Symfony\Component\HttpFoundation\Response</type>
+          </tag>
+          <tag name="return" line="123" description="" type="\Symfony\Component\HttpFoundation\Response">
+            <type>\Symfony\Component\HttpFoundation\Response</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$response</name>
+          <default/>
+          <type>\Symfony\Component\HttpFoundation\Response</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Cookie\Middleware" line="145" package="Default">
+        <name>duplicate</name>
+        <full_name>\Illuminate\Cookie\Middleware\EncryptCookies::duplicate()</full_name>
+        <docblock line="145">
+          <description>Duplicate a cookie with a new value.</description>
+          <long-description/>
+          <tag name="param" line="145" description="" type="\Symfony\Component\HttpFoundation\Cookie" variable="$c">
+            <type>\Symfony\Component\HttpFoundation\Cookie</type>
+          </tag>
+          <tag name="param" line="145" description="" type="mixed" variable="$value">
+            <type>mixed</type>
+          </tag>
+          <tag name="return" line="145" description="" type="\Symfony\Component\HttpFoundation\Cookie">
+            <type>\Symfony\Component\HttpFoundation\Cookie</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$c</name>
+          <default/>
+          <type>\Symfony\Component\HttpFoundation\Cookie</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$value</name>
+          <default/>
+          <type>mixed</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Cookie\Middleware" line="159" package="Default">
+        <name>isDisabled</name>
+        <full_name>\Illuminate\Cookie\Middleware\EncryptCookies::isDisabled()</full_name>
+        <docblock line="159">
+          <description>Determine whether encryption has been disabled for the given cookie.</description>
+          <long-description/>
+          <tag name="param" line="159" description="" type="string" variable="$name">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="159" description="" type="boolean">
+            <type>boolean</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$name</name>
+          <default/>
+          <type>string</type>
+        </argument>
+      </method>
+    </class>
+    <parse_markers>
+      <error line="0" code="PPC:ERR-50000">No summary was found for this file</error>
+      <error line="12" code="PPC:ERR-50005">No summary for class \Illuminate\Cookie\Middleware\EncryptCookies</error>
+    </parse_markers>
+    <source>eJylV0uT2zYMvvtX8OCDtONN7k3XaWd30/TQxzSZXuLMDk3BFicyqZLU7nra/PeCT+vplRNdLIoACHwAPsI/vq3LerEQ9AC6pgzIr1XVHLigBja3Un7hsPmNF0UFT1TBm8Wi0UBuK6kbu7KLD8fDToojCh9qKUCYzXtj6neyEQU1XIpgZabwX/BPA9rMlta4oYPxjufCKMqM3twLpo61k74D93r/zMB9mKcVXkERqklaRFFEhFVUpx0frF78uyD4vL66cr/kinwsgUAyxYU2VDB4Fbaj1E+PVJHNbJeC2mv3WytpgBkoyDIdhO6N+OGSTeSOGFww7zG+U0N0KZuqIEIasj35W4y6SZWix0kPHMjkhnz6PPThVgHGRigR8EQ8Yr80VBXTsNRU0QO5ABnSAiFZUWAaJcij5EXX72ZbcUZ2jWDWCnl4YFhVRjXMZIOMtwznTtun2j5LU3J9vT6l+aaTCivydQDGHdd0WyWw7fk7qVxq9vwRREiQS1qm8wlo0Fsu9v+5nJClV/kdNS6OvfDuvJMqa5mZijRm2Z37cAC1h6yztyKZ28vbTuVTWLynApmGUIGVwCQmek+UJ4Q5FWHJIRIIuhg0BxqBvVBCwLPpA3Tgz3AeodI5mUX7q0iH3l4fqWC2WxqZE41IFRA+Bot5PglQoLBO46JLdvkSUHOpdwS5EMNsExOkcKqxEHA8MQXeww77ACgrSULmeh2DRi5efoEjuVljYeUtHfvwHYnYch36q8isfN4XtQ82u+GigTednQB+fIw6jqgOHLteazDuqBXpptfzHDZVzG46iDBqbJT9+wnJY8zds2eKpqr69hent0FZqnjftvYn6q3DRtgD0Ybde6RVM8naHW6KPNAvrrbQzPpJiLrficbj+sHZ7IqNPW97Cft5ntoPA9pvdXRQfgleJDyPzpZqDNRrTcF5HsdLAPQRdu6MAdEHUdRu3eX2OTVnLIlWS7p6GGtLTIfPdBZkRis8HfrJWvxs79FpjL2dC2o+WZ9KS7jz+yyLWZKN2Ut/LfnJ83vo1ltwDe1fv4VwO5qTCY/3Tjo0nXmOc73E9boEWoBC+PcQB9wsd/kORTOPf72ws2KngCz/djYec05DYoTQx02NFzdOBtmwwrwvq5G6Sld0y92/bYmhvx07bR4fZdb432S8yO6idzgHhw564qYMU/FZQn25LjwQNs6+rptvSOjQywvutk060/ySkA+OLNkqksI4TZ/+CXSTtWSteok2VvHz/XPNEeePPOz6r39SU+JyzM6dPFAuoizXH4Dh5HZa22j/ENUxO6X6DHljveDoiXkrAalCtUf4ErtjC5Dm6WJ0qD9/Y+JAOTLBb6Wszs6n7ZYTI7N7vBhFvBit0Ko70qegvy7+B0aH0Nc=</source>
+  <type>class</type></file>

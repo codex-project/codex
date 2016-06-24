@@ -1,0 +1,1117 @@
+<file path="codex/vendor/laravel/framework/src/Illuminate/Auth/SessionGuard.php" generated-path="codex.vendor.laravel.framework.src.Illuminate.Auth.SessionGuard.html" hash="2351375e040e960d54bc0ac0d85b221f" package="Default">
+    <docblock line="0">
+      <description/>
+      <long-description/>
+      <tag name="package" line="0" description="Default"/>
+    </docblock>
+    <namespace-alias name="RuntimeException">\RuntimeException</namespace-alias>
+    <namespace-alias name="Str">\Illuminate\Support\Str</namespace-alias>
+    <namespace-alias name="Response">\Illuminate\Http\Response</namespace-alias>
+    <namespace-alias name="Dispatcher">\Illuminate\Contracts\Events\Dispatcher</namespace-alias>
+    <namespace-alias name="UserProvider">\Illuminate\Contracts\Auth\UserProvider</namespace-alias>
+    <namespace-alias name="StatefulGuard">\Illuminate\Contracts\Auth\StatefulGuard</namespace-alias>
+    <namespace-alias name="Request">\Symfony\Component\HttpFoundation\Request</namespace-alias>
+    <namespace-alias name="SupportsBasicAuth">\Illuminate\Contracts\Auth\SupportsBasicAuth</namespace-alias>
+    <namespace-alias name="CookieJar">\Illuminate\Contracts\Cookie\QueueingFactory</namespace-alias>
+    <namespace-alias name="SessionInterface">\Symfony\Component\HttpFoundation\Session\SessionInterface</namespace-alias>
+    <namespace-alias name="AuthenticatableContract">\Illuminate\Contracts\Auth\Authenticatable</namespace-alias>
+    <class final="false" abstract="false" namespace="Illuminate\Auth" line="17" package="Default">
+      <extends/>
+      <implements>\Illuminate\Contracts\Auth\StatefulGuard</implements>
+      <implements>\Illuminate\Contracts\Auth\SupportsBasicAuth</implements>
+      <name>SessionGuard</name>
+      <full_name>\Illuminate\Auth\SessionGuard</full_name>
+      <docblock line="17">
+        <description/>
+        <long-description/>
+        <tag name="package" line="17" description="Default"/>
+      </docblock>
+      <property static="false" visibility="protected" namespace="Illuminate\Auth" line="28" package="Default">
+        <name>$name</name>
+        <full_name>\Illuminate\Auth\SessionGuard::name</full_name>
+        <default/>
+        <docblock line="28">
+          <description>The name of the Guard. Typically "session".</description>
+          <long-description>Corresponds to driver name in authentication configuration.</long-description>
+          <tag name="var" line="28" description="" type="string" variable="">
+            <type>string</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" namespace="Illuminate\Auth" line="35" package="Default">
+        <name>$lastAttempted</name>
+        <full_name>\Illuminate\Auth\SessionGuard::lastAttempted</full_name>
+        <default/>
+        <docblock line="35">
+          <description>The user we last attempted to retrieve.</description>
+          <long-description/>
+          <tag name="var" line="35" description="" type="\Illuminate\Contracts\Auth\Authenticatable" variable="">
+            <type>\Illuminate\Contracts\Auth\Authenticatable</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" namespace="Illuminate\Auth" line="42" package="Default">
+        <name>$viaRemember</name>
+        <full_name>\Illuminate\Auth\SessionGuard::viaRemember</full_name>
+        <default>false</default>
+        <docblock line="42">
+          <description>Indicates if the user was authenticated via a recaller cookie.</description>
+          <long-description/>
+          <tag name="var" line="42" description="" type="boolean" variable="">
+            <type>boolean</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" namespace="Illuminate\Auth" line="49" package="Default">
+        <name>$session</name>
+        <full_name>\Illuminate\Auth\SessionGuard::session</full_name>
+        <default/>
+        <docblock line="49">
+          <description>The session used by the guard.</description>
+          <long-description/>
+          <tag name="var" line="49" description="" type="\Symfony\Component\HttpFoundation\Session\SessionInterface" variable="">
+            <type>\Symfony\Component\HttpFoundation\Session\SessionInterface</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" namespace="Illuminate\Auth" line="56" package="Default">
+        <name>$cookie</name>
+        <full_name>\Illuminate\Auth\SessionGuard::cookie</full_name>
+        <default/>
+        <docblock line="56">
+          <description>The Illuminate cookie creator service.</description>
+          <long-description/>
+          <tag name="var" line="56" description="" type="\Illuminate\Contracts\Cookie\QueueingFactory" variable="">
+            <type>\Illuminate\Contracts\Cookie\QueueingFactory</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" namespace="Illuminate\Auth" line="63" package="Default">
+        <name>$request</name>
+        <full_name>\Illuminate\Auth\SessionGuard::request</full_name>
+        <default/>
+        <docblock line="63">
+          <description>The request instance.</description>
+          <long-description/>
+          <tag name="var" line="63" description="" type="\Symfony\Component\HttpFoundation\Request" variable="">
+            <type>\Symfony\Component\HttpFoundation\Request</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" namespace="Illuminate\Auth" line="70" package="Default">
+        <name>$events</name>
+        <full_name>\Illuminate\Auth\SessionGuard::events</full_name>
+        <default/>
+        <docblock line="70">
+          <description>The event dispatcher instance.</description>
+          <long-description/>
+          <tag name="var" line="70" description="" type="\Illuminate\Contracts\Events\Dispatcher" variable="">
+            <type>\Illuminate\Contracts\Events\Dispatcher</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" namespace="Illuminate\Auth" line="77" package="Default">
+        <name>$loggedOut</name>
+        <full_name>\Illuminate\Auth\SessionGuard::loggedOut</full_name>
+        <default>false</default>
+        <docblock line="77">
+          <description>Indicates if the logout method has been called.</description>
+          <long-description/>
+          <tag name="var" line="77" description="" type="boolean" variable="">
+            <type>boolean</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" namespace="Illuminate\Auth" line="84" package="Default">
+        <name>$tokenRetrievalAttempted</name>
+        <full_name>\Illuminate\Auth\SessionGuard::tokenRetrievalAttempted</full_name>
+        <default>false</default>
+        <docblock line="84">
+          <description>Indicates if a token user retrieval has been attempted.</description>
+          <long-description/>
+          <tag name="var" line="84" description="" type="boolean" variable="">
+            <type>boolean</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" namespace="Illuminate\Auth" line="17" package="Default">
+        <name>$user</name>
+        <full_name>\Illuminate\Auth\GuardHelpers::user</full_name>
+        <default/>
+        <docblock line="17">
+          <description>The currently authenticated user.</description>
+          <long-description/>
+          <tag name="var" line="17" description="" type="\Illuminate\Contracts\Auth\Authenticatable" variable="">
+            <type>\Illuminate\Contracts\Auth\Authenticatable</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" namespace="Illuminate\Auth" line="24" package="Default">
+        <name>$provider</name>
+        <full_name>\Illuminate\Auth\GuardHelpers::provider</full_name>
+        <default/>
+        <docblock line="24">
+          <description>The user provider implementation.</description>
+          <long-description/>
+          <tag name="var" line="24" description="" type="\Illuminate\Contracts\Auth\UserProvider" variable="">
+            <type>\Illuminate\Contracts\Auth\UserProvider</type>
+          </tag>
+        </docblock>
+      </property>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Auth" line="95" package="Default">
+        <name>__construct</name>
+        <full_name>\Illuminate\Auth\SessionGuard::__construct()</full_name>
+        <docblock line="95">
+          <description>Create a new authentication guard.</description>
+          <long-description/>
+          <tag name="param" line="95" description="" type="string" variable="$name">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="95" description="" type="\Illuminate\Contracts\Auth\UserProvider" variable="$provider">
+            <type>\Illuminate\Contracts\Auth\UserProvider</type>
+          </tag>
+          <tag name="param" line="95" description="" type="\Symfony\Component\HttpFoundation\Session\SessionInterface" variable="$session">
+            <type>\Symfony\Component\HttpFoundation\Session\SessionInterface</type>
+          </tag>
+          <tag name="param" line="95" description="" type="\Symfony\Component\HttpFoundation\Request" variable="$request">
+            <type>\Symfony\Component\HttpFoundation\Request</type>
+          </tag>
+          <tag name="return" line="95" description="" type="void">
+            <type>void</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$name</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$provider</name>
+          <default/>
+          <type>\Illuminate\Contracts\Auth\UserProvider</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$session</name>
+          <default/>
+          <type>\Symfony\Component\HttpFoundation\Session\SessionInterface</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$request</name>
+          <default>null</default>
+          <type>\Symfony\Component\HttpFoundation\Request</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Auth" line="111" package="Default">
+        <name>user</name>
+        <full_name>\Illuminate\Auth\SessionGuard::user()</full_name>
+        <docblock line="111">
+          <description>Get the currently authenticated user.</description>
+          <long-description/>
+          <tag name="return" line="111" description="" type="\Illuminate\Contracts\Auth\Authenticatable|null">
+            <type>\Illuminate\Contracts\Auth\Authenticatable</type>
+            <type>null</type>
+          </tag>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Auth" line="158" package="Default">
+        <name>id</name>
+        <full_name>\Illuminate\Auth\SessionGuard::id()</full_name>
+        <docblock line="158">
+          <description>Get the ID for the currently authenticated user.</description>
+          <long-description/>
+          <tag name="return" line="158" description="" type="integer|null">
+            <type>integer</type>
+            <type>null</type>
+          </tag>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Auth" line="179" package="Default">
+        <name>getUserByRecaller</name>
+        <full_name>\Illuminate\Auth\SessionGuard::getUserByRecaller()</full_name>
+        <docblock line="179">
+          <description>Pull a user from the repository by its recaller ID.</description>
+          <long-description/>
+          <tag name="param" line="179" description="" type="string" variable="$recaller">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="179" description="" type="mixed">
+            <type>mixed</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$recaller</name>
+          <default/>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Auth" line="197" package="Default">
+        <name>getRecaller</name>
+        <full_name>\Illuminate\Auth\SessionGuard::getRecaller()</full_name>
+        <docblock line="197">
+          <description>Get the decrypted recaller cookie for the request.</description>
+          <long-description/>
+          <tag name="return" line="197" description="" type="string|null">
+            <type>string</type>
+            <type>null</type>
+          </tag>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Auth" line="207" package="Default">
+        <name>getRecallerId</name>
+        <full_name>\Illuminate\Auth\SessionGuard::getRecallerId()</full_name>
+        <docblock line="207">
+          <description>Get the user ID from the recaller cookie.</description>
+          <long-description/>
+          <tag name="return" line="207" description="" type="string|null">
+            <type>string</type>
+            <type>null</type>
+          </tag>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Auth" line="220" package="Default">
+        <name>validRecaller</name>
+        <full_name>\Illuminate\Auth\SessionGuard::validRecaller()</full_name>
+        <docblock line="220">
+          <description>Determine if the recaller cookie is in a valid format.</description>
+          <long-description/>
+          <tag name="param" line="220" description="" type="mixed" variable="$recaller">
+            <type>mixed</type>
+          </tag>
+          <tag name="return" line="220" description="" type="boolean">
+            <type>boolean</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$recaller</name>
+          <default/>
+          <type>mixed</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Auth" line="237" package="Default">
+        <name>once</name>
+        <full_name>\Illuminate\Auth\SessionGuard::once()</full_name>
+        <docblock line="237">
+          <description>Log a user into the application without sessions or cookies.</description>
+          <long-description/>
+          <tag name="param" line="237" description="" type="array" variable="$credentials">
+            <type>array</type>
+          </tag>
+          <tag name="return" line="237" description="" type="boolean">
+            <type>boolean</type>
+          </tag>
+          <tag name="inherited_from" description="\Illuminate\Contracts\Auth\StatefulGuard::once()" refers="\Illuminate\Contracts\Auth\StatefulGuard::once()" link="/classes/Illuminate.Contracts.Auth.StatefulGuard.html#method_once"/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$credentials</name>
+          <default>array()</default>
+          <type>array</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Auth" line="254" package="Default">
+        <name>validate</name>
+        <full_name>\Illuminate\Auth\SessionGuard::validate()</full_name>
+        <docblock line="254">
+          <description>Validate a user's credentials.</description>
+          <long-description/>
+          <tag name="param" line="254" description="" type="array" variable="$credentials">
+            <type>array</type>
+          </tag>
+          <tag name="return" line="254" description="" type="boolean">
+            <type>boolean</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$credentials</name>
+          <default>array()</default>
+          <type>array</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Auth" line="266" package="Default">
+        <name>basic</name>
+        <full_name>\Illuminate\Auth\SessionGuard::basic()</full_name>
+        <docblock line="266">
+          <description>Attempt to authenticate using HTTP Basic Auth.</description>
+          <long-description/>
+          <tag name="param" line="266" description="" type="string" variable="$field">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="266" description="" type="array" variable="$extraConditions">
+            <type>array</type>
+          </tag>
+          <tag name="return" line="266" description="" type="\Symfony\Component\HttpFoundation\Response|null">
+            <type>\Symfony\Component\HttpFoundation\Response</type>
+            <type>null</type>
+          </tag>
+          <tag name="inherited_from" description="\Illuminate\Contracts\Auth\SupportsBasicAuth::basic()" refers="\Illuminate\Contracts\Auth\SupportsBasicAuth::basic()" link="/classes/Illuminate.Contracts.Auth.SupportsBasicAuth.html#method_basic"/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$field</name>
+          <default>'email'</default>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$extraConditions</name>
+          <default>array()</default>
+          <type>array</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Auth" line="289" package="Default">
+        <name>onceBasic</name>
+        <full_name>\Illuminate\Auth\SessionGuard::onceBasic()</full_name>
+        <docblock line="289">
+          <description>Perform a stateless HTTP Basic login attempt.</description>
+          <long-description/>
+          <tag name="param" line="289" description="" type="string" variable="$field">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="289" description="" type="array" variable="$extraConditions">
+            <type>array</type>
+          </tag>
+          <tag name="return" line="289" description="" type="\Symfony\Component\HttpFoundation\Response|null">
+            <type>\Symfony\Component\HttpFoundation\Response</type>
+            <type>null</type>
+          </tag>
+          <tag name="inherited_from" description="\Illuminate\Contracts\Auth\SupportsBasicAuth::onceBasic()" refers="\Illuminate\Contracts\Auth\SupportsBasicAuth::onceBasic()" link="/classes/Illuminate.Contracts.Auth.SupportsBasicAuth.html#method_onceBasic"/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$field</name>
+          <default>'email'</default>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$extraConditions</name>
+          <default>array()</default>
+          <type>array</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Auth" line="306" package="Default">
+        <name>attemptBasic</name>
+        <full_name>\Illuminate\Auth\SessionGuard::attemptBasic()</full_name>
+        <docblock line="306">
+          <description>Attempt to authenticate using basic authentication.</description>
+          <long-description/>
+          <tag name="param" line="306" description="" type="\Symfony\Component\HttpFoundation\Request" variable="$request">
+            <type>\Symfony\Component\HttpFoundation\Request</type>
+          </tag>
+          <tag name="param" line="306" description="" type="string" variable="$field">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="306" description="" type="array" variable="$extraConditions">
+            <type>array</type>
+          </tag>
+          <tag name="return" line="306" description="" type="boolean">
+            <type>boolean</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$request</name>
+          <default/>
+          <type>\Symfony\Component\HttpFoundation\Request</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$field</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$extraConditions</name>
+          <default>array()</default>
+          <type>array</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Auth" line="324" package="Default">
+        <name>getBasicCredentials</name>
+        <full_name>\Illuminate\Auth\SessionGuard::getBasicCredentials()</full_name>
+        <docblock line="324">
+          <description>Get the credential array for a HTTP Basic request.</description>
+          <long-description/>
+          <tag name="param" line="324" description="" type="\Symfony\Component\HttpFoundation\Request" variable="$request">
+            <type>\Symfony\Component\HttpFoundation\Request</type>
+          </tag>
+          <tag name="param" line="324" description="" type="string" variable="$field">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="324" description="" type="array">
+            <type>array</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$request</name>
+          <default/>
+          <type>\Symfony\Component\HttpFoundation\Request</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$field</name>
+          <default/>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Auth" line="334" package="Default">
+        <name>getBasicResponse</name>
+        <full_name>\Illuminate\Auth\SessionGuard::getBasicResponse()</full_name>
+        <docblock line="334">
+          <description>Get the response for basic authentication.</description>
+          <long-description/>
+          <tag name="return" line="334" description="" type="\Symfony\Component\HttpFoundation\Response">
+            <type>\Symfony\Component\HttpFoundation\Response</type>
+          </tag>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Auth" line="349" package="Default">
+        <name>attempt</name>
+        <full_name>\Illuminate\Auth\SessionGuard::attempt()</full_name>
+        <docblock line="349">
+          <description>Attempt to authenticate a user using the given credentials.</description>
+          <long-description/>
+          <tag name="param" line="349" description="" type="array" variable="$credentials">
+            <type>array</type>
+          </tag>
+          <tag name="param" line="349" description="" type="boolean" variable="$remember">
+            <type>boolean</type>
+          </tag>
+          <tag name="param" line="349" description="" type="boolean" variable="$login">
+            <type>boolean</type>
+          </tag>
+          <tag name="return" line="349" description="" type="boolean">
+            <type>boolean</type>
+          </tag>
+          <tag name="inherited_from" description="\Illuminate\Contracts\Auth\StatefulGuard::attempt()" refers="\Illuminate\Contracts\Auth\StatefulGuard::attempt()" link="/classes/Illuminate.Contracts.Auth.StatefulGuard.html#method_attempt"/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$credentials</name>
+          <default>array()</default>
+          <type>array</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$remember</name>
+          <default>false</default>
+          <type>boolean</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$login</name>
+          <default>true</default>
+          <type>boolean</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Auth" line="383" package="Default">
+        <name>hasValidCredentials</name>
+        <full_name>\Illuminate\Auth\SessionGuard::hasValidCredentials()</full_name>
+        <docblock line="383">
+          <description>Determine if the user matches the credentials.</description>
+          <long-description/>
+          <tag name="param" line="383" description="" type="mixed" variable="$user">
+            <type>mixed</type>
+          </tag>
+          <tag name="param" line="383" description="" type="array" variable="$credentials">
+            <type>array</type>
+          </tag>
+          <tag name="return" line="383" description="" type="boolean">
+            <type>boolean</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$user</name>
+          <default/>
+          <type>mixed</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$credentials</name>
+          <default/>
+          <type>array</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Auth" line="396" package="Default">
+        <name>fireAttemptEvent</name>
+        <full_name>\Illuminate\Auth\SessionGuard::fireAttemptEvent()</full_name>
+        <docblock line="396">
+          <description>Fire the attempt event with the arguments.</description>
+          <long-description/>
+          <tag name="param" line="396" description="" type="array" variable="$credentials">
+            <type>array</type>
+          </tag>
+          <tag name="param" line="396" description="" type="boolean" variable="$remember">
+            <type>boolean</type>
+          </tag>
+          <tag name="param" line="396" description="" type="boolean" variable="$login">
+            <type>boolean</type>
+          </tag>
+          <tag name="return" line="396" description="" type="void">
+            <type>void</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$credentials</name>
+          <default/>
+          <type>array</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$remember</name>
+          <default/>
+          <type>boolean</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$login</name>
+          <default/>
+          <type>boolean</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Auth" line="412" package="Default">
+        <name>fireFailedEvent</name>
+        <full_name>\Illuminate\Auth\SessionGuard::fireFailedEvent()</full_name>
+        <docblock line="412">
+          <description>Fire the failed authentication attempt event with the given arguments.</description>
+          <long-description/>
+          <tag name="param" line="412" description="" type="\Illuminate\Contracts\Auth\Authenticatable|null" variable="$user">
+            <type>\Illuminate\Contracts\Auth\Authenticatable</type>
+            <type>null</type>
+          </tag>
+          <tag name="param" line="412" description="" type="array" variable="$credentials">
+            <type>array</type>
+          </tag>
+          <tag name="return" line="412" description="" type="void">
+            <type>void</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$user</name>
+          <default/>
+          <type>\Illuminate\Contracts\Auth\Authenticatable|null</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$credentials</name>
+          <default/>
+          <type>array</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Auth" line="425" package="Default">
+        <name>attempting</name>
+        <full_name>\Illuminate\Auth\SessionGuard::attempting()</full_name>
+        <docblock line="425">
+          <description>Register an authentication attempt event listener.</description>
+          <long-description/>
+          <tag name="param" line="425" description="" type="mixed" variable="$callback">
+            <type>mixed</type>
+          </tag>
+          <tag name="return" line="425" description="" type="void">
+            <type>void</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$callback</name>
+          <default/>
+          <type>mixed</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Auth" line="439" package="Default">
+        <name>login</name>
+        <full_name>\Illuminate\Auth\SessionGuard::login()</full_name>
+        <docblock line="439">
+          <description>Log a user into the application.</description>
+          <long-description/>
+          <tag name="param" line="439" description="" type="\Illuminate\Contracts\Auth\Authenticatable" variable="$user">
+            <type>\Illuminate\Contracts\Auth\Authenticatable</type>
+          </tag>
+          <tag name="param" line="439" description="" type="boolean" variable="$remember">
+            <type>boolean</type>
+          </tag>
+          <tag name="return" line="439" description="" type="void">
+            <type>void</type>
+          </tag>
+          <tag name="inherited_from" description="\Illuminate\Contracts\Auth\StatefulGuard::login()" refers="\Illuminate\Contracts\Auth\StatefulGuard::login()" link="/classes/Illuminate.Contracts.Auth.StatefulGuard.html#method_login"/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$user</name>
+          <default/>
+          <type>\Illuminate\Contracts\Auth\Authenticatable</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$remember</name>
+          <default>false</default>
+          <type>boolean</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Auth" line="467" package="Default">
+        <name>fireLoginEvent</name>
+        <full_name>\Illuminate\Auth\SessionGuard::fireLoginEvent()</full_name>
+        <docblock line="467">
+          <description>Fire the login event if the dispatcher is set.</description>
+          <long-description/>
+          <tag name="param" line="467" description="" type="\Illuminate\Contracts\Auth\Authenticatable" variable="$user">
+            <type>\Illuminate\Contracts\Auth\Authenticatable</type>
+          </tag>
+          <tag name="param" line="467" description="" type="boolean" variable="$remember">
+            <type>boolean</type>
+          </tag>
+          <tag name="return" line="467" description="" type="void">
+            <type>void</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$user</name>
+          <default/>
+          <type>\Illuminate\Contracts\Auth\Authenticatable</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$remember</name>
+          <default>false</default>
+          <type>boolean</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Auth" line="480" package="Default">
+        <name>updateSession</name>
+        <full_name>\Illuminate\Auth\SessionGuard::updateSession()</full_name>
+        <docblock line="480">
+          <description>Update the session with the given ID.</description>
+          <long-description/>
+          <tag name="param" line="480" description="" type="string" variable="$id">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="480" description="" type="void">
+            <type>void</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$id</name>
+          <default/>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Auth" line="494" package="Default">
+        <name>loginUsingId</name>
+        <full_name>\Illuminate\Auth\SessionGuard::loginUsingId()</full_name>
+        <docblock line="494">
+          <description>Log the given user ID into the application.</description>
+          <long-description/>
+          <tag name="param" line="494" description="" type="mixed" variable="$id">
+            <type>mixed</type>
+          </tag>
+          <tag name="param" line="494" description="" type="boolean" variable="$remember">
+            <type>boolean</type>
+          </tag>
+          <tag name="return" line="494" description="" type="\Illuminate\Contracts\Auth\Authenticatable">
+            <type>\Illuminate\Contracts\Auth\Authenticatable</type>
+          </tag>
+          <tag name="inherited_from" description="\Illuminate\Contracts\Auth\StatefulGuard::loginUsingId()" refers="\Illuminate\Contracts\Auth\StatefulGuard::loginUsingId()" link="/classes/Illuminate.Contracts.Auth.StatefulGuard.html#method_loginUsingId"/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$id</name>
+          <default/>
+          <type>mixed</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$remember</name>
+          <default>false</default>
+          <type>boolean</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Auth" line="513" package="Default">
+        <name>onceUsingId</name>
+        <full_name>\Illuminate\Auth\SessionGuard::onceUsingId()</full_name>
+        <docblock line="513">
+          <description>Log the given user ID into the application without sessions or cookies.</description>
+          <long-description/>
+          <tag name="param" line="513" description="" type="mixed" variable="$id">
+            <type>mixed</type>
+          </tag>
+          <tag name="return" line="513" description="" type="boolean">
+            <type>boolean</type>
+          </tag>
+          <tag name="inherited_from" description="\Illuminate\Contracts\Auth\StatefulGuard::onceUsingId()" refers="\Illuminate\Contracts\Auth\StatefulGuard::onceUsingId()" link="/classes/Illuminate.Contracts.Auth.StatefulGuard.html#method_onceUsingId"/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$id</name>
+          <default/>
+          <type>mixed</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Auth" line="532" package="Default">
+        <name>queueRecallerCookie</name>
+        <full_name>\Illuminate\Auth\SessionGuard::queueRecallerCookie()</full_name>
+        <docblock line="532">
+          <description>Queue the recaller cookie into the cookie jar.</description>
+          <long-description/>
+          <tag name="param" line="532" description="" type="\Illuminate\Contracts\Auth\Authenticatable" variable="$user">
+            <type>\Illuminate\Contracts\Auth\Authenticatable</type>
+          </tag>
+          <tag name="return" line="532" description="" type="void">
+            <type>void</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$user</name>
+          <default/>
+          <type>\Illuminate\Contracts\Auth\Authenticatable</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Auth" line="545" package="Default">
+        <name>createRecaller</name>
+        <full_name>\Illuminate\Auth\SessionGuard::createRecaller()</full_name>
+        <docblock line="545">
+          <description>Create a "remember me" cookie for a given ID.</description>
+          <long-description/>
+          <tag name="param" line="545" description="" type="string" variable="$value">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="545" description="" type="\Symfony\Component\HttpFoundation\Cookie">
+            <type>\Symfony\Component\HttpFoundation\Cookie</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$value</name>
+          <default/>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Auth" line="555" package="Default">
+        <name>logout</name>
+        <full_name>\Illuminate\Auth\SessionGuard::logout()</full_name>
+        <docblock line="555">
+          <description>Log the user out of the application.</description>
+          <long-description/>
+          <tag name="return" line="555" description="" type="void">
+            <type>void</type>
+          </tag>
+          <tag name="inherited_from" description="\Illuminate\Contracts\Auth\StatefulGuard::logout()" refers="\Illuminate\Contracts\Auth\StatefulGuard::logout()" link="/classes/Illuminate.Contracts.Auth.StatefulGuard.html#method_logout"/>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Auth" line="585" package="Default">
+        <name>clearUserDataFromStorage</name>
+        <full_name>\Illuminate\Auth\SessionGuard::clearUserDataFromStorage()</full_name>
+        <docblock line="585">
+          <description>Remove the user data from the session and cookies.</description>
+          <long-description/>
+          <tag name="return" line="585" description="" type="void">
+            <type>void</type>
+          </tag>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Auth" line="602" package="Default">
+        <name>refreshRememberToken</name>
+        <full_name>\Illuminate\Auth\SessionGuard::refreshRememberToken()</full_name>
+        <docblock line="602">
+          <description>Refresh the "remember me" token for the user.</description>
+          <long-description/>
+          <tag name="param" line="602" description="" type="\Illuminate\Contracts\Auth\Authenticatable" variable="$user">
+            <type>\Illuminate\Contracts\Auth\Authenticatable</type>
+          </tag>
+          <tag name="return" line="602" description="" type="void">
+            <type>void</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$user</name>
+          <default/>
+          <type>\Illuminate\Contracts\Auth\Authenticatable</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Auth" line="615" package="Default">
+        <name>createRememberTokenIfDoesntExist</name>
+        <full_name>\Illuminate\Auth\SessionGuard::createRememberTokenIfDoesntExist()</full_name>
+        <docblock line="615">
+          <description>Create a new "remember me" token for the user if one doesn't already exist.</description>
+          <long-description/>
+          <tag name="param" line="615" description="" type="\Illuminate\Contracts\Auth\Authenticatable" variable="$user">
+            <type>\Illuminate\Contracts\Auth\Authenticatable</type>
+          </tag>
+          <tag name="return" line="615" description="" type="void">
+            <type>void</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$user</name>
+          <default/>
+          <type>\Illuminate\Contracts\Auth\Authenticatable</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Auth" line="629" package="Default">
+        <name>getCookieJar</name>
+        <full_name>\Illuminate\Auth\SessionGuard::getCookieJar()</full_name>
+        <docblock line="629">
+          <description>Get the cookie creator instance used by the guard.</description>
+          <long-description/>
+          <tag name="return" line="629" description="" type="\Illuminate\Contracts\Cookie\QueueingFactory">
+            <type>\Illuminate\Contracts\Cookie\QueueingFactory</type>
+          </tag>
+          <tag name="throws" line="629" description="" type="\RuntimeException">
+            <type>\RuntimeException</type>
+          </tag>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Auth" line="644" package="Default">
+        <name>setCookieJar</name>
+        <full_name>\Illuminate\Auth\SessionGuard::setCookieJar()</full_name>
+        <docblock line="644">
+          <description>Set the cookie creator instance used by the guard.</description>
+          <long-description/>
+          <tag name="param" line="644" description="" type="\Illuminate\Contracts\Cookie\QueueingFactory" variable="$cookie">
+            <type>\Illuminate\Contracts\Cookie\QueueingFactory</type>
+          </tag>
+          <tag name="return" line="644" description="" type="void">
+            <type>void</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$cookie</name>
+          <default/>
+          <type>\Illuminate\Contracts\Cookie\QueueingFactory</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Auth" line="654" package="Default">
+        <name>getDispatcher</name>
+        <full_name>\Illuminate\Auth\SessionGuard::getDispatcher()</full_name>
+        <docblock line="654">
+          <description>Get the event dispatcher instance.</description>
+          <long-description/>
+          <tag name="return" line="654" description="" type="\Illuminate\Contracts\Events\Dispatcher">
+            <type>\Illuminate\Contracts\Events\Dispatcher</type>
+          </tag>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Auth" line="665" package="Default">
+        <name>setDispatcher</name>
+        <full_name>\Illuminate\Auth\SessionGuard::setDispatcher()</full_name>
+        <docblock line="665">
+          <description>Set the event dispatcher instance.</description>
+          <long-description/>
+          <tag name="param" line="665" description="" type="\Illuminate\Contracts\Events\Dispatcher" variable="$events">
+            <type>\Illuminate\Contracts\Events\Dispatcher</type>
+          </tag>
+          <tag name="return" line="665" description="" type="void">
+            <type>void</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$events</name>
+          <default/>
+          <type>\Illuminate\Contracts\Events\Dispatcher</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Auth" line="675" package="Default">
+        <name>getSession</name>
+        <full_name>\Illuminate\Auth\SessionGuard::getSession()</full_name>
+        <docblock line="675">
+          <description>Get the session store used by the guard.</description>
+          <long-description/>
+          <tag name="return" line="675" description="" type="\Illuminate\Session\Store">
+            <type>\Illuminate\Session\Store</type>
+          </tag>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Auth" line="685" package="Default">
+        <name>getProvider</name>
+        <full_name>\Illuminate\Auth\SessionGuard::getProvider()</full_name>
+        <docblock line="685">
+          <description>Get the user provider used by the guard.</description>
+          <long-description/>
+          <tag name="return" line="685" description="" type="\Illuminate\Contracts\Auth\UserProvider">
+            <type>\Illuminate\Contracts\Auth\UserProvider</type>
+          </tag>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Auth" line="696" package="Default">
+        <name>setProvider</name>
+        <full_name>\Illuminate\Auth\SessionGuard::setProvider()</full_name>
+        <docblock line="696">
+          <description>Set the user provider used by the guard.</description>
+          <long-description/>
+          <tag name="param" line="696" description="" type="\Illuminate\Contracts\Auth\UserProvider" variable="$provider">
+            <type>\Illuminate\Contracts\Auth\UserProvider</type>
+          </tag>
+          <tag name="return" line="696" description="" type="void">
+            <type>void</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$provider</name>
+          <default/>
+          <type>\Illuminate\Contracts\Auth\UserProvider</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Auth" line="706" package="Default">
+        <name>getUser</name>
+        <full_name>\Illuminate\Auth\SessionGuard::getUser()</full_name>
+        <docblock line="706">
+          <description>Return the currently cached user.</description>
+          <long-description/>
+          <tag name="return" line="706" description="" type="\Illuminate\Contracts\Auth\Authenticatable|null">
+            <type>\Illuminate\Contracts\Auth\Authenticatable</type>
+            <type>null</type>
+          </tag>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Auth" line="717" package="Default">
+        <name>setUser</name>
+        <full_name>\Illuminate\Auth\SessionGuard::setUser()</full_name>
+        <docblock line="717">
+          <description>Set the current user.</description>
+          <long-description/>
+          <tag name="param" line="717" description="" type="\Illuminate\Contracts\Auth\Authenticatable" variable="$user">
+            <type>\Illuminate\Contracts\Auth\Authenticatable</type>
+          </tag>
+          <tag name="return" line="717" description="" type="\Illuminate\Auth\SessionGuard">
+            <type>\Illuminate\Auth\SessionGuard</type>
+          </tag>
+          <tag name="fluent" description="This method is part of a fluent interface and will return the same instance"/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$user</name>
+          <default/>
+          <type>\Illuminate\Contracts\Auth\Authenticatable</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Auth" line="731" package="Default">
+        <name>getRequest</name>
+        <full_name>\Illuminate\Auth\SessionGuard::getRequest()</full_name>
+        <docblock line="731">
+          <description>Get the current request instance.</description>
+          <long-description/>
+          <tag name="return" line="731" description="" type="\Symfony\Component\HttpFoundation\Request">
+            <type>\Symfony\Component\HttpFoundation\Request</type>
+          </tag>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Auth" line="742" package="Default">
+        <name>setRequest</name>
+        <full_name>\Illuminate\Auth\SessionGuard::setRequest()</full_name>
+        <docblock line="742">
+          <description>Set the current request instance.</description>
+          <long-description/>
+          <tag name="param" line="742" description="" type="\Symfony\Component\HttpFoundation\Request" variable="$request">
+            <type>\Symfony\Component\HttpFoundation\Request</type>
+          </tag>
+          <tag name="return" line="742" description="" type="\Illuminate\Auth\SessionGuard">
+            <type>\Illuminate\Auth\SessionGuard</type>
+          </tag>
+          <tag name="fluent" description="This method is part of a fluent interface and will return the same instance"/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$request</name>
+          <default/>
+          <type>\Symfony\Component\HttpFoundation\Request</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Auth" line="754" package="Default">
+        <name>getLastAttempted</name>
+        <full_name>\Illuminate\Auth\SessionGuard::getLastAttempted()</full_name>
+        <docblock line="754">
+          <description>Get the last user we attempted to authenticate.</description>
+          <long-description/>
+          <tag name="return" line="754" description="" type="\Illuminate\Contracts\Auth\Authenticatable">
+            <type>\Illuminate\Contracts\Auth\Authenticatable</type>
+          </tag>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Auth" line="764" package="Default">
+        <name>getName</name>
+        <full_name>\Illuminate\Auth\SessionGuard::getName()</full_name>
+        <docblock line="764">
+          <description>Get a unique identifier for the auth session value.</description>
+          <long-description/>
+          <tag name="return" line="764" description="" type="string">
+            <type>string</type>
+          </tag>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Auth" line="774" package="Default">
+        <name>getRecallerName</name>
+        <full_name>\Illuminate\Auth\SessionGuard::getRecallerName()</full_name>
+        <docblock line="774">
+          <description>Get the name of the cookie used to store the "recaller".</description>
+          <long-description/>
+          <tag name="return" line="774" description="" type="string">
+            <type>string</type>
+          </tag>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Auth" line="784" package="Default">
+        <name>viaRemember</name>
+        <full_name>\Illuminate\Auth\SessionGuard::viaRemember()</full_name>
+        <docblock line="784">
+          <description>Determine if the user was authenticated via "remember me" cookie.</description>
+          <long-description/>
+          <tag name="return" line="784" description="" type="boolean">
+            <type>boolean</type>
+          </tag>
+          <tag name="inherited_from" description="\Illuminate\Contracts\Auth\StatefulGuard::viaRemember()" refers="\Illuminate\Contracts\Auth\StatefulGuard::viaRemember()" link="/classes/Illuminate.Contracts.Auth.StatefulGuard.html#method_viaRemember"/>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Auth" line="33" package="Default">
+        <name>authenticate</name>
+        <full_name>\Illuminate\Auth\GuardHelpers::authenticate()</full_name>
+        <docblock line="33">
+          <description>Determine if the current user is authenticated.</description>
+          <long-description/>
+          <tag name="return" line="33" description="" type="\Illuminate\Contracts\Auth\Authenticatable">
+            <type>\Illuminate\Contracts\Auth\Authenticatable</type>
+          </tag>
+          <tag name="throws" line="33" description="" type="\Illuminate\Auth\AuthenticationException">
+            <type>\Illuminate\Auth\AuthenticationException</type>
+          </tag>
+        </docblock>
+        <inherited_from>\Illuminate\Auth\GuardHelpers</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Auth" line="47" package="Default">
+        <name>check</name>
+        <full_name>\Illuminate\Auth\GuardHelpers::check()</full_name>
+        <docblock line="47">
+          <description>Determine if the current user is authenticated.</description>
+          <long-description/>
+          <tag name="return" line="47" description="" type="boolean">
+            <type>boolean</type>
+          </tag>
+        </docblock>
+        <inherited_from>\Illuminate\Auth\GuardHelpers</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Auth" line="57" package="Default">
+        <name>guest</name>
+        <full_name>\Illuminate\Auth\GuardHelpers::guest()</full_name>
+        <docblock line="57">
+          <description>Determine if the current user is a guest.</description>
+          <long-description/>
+          <tag name="return" line="57" description="" type="boolean">
+            <type>boolean</type>
+          </tag>
+        </docblock>
+        <inherited_from>\Illuminate\Auth\GuardHelpers</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Auth" line="67" package="Default">
+        <name>id</name>
+        <full_name>\Illuminate\Auth\GuardHelpers::id()</full_name>
+        <docblock line="67">
+          <description>Get the ID for the currently authenticated user.</description>
+          <long-description/>
+          <tag name="return" line="67" description="" type="integer|null">
+            <type>integer</type>
+            <type>null</type>
+          </tag>
+        </docblock>
+        <inherited_from>\Illuminate\Auth\GuardHelpers</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Auth" line="80" package="Default">
+        <name>setUser</name>
+        <full_name>\Illuminate\Auth\GuardHelpers::setUser()</full_name>
+        <docblock line="80">
+          <description>Set the current user.</description>
+          <long-description/>
+          <tag name="param" line="80" description="" type="\Illuminate\Contracts\Auth\Authenticatable" variable="$user">
+            <type>\Illuminate\Contracts\Auth\Authenticatable</type>
+          </tag>
+          <tag name="return" line="80" description="" type="\Illuminate\Auth\SessionGuard">
+            <type>\Illuminate\Auth\SessionGuard</type>
+          </tag>
+          <tag name="fluent" description="This method is part of a fluent interface and will return the same instance"/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$user</name>
+          <default/>
+          <type>\Illuminate\Contracts\Auth\Authenticatable</type>
+        </argument>
+        <inherited_from>\Illuminate\Auth\GuardHelpers</inherited_from>
+      </method>
+    </class>
+    <parse_markers>
+      <error line="0" code="PPC:ERR-50000">No summary was found for this file</error>
+      <error line="17" code="PPC:ERR-50005">No summary for class \Illuminate\Auth\SessionGuard</error>
+    </parse_markers>
+    <source>eJzVHGtz3Lbxu34F4vHkTpmz8phOP8i1Uz/iRJ1M40pO/SHyeHAk7g41j7wApORrnP/eXbwIggDJ09lp6w+WRIKLxb53scBfvt1tdicnJd0yuaMZIxdF0Wx5SWt2/aSpNw9PThrJyGVT1nzLvnufsV3Nq/KheuqNvWp2u0rU11e16L37oa5315cAvyol6719VpW1oFktr7+7YSX8eM4BkzrbsD6kdizidv2zZOKlqG54Pj72qoaHq6b4vqEi14Ov9ttVVe5h5BZQg7kVpi+qpswpLhJw/rVhsh4Frdcun1LJM0205AfPquodZ9f/aFjDeLl+AQ8rsSdUEv3mb1RMRO6KSen9vChrJlbAwTFs8T8AxzNa02XBcOrgkf0AeJ8VVEpiplCkI3y7K9gWOUU6NF2QHh1Ofjsh8A/xUUN+YMWOCQlw8fGXX3yhfpIvyKsNIyiCpFoRQEWPPiOv9jvAqSj25J7UKNw7M5/YL59VQijJyiWpK5ILfsOEhsVLQtuFwcckq8oVXzdC/RVC+usNFUTWArhiHn2pfu5EVbOsZjm5j2DjyMMSBbllBMhVE1rXbLvDLwAjwQAku2HR6a4nsymFEk74xM7Xx+2izBECk4RrympEgeceaQDODaeEAq5IbRiQKVmMorysqiKFDEC5BNHYLgHEI7KihUyQy3ATscnJcq8wWyueR6l0Z11IIWrmjyPX8sTQgWSCUVBTQFvc8OwQVsbVPYWWni6OldC2CKRa1rRMITHVpKUwENbixVBgaJ9J7szzCC7TbHwKEzVZxFT0JLqo1lVTky2rN1VONiDaS8ZA11GS4/I0JMIAbc3ynwBgUoA7GFDQ8Xes1HpldJ0WLRrOFhyMiYJ7aSE6HU/j9QylFOw5KdltaPniyrWjgm6JMXpE27fw5YCJ8t0vfL0zv/Yg3Fl9idPUw2EaQSdOph0I4FIjSnJT8bxL+2ZZ8IysmjJTNHv7FvwF0KbJ6rkizUIPH/jXoYgjyPh3vYXbdY9/atdplwnyUTZFcao+/M19fr/ecPngsXKMj6wnC15aq/zIM5DBkHaS1lQEQ+yqcczOBWc44PeeyH7PaqXDWQNevKzB0XfdEmpVT2oN/6b7zg9IkEFW4zzzkGSg3XOzJmcVTr33+E/j0tLALFEt80tysYKYYHYDOlmAbuZ7FwzkrS9egV/xSODsPAQTGS3JvxoruRqkWTyvyZJm7yAY27KcAwmK/Rl5zUhekbKCjylAguBjxcDGtnOBalBilUnDA2Qg/ERjieNxtdaSLiEYwMit3lAAWDUFPiK1wNgvrxoJzJJFdXvWoddnhMu3SG5LOZz3NE414g2JUvA+R2vXFc4Hj9estsDh17+DIM9PTx926P6CC03BW47rggXC2oqKemRvJJo8/BPkE0RlxZU/U0+sHvCVDxSsDGHvuazlGfkJholbDtSxk4ArA3YgMym5J2wQtGX3bAyhYHPZ5aVi9YLQMkfqtTMsrN/wI8g+8rRuqX9fvdHK71EjYArPe8ywHwbqi7qu5326v8jVlwNi7lAD+cGZFmTZKA7kLBN7WIeiio4uHUmMiLdL9YHuGmRdILlaGO3nGw7CjTEZuGKMaImjuxnRFXUERne7wvhE4CKELojEhqKKuhgecWrVTGkF0+GE8MjtYmVHOZDGS/NwfhqwwDFA6QP5/HPiMcWCGmMNTIAO5uneTdN+6s1n5zRzdUEqsEbvdkBVZlyPHq3mQOt54ZSiq1wBiBUX7MdqzUsV1mkYC1C4hnnCogUmIjp9M4Brbc1B2l9cPA/t5kGug5f1uE/g+cf2CNPt2SIiU6CEp0mxAu1EofJIOe9Lkz+9HhLldxR3yyuep3jzEhXWaNFKVFvFHcF2leSqxAFpHq9lm2NePB+NR+3YkH9b/p4FsZuLmx3/hrQlzVcItXke+UKrrBmUCM17BB8cDbxARQmUqwDzj+xcmATgFIax97uiytl89mG2aImyIN+EmmnX0EnDPUMzbulf4Zyd+cM5rCCEXjsuFFZhjRuAVQc1BqfHxhmmVFbLRERro4xv7XDA6a7JMXM+eKxxkaEyWjAuyBhepCIvmqZW+ofrKUet7WLQPiXkOOGtUhHaBqLWeVz8Tk/Huf+cQT4DITqzuXrIfIgWsEpHFLYoClvalwBjFZTSDxiFgVzakS+l3RE6KrXRnPHNwIcPoFBXtTg/h+SwpryUc08jgUQpUpqkvSVZ6xYkW+t6akrVfR004DLIdEFU7adgJh6Rb9BIAcbb9vkvX705JZ/Bu9ks8vJr9zIl2uDcrU0Hp1mFMRTEvpArQKRnvJkkleWtTPGRCkH3sOpMMOV0gC7jrAx8cwWR21wD8uEAAX95M6YUEB3M/Y/6ftI6aOU/nMP3C60Jo6jteYTFfRnok/qfBjlD75kkHpKfkpiOKhMJ2rWhJnrvkHShV2p+JO3mkzbH8WM3k9788OrVS6K2EtT+xGiwAMFLkafow97Xgj6rypzjkns0mlJO0ttX43HjElGea3SAfjO2pbxAbQ5wGBNWlVH2o7jRioMWH70DIkExa503MU1QhV2bedr01dABVdmotA+VY11KNLva5sy2SFHwFcv2WcG8lBiBzgBkyfQGyJqVTCi5juS+AFoVU20+q3cC+A0WcD0xvGUCM2jnJrDoy8uzGNmMPD7VXPB8nZpPhdaKNX2GHELqrg4AfDWfFZJ5UuRfMoFeDpgkce+sALPpC7palk2I/28kHq3x02OkPjA5AVWftS+HGBrmRi5ab53F2y0TaxaYqr4YDJerUszWDI+zfdjSaZ3sVuxTzD+m8P0x5WdKtNVRxbBOndbDpGH8zH3saiEp+zgUbk0XtgDVSBgWOMFDpGy0Ju4+NzzRxUXPWqRSpk8uKmbxCq0JGUuPsClZSEQav1iz8jgmABB176iUt5XIZ70hL82b+embMXoLo8+KzpNU8mBTOpVWrWkJDSUmZEwoFZm9fv36gbfTwdTqZwrA7E1fVHFX0AGeXRhn6seYYK7/9NXXCzfLwYEbDWvrPU9+lzjWDEGLQ5So6tJG6r3yoQcHwR0N7sfAi3ZeuwG7MFOZOk5iww0rpIZcpkbaNQsWqoXm25hY5mErpMNlnI4V83Odh71osWwbenRKV63UNma7F4ndIpqMLLfBHZXvFIO7e74aKkiFTSnasghdY66ciO/cDgi83YMsYKznQwQ0alMj0NMDqRxoGc9MEaKXlkVjxQ2VKuvqkEvXsAczRAVCsytdXlfvHTjL515d/KA8st1sCfb37R7KCqIu6aJ6FD7ksG7ckFUbYiNWPtQtCP2S4d4hFoFzFAJa7ols5I5nvGqknUF1WdEsw8AVAHGBf2AtQlW9fJAwb1MKllXrkv/bFuTJE5IDNkW1w90xmBTrnSAMdu9RYwoCh9mDa5oYJLmnaC9g9Szv7EUE0h+h6ZTcvFfIUjK9VR0sMvDWSRtnC1gt7Y/M4/sOZKpAx/1sUCn2dxRaI2NVe2yKFClfoEwqCTYiq1mOWad+LNaNqk4d7SpGPEXcUfS7QvpU7tn0vtOIWfZIRMulbAvOuuMpVY7Sb7Wcz9GXm04qgwiWKfuWaBijzvgp9VzHu5VStJQRCjiqzf0oXw/s57i7Ik1lccSa9Bn9ibiq5447o3E+XbI1mlWBNniQR9r6RjZKA5OFZWjsNxknZTysUkV0C+QjkUzjPu+pwfm5alpetFhPoNhInft4mU2Ia8pSTaWvDjIS/dskDD5s6JqIVe/SEBC0f8iNbRQCB7+lpd6Zdw0xLL9n2307uwg6XvGB/oods8ASB8ZuGZkOEL33oiCx0u4tZtVub1vIwwinbfNRjVK6Mwio5jpUVPxRUFSbWNONDGIRF9DFpVS1DDO7Dau2VS9Wzysmy/q792qPV7nY+AauWrzdptItxG58K8kBD1wjS5lu1FXl4MHosBvB7Z2FkPqbDSDjaUjXtmjN1JF3A7qfeZUjDRHSagwuS9u4y3Wcblp4zfeIV95uoq71qQOzAo8Ngz0ofsAdfuF2djySDjg7jaemkgn/fNKqGvv/joGI+7IBAqWMwkfyZD/G06AJNvnnnUshbUdeEFNMaCHhvarVFJIFlpD3KlNhE4+MN/HwPCp+5qMtX+PGyNzrl4p7pnbFtsXgECdlnTjv1XqTJZWDW2zHndTPWBTSjYRTPNIBTYkdiQ1zmIS0JpPzWDre63U5KHeczsC77KZHmHvIJrrHlT+aBaEVjlH+qA11degm3nZiiW/+/hdNRsB3N+AHmJuYvx+M6Xq8gqy8YbY2GA3azmYfZmft605kMo9YKRjjTiRio6DCcR5EN7aRRk2f3tJwJ1OindF6X2OyRVdz9SzVaA1eL2aME/GFBdTu7Qd2CAXLwab6ZBvZwixh1OIr/UNzYCLaIVN/QL4AEPv7Cl1d182hvSh/SoS5sB3UKrqsVp0zWuorHygEnRhkrhqB3QPIECwsIp8RxBLPM5TsjLzC0BxIWN1K001oS4igx0vmQ9TxKkJQYlXu8diyTe0kX6NRtSRFoJ71hTyjwcOmvQgzKxgVaKuegy6+gLj0qq4EXbNel/e00w+u+XAlmNx0FXEgyv948RhKgDHNqXyi0xqvA/KQj+3RBySPV4439IVluaOOjtuuwF/igYxyjTWKG8oLexK5c47ADcFzWOh7sOTUzSfwUKViK8utVQ+4ivmFyUrxZAzIVDshyBzrcTt+jiJs+3bdu3EdBq5W/okNdX7BpTQ2nEXcUv79APeRls+RqFUoLAdP00TFerh3dLjZVE8Rz3sHfU7Ezqpu3UMaUi+1zikmdH2RPsVpm5Gjhwf+yIggahwOCwm0q5ehq9dt3cAa1cQqQASr7fzPX51GQoA25NP5UMRUuTbxUdePJmiM5PYQVI51klntjs2pQ1H/VX6MlnMO4g0qFVYr9/NkQHak14gzw7WWdI+1u+rQ+HH8wcRw8LC7A1FvBPrx6/BKkcG4pav8EXKijfJ8o15hj4hqbt0JEcw+nz1zuYA6va2dBQgoVndmw4di/DlTinB1NO0H5T1xr4i9U+DgQFH6BHe/WXAJx2LW9qi9yWBYDqdfKDAodyN3CvRFqR05ckDEXkIwzNLpyxhkYW8ZxN6CcBfueWv0IBqACf6ZAuyj9vaFYf7ZOEaCrN3Rerij/whijG+2IDfMtM7Z9ZHTOu6w+pGmr3cfwthS7LiRtYwdoL+642KOv9zhAFF0a41fj5AQxkPuEbg05aLOedCMgsj/cXcIuIbEQYYOnW696t6G8Gmj0PvtafQ059SCDgs7Y4d5h7Io/zKTkFwTr40YvxvngE7NyPU4fUa75vNBXlu0vj23t3Scn+tAEpO074tqic0zydA5FIfRVX68u1EmCYclQtjNmxCJ2NUhd+K6umPLHtbv3LXlN6Mer/JjQvCj35c5IgrBNV3pBVLSlByo419LYVMkXJ7zuaqGOHyidGwBOhWP4z1TOyRvZ2fexTFnM/hbbujXczy8wjPTaTHaye7f7GZCROWhgGM6cjDpuLke4rhFdesMicXZPPS49cW7AuOXq8Uq36mFjp/Yaw94j8idN9Ku4veT/wDpXLBb</source>
+  <type>class</type></file>

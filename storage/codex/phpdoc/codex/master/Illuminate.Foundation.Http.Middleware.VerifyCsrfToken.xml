@@ -1,0 +1,215 @@
+<file path="codex/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/VerifyCsrfToken.php" generated-path="codex.vendor.laravel.framework.src.Illuminate.Foundation.Http.Middleware.VerifyCsrfToken.html" hash="a955a9ef54adaa620b0faaa979d06ca7" package="Default">
+    <docblock line="0">
+      <description/>
+      <long-description/>
+      <tag name="package" line="0" description="Default"/>
+    </docblock>
+    <namespace-alias name="Closure">\Closure</namespace-alias>
+    <namespace-alias name="Application">\Illuminate\Foundation\Application</namespace-alias>
+    <namespace-alias name="Cookie">\Symfony\Component\HttpFoundation\Cookie</namespace-alias>
+    <namespace-alias name="Encrypter">\Illuminate\Contracts\Encryption\Encrypter</namespace-alias>
+    <namespace-alias name="TokenMismatchException">\Illuminate\Session\TokenMismatchException</namespace-alias>
+    <class final="false" abstract="false" namespace="Illuminate\Foundation\Http\Middleware" line="11" package="Default">
+      <extends/>
+      <name>VerifyCsrfToken</name>
+      <full_name>\Illuminate\Foundation\Http\Middleware\VerifyCsrfToken</full_name>
+      <docblock line="11">
+        <description/>
+        <long-description/>
+        <tag name="package" line="11" description="Default"/>
+      </docblock>
+      <property static="false" visibility="protected" namespace="Illuminate\Foundation\Http\Middleware" line="18" package="Default">
+        <name>$app</name>
+        <full_name>\Illuminate\Foundation\Http\Middleware\VerifyCsrfToken::app</full_name>
+        <default/>
+        <docblock line="18">
+          <description>The application instance.</description>
+          <long-description/>
+          <tag name="var" line="18" description="" type="\Illuminate\Foundation\Application" variable="">
+            <type>\Illuminate\Foundation\Application</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" namespace="Illuminate\Foundation\Http\Middleware" line="25" package="Default">
+        <name>$encrypter</name>
+        <full_name>\Illuminate\Foundation\Http\Middleware\VerifyCsrfToken::encrypter</full_name>
+        <default/>
+        <docblock line="25">
+          <description>The encrypter implementation.</description>
+          <long-description/>
+          <tag name="var" line="25" description="" type="\Illuminate\Contracts\Encryption\Encrypter" variable="">
+            <type>\Illuminate\Contracts\Encryption\Encrypter</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" namespace="Illuminate\Foundation\Http\Middleware" line="32" package="Default">
+        <name>$except</name>
+        <full_name>\Illuminate\Foundation\Http\Middleware\VerifyCsrfToken::except</full_name>
+        <default>array()</default>
+        <docblock line="32">
+          <description>The URIs that should be excluded from CSRF verification.</description>
+          <long-description/>
+          <tag name="var" line="32" description="" type="array" variable="">
+            <type>array</type>
+          </tag>
+        </docblock>
+      </property>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Foundation\Http\Middleware" line="41" package="Default">
+        <name>__construct</name>
+        <full_name>\Illuminate\Foundation\Http\Middleware\VerifyCsrfToken::__construct()</full_name>
+        <docblock line="41">
+          <description>Create a new middleware instance.</description>
+          <long-description/>
+          <tag name="param" line="41" description="" type="\Illuminate\Foundation\Application" variable="$app">
+            <type>\Illuminate\Foundation\Application</type>
+          </tag>
+          <tag name="param" line="41" description="" type="\Illuminate\Contracts\Encryption\Encrypter" variable="$encrypter">
+            <type>\Illuminate\Contracts\Encryption\Encrypter</type>
+          </tag>
+          <tag name="return" line="41" description="" type="void">
+            <type>void</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$app</name>
+          <default/>
+          <type>\Illuminate\Foundation\Application</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$encrypter</name>
+          <default/>
+          <type>\Illuminate\Contracts\Encryption\Encrypter</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Foundation\Http\Middleware" line="56" package="Default">
+        <name>handle</name>
+        <full_name>\Illuminate\Foundation\Http\Middleware\VerifyCsrfToken::handle()</full_name>
+        <docblock line="56">
+          <description>Handle an incoming request.</description>
+          <long-description/>
+          <tag name="param" line="56" description="" type="\Illuminate\Http\Request" variable="$request">
+            <type>\Illuminate\Http\Request</type>
+          </tag>
+          <tag name="param" line="56" description="" type="\Closure" variable="$next">
+            <type>\Closure</type>
+          </tag>
+          <tag name="return" line="56" description="" type="mixed">
+            <type>mixed</type>
+          </tag>
+          <tag name="throws" line="56" description="" type="\Illuminate\Session\TokenMismatchException">
+            <type>\Illuminate\Session\TokenMismatchException</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$request</name>
+          <default/>
+          <type>\Illuminate\Http\Request</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$next</name>
+          <default/>
+          <type>\Closure</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Foundation\Http\Middleware" line="76" package="Default">
+        <name>shouldPassThrough</name>
+        <full_name>\Illuminate\Foundation\Http\Middleware\VerifyCsrfToken::shouldPassThrough()</full_name>
+        <docblock line="76">
+          <description>Determine if the request has a URI that should pass through CSRF verification.</description>
+          <long-description/>
+          <tag name="param" line="76" description="" type="\Illuminate\Http\Request" variable="$request">
+            <type>\Illuminate\Http\Request</type>
+          </tag>
+          <tag name="return" line="76" description="" type="boolean">
+            <type>boolean</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$request</name>
+          <default/>
+          <type>\Illuminate\Http\Request</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Foundation\Http\Middleware" line="96" package="Default">
+        <name>runningUnitTests</name>
+        <full_name>\Illuminate\Foundation\Http\Middleware\VerifyCsrfToken::runningUnitTests()</full_name>
+        <docblock line="96">
+          <description>Determine if the application is running unit tests.</description>
+          <long-description/>
+          <tag name="return" line="96" description="" type="boolean">
+            <type>boolean</type>
+          </tag>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Foundation\Http\Middleware" line="107" package="Default">
+        <name>tokensMatch</name>
+        <full_name>\Illuminate\Foundation\Http\Middleware\VerifyCsrfToken::tokensMatch()</full_name>
+        <docblock line="107">
+          <description>Determine if the session and input CSRF tokens match.</description>
+          <long-description/>
+          <tag name="param" line="107" description="" type="\Illuminate\Http\Request" variable="$request">
+            <type>\Illuminate\Http\Request</type>
+          </tag>
+          <tag name="return" line="107" description="" type="boolean">
+            <type>boolean</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$request</name>
+          <default/>
+          <type>\Illuminate\Http\Request</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Foundation\Http\Middleware" line="131" package="Default">
+        <name>addCookieToResponse</name>
+        <full_name>\Illuminate\Foundation\Http\Middleware\VerifyCsrfToken::addCookieToResponse()</full_name>
+        <docblock line="131">
+          <description>Add the CSRF token to the response cookies.</description>
+          <long-description/>
+          <tag name="param" line="131" description="" type="\Illuminate\Http\Request" variable="$request">
+            <type>\Illuminate\Http\Request</type>
+          </tag>
+          <tag name="param" line="131" description="" type="\Illuminate\Http\Response" variable="$response">
+            <type>\Illuminate\Http\Response</type>
+          </tag>
+          <tag name="return" line="131" description="" type="\Illuminate\Http\Response">
+            <type>\Illuminate\Http\Response</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$request</name>
+          <default/>
+          <type>\Illuminate\Http\Request</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$response</name>
+          <default/>
+          <type>\Illuminate\Http\Response</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Foundation\Http\Middleware" line="151" package="Default">
+        <name>isReading</name>
+        <full_name>\Illuminate\Foundation\Http\Middleware\VerifyCsrfToken::isReading()</full_name>
+        <docblock line="151">
+          <description>Determine if the HTTP request uses a ‘read’ verb.</description>
+          <long-description/>
+          <tag name="param" line="151" description="" type="\Illuminate\Http\Request" variable="$request">
+            <type>\Illuminate\Http\Request</type>
+          </tag>
+          <tag name="return" line="151" description="" type="boolean">
+            <type>boolean</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$request</name>
+          <default/>
+          <type>\Illuminate\Http\Request</type>
+        </argument>
+      </method>
+    </class>
+    <parse_markers>
+      <error line="0" code="PPC:ERR-50000">No summary was found for this file</error>
+      <error line="11" code="PPC:ERR-50005">No summary for class \Illuminate\Foundation\Http\Middleware\VerifyCsrfToken</error>
+    </parse_markers>
+    <source>eJy9V9tu20YQfddXTIAgpFy5TvuQh7pOaihKbRSODZspAliGsCZX5iLkLrO7tC00AfIZ6e/lSzq7XN6pS/oQPliUODuXM2fO0L+/yuJsNOIkpSojIYXTJMlTxomm8zci5xHRTPD5idbZ/IxFUUIfiKSHo1GuKEwToXLzzXwZPnicZQkL7X1hdrVKl4Kv5lORZoJTrq3vxompEB9Y3+dUcC1JqNV8xkO5yqytu6WyZ35FlTIWgfhA+RlTKdFhPHsMaVakMgoTohT8TSVbrqZKLq3h6J8R4HWwt2c/YQ+CmAKpawDGlSY8pD87g9Luj3siYb4VA2d+YD8zKTQNNY3gKYbAnAZi07JCYGmW0BQBs462xt+M17o8aA3oUDbvLk8V6JhoULHIkwhuMcPHMMkjPLyUIoXp1eUbuDeouooHEyVSktXaHGyX4Aiub/pZTCXF6oAApw+QVoRc35eMSJLCDq0B24VN5zZDCg30Ki+S6lxyuBcsapeb32JcWOY8tLEXi1BgBTIPtd/MyaQ0gTpGHWJs/RR8NddTHTO1/xLtEbmCT51HNZWOWo02Jp97QJ8QjtgCMZQPBSJwB5J+zKnSu0Bs9eKysMcE3MneCScgaMHpo+6ilrJHGnWD6ViKB9UKtnnWN+Ie2yr9MsFJKWlFQl2M2RL86ksDWaYuKYkQosrRGD59GrKUOedo944zHaCZ8tcZFvN1gRoVYMH5XbzVtTbVqzNTe21bGY4bZZjLQVyyJooK2Q3EJe4BpGITE4tF7XNcM8vRxly2L3Yq10nuMM9eUyQhNpIadDVqjAuDrVE45qg4LcHJjGrrApIdxOb7qemAuRUiWSNQFXk29KhDnKVA2Qpj8MtRLCQOK3Rq122PYVophE+OjsA78LomtvWVVmrJ0vLExJoftqwbnar8u2QNf8uj46EoDhJUJ9p1OuDeWS9JoujOTW+tWAVuTCDHOQFtBqXX2e/oU3/oOu3pDEOWVYN6ylH0lUCJGMOzZ0MWDa87V6sKwUJxjVBds1wXTC4mGOzc/Fgmr9eOxoJxWdvxNiukoo974I+dCBkkGsunZ29L9r2FfYK8fvVb42GMSkql773fN5jsB+d/zd56TYeGuk9Kt6YnxYlWhNrJ+4aTLrfr1DoLcv9lRO2t75wPS16RCVMLXNxW/JsIGZmG1lMbrZdEf1yG5wnlMF5gfWjXDjRxdayl33EUWdbVHMO/TmoLrYfQin9/yP7/Zu+fcKHMkeK2S9S1Z7axd8v2KuP1CI2vXEt2h/0vbnzPwdqiW3W8ZJVZzlQXAdtvA2b5Df1uLq9BxMnG2ZmAZqnRm5/gxXOE55dfn0/6wl+kfO1lRMfezaT+IRIpYbz1k6IhvtKYnyzLWs4abwiHPc5Vte+sbCdBcFFtcPyXzKzwb1++4vaLvn351+zq2x+rbAOvZsPiz/jC/lfSWIsp1bGITEeuvZPZ8WtsnPfnLDAf5xfB6fnbK++mmrrPo/8AnV2Nfw==</source>
+  <type>class</type></file>

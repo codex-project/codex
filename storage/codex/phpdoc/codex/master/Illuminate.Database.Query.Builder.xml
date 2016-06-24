@@ -1,0 +1,3916 @@
+<file path="codex/vendor/laravel/framework/src/Illuminate/Database/Query/Builder.php" generated-path="codex.vendor.laravel.framework.src.Illuminate.Database.Query.Builder.html" hash="9676f699dbc9ad67d85fd5a2d211fa7e" package="Default">
+    <docblock line="0">
+      <description/>
+      <long-description/>
+      <tag name="package" line="0" description="Default"/>
+    </docblock>
+    <namespace-alias name="Closure">\Closure</namespace-alias>
+    <namespace-alias name="RuntimeException">\RuntimeException</namespace-alias>
+    <namespace-alias name="BadMethodCallException">\BadMethodCallException</namespace-alias>
+    <namespace-alias name="Arr">\Illuminate\Support\Arr</namespace-alias>
+    <namespace-alias name="Str">\Illuminate\Support\Str</namespace-alias>
+    <namespace-alias name="InvalidArgumentException">\InvalidArgumentException</namespace-alias>
+    <namespace-alias name="Collection">\Illuminate\Support\Collection</namespace-alias>
+    <namespace-alias name="Paginator">\Illuminate\Pagination\Paginator</namespace-alias>
+    <namespace-alias name="Macroable">\Illuminate\Support\Traits\Macroable</namespace-alias>
+    <namespace-alias name="Arrayable">\Illuminate\Contracts\Support\Arrayable</namespace-alias>
+    <namespace-alias name="ConnectionInterface">\Illuminate\Database\ConnectionInterface</namespace-alias>
+    <namespace-alias name="Grammar">\Illuminate\Database\Query\Grammars\Grammar</namespace-alias>
+    <namespace-alias name="LengthAwarePaginator">\Illuminate\Pagination\LengthAwarePaginator</namespace-alias>
+    <namespace-alias name="Processor">\Illuminate\Database\Query\Processors\Processor</namespace-alias>
+    <class final="false" abstract="false" namespace="Illuminate\Database\Query" line="20" package="Default">
+      <extends/>
+      <name>Builder</name>
+      <full_name>\Illuminate\Database\Query\Builder</full_name>
+      <docblock line="20">
+        <description/>
+        <long-description/>
+        <tag name="package" line="20" description="Default"/>
+      </docblock>
+      <property static="false" visibility="protected" namespace="Illuminate\Database\Query" line="31" package="Default">
+        <name>$connection</name>
+        <full_name>\Illuminate\Database\Query\Builder::connection</full_name>
+        <default/>
+        <docblock line="31">
+          <description>The database connection instance.</description>
+          <long-description/>
+          <tag name="var" line="31" description="" type="\Illuminate\Database\Connection" variable="">
+            <type>\Illuminate\Database\Connection</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" namespace="Illuminate\Database\Query" line="38" package="Default">
+        <name>$grammar</name>
+        <full_name>\Illuminate\Database\Query\Builder::grammar</full_name>
+        <default/>
+        <docblock line="38">
+          <description>The database query grammar instance.</description>
+          <long-description/>
+          <tag name="var" line="38" description="" type="\Illuminate\Database\Query\Grammars\Grammar" variable="">
+            <type>\Illuminate\Database\Query\Grammars\Grammar</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" namespace="Illuminate\Database\Query" line="45" package="Default">
+        <name>$processor</name>
+        <full_name>\Illuminate\Database\Query\Builder::processor</full_name>
+        <default/>
+        <docblock line="45">
+          <description>The database query post processor instance.</description>
+          <long-description/>
+          <tag name="var" line="45" description="" type="\Illuminate\Database\Query\Processors\Processor" variable="">
+            <type>\Illuminate\Database\Query\Processors\Processor</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" namespace="Illuminate\Database\Query" line="52" package="Default">
+        <name>$bindings</name>
+        <full_name>\Illuminate\Database\Query\Builder::bindings</full_name>
+        <default>array('select' =&gt; array(), 'join' =&gt; array(), 'where' =&gt; array(), 'having' =&gt; array(), 'order' =&gt; array(), 'union' =&gt; array())</default>
+        <docblock line="52">
+          <description>The current query value bindings.</description>
+          <long-description/>
+          <tag name="var" line="52" description="" type="array" variable="">
+            <type>array</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="false" visibility="public" namespace="Illuminate\Database\Query" line="66" package="Default">
+        <name>$aggregate</name>
+        <full_name>\Illuminate\Database\Query\Builder::aggregate</full_name>
+        <default/>
+        <docblock line="66">
+          <description>An aggregate function and column to be run.</description>
+          <long-description/>
+          <tag name="var" line="66" description="" type="array" variable="">
+            <type>array</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="false" visibility="public" namespace="Illuminate\Database\Query" line="73" package="Default">
+        <name>$columns</name>
+        <full_name>\Illuminate\Database\Query\Builder::columns</full_name>
+        <default/>
+        <docblock line="73">
+          <description>The columns that should be returned.</description>
+          <long-description/>
+          <tag name="var" line="73" description="" type="array" variable="">
+            <type>array</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="false" visibility="public" namespace="Illuminate\Database\Query" line="80" package="Default">
+        <name>$distinct</name>
+        <full_name>\Illuminate\Database\Query\Builder::distinct</full_name>
+        <default>false</default>
+        <docblock line="80">
+          <description>Indicates if the query returns distinct results.</description>
+          <long-description/>
+          <tag name="var" line="80" description="" type="boolean" variable="">
+            <type>boolean</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="false" visibility="public" namespace="Illuminate\Database\Query" line="87" package="Default">
+        <name>$from</name>
+        <full_name>\Illuminate\Database\Query\Builder::from</full_name>
+        <default/>
+        <docblock line="87">
+          <description>The table which the query is targeting.</description>
+          <long-description/>
+          <tag name="var" line="87" description="" type="string" variable="">
+            <type>string</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="false" visibility="public" namespace="Illuminate\Database\Query" line="94" package="Default">
+        <name>$joins</name>
+        <full_name>\Illuminate\Database\Query\Builder::joins</full_name>
+        <default/>
+        <docblock line="94">
+          <description>The table joins for the query.</description>
+          <long-description/>
+          <tag name="var" line="94" description="" type="array" variable="">
+            <type>array</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="false" visibility="public" namespace="Illuminate\Database\Query" line="101" package="Default">
+        <name>$wheres</name>
+        <full_name>\Illuminate\Database\Query\Builder::wheres</full_name>
+        <default/>
+        <docblock line="101">
+          <description>The where constraints for the query.</description>
+          <long-description/>
+          <tag name="var" line="101" description="" type="array" variable="">
+            <type>array</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="false" visibility="public" namespace="Illuminate\Database\Query" line="108" package="Default">
+        <name>$groups</name>
+        <full_name>\Illuminate\Database\Query\Builder::groups</full_name>
+        <default/>
+        <docblock line="108">
+          <description>The groupings for the query.</description>
+          <long-description/>
+          <tag name="var" line="108" description="" type="array" variable="">
+            <type>array</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="false" visibility="public" namespace="Illuminate\Database\Query" line="115" package="Default">
+        <name>$havings</name>
+        <full_name>\Illuminate\Database\Query\Builder::havings</full_name>
+        <default/>
+        <docblock line="115">
+          <description>The having constraints for the query.</description>
+          <long-description/>
+          <tag name="var" line="115" description="" type="array" variable="">
+            <type>array</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="false" visibility="public" namespace="Illuminate\Database\Query" line="122" package="Default">
+        <name>$orders</name>
+        <full_name>\Illuminate\Database\Query\Builder::orders</full_name>
+        <default/>
+        <docblock line="122">
+          <description>The orderings for the query.</description>
+          <long-description/>
+          <tag name="var" line="122" description="" type="array" variable="">
+            <type>array</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="false" visibility="public" namespace="Illuminate\Database\Query" line="129" package="Default">
+        <name>$limit</name>
+        <full_name>\Illuminate\Database\Query\Builder::limit</full_name>
+        <default/>
+        <docblock line="129">
+          <description>The maximum number of records to return.</description>
+          <long-description/>
+          <tag name="var" line="129" description="" type="integer" variable="">
+            <type>integer</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="false" visibility="public" namespace="Illuminate\Database\Query" line="136" package="Default">
+        <name>$offset</name>
+        <full_name>\Illuminate\Database\Query\Builder::offset</full_name>
+        <default/>
+        <docblock line="136">
+          <description>The number of records to skip.</description>
+          <long-description/>
+          <tag name="var" line="136" description="" type="integer" variable="">
+            <type>integer</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="false" visibility="public" namespace="Illuminate\Database\Query" line="143" package="Default">
+        <name>$unions</name>
+        <full_name>\Illuminate\Database\Query\Builder::unions</full_name>
+        <default/>
+        <docblock line="143">
+          <description>The query union statements.</description>
+          <long-description/>
+          <tag name="var" line="143" description="" type="array" variable="">
+            <type>array</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="false" visibility="public" namespace="Illuminate\Database\Query" line="150" package="Default">
+        <name>$unionLimit</name>
+        <full_name>\Illuminate\Database\Query\Builder::unionLimit</full_name>
+        <default/>
+        <docblock line="150">
+          <description>The maximum number of union records to return.</description>
+          <long-description/>
+          <tag name="var" line="150" description="" type="integer" variable="">
+            <type>integer</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="false" visibility="public" namespace="Illuminate\Database\Query" line="157" package="Default">
+        <name>$unionOffset</name>
+        <full_name>\Illuminate\Database\Query\Builder::unionOffset</full_name>
+        <default/>
+        <docblock line="157">
+          <description>The number of union records to skip.</description>
+          <long-description/>
+          <tag name="var" line="157" description="" type="integer" variable="">
+            <type>integer</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="false" visibility="public" namespace="Illuminate\Database\Query" line="164" package="Default">
+        <name>$unionOrders</name>
+        <full_name>\Illuminate\Database\Query\Builder::unionOrders</full_name>
+        <default/>
+        <docblock line="164">
+          <description>The orderings for the union query.</description>
+          <long-description/>
+          <tag name="var" line="164" description="" type="array" variable="">
+            <type>array</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="false" visibility="public" namespace="Illuminate\Database\Query" line="171" package="Default">
+        <name>$lock</name>
+        <full_name>\Illuminate\Database\Query\Builder::lock</full_name>
+        <default/>
+        <docblock line="171">
+          <description>Indicates whether row locking is being used.</description>
+          <long-description/>
+          <tag name="var" line="171" description="" type="string|boolean" variable="">
+            <type>string</type>
+            <type>boolean</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" namespace="Illuminate\Database\Query" line="178" package="Default">
+        <name>$backups</name>
+        <full_name>\Illuminate\Database\Query\Builder::backups</full_name>
+        <default>array()</default>
+        <docblock line="178">
+          <description>The field backups currently in use.</description>
+          <long-description/>
+          <tag name="var" line="178" description="" type="array" variable="">
+            <type>array</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" namespace="Illuminate\Database\Query" line="185" package="Default">
+        <name>$bindingBackups</name>
+        <full_name>\Illuminate\Database\Query\Builder::bindingBackups</full_name>
+        <default>array()</default>
+        <docblock line="185">
+          <description>The binding backups currently in use.</description>
+          <long-description/>
+          <tag name="var" line="185" description="" type="array" variable="">
+            <type>array</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" namespace="Illuminate\Database\Query" line="192" package="Default">
+        <name>$operators</name>
+        <full_name>\Illuminate\Database\Query\Builder::operators</full_name>
+        <default>array('=', '&lt;', '&gt;', '&lt;=', '&gt;=', '&lt;&gt;', '!=', 'like', 'like binary', 'not like', 'between', 'ilike', '&amp;', '|', '^', '&lt;&lt;', '&gt;&gt;', 'rlike', 'regexp', 'not regexp', '~', '~*', '!~', '!~*', 'similar to', 'not similar to')</default>
+        <docblock line="192">
+          <description>All of the available clause operators.</description>
+          <long-description/>
+          <tag name="var" line="192" description="" type="array" variable="">
+            <type>array</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" namespace="Illuminate\Database\Query" line="206" package="Default">
+        <name>$useWritePdo</name>
+        <full_name>\Illuminate\Database\Query\Builder::useWritePdo</full_name>
+        <default>false</default>
+        <docblock line="206">
+          <description>Whether use write pdo for select.</description>
+          <long-description/>
+          <tag name="var" line="206" description="" type="boolean" variable="">
+            <type>boolean</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="true" visibility="protected" namespace="Illuminate\Database\Query" line="15" package="Default">
+        <name>$macros</name>
+        <full_name>\Illuminate\Support\Traits\Macroable::macros</full_name>
+        <default>array()</default>
+        <docblock line="15">
+          <description>The registered string macros.</description>
+          <long-description/>
+          <tag name="var" line="15" description="" type="array" variable="">
+            <type>array</type>
+          </tag>
+        </docblock>
+      </property>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Query" line="216" package="Default">
+        <name>__construct</name>
+        <full_name>\Illuminate\Database\Query\Builder::__construct()</full_name>
+        <docblock line="216">
+          <description>Create a new query builder instance.</description>
+          <long-description/>
+          <tag name="param" line="216" description="" type="\Illuminate\Database\ConnectionInterface" variable="$connection">
+            <type>\Illuminate\Database\ConnectionInterface</type>
+          </tag>
+          <tag name="param" line="216" description="" type="\Illuminate\Database\Query\Grammars\Grammar" variable="$grammar">
+            <type>\Illuminate\Database\Query\Grammars\Grammar</type>
+          </tag>
+          <tag name="param" line="216" description="" type="\Illuminate\Database\Query\Processors\Processor" variable="$processor">
+            <type>\Illuminate\Database\Query\Processors\Processor</type>
+          </tag>
+          <tag name="return" line="216" description="" type="void">
+            <type>void</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$connection</name>
+          <default/>
+          <type>\Illuminate\Database\ConnectionInterface</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$grammar</name>
+          <default>null</default>
+          <type>\Illuminate\Database\Query\Grammars\Grammar</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$processor</name>
+          <default>null</default>
+          <type>\Illuminate\Database\Query\Processors\Processor</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Query" line="231" package="Default">
+        <name>select</name>
+        <full_name>\Illuminate\Database\Query\Builder::select()</full_name>
+        <docblock line="231">
+          <description>Set the columns to be selected.</description>
+          <long-description/>
+          <tag name="param" line="231" description="" type="array|mixed" variable="$columns">
+            <type>array</type>
+            <type>mixed</type>
+          </tag>
+          <tag name="return" line="231" description="" type="\Illuminate\Database\Query\Builder">
+            <type>\Illuminate\Database\Query\Builder</type>
+          </tag>
+          <tag name="fluent" description="This method is part of a fluent interface and will return the same instance"/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$columns</name>
+          <default>array('*')</default>
+          <type>array|mixed</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Query" line="245" package="Default">
+        <name>selectRaw</name>
+        <full_name>\Illuminate\Database\Query\Builder::selectRaw()</full_name>
+        <docblock line="245">
+          <description>Add a new "raw" select expression to the query.</description>
+          <long-description/>
+          <tag name="param" line="245" description="" type="string" variable="$expression">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="245" description="" type="array" variable="$bindings">
+            <type>array</type>
+          </tag>
+          <tag name="return" line="245" description="" type="\Illuminate\Database\Query\Builder|static">
+            <type>\Illuminate\Database\Query\Builder</type>
+            <type>static</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$expression</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$bindings</name>
+          <default>array()</default>
+          <type>array</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Query" line="265" package="Default">
+        <name>selectSub</name>
+        <full_name>\Illuminate\Database\Query\Builder::selectSub()</full_name>
+        <docblock line="265">
+          <description>Add a subselect expression to the query.</description>
+          <long-description/>
+          <tag name="param" line="265" description="" type="\Closure|\Illuminate\Database\Query\Builder|string" variable="$query">
+            <type>\Closure</type>
+            <type>\Illuminate\Database\Query\Builder</type>
+            <type>string</type>
+          </tag>
+          <tag name="param" line="265" description="" type="string" variable="$as">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="265" description="" type="\Illuminate\Database\Query\Builder|static">
+            <type>\Illuminate\Database\Query\Builder</type>
+            <type>static</type>
+          </tag>
+          <tag name="throws" line="265" description="" type="\InvalidArgumentException">
+            <type>\InvalidArgumentException</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$query</name>
+          <default/>
+          <type>\Closure|\Illuminate\Database\Query\Builder|string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$as</name>
+          <default/>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Query" line="292" package="Default">
+        <name>addSelect</name>
+        <full_name>\Illuminate\Database\Query\Builder::addSelect()</full_name>
+        <docblock line="292">
+          <description>Add a new select column to the query.</description>
+          <long-description/>
+          <tag name="param" line="292" description="" type="array|mixed" variable="$column">
+            <type>array</type>
+            <type>mixed</type>
+          </tag>
+          <tag name="return" line="292" description="" type="\Illuminate\Database\Query\Builder">
+            <type>\Illuminate\Database\Query\Builder</type>
+          </tag>
+          <tag name="fluent" description="This method is part of a fluent interface and will return the same instance"/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$column</name>
+          <default/>
+          <type>array|mixed</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Query" line="306" package="Default">
+        <name>distinct</name>
+        <full_name>\Illuminate\Database\Query\Builder::distinct()</full_name>
+        <docblock line="306">
+          <description>Force the query to only return distinct results.</description>
+          <long-description/>
+          <tag name="return" line="306" description="" type="\Illuminate\Database\Query\Builder">
+            <type>\Illuminate\Database\Query\Builder</type>
+          </tag>
+          <tag name="fluent" description="This method is part of a fluent interface and will return the same instance"/>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Query" line="319" package="Default">
+        <name>from</name>
+        <full_name>\Illuminate\Database\Query\Builder::from()</full_name>
+        <docblock line="319">
+          <description>Set the table which the query is targeting.</description>
+          <long-description/>
+          <tag name="param" line="319" description="" type="string" variable="$table">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="319" description="" type="\Illuminate\Database\Query\Builder">
+            <type>\Illuminate\Database\Query\Builder</type>
+          </tag>
+          <tag name="fluent" description="This method is part of a fluent interface and will return the same instance"/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$table</name>
+          <default/>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Query" line="337" package="Default">
+        <name>join</name>
+        <full_name>\Illuminate\Database\Query\Builder::join()</full_name>
+        <docblock line="337">
+          <description>Add a join clause to the query.</description>
+          <long-description/>
+          <tag name="param" line="337" description="" type="string" variable="$table">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="337" description="" type="string" variable="$one">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="337" description="" type="string" variable="$operator">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="337" description="" type="string" variable="$two">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="337" description="" type="string" variable="$type">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="337" description="" type="boolean" variable="$where">
+            <type>boolean</type>
+          </tag>
+          <tag name="return" line="337" description="" type="\Illuminate\Database\Query\Builder">
+            <type>\Illuminate\Database\Query\Builder</type>
+          </tag>
+          <tag name="fluent" description="This method is part of a fluent interface and will return the same instance"/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$table</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$one</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$operator</name>
+          <default>null</default>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$two</name>
+          <default>null</default>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$type</name>
+          <default>'inner'</default>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$where</name>
+          <default>false</default>
+          <type>boolean</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Query" line="378" package="Default">
+        <name>joinWhere</name>
+        <full_name>\Illuminate\Database\Query\Builder::joinWhere()</full_name>
+        <docblock line="378">
+          <description>Add a "join where" clause to the query.</description>
+          <long-description/>
+          <tag name="param" line="378" description="" type="string" variable="$table">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="378" description="" type="string" variable="$one">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="378" description="" type="string" variable="$operator">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="378" description="" type="string" variable="$two">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="378" description="" type="string" variable="$type">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="378" description="" type="\Illuminate\Database\Query\Builder|static">
+            <type>\Illuminate\Database\Query\Builder</type>
+            <type>static</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$table</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$one</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$operator</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$two</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$type</name>
+          <default>'inner'</default>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Query" line="392" package="Default">
+        <name>leftJoin</name>
+        <full_name>\Illuminate\Database\Query\Builder::leftJoin()</full_name>
+        <docblock line="392">
+          <description>Add a left join to the query.</description>
+          <long-description/>
+          <tag name="param" line="392" description="" type="string" variable="$table">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="392" description="" type="string" variable="$first">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="392" description="" type="string" variable="$operator">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="392" description="" type="string" variable="$second">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="392" description="" type="\Illuminate\Database\Query\Builder|static">
+            <type>\Illuminate\Database\Query\Builder</type>
+            <type>static</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$table</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$first</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$operator</name>
+          <default>null</default>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$second</name>
+          <default>null</default>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Query" line="406" package="Default">
+        <name>leftJoinWhere</name>
+        <full_name>\Illuminate\Database\Query\Builder::leftJoinWhere()</full_name>
+        <docblock line="406">
+          <description>Add a "join where" clause to the query.</description>
+          <long-description/>
+          <tag name="param" line="406" description="" type="string" variable="$table">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="406" description="" type="string" variable="$one">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="406" description="" type="string" variable="$operator">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="406" description="" type="string" variable="$two">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="406" description="" type="\Illuminate\Database\Query\Builder|static">
+            <type>\Illuminate\Database\Query\Builder</type>
+            <type>static</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$table</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$one</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$operator</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$two</name>
+          <default/>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Query" line="420" package="Default">
+        <name>rightJoin</name>
+        <full_name>\Illuminate\Database\Query\Builder::rightJoin()</full_name>
+        <docblock line="420">
+          <description>Add a right join to the query.</description>
+          <long-description/>
+          <tag name="param" line="420" description="" type="string" variable="$table">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="420" description="" type="string" variable="$first">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="420" description="" type="string" variable="$operator">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="420" description="" type="string" variable="$second">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="420" description="" type="\Illuminate\Database\Query\Builder|static">
+            <type>\Illuminate\Database\Query\Builder</type>
+            <type>static</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$table</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$first</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$operator</name>
+          <default>null</default>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$second</name>
+          <default>null</default>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Query" line="434" package="Default">
+        <name>rightJoinWhere</name>
+        <full_name>\Illuminate\Database\Query\Builder::rightJoinWhere()</full_name>
+        <docblock line="434">
+          <description>Add a "right join where" clause to the query.</description>
+          <long-description/>
+          <tag name="param" line="434" description="" type="string" variable="$table">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="434" description="" type="string" variable="$one">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="434" description="" type="string" variable="$operator">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="434" description="" type="string" variable="$two">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="434" description="" type="\Illuminate\Database\Query\Builder|static">
+            <type>\Illuminate\Database\Query\Builder</type>
+            <type>static</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$table</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$one</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$operator</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$two</name>
+          <default/>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Query" line="448" package="Default">
+        <name>crossJoin</name>
+        <full_name>\Illuminate\Database\Query\Builder::crossJoin()</full_name>
+        <docblock line="448">
+          <description>Add a "cross join" clause to the query.</description>
+          <long-description/>
+          <tag name="param" line="448" description="" type="string" variable="$table">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="448" description="" type="string" variable="$first">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="448" description="" type="string" variable="$operator">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="448" description="" type="string" variable="$second">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="448" description="" type="\Illuminate\Database\Query\Builder|static">
+            <type>\Illuminate\Database\Query\Builder</type>
+            <type>static</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$table</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$first</name>
+          <default>null</default>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$operator</name>
+          <default>null</default>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$second</name>
+          <default>null</default>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Query" line="466" package="Default">
+        <name>when</name>
+        <full_name>\Illuminate\Database\Query\Builder::when()</full_name>
+        <docblock line="466">
+          <description>Apply the callback's query changes if the given "value" is true.</description>
+          <long-description/>
+          <tag name="param" line="466" description="" type="boolean" variable="$value">
+            <type>boolean</type>
+          </tag>
+          <tag name="param" line="466" description="" type="\Closure" variable="$callback">
+            <type>\Closure</type>
+          </tag>
+          <tag name="return" line="466" description="" type="\Illuminate\Database\Query\Builder">
+            <type>\Illuminate\Database\Query\Builder</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$value</name>
+          <default/>
+          <type>boolean</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$callback</name>
+          <default/>
+          <type>\Closure</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Query" line="488" package="Default">
+        <name>where</name>
+        <full_name>\Illuminate\Database\Query\Builder::where()</full_name>
+        <docblock line="488">
+          <description>Add a basic where clause to the query.</description>
+          <long-description/>
+          <tag name="param" line="488" description="" type="string|array|\Closure" variable="$column">
+            <type>string</type>
+            <type>array</type>
+            <type>\Closure</type>
+          </tag>
+          <tag name="param" line="488" description="" type="string" variable="$operator">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="488" description="" type="mixed" variable="$value">
+            <type>mixed</type>
+          </tag>
+          <tag name="param" line="488" description="" type="string" variable="$boolean">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="488" description="" type="\Illuminate\Database\Query\Builder">
+            <type>\Illuminate\Database\Query\Builder</type>
+          </tag>
+          <tag name="throws" line="488" description="" type="\InvalidArgumentException">
+            <type>\InvalidArgumentException</type>
+          </tag>
+          <tag name="fluent" description="This method is part of a fluent interface and will return the same instance"/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$column</name>
+          <default/>
+          <type>string|array|\Closure</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$operator</name>
+          <default>null</default>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$value</name>
+          <default>null</default>
+          <type>mixed</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$boolean</name>
+          <default>'and'</default>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Database\Query" line="561" package="Default">
+        <name>addArrayOfWheres</name>
+        <full_name>\Illuminate\Database\Query\Builder::addArrayOfWheres()</full_name>
+        <docblock line="561">
+          <description>Add an array of where clauses to the query.</description>
+          <long-description/>
+          <tag name="param" line="561" description="" type="array" variable="$column">
+            <type>array</type>
+          </tag>
+          <tag name="param" line="561" description="" type="string" variable="$boolean">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="561" description="" type="string" variable="$method">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="561" description="" type="\Illuminate\Database\Query\Builder">
+            <type>\Illuminate\Database\Query\Builder</type>
+          </tag>
+          <tag name="fluent" description="This method is part of a fluent interface and will return the same instance"/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$column</name>
+          <default/>
+          <type>array</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$boolean</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$method</name>
+          <default>'where'</default>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Database\Query" line="581" package="Default">
+        <name>invalidOperatorAndValue</name>
+        <full_name>\Illuminate\Database\Query\Builder::invalidOperatorAndValue()</full_name>
+        <docblock line="581">
+          <description>Determine if the given operator and value combination is legal.</description>
+          <long-description/>
+          <tag name="param" line="581" description="" type="string" variable="$operator">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="581" description="" type="mixed" variable="$value">
+            <type>mixed</type>
+          </tag>
+          <tag name="return" line="581" description="" type="boolean">
+            <type>boolean</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$operator</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$value</name>
+          <default/>
+          <type>mixed</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Query" line="596" package="Default">
+        <name>orWhere</name>
+        <full_name>\Illuminate\Database\Query\Builder::orWhere()</full_name>
+        <docblock line="596">
+          <description>Add an "or where" clause to the query.</description>
+          <long-description/>
+          <tag name="param" line="596" description="" type="string" variable="$column">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="596" description="" type="string" variable="$operator">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="596" description="" type="mixed" variable="$value">
+            <type>mixed</type>
+          </tag>
+          <tag name="return" line="596" description="" type="\Illuminate\Database\Query\Builder|static">
+            <type>\Illuminate\Database\Query\Builder</type>
+            <type>static</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$column</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$operator</name>
+          <default>null</default>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$value</name>
+          <default>null</default>
+          <type>mixed</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Query" line="610" package="Default">
+        <name>whereColumn</name>
+        <full_name>\Illuminate\Database\Query\Builder::whereColumn()</full_name>
+        <docblock line="610">
+          <description>Add a "where" clause comparing two columns to the query.</description>
+          <long-description/>
+          <tag name="param" line="610" description="" type="string|array" variable="$first">
+            <type>string</type>
+            <type>array</type>
+          </tag>
+          <tag name="param" line="610" description="" type="string|null" variable="$operator">
+            <type>string</type>
+            <type>null</type>
+          </tag>
+          <tag name="param" line="610" description="" type="string|null" variable="$second">
+            <type>string</type>
+            <type>null</type>
+          </tag>
+          <tag name="param" line="610" description="" type="string|null" variable="$boolean">
+            <type>string</type>
+            <type>null</type>
+          </tag>
+          <tag name="return" line="610" description="" type="\Illuminate\Database\Query\Builder|static">
+            <type>\Illuminate\Database\Query\Builder</type>
+            <type>static</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$first</name>
+          <default/>
+          <type>string|array</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$operator</name>
+          <default>null</default>
+          <type>string|null</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$second</name>
+          <default>null</default>
+          <type>string|null</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$boolean</name>
+          <default>'and'</default>
+          <type>string|null</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Query" line="642" package="Default">
+        <name>orWhereColumn</name>
+        <full_name>\Illuminate\Database\Query\Builder::orWhereColumn()</full_name>
+        <docblock line="642">
+          <description>Add an "or where" clause comparing two columns to the query.</description>
+          <long-description/>
+          <tag name="param" line="642" description="" type="string|array" variable="$first">
+            <type>string</type>
+            <type>array</type>
+          </tag>
+          <tag name="param" line="642" description="" type="string|null" variable="$operator">
+            <type>string</type>
+            <type>null</type>
+          </tag>
+          <tag name="param" line="642" description="" type="string|null" variable="$second">
+            <type>string</type>
+            <type>null</type>
+          </tag>
+          <tag name="return" line="642" description="" type="\Illuminate\Database\Query\Builder|static">
+            <type>\Illuminate\Database\Query\Builder</type>
+            <type>static</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$first</name>
+          <default/>
+          <type>string|array</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$operator</name>
+          <default>null</default>
+          <type>string|null</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$second</name>
+          <default>null</default>
+          <type>string|null</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Query" line="655" package="Default">
+        <name>whereRaw</name>
+        <full_name>\Illuminate\Database\Query\Builder::whereRaw()</full_name>
+        <docblock line="655">
+          <description>Add a raw where clause to the query.</description>
+          <long-description/>
+          <tag name="param" line="655" description="" type="string" variable="$sql">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="655" description="" type="array" variable="$bindings">
+            <type>array</type>
+          </tag>
+          <tag name="param" line="655" description="" type="string" variable="$boolean">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="655" description="" type="\Illuminate\Database\Query\Builder">
+            <type>\Illuminate\Database\Query\Builder</type>
+          </tag>
+          <tag name="fluent" description="This method is part of a fluent interface and will return the same instance"/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$sql</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$bindings</name>
+          <default>array()</default>
+          <type>array</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$boolean</name>
+          <default>'and'</default>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Query" line="673" package="Default">
+        <name>orWhereRaw</name>
+        <full_name>\Illuminate\Database\Query\Builder::orWhereRaw()</full_name>
+        <docblock line="673">
+          <description>Add a raw or where clause to the query.</description>
+          <long-description/>
+          <tag name="param" line="673" description="" type="string" variable="$sql">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="673" description="" type="array" variable="$bindings">
+            <type>array</type>
+          </tag>
+          <tag name="return" line="673" description="" type="\Illuminate\Database\Query\Builder|static">
+            <type>\Illuminate\Database\Query\Builder</type>
+            <type>static</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$sql</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$bindings</name>
+          <default>array()</default>
+          <type>array</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Query" line="687" package="Default">
+        <name>whereBetween</name>
+        <full_name>\Illuminate\Database\Query\Builder::whereBetween()</full_name>
+        <docblock line="687">
+          <description>Add a where between statement to the query.</description>
+          <long-description/>
+          <tag name="param" line="687" description="" type="string" variable="$column">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="687" description="" type="array" variable="$values">
+            <type>array</type>
+          </tag>
+          <tag name="param" line="687" description="" type="string" variable="$boolean">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="687" description="" type="boolean" variable="$not">
+            <type>boolean</type>
+          </tag>
+          <tag name="return" line="687" description="" type="\Illuminate\Database\Query\Builder">
+            <type>\Illuminate\Database\Query\Builder</type>
+          </tag>
+          <tag name="fluent" description="This method is part of a fluent interface and will return the same instance"/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$column</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$values</name>
+          <default/>
+          <type>array</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$boolean</name>
+          <default>'and'</default>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$not</name>
+          <default>false</default>
+          <type>boolean</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Query" line="705" package="Default">
+        <name>orWhereBetween</name>
+        <full_name>\Illuminate\Database\Query\Builder::orWhereBetween()</full_name>
+        <docblock line="705">
+          <description>Add an or where between statement to the query.</description>
+          <long-description/>
+          <tag name="param" line="705" description="" type="string" variable="$column">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="705" description="" type="array" variable="$values">
+            <type>array</type>
+          </tag>
+          <tag name="return" line="705" description="" type="\Illuminate\Database\Query\Builder|static">
+            <type>\Illuminate\Database\Query\Builder</type>
+            <type>static</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$column</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$values</name>
+          <default/>
+          <type>array</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Query" line="718" package="Default">
+        <name>whereNotBetween</name>
+        <full_name>\Illuminate\Database\Query\Builder::whereNotBetween()</full_name>
+        <docblock line="718">
+          <description>Add a where not between statement to the query.</description>
+          <long-description/>
+          <tag name="param" line="718" description="" type="string" variable="$column">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="718" description="" type="array" variable="$values">
+            <type>array</type>
+          </tag>
+          <tag name="param" line="718" description="" type="string" variable="$boolean">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="718" description="" type="\Illuminate\Database\Query\Builder|static">
+            <type>\Illuminate\Database\Query\Builder</type>
+            <type>static</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$column</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$values</name>
+          <default/>
+          <type>array</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$boolean</name>
+          <default>'and'</default>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Query" line="730" package="Default">
+        <name>orWhereNotBetween</name>
+        <full_name>\Illuminate\Database\Query\Builder::orWhereNotBetween()</full_name>
+        <docblock line="730">
+          <description>Add an or where not between statement to the query.</description>
+          <long-description/>
+          <tag name="param" line="730" description="" type="string" variable="$column">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="730" description="" type="array" variable="$values">
+            <type>array</type>
+          </tag>
+          <tag name="return" line="730" description="" type="\Illuminate\Database\Query\Builder|static">
+            <type>\Illuminate\Database\Query\Builder</type>
+            <type>static</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$column</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$values</name>
+          <default/>
+          <type>array</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Query" line="742" package="Default">
+        <name>whereNested</name>
+        <full_name>\Illuminate\Database\Query\Builder::whereNested()</full_name>
+        <docblock line="742">
+          <description>Add a nested where statement to the query.</description>
+          <long-description/>
+          <tag name="param" line="742" description="" type="\Closure" variable="$callback">
+            <type>\Closure</type>
+          </tag>
+          <tag name="param" line="742" description="" type="string" variable="$boolean">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="742" description="" type="\Illuminate\Database\Query\Builder|static">
+            <type>\Illuminate\Database\Query\Builder</type>
+            <type>static</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$callback</name>
+          <default/>
+          <type>\Closure</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$boolean</name>
+          <default>'and'</default>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Query" line="756" package="Default">
+        <name>forNestedWhere</name>
+        <full_name>\Illuminate\Database\Query\Builder::forNestedWhere()</full_name>
+        <docblock line="756">
+          <description>Create a new query instance for nested where condition.</description>
+          <long-description/>
+          <tag name="return" line="756" description="" type="\Illuminate\Database\Query\Builder">
+            <type>\Illuminate\Database\Query\Builder</type>
+          </tag>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Query" line="770" package="Default">
+        <name>addNestedWhereQuery</name>
+        <full_name>\Illuminate\Database\Query\Builder::addNestedWhereQuery()</full_name>
+        <docblock line="770">
+          <description>Add another query builder as a nested where to the query builder.</description>
+          <long-description/>
+          <tag name="param" line="770" description="" type="\Illuminate\Database\Query\Builder|static" variable="$query">
+            <type>\Illuminate\Database\Query\Builder</type>
+            <type>static</type>
+          </tag>
+          <tag name="param" line="770" description="" type="string" variable="$boolean">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="770" description="" type="\Illuminate\Database\Query\Builder">
+            <type>\Illuminate\Database\Query\Builder</type>
+          </tag>
+          <tag name="fluent" description="This method is part of a fluent interface and will return the same instance"/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$query</name>
+          <default/>
+          <type>\Illuminate\Database\Query\Builder|static</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$boolean</name>
+          <default>'and'</default>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Database\Query" line="792" package="Default">
+        <name>whereSub</name>
+        <full_name>\Illuminate\Database\Query\Builder::whereSub()</full_name>
+        <docblock line="792">
+          <description>Add a full sub-select to the query.</description>
+          <long-description/>
+          <tag name="param" line="792" description="" type="string" variable="$column">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="792" description="" type="string" variable="$operator">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="792" description="" type="\Closure" variable="$callback">
+            <type>\Closure</type>
+          </tag>
+          <tag name="param" line="792" description="" type="string" variable="$boolean">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="792" description="" type="\Illuminate\Database\Query\Builder">
+            <type>\Illuminate\Database\Query\Builder</type>
+          </tag>
+          <tag name="fluent" description="This method is part of a fluent interface and will return the same instance"/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$column</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$operator</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$callback</name>
+          <default/>
+          <type>\Closure</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$boolean</name>
+          <default/>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Query" line="818" package="Default">
+        <name>whereExists</name>
+        <full_name>\Illuminate\Database\Query\Builder::whereExists()</full_name>
+        <docblock line="818">
+          <description>Add an exists clause to the query.</description>
+          <long-description/>
+          <tag name="param" line="818" description="" type="\Closure" variable="$callback">
+            <type>\Closure</type>
+          </tag>
+          <tag name="param" line="818" description="" type="string" variable="$boolean">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="818" description="" type="boolean" variable="$not">
+            <type>boolean</type>
+          </tag>
+          <tag name="return" line="818" description="" type="\Illuminate\Database\Query\Builder">
+            <type>\Illuminate\Database\Query\Builder</type>
+          </tag>
+          <tag name="fluent" description="This method is part of a fluent interface and will return the same instance"/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$callback</name>
+          <default/>
+          <type>\Closure</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$boolean</name>
+          <default>'and'</default>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$not</name>
+          <default>false</default>
+          <type>boolean</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Query" line="837" package="Default">
+        <name>orWhereExists</name>
+        <full_name>\Illuminate\Database\Query\Builder::orWhereExists()</full_name>
+        <docblock line="837">
+          <description>Add an or exists clause to the query.</description>
+          <long-description/>
+          <tag name="param" line="837" description="" type="\Closure" variable="$callback">
+            <type>\Closure</type>
+          </tag>
+          <tag name="param" line="837" description="" type="boolean" variable="$not">
+            <type>boolean</type>
+          </tag>
+          <tag name="return" line="837" description="" type="\Illuminate\Database\Query\Builder|static">
+            <type>\Illuminate\Database\Query\Builder</type>
+            <type>static</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$callback</name>
+          <default/>
+          <type>\Closure</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$not</name>
+          <default>false</default>
+          <type>boolean</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Query" line="849" package="Default">
+        <name>whereNotExists</name>
+        <full_name>\Illuminate\Database\Query\Builder::whereNotExists()</full_name>
+        <docblock line="849">
+          <description>Add a where not exists clause to the query.</description>
+          <long-description/>
+          <tag name="param" line="849" description="" type="\Closure" variable="$callback">
+            <type>\Closure</type>
+          </tag>
+          <tag name="param" line="849" description="" type="string" variable="$boolean">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="849" description="" type="\Illuminate\Database\Query\Builder|static">
+            <type>\Illuminate\Database\Query\Builder</type>
+            <type>static</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$callback</name>
+          <default/>
+          <type>\Closure</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$boolean</name>
+          <default>'and'</default>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Query" line="860" package="Default">
+        <name>orWhereNotExists</name>
+        <full_name>\Illuminate\Database\Query\Builder::orWhereNotExists()</full_name>
+        <docblock line="860">
+          <description>Add a where not exists clause to the query.</description>
+          <long-description/>
+          <tag name="param" line="860" description="" type="\Closure" variable="$callback">
+            <type>\Closure</type>
+          </tag>
+          <tag name="return" line="860" description="" type="\Illuminate\Database\Query\Builder|static">
+            <type>\Illuminate\Database\Query\Builder</type>
+            <type>static</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$callback</name>
+          <default/>
+          <type>\Closure</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Query" line="873" package="Default">
+        <name>addWhereExistsQuery</name>
+        <full_name>\Illuminate\Database\Query\Builder::addWhereExistsQuery()</full_name>
+        <docblock line="873">
+          <description>Add an exists clause to the query.</description>
+          <long-description/>
+          <tag name="param" line="873" description="" type="\Illuminate\Database\Query\Builder" variable="$query">
+            <type>\Illuminate\Database\Query\Builder</type>
+          </tag>
+          <tag name="param" line="873" description="" type="string" variable="$boolean">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="873" description="" type="boolean" variable="$not">
+            <type>boolean</type>
+          </tag>
+          <tag name="return" line="873" description="" type="\Illuminate\Database\Query\Builder">
+            <type>\Illuminate\Database\Query\Builder</type>
+          </tag>
+          <tag name="fluent" description="This method is part of a fluent interface and will return the same instance"/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$query</name>
+          <default/>
+          <type>\Illuminate\Database\Query\Builder</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$boolean</name>
+          <default>'and'</default>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$not</name>
+          <default>false</default>
+          <type>boolean</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Query" line="893" package="Default">
+        <name>whereIn</name>
+        <full_name>\Illuminate\Database\Query\Builder::whereIn()</full_name>
+        <docblock line="893">
+          <description>Add a "where in" clause to the query.</description>
+          <long-description/>
+          <tag name="param" line="893" description="" type="string" variable="$column">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="893" description="" type="mixed" variable="$values">
+            <type>mixed</type>
+          </tag>
+          <tag name="param" line="893" description="" type="string" variable="$boolean">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="893" description="" type="boolean" variable="$not">
+            <type>boolean</type>
+          </tag>
+          <tag name="return" line="893" description="" type="\Illuminate\Database\Query\Builder">
+            <type>\Illuminate\Database\Query\Builder</type>
+          </tag>
+          <tag name="fluent" description="This method is part of a fluent interface and will return the same instance"/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$column</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$values</name>
+          <default/>
+          <type>mixed</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$boolean</name>
+          <default>'and'</default>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$not</name>
+          <default>false</default>
+          <type>boolean</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Query" line="928" package="Default">
+        <name>orWhereIn</name>
+        <full_name>\Illuminate\Database\Query\Builder::orWhereIn()</full_name>
+        <docblock line="928">
+          <description>Add an "or where in" clause to the query.</description>
+          <long-description/>
+          <tag name="param" line="928" description="" type="string" variable="$column">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="928" description="" type="mixed" variable="$values">
+            <type>mixed</type>
+          </tag>
+          <tag name="return" line="928" description="" type="\Illuminate\Database\Query\Builder|static">
+            <type>\Illuminate\Database\Query\Builder</type>
+            <type>static</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$column</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$values</name>
+          <default/>
+          <type>mixed</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Query" line="941" package="Default">
+        <name>whereNotIn</name>
+        <full_name>\Illuminate\Database\Query\Builder::whereNotIn()</full_name>
+        <docblock line="941">
+          <description>Add a "where not in" clause to the query.</description>
+          <long-description/>
+          <tag name="param" line="941" description="" type="string" variable="$column">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="941" description="" type="mixed" variable="$values">
+            <type>mixed</type>
+          </tag>
+          <tag name="param" line="941" description="" type="string" variable="$boolean">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="941" description="" type="\Illuminate\Database\Query\Builder|static">
+            <type>\Illuminate\Database\Query\Builder</type>
+            <type>static</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$column</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$values</name>
+          <default/>
+          <type>mixed</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$boolean</name>
+          <default>'and'</default>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Query" line="953" package="Default">
+        <name>orWhereNotIn</name>
+        <full_name>\Illuminate\Database\Query\Builder::orWhereNotIn()</full_name>
+        <docblock line="953">
+          <description>Add an "or where not in" clause to the query.</description>
+          <long-description/>
+          <tag name="param" line="953" description="" type="string" variable="$column">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="953" description="" type="mixed" variable="$values">
+            <type>mixed</type>
+          </tag>
+          <tag name="return" line="953" description="" type="\Illuminate\Database\Query\Builder|static">
+            <type>\Illuminate\Database\Query\Builder</type>
+            <type>static</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$column</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$values</name>
+          <default/>
+          <type>mixed</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Database\Query" line="967" package="Default">
+        <name>whereInSub</name>
+        <full_name>\Illuminate\Database\Query\Builder::whereInSub()</full_name>
+        <docblock line="967">
+          <description>Add a where in with a sub-select to the query.</description>
+          <long-description/>
+          <tag name="param" line="967" description="" type="string" variable="$column">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="967" description="" type="\Closure" variable="$callback">
+            <type>\Closure</type>
+          </tag>
+          <tag name="param" line="967" description="" type="string" variable="$boolean">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="967" description="" type="boolean" variable="$not">
+            <type>boolean</type>
+          </tag>
+          <tag name="return" line="967" description="" type="\Illuminate\Database\Query\Builder">
+            <type>\Illuminate\Database\Query\Builder</type>
+          </tag>
+          <tag name="fluent" description="This method is part of a fluent interface and will return the same instance"/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$column</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$callback</name>
+          <default/>
+          <type>\Closure</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$boolean</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$not</name>
+          <default/>
+          <type>boolean</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Database\Query" line="992" package="Default">
+        <name>whereInExistingQuery</name>
+        <full_name>\Illuminate\Database\Query\Builder::whereInExistingQuery()</full_name>
+        <docblock line="992">
+          <description>Add a external sub-select to the query.</description>
+          <long-description/>
+          <tag name="param" line="992" description="" type="string" variable="$column">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="992" description="" type="\Illuminate\Database\Query\Builder|static" variable="$query">
+            <type>\Illuminate\Database\Query\Builder</type>
+            <type>static</type>
+          </tag>
+          <tag name="param" line="992" description="" type="string" variable="$boolean">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="992" description="" type="boolean" variable="$not">
+            <type>boolean</type>
+          </tag>
+          <tag name="return" line="992" description="" type="\Illuminate\Database\Query\Builder">
+            <type>\Illuminate\Database\Query\Builder</type>
+          </tag>
+          <tag name="fluent" description="This method is part of a fluent interface and will return the same instance"/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$column</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$query</name>
+          <default/>
+          <type>\Illuminate\Database\Query\Builder|static</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$boolean</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$not</name>
+          <default/>
+          <type>boolean</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Query" line="1011" package="Default">
+        <name>whereNull</name>
+        <full_name>\Illuminate\Database\Query\Builder::whereNull()</full_name>
+        <docblock line="1011">
+          <description>Add a "where null" clause to the query.</description>
+          <long-description/>
+          <tag name="param" line="1011" description="" type="string" variable="$column">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="1011" description="" type="string" variable="$boolean">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="1011" description="" type="boolean" variable="$not">
+            <type>boolean</type>
+          </tag>
+          <tag name="return" line="1011" description="" type="\Illuminate\Database\Query\Builder">
+            <type>\Illuminate\Database\Query\Builder</type>
+          </tag>
+          <tag name="fluent" description="This method is part of a fluent interface and will return the same instance"/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$column</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$boolean</name>
+          <default>'and'</default>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$not</name>
+          <default>false</default>
+          <type>boolean</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Query" line="1026" package="Default">
+        <name>orWhereNull</name>
+        <full_name>\Illuminate\Database\Query\Builder::orWhereNull()</full_name>
+        <docblock line="1026">
+          <description>Add an "or where null" clause to the query.</description>
+          <long-description/>
+          <tag name="param" line="1026" description="" type="string" variable="$column">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="1026" description="" type="\Illuminate\Database\Query\Builder|static">
+            <type>\Illuminate\Database\Query\Builder</type>
+            <type>static</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$column</name>
+          <default/>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Query" line="1038" package="Default">
+        <name>whereNotNull</name>
+        <full_name>\Illuminate\Database\Query\Builder::whereNotNull()</full_name>
+        <docblock line="1038">
+          <description>Add a "where not null" clause to the query.</description>
+          <long-description/>
+          <tag name="param" line="1038" description="" type="string" variable="$column">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="1038" description="" type="string" variable="$boolean">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="1038" description="" type="\Illuminate\Database\Query\Builder|static">
+            <type>\Illuminate\Database\Query\Builder</type>
+            <type>static</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$column</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$boolean</name>
+          <default>'and'</default>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Query" line="1049" package="Default">
+        <name>orWhereNotNull</name>
+        <full_name>\Illuminate\Database\Query\Builder::orWhereNotNull()</full_name>
+        <docblock line="1049">
+          <description>Add an "or where not null" clause to the query.</description>
+          <long-description/>
+          <tag name="param" line="1049" description="" type="string" variable="$column">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="1049" description="" type="\Illuminate\Database\Query\Builder|static">
+            <type>\Illuminate\Database\Query\Builder</type>
+            <type>static</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$column</name>
+          <default/>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Query" line="1063" package="Default">
+        <name>whereDate</name>
+        <full_name>\Illuminate\Database\Query\Builder::whereDate()</full_name>
+        <docblock line="1063">
+          <description>Add a "where date" statement to the query.</description>
+          <long-description/>
+          <tag name="param" line="1063" description="" type="string" variable="$column">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="1063" description="" type="string" variable="$operator">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="1063" description="" type="integer" variable="$value">
+            <type>integer</type>
+          </tag>
+          <tag name="param" line="1063" description="" type="string" variable="$boolean">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="1063" description="" type="\Illuminate\Database\Query\Builder|static">
+            <type>\Illuminate\Database\Query\Builder</type>
+            <type>static</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$column</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$operator</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$value</name>
+          <default/>
+          <type>integer</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$boolean</name>
+          <default>'and'</default>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Query" line="1076" package="Default">
+        <name>orWhereDate</name>
+        <full_name>\Illuminate\Database\Query\Builder::orWhereDate()</full_name>
+        <docblock line="1076">
+          <description>Add an "or where date" statement to the query.</description>
+          <long-description/>
+          <tag name="param" line="1076" description="" type="string" variable="$column">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="1076" description="" type="string" variable="$operator">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="1076" description="" type="integer" variable="$value">
+            <type>integer</type>
+          </tag>
+          <tag name="return" line="1076" description="" type="\Illuminate\Database\Query\Builder|static">
+            <type>\Illuminate\Database\Query\Builder</type>
+            <type>static</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$column</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$operator</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$value</name>
+          <default/>
+          <type>integer</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Query" line="1090" package="Default">
+        <name>whereDay</name>
+        <full_name>\Illuminate\Database\Query\Builder::whereDay()</full_name>
+        <docblock line="1090">
+          <description>Add a "where day" statement to the query.</description>
+          <long-description/>
+          <tag name="param" line="1090" description="" type="string" variable="$column">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="1090" description="" type="string" variable="$operator">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="1090" description="" type="integer" variable="$value">
+            <type>integer</type>
+          </tag>
+          <tag name="param" line="1090" description="" type="string" variable="$boolean">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="1090" description="" type="\Illuminate\Database\Query\Builder|static">
+            <type>\Illuminate\Database\Query\Builder</type>
+            <type>static</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$column</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$operator</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$value</name>
+          <default/>
+          <type>integer</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$boolean</name>
+          <default>'and'</default>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Query" line="1104" package="Default">
+        <name>whereMonth</name>
+        <full_name>\Illuminate\Database\Query\Builder::whereMonth()</full_name>
+        <docblock line="1104">
+          <description>Add a "where month" statement to the query.</description>
+          <long-description/>
+          <tag name="param" line="1104" description="" type="string" variable="$column">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="1104" description="" type="string" variable="$operator">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="1104" description="" type="integer" variable="$value">
+            <type>integer</type>
+          </tag>
+          <tag name="param" line="1104" description="" type="string" variable="$boolean">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="1104" description="" type="\Illuminate\Database\Query\Builder|static">
+            <type>\Illuminate\Database\Query\Builder</type>
+            <type>static</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$column</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$operator</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$value</name>
+          <default/>
+          <type>integer</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$boolean</name>
+          <default>'and'</default>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Query" line="1118" package="Default">
+        <name>whereYear</name>
+        <full_name>\Illuminate\Database\Query\Builder::whereYear()</full_name>
+        <docblock line="1118">
+          <description>Add a "where year" statement to the query.</description>
+          <long-description/>
+          <tag name="param" line="1118" description="" type="string" variable="$column">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="1118" description="" type="string" variable="$operator">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="1118" description="" type="integer" variable="$value">
+            <type>integer</type>
+          </tag>
+          <tag name="param" line="1118" description="" type="string" variable="$boolean">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="1118" description="" type="\Illuminate\Database\Query\Builder|static">
+            <type>\Illuminate\Database\Query\Builder</type>
+            <type>static</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$column</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$operator</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$value</name>
+          <default/>
+          <type>integer</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$boolean</name>
+          <default>'and'</default>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Database\Query" line="1133" package="Default">
+        <name>addDateBasedWhere</name>
+        <full_name>\Illuminate\Database\Query\Builder::addDateBasedWhere()</full_name>
+        <docblock line="1133">
+          <description>Add a date based (year, month, day) statement to the query.</description>
+          <long-description/>
+          <tag name="param" line="1133" description="" type="string" variable="$type">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="1133" description="" type="string" variable="$column">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="1133" description="" type="string" variable="$operator">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="1133" description="" type="integer" variable="$value">
+            <type>integer</type>
+          </tag>
+          <tag name="param" line="1133" description="" type="string" variable="$boolean">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="1133" description="" type="\Illuminate\Database\Query\Builder">
+            <type>\Illuminate\Database\Query\Builder</type>
+          </tag>
+          <tag name="fluent" description="This method is part of a fluent interface and will return the same instance"/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$type</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$column</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$operator</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$value</name>
+          <default/>
+          <type>integer</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$boolean</name>
+          <default>'and'</default>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Query" line="1149" package="Default">
+        <name>dynamicWhere</name>
+        <full_name>\Illuminate\Database\Query\Builder::dynamicWhere()</full_name>
+        <docblock line="1149">
+          <description>Handles dynamic "where" clauses to the query.</description>
+          <long-description/>
+          <tag name="param" line="1149" description="" type="string" variable="$method">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="1149" description="" type="string" variable="$parameters">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="1149" description="" type="\Illuminate\Database\Query\Builder">
+            <type>\Illuminate\Database\Query\Builder</type>
+          </tag>
+          <tag name="fluent" description="This method is part of a fluent interface and will return the same instance"/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$method</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$parameters</name>
+          <default/>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Database\Query" line="1192" package="Default">
+        <name>addDynamic</name>
+        <full_name>\Illuminate\Database\Query\Builder::addDynamic()</full_name>
+        <docblock line="1192">
+          <description>Add a single dynamic where clause statement to the query.</description>
+          <long-description/>
+          <tag name="param" line="1192" description="" type="string" variable="$segment">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="1192" description="" type="string" variable="$connector">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="1192" description="" type="array" variable="$parameters">
+            <type>array</type>
+          </tag>
+          <tag name="param" line="1192" description="" type="integer" variable="$index">
+            <type>integer</type>
+          </tag>
+          <tag name="return" line="1192" description="" type="void">
+            <type>void</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$segment</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$connector</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$parameters</name>
+          <default/>
+          <type>array</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$index</name>
+          <default/>
+          <type>integer</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Query" line="1208" package="Default">
+        <name>groupBy</name>
+        <full_name>\Illuminate\Database\Query\Builder::groupBy()</full_name>
+        <docblock line="1208">
+          <description>Add a "group by" clause to the query.</description>
+          <long-description/>
+          <tag name="param" line="1208" description="" type="array|string" variable="$column,...">
+            <type>array</type>
+            <type>string</type>
+          </tag>
+          <tag name="return" line="1208" description="" type="\Illuminate\Database\Query\Builder">
+            <type>\Illuminate\Database\Query\Builder</type>
+          </tag>
+          <tag name="fluent" description="This method is part of a fluent interface and will return the same instance"/>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Query" line="1226" package="Default">
+        <name>having</name>
+        <full_name>\Illuminate\Database\Query\Builder::having()</full_name>
+        <docblock line="1226">
+          <description>Add a "having" clause to the query.</description>
+          <long-description/>
+          <tag name="param" line="1226" description="" type="string" variable="$column">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="1226" description="" type="string" variable="$operator">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="1226" description="" type="string" variable="$value">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="1226" description="" type="string" variable="$boolean">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="1226" description="" type="\Illuminate\Database\Query\Builder">
+            <type>\Illuminate\Database\Query\Builder</type>
+          </tag>
+          <tag name="fluent" description="This method is part of a fluent interface and will return the same instance"/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$column</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$operator</name>
+          <default>null</default>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$value</name>
+          <default>null</default>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$boolean</name>
+          <default>'and'</default>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Query" line="1247" package="Default">
+        <name>orHaving</name>
+        <full_name>\Illuminate\Database\Query\Builder::orHaving()</full_name>
+        <docblock line="1247">
+          <description>Add a "or having" clause to the query.</description>
+          <long-description/>
+          <tag name="param" line="1247" description="" type="string" variable="$column">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="1247" description="" type="string" variable="$operator">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="1247" description="" type="string" variable="$value">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="1247" description="" type="\Illuminate\Database\Query\Builder|static">
+            <type>\Illuminate\Database\Query\Builder</type>
+            <type>static</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$column</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$operator</name>
+          <default>null</default>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$value</name>
+          <default>null</default>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Query" line="1260" package="Default">
+        <name>havingRaw</name>
+        <full_name>\Illuminate\Database\Query\Builder::havingRaw()</full_name>
+        <docblock line="1260">
+          <description>Add a raw having clause to the query.</description>
+          <long-description/>
+          <tag name="param" line="1260" description="" type="string" variable="$sql">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="1260" description="" type="array" variable="$bindings">
+            <type>array</type>
+          </tag>
+          <tag name="param" line="1260" description="" type="string" variable="$boolean">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="1260" description="" type="\Illuminate\Database\Query\Builder">
+            <type>\Illuminate\Database\Query\Builder</type>
+          </tag>
+          <tag name="fluent" description="This method is part of a fluent interface and will return the same instance"/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$sql</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$bindings</name>
+          <default>array()</default>
+          <type>array</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$boolean</name>
+          <default>'and'</default>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Query" line="1278" package="Default">
+        <name>orHavingRaw</name>
+        <full_name>\Illuminate\Database\Query\Builder::orHavingRaw()</full_name>
+        <docblock line="1278">
+          <description>Add a raw or having clause to the query.</description>
+          <long-description/>
+          <tag name="param" line="1278" description="" type="string" variable="$sql">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="1278" description="" type="array" variable="$bindings">
+            <type>array</type>
+          </tag>
+          <tag name="return" line="1278" description="" type="\Illuminate\Database\Query\Builder|static">
+            <type>\Illuminate\Database\Query\Builder</type>
+            <type>static</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$sql</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$bindings</name>
+          <default>array()</default>
+          <type>array</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Query" line="1290" package="Default">
+        <name>orderBy</name>
+        <full_name>\Illuminate\Database\Query\Builder::orderBy()</full_name>
+        <docblock line="1290">
+          <description>Add an "order by" clause to the query.</description>
+          <long-description/>
+          <tag name="param" line="1290" description="" type="string" variable="$column">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="1290" description="" type="string" variable="$direction">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="1290" description="" type="\Illuminate\Database\Query\Builder">
+            <type>\Illuminate\Database\Query\Builder</type>
+          </tag>
+          <tag name="fluent" description="This method is part of a fluent interface and will return the same instance"/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$column</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$direction</name>
+          <default>'asc'</default>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Query" line="1306" package="Default">
+        <name>latest</name>
+        <full_name>\Illuminate\Database\Query\Builder::latest()</full_name>
+        <docblock line="1306">
+          <description>Add an "order by" clause for a timestamp to the query.</description>
+          <long-description/>
+          <tag name="param" line="1306" description="" type="string" variable="$column">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="1306" description="" type="\Illuminate\Database\Query\Builder|static">
+            <type>\Illuminate\Database\Query\Builder</type>
+            <type>static</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$column</name>
+          <default>'created_at'</default>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Query" line="1317" package="Default">
+        <name>oldest</name>
+        <full_name>\Illuminate\Database\Query\Builder::oldest()</full_name>
+        <docblock line="1317">
+          <description>Add an "order by" clause for a timestamp to the query.</description>
+          <long-description/>
+          <tag name="param" line="1317" description="" type="string" variable="$column">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="1317" description="" type="\Illuminate\Database\Query\Builder|static">
+            <type>\Illuminate\Database\Query\Builder</type>
+            <type>static</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$column</name>
+          <default>'created_at'</default>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Query" line="1328" package="Default">
+        <name>inRandomOrder</name>
+        <full_name>\Illuminate\Database\Query\Builder::inRandomOrder()</full_name>
+        <docblock line="1328">
+          <description>Put the query's results in random order.</description>
+          <long-description/>
+          <tag name="param" line="1328" description="" type="string" variable="$seed">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="1328" description="" type="\Illuminate\Database\Query\Builder">
+            <type>\Illuminate\Database\Query\Builder</type>
+          </tag>
+          <tag name="fluent" description="This method is part of a fluent interface and will return the same instance"/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$seed</name>
+          <default>''</default>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Query" line="1340" package="Default">
+        <name>orderByRaw</name>
+        <full_name>\Illuminate\Database\Query\Builder::orderByRaw()</full_name>
+        <docblock line="1340">
+          <description>Add a raw "order by" clause to the query.</description>
+          <long-description/>
+          <tag name="param" line="1340" description="" type="string" variable="$sql">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="1340" description="" type="array" variable="$bindings">
+            <type>array</type>
+          </tag>
+          <tag name="return" line="1340" description="" type="\Illuminate\Database\Query\Builder">
+            <type>\Illuminate\Database\Query\Builder</type>
+          </tag>
+          <tag name="fluent" description="This method is part of a fluent interface and will return the same instance"/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$sql</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$bindings</name>
+          <default>array()</default>
+          <type>array</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Query" line="1359" package="Default">
+        <name>offset</name>
+        <full_name>\Illuminate\Database\Query\Builder::offset()</full_name>
+        <docblock line="1359">
+          <description>Set the "offset" value of the query.</description>
+          <long-description/>
+          <tag name="param" line="1359" description="" type="integer" variable="$value">
+            <type>integer</type>
+          </tag>
+          <tag name="return" line="1359" description="" type="\Illuminate\Database\Query\Builder">
+            <type>\Illuminate\Database\Query\Builder</type>
+          </tag>
+          <tag name="fluent" description="This method is part of a fluent interface and will return the same instance"/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$value</name>
+          <default/>
+          <type>integer</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Query" line="1374" package="Default">
+        <name>skip</name>
+        <full_name>\Illuminate\Database\Query\Builder::skip()</full_name>
+        <docblock line="1374">
+          <description>Alias to set the "offset" value of the query.</description>
+          <long-description/>
+          <tag name="param" line="1374" description="" type="integer" variable="$value">
+            <type>integer</type>
+          </tag>
+          <tag name="return" line="1374" description="" type="\Illuminate\Database\Query\Builder|static">
+            <type>\Illuminate\Database\Query\Builder</type>
+            <type>static</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$value</name>
+          <default/>
+          <type>integer</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Query" line="1385" package="Default">
+        <name>limit</name>
+        <full_name>\Illuminate\Database\Query\Builder::limit()</full_name>
+        <docblock line="1385">
+          <description>Set the "limit" value of the query.</description>
+          <long-description/>
+          <tag name="param" line="1385" description="" type="integer" variable="$value">
+            <type>integer</type>
+          </tag>
+          <tag name="return" line="1385" description="" type="\Illuminate\Database\Query\Builder">
+            <type>\Illuminate\Database\Query\Builder</type>
+          </tag>
+          <tag name="fluent" description="This method is part of a fluent interface and will return the same instance"/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$value</name>
+          <default/>
+          <type>integer</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Query" line="1402" package="Default">
+        <name>take</name>
+        <full_name>\Illuminate\Database\Query\Builder::take()</full_name>
+        <docblock line="1402">
+          <description>Alias to set the "limit" value of the query.</description>
+          <long-description/>
+          <tag name="param" line="1402" description="" type="integer" variable="$value">
+            <type>integer</type>
+          </tag>
+          <tag name="return" line="1402" description="" type="\Illuminate\Database\Query\Builder|static">
+            <type>\Illuminate\Database\Query\Builder</type>
+            <type>static</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$value</name>
+          <default/>
+          <type>integer</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Query" line="1414" package="Default">
+        <name>forPage</name>
+        <full_name>\Illuminate\Database\Query\Builder::forPage()</full_name>
+        <docblock line="1414">
+          <description>Set the limit and offset for a given page.</description>
+          <long-description/>
+          <tag name="param" line="1414" description="" type="integer" variable="$page">
+            <type>integer</type>
+          </tag>
+          <tag name="param" line="1414" description="" type="integer" variable="$perPage">
+            <type>integer</type>
+          </tag>
+          <tag name="return" line="1414" description="" type="\Illuminate\Database\Query\Builder|static">
+            <type>\Illuminate\Database\Query\Builder</type>
+            <type>static</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$page</name>
+          <default/>
+          <type>integer</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$perPage</name>
+          <default>15</default>
+          <type>integer</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Query" line="1427" package="Default">
+        <name>forPageAfterId</name>
+        <full_name>\Illuminate\Database\Query\Builder::forPageAfterId()</full_name>
+        <docblock line="1427">
+          <description>Constrain the query to the next "page" of results after a given ID.</description>
+          <long-description/>
+          <tag name="param" line="1427" description="" type="integer" variable="$perPage">
+            <type>integer</type>
+          </tag>
+          <tag name="param" line="1427" description="" type="integer" variable="$lastId">
+            <type>integer</type>
+          </tag>
+          <tag name="param" line="1427" description="" type="string" variable="$column">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="1427" description="" type="\Illuminate\Database\Query\Builder|static">
+            <type>\Illuminate\Database\Query\Builder</type>
+            <type>static</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$perPage</name>
+          <default>15</default>
+          <type>integer</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$lastId</name>
+          <default>0</default>
+          <type>integer</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$column</name>
+          <default>'id'</default>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Query" line="1446" package="Default">
+        <name>union</name>
+        <full_name>\Illuminate\Database\Query\Builder::union()</full_name>
+        <docblock line="1446">
+          <description>Add a union statement to the query.</description>
+          <long-description/>
+          <tag name="param" line="1446" description="" type="\Illuminate\Database\Query\Builder|\Closure" variable="$query">
+            <type>\Illuminate\Database\Query\Builder</type>
+            <type>\Closure</type>
+          </tag>
+          <tag name="param" line="1446" description="" type="boolean" variable="$all">
+            <type>boolean</type>
+          </tag>
+          <tag name="return" line="1446" description="" type="\Illuminate\Database\Query\Builder|static">
+            <type>\Illuminate\Database\Query\Builder</type>
+            <type>static</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$query</name>
+          <default/>
+          <type>\Illuminate\Database\Query\Builder|\Closure</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$all</name>
+          <default>false</default>
+          <type>boolean</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Query" line="1465" package="Default">
+        <name>unionAll</name>
+        <full_name>\Illuminate\Database\Query\Builder::unionAll()</full_name>
+        <docblock line="1465">
+          <description>Add a union all statement to the query.</description>
+          <long-description/>
+          <tag name="param" line="1465" description="" type="\Illuminate\Database\Query\Builder|\Closure" variable="$query">
+            <type>\Illuminate\Database\Query\Builder</type>
+            <type>\Closure</type>
+          </tag>
+          <tag name="return" line="1465" description="" type="\Illuminate\Database\Query\Builder|static">
+            <type>\Illuminate\Database\Query\Builder</type>
+            <type>static</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$query</name>
+          <default/>
+          <type>\Illuminate\Database\Query\Builder|\Closure</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Query" line="1476" package="Default">
+        <name>lock</name>
+        <full_name>\Illuminate\Database\Query\Builder::lock()</full_name>
+        <docblock line="1476">
+          <description>Lock the selected rows in the table.</description>
+          <long-description/>
+          <tag name="param" line="1476" description="" type="boolean" variable="$value">
+            <type>boolean</type>
+          </tag>
+          <tag name="return" line="1476" description="" type="\Illuminate\Database\Query\Builder">
+            <type>\Illuminate\Database\Query\Builder</type>
+          </tag>
+          <tag name="fluent" description="This method is part of a fluent interface and will return the same instance"/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$value</name>
+          <default>true</default>
+          <type>boolean</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Query" line="1492" package="Default">
+        <name>lockForUpdate</name>
+        <full_name>\Illuminate\Database\Query\Builder::lockForUpdate()</full_name>
+        <docblock line="1492">
+          <description>Lock the selected rows in the table for updating.</description>
+          <long-description/>
+          <tag name="return" line="1492" description="" type="\Illuminate\Database\Query\Builder">
+            <type>\Illuminate\Database\Query\Builder</type>
+          </tag>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Query" line="1502" package="Default">
+        <name>sharedLock</name>
+        <full_name>\Illuminate\Database\Query\Builder::sharedLock()</full_name>
+        <docblock line="1502">
+          <description>Share lock the selected rows in the table.</description>
+          <long-description/>
+          <tag name="return" line="1502" description="" type="\Illuminate\Database\Query\Builder">
+            <type>\Illuminate\Database\Query\Builder</type>
+          </tag>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Query" line="1512" package="Default">
+        <name>toSql</name>
+        <full_name>\Illuminate\Database\Query\Builder::toSql()</full_name>
+        <docblock line="1512">
+          <description>Get the SQL representation of the query.</description>
+          <long-description/>
+          <tag name="return" line="1512" description="" type="string">
+            <type>string</type>
+          </tag>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Query" line="1524" package="Default">
+        <name>find</name>
+        <full_name>\Illuminate\Database\Query\Builder::find()</full_name>
+        <docblock line="1524">
+          <description>Execute a query for a single record by ID.</description>
+          <long-description/>
+          <tag name="param" line="1524" description="" type="integer" variable="$id">
+            <type>integer</type>
+          </tag>
+          <tag name="param" line="1524" description="" type="array" variable="$columns">
+            <type>array</type>
+          </tag>
+          <tag name="return" line="1524" description="" type="mixed|static">
+            <type>mixed</type>
+            <type>static</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$id</name>
+          <default/>
+          <type>integer</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$columns</name>
+          <default>array('*')</default>
+          <type>array</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Query" line="1535" package="Default">
+        <name>value</name>
+        <full_name>\Illuminate\Database\Query\Builder::value()</full_name>
+        <docblock line="1535">
+          <description>Get a single column's value from the first result of a query.</description>
+          <long-description/>
+          <tag name="param" line="1535" description="" type="string" variable="$column">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="1535" description="" type="mixed">
+            <type>mixed</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$column</name>
+          <default/>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Query" line="1548" package="Default">
+        <name>first</name>
+        <full_name>\Illuminate\Database\Query\Builder::first()</full_name>
+        <docblock line="1548">
+          <description>Execute the query and get the first result.</description>
+          <long-description/>
+          <tag name="param" line="1548" description="" type="array" variable="$columns">
+            <type>array</type>
+          </tag>
+          <tag name="return" line="1548" description="" type="mixed|static">
+            <type>mixed</type>
+            <type>static</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$columns</name>
+          <default>array('*')</default>
+          <type>array</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Query" line="1561" package="Default">
+        <name>get</name>
+        <full_name>\Illuminate\Database\Query\Builder::get()</full_name>
+        <docblock line="1561">
+          <description>Execute the query as a "select" statement.</description>
+          <long-description/>
+          <tag name="param" line="1561" description="" type="array" variable="$columns">
+            <type>array</type>
+          </tag>
+          <tag name="return" line="1561" description="" type="array|array&lt;mixed,static&gt;">
+            <type>array</type>
+            <type>array&lt;mixed,static&gt;</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$columns</name>
+          <default>array('*')</default>
+          <type>array</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Database\Query" line="1581" package="Default">
+        <name>runSelect</name>
+        <full_name>\Illuminate\Database\Query\Builder::runSelect()</full_name>
+        <docblock line="1581">
+          <description>Run the query as a "select" statement against the connection.</description>
+          <long-description/>
+          <tag name="return" line="1581" description="" type="array">
+            <type>array</type>
+          </tag>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Query" line="1595" package="Default">
+        <name>paginate</name>
+        <full_name>\Illuminate\Database\Query\Builder::paginate()</full_name>
+        <docblock line="1595">
+          <description>Paginate the given query into a simple paginator.</description>
+          <long-description/>
+          <tag name="param" line="1595" description="" type="integer" variable="$perPage">
+            <type>integer</type>
+          </tag>
+          <tag name="param" line="1595" description="" type="array" variable="$columns">
+            <type>array</type>
+          </tag>
+          <tag name="param" line="1595" description="" type="string" variable="$pageName">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="1595" description="" type="integer|null" variable="$page">
+            <type>integer</type>
+            <type>null</type>
+          </tag>
+          <tag name="return" line="1595" description="" type="\Illuminate\Contracts\Pagination\LengthAwarePaginator">
+            <type>\Illuminate\Contracts\Pagination\LengthAwarePaginator</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$perPage</name>
+          <default>15</default>
+          <type>integer</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$columns</name>
+          <default>array('*')</default>
+          <type>array</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$pageName</name>
+          <default>'page'</default>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$page</name>
+          <default>null</default>
+          <type>integer|null</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Query" line="1620" package="Default">
+        <name>simplePaginate</name>
+        <full_name>\Illuminate\Database\Query\Builder::simplePaginate()</full_name>
+        <docblock line="1620">
+          <description>Get a paginator only supporting simple next and previous links.</description>
+          <long-description>This is more efficient on larger data-sets, etc.</long-description>
+          <tag name="param" line="1620" description="" type="integer" variable="$perPage">
+            <type>integer</type>
+          </tag>
+          <tag name="param" line="1620" description="" type="array" variable="$columns">
+            <type>array</type>
+          </tag>
+          <tag name="param" line="1620" description="" type="string" variable="$pageName">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="1620" description="" type="integer|null" variable="$page">
+            <type>integer</type>
+            <type>null</type>
+          </tag>
+          <tag name="return" line="1620" description="" type="\Illuminate\Contracts\Pagination\Paginator">
+            <type>\Illuminate\Contracts\Pagination\Paginator</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$perPage</name>
+          <default>15</default>
+          <type>integer</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$columns</name>
+          <default>array('*')</default>
+          <type>array</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$pageName</name>
+          <default>'page'</default>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$page</name>
+          <default>null</default>
+          <type>integer|null</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Query" line="1638" package="Default">
+        <name>getCountForPagination</name>
+        <full_name>\Illuminate\Database\Query\Builder::getCountForPagination()</full_name>
+        <docblock line="1638">
+          <description>Get the count of the total records for the paginator.</description>
+          <long-description/>
+          <tag name="param" line="1638" description="" type="array" variable="$columns">
+            <type>array</type>
+          </tag>
+          <tag name="return" line="1638" description="" type="integer">
+            <type>integer</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$columns</name>
+          <default>array('*')</default>
+          <type>array</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Database\Query" line="1662" package="Default">
+        <name>backupFieldsForCount</name>
+        <full_name>\Illuminate\Database\Query\Builder::backupFieldsForCount()</full_name>
+        <docblock line="1662">
+          <description>Backup some fields for the pagination count.</description>
+          <long-description/>
+          <tag name="return" line="1662" description="" type="void">
+            <type>void</type>
+          </tag>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Database\Query" line="1683" package="Default">
+        <name>clearSelectAliases</name>
+        <full_name>\Illuminate\Database\Query\Builder::clearSelectAliases()</full_name>
+        <docblock line="1683">
+          <description>Remove the column aliases since they will break count queries.</description>
+          <long-description/>
+          <tag name="param" line="1683" description="" type="array" variable="$columns">
+            <type>array</type>
+          </tag>
+          <tag name="return" line="1683" description="" type="array">
+            <type>array</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$columns</name>
+          <default/>
+          <type>array</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Database\Query" line="1696" package="Default">
+        <name>restoreFieldsForCount</name>
+        <full_name>\Illuminate\Database\Query\Builder::restoreFieldsForCount()</full_name>
+        <docblock line="1696">
+          <description>Restore some fields after the pagination count.</description>
+          <long-description/>
+          <tag name="return" line="1696" description="" type="void">
+            <type>void</type>
+          </tag>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Query" line="1715" package="Default">
+        <name>cursor</name>
+        <full_name>\Illuminate\Database\Query\Builder::cursor()</full_name>
+        <docblock line="1715">
+          <description>Get a generator for the given query.</description>
+          <long-description/>
+          <tag name="return" line="1715" description="" type="\Generator">
+            <type>\Generator</type>
+          </tag>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Query" line="1733" package="Default">
+        <name>chunk</name>
+        <full_name>\Illuminate\Database\Query\Builder::chunk()</full_name>
+        <docblock line="1733">
+          <description>Chunk the results of the query.</description>
+          <long-description/>
+          <tag name="param" line="1733" description="" type="integer" variable="$count">
+            <type>integer</type>
+          </tag>
+          <tag name="param" line="1733" description="" type="callable" variable="$callback">
+            <type>callable</type>
+          </tag>
+          <tag name="return" line="1733" description="" type="boolean">
+            <type>boolean</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$count</name>
+          <default/>
+          <type>integer</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$callback</name>
+          <default/>
+          <type>callable</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Query" line="1761" package="Default">
+        <name>chunkById</name>
+        <full_name>\Illuminate\Database\Query\Builder::chunkById()</full_name>
+        <docblock line="1761">
+          <description>Chunk the results of a query by comparing numeric IDs.</description>
+          <long-description/>
+          <tag name="param" line="1761" description="" type="integer" variable="$count">
+            <type>integer</type>
+          </tag>
+          <tag name="param" line="1761" description="" type="callable" variable="$callback">
+            <type>callable</type>
+          </tag>
+          <tag name="param" line="1761" description="" type="string" variable="$column">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="1761" description="" type="boolean">
+            <type>boolean</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$count</name>
+          <default/>
+          <type>integer</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$callback</name>
+          <default/>
+          <type>callable</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$column</name>
+          <default>'id'</default>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Query" line="1789" package="Default">
+        <name>each</name>
+        <full_name>\Illuminate\Database\Query\Builder::each()</full_name>
+        <docblock line="1789">
+          <description>Execute a callback over each item while chunking.</description>
+          <long-description/>
+          <tag name="param" line="1789" description="" type="callable" variable="$callback">
+            <type>callable</type>
+          </tag>
+          <tag name="param" line="1789" description="" type="integer" variable="$count">
+            <type>integer</type>
+          </tag>
+          <tag name="return" line="1789" description="" type="boolean">
+            <type>boolean</type>
+          </tag>
+          <tag name="throws" line="1789" description="" type="\RuntimeException">
+            <type>\RuntimeException</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$callback</name>
+          <default/>
+          <type>callable</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$count</name>
+          <default>1000</default>
+          <type>integer</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Query" line="1811" package="Default">
+        <name>pluck</name>
+        <full_name>\Illuminate\Database\Query\Builder::pluck()</full_name>
+        <docblock line="1811">
+          <description>Get an array with the values of a given column.</description>
+          <long-description/>
+          <tag name="param" line="1811" description="" type="string" variable="$column">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="1811" description="" type="string|null" variable="$key">
+            <type>string</type>
+            <type>null</type>
+          </tag>
+          <tag name="return" line="1811" description="" type="array">
+            <type>array</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$column</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$key</name>
+          <default>null</default>
+          <type>string|null</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Query" line="1834" package="Default">
+        <name>lists</name>
+        <full_name>\Illuminate\Database\Query\Builder::lists()</full_name>
+        <docblock line="1834">
+          <description>Alias for the "pluck" method.</description>
+          <long-description/>
+          <tag name="param" line="1834" description="" type="string" variable="$column">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="1834" description="" type="string|null" variable="$key">
+            <type>string</type>
+            <type>null</type>
+          </tag>
+          <tag name="return" line="1834" description="" type="array">
+            <type>array</type>
+          </tag>
+          <tag name="deprecated" line="1834" description="since version 5.2. Use the &quot;pluck&quot; method directly."/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$column</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$key</name>
+          <default>null</default>
+          <type>string|null</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Database\Query" line="1845" package="Default">
+        <name>stripTableForPluck</name>
+        <full_name>\Illuminate\Database\Query\Builder::stripTableForPluck()</full_name>
+        <docblock line="1845">
+          <description>Strip off the table name or alias from a column identifier.</description>
+          <long-description/>
+          <tag name="param" line="1845" description="" type="string" variable="$column">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="1845" description="" type="string|null">
+            <type>string</type>
+            <type>null</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$column</name>
+          <default/>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Query" line="1857" package="Default">
+        <name>implode</name>
+        <full_name>\Illuminate\Database\Query\Builder::implode()</full_name>
+        <docblock line="1857">
+          <description>Concatenate values of a given column as a string.</description>
+          <long-description/>
+          <tag name="param" line="1857" description="" type="string" variable="$column">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="1857" description="" type="string" variable="$glue">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="1857" description="" type="string">
+            <type>string</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$column</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$glue</name>
+          <default>''</default>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Query" line="1867" package="Default">
+        <name>exists</name>
+        <full_name>\Illuminate\Database\Query\Builder::exists()</full_name>
+        <docblock line="1867">
+          <description>Determine if any rows exist for the current query.</description>
+          <long-description/>
+          <tag name="return" line="1867" description="" type="boolean">
+            <type>boolean</type>
+          </tag>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Query" line="1888" package="Default">
+        <name>count</name>
+        <full_name>\Illuminate\Database\Query\Builder::count()</full_name>
+        <docblock line="1888">
+          <description>Retrieve the "count" result of the query.</description>
+          <long-description/>
+          <tag name="param" line="1888" description="" type="string" variable="$columns">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="1888" description="" type="integer">
+            <type>integer</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$columns</name>
+          <default>'*'</default>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Query" line="1903" package="Default">
+        <name>min</name>
+        <full_name>\Illuminate\Database\Query\Builder::min()</full_name>
+        <docblock line="1903">
+          <description>Retrieve the minimum value of a given column.</description>
+          <long-description/>
+          <tag name="param" line="1903" description="" type="string" variable="$column">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="1903" description="" type="float|integer">
+            <type>float</type>
+            <type>integer</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$column</name>
+          <default/>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Query" line="1914" package="Default">
+        <name>max</name>
+        <full_name>\Illuminate\Database\Query\Builder::max()</full_name>
+        <docblock line="1914">
+          <description>Retrieve the maximum value of a given column.</description>
+          <long-description/>
+          <tag name="param" line="1914" description="" type="string" variable="$column">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="1914" description="" type="float|integer">
+            <type>float</type>
+            <type>integer</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$column</name>
+          <default/>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Query" line="1925" package="Default">
+        <name>sum</name>
+        <full_name>\Illuminate\Database\Query\Builder::sum()</full_name>
+        <docblock line="1925">
+          <description>Retrieve the sum of the values of a given column.</description>
+          <long-description/>
+          <tag name="param" line="1925" description="" type="string" variable="$column">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="1925" description="" type="float|integer">
+            <type>float</type>
+            <type>integer</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$column</name>
+          <default/>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Query" line="1938" package="Default">
+        <name>avg</name>
+        <full_name>\Illuminate\Database\Query\Builder::avg()</full_name>
+        <docblock line="1938">
+          <description>Retrieve the average of the values of a given column.</description>
+          <long-description/>
+          <tag name="param" line="1938" description="" type="string" variable="$column">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="1938" description="" type="float|integer">
+            <type>float</type>
+            <type>integer</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$column</name>
+          <default/>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Query" line="1949" package="Default">
+        <name>average</name>
+        <full_name>\Illuminate\Database\Query\Builder::average()</full_name>
+        <docblock line="1949">
+          <description>Alias for the "avg" method.</description>
+          <long-description/>
+          <tag name="param" line="1949" description="" type="string" variable="$column">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="1949" description="" type="float|integer">
+            <type>float</type>
+            <type>integer</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$column</name>
+          <default/>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Query" line="1961" package="Default">
+        <name>aggregate</name>
+        <full_name>\Illuminate\Database\Query\Builder::aggregate()</full_name>
+        <docblock line="1961">
+          <description>Execute an aggregate function on the database.</description>
+          <long-description/>
+          <tag name="param" line="1961" description="" type="string" variable="$function">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="1961" description="" type="array" variable="$columns">
+            <type>array</type>
+          </tag>
+          <tag name="return" line="1961" description="" type="float|integer">
+            <type>float</type>
+            <type>integer</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$function</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$columns</name>
+          <default>array('*')</default>
+          <type>array</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Query" line="1998" package="Default">
+        <name>insert</name>
+        <full_name>\Illuminate\Database\Query\Builder::insert()</full_name>
+        <docblock line="1998">
+          <description>Insert a new record into the database.</description>
+          <long-description/>
+          <tag name="param" line="1998" description="" type="array" variable="$values">
+            <type>array</type>
+          </tag>
+          <tag name="return" line="1998" description="" type="boolean">
+            <type>boolean</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$values</name>
+          <default/>
+          <type>array</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Query" line="2049" package="Default">
+        <name>insertGetId</name>
+        <full_name>\Illuminate\Database\Query\Builder::insertGetId()</full_name>
+        <docblock line="2049">
+          <description>Insert a new record and get the value of the primary key.</description>
+          <long-description/>
+          <tag name="param" line="2049" description="" type="array" variable="$values">
+            <type>array</type>
+          </tag>
+          <tag name="param" line="2049" description="" type="string" variable="$sequence">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="2049" description="" type="integer">
+            <type>integer</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$values</name>
+          <default/>
+          <type>array</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$sequence</name>
+          <default>null</default>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Query" line="2064" package="Default">
+        <name>update</name>
+        <full_name>\Illuminate\Database\Query\Builder::update()</full_name>
+        <docblock line="2064">
+          <description>Update a record in the database.</description>
+          <long-description/>
+          <tag name="param" line="2064" description="" type="array" variable="$values">
+            <type>array</type>
+          </tag>
+          <tag name="return" line="2064" description="" type="integer">
+            <type>integer</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$values</name>
+          <default/>
+          <type>array</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Query" line="2082" package="Default">
+        <name>updateOrInsert</name>
+        <full_name>\Illuminate\Database\Query\Builder::updateOrInsert()</full_name>
+        <docblock line="2082">
+          <description>Insert or update a record matching the attributes, and fill it with values.</description>
+          <long-description/>
+          <tag name="param" line="2082" description="" type="array" variable="$attributes">
+            <type>array</type>
+          </tag>
+          <tag name="param" line="2082" description="" type="array" variable="$values">
+            <type>array</type>
+          </tag>
+          <tag name="return" line="2082" description="" type="boolean">
+            <type>boolean</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$attributes</name>
+          <default/>
+          <type>array</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$values</name>
+          <default>array()</default>
+          <type>array</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Query" line="2099" package="Default">
+        <name>increment</name>
+        <full_name>\Illuminate\Database\Query\Builder::increment()</full_name>
+        <docblock line="2099">
+          <description>Increment a column's value by a given amount.</description>
+          <long-description/>
+          <tag name="param" line="2099" description="" type="string" variable="$column">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="2099" description="" type="integer" variable="$amount">
+            <type>integer</type>
+          </tag>
+          <tag name="param" line="2099" description="" type="array" variable="$extra">
+            <type>array</type>
+          </tag>
+          <tag name="return" line="2099" description="" type="integer">
+            <type>integer</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$column</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$amount</name>
+          <default>1</default>
+          <type>integer</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$extra</name>
+          <default>array()</default>
+          <type>array</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Query" line="2116" package="Default">
+        <name>decrement</name>
+        <full_name>\Illuminate\Database\Query\Builder::decrement()</full_name>
+        <docblock line="2116">
+          <description>Decrement a column's value by a given amount.</description>
+          <long-description/>
+          <tag name="param" line="2116" description="" type="string" variable="$column">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="2116" description="" type="integer" variable="$amount">
+            <type>integer</type>
+          </tag>
+          <tag name="param" line="2116" description="" type="array" variable="$extra">
+            <type>array</type>
+          </tag>
+          <tag name="return" line="2116" description="" type="integer">
+            <type>integer</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$column</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$amount</name>
+          <default>1</default>
+          <type>integer</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$extra</name>
+          <default>array()</default>
+          <type>array</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Query" line="2131" package="Default">
+        <name>delete</name>
+        <full_name>\Illuminate\Database\Query\Builder::delete()</full_name>
+        <docblock line="2131">
+          <description>Delete a record from the database.</description>
+          <long-description/>
+          <tag name="param" line="2131" description="" type="mixed" variable="$id">
+            <type>mixed</type>
+          </tag>
+          <tag name="return" line="2131" description="" type="integer">
+            <type>integer</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$id</name>
+          <default>null</default>
+          <type>mixed</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Query" line="2150" package="Default">
+        <name>truncate</name>
+        <full_name>\Illuminate\Database\Query\Builder::truncate()</full_name>
+        <docblock line="2150">
+          <description>Run a truncate statement on the table.</description>
+          <long-description/>
+          <tag name="return" line="2150" description="" type="void">
+            <type>void</type>
+          </tag>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Query" line="2162" package="Default">
+        <name>newQuery</name>
+        <full_name>\Illuminate\Database\Query\Builder::newQuery()</full_name>
+        <docblock line="2162">
+          <description>Get a new instance of the query builder.</description>
+          <long-description/>
+          <tag name="return" line="2162" description="" type="\Illuminate\Database\Query\Builder">
+            <type>\Illuminate\Database\Query\Builder</type>
+          </tag>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Query" line="2174" package="Default">
+        <name>mergeWheres</name>
+        <full_name>\Illuminate\Database\Query\Builder::mergeWheres()</full_name>
+        <docblock line="2174">
+          <description>Merge an array of where clauses and bindings.</description>
+          <long-description/>
+          <tag name="param" line="2174" description="" type="array" variable="$wheres">
+            <type>array</type>
+          </tag>
+          <tag name="param" line="2174" description="" type="array" variable="$bindings">
+            <type>array</type>
+          </tag>
+          <tag name="return" line="2174" description="" type="void">
+            <type>void</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$wheres</name>
+          <default/>
+          <type>array</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$bindings</name>
+          <default/>
+          <type>array</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Database\Query" line="2187" package="Default">
+        <name>cleanBindings</name>
+        <full_name>\Illuminate\Database\Query\Builder::cleanBindings()</full_name>
+        <docblock line="2187">
+          <description>Remove all of the expressions from a list of bindings.</description>
+          <long-description/>
+          <tag name="param" line="2187" description="" type="array" variable="$bindings">
+            <type>array</type>
+          </tag>
+          <tag name="return" line="2187" description="" type="array">
+            <type>array</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$bindings</name>
+          <default/>
+          <type>array</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Query" line="2200" package="Default">
+        <name>raw</name>
+        <full_name>\Illuminate\Database\Query\Builder::raw()</full_name>
+        <docblock line="2200">
+          <description>Create a raw database expression.</description>
+          <long-description/>
+          <tag name="param" line="2200" description="" type="mixed" variable="$value">
+            <type>mixed</type>
+          </tag>
+          <tag name="return" line="2200" description="" type="\Illuminate\Database\Query\Expression">
+            <type>\Illuminate\Database\Query\Expression</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$value</name>
+          <default/>
+          <type>mixed</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Query" line="2210" package="Default">
+        <name>getBindings</name>
+        <full_name>\Illuminate\Database\Query\Builder::getBindings()</full_name>
+        <docblock line="2210">
+          <description>Get the current query value bindings in a flattened array.</description>
+          <long-description/>
+          <tag name="return" line="2210" description="" type="array">
+            <type>array</type>
+          </tag>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Query" line="2220" package="Default">
+        <name>getRawBindings</name>
+        <full_name>\Illuminate\Database\Query\Builder::getRawBindings()</full_name>
+        <docblock line="2220">
+          <description>Get the raw array of bindings.</description>
+          <long-description/>
+          <tag name="return" line="2220" description="" type="array">
+            <type>array</type>
+          </tag>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Query" line="2234" package="Default">
+        <name>setBindings</name>
+        <full_name>\Illuminate\Database\Query\Builder::setBindings()</full_name>
+        <docblock line="2234">
+          <description>Set the bindings on the query builder.</description>
+          <long-description/>
+          <tag name="param" line="2234" description="" type="array" variable="$bindings">
+            <type>array</type>
+          </tag>
+          <tag name="param" line="2234" description="" type="string" variable="$type">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="2234" description="" type="\Illuminate\Database\Query\Builder">
+            <type>\Illuminate\Database\Query\Builder</type>
+          </tag>
+          <tag name="throws" line="2234" description="" type="\InvalidArgumentException">
+            <type>\InvalidArgumentException</type>
+          </tag>
+          <tag name="fluent" description="This method is part of a fluent interface and will return the same instance"/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$bindings</name>
+          <default/>
+          <type>array</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$type</name>
+          <default>'where'</default>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Query" line="2254" package="Default">
+        <name>addBinding</name>
+        <full_name>\Illuminate\Database\Query\Builder::addBinding()</full_name>
+        <docblock line="2254">
+          <description>Add a binding to the query.</description>
+          <long-description/>
+          <tag name="param" line="2254" description="" type="mixed" variable="$value">
+            <type>mixed</type>
+          </tag>
+          <tag name="param" line="2254" description="" type="string" variable="$type">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="2254" description="" type="\Illuminate\Database\Query\Builder">
+            <type>\Illuminate\Database\Query\Builder</type>
+          </tag>
+          <tag name="throws" line="2254" description="" type="\InvalidArgumentException">
+            <type>\InvalidArgumentException</type>
+          </tag>
+          <tag name="fluent" description="This method is part of a fluent interface and will return the same instance"/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$value</name>
+          <default/>
+          <type>mixed</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$type</name>
+          <default>'where'</default>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Query" line="2275" package="Default">
+        <name>mergeBindings</name>
+        <full_name>\Illuminate\Database\Query\Builder::mergeBindings()</full_name>
+        <docblock line="2275">
+          <description>Merge an array of bindings into our bindings.</description>
+          <long-description/>
+          <tag name="param" line="2275" description="" type="\Illuminate\Database\Query\Builder" variable="$query">
+            <type>\Illuminate\Database\Query\Builder</type>
+          </tag>
+          <tag name="return" line="2275" description="" type="\Illuminate\Database\Query\Builder">
+            <type>\Illuminate\Database\Query\Builder</type>
+          </tag>
+          <tag name="fluent" description="This method is part of a fluent interface and will return the same instance"/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$query</name>
+          <default/>
+          <type>\Illuminate\Database\Query\Builder</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Query" line="2287" package="Default">
+        <name>getConnection</name>
+        <full_name>\Illuminate\Database\Query\Builder::getConnection()</full_name>
+        <docblock line="2287">
+          <description>Get the database connection instance.</description>
+          <long-description/>
+          <tag name="return" line="2287" description="" type="\Illuminate\Database\ConnectionInterface">
+            <type>\Illuminate\Database\ConnectionInterface</type>
+          </tag>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Query" line="2297" package="Default">
+        <name>getProcessor</name>
+        <full_name>\Illuminate\Database\Query\Builder::getProcessor()</full_name>
+        <docblock line="2297">
+          <description>Get the database query processor instance.</description>
+          <long-description/>
+          <tag name="return" line="2297" description="" type="\Illuminate\Database\Query\Processors\Processor">
+            <type>\Illuminate\Database\Query\Processors\Processor</type>
+          </tag>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Query" line="2307" package="Default">
+        <name>getGrammar</name>
+        <full_name>\Illuminate\Database\Query\Builder::getGrammar()</full_name>
+        <docblock line="2307">
+          <description>Get the query grammar instance.</description>
+          <long-description/>
+          <tag name="return" line="2307" description="" type="\Illuminate\Database\Query\Grammars\Grammar">
+            <type>\Illuminate\Database\Query\Grammars\Grammar</type>
+          </tag>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Query" line="2317" package="Default">
+        <name>useWritePdo</name>
+        <full_name>\Illuminate\Database\Query\Builder::useWritePdo()</full_name>
+        <docblock line="2317">
+          <description>Use the write pdo for query.</description>
+          <long-description/>
+          <tag name="return" line="2317" description="" type="\Illuminate\Database\Query\Builder">
+            <type>\Illuminate\Database\Query\Builder</type>
+          </tag>
+          <tag name="fluent" description="This method is part of a fluent interface and will return the same instance"/>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Query" line="2333" package="Default">
+        <name>__call</name>
+        <full_name>\Illuminate\Database\Query\Builder::__call()</full_name>
+        <docblock line="2333">
+          <description>Handle dynamic method calls into the method.</description>
+          <long-description/>
+          <tag name="param" line="2333" description="" type="string" variable="$method">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="2333" description="" type="array" variable="$parameters">
+            <type>array</type>
+          </tag>
+          <tag name="return" line="2333" description="" type="mixed">
+            <type>mixed</type>
+          </tag>
+          <tag name="throws" line="2333" description="" type="\BadMethodCallException">
+            <type>\BadMethodCallException</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$method</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$parameters</name>
+          <default/>
+          <type>array</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="true" visibility="public" namespace="Illuminate\Database\Query" line="24" package="Default">
+        <name>macro</name>
+        <full_name>\Illuminate\Support\Traits\Macroable::macro()</full_name>
+        <docblock line="24">
+          <description>Register a custom macro.</description>
+          <long-description/>
+          <tag name="param" line="24" description="" type="string" variable="$name">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="24" description="" type="callable" variable="$macro">
+            <type>callable</type>
+          </tag>
+          <tag name="return" line="24" description="" type="void">
+            <type>void</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$name</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$macro</name>
+          <default/>
+          <type>callable</type>
+        </argument>
+        <inherited_from>\Illuminate\Support\Traits\Macroable</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="true" visibility="public" namespace="Illuminate\Database\Query" line="35" package="Default">
+        <name>hasMacro</name>
+        <full_name>\Illuminate\Support\Traits\Macroable::hasMacro()</full_name>
+        <docblock line="35">
+          <description>Checks if macro is registered.</description>
+          <long-description/>
+          <tag name="param" line="35" description="" type="string" variable="$name">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="35" description="" type="boolean">
+            <type>boolean</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$name</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <inherited_from>\Illuminate\Support\Traits\Macroable</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="true" visibility="public" namespace="Illuminate\Database\Query" line="49" package="Default">
+        <name>__callStatic</name>
+        <full_name>\Illuminate\Support\Traits\Macroable::__callStatic()</full_name>
+        <docblock line="49">
+          <description>Dynamically handle calls to the class.</description>
+          <long-description/>
+          <tag name="param" line="49" description="" type="string" variable="$method">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="49" description="" type="array" variable="$parameters">
+            <type>array</type>
+          </tag>
+          <tag name="return" line="49" description="" type="mixed">
+            <type>mixed</type>
+          </tag>
+          <tag name="throws" line="49" description="" type="\BadMethodCallException">
+            <type>\BadMethodCallException</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$method</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$parameters</name>
+          <default/>
+          <type>array</type>
+        </argument>
+        <inherited_from>\Illuminate\Support\Traits\Macroable</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Query" line="71" package="Default">
+        <name>__call</name>
+        <full_name>\Illuminate\Support\Traits\Macroable::__call()</full_name>
+        <docblock line="71">
+          <description>Dynamically handle calls to the class.</description>
+          <long-description/>
+          <tag name="param" line="71" description="" type="string" variable="$method">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="71" description="" type="array" variable="$parameters">
+            <type>array</type>
+          </tag>
+          <tag name="return" line="71" description="" type="mixed">
+            <type>mixed</type>
+          </tag>
+          <tag name="throws" line="71" description="" type="\BadMethodCallException">
+            <type>\BadMethodCallException</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$method</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$parameters</name>
+          <default/>
+          <type>array</type>
+        </argument>
+        <inherited_from>\Illuminate\Support\Traits\Macroable</inherited_from>
+      </method>
+    </class>
+    <parse_markers>
+      <error line="0" code="PPC:ERR-50000">No summary was found for this file</error>
+      <error line="20" code="PPC:ERR-50005">No summary for class \Illuminate\Database\Query\Builder</error>
+    </parse_markers>
+    <source>eJztPWtz20aS3/0rYJUrpLKU4mzVflFW9tlyktWWE3st51x7sk4FkUMSKxJgANC0KnZ++/VjXhjM4EFRjl05VSomiUHPTL+mu6en5++PV/PVvXtpvBTFKh6L6HSxWC+TNC7F22dxGV/FhXj7r7XIb767d29diOhkkRXrXHxHX16t0zJZiu/fj8WqTLKUf30aT34S5TybnMSLhfPMAn+2Xq2yvHz7JM+Dz85K9Sx9Fy+SyZN8tl6KtGyHepItFmLsbfIynuEHeKQ+ZuERvM7jpCze/hSP8yy+Wohaw5MsLfN4DG2sCcU33rYao/BSyqM7TUuRTwHz4caE/rc/5vFyGeeF+tA0recinZXzJ5s4F+EZOvBf5tlYFEUGPeiPQPPxIi6K6Ok6WUxEfu+3exH8ISCNkIh/w7/LyzFQPIqLaIlPkfzf0cOP9+ifb77+mtt+Hb2ei2giBxCNNTaiJC3KOB2LQ9lQtf+vd3EevW1GpWz7Df27yrMSfhaT6IEB/13zOH5FREQzxu8WQ/ETKjSsmaJjhzGtsqLEd5ksWw/NR+PQ8FYWE3gGOF7nOQiiHB8I51pEV0k6SdJZ4R1WjFIR6ky9GR1H55qdBoVAER5Ex4+i84uR+f0/WZIO4IP7+2YucjGo/z6P3wHwOpwsB572tF+nwCvV3y/qWHiSRvFslosZIDqarlNm4DidAD8DAdKozKIrEeXrtCs+1leLZBw90FADmCfoRVTO4zIq5tl6MaF+RLnOUzHp2ZmEVu/qFCgyhkEUUTKFvhQncjdFNEmKMoE5ww/FelH6aX6VZQtvr/rt42gaL4rATEvSL5t5Mp5bI0hg6nE+EwBg5u21KHN45O13mmfLpr6Qs4poCiKm++uJT4Lg74LYE5UdDDBO0vJ2HRG0QE+zPFuvSJ5u0wNBCfTAIrWzyTC4QF8kpreeDUEJ9LCM3yfL9TJK18srkUfZFLh6DC8UKMPM8d7eYN7evhbJMin9XXm7KK6TVa8Osum0EIEeWEpIh4EogASjwdRZJ8sO6PXO2OLOboczgvG8C+JqvfVGH0F40YDDOstxp9swHncW4D6jZUGeoZ88yrNNtMjG1yheoOquBH4Ai8uv2FnXfQgqWoTkn+I0EbhwxONrEHK1nC9AvabY2xZLuIQEK7hnscQe5SK/yz4Z4tPGrp+ASZrxEha/i5MFKXowa9GKzVYiR+N4C5NFv1q1WY4Ho2jwd/zfI/pE3x/xr/TLffhsmi+Sa4G/4r+IoDi/wa9pVkbq0ZUoN0Kk+DHh38zrX+GvH/B//0s9cMeP7Ca5ggM2hXi/UtDVN9Pwd3z0+9c0xt/5//SlAJlcADbKzG6NMGpPPNh/I9kasb3JEzCVVpOMpIqtu452g8E7AHqDcF4CmKD1cJILtMriKBUbqRCv2IUJ286rGAzyqM3J0P5aZDsWnYD43YNIewI9gPgM+ciy2TUoVsTRuyyZ+PSDNlvBdaOlfD0uh77JWnM1TBD6UzNTEwM6pevFov1FMxczFfnyPr1sfM0H5TwpDh5ZruNx1dNzGpqh6FE9PrLfgCaiJOzK4Q/3a0DsQVkj9AB6CQ6bno2CVHeDz0RJiknb9OQysGR4NL5kDNJLH5bJe5AHbcG7JKchN9KcuxkqAKjHBl8PLoKYVq2S4pJGoN/cjx7rYURH1MEl4ABazQqcuwZlDy2EkieTiZTbvTze7MlRRqCswNwtcNyApLARKFHE6yIM3rznxSLOTzmfLgYb5E/GQz6gfZWMO2D5VbwZWmMZyd4rjm8I8/FkcsakQqx8r4HYAPdtNIPDNtSQ9y2AVaBPuYVpOtIut8X6H7chX7G+2o5ub2V88UMn5BONHxDAIAPEt6arfr+cg3FWwPuBYGQHPjhbXw15wCMcmktxopx0c+U6BaaLxEmNkhhtQ2MKtdGvMkbrbaBgHivqAyPRhIf7fkr7xwFTmNYGYXEwv0H6T/JWVfypvR6JbFxmZ78ubF37MRKwpuMIQNEwGeVY9ps6R9OvCsJpTNQjxRIOJntQYTP9wSMjzYPh4JCHdTjYx5gnfK0sNQePNnm8GiKVR2akwaXA6D0pOSaK1Co1vgWh/3pg9IwEUdNHckj1JcBaARoXgNpaQlAulyKfieGQvuw7jUYKcN+F5IcsB8PFxI0AkVm6UBGs9gBWZ7wpSMOA/raCXWBgiZ7TUCbCFsEwVxUSiP7zw6DZkF8OzBBbkHLhXY8tFgwMmymnrNf6Xp2T+zRLG55JBy4MepOFn92sapDRayGkUGiuP54RBxLPIxr6yAxSmdA0KusLDAO+DRIwPnNw1rhr5Re51Prmm+iUHeFpkhdltMeCtafcYyICcBQ4TwsQlFgtPHoNoFYT8U4scFw2XOTD/AZxgyYsrqKKqJuknMPncbZcLcT7aC+D/iShwWYu4yTFt5ZZjtDj1AYKKMA2k4TcjqjIoo0Y4AYTsIweLwXcadtJD5e6dFkokqsaAu2wthLsY9LH/4SPJzTiISF8JLnOXdpwFJfQKr9Ekg4lBRFQbRFksaFY8fkFSg5+9DeyDTVsdfDIMtdoJ8S/hBtiS70MJAKHfUWEZT4eAT5h1IDDooCV0OBUtpvDqhZHYB4pU4jB2iSU1C0A2sIi1mF0hsSCx0CY/6yB15gndA/4ng0T58rdClsXQP9lGY/nsK4BXyXlIQaSkCGLCAMQSm9IM8dQ2rP8b0NRP50OHoHtXfNlHYFlSQUSAX9qway8FOhsW3p317V7TAEc0N4Xq3N36qMhQt4gPkLqV1HTUbiugq3aik36vAJwRHZBi2W4ENOS2X2HtKJ1YHtqFQIl/m5ogvP9ZwWDNFjvmsjjCESKmojigtSwMCQLAxi0EOVLEaU7oUwHiWmnRSex60SLPJnN/1QSQhP+Q0WERtAqIxZh/mSSoin0CUWlG03GeVYURJO7oMZnLDQ0cY/QGEnpKTvkVBAI14fYVqpoiAErr2aROuasfNln0HYyEFdo95PTIG3qQSEjDWNwzmYmG2iWvBNptEeJX3vs/q2De2rsGT+gxu4zFfG1wpX9Kd9IclA6gHnqfGQ6qYUy1AbhsUJRlcT0fj0AqV9yvT/Vz0g3arbbZaNmuSVfTCUS9RXbDxwmtBFejRR2FVQZaAwQVL+OVBdxYyBSP7tVaH3DipFn45Vgzk/UX+XI0JBH9ywcJzGuM3rJiL6Rdmul05yU9mMMpVyLmwPucBWDmNtgOViRqgjGMhLg3EbkZttEPYzeyE6WmFsVo0mDCRRy2Bthw8zFWIAwTojPqd2Ssq+jDcBFLoRH2O8KE3lxtKlkmVQUJb+Wi2qQpBbebVZtMBvKeX4xpSWqsEghhxwMUfwDJ73Rk70WUZEBUgm3RHhAzVW25hCooushkodiuX/lzFNolFdwgnPlmIHBR41ylEBpw5WEFL+u4wVGI2apS7trIVbRLMNga/QC8xo2SSFGMiyVw4tJLqogeUdXjidJq3imQHm6XspAeXR8HP3VRfUiKUqjvRTcfdzxsFaPwfGgtv9BaosplLBYvZDtn6ST/0aAQ3v9YQXndt++azIcgHoWs3hhJo2oYgkYZ8srmZV+2DFQVRAZxuU6EIT00DEQlNzEmJdIFJhhpLDC8SY3TgbVoVfcsFkRnYBimJs0F0VSHNow31gRSGAfNThbC+OnVIkI7c8hAyfLpZgk0OXCjUgqJdMalKxKHc3iZ5pRD4E7tZdvm/ExnjbN1inNHpsg46E6I6qbTCmF/YpoOAKlqYGAKfxXzLO8PBivy5JixNAGONYCGit7T1JOUrgQVQklauKbyGHqoVIBq1WerXIfiu/DnKRGg9WpzBbZRuSG+XF/jnGq+5EhmeirryoU6AxI7wHORKmkDiRcgt2JjPvIykKH8qN4aIQqfwkcUdQpA/9Ms3yJFEG1l5ZJVYsW66sDuRmJ8VrJF8zjSABFpVSwrsUYf7JggTTvVuhqwLhGzExS0yKjTjnHTE9nny6yzbLtZIf24mtGg9KE3WVJI30PzYu9UTXw7VNSRjOhIokrGCK0ICCvgRedZZb+WwD/YfRdCVdEL5eZDZCEUloEmHYHTgaIfiJwO6fInHFNMlGkgxLTu6nj8VzYYXVpG+DohoH1wqejqLmroWw77f4xMncQzz/DLGkaMPEY7YUsp/RY2nxgJKu9A+YYua2xknYDsCHlQNswgQuztUzxJGZWm0oyW1DmquKmsW4G3KUTDnA8Vc4GglyhjYYqFF4jy+7sX8+tHGy20NhgnMKqiOubeC+AcDrXK4pMjPkpGvsDxw85K/OjI7lxZhlag4NHA9RWuDOPCA6Rx1jCTioR//44GqCCGkRH0YC2EJvdUD6DQH4oyj4s2sMBjh7TRnlk+EmRGT9TN5TVylwwcPOW7kd1kTbj7JDMJIVXHga65V6JZdXb+qronpXR7mW5bpL7nGW3yYtyc2TtjI4Ww3yk4CPDSZQ1BqJsq0P3o/JzKMvX6oRBu0QDLUTCoS0f8FMegNOE5638brZiDtI9S5En4F/DC4rhpa/i53j1V/XP5TvnOheLh3qh7eDvakC8SUWaEWU2k4RDwxtxNngY4D3/t4+1pafOnc9EKXDlFtV4TLMFjnqHLPXW8F6L5+84/srUDWdta07p7oi44ZmkeGHcem2FVeKfVRPOE/ty1i5kHxsufL3vBX0+qCbwXzSHV9NoD6DdIta927jMTuOnWf6mV7SlgzZpNMIGsG60BbOrmKaViDCFqTJWZnWvMFlzFPsDGWhtoWzVyolne9sEgmW7IRoh6IQwMey6R/T/YbIeYTKO//eNkilK6LV4YBGqNVry/y785+fCqz2c/j68tvol9etJs03GNnGSa2vzYELGdg8buL6affY69i7WvJ4KtMPKF4Jo7wa2r395vNl2SwgR9+vCfRY+GbPFFk/DikSHYqB//2mY9gVIywxgoKfAQK8hwWg+IKPdyv6CRIRSonT3tLoLEWimWAeONwBspLbzOONMHoW1Qvc7MKs1BnkR6uuny71tWHu3lIKnPCljBUvU8nDqUjCizkI53lom1LHhbnJhojVKQpRo8HnhNglRg72NfKRGOD4poe9CUJqJ2kFQagAMirtKC3LJZyUxu/dpfs7KvuJzK9wbU709Y9di509Oibtg6VZcdwkcemD0YezABm6fk6WeNCMH15+EcTmCWhtTB6PHOco5zXIGxnEZW/M2pCRxvDagpUm1W0D5qKgOlbbFJj3FF/QBItyBqhDRHBlx6bab5C8XPS3YNAdjPbiRMV55Hk6ffGtRAxnVv6gWoaBQRgUPlQQC2axXiQofH7adjd7afO/CHyEGRm9+nK3TcqgQygZJfa9KmTLc1cB/XqbJyif4ITvfgmFbMr4zzLvaTgIEYkTEbKv3WQLawsJhT3kHqq/TdlPjrnqDqgvasACrYr92EdZvvoleoKbZCLmLbc7KKiUkt4flKTe5A4sxvwLPmOnIY1yNkMlDkoZ6g8Jor4LPp+EJ+RFFtigHSHY0xhNsCDmbTm2IMkoX2GJUlaf2MLi5JxOSnKmYGFkfXb/17m2jPG0hS9v4COJ9UpRFH/f5NuzvHO29jZ/3PQ28y5Lf4uF1lIIzXZ3J4VuJOxOiHzcs2IWTTGJHhpfAtmMcOEhRsRLjZMq545xJpChVyxeyAdopQ5t5Rp+o8hmLhirVE1NMG7i7rITmz/71fDsJqFk7bwyF/KsZ06SDxX8X/NnIfjs18huYtIElPZa+BGQBGJAOacei5TN9Wlm/E/e0u9RvhdQ+DuluEHubYxr9vM0Q6poRVWVkC1VdPPYt8NI66b5G+A7iij6FVh3NtmFFavMYTHJFHkoVkx/7mRifl2EhswiibQ/E+W3zakbGlrHlW1kdp01hrK1pf5oS3U9TNz1RdlGpGkUy3yFP9DQlPgKMMMdW2tNAGuJxBkXyr1vWrjTqFe0V6b0nELwHSMLWEcBYF5RbXXP72LTHjGFkNx3HYs/BNZGUf1LOM3P/Au5uWx5GLg50/UbbBDN9evOmi+0Sp0/TqpPnp0ZDZbF65/rOBH/CKlUX409YMYxaD/0d9HJuGGQPxbObfQ69of6J1M1dLNAexdLBgvGqo845XmS7fB4a+k6MxU7Kelss99u72KtsXny5bOrHaretim2ZVa8mqjrSbgN+f0A8IxDrcxaCBidHLgldLAsM+rFx4YT/YC18nalgBS1ybK0b9FortFq9dWzDhCGoWhi8bwOGGb5LJmKiz707RcTqR2Uw+IHpa3F6o6wIy86PZHTDhAfn4oaO/ei4nrY29FKOJwvxzAqFONhAoNhg9xhHoMLndovjZ2CUi/elyNN45zHz7jsoLd7b3UtY1SY2+sgfn7qVgH1p3KGMAjx1dxd59nfnlfmPxG3tjiE4Iil92Jaiu8oS3R1B7sQgsFDfxQyoUKqfpfrJGPNOjNFmHu2NutuYn583Q1VR1c203JatJjDkvd3mELXvHyfQUVu1l0/BlPB682GhfkwKqxNCfAoDktkhA/yO6rf7qfAOHPz50Owu2L+FKB3EoZWsfcTj5vPA9B8iHTd3LRw3O5ENRaxllpbzPy25fsLZ3y3BqIudkuxGxPmflmL/hsnfLcGwh93QC9ccrBYHDuUQiTZiaRuhhtzfloC+ove3PbNMxL19IbmmEggOllXF71sQctuDFPVKGF22G7b2kv8BY1+IIprcpPES2Ll6ULrPeb16GQr3MX3HogRbXEQlxyfJo6q1WSBr+J8CgqjqIl40VObmpb9VEFqIGRdeOQbWELPLYrVIgEbfDJ+kkw8v8v3h4+PzJwf/c7H/DUodAx1FB9+Oopevvv/x8uzl89PXl8++f3760+XJk5evf3n1vZNj9Xqub68Gc+9dnCd8SweGICe6RAPXFzPtVK0YvNVRhQNtqLLgpimmr445cw1OjA/GdIh3TLXyuJYr5m4ptrXj6pGdaqg4QR59ZuoVIz1CvEtYFpfBdDB95SYWQrOSDR+YuUgJsbGOaHwPDx5aP5qaH5omWPVDfnE3/cwurWxgCv6rKeoRuJcYyIPm8lDqAN4DJnKh29WrMNUzqWpClZ+9sS64rR8/57itC1qOhioFJiXKOx+XzrP1bB4mAgzUYGYW25UC8Y+2TRUysFwScPCA6lfYP74AO9lToMRacLhrDWpkkbIicSNJRjdh2hD4L3+pVjT5eM/FRKVAojwMXmayQKLhILrWI7pOs000p0JPeOT+fVk9JrmpkRClNaqUJDN3YUvgpgIkSP+7JFsXeKUIzA3roVEBKSchUYLWecN4Gl3kdZ7jYmf0JTBeOoZfJWGgekxFlhRdXNR6kNzjMraELudQbFcZ55aWgBxmgzEg5+S20AeWPOtFxdxTbOauJvWbLP1rfm9Gd5YYN40c3kBtrUqRqiPvqEiwhl5cErdZ1Sfsags2VCxgBrpwcqPKvyndkxS28qlQieov0BWxtNuEcmWDVJfZWsJAF6WoPaUkHeeSyHOaCc89YkXNi4Wl3Cm+fRzZ1RE07kKbSVyXrEjja6Fxvq8KIBlsnzOy1dnuNqeDbiCPrm56xf64yrFjl44ODw9dVmo3TKj/pze1U0N6NXNuOqM1DT4GypTxherNt55xm5FV1orgPSa40VF0jv9e+FNfeuyc8IXrn7Q6kW6wK2PfIRZPaYdloM1RarcQn6SVvLX+86x/x4O7/WVBgL/Ph1l2HMD8Rz+Wafbng/zXK5CJNSIY0hdUzYMHfMflPBqlbet6HkZMthAOWdDjU9HrTrj/NiU9XLr3qulBWyToxfdc37uqlkmSO5ezd+ZnGtdTO5yugRHzFuNQSOg3+e86payfx9GAPr1AgJwrn/HHj8TH5xVtrtYMKoQpu6420MOgNraFpp9QFXkaIvZO/0KvEwEfDLCLrbf4HYJh9CKOymQpgOWWq89nc3YBrxf6JlukGmeCTS7jsiUwW6M+Y68/N3+2yMmg4c6QEzfh5qX0lzhbqFBFvNFxz2ENyJYsax0cTtGlBK4zzyR9RZ2Q+A0JCE622xRJrTml4ORxRYbKAPc7LOi3VHThRSK4RnTWcR7l7b+LnmMhpZVi2KrjKotw49r+mwb/Mby+d1/Uqf/ea7q6aXkvm04LUe5Vj4g0ksq3i9GdEtTd0L9f3gHv9DrjnT/W8WRDWcbvhw/19nzfhWCRxLRxUNwJsnaj3orrZBVApyPpFcy38sUiWSafji2ot6254jm+TUxBcPzntKJHx9HDgE9Z6YJab+9J1phml5jcDc+UFLnqwDMVsrSxDDWmICGzmjQJuHTrKp4Fb0zj+WKLwBORv7Qf7hQXMEgEPqT+R7ozYIRv/9aMHJI8fi86iL7dh6Gpt/cPHjGO1fdg+SC15WKF9nUp3vdltIfQ6c5yZUzEU4xmKrSePmtBqoO6ysNFXJSn4V3OuzTKJNaf4GROJ8MK1kdqZLitpveu6SLi4O40L8LQ5iRbLNg3ODpaEgnsBvsV4ce/g0e5+A+8YNf3p7bV+v6hQvuKI+iVc+XTwKoOfol89bvaix+BPTgQPYRP8WLhLcDkLRo+wKrsEj31yfCEAlZroHU3PmXzjpRt31Jk7fxiHbf3nj+Qp8N1iZpdMyNNyxTBwBMzgXR0Wk2qRUPCh0nd8ysKftPhFc0iNauGl7yqwaiPJUBPWx5JILBbRoSYHWLa6vxULLF7wj/B5GQumtKo7qtc0pjX/TwbX8sd/QVv19GFj1LL02WlIdx4bw/tbkZBx0MdxqUx+vUlNrRsnSqDmyYBcwmY+k2elOLlJAscTO7CRB2wRCbEejWhvII7KpqH8/why3/BXuo18xx7CPHbSPqzOe55LrZggN3MpsD+J4jaLlNhJReay4/SsMOLnXKB2zIg4bF04xrEXHbEhkSzIZqd/bpoGagbjzgjlDKXBof+vawjoI5CsikqkwPkHWtXN23mE+7L1+yj6k1HtWAEnfftZAKBGh4CfG3hUCxi8PWgS2npIdpCass5mYAZQWXV1ZofRgzSVCNCpw2xxsD6jkRWviSaLU4kdXyrMB5hpBEV7/haHP+ZkgdyHMeRs3vMMz6Xr1141jBZeZEB7EePoofgMiIbWz8e0W5XGx9Z2VLg36jr+2w8Ne7QRzvhF5vAIV55oPwEbV+QgfftPi39Nn80IqvwYqvYAl2Y37HHatBKpm7BVghZKt0BkXV+0Ygue7ZBZGV5MsO76Qy25BvOkqjvUlIveOp32q9H2vov/DZdjUqrPBuLoshy/dHWc/qejnydyt99R52t3tVAPYad7DtEw1frtJ1+nLZXqPwgSphpqGtLdKuSq57JZM2tUQGa7sAHt5CExVJoOTG3mlSN3fse+yUczI9ntAhb188owx9zmdQdjCtulgWj+o1+eIjd6wnHM/GzTu2sAFd3gqxaIiQnWVrm4DUUb+XMAH9vn4t0Vs6fbMBmeKkm0ihVcrqi5rE7kjYyY0bHHT8P5G+B/AL1jP99fBTpAR0dAcdmi3fiZJ1jWVATrkHwVTHISluYgf4nqNV+oGiDnLRXB9YFMhAXatejmEnrw6tWoiM5TgNUYmbkbpGu4nJOm58NuCjnwNrua4wa3ltV36wN0RbrQPM03zterFerLKfMXsn0FJqi+6NUqukiSa8LVwReY5of/LfEPFgxnSbjBFUHbVjmM7yBFezbA1hfACWiHH+REtRNbBhvLz9z4ekb1Yz+As/9AmBxvRZFIzSfKefzWrZOS+XesDphd8HUKG5V+S1GTKJziYOWS4PWCtoyjGcskLJe/ZCIxaQAAARo6AsNzWa5mOH6hvBU34S3AeHApPUVjE25+C5EnPMyTTsd5p7VYv+iUaEiB7QMhE1LtwVAwkz6hjmxiUaGqp1YGrqjzrF0mwIYEqpsev7wArNThwme4uC8Vj6lcnkt4CNgw2S4Wq+cD/QkBxdgQT8MMeFTIl5U4EmXKU3XZTrkDxp+yNLqkjLu5xGHn3Ta77na4R6p7bWR3ny1eOSC8oFp1AHbmLstzrnRheGM3/iXj/569eqp5g8PtdzB8o1wVLf8Qt24GxoVG4hP1eCgpTU0tc/Ov/sHWG1DCQX2IP2kfiWW2Tt1OoT2N2IWJ/TNx0KWUKKzUzC1a6mX0AJNRG2h7eM9tTGHR8BlrpwSc79xLtO845W9k+LfPNGydcnLs2n31VfwEiHiZVYkMgUNGq2yYlhN0af2QGWk7gAE/f6xDNlXelJ/j/XZObUn8pAC/VZH6NrWdmw+msU5uHK8YvVUkVrepNu13AYU4Z0LriWBflG+I5kMSWNFVpv2TOQwHZH0ArPahMzimUhlwrRSypZbGAzn/qjealzzx+scfP8aLSuxh4qP3x6AICuhNThfdaflMHyAt/CtNZjw9vd8nXKgXJkL3fMjSJzcR7jnRhsH4crdnqu7XWLgqIbcwciADNbkbnEe0cofyfHu1+2gzRzvBBh6wm+ek6IvUr4emIaoIrQg0ObUIV3pW+I9wnIrThf50zd1LNjWdWGbcn9o5cN7OaWrwK/5TUkXFWCZQLmHYYrx8XFa+Io7HGtMfXEB0/HQki4hBlfwJoKWJELFKklT+8AouYXWrNj82WT5tdn+sSSjoUCgRuOxWhd8O/iSI+h54wFPoiMeAq3+2ho0cGjugS6HgHtKvYREbWxc3Vj306brJdgH4+j0WdBE2FJ2ukX6u0nW0xvM+AhKV2vGh04Ocd2FEDl0lons0ySVhMXxfiSWq/LGCKTLP5+YAfWk8YMZFS7OPJWa9dwVGxK0ByfbsavZetOaByzdnPUWLAxLiWLiBd+2bnd29DFznRX1I1QzoKPevoL2yVJ8/34sVtaZCT/L4rCHAS5FkxyU+8OHDzss3DIDCW1c54mVUVxjMxozhVTcUQ8H/87W0ZJuK5f30cQ601kfJUd9z5XZKRcRZ7OnJ3fY4cQcGAWV5dCy7jWPy0wptTw6UzDlEHQOG1t/FFbg3EKPbFAqgoKpj/qx1dgoVNYMPILFU/V/+9gcGJVOjqmWK8u1kzpmW5BF6FaneVQ4EibawYFz4/OL9fjaOspDWPaHDL0BGs2ZhObHkd5dpdO4NtjKfqupYaHPiudoxIGHBR7CRNWG5pwOPkQmCJ/ogamiFljzYl1Uzo/zNQB83Gdxo/In9miWe/LUOWUCa6dZr5F6M/vZUxsiGTUY1YYpCMoBsFxwvtMMS5AMKKkpT1ZWLgoeh8e990NXTp7k+dERY96rgqtBShVnReivETDG+Wyy7Xduj0RqN7I5I1nfsCaRxwU5PgWn6mcTzCEZ49EbSS9YFvCgb/S3w78eRr8UwjNATfzDRr5fyAtw2vm+qts88hJO7SF+AAfa4gmst4IMHTOOkedizU0TvJgC+L/9xI/fnLKw3BYaaOAm//y1oKvQy2Ntdh2xjWEXEfr97eGH6HdTrSt8DugkS5HCtHMaUo+8qcyzu+3Bx5knT65D4hHux2QTuxLjjHPmguel9BszXoc8/BPGyjNdHglWNSxrQYYIlXTXgjnmfY3mcEKrhc1l4utXvxa/2vuiTkqVuj9KplQ1rBG+vXc+UNVnx90xk9wQey20YYbhCa87dq9E1JBKbph2A0ZMc0TEMhd8cT5gKyFjtntkDe1ZOVJ9Dzv23haSAQIT4Bl87b1u9r5VTiMYLLLCROpzI2Z4y8PdshleXv7wy88nr09f/Hx52SlUaqEQxCFZrpfmXMztbChFwkUWlx/acAl9dythHJqqnXXWZa7x+z9urvH7TzrXAuaZTXdqH/eaL/TfnkrYY8o1bEkgjxs28ioIAVs3xzDgH4mU+N3srpnAMTOhx22NzJ4zI+x2nJ2Fhtb4BcDWe9Pm/KqsLSgzs1unpl50G7SlhXacvKaW7qg9ndiz8a5PlOhEAGuDqGIRqIyfE5NqGEqcBG9L1XKEdTWjbedovbLy4iN9Ctv4b5Vre1X1SBtmTjunEw5tgAeIFclUfKNOsEOubGYSGpMCEw1tgHZtRCpqpgbFsau0WrCM78a5obqHmAeMdS0P6/jhHdSn5pS5u7Wl98LqCQ/1NnJ3qsEwCyWluaXd5AV7E4MRs3VAub4OHvXBWPdu5LjkvC5JL7kzTWi5srqx80SV0FA4ALzpKkC7V14nYU6UdSbd/g2GXpDotPXGJmx0hWciCvDcD5v4259YYqXLOmzdkSYBam9r4OpiaV2SSvxmr2xRyThpT0Y45dumuQqoPB2h751uU3Uq6cB/v1mrw8I3XascA/+NZYhFGY6XDQIpBSYubU1UctgZqRjazVLXa89wi6nkaiCy5CAIfYlxampgRAOPkkZ0IM0pX6uVBQaW+E5KaEXFOmPiWJIU0B7gOcFaTwmQuEYS30q1VY15cdeFybUuMEoFw06mN0rPAbvJ6qm5sC7vlHGXwwriLH9AJvMrHIavnzyXH/0+wZ8UmZ6apia0LVHXKbJ9XWS5c6reQwaT/OAUJGBq+OnCkUuiQpU6HoLIYrSosUVcJAvdFqdkA5WGq8qDrGkGKhwM3jUgcUHFOIFChtAJLBTrKkDsDmstV1Q5FU2g4p9zKuWN5WsjqqRCp9+lUsIBmoMGUeRUcvFWYbZow3CadiioH2waJJ/u8bwXdZpDMKyC9WkPKaINC7l8jxdyRVDF5YOCDu0p6kqLNiklym2gJqJDCQIqfqsiGxSqU7XsivUYT6ZgLdVkTJkwWOrCuRg4KdiOw8ioIR8BY+Am7I7lgqz+1ZFqP3GtBNRUx5h0g/AJejtkJRcbpwZQ0BXwrYv2+a9KSY9VngBBaWOh9SxYy/2rhQBzChDhLqZt7gBP70dRnk6qC+rIwAxtB3XgTgZcZVELcsVPMDcZe8lW528nLl87DuUbApPRNxA/PfmMLzG3VCc7sHDaiLLmg8WNBo7N52wCyvoQdvFcM1FPrLV6HKyRmPKkc1jVhOVHzqUS8q1StmpQOAMAcxlQKlRjc+raqmdVwRD+haPqUjzVEXGLsEtc5rRTWIJcXYECLPjO8SkuTaALaVOyUhA6SHkDYsfWLw/8RX5asYIrI7b5xlutTFbSrdQLMRD2Dx6pPYHm285tQ1xxnD0QbTY2xoll2D08GH0cVfGS5r8QkVU979g9r3x1o0No8dKbXNttM0kXYWcoQa0t3pd53F8ny/Fbe03cD+cFSvoSbH8xuk0er1ZUzM+VJ3xixbPMK8aztcmpYnjWcQ5YgYd7uoe/qKHt7eMhJBpTWDEoArZF/Z+JL5uCE/HlUPDgjii4ELZ61bkVbSunvPzcrqLQGenYJdZHCBgsnHISYwksNDkx7dVcgaFuyNFXcUiDrXLRAN5rMRcqqyzSYSgAiCd8MaHV5MRySTfcBOYSAL+uk/E1fOZopFVbItvY8BSmkrwW/YJFKmVXU6ZvqfXKHmTh8eV53z6ZhFLAvQUi/GnyjXbCM0kCd1c4bB4oogV3hMM7SGv0OcDjp+wB65x51qFkSv3shFtmRMINn5UIoOC1epGRwNf4IM4eWd5DKBHf2ilX0wl4HowTP2b47AE6IMo9quw2c+zDk2Kym3IypjiVgznrrCeXYxjW5j1yGGtUM+6D7PATajuTcAcTrggFSaDCYZvtxheXhZ6Gasq28hQpZLrFC9wZ7sMmrLsEWKLZcimGgqV/5h88RydNTJqvTLto9B4C71gd6cE3bPSytgOVKplQ6OsadPoT5mLh464ECpGg83E14304Vd0bj6pVcAQ+QYkHy4wfYuW5yh8D5vN93Z//GgtLxBvSpihuKiso65XCILdtge1bLNQMr5HJ0bjoUifUVnbWO62Hre2UJ2USKk+Ygr7TBV42hCEjOxhb03LtibGVZcg/F0rjlB264tI6FaSbVlZBzu8z3Ffxpm3EziCDiYtyjBq19uVJwQXEtZ1bb9So3JjpKVmnn6k8/NMUSJ5MnuSzNS6O3fLxC4uQjriPIl15W94h6aCNTSiWeNxcEyrvjS/JdEgeTsUPDXy4J58oVFMA9Cj6jXr4eLjXWOHRnHrE1hRbNpT1kj6YikHlGfUYOpRklHqk7b6iT0Nizw0/XyZh5SkQmYzHOrH1yKsifueVnN/QRc7tofj2rPyve/cyehZ0rFttljIHLszWeatR0G6vRoGSoDYfNphsWnkocP7anw6WqibbJfjB67xI3tWIocq7VlaOXkhUC4q9uRbYIOlm7J/o909TsHGmsd5XaCg/ol7pXIqr83R40dEuwHZzYoZ4qYAU5mPb1HTDlpnpAbZNjOej0lFuMZsf5Tao+tA2E9msW/XM4I6IPHSxweTsaDXJaD+9MQW9Xc4q5WH9cmU1kYVqt7ru2b1eFo+LWRvUHdMP/bc9N93e6alsWVv6nsaTnwjwCQyq28J3eYkT6HQrNC4t7HgfHc3j4ie8GFm92BLoX2Lbk2BHwZWMb70s47ws3iTl3LytFuXmbtsvvvYbR+DzF4WshaVmTL9ZHGNWcD/Wh3v4FS2hdToR0wQdCskyv5kOPh4d/SYH9nG4v6dt/o/3/g+ECQ+A</source>
+  <type>class</type></file>

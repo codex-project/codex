@@ -1,0 +1,373 @@
+<file path="codex/vendor/laravel/framework/src/Illuminate/Mail/TransportManager.php" generated-path="codex.vendor.laravel.framework.src.Illuminate.Mail.TransportManager.html" hash="3405ff690c4b58edacc53dd53353531f" package="Default">
+    <docblock line="0">
+      <description/>
+      <long-description/>
+      <tag name="package" line="0" description="Default"/>
+    </docblock>
+    <namespace-alias name="SesClient">\Aws\Ses\SesClient</namespace-alias>
+    <namespace-alias name="Arr">\Illuminate\Support\Arr</namespace-alias>
+    <namespace-alias name="Manager">\Illuminate\Support\Manager</namespace-alias>
+    <namespace-alias name="HttpClient">\GuzzleHttp\Client</namespace-alias>
+    <namespace-alias name="SmtpTransport">\Swift_SmtpTransport</namespace-alias>
+    <namespace-alias name="MailTransport">\Swift_MailTransport</namespace-alias>
+    <namespace-alias name="LogTransport">\Illuminate\Mail\Transport\LogTransport</namespace-alias>
+    <namespace-alias name="SesTransport">\Illuminate\Mail\Transport\SesTransport</namespace-alias>
+    <namespace-alias name="MailgunTransport">\Illuminate\Mail\Transport\MailgunTransport</namespace-alias>
+    <namespace-alias name="MandrillTransport">\Illuminate\Mail\Transport\MandrillTransport</namespace-alias>
+    <namespace-alias name="SparkPostTransport">\Illuminate\Mail\Transport\SparkPostTransport</namespace-alias>
+    <namespace-alias name="SendmailTransport">\Swift_SendmailTransport</namespace-alias>
+    <class final="false" abstract="false" namespace="Illuminate\Mail" line="18" package="Default">
+      <extends>\Illuminate\Support\Manager</extends>
+      <name>TransportManager</name>
+      <full_name>\Illuminate\Mail\TransportManager</full_name>
+      <docblock line="18">
+        <description/>
+        <long-description/>
+        <tag name="package" line="18" description="Default"/>
+        <tag name="inherited_from" description="\Illuminate\Support\Manager" refers="\Illuminate\Support\Manager" link="/classes/Illuminate.Support.Manager.html"/>
+      </docblock>
+      <property static="false" visibility="protected" namespace="Illuminate\Mail" line="15" package="Default">
+        <name>$app</name>
+        <full_name>\Illuminate\Support\Manager::app</full_name>
+        <default/>
+        <docblock line="15">
+          <description>The application instance.</description>
+          <long-description/>
+          <tag name="var" line="15" description="" type="\Illuminate\Foundation\Application" variable="">
+            <type>\Illuminate\Foundation\Application</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" namespace="Illuminate\Mail" line="22" package="Default">
+        <name>$customCreators</name>
+        <full_name>\Illuminate\Support\Manager::customCreators</full_name>
+        <default>array()</default>
+        <docblock line="22">
+          <description>The registered custom driver creators.</description>
+          <long-description/>
+          <tag name="var" line="22" description="" type="array" variable="">
+            <type>array</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" namespace="Illuminate\Mail" line="29" package="Default">
+        <name>$drivers</name>
+        <full_name>\Illuminate\Support\Manager::drivers</full_name>
+        <default>array()</default>
+        <docblock line="29">
+          <description>The array of created "drivers".</description>
+          <long-description/>
+          <tag name="var" line="29" description="" type="array" variable="">
+            <type>array</type>
+          </tag>
+        </docblock>
+      </property>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Mail" line="25" package="Default">
+        <name>createSmtpDriver</name>
+        <full_name>\Illuminate\Mail\TransportManager::createSmtpDriver()</full_name>
+        <docblock line="25">
+          <description>Create an instance of the SMTP Swift Transport driver.</description>
+          <long-description/>
+          <tag name="return" line="25" description="" type="\Swift_SmtpTransport">
+            <type>\Swift_SmtpTransport</type>
+          </tag>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Mail" line="61" package="Default">
+        <name>createSendmailDriver</name>
+        <full_name>\Illuminate\Mail\TransportManager::createSendmailDriver()</full_name>
+        <docblock line="61">
+          <description>Create an instance of the Sendmail Swift Transport driver.</description>
+          <long-description/>
+          <tag name="return" line="61" description="" type="\Swift_SendmailTransport">
+            <type>\Swift_SendmailTransport</type>
+          </tag>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Mail" line="73" package="Default">
+        <name>createSesDriver</name>
+        <full_name>\Illuminate\Mail\TransportManager::createSesDriver()</full_name>
+        <docblock line="73">
+          <description>Create an instance of the Amazon SES Swift Transport driver.</description>
+          <long-description/>
+          <tag name="return" line="73" description="" type="\Swift_SendmailTransport">
+            <type>\Swift_SendmailTransport</type>
+          </tag>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Mail" line="93" package="Default">
+        <name>createMailDriver</name>
+        <full_name>\Illuminate\Mail\TransportManager::createMailDriver()</full_name>
+        <docblock line="93">
+          <description>Create an instance of the Mail Swift Transport driver.</description>
+          <long-description/>
+          <tag name="return" line="93" description="" type="\Swift_MailTransport">
+            <type>\Swift_MailTransport</type>
+          </tag>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Mail" line="103" package="Default">
+        <name>createMailgunDriver</name>
+        <full_name>\Illuminate\Mail\TransportManager::createMailgunDriver()</full_name>
+        <docblock line="103">
+          <description>Create an instance of the Mailgun Swift Transport driver.</description>
+          <long-description/>
+          <tag name="return" line="103" description="" type="\Illuminate\Mail\Transport\MailgunTransport">
+            <type>\Illuminate\Mail\Transport\MailgunTransport</type>
+          </tag>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Mail" line="118" package="Default">
+        <name>createMandrillDriver</name>
+        <full_name>\Illuminate\Mail\TransportManager::createMandrillDriver()</full_name>
+        <docblock line="118">
+          <description>Create an instance of the Mandrill Swift Transport driver.</description>
+          <long-description/>
+          <tag name="return" line="118" description="" type="\Illuminate\Mail\Transport\MandrillTransport">
+            <type>\Illuminate\Mail\Transport\MandrillTransport</type>
+          </tag>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Mail" line="132" package="Default">
+        <name>createSparkPostDriver</name>
+        <full_name>\Illuminate\Mail\TransportManager::createSparkPostDriver()</full_name>
+        <docblock line="132">
+          <description>Create an instance of the SparkPost Swift Transport driver.</description>
+          <long-description/>
+          <tag name="return" line="132" description="" type="\Illuminate\Mail\Transport\SparkPostTransport">
+            <type>\Illuminate\Mail\Transport\SparkPostTransport</type>
+          </tag>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Mail" line="146" package="Default">
+        <name>createLogDriver</name>
+        <full_name>\Illuminate\Mail\TransportManager::createLogDriver()</full_name>
+        <docblock line="146">
+          <description>Create an instance of the Log Swift Transport driver.</description>
+          <long-description/>
+          <tag name="return" line="146" description="" type="\Illuminate\Mail\Transport\LogTransport">
+            <type>\Illuminate\Mail\Transport\LogTransport</type>
+          </tag>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Mail" line="157" package="Default">
+        <name>getHttpClient</name>
+        <full_name>\Illuminate\Mail\TransportManager::getHttpClient()</full_name>
+        <docblock line="157">
+          <description>Get a fresh Guzzle HTTP client instance.</description>
+          <long-description/>
+          <tag name="param" line="157" description="" type="array" variable="$config">
+            <type>array</type>
+          </tag>
+          <tag name="return" line="157" description="" type="\GuzzleHttp\Client">
+            <type>\GuzzleHttp\Client</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$config</name>
+          <default/>
+          <type>array</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Mail" line="169" package="Default">
+        <name>getDefaultDriver</name>
+        <full_name>\Illuminate\Mail\TransportManager::getDefaultDriver()</full_name>
+        <docblock line="169">
+          <description>Get the default mail driver name.</description>
+          <long-description/>
+          <tag name="return" line="169" description="" type="string">
+            <type>string</type>
+          </tag>
+          <tag name="inherited_from" description="\Illuminate\Support\Manager::getDefaultDriver()" refers="\Illuminate\Support\Manager::getDefaultDriver()" link="/classes/Illuminate.Support.Manager.html#method_getDefaultDriver"/>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Mail" line="180" package="Default">
+        <name>setDefaultDriver</name>
+        <full_name>\Illuminate\Mail\TransportManager::setDefaultDriver()</full_name>
+        <docblock line="180">
+          <description>Set the default mail driver name.</description>
+          <long-description/>
+          <tag name="param" line="180" description="" type="string" variable="$name">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="180" description="" type="void">
+            <type>void</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$name</name>
+          <default/>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Mail" line="37" package="Default">
+        <name>__construct</name>
+        <full_name>\Illuminate\Support\Manager::__construct()</full_name>
+        <docblock line="37">
+          <description>Create a new manager instance.</description>
+          <long-description/>
+          <tag name="param" line="37" description="" type="\Illuminate\Foundation\Application" variable="$app">
+            <type>\Illuminate\Foundation\Application</type>
+          </tag>
+          <tag name="return" line="37" description="" type="void">
+            <type>void</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$app</name>
+          <default/>
+          <type>\Illuminate\Foundation\Application</type>
+        </argument>
+        <inherited_from>\Illuminate\Support\Manager</inherited_from>
+      </method>
+      <method final="false" abstract="true" static="false" visibility="public" namespace="Illuminate\Mail" line="47" package="Default">
+        <name>getDefaultDriver</name>
+        <full_name>\Illuminate\Support\Manager::getDefaultDriver()</full_name>
+        <docblock line="47">
+          <description>Get the default driver name.</description>
+          <long-description/>
+          <tag name="return" line="47" description="" type="string">
+            <type>string</type>
+          </tag>
+        </docblock>
+        <inherited_from>\Illuminate\Support\Manager</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Mail" line="55" package="Default">
+        <name>driver</name>
+        <full_name>\Illuminate\Support\Manager::driver()</full_name>
+        <docblock line="55">
+          <description>Get a driver instance.</description>
+          <long-description/>
+          <tag name="param" line="55" description="" type="string" variable="$driver">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="55" description="" type="mixed">
+            <type>mixed</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$driver</name>
+          <default>null</default>
+          <type>string</type>
+        </argument>
+        <inherited_from>\Illuminate\Support\Manager</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Mail" line="77" package="Default">
+        <name>createDriver</name>
+        <full_name>\Illuminate\Support\Manager::createDriver()</full_name>
+        <docblock line="77">
+          <description>Create a new driver instance.</description>
+          <long-description/>
+          <tag name="param" line="77" description="" type="string" variable="$driver">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="77" description="" type="mixed">
+            <type>mixed</type>
+          </tag>
+          <tag name="throws" line="77" description="" type="\InvalidArgumentException">
+            <type>\InvalidArgumentException</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$driver</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <inherited_from>\Illuminate\Support\Manager</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Mail" line="99" package="Default">
+        <name>callCustomCreator</name>
+        <full_name>\Illuminate\Support\Manager::callCustomCreator()</full_name>
+        <docblock line="99">
+          <description>Call a custom driver creator.</description>
+          <long-description/>
+          <tag name="param" line="99" description="" type="string" variable="$driver">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="99" description="" type="mixed">
+            <type>mixed</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$driver</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <inherited_from>\Illuminate\Support\Manager</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Mail" line="111" package="Default">
+        <name>extend</name>
+        <full_name>\Illuminate\Support\Manager::extend()</full_name>
+        <docblock line="111">
+          <description>Register a custom driver creator Closure.</description>
+          <long-description/>
+          <tag name="param" line="111" description="" type="string" variable="$driver">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="111" description="" type="\Closure" variable="$callback">
+            <type>\Closure</type>
+          </tag>
+          <tag name="return" line="111" description="" type="\Illuminate\Mail\TransportManager">
+            <type>\Illuminate\Mail\TransportManager</type>
+          </tag>
+          <tag name="fluent" description="This method is part of a fluent interface and will return the same instance"/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$driver</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$callback</name>
+          <default/>
+          <type>\Closure</type>
+        </argument>
+        <inherited_from>\Illuminate\Support\Manager</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Mail" line="123" package="Default">
+        <name>getDrivers</name>
+        <full_name>\Illuminate\Support\Manager::getDrivers()</full_name>
+        <docblock line="123">
+          <description>Get all of the created "drivers".</description>
+          <long-description/>
+          <tag name="return" line="123" description="" type="array">
+            <type>array</type>
+          </tag>
+        </docblock>
+        <inherited_from>\Illuminate\Support\Manager</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Mail" line="135" package="Default">
+        <name>__call</name>
+        <full_name>\Illuminate\Support\Manager::__call()</full_name>
+        <docblock line="135">
+          <description>Dynamically call the default driver instance.</description>
+          <long-description/>
+          <tag name="param" line="135" description="" type="string" variable="$method">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="135" description="" type="array" variable="$parameters">
+            <type>array</type>
+          </tag>
+          <tag name="return" line="135" description="" type="mixed">
+            <type>mixed</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$method</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$parameters</name>
+          <default/>
+          <type>array</type>
+        </argument>
+        <inherited_from>\Illuminate\Support\Manager</inherited_from>
+      </method>
+    </class>
+    <parse_markers>
+      <error line="0" code="PPC:ERR-50000">No summary was found for this file</error>
+      <error line="18" code="PPC:ERR-50005">No summary for class \Illuminate\Mail\TransportManager</error>
+    </parse_markers>
+    <source>eJzFWN9v4kYQfuevmIfTGVJC+tSH5KCNcqe7SEUXiVT3AOi0sdfgYq+t3TWUVPe/d/aHf2NiKGqRIsR65tuZ75sdz+bDr8k66fUYiahIiEvhMQzTKGBE0sWUBOFdr5cKCvc7sZhR/fcQBpTJO71cMp6lSRJzubjnvPXZlDCyovb55/T1NaRfpEwWBhKIAPWzvMFsF/jy+yySyTMnTCgUZVZZKFuqkCuWlYVGYOrpIn+8+D1edbZFJjrbqp+rlJ1gzzwehN0DnyWEb55iIQ+SMqPMi+rENBZRaTckQkC+YuUC+pdEY8Wl/t37uwf4ubm60t9wBQ+cYlBAGARMSMKwjGIf5BoDmD4/mSgKWMDctpSPrHcG8hunMuUMFgc0tzY3+jvhsaSupB74KXNlEDNwdQDK5aPG7g+0pQlUfd65MfODFYzhnVwH4npCkmTumEVnOXcUE84SKcgcbm7geW0JNFnIPP48yR1qBCQM4x2kAmQMinPC9sbhhbgb5K0M6cccPBqqEAO2ArUriNRdZ4KseOAN4T4ir5jU7NNsCOhAwE2FjCMQlKNjGY8g2paGcYIqrRGDbBGRvIR0BN9seH+iLyRKV5U4mJRTjuytsV5GBUNFfuPq+bq9ZXT3aHPu5w4lWueOwnKWw2JBOTrL3HhQojbwoR8IQWU/t6bM5ftESeksB4OSbtXIrifo9Sm3bfG/y71/VPT8qiWjSNSW6uIsMt5Zstw1dTdaJfU84VRQW8xEactVm6zwzzzN7S7m3gge/Rw+KDAxZI2GNephXwtIKADVlVl1lfHyiFDPvMpEjMZEAToIh9WPaod7IClCIJ6rjp4tqv3oGMtZBm9z/Ie1POhbkvKA65Olo3DNCGqT5kCkQuKBjt6Oc6btvmrlxQH3g/vZPlNAGStr0a2t2eZ5Zmurt96O7c26tbe4KFIFebzHITsWp9LvbISN0KqHP9tjcDplRVP7j0kTZ70SricrLEhHtdzApWIkqHCGMK9Uf4bw0xjmlSp1cD+hmhGMJ+CEGAZ2xyFkaGaZag2GueOy1iLzat7QvbOE9++L5iooJofttXE6MoNSr0HXMeBQdnsbs3CfoWIqGlcHZcGOHRYsAihPPH27YGa1DHVwRl1Mzz5G09OrYdp+fCz2tL34z0wOB79T8+s+SXZPG70uchAig9U4DKVCqQdZmxnMJohaDPt5AQ0P13NWo6UBw4sxElYdMU6Xx8zZl9SnNrl3Fci4XUghA3Zcolqcp2jU1OXfiJDfXS6nQvM61PFlkfld5pWh0JJYt/5WIZqh/n9K4PX3chqU79Ld2EeP471Z8VWG7RcqXE8isqF950lwtbP6w5vqI8NB2if4xm1/M33G8ZyAj6P+2v5LAr484+3NNf+TyDhqMIC6kQiAcE72eWXU+Sk0e4uCwwLX62+lA3zIqlC/1lfF4Ixvc2NxrOJK22h/4uGsXgZGFIRjGOB3GUQ0TlUB//LzcQpV/XjUJ2kozbXWFA6oO0Nb9eCYjrfgKjPpSxi4FVo+GtTjpdE+8Y5MIGrYPRz97NTorfImehSluBQWqW3jwDuamKgnpmEagr+dlmpGyjVL70fvHwZfJ+Y=</source>
+  <type>class</type></file>

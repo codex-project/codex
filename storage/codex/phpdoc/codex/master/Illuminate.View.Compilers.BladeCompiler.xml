@@ -1,0 +1,1634 @@
+<file path="codex/vendor/laravel/framework/src/Illuminate/View/Compilers/BladeCompiler.php" generated-path="codex.vendor.laravel.framework.src.Illuminate.View.Compilers.BladeCompiler.html" hash="91c40391b98b20c0ab4f026c12e33cd0" package="Default">
+    <docblock line="0">
+      <description/>
+      <long-description/>
+      <tag name="package" line="0" description="Default"/>
+    </docblock>
+    <namespace-alias name="Arr">\Illuminate\Support\Arr</namespace-alias>
+    <namespace-alias name="Str">\Illuminate\Support\Str</namespace-alias>
+    <class final="false" abstract="false" namespace="Illuminate\View\Compilers" line="8" package="Default">
+      <extends>\Illuminate\View\Compilers\Compiler</extends>
+      <implements>\Illuminate\View\Compilers\CompilerInterface</implements>
+      <name>BladeCompiler</name>
+      <full_name>\Illuminate\View\Compilers\BladeCompiler</full_name>
+      <docblock line="8">
+        <description/>
+        <long-description/>
+        <tag name="package" line="8" description="Default"/>
+        <tag name="inherited_from" description="\Illuminate\View\Compilers\Compiler" refers="\Illuminate\View\Compilers\Compiler" link="/classes/Illuminate.View.Compilers.Compiler.html"/>
+      </docblock>
+      <property static="false" visibility="protected" namespace="Illuminate\View\Compilers" line="15" package="Default">
+        <name>$extensions</name>
+        <full_name>\Illuminate\View\Compilers\BladeCompiler::extensions</full_name>
+        <default>array()</default>
+        <docblock line="15">
+          <description>All of the registered extensions.</description>
+          <long-description/>
+          <tag name="var" line="15" description="" type="array" variable="">
+            <type>array</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" namespace="Illuminate\View\Compilers" line="24" package="Default">
+        <name>$customDirectives</name>
+        <full_name>\Illuminate\View\Compilers\BladeCompiler::customDirectives</full_name>
+        <default>array()</default>
+        <docblock line="24">
+          <description>All custom "directive" handlers.</description>
+          <long-description>This was implemented as a more usable "extend" in 5.1.</long-description>
+          <tag name="var" line="24" description="" type="array" variable="">
+            <type>array</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" namespace="Illuminate\View\Compilers" line="31" package="Default">
+        <name>$path</name>
+        <full_name>\Illuminate\View\Compilers\BladeCompiler::path</full_name>
+        <default/>
+        <docblock line="31">
+          <description>The file currently being compiled.</description>
+          <long-description/>
+          <tag name="var" line="31" description="" type="string" variable="">
+            <type>string</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" namespace="Illuminate\View\Compilers" line="38" package="Default">
+        <name>$compilers</name>
+        <full_name>\Illuminate\View\Compilers\BladeCompiler::compilers</full_name>
+        <default>array('Extensions', 'Statements', 'Comments', 'Echos')</default>
+        <docblock line="38">
+          <description>All of the available compiler functions.</description>
+          <long-description/>
+          <tag name="var" line="38" description="" type="array" variable="">
+            <type>array</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" namespace="Illuminate\View\Compilers" line="50" package="Default">
+        <name>$rawTags</name>
+        <full_name>\Illuminate\View\Compilers\BladeCompiler::rawTags</full_name>
+        <default>array('{!!', '!!}')</default>
+        <docblock line="50">
+          <description>Array of opening and closing tags for raw echos.</description>
+          <long-description/>
+          <tag name="var" line="50" description="" type="array" variable="">
+            <type>array</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" namespace="Illuminate\View\Compilers" line="57" package="Default">
+        <name>$contentTags</name>
+        <full_name>\Illuminate\View\Compilers\BladeCompiler::contentTags</full_name>
+        <default>array('{{', '}}')</default>
+        <docblock line="57">
+          <description>Array of opening and closing tags for regular echos.</description>
+          <long-description/>
+          <tag name="var" line="57" description="" type="array" variable="">
+            <type>array</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" namespace="Illuminate\View\Compilers" line="64" package="Default">
+        <name>$escapedTags</name>
+        <full_name>\Illuminate\View\Compilers\BladeCompiler::escapedTags</full_name>
+        <default>array('{{{', '}}}')</default>
+        <docblock line="64">
+          <description>Array of opening and closing tags for escaped echos.</description>
+          <long-description/>
+          <tag name="var" line="64" description="" type="array" variable="">
+            <type>array</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" namespace="Illuminate\View\Compilers" line="71" package="Default">
+        <name>$echoFormat</name>
+        <full_name>\Illuminate\View\Compilers\BladeCompiler::echoFormat</full_name>
+        <default>'e(%s)'</default>
+        <docblock line="71">
+          <description>The "regular" / legacy echo string format.</description>
+          <long-description/>
+          <tag name="var" line="71" description="" type="string" variable="">
+            <type>string</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" namespace="Illuminate\View\Compilers" line="78" package="Default">
+        <name>$footer</name>
+        <full_name>\Illuminate\View\Compilers\BladeCompiler::footer</full_name>
+        <default>array()</default>
+        <docblock line="78">
+          <description>Array of footer lines to be added to template.</description>
+          <long-description/>
+          <tag name="var" line="78" description="" type="array" variable="">
+            <type>array</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" namespace="Illuminate\View\Compilers" line="85" package="Default">
+        <name>$verbatimPlaceholder</name>
+        <full_name>\Illuminate\View\Compilers\BladeCompiler::verbatimPlaceholder</full_name>
+        <default>'@__verbatim__@'</default>
+        <docblock line="85">
+          <description>Placeholder to temporary mark the position of verbatim blocks.</description>
+          <long-description/>
+          <tag name="var" line="85" description="" type="string" variable="">
+            <type>string</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" namespace="Illuminate\View\Compilers" line="92" package="Default">
+        <name>$verbatimBlocks</name>
+        <full_name>\Illuminate\View\Compilers\BladeCompiler::verbatimBlocks</full_name>
+        <default>array()</default>
+        <docblock line="92">
+          <description>Array to temporary store the verbatim blocks found in the template.</description>
+          <long-description/>
+          <tag name="var" line="92" description="" type="array" variable="">
+            <type>array</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" namespace="Illuminate\View\Compilers" line="99" package="Default">
+        <name>$forelseCounter</name>
+        <full_name>\Illuminate\View\Compilers\BladeCompiler::forelseCounter</full_name>
+        <default>0</default>
+        <docblock line="99">
+          <description>Counter to keep track of nested forelse statements.</description>
+          <long-description/>
+          <tag name="var" line="99" description="" type="integer" variable="">
+            <type>integer</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" namespace="Illuminate\View\Compilers" line="14" package="Default">
+        <name>$files</name>
+        <full_name>\Illuminate\View\Compilers\Compiler::files</full_name>
+        <default/>
+        <docblock line="14">
+          <description>The Filesystem instance.</description>
+          <long-description/>
+          <tag name="var" line="14" description="" type="\Illuminate\Filesystem\Filesystem" variable="">
+            <type>\Illuminate\Filesystem\Filesystem</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" namespace="Illuminate\View\Compilers" line="21" package="Default">
+        <name>$cachePath</name>
+        <full_name>\Illuminate\View\Compilers\Compiler::cachePath</full_name>
+        <default/>
+        <docblock line="21">
+          <description>Get the cache path for the compiled views.</description>
+          <long-description/>
+          <tag name="var" line="21" description="" type="string" variable="">
+            <type>string</type>
+          </tag>
+        </docblock>
+      </property>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\View\Compilers" line="107" package="Default">
+        <name>compile</name>
+        <full_name>\Illuminate\View\Compilers\BladeCompiler::compile()</full_name>
+        <docblock line="107">
+          <description>Compile the view at the given path.</description>
+          <long-description/>
+          <tag name="param" line="107" description="" type="string" variable="$path">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="107" description="" type="void">
+            <type>void</type>
+          </tag>
+          <tag name="inherited_from" description="\Illuminate\View\Compilers\CompilerInterface::compile()" refers="\Illuminate\View\Compilers\CompilerInterface::compile()" link="/classes/Illuminate.View.Compilers.CompilerInterface.html#method_compile"/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$path</name>
+          <default>null</default>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\View\Compilers" line="125" package="Default">
+        <name>getPath</name>
+        <full_name>\Illuminate\View\Compilers\BladeCompiler::getPath()</full_name>
+        <docblock line="125">
+          <description>Get the path currently being compiled.</description>
+          <long-description/>
+          <tag name="return" line="125" description="" type="string">
+            <type>string</type>
+          </tag>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\View\Compilers" line="136" package="Default">
+        <name>setPath</name>
+        <full_name>\Illuminate\View\Compilers\BladeCompiler::setPath()</full_name>
+        <docblock line="136">
+          <description>Set the path currently being compiled.</description>
+          <long-description/>
+          <tag name="param" line="136" description="" type="string" variable="$path">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="136" description="" type="void">
+            <type>void</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$path</name>
+          <default/>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\View\Compilers" line="147" package="Default">
+        <name>compileString</name>
+        <full_name>\Illuminate\View\Compilers\BladeCompiler::compileString()</full_name>
+        <docblock line="147">
+          <description>Compile the given Blade template contents.</description>
+          <long-description/>
+          <tag name="param" line="147" description="" type="string" variable="$value">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="147" description="" type="string">
+            <type>string</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$value</name>
+          <default/>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\View\Compilers" line="185" package="Default">
+        <name>storeVerbatimBlocks</name>
+        <full_name>\Illuminate\View\Compilers\BladeCompiler::storeVerbatimBlocks()</full_name>
+        <docblock line="185">
+          <description>Store the verbatim blocks and replace them with a temporary placeholder.</description>
+          <long-description/>
+          <tag name="param" line="185" description="" type="string" variable="$value">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="185" description="" type="string">
+            <type>string</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$value</name>
+          <default/>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\View\Compilers" line="200" package="Default">
+        <name>restoreVerbatimBlocks</name>
+        <full_name>\Illuminate\View\Compilers\BladeCompiler::restoreVerbatimBlocks()</full_name>
+        <docblock line="200">
+          <description>Replace the raw placeholders with the original code stored in the raw blocks.</description>
+          <long-description/>
+          <tag name="param" line="200" description="" type="string" variable="$result">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="200" description="" type="string">
+            <type>string</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$result</name>
+          <default/>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\View\Compilers" line="217" package="Default">
+        <name>parseToken</name>
+        <full_name>\Illuminate\View\Compilers\BladeCompiler::parseToken()</full_name>
+        <docblock line="217">
+          <description>Parse the tokens from the template.</description>
+          <long-description/>
+          <tag name="param" line="217" description="" type="array" variable="$token">
+            <type>array</type>
+          </tag>
+          <tag name="return" line="217" description="" type="string">
+            <type>string</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$token</name>
+          <default/>
+          <type>array</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\View\Compilers" line="236" package="Default">
+        <name>compileExtensions</name>
+        <full_name>\Illuminate\View\Compilers\BladeCompiler::compileExtensions()</full_name>
+        <docblock line="236">
+          <description>Execute the user defined extensions.</description>
+          <long-description/>
+          <tag name="param" line="236" description="" type="string" variable="$value">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="236" description="" type="string">
+            <type>string</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$value</name>
+          <default/>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\View\Compilers" line="251" package="Default">
+        <name>compileComments</name>
+        <full_name>\Illuminate\View\Compilers\BladeCompiler::compileComments()</full_name>
+        <docblock line="251">
+          <description>Compile Blade comments into valid PHP.</description>
+          <long-description/>
+          <tag name="param" line="251" description="" type="string" variable="$value">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="251" description="" type="string">
+            <type>string</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$value</name>
+          <default/>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\View\Compilers" line="264" package="Default">
+        <name>compileEchos</name>
+        <full_name>\Illuminate\View\Compilers\BladeCompiler::compileEchos()</full_name>
+        <docblock line="264">
+          <description>Compile Blade echos into valid PHP.</description>
+          <long-description/>
+          <tag name="param" line="264" description="" type="string" variable="$value">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="264" description="" type="string">
+            <type>string</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$value</name>
+          <default/>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\View\Compilers" line="278" package="Default">
+        <name>getEchoMethods</name>
+        <full_name>\Illuminate\View\Compilers\BladeCompiler::getEchoMethods()</full_name>
+        <docblock line="278">
+          <description>Get the echo methods in the proper order for compilation.</description>
+          <long-description/>
+          <tag name="return" line="278" description="" type="array">
+            <type>array</type>
+          </tag>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\View\Compilers" line="320" package="Default">
+        <name>compileStatements</name>
+        <full_name>\Illuminate\View\Compilers\BladeCompiler::compileStatements()</full_name>
+        <docblock line="320">
+          <description>Compile Blade statements that start with "@".</description>
+          <long-description/>
+          <tag name="param" line="320" description="" type="string" variable="$value">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="320" description="" type="mixed">
+            <type>mixed</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$value</name>
+          <default/>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\View\Compilers" line="343" package="Default">
+        <name>compileRawEchos</name>
+        <full_name>\Illuminate\View\Compilers\BladeCompiler::compileRawEchos()</full_name>
+        <docblock line="343">
+          <description>Compile the "raw" echo statements.</description>
+          <long-description/>
+          <tag name="param" line="343" description="" type="string" variable="$value">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="343" description="" type="string">
+            <type>string</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$value</name>
+          <default/>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\View\Compilers" line="362" package="Default">
+        <name>compileRegularEchos</name>
+        <full_name>\Illuminate\View\Compilers\BladeCompiler::compileRegularEchos()</full_name>
+        <docblock line="362">
+          <description>Compile the "regular" echo statements.</description>
+          <long-description/>
+          <tag name="param" line="362" description="" type="string" variable="$value">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="362" description="" type="string">
+            <type>string</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$value</name>
+          <default/>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\View\Compilers" line="383" package="Default">
+        <name>compileEscapedEchos</name>
+        <full_name>\Illuminate\View\Compilers\BladeCompiler::compileEscapedEchos()</full_name>
+        <docblock line="383">
+          <description>Compile the escaped echo statements.</description>
+          <long-description/>
+          <tag name="param" line="383" description="" type="string" variable="$value">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="383" description="" type="string">
+            <type>string</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$value</name>
+          <default/>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\View\Compilers" line="402" package="Default">
+        <name>compileEchoDefaults</name>
+        <full_name>\Illuminate\View\Compilers\BladeCompiler::compileEchoDefaults()</full_name>
+        <docblock line="402">
+          <description>Compile the default values for the echo statement.</description>
+          <long-description/>
+          <tag name="param" line="402" description="" type="string" variable="$value">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="402" description="" type="string">
+            <type>string</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$value</name>
+          <default/>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\View\Compilers" line="413" package="Default">
+        <name>compileEach</name>
+        <full_name>\Illuminate\View\Compilers\BladeCompiler::compileEach()</full_name>
+        <docblock line="413">
+          <description>Compile the each statements into valid PHP.</description>
+          <long-description/>
+          <tag name="param" line="413" description="" type="string" variable="$expression">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="413" description="" type="string">
+            <type>string</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$expression</name>
+          <default/>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\View\Compilers" line="424" package="Default">
+        <name>compileInject</name>
+        <full_name>\Illuminate\View\Compilers\BladeCompiler::compileInject()</full_name>
+        <docblock line="424">
+          <description>Compile the inject statements into valid PHP.</description>
+          <long-description/>
+          <tag name="param" line="424" description="" type="string" variable="$expression">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="424" description="" type="string">
+            <type>string</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$expression</name>
+          <default/>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\View\Compilers" line="437" package="Default">
+        <name>compileYield</name>
+        <full_name>\Illuminate\View\Compilers\BladeCompiler::compileYield()</full_name>
+        <docblock line="437">
+          <description>Compile the yield statements into valid PHP.</description>
+          <long-description/>
+          <tag name="param" line="437" description="" type="string" variable="$expression">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="437" description="" type="string">
+            <type>string</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$expression</name>
+          <default/>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\View\Compilers" line="448" package="Default">
+        <name>compileShow</name>
+        <full_name>\Illuminate\View\Compilers\BladeCompiler::compileShow()</full_name>
+        <docblock line="448">
+          <description>Compile the show statements into valid PHP.</description>
+          <long-description/>
+          <tag name="param" line="448" description="" type="string" variable="$expression">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="448" description="" type="string">
+            <type>string</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$expression</name>
+          <default/>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\View\Compilers" line="459" package="Default">
+        <name>compileSection</name>
+        <full_name>\Illuminate\View\Compilers\BladeCompiler::compileSection()</full_name>
+        <docblock line="459">
+          <description>Compile the section statements into valid PHP.</description>
+          <long-description/>
+          <tag name="param" line="459" description="" type="string" variable="$expression">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="459" description="" type="string">
+            <type>string</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$expression</name>
+          <default/>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\View\Compilers" line="470" package="Default">
+        <name>compileAppend</name>
+        <full_name>\Illuminate\View\Compilers\BladeCompiler::compileAppend()</full_name>
+        <docblock line="470">
+          <description>Compile the append statements into valid PHP.</description>
+          <long-description/>
+          <tag name="param" line="470" description="" type="string" variable="$expression">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="470" description="" type="string">
+            <type>string</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$expression</name>
+          <default/>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\View\Compilers" line="481" package="Default">
+        <name>compileEndsection</name>
+        <full_name>\Illuminate\View\Compilers\BladeCompiler::compileEndsection()</full_name>
+        <docblock line="481">
+          <description>Compile the end-section statements into valid PHP.</description>
+          <long-description/>
+          <tag name="param" line="481" description="" type="string" variable="$expression">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="481" description="" type="string">
+            <type>string</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$expression</name>
+          <default/>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\View\Compilers" line="492" package="Default">
+        <name>compileStop</name>
+        <full_name>\Illuminate\View\Compilers\BladeCompiler::compileStop()</full_name>
+        <docblock line="492">
+          <description>Compile the stop statements into valid PHP.</description>
+          <long-description/>
+          <tag name="param" line="492" description="" type="string" variable="$expression">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="492" description="" type="string">
+            <type>string</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$expression</name>
+          <default/>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\View\Compilers" line="503" package="Default">
+        <name>compileOverwrite</name>
+        <full_name>\Illuminate\View\Compilers\BladeCompiler::compileOverwrite()</full_name>
+        <docblock line="503">
+          <description>Compile the overwrite statements into valid PHP.</description>
+          <long-description/>
+          <tag name="param" line="503" description="" type="string" variable="$expression">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="503" description="" type="string">
+            <type>string</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$expression</name>
+          <default/>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\View\Compilers" line="514" package="Default">
+        <name>compileUnless</name>
+        <full_name>\Illuminate\View\Compilers\BladeCompiler::compileUnless()</full_name>
+        <docblock line="514">
+          <description>Compile the unless statements into valid PHP.</description>
+          <long-description/>
+          <tag name="param" line="514" description="" type="string" variable="$expression">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="514" description="" type="string">
+            <type>string</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$expression</name>
+          <default/>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\View\Compilers" line="525" package="Default">
+        <name>compileEndunless</name>
+        <full_name>\Illuminate\View\Compilers\BladeCompiler::compileEndunless()</full_name>
+        <docblock line="525">
+          <description>Compile the end unless statements into valid PHP.</description>
+          <long-description/>
+          <tag name="param" line="525" description="" type="string" variable="$expression">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="525" description="" type="string">
+            <type>string</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$expression</name>
+          <default/>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\View\Compilers" line="536" package="Default">
+        <name>compileLang</name>
+        <full_name>\Illuminate\View\Compilers\BladeCompiler::compileLang()</full_name>
+        <docblock line="536">
+          <description>Compile the lang statements into valid PHP.</description>
+          <long-description/>
+          <tag name="param" line="536" description="" type="string" variable="$expression">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="536" description="" type="string">
+            <type>string</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$expression</name>
+          <default/>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\View\Compilers" line="547" package="Default">
+        <name>compileChoice</name>
+        <full_name>\Illuminate\View\Compilers\BladeCompiler::compileChoice()</full_name>
+        <docblock line="547">
+          <description>Compile the choice statements into valid PHP.</description>
+          <long-description/>
+          <tag name="param" line="547" description="" type="string" variable="$expression">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="547" description="" type="string">
+            <type>string</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$expression</name>
+          <default/>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\View\Compilers" line="558" package="Default">
+        <name>compileElse</name>
+        <full_name>\Illuminate\View\Compilers\BladeCompiler::compileElse()</full_name>
+        <docblock line="558">
+          <description>Compile the else statements into valid PHP.</description>
+          <long-description/>
+          <tag name="param" line="558" description="" type="string" variable="$expression">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="558" description="" type="string">
+            <type>string</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$expression</name>
+          <default/>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\View\Compilers" line="569" package="Default">
+        <name>compileFor</name>
+        <full_name>\Illuminate\View\Compilers\BladeCompiler::compileFor()</full_name>
+        <docblock line="569">
+          <description>Compile the for statements into valid PHP.</description>
+          <long-description/>
+          <tag name="param" line="569" description="" type="string" variable="$expression">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="569" description="" type="string">
+            <type>string</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$expression</name>
+          <default/>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\View\Compilers" line="580" package="Default">
+        <name>compileForeach</name>
+        <full_name>\Illuminate\View\Compilers\BladeCompiler::compileForeach()</full_name>
+        <docblock line="580">
+          <description>Compile the foreach statements into valid PHP.</description>
+          <long-description/>
+          <tag name="param" line="580" description="" type="string" variable="$expression">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="580" description="" type="string">
+            <type>string</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$expression</name>
+          <default/>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\View\Compilers" line="591" package="Default">
+        <name>compileBreak</name>
+        <full_name>\Illuminate\View\Compilers\BladeCompiler::compileBreak()</full_name>
+        <docblock line="591">
+          <description>Compile the break statements into valid PHP.</description>
+          <long-description/>
+          <tag name="param" line="591" description="" type="string" variable="$expression">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="591" description="" type="string">
+            <type>string</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$expression</name>
+          <default/>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\View\Compilers" line="602" package="Default">
+        <name>compileContinue</name>
+        <full_name>\Illuminate\View\Compilers\BladeCompiler::compileContinue()</full_name>
+        <docblock line="602">
+          <description>Compile the continue statements into valid PHP.</description>
+          <long-description/>
+          <tag name="param" line="602" description="" type="string" variable="$expression">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="602" description="" type="string">
+            <type>string</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$expression</name>
+          <default/>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\View\Compilers" line="613" package="Default">
+        <name>compileForelse</name>
+        <full_name>\Illuminate\View\Compilers\BladeCompiler::compileForelse()</full_name>
+        <docblock line="613">
+          <description>Compile the forelse statements into valid PHP.</description>
+          <long-description/>
+          <tag name="param" line="613" description="" type="string" variable="$expression">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="613" description="" type="string">
+            <type>string</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$expression</name>
+          <default/>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\View\Compilers" line="626" package="Default">
+        <name>compileCan</name>
+        <full_name>\Illuminate\View\Compilers\BladeCompiler::compileCan()</full_name>
+        <docblock line="626">
+          <description>Compile the can statements into valid PHP.</description>
+          <long-description/>
+          <tag name="param" line="626" description="" type="string" variable="$expression">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="626" description="" type="string">
+            <type>string</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$expression</name>
+          <default/>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\View\Compilers" line="637" package="Default">
+        <name>compileElsecan</name>
+        <full_name>\Illuminate\View\Compilers\BladeCompiler::compileElsecan()</full_name>
+        <docblock line="637">
+          <description>Compile the else-can statements into valid PHP.</description>
+          <long-description/>
+          <tag name="param" line="637" description="" type="string" variable="$expression">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="637" description="" type="string">
+            <type>string</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$expression</name>
+          <default/>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\View\Compilers" line="648" package="Default">
+        <name>compileCannot</name>
+        <full_name>\Illuminate\View\Compilers\BladeCompiler::compileCannot()</full_name>
+        <docblock line="648">
+          <description>Compile the cannot statements into valid PHP.</description>
+          <long-description/>
+          <tag name="param" line="648" description="" type="string" variable="$expression">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="648" description="" type="string">
+            <type>string</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$expression</name>
+          <default/>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\View\Compilers" line="659" package="Default">
+        <name>compileElsecannot</name>
+        <full_name>\Illuminate\View\Compilers\BladeCompiler::compileElsecannot()</full_name>
+        <docblock line="659">
+          <description>Compile the else-can statements into valid PHP.</description>
+          <long-description/>
+          <tag name="param" line="659" description="" type="string" variable="$expression">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="659" description="" type="string">
+            <type>string</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$expression</name>
+          <default/>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\View\Compilers" line="670" package="Default">
+        <name>compileIf</name>
+        <full_name>\Illuminate\View\Compilers\BladeCompiler::compileIf()</full_name>
+        <docblock line="670">
+          <description>Compile the if statements into valid PHP.</description>
+          <long-description/>
+          <tag name="param" line="670" description="" type="string" variable="$expression">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="670" description="" type="string">
+            <type>string</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$expression</name>
+          <default/>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\View\Compilers" line="681" package="Default">
+        <name>compileElseif</name>
+        <full_name>\Illuminate\View\Compilers\BladeCompiler::compileElseif()</full_name>
+        <docblock line="681">
+          <description>Compile the else-if statements into valid PHP.</description>
+          <long-description/>
+          <tag name="param" line="681" description="" type="string" variable="$expression">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="681" description="" type="string">
+            <type>string</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$expression</name>
+          <default/>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\View\Compilers" line="692" package="Default">
+        <name>compileEmpty</name>
+        <full_name>\Illuminate\View\Compilers\BladeCompiler::compileEmpty()</full_name>
+        <docblock line="692">
+          <description>Compile the forelse statements into valid PHP.</description>
+          <long-description/>
+          <tag name="param" line="692" description="" type="string" variable="$expression">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="692" description="" type="string">
+            <type>string</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$expression</name>
+          <default/>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\View\Compilers" line="705" package="Default">
+        <name>compileHasSection</name>
+        <full_name>\Illuminate\View\Compilers\BladeCompiler::compileHasSection()</full_name>
+        <docblock line="705">
+          <description>Compile the has section statements into valid PHP.</description>
+          <long-description/>
+          <tag name="param" line="705" description="" type="string" variable="$expression">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="705" description="" type="string">
+            <type>string</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$expression</name>
+          <default/>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\View\Compilers" line="716" package="Default">
+        <name>compileWhile</name>
+        <full_name>\Illuminate\View\Compilers\BladeCompiler::compileWhile()</full_name>
+        <docblock line="716">
+          <description>Compile the while statements into valid PHP.</description>
+          <long-description/>
+          <tag name="param" line="716" description="" type="string" variable="$expression">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="716" description="" type="string">
+            <type>string</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$expression</name>
+          <default/>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\View\Compilers" line="727" package="Default">
+        <name>compileEndwhile</name>
+        <full_name>\Illuminate\View\Compilers\BladeCompiler::compileEndwhile()</full_name>
+        <docblock line="727">
+          <description>Compile the end-while statements into valid PHP.</description>
+          <long-description/>
+          <tag name="param" line="727" description="" type="string" variable="$expression">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="727" description="" type="string">
+            <type>string</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$expression</name>
+          <default/>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\View\Compilers" line="738" package="Default">
+        <name>compileEndfor</name>
+        <full_name>\Illuminate\View\Compilers\BladeCompiler::compileEndfor()</full_name>
+        <docblock line="738">
+          <description>Compile the end-for statements into valid PHP.</description>
+          <long-description/>
+          <tag name="param" line="738" description="" type="string" variable="$expression">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="738" description="" type="string">
+            <type>string</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$expression</name>
+          <default/>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\View\Compilers" line="749" package="Default">
+        <name>compileEndforeach</name>
+        <full_name>\Illuminate\View\Compilers\BladeCompiler::compileEndforeach()</full_name>
+        <docblock line="749">
+          <description>Compile the end-for-each statements into valid PHP.</description>
+          <long-description/>
+          <tag name="param" line="749" description="" type="string" variable="$expression">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="749" description="" type="string">
+            <type>string</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$expression</name>
+          <default/>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\View\Compilers" line="760" package="Default">
+        <name>compileEndcan</name>
+        <full_name>\Illuminate\View\Compilers\BladeCompiler::compileEndcan()</full_name>
+        <docblock line="760">
+          <description>Compile the end-can statements into valid PHP.</description>
+          <long-description/>
+          <tag name="param" line="760" description="" type="string" variable="$expression">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="760" description="" type="string">
+            <type>string</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$expression</name>
+          <default/>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\View\Compilers" line="771" package="Default">
+        <name>compileEndcannot</name>
+        <full_name>\Illuminate\View\Compilers\BladeCompiler::compileEndcannot()</full_name>
+        <docblock line="771">
+          <description>Compile the end-cannot statements into valid PHP.</description>
+          <long-description/>
+          <tag name="param" line="771" description="" type="string" variable="$expression">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="771" description="" type="string">
+            <type>string</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$expression</name>
+          <default/>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\View\Compilers" line="782" package="Default">
+        <name>compileEndif</name>
+        <full_name>\Illuminate\View\Compilers\BladeCompiler::compileEndif()</full_name>
+        <docblock line="782">
+          <description>Compile the end-if statements into valid PHP.</description>
+          <long-description/>
+          <tag name="param" line="782" description="" type="string" variable="$expression">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="782" description="" type="string">
+            <type>string</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$expression</name>
+          <default/>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\View\Compilers" line="793" package="Default">
+        <name>compileEndforelse</name>
+        <full_name>\Illuminate\View\Compilers\BladeCompiler::compileEndforelse()</full_name>
+        <docblock line="793">
+          <description>Compile the end-for-else statements into valid PHP.</description>
+          <long-description/>
+          <tag name="param" line="793" description="" type="string" variable="$expression">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="793" description="" type="string">
+            <type>string</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$expression</name>
+          <default/>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\View\Compilers" line="804" package="Default">
+        <name>compilePhp</name>
+        <full_name>\Illuminate\View\Compilers\BladeCompiler::compilePhp()</full_name>
+        <docblock line="804">
+          <description>Compile the raw PHP statements into valid PHP.</description>
+          <long-description/>
+          <tag name="param" line="804" description="" type="string" variable="$expression">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="804" description="" type="string">
+            <type>string</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$expression</name>
+          <default/>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\View\Compilers" line="815" package="Default">
+        <name>compileEndphp</name>
+        <full_name>\Illuminate\View\Compilers\BladeCompiler::compileEndphp()</full_name>
+        <docblock line="815">
+          <description>Compile end-php statement into valid PHP.</description>
+          <long-description/>
+          <tag name="param" line="815" description="" type="string" variable="$expression">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="815" description="" type="string">
+            <type>string</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$expression</name>
+          <default/>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\View\Compilers" line="826" package="Default">
+        <name>compileUnset</name>
+        <full_name>\Illuminate\View\Compilers\BladeCompiler::compileUnset()</full_name>
+        <docblock line="826">
+          <description>Compile the unset statements into valid PHP.</description>
+          <long-description/>
+          <tag name="param" line="826" description="" type="string" variable="$expression">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="826" description="" type="string">
+            <type>string</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$expression</name>
+          <default/>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\View\Compilers" line="837" package="Default">
+        <name>compileExtends</name>
+        <full_name>\Illuminate\View\Compilers\BladeCompiler::compileExtends()</full_name>
+        <docblock line="837">
+          <description>Compile the extends statements into valid PHP.</description>
+          <long-description/>
+          <tag name="param" line="837" description="" type="string" variable="$expression">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="837" description="" type="string">
+            <type>string</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$expression</name>
+          <default/>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\View\Compilers" line="854" package="Default">
+        <name>compileInclude</name>
+        <full_name>\Illuminate\View\Compilers\BladeCompiler::compileInclude()</full_name>
+        <docblock line="854">
+          <description>Compile the include statements into valid PHP.</description>
+          <long-description/>
+          <tag name="param" line="854" description="" type="string" variable="$expression">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="854" description="" type="string">
+            <type>string</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$expression</name>
+          <default/>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\View\Compilers" line="867" package="Default">
+        <name>compileIncludeIf</name>
+        <full_name>\Illuminate\View\Compilers\BladeCompiler::compileIncludeIf()</full_name>
+        <docblock line="867">
+          <description>Compile the include statements into valid PHP.</description>
+          <long-description/>
+          <tag name="param" line="867" description="" type="string" variable="$expression">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="867" description="" type="string">
+            <type>string</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$expression</name>
+          <default/>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\View\Compilers" line="880" package="Default">
+        <name>compileStack</name>
+        <full_name>\Illuminate\View\Compilers\BladeCompiler::compileStack()</full_name>
+        <docblock line="880">
+          <description>Compile the stack statements into the content.</description>
+          <long-description/>
+          <tag name="param" line="880" description="" type="string" variable="$expression">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="880" description="" type="string">
+            <type>string</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$expression</name>
+          <default/>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\View\Compilers" line="891" package="Default">
+        <name>compilePush</name>
+        <full_name>\Illuminate\View\Compilers\BladeCompiler::compilePush()</full_name>
+        <docblock line="891">
+          <description>Compile the push statements into valid PHP.</description>
+          <long-description/>
+          <tag name="param" line="891" description="" type="string" variable="$expression">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="891" description="" type="string">
+            <type>string</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$expression</name>
+          <default/>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\View\Compilers" line="902" package="Default">
+        <name>compileEndpush</name>
+        <full_name>\Illuminate\View\Compilers\BladeCompiler::compileEndpush()</full_name>
+        <docblock line="902">
+          <description>Compile the endpush statements into valid PHP.</description>
+          <long-description/>
+          <tag name="param" line="902" description="" type="string" variable="$expression">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="902" description="" type="string">
+            <type>string</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$expression</name>
+          <default/>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\View\Compilers" line="913" package="Default">
+        <name>stripParentheses</name>
+        <full_name>\Illuminate\View\Compilers\BladeCompiler::stripParentheses()</full_name>
+        <docblock line="913">
+          <description>Strip the parentheses from the given expression.</description>
+          <long-description/>
+          <tag name="param" line="913" description="" type="string" variable="$expression">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="913" description="" type="string">
+            <type>string</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$expression</name>
+          <default/>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\View\Compilers" line="927" package="Default">
+        <name>getExtensions</name>
+        <full_name>\Illuminate\View\Compilers\BladeCompiler::getExtensions()</full_name>
+        <docblock line="927">
+          <description>Get the extensions used by the compiler.</description>
+          <long-description/>
+          <tag name="return" line="927" description="" type="array">
+            <type>array</type>
+          </tag>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\View\Compilers" line="938" package="Default">
+        <name>extend</name>
+        <full_name>\Illuminate\View\Compilers\BladeCompiler::extend()</full_name>
+        <docblock line="938">
+          <description>Register a custom Blade compiler.</description>
+          <long-description/>
+          <tag name="param" line="938" description="" type="callable" variable="$compiler">
+            <type>callable</type>
+          </tag>
+          <tag name="return" line="938" description="" type="void">
+            <type>void</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$compiler</name>
+          <default/>
+          <type>callable</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\View\Compilers" line="950" package="Default">
+        <name>directive</name>
+        <full_name>\Illuminate\View\Compilers\BladeCompiler::directive()</full_name>
+        <docblock line="950">
+          <description>Register a handler for custom directives.</description>
+          <long-description/>
+          <tag name="param" line="950" description="" type="string" variable="$name">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="950" description="" type="callable" variable="$handler">
+            <type>callable</type>
+          </tag>
+          <tag name="return" line="950" description="" type="void">
+            <type>void</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$name</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$handler</name>
+          <default/>
+          <type>callable</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\View\Compilers" line="960" package="Default">
+        <name>getCustomDirectives</name>
+        <full_name>\Illuminate\View\Compilers\BladeCompiler::getCustomDirectives()</full_name>
+        <docblock line="960">
+          <description>Get the list of custom directives.</description>
+          <long-description/>
+          <tag name="return" line="960" description="" type="array">
+            <type>array</type>
+          </tag>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\View\Compilers" line="970" package="Default">
+        <name>getRawTags</name>
+        <full_name>\Illuminate\View\Compilers\BladeCompiler::getRawTags()</full_name>
+        <docblock line="970">
+          <description>Gets the raw tags used by the compiler.</description>
+          <long-description/>
+          <tag name="return" line="970" description="" type="array">
+            <type>array</type>
+          </tag>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\View\Compilers" line="982" package="Default">
+        <name>setRawTags</name>
+        <full_name>\Illuminate\View\Compilers\BladeCompiler::setRawTags()</full_name>
+        <docblock line="982">
+          <description>Sets the raw tags used for the compiler.</description>
+          <long-description/>
+          <tag name="param" line="982" description="" type="string" variable="$openTag">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="982" description="" type="string" variable="$closeTag">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="982" description="" type="void">
+            <type>void</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$openTag</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$closeTag</name>
+          <default/>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\View\Compilers" line="995" package="Default">
+        <name>setContentTags</name>
+        <full_name>\Illuminate\View\Compilers\BladeCompiler::setContentTags()</full_name>
+        <docblock line="995">
+          <description>Sets the content tags used for the compiler.</description>
+          <long-description/>
+          <tag name="param" line="995" description="" type="string" variable="$openTag">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="995" description="" type="string" variable="$closeTag">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="995" description="" type="boolean" variable="$escaped">
+            <type>boolean</type>
+          </tag>
+          <tag name="return" line="995" description="" type="void">
+            <type>void</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$openTag</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$closeTag</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$escaped</name>
+          <default>false</default>
+          <type>boolean</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\View\Compilers" line="1009" package="Default">
+        <name>setEscapedContentTags</name>
+        <full_name>\Illuminate\View\Compilers\BladeCompiler::setEscapedContentTags()</full_name>
+        <docblock line="1009">
+          <description>Sets the escaped content tags used for the compiler.</description>
+          <long-description/>
+          <tag name="param" line="1009" description="" type="string" variable="$openTag">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="1009" description="" type="string" variable="$closeTag">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="1009" description="" type="void">
+            <type>void</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$openTag</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$closeTag</name>
+          <default/>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\View\Compilers" line="1019" package="Default">
+        <name>getContentTags</name>
+        <full_name>\Illuminate\View\Compilers\BladeCompiler::getContentTags()</full_name>
+        <docblock line="1019">
+          <description>Gets the content tags used for the compiler.</description>
+          <long-description/>
+          <tag name="return" line="1019" description="" type="string">
+            <type>string</type>
+          </tag>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\View\Compilers" line="1029" package="Default">
+        <name>getEscapedContentTags</name>
+        <full_name>\Illuminate\View\Compilers\BladeCompiler::getEscapedContentTags()</full_name>
+        <docblock line="1029">
+          <description>Gets the escaped content tags used for the compiler.</description>
+          <long-description/>
+          <tag name="return" line="1029" description="" type="string">
+            <type>string</type>
+          </tag>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\View\Compilers" line="1040" package="Default">
+        <name>getTags</name>
+        <full_name>\Illuminate\View\Compilers\BladeCompiler::getTags()</full_name>
+        <docblock line="1040">
+          <description>Gets the tags used for the compiler.</description>
+          <long-description/>
+          <tag name="param" line="1040" description="" type="boolean" variable="$escaped">
+            <type>boolean</type>
+          </tag>
+          <tag name="return" line="1040" description="" type="array">
+            <type>array</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$escaped</name>
+          <default>false</default>
+          <type>boolean</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\View\Compilers" line="1053" package="Default">
+        <name>setEchoFormat</name>
+        <full_name>\Illuminate\View\Compilers\BladeCompiler::setEchoFormat()</full_name>
+        <docblock line="1053">
+          <description>Set the echo format to be used by the compiler.</description>
+          <long-description/>
+          <tag name="param" line="1053" description="" type="string" variable="$format">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="1053" description="" type="void">
+            <type>void</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$format</name>
+          <default/>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\View\Compilers" line="30" package="Default">
+        <name>__construct</name>
+        <full_name>\Illuminate\View\Compilers\Compiler::__construct()</full_name>
+        <docblock line="30">
+          <description>Create a new compiler instance.</description>
+          <long-description/>
+          <tag name="param" line="30" description="" type="\Illuminate\Filesystem\Filesystem" variable="$files">
+            <type>\Illuminate\Filesystem\Filesystem</type>
+          </tag>
+          <tag name="param" line="30" description="" type="string" variable="$cachePath">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="30" description="" type="void">
+            <type>void</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$files</name>
+          <default/>
+          <type>\Illuminate\Filesystem\Filesystem</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$cachePath</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <inherited_from>\Illuminate\View\Compilers\Compiler</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\View\Compilers" line="42" package="Default">
+        <name>getCompiledPath</name>
+        <full_name>\Illuminate\View\Compilers\Compiler::getCompiledPath()</full_name>
+        <docblock line="42">
+          <description>Get the path to the compiled version of a view.</description>
+          <long-description/>
+          <tag name="param" line="42" description="" type="string" variable="$path">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="42" description="" type="string">
+            <type>string</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$path</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <inherited_from>\Illuminate\View\Compilers\Compiler</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\View\Compilers" line="53" package="Default">
+        <name>isExpired</name>
+        <full_name>\Illuminate\View\Compilers\Compiler::isExpired()</full_name>
+        <docblock line="53">
+          <description>Determine if the view at the given path is expired.</description>
+          <long-description/>
+          <tag name="param" line="53" description="" type="string" variable="$path">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="53" description="" type="boolean">
+            <type>boolean</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$path</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <inherited_from>\Illuminate\View\Compilers\Compiler</inherited_from>
+      </method>
+    </class>
+    <parse_markers>
+      <error line="0" code="PPC:ERR-50000">No summary was found for this file</error>
+      <error line="8" code="PPC:ERR-50005">No summary for class \Illuminate\View\Compilers\BladeCompiler</error>
+    </parse_markers>
+    <source>eJzdXG1T20gS/s6vGFykJBFjQrbuC4RAlvNuqMruUiG7W3eYdQ3S2NYhSzqNjKE4/vt1z4veLNmSgNh32ZeANNPT/XRPd09rZj6chJNwa8unU8ZDajNy7nmzqevTmA3+cNl8cBZMQ9djET/a2prx3PvLWRgGUTz4FEVHVe8uY3i3ZXuUc/KjRx2m6RF2HzPf4SR54E5Dj02ZH6fPzv2YRSNga+txi8Cf/d1d8TfZJZ88jwQjEk8YidjY5dCQOZIodwOf91RD3f70jkaERhF9UE/2xd9hFMTMjqHrTtqXHJOra2C7ZEh7xuNgSjqOG0E39451yIT6DgJUHPHbxOVkTnkqGIwCv1IyDSJGZpzeeIx0JA4d4vrkb72D5mxLjv6u+ali/hsANQJMQYIoAl68B3LDXH9MbIm1UzoyjyNoUzV0SONJOUxKM/SOup4Q09ZaHs184LOVgjQNIaJsBH+MfqI3o5s+vYzBDIU1ZZ+CYS0869uTQD8o0zqyhAIFIfMRMFA3sb2A488xHXMyCiIS0TlhSKi5WND1G5IBoYzH7W2jS4zt7SejPStsPPNg0Jbs2AEYqh+nLD0iR0/PYIhxm4Y4OdsxpLpnGFIclbKEdt5REHTIPvHYmNoPYmxlzcjTlMYt7B2J/CQ6AyMGM99wy1gCyiiAnhHxXB9mZRzAfCPUcYAQ/Ay2GXpgoc3hUFTLZ/mFB85yEngOtFCjBBGNHsiURrdiSoagHJx/yOAdi25o7E7JjRfYt+WqWY6IppAdF6A5HQ71m+HwtBKjHIfgxcArIosFtgDHGZgV+Ed82R44TfZHSbUcwDMYK5bg3TIWkjii9i1iBTpEKmA7zINQxxP3UsqI68fV+hMU9EDH5F0ZF8LTSTQgChOwOPx5DA7eJ+h2F0YNaUSnRJu49M3Jy4jFs8gnd4Hr5Nma3Xiunfhk7aVN0RtY82eeZ4mWj4m/dEdEvrcyD/HPTgwBb+8jZ/EFvFVtjpImT1s5EtvE5UOkb6p+NrUnDHtaC4SVS0Kd6caS0UshraaA4Q3+GrNYPxkrXizLOtoqY1Z1CWfZLgp9R4pRpNRN+clJl5Exo8mfmdScALR26FX6Kpt7BY0lfBW0pCgo7mWgLufwshWHL2JueVMpSJBhHfW+TITsdJFTRKSaia8gWmErxbij3oy1UEPBHgWZBYEixmeeCB3GUX4ywAjgl1U/iG2n2lcZFtk+PiYjCh5jYVqI1umcEA70j5yT05yUzkI9BRbiiUB3n3yGjJrM4V8XEjovCMAZTqJgNp4QmmZ4cXALyZcyN3BvNw/i8T8hpYXQew+EISXIUgXEwX0ymOwk8Bk6ykD0sAOwPB4GvoOaALZdh1x8vuiRPxUH0MiHXPsO1ezyLMlEzZBcJ6RsNGKwZUesC4ASvAIvalMf43DyAhYrYDDeQy8hiP4ZuTOFaEOYYEOKXkoiiWPsiDcL6lDq7R2jZxORyNQtT1JrBum/4cPk3aGit8RTgnzxg/ZE+TC26CwTK1Pt4fcyw5DNyi0DMD0X6gUDoPif/1BIZhBKn8lUBhBK8xqaakOZTpYqNEOyUyJJS8eDpqKtSQd3uXgCyhzWSUB5Sl3fexDZJLQrVb7rA1E3pr6NMZNK0mqNecse5kHkSL75JJh5jsjGwhDtwOnl8LYxMpu52WGRj+RdNdIeTPuphrSLxjbs//bFyrXWf3rqbQ9XhYHDTPV7VyYvw4iBgjkrjF+uJ+3k5cCVDr4yscJsPWIh5m5SLXMXnC3NJGVhmte9nO9McqE0EFS7rvK4FkKGP1SsD22YnzeQppnGvnnyYfvUStyn2ds9sU5Bx/rBPiz00mHNHUjlIevgFalMfqpdXeOkUj2uDq4LGUU+4pYkxhkVdknOMS/q7GuqFbG0zOiBSy3hmyByx65PPfB4DpMgJnky9qpI64uKk+bTTnPLvUtlBKzSn9ETb/49g4GKDi8DpdWDpllFFhWoZJBTik/cUVzhPvNKSZxiMUhWrx3qz8MLEfkyQXMUBdPlaxqlKSEGUXGinZ4WA09BN57LASPXSdNbS8QQGZry2T+EZkhKvg3Pf/1y/mt/+PnbL1+KCkiiaD5hB+sVAfQhXEhnBNpq6DR6PXZUz0fR6anzZCb8HeX6Py3zkKpLlWr698yexVI5EG8i4rCR6y+vJ76g+1MipoWsCudXBDVTsURUNcaViSJOtCHKN8ShzaSDdkddifryYCNarsrEZf5tq2qbzPLSnO71odR1vqpUHFYTEFZ9wISHQDYege95w/f2RMDY23vDRaBIbDepiF29uy59fHBtLfqDrJMz9ZCQ3X/AmjugtnOwu09OPhoro0EeVVFG+/6QijJpTcOExA2b/8LiSeBwU2bNU/EbOf5Idjzmj0sKCIUFjeqxdBFTyyr1IlwUASVRruMkCBzChIfsEIvTkF9KcSmKXrUuX1Zmyq7McxgUTVDzka1l4x9D4f2VzmVlGhEDTQFmuE50Q5t7lEMKosFW9WMwTcvqlpLqywpqPXKZcusSkl9lhbUeyfwEypLMRtHZLQ8iiEEKmHyeJp4ddDVs7y3008mLhQQOFgZ9n89U3usF/hjyFFmRxgUNqMtmHBcWIzfica6riHCK7JUe+BoWAMWH76/LQpgykb2Dqui0ZIwPzcZYGKIIwW+4hJu7XFZF0B+NYN2FCyTwHZggCkBMyjl+thsjVg8GNAwg3YlcWNL5VhXbB5ABHC/a6ksg8r4x6eVAVHKdmxYvz3ld8pXUn0piijaQeqEirVKrpW9Mo1iuHzqnnXZBY+res0JZrzJmpB/hqgKxzv3BDRaXZUXIEOjLODo8RHdCXcySRDsIvlgyMxZKIWIA2eQdrt1cmPGx7vTDtSjLaAq95DEWZPTTgmYIFu6RDUVJebfCB9irpPv1SpaKGdlKil38dHJ4OE4E6ZIfrGImnPApjWXI7iG5V964mwbixFKN3swWjjBF1FrJeiFI12CrdL1crZR3GVW8SxT0PqOUp+U5V3ZhOfjx1Dw9GczfWuYVGcTXu5Y5MAn8c/Lx6i/Tun5rkf/ALz9YxNolA8s62b/HvExTqJ2ixeLzI5139BfHys9EL5+haVfZJOk1T62TN3zAd83e2xML/n7DzUF0MvABgUwKnOYYC4/yqe+yCV1SZ5lP3FhtPDnWZU5dYZHGYBiJFYhnvczPFRWYtEQD/fnsBkBMqaIEB1h1VWm4UJPRyy9TEca/sxGF1TxPu0Iw7hlHmLH3Moy3MMd0LdDWwPT37TUYWSbxewVDa7zWWqfB7cwjLCE7GUF1Ep3sFOiSmqZV/EL5LGtWjG2GuWb3f3xfY82mYK9grPmlUunjzTHWUnvKGFLBiJjZwClam2BmjuSNiB5cfysqWN1rfwHOg1T3EwaY3F/myfFgxxIGZ54cDvjbIIL/yQc7wuoMlSsdiCTpADX/vn7xSGCBRZrMoqBhEYndA9McC47Pm5XAhZkhVgFQJ2ONg53hkPl3+DUTP9wihccMhSe0v04dBFz/X8DU+jE4F3wsQ2GHs/FU7XqBVuJbodEFfecMp7N/NTAH1mAw6AyM6/0OWAmaRIZsySJSzfMdoyc/XOqRsDjT68B4EDxMo1N8e4Bv5VyvhfWDyzxn/VD/A9loa29ChjOZfbSzOD4J5usH4RK4qIFBNgLkILhkgpwpPX0tuZn+trtu0RXrtS0gUb4ol6ju7ZQvdxisH4NPgo/6BqARkPw3Vz502tsYA+j7Dq9tAwUAeByELWwfeq1f7kvg4ntJjCXjeQTZ3/rF/k2z8jzZ4wiTqrryz3wPBlq/8L8LPur7OqwSku1cwnBY17mhZ9sUuWGOz+qKroOc77ij2gr2KLC7djG/UNxe2iiVEblcHFGfezQOIsMSn2czNGoHM6Dm2hswwc8EH8+HQcrTBonCEYB12bzHG/g45PmwrrXj4nnt8v0URPWVDBznUrTaXkzvXdgEcVmjlbHivJ3YN9D3dv1C/4hs1BA504KcpMErJ7uUSUzitJiVPKtl91hndv3ZBkzuM8XJS2GjJSvAk31c1zNshvf7STKytIQiaqb4oRMTPPx5aPTevk22VmcPYi1WSRSQj5LKE5DBlPCoYtplmonTGvWjKt2AJdIZbbA+xpxRhNPMee8B2mtE7ZgPBp9m8QT+b+MWm8HgZ3gtoy2zb3OgNcg0AdC9jQAKY67dBCz9Kf77AgYs+sEGlDnPBB+vbVoO813G/19sqxFg7c3rWaDBkGuH63zUxK7aZUnCODZB2L7Qc1O7aJ8Rb0SI78tPng0DfGl439urDPDMd1RIPxL+R0fy+rNhQvnmlLs/U9644p09Zig++qz+/mFZ9fGZT/CntSPz50Scba8LiuC6pdvwnb0NEbrvO/Oacqd1MdGjUbF/IwoGfTGTG0kK7ZvKubcZ5YJ+4raaCixdXQOhNyM78p16iXer8q4ScyOSZilpvTSwtbAbkdQg168ppJitm5HKyJnXrGLbSF48z4HXHKxd1ItJna+OpUWrxY/saaVqJQiocGyYALA+VYe1IDDqf1zkbAP80u++2H5WN38SXLfbNqHvbVi7yH3JyPI1SGrImbtYIje8oHiXzoRxlieQ3RDq0JhCt9K9R1N6m/MW+ooIdm+zMDbxZhJ1Tnl4RyNuWqqBaQyHSBe3DA6HeHGOAdm63jtn6g1cKRPZqybkLQfYvWTfWC1rdX3bmzkb4HPPJSOvprxl+8ZeWXf/e1pYXq15QT3gWjZRgz75lN0PuWmaAg3Zi1/i9NeoOnuWX2y/kNiG/YyNkhczPnnWZskQCKzfZFGMttsFsW/LoAd5w0aI35eMtNs+JbBbvm8Kb0kL1Z1zyeROb0ORN7ilY7+62Ev9TEHw5BCqUDb/040needhmIsHUfPeTZ/hyfY66JK9g+U3HGS2qVTgmlxzkF4LIi7PUney6ds+GtxqsHjZYOaOkuVXDqZMVLH7VV3bTKi+VTm5NaScT6V3PBwi7hRObzwpirLy5kGZYJoJqfTulGJgKkoj8yPdvIZs6npoebeElDO5PHr1GSi8mHsJAIp4Y/kTDkwxQjelqUlWALF4NBn7C0xUx1XWiRcN4X1vq7FoYpdnBb5WWGdRjCVM82R1LW5LePEZ9VWeo13BsDptW+lSy/nUZ6BWTanE3PAeZxin8j3e7cyyDeoaHE8F1YN0U3IVxpa5GTvMXAum+lvqKIx6mtC6XgmSvmXqewKlGtwEgSckVIcE2wB5lh6GLQOzmxDXe1EWzzyKS2/ElzMzbXwsd7iIc4WZM4x4xNDIHMA1FpeOjwnFpxdXlmZvHUproBR11HSFbioMvY5S5X70VX6qBUr1zziO82wu91jQWLZayfMzNNyI9xIV1ROhHvTNDVM6gypXUPeWKWkyq6Z8LB1p0u6k5LSyuIu2eN5+caEt18dTGppG7roncTAaelRCdZm9h0vewq/uxa8VVYvTVVJoNVmT4/mmolKV92Vv/FdNtXRPW/8Fr1WoOA==</source>
+  <type>class</type></file>

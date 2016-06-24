@@ -1,0 +1,737 @@
+<file path="codex/vendor/laravel/framework/src/Illuminate/Routing/ResourceRegistrar.php" generated-path="codex.vendor.laravel.framework.src.Illuminate.Routing.ResourceRegistrar.html" hash="17f1fc30f6208763bc77b19c0150f95a" package="Default">
+    <docblock line="0">
+      <description/>
+      <long-description/>
+      <tag name="package" line="0" description="Default"/>
+    </docblock>
+    <namespace-alias name="Str">\Illuminate\Support\Str</namespace-alias>
+    <class final="false" abstract="false" namespace="Illuminate\Routing" line="7" package="Default">
+      <extends/>
+      <name>ResourceRegistrar</name>
+      <full_name>\Illuminate\Routing\ResourceRegistrar</full_name>
+      <docblock line="7">
+        <description/>
+        <long-description/>
+        <tag name="package" line="7" description="Default"/>
+      </docblock>
+      <property static="false" visibility="protected" namespace="Illuminate\Routing" line="14" package="Default">
+        <name>$router</name>
+        <full_name>\Illuminate\Routing\ResourceRegistrar::router</full_name>
+        <default/>
+        <docblock line="14">
+          <description>The router instance.</description>
+          <long-description/>
+          <tag name="var" line="14" description="" type="\Illuminate\Routing\Router" variable="">
+            <type>\Illuminate\Routing\Router</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" namespace="Illuminate\Routing" line="21" package="Default">
+        <name>$resourceDefaults</name>
+        <full_name>\Illuminate\Routing\ResourceRegistrar::resourceDefaults</full_name>
+        <default>array('index', 'create', 'store', 'show', 'edit', 'update', 'destroy')</default>
+        <docblock line="21">
+          <description>The default actions for a resourceful controller.</description>
+          <long-description/>
+          <tag name="var" line="21" description="" type="array" variable="">
+            <type>array</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" namespace="Illuminate\Routing" line="28" package="Default">
+        <name>$parameters</name>
+        <full_name>\Illuminate\Routing\ResourceRegistrar::parameters</full_name>
+        <default/>
+        <docblock line="28">
+          <description>The parameters set for this resource instance.</description>
+          <long-description/>
+          <tag name="var" line="28" description="" type="array|string" variable="">
+            <type>array</type>
+            <type>string</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="true" visibility="protected" namespace="Illuminate\Routing" line="35" package="Default">
+        <name>$parameterMap</name>
+        <full_name>\Illuminate\Routing\ResourceRegistrar::parameterMap</full_name>
+        <default>array()</default>
+        <docblock line="35">
+          <description>The global parameter mapping.</description>
+          <long-description/>
+          <tag name="var" line="35" description="" type="array" variable="">
+            <type>array</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="true" visibility="protected" namespace="Illuminate\Routing" line="42" package="Default">
+        <name>$singularParameters</name>
+        <full_name>\Illuminate\Routing\ResourceRegistrar::singularParameters</full_name>
+        <default>false</default>
+        <docblock line="42">
+          <description>Singular global parameters.</description>
+          <long-description/>
+          <tag name="var" line="42" description="" type="boolean" variable="">
+            <type>boolean</type>
+          </tag>
+        </docblock>
+      </property>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Routing" line="50" package="Default">
+        <name>__construct</name>
+        <full_name>\Illuminate\Routing\ResourceRegistrar::__construct()</full_name>
+        <docblock line="50">
+          <description>Create a new resource registrar instance.</description>
+          <long-description/>
+          <tag name="param" line="50" description="" type="\Illuminate\Routing\Router" variable="$router">
+            <type>\Illuminate\Routing\Router</type>
+          </tag>
+          <tag name="return" line="50" description="" type="void">
+            <type>void</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$router</name>
+          <default/>
+          <type>\Illuminate\Routing\Router</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Routing" line="63" package="Default">
+        <name>register</name>
+        <full_name>\Illuminate\Routing\ResourceRegistrar::register()</full_name>
+        <docblock line="63">
+          <description>Route a resource to a controller.</description>
+          <long-description/>
+          <tag name="param" line="63" description="" type="string" variable="$name">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="63" description="" type="string" variable="$controller">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="63" description="" type="array" variable="$options">
+            <type>array</type>
+          </tag>
+          <tag name="return" line="63" description="" type="void">
+            <type>void</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$name</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$controller</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$options</name>
+          <default>array()</default>
+          <type>array</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Routing" line="98" package="Default">
+        <name>prefixedResource</name>
+        <full_name>\Illuminate\Routing\ResourceRegistrar::prefixedResource()</full_name>
+        <docblock line="98">
+          <description>Build a set of prefixed resource routes.</description>
+          <long-description/>
+          <tag name="param" line="98" description="" type="string" variable="$name">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="98" description="" type="string" variable="$controller">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="98" description="" type="array" variable="$options">
+            <type>array</type>
+          </tag>
+          <tag name="return" line="98" description="" type="void">
+            <type>void</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$name</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$controller</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$options</name>
+          <default/>
+          <type>array</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Routing" line="118" package="Default">
+        <name>getResourcePrefix</name>
+        <full_name>\Illuminate\Routing\ResourceRegistrar::getResourcePrefix()</full_name>
+        <docblock line="118">
+          <description>Extract the resource and prefix from a resource name.</description>
+          <long-description/>
+          <tag name="param" line="118" description="" type="string" variable="$name">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="118" description="" type="array">
+            <type>array</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$name</name>
+          <default/>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Routing" line="137" package="Default">
+        <name>getResourceMethods</name>
+        <full_name>\Illuminate\Routing\ResourceRegistrar::getResourceMethods()</full_name>
+        <docblock line="137">
+          <description>Get the applicable resource methods.</description>
+          <long-description/>
+          <tag name="param" line="137" description="" type="array" variable="$defaults">
+            <type>array</type>
+          </tag>
+          <tag name="param" line="137" description="" type="array" variable="$options">
+            <type>array</type>
+          </tag>
+          <tag name="return" line="137" description="" type="array">
+            <type>array</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$defaults</name>
+          <default/>
+          <type>array</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$options</name>
+          <default/>
+          <type>array</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Routing" line="154" package="Default">
+        <name>getResourceUri</name>
+        <full_name>\Illuminate\Routing\ResourceRegistrar::getResourceUri()</full_name>
+        <docblock line="154">
+          <description>Get the base resource URI for a given resource.</description>
+          <long-description/>
+          <tag name="param" line="154" description="" type="string" variable="$resource">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="154" description="" type="string">
+            <type>string</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$resource</name>
+          <default/>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Routing" line="176" package="Default">
+        <name>getNestedResourceUri</name>
+        <full_name>\Illuminate\Routing\ResourceRegistrar::getNestedResourceUri()</full_name>
+        <docblock line="176">
+          <description>Get the URI for a nested resource segment array.</description>
+          <long-description/>
+          <tag name="param" line="176" description="" type="array" variable="$segments">
+            <type>array</type>
+          </tag>
+          <tag name="return" line="176" description="" type="string">
+            <type>string</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$segments</name>
+          <default/>
+          <type>array</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Routing" line="195" package="Default">
+        <name>getResourceAction</name>
+        <full_name>\Illuminate\Routing\ResourceRegistrar::getResourceAction()</full_name>
+        <docblock line="195">
+          <description>Get the action array for a resource route.</description>
+          <long-description/>
+          <tag name="param" line="195" description="" type="string" variable="$resource">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="195" description="" type="string" variable="$controller">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="195" description="" type="string" variable="$method">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="195" description="" type="array" variable="$options">
+            <type>array</type>
+          </tag>
+          <tag name="return" line="195" description="" type="array">
+            <type>array</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$resource</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$controller</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$method</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$options</name>
+          <default/>
+          <type>array</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Routing" line="210" package="Default">
+        <name>getResourceName</name>
+        <full_name>\Illuminate\Routing\ResourceRegistrar::getResourceName()</full_name>
+        <docblock line="210">
+          <description>Get the name for a given resource.</description>
+          <long-description/>
+          <tag name="param" line="210" description="" type="string" variable="$resource">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="210" description="" type="string" variable="$method">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="210" description="" type="array" variable="$options">
+            <type>array</type>
+          </tag>
+          <tag name="return" line="210" description="" type="string">
+            <type>string</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$resource</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$method</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$options</name>
+          <default/>
+          <type>array</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Routing" line="236" package="Default">
+        <name>getGroupResourceName</name>
+        <full_name>\Illuminate\Routing\ResourceRegistrar::getGroupResourceName()</full_name>
+        <docblock line="236">
+          <description>Get the resource name for a grouped resource.</description>
+          <long-description/>
+          <tag name="param" line="236" description="" type="string" variable="$prefix">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="236" description="" type="string" variable="$resource">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="236" description="" type="string" variable="$method">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="236" description="" type="string">
+            <type>string</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$prefix</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$resource</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$method</name>
+          <default/>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Routing" line="253" package="Default">
+        <name>getResourceWildcard</name>
+        <full_name>\Illuminate\Routing\ResourceRegistrar::getResourceWildcard()</full_name>
+        <docblock line="253">
+          <description>Format a resource parameter for usage.</description>
+          <long-description/>
+          <tag name="param" line="253" description="" type="string" variable="$value">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="253" description="" type="string">
+            <type>string</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$value</name>
+          <default/>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Routing" line="275" package="Default">
+        <name>addResourceIndex</name>
+        <full_name>\Illuminate\Routing\ResourceRegistrar::addResourceIndex()</full_name>
+        <docblock line="275">
+          <description>Add the index method for a resourceful route.</description>
+          <long-description/>
+          <tag name="param" line="275" description="" type="string" variable="$name">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="275" description="" type="string" variable="$base">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="275" description="" type="string" variable="$controller">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="275" description="" type="array" variable="$options">
+            <type>array</type>
+          </tag>
+          <tag name="return" line="275" description="" type="\Illuminate\Routing\Route">
+            <type>\Illuminate\Routing\Route</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$name</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$base</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$controller</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$options</name>
+          <default/>
+          <type>array</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Routing" line="293" package="Default">
+        <name>addResourceCreate</name>
+        <full_name>\Illuminate\Routing\ResourceRegistrar::addResourceCreate()</full_name>
+        <docblock line="293">
+          <description>Add the create method for a resourceful route.</description>
+          <long-description/>
+          <tag name="param" line="293" description="" type="string" variable="$name">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="293" description="" type="string" variable="$base">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="293" description="" type="string" variable="$controller">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="293" description="" type="array" variable="$options">
+            <type>array</type>
+          </tag>
+          <tag name="return" line="293" description="" type="\Illuminate\Routing\Route">
+            <type>\Illuminate\Routing\Route</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$name</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$base</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$controller</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$options</name>
+          <default/>
+          <type>array</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Routing" line="311" package="Default">
+        <name>addResourceStore</name>
+        <full_name>\Illuminate\Routing\ResourceRegistrar::addResourceStore()</full_name>
+        <docblock line="311">
+          <description>Add the store method for a resourceful route.</description>
+          <long-description/>
+          <tag name="param" line="311" description="" type="string" variable="$name">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="311" description="" type="string" variable="$base">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="311" description="" type="string" variable="$controller">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="311" description="" type="array" variable="$options">
+            <type>array</type>
+          </tag>
+          <tag name="return" line="311" description="" type="\Illuminate\Routing\Route">
+            <type>\Illuminate\Routing\Route</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$name</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$base</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$controller</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$options</name>
+          <default/>
+          <type>array</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Routing" line="329" package="Default">
+        <name>addResourceShow</name>
+        <full_name>\Illuminate\Routing\ResourceRegistrar::addResourceShow()</full_name>
+        <docblock line="329">
+          <description>Add the show method for a resourceful route.</description>
+          <long-description/>
+          <tag name="param" line="329" description="" type="string" variable="$name">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="329" description="" type="string" variable="$base">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="329" description="" type="string" variable="$controller">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="329" description="" type="array" variable="$options">
+            <type>array</type>
+          </tag>
+          <tag name="return" line="329" description="" type="\Illuminate\Routing\Route">
+            <type>\Illuminate\Routing\Route</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$name</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$base</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$controller</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$options</name>
+          <default/>
+          <type>array</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Routing" line="347" package="Default">
+        <name>addResourceEdit</name>
+        <full_name>\Illuminate\Routing\ResourceRegistrar::addResourceEdit()</full_name>
+        <docblock line="347">
+          <description>Add the edit method for a resourceful route.</description>
+          <long-description/>
+          <tag name="param" line="347" description="" type="string" variable="$name">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="347" description="" type="string" variable="$base">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="347" description="" type="string" variable="$controller">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="347" description="" type="array" variable="$options">
+            <type>array</type>
+          </tag>
+          <tag name="return" line="347" description="" type="\Illuminate\Routing\Route">
+            <type>\Illuminate\Routing\Route</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$name</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$base</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$controller</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$options</name>
+          <default/>
+          <type>array</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Routing" line="365" package="Default">
+        <name>addResourceUpdate</name>
+        <full_name>\Illuminate\Routing\ResourceRegistrar::addResourceUpdate()</full_name>
+        <docblock line="365">
+          <description>Add the update method for a resourceful route.</description>
+          <long-description/>
+          <tag name="param" line="365" description="" type="string" variable="$name">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="365" description="" type="string" variable="$base">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="365" description="" type="string" variable="$controller">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="365" description="" type="array" variable="$options">
+            <type>array</type>
+          </tag>
+          <tag name="return" line="365" description="" type="void">
+            <type>void</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$name</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$base</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$controller</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$options</name>
+          <default/>
+          <type>array</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Routing" line="383" package="Default">
+        <name>addResourceDestroy</name>
+        <full_name>\Illuminate\Routing\ResourceRegistrar::addResourceDestroy()</full_name>
+        <docblock line="383">
+          <description>Add the destroy method for a resourceful route.</description>
+          <long-description/>
+          <tag name="param" line="383" description="" type="string" variable="$name">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="383" description="" type="string" variable="$base">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="383" description="" type="string" variable="$controller">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="383" description="" type="array" variable="$options">
+            <type>array</type>
+          </tag>
+          <tag name="return" line="383" description="" type="\Illuminate\Routing\Route">
+            <type>\Illuminate\Routing\Route</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$name</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$base</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$controller</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$options</name>
+          <default/>
+          <type>array</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="true" visibility="public" namespace="Illuminate\Routing" line="397" package="Default">
+        <name>singularParameters</name>
+        <full_name>\Illuminate\Routing\ResourceRegistrar::singularParameters()</full_name>
+        <docblock line="397">
+          <description>Set or unset the unmapped global parameters to singular.</description>
+          <long-description/>
+          <tag name="return" line="397" description="" type="void">
+            <type>void</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$singular</name>
+          <default>true</default>
+          <type/>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="true" visibility="public" namespace="Illuminate\Routing" line="407" package="Default">
+        <name>getParameters</name>
+        <full_name>\Illuminate\Routing\ResourceRegistrar::getParameters()</full_name>
+        <docblock line="407">
+          <description>Get the global parameter map.</description>
+          <long-description/>
+          <tag name="return" line="407" description="" type="array">
+            <type>array</type>
+          </tag>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="true" visibility="public" namespace="Illuminate\Routing" line="418" package="Default">
+        <name>setParameters</name>
+        <full_name>\Illuminate\Routing\ResourceRegistrar::setParameters()</full_name>
+        <docblock line="418">
+          <description>Set the global parameter mapping.</description>
+          <long-description/>
+          <tag name="param" line="418" description="" type="array" variable="$parameters">
+            <type>array</type>
+          </tag>
+          <tag name="return" line="418" description="" type="void">
+            <type>void</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$parameters</name>
+          <default>array()</default>
+          <type>array</type>
+        </argument>
+      </method>
+    </class>
+    <parse_markers>
+      <error line="0" code="PPC:ERR-50000">No summary was found for this file</error>
+      <error line="7" code="PPC:ERR-50005">No summary for class \Illuminate\Routing\ResourceRegistrar</error>
+      <error line="397" code="PPC:ERR-50015">Argument $singular is missing from the Docblock of singularParameters</error>
+    </parse_markers>
+    <source>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</source>
+  <type>class</type></file>

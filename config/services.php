@@ -24,19 +24,28 @@ return [
     ],
 
     'ses' => [
-        'key' => env('SES_KEY'),
+        'key'    => env('SES_KEY'),
         'secret' => env('SES_SECRET'),
         'region' => 'us-east-1',
     ],
 
-    'sparkpost' => [
-        'secret' => env('SPARKPOST_SECRET'),
+    'stripe' => [
+        'model'  => App\User::class,
+        'key'    => env('STRIPE_KEY'),
+        'secret' => env('STRIPE_SECRET'),
     ],
 
-    'stripe' => [
-        'model' => App\User::class,
-        'key' => env('STRIPE_KEY'),
-        'secret' => env('STRIPE_SECRET'),
+    'github' => [
+        'driver' => 'github',
+        'auth'   => Sebwite\Git\Manager::AUTH_TOKEN,
+        'secret' => env('CODEX_GIT_GITHUB_SECRET', '')
+    ],
+
+    'bitbucket' => [
+        'driver'      => 'bitbucket',
+        'auth'   => Sebwite\Git\Manager::AUTH_OAUTH,
+        'key'    => env('CODEX_GIT_BITBUCKET_KEY', ''),
+        'secret' => env('CODEX_GIT_BITBUCKET_SECRET', '')
     ],
 
 ];

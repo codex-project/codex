@@ -1,0 +1,282 @@
+<file path="codex/vendor/laravel/framework/src/Illuminate/Database/Migrations/MigrationCreator.php" generated-path="codex.vendor.laravel.framework.src.Illuminate.Database.Migrations.MigrationCreator.html" hash="98c8d2941f23f284696be07711d2546f" package="Default">
+    <docblock line="0">
+      <description/>
+      <long-description/>
+      <tag name="package" line="0" description="Default"/>
+    </docblock>
+    <namespace-alias name="Closure">\Closure</namespace-alias>
+    <namespace-alias name="Str">\Illuminate\Support\Str</namespace-alias>
+    <namespace-alias name="Filesystem">\Illuminate\Filesystem\Filesystem</namespace-alias>
+    <class final="false" abstract="false" namespace="Illuminate\Database\Migrations" line="9" package="Default">
+      <extends/>
+      <name>MigrationCreator</name>
+      <full_name>\Illuminate\Database\Migrations\MigrationCreator</full_name>
+      <docblock line="9">
+        <description/>
+        <long-description/>
+        <tag name="package" line="9" description="Default"/>
+      </docblock>
+      <property static="false" visibility="protected" namespace="Illuminate\Database\Migrations" line="16" package="Default">
+        <name>$files</name>
+        <full_name>\Illuminate\Database\Migrations\MigrationCreator::files</full_name>
+        <default/>
+        <docblock line="16">
+          <description>The filesystem instance.</description>
+          <long-description/>
+          <tag name="var" line="16" description="" type="\Illuminate\Filesystem\Filesystem" variable="">
+            <type>\Illuminate\Filesystem\Filesystem</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" namespace="Illuminate\Database\Migrations" line="23" package="Default">
+        <name>$postCreate</name>
+        <full_name>\Illuminate\Database\Migrations\MigrationCreator::postCreate</full_name>
+        <default>array()</default>
+        <docblock line="23">
+          <description>The registered post create hooks.</description>
+          <long-description/>
+          <tag name="var" line="23" description="" type="array" variable="">
+            <type>array</type>
+          </tag>
+        </docblock>
+      </property>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Migrations" line="31" package="Default">
+        <name>__construct</name>
+        <full_name>\Illuminate\Database\Migrations\MigrationCreator::__construct()</full_name>
+        <docblock line="31">
+          <description>Create a new migration creator instance.</description>
+          <long-description/>
+          <tag name="param" line="31" description="" type="\Illuminate\Filesystem\Filesystem" variable="$files">
+            <type>\Illuminate\Filesystem\Filesystem</type>
+          </tag>
+          <tag name="return" line="31" description="" type="void">
+            <type>void</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$files</name>
+          <default/>
+          <type>\Illuminate\Filesystem\Filesystem</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Migrations" line="45" package="Default">
+        <name>create</name>
+        <full_name>\Illuminate\Database\Migrations\MigrationCreator::create()</full_name>
+        <docblock line="45">
+          <description>Create a new migration at the given path.</description>
+          <long-description/>
+          <tag name="param" line="45" description="" type="string" variable="$name">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="45" description="" type="string" variable="$path">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="45" description="" type="string" variable="$table">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="45" description="" type="boolean" variable="$create">
+            <type>boolean</type>
+          </tag>
+          <tag name="return" line="45" description="" type="string">
+            <type>string</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$name</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$path</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$table</name>
+          <default>null</default>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$create</name>
+          <default>false</default>
+          <type>boolean</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Database\Migrations" line="68" package="Default">
+        <name>getStub</name>
+        <full_name>\Illuminate\Database\Migrations\MigrationCreator::getStub()</full_name>
+        <docblock line="68">
+          <description>Get the migration stub file.</description>
+          <long-description/>
+          <tag name="param" line="68" description="" type="string" variable="$table">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="68" description="" type="boolean" variable="$create">
+            <type>boolean</type>
+          </tag>
+          <tag name="return" line="68" description="" type="string">
+            <type>string</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$table</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$create</name>
+          <default/>
+          <type>boolean</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Database\Migrations" line="92" package="Default">
+        <name>populateStub</name>
+        <full_name>\Illuminate\Database\Migrations\MigrationCreator::populateStub()</full_name>
+        <docblock line="92">
+          <description>Populate the place-holders in the migration stub.</description>
+          <long-description/>
+          <tag name="param" line="92" description="" type="string" variable="$name">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="92" description="" type="string" variable="$stub">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="92" description="" type="string" variable="$table">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="92" description="" type="string">
+            <type>string</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$name</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$stub</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$table</name>
+          <default/>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Database\Migrations" line="112" package="Default">
+        <name>getClassName</name>
+        <full_name>\Illuminate\Database\Migrations\MigrationCreator::getClassName()</full_name>
+        <docblock line="112">
+          <description>Get the class name of a migration name.</description>
+          <long-description/>
+          <tag name="param" line="112" description="" type="string" variable="$name">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="112" description="" type="string">
+            <type>string</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$name</name>
+          <default/>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Database\Migrations" line="122" package="Default">
+        <name>firePostCreateHooks</name>
+        <full_name>\Illuminate\Database\Migrations\MigrationCreator::firePostCreateHooks()</full_name>
+        <docblock line="122">
+          <description>Fire the registered post create hooks.</description>
+          <long-description/>
+          <tag name="return" line="122" description="" type="void">
+            <type>void</type>
+          </tag>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Migrations" line="135" package="Default">
+        <name>afterCreate</name>
+        <full_name>\Illuminate\Database\Migrations\MigrationCreator::afterCreate()</full_name>
+        <docblock line="135">
+          <description>Register a post migration create hook.</description>
+          <long-description/>
+          <tag name="param" line="135" description="" type="\Closure" variable="$callback">
+            <type>\Closure</type>
+          </tag>
+          <tag name="return" line="135" description="" type="void">
+            <type>void</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$callback</name>
+          <default/>
+          <type>\Closure</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Database\Migrations" line="147" package="Default">
+        <name>getPath</name>
+        <full_name>\Illuminate\Database\Migrations\MigrationCreator::getPath()</full_name>
+        <docblock line="147">
+          <description>Get the full path name to the migration.</description>
+          <long-description/>
+          <tag name="param" line="147" description="" type="string" variable="$name">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="147" description="" type="string" variable="$path">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="147" description="" type="string">
+            <type>string</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$name</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$path</name>
+          <default/>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Database\Migrations" line="157" package="Default">
+        <name>getDatePrefix</name>
+        <full_name>\Illuminate\Database\Migrations\MigrationCreator::getDatePrefix()</full_name>
+        <docblock line="157">
+          <description>Get the date prefix for the migration.</description>
+          <long-description/>
+          <tag name="return" line="157" description="" type="string">
+            <type>string</type>
+          </tag>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Migrations" line="167" package="Default">
+        <name>getStubPath</name>
+        <full_name>\Illuminate\Database\Migrations\MigrationCreator::getStubPath()</full_name>
+        <docblock line="167">
+          <description>Get the path to the stubs.</description>
+          <long-description/>
+          <tag name="return" line="167" description="" type="string">
+            <type>string</type>
+          </tag>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Migrations" line="177" package="Default">
+        <name>getFilesystem</name>
+        <full_name>\Illuminate\Database\Migrations\MigrationCreator::getFilesystem()</full_name>
+        <docblock line="177">
+          <description>Get the filesystem instance.</description>
+          <long-description/>
+          <tag name="return" line="177" description="" type="\Illuminate\Filesystem\Filesystem">
+            <type>\Illuminate\Filesystem\Filesystem</type>
+          </tag>
+        </docblock>
+      </method>
+    </class>
+    <parse_markers>
+      <error line="0" code="PPC:ERR-50000">No summary was found for this file</error>
+      <error line="9" code="PPC:ERR-50005">No summary for class \Illuminate\Database\Migrations\MigrationCreator</error>
+    </parse_markers>
+    <source>eJytV21v2zYQ/u5fcSsCSA4c53u6tQMSdOmHbUFTYBiaQqBlKiJCiRpJxTWK/Pcdj3qhZGmOsRoGLPPIe3nuuePp5/dVXi0WJSu4qVjK4aOUdSFKZvnDDbNswwx/+F08amaFKs3bxaI2HK6lMrXmb+lPcOK+riql7cO91QeyD0JyszeWF8Ej6kslMwY6E9eaM6v04vsC8HN5fk6/cA6fcw5ZdxBEaSwrU75u5O22X5+Zhodjdpvdl/RbaWV5avkWzsgAOjVhW/NHgUc1bquUsZA6RznkSj2ZSSeY1mw/Z8ipuPYafoEvXw9NNkIGJd9B0aLjrSo9H37FNCvgOALQBNsd1NzWuoRnJbZDp+uNFClkdZmSB0mSIhGsrlMbB+q8tiUd8blznzObC3PxjmQYaIuvE728NmRmwSL+j+KZl1Axm8/FjE6J8hGNOjbPCp2GWSESXh4c3SglKRif8jFi/vB/YuYPxuTYyruwaowhKmUt5arVjv8zJg0/QNIdchB6RB+5vcOFgcplwyKC9RI+CI003XHYCSkBDxCMxtYbqiPIkEZupUN6BbtcpDkYrp8xXQy/YPcVD5WqDDDblXSeHihYw59ISWcyZ88cZcrwzoFKVTUdwyOhRiwVoWoDqDPlF7mSW67NCozX4Gt+Bazcgq5LWgnLjyMp7LpHicILUbrHhdhD3WEcAhUy9OJdVdu4Sw8JWre9ngZtZ6VN4HJSm+Z3XYXfuhYRh9sa5pCluWr4rUlYXwhd6o4WwI+icdevOibPITpiq8ggFiZxzI5bmAJxiMEAf1QfD3NHLF+uo8uNZOXT2mEQLd92ml4GlP8Lu4c0ytPPbTVEUvLRIeMaC3ljiFCF2ops7wT8G/Z29+CloU6rei5ukW5SVVyDUQV3xeHO7HJOxNxjy+e9MRaYG5SQnje8xhAiV62abcgiqzAJlRaO65T/HG+gnu8cO8UI164Emgp5D5F/8tjBFUR1te3+B6w8PStvLr+TuZc3g5RME/ouaADDasfbbILq/6/NOw2vrI+TCuB4Pxg37iYfqD7RnOKOo5u6KPbXbvKJVkGzopU/UKfXvGxUjxr7LVKga6uNSsLPXyhDaHcCr41eaCqeikxgRJv9gOUhu9uLQBjAIS6rJVXRP7VIn+Q+JHhTS35FlSOWe5oFWc20KsiSmyAUeuOmGM62dKv4WhIWClbWTMr9etBNfoIj/WQe589uf9Tmp8d0ooe09Hc7jjVmP7i6PDn/WRCnWzuNvaf24DFRRpxr1OEYfnWFoWzlvtk3FxPOCp5CJ025syPjoc+TN+LIayQZZ0i7uLt6uxkZZ5GzFEmxYenTOPFuPUGe6sRZi/t9x1vSpyZazB5FO5qzfdyzI3bzFgS9aycP0yxD6z7GuFXXBzA9TPewfPlKfb7ZfoyvWMeS5mfPWbzXhsPbj5uqT2Xz4SQ7zWeS4SgQrfuWiS+p/E7zTHxzU0KCIqq+aI3vtdExSKg/VXR6Ypqdofurwwpdmw7I2Y+jv5Mi2Sa3wkSz9dk6TOlrMkfzzSlOjrg3uMqn/UuSm4+fkgQhJ2NH8XzN+3mj+sRX9EPf+51z3odDTOv5y+Jf/rb+jQ==</source>
+  <type>class</type></file>

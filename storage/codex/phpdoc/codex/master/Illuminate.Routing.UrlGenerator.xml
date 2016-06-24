@@ -1,0 +1,1213 @@
+<file path="codex/vendor/laravel/framework/src/Illuminate/Routing/UrlGenerator.php" generated-path="codex.vendor.laravel.framework.src.Illuminate.Routing.UrlGenerator.html" hash="54376a013c47a3895f7aa2c98bc08649" package="Default">
+    <docblock line="0">
+      <description/>
+      <long-description/>
+      <tag name="package" line="0" description="Default"/>
+    </docblock>
+    <namespace-alias name="Arr">\Illuminate\Support\Arr</namespace-alias>
+    <namespace-alias name="Str">\Illuminate\Support\Str</namespace-alias>
+    <namespace-alias name="Request">\Illuminate\Http\Request</namespace-alias>
+    <namespace-alias name="InvalidArgumentException">\InvalidArgumentException</namespace-alias>
+    <namespace-alias name="Macroable">\Illuminate\Support\Traits\Macroable</namespace-alias>
+    <namespace-alias name="UrlRoutable">\Illuminate\Contracts\Routing\UrlRoutable</namespace-alias>
+    <namespace-alias name="UrlGenerationException">\Illuminate\Routing\Exceptions\UrlGenerationException</namespace-alias>
+    <namespace-alias name="UrlGeneratorContract">\Illuminate\Contracts\Routing\UrlGenerator</namespace-alias>
+    <class final="false" abstract="false" namespace="Illuminate\Routing" line="14" package="Default">
+      <extends/>
+      <implements>\Illuminate\Contracts\Routing\UrlGenerator</implements>
+      <name>UrlGenerator</name>
+      <full_name>\Illuminate\Routing\UrlGenerator</full_name>
+      <docblock line="14">
+        <description/>
+        <long-description/>
+        <tag name="package" line="14" description="Default"/>
+      </docblock>
+      <property static="false" visibility="protected" namespace="Illuminate\Routing" line="23" package="Default">
+        <name>$routes</name>
+        <full_name>\Illuminate\Routing\UrlGenerator::routes</full_name>
+        <default/>
+        <docblock line="23">
+          <description>The route collection.</description>
+          <long-description/>
+          <tag name="var" line="23" description="" type="\Illuminate\Routing\RouteCollection" variable="">
+            <type>\Illuminate\Routing\RouteCollection</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" namespace="Illuminate\Routing" line="30" package="Default">
+        <name>$request</name>
+        <full_name>\Illuminate\Routing\UrlGenerator::request</full_name>
+        <default/>
+        <docblock line="30">
+          <description>The request instance.</description>
+          <long-description/>
+          <tag name="var" line="30" description="" type="\Illuminate\Http\Request" variable="">
+            <type>\Illuminate\Http\Request</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" namespace="Illuminate\Routing" line="37" package="Default">
+        <name>$forcedRoot</name>
+        <full_name>\Illuminate\Routing\UrlGenerator::forcedRoot</full_name>
+        <default/>
+        <docblock line="37">
+          <description>The forced URL root.</description>
+          <long-description/>
+          <tag name="var" line="37" description="" type="string" variable="">
+            <type>string</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" namespace="Illuminate\Routing" line="44" package="Default">
+        <name>$forceSchema</name>
+        <full_name>\Illuminate\Routing\UrlGenerator::forceSchema</full_name>
+        <default/>
+        <docblock line="44">
+          <description>The forced schema for URLs.</description>
+          <long-description/>
+          <tag name="var" line="44" description="" type="string" variable="">
+            <type>string</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" namespace="Illuminate\Routing" line="51" package="Default">
+        <name>$cachedRoot</name>
+        <full_name>\Illuminate\Routing\UrlGenerator::cachedRoot</full_name>
+        <default/>
+        <docblock line="51">
+          <description>A cached copy of the URL root for the current request.</description>
+          <long-description/>
+          <tag name="var" line="51" description="" type="string|null" variable="">
+            <type>string</type>
+            <type>null</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" namespace="Illuminate\Routing" line="58" package="Default">
+        <name>$cachedSchema</name>
+        <full_name>\Illuminate\Routing\UrlGenerator::cachedSchema</full_name>
+        <default/>
+        <docblock line="58">
+          <description>A cached copy of the URL schema for the current request.</description>
+          <long-description/>
+          <tag name="var" line="58" description="" type="string|null" variable="">
+            <type>string</type>
+            <type>null</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" namespace="Illuminate\Routing" line="65" package="Default">
+        <name>$rootNamespace</name>
+        <full_name>\Illuminate\Routing\UrlGenerator::rootNamespace</full_name>
+        <default/>
+        <docblock line="65">
+          <description>The root namespace being applied to controller actions.</description>
+          <long-description/>
+          <tag name="var" line="65" description="" type="string" variable="">
+            <type>string</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" namespace="Illuminate\Routing" line="72" package="Default">
+        <name>$sessionResolver</name>
+        <full_name>\Illuminate\Routing\UrlGenerator::sessionResolver</full_name>
+        <default/>
+        <docblock line="72">
+          <description>The session resolver callable.</description>
+          <long-description/>
+          <tag name="var" line="72" description="" type="callable" variable="">
+            <type>callable</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" namespace="Illuminate\Routing" line="79" package="Default">
+        <name>$dontEncode</name>
+        <full_name>\Illuminate\Routing\UrlGenerator::dontEncode</full_name>
+        <default>array('%2F' =&gt; '/', '%40' =&gt; '@', '%3A' =&gt; ':', '%3B' =&gt; ';', '%2C' =&gt; ',', '%3D' =&gt; '=', '%2B' =&gt; '+', '%21' =&gt; '!', '%2A' =&gt; '*', '%7C' =&gt; '|', '%3F' =&gt; '?', '%26' =&gt; '&amp;', '%23' =&gt; '#', '%25' =&gt; '%')</default>
+        <docblock line="79">
+          <description>Characters that should not be URL encoded.</description>
+          <long-description/>
+          <tag name="var" line="79" description="" type="array" variable="">
+            <type>array</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="true" visibility="protected" namespace="Illuminate\Routing" line="15" package="Default">
+        <name>$macros</name>
+        <full_name>\Illuminate\Support\Traits\Macroable::macros</full_name>
+        <default>array()</default>
+        <docblock line="15">
+          <description>The registered string macros.</description>
+          <long-description/>
+          <tag name="var" line="15" description="" type="array" variable="">
+            <type>array</type>
+          </tag>
+        </docblock>
+      </property>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Routing" line="103" package="Default">
+        <name>__construct</name>
+        <full_name>\Illuminate\Routing\UrlGenerator::__construct()</full_name>
+        <docblock line="103">
+          <description>Create a new URL Generator instance.</description>
+          <long-description/>
+          <tag name="param" line="103" description="" type="\Illuminate\Routing\RouteCollection" variable="$routes">
+            <type>\Illuminate\Routing\RouteCollection</type>
+          </tag>
+          <tag name="param" line="103" description="" type="\Illuminate\Http\Request" variable="$request">
+            <type>\Illuminate\Http\Request</type>
+          </tag>
+          <tag name="return" line="103" description="" type="void">
+            <type>void</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$routes</name>
+          <default/>
+          <type>\Illuminate\Routing\RouteCollection</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$request</name>
+          <default/>
+          <type>\Illuminate\Http\Request</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Routing" line="115" package="Default">
+        <name>full</name>
+        <full_name>\Illuminate\Routing\UrlGenerator::full()</full_name>
+        <docblock line="115">
+          <description>Get the full URL for the current request.</description>
+          <long-description/>
+          <tag name="return" line="115" description="" type="string">
+            <type>string</type>
+          </tag>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Routing" line="125" package="Default">
+        <name>current</name>
+        <full_name>\Illuminate\Routing\UrlGenerator::current()</full_name>
+        <docblock line="125">
+          <description>Get the current URL for the request.</description>
+          <long-description/>
+          <tag name="return" line="125" description="" type="string">
+            <type>string</type>
+          </tag>
+          <tag name="inherited_from" description="\Illuminate\Contracts\Routing\UrlGenerator::current()" refers="\Illuminate\Contracts\Routing\UrlGenerator::current()" link="/classes/Illuminate.Contracts.Routing.UrlGenerator.html#method_current"/>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Routing" line="135" package="Default">
+        <name>previous</name>
+        <full_name>\Illuminate\Routing\UrlGenerator::previous()</full_name>
+        <docblock line="135">
+          <description>Get the URL for the previous request.</description>
+          <long-description/>
+          <tag name="return" line="135" description="" type="string">
+            <type>string</type>
+          </tag>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Routing" line="152" package="Default">
+        <name>to</name>
+        <full_name>\Illuminate\Routing\UrlGenerator::to()</full_name>
+        <docblock line="152">
+          <description>Generate an absolute URL to the given path.</description>
+          <long-description/>
+          <tag name="param" line="152" description="" type="string" variable="$path">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="152" description="" type="mixed" variable="$extra">
+            <type>mixed</type>
+          </tag>
+          <tag name="param" line="152" description="" type="boolean|null" variable="$secure">
+            <type>boolean</type>
+            <type>null</type>
+          </tag>
+          <tag name="return" line="152" description="" type="string">
+            <type>string</type>
+          </tag>
+          <tag name="inherited_from" description="\Illuminate\Contracts\Routing\UrlGenerator::to()" refers="\Illuminate\Contracts\Routing\UrlGenerator::to()" link="/classes/Illuminate.Contracts.Routing.UrlGenerator.html#method_to"/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$path</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$extra</name>
+          <default>array()</default>
+          <type>mixed</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$secure</name>
+          <default>null</default>
+          <type>boolean|null</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Routing" line="191" package="Default">
+        <name>secure</name>
+        <full_name>\Illuminate\Routing\UrlGenerator::secure()</full_name>
+        <docblock line="191">
+          <description>Generate a secure, absolute URL to the given path.</description>
+          <long-description/>
+          <tag name="param" line="191" description="" type="string" variable="$path">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="191" description="" type="array" variable="$parameters">
+            <type>array</type>
+          </tag>
+          <tag name="return" line="191" description="" type="string">
+            <type>string</type>
+          </tag>
+          <tag name="inherited_from" description="\Illuminate\Contracts\Routing\UrlGenerator::secure()" refers="\Illuminate\Contracts\Routing\UrlGenerator::secure()" link="/classes/Illuminate.Contracts.Routing.UrlGenerator.html#method_secure"/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$path</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$parameters</name>
+          <default>array()</default>
+          <type>array</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Routing" line="203" package="Default">
+        <name>asset</name>
+        <full_name>\Illuminate\Routing\UrlGenerator::asset()</full_name>
+        <docblock line="203">
+          <description>Generate a URL to an application asset.</description>
+          <long-description/>
+          <tag name="param" line="203" description="" type="string" variable="$path">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="203" description="" type="boolean|null" variable="$secure">
+            <type>boolean</type>
+            <type>null</type>
+          </tag>
+          <tag name="return" line="203" description="" type="string">
+            <type>string</type>
+          </tag>
+          <tag name="inherited_from" description="\Illuminate\Contracts\Routing\UrlGenerator::asset()" refers="\Illuminate\Contracts\Routing\UrlGenerator::asset()" link="/classes/Illuminate.Contracts.Routing.UrlGenerator.html#method_asset"/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$path</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$secure</name>
+          <default>null</default>
+          <type>boolean|null</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Routing" line="225" package="Default">
+        <name>assetFrom</name>
+        <full_name>\Illuminate\Routing\UrlGenerator::assetFrom()</full_name>
+        <docblock line="225">
+          <description>Generate a URL to an asset from a custom root domain such as CDN, etc.</description>
+          <long-description/>
+          <tag name="param" line="225" description="" type="string" variable="$root">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="225" description="" type="string" variable="$path">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="225" description="" type="boolean|null" variable="$secure">
+            <type>boolean</type>
+            <type>null</type>
+          </tag>
+          <tag name="return" line="225" description="" type="string">
+            <type>string</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$root</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$path</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$secure</name>
+          <default>null</default>
+          <type>boolean|null</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Routing" line="241" package="Default">
+        <name>removeIndex</name>
+        <full_name>\Illuminate\Routing\UrlGenerator::removeIndex()</full_name>
+        <docblock line="241">
+          <description>Remove the index.php file from a path.</description>
+          <long-description/>
+          <tag name="param" line="241" description="" type="string" variable="$root">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="241" description="" type="string">
+            <type>string</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$root</name>
+          <default/>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Routing" line="254" package="Default">
+        <name>secureAsset</name>
+        <full_name>\Illuminate\Routing\UrlGenerator::secureAsset()</full_name>
+        <docblock line="254">
+          <description>Generate a URL to a secure asset.</description>
+          <long-description/>
+          <tag name="param" line="254" description="" type="string" variable="$path">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="254" description="" type="string">
+            <type>string</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$path</name>
+          <default/>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Routing" line="265" package="Default">
+        <name>getScheme</name>
+        <full_name>\Illuminate\Routing\UrlGenerator::getScheme()</full_name>
+        <docblock line="265">
+          <description>Get the scheme for a raw URL.</description>
+          <long-description/>
+          <tag name="param" line="265" description="" type="boolean|null" variable="$secure">
+            <type>boolean</type>
+            <type>null</type>
+          </tag>
+          <tag name="return" line="265" description="" type="string">
+            <type>string</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$secure</name>
+          <default/>
+          <type>boolean|null</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Routing" line="284" package="Default">
+        <name>forceSchema</name>
+        <full_name>\Illuminate\Routing\UrlGenerator::forceSchema()</full_name>
+        <docblock line="284">
+          <description>Force the schema for URLs.</description>
+          <long-description/>
+          <tag name="param" line="284" description="" type="string" variable="$schema">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="284" description="" type="void">
+            <type>void</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$schema</name>
+          <default/>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Routing" line="301" package="Default">
+        <name>route</name>
+        <full_name>\Illuminate\Routing\UrlGenerator::route()</full_name>
+        <docblock line="301">
+          <description>Get the URL to a named route.</description>
+          <long-description/>
+          <tag name="param" line="301" description="" type="string" variable="$name">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="301" description="" type="mixed" variable="$parameters">
+            <type>mixed</type>
+          </tag>
+          <tag name="param" line="301" description="" type="boolean" variable="$absolute">
+            <type>boolean</type>
+          </tag>
+          <tag name="return" line="301" description="" type="string">
+            <type>string</type>
+          </tag>
+          <tag name="throws" line="301" description="" type="\InvalidArgumentException">
+            <type>\InvalidArgumentException</type>
+          </tag>
+          <tag name="inherited_from" description="\Illuminate\Contracts\Routing\UrlGenerator::route()" refers="\Illuminate\Contracts\Routing\UrlGenerator::route()" link="/classes/Illuminate.Contracts.Routing.UrlGenerator.html#method_route"/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$name</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$parameters</name>
+          <default>array()</default>
+          <type>mixed</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$absolute</name>
+          <default>true</default>
+          <type>boolean</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Routing" line="320" package="Default">
+        <name>toRoute</name>
+        <full_name>\Illuminate\Routing\UrlGenerator::toRoute()</full_name>
+        <docblock line="320">
+          <description>Get the URL for a given route instance.</description>
+          <long-description/>
+          <tag name="param" line="320" description="" type="\Illuminate\Routing\Route" variable="$route">
+            <type>\Illuminate\Routing\Route</type>
+          </tag>
+          <tag name="param" line="320" description="" type="mixed" variable="$parameters">
+            <type>mixed</type>
+          </tag>
+          <tag name="param" line="320" description="" type="boolean" variable="$absolute">
+            <type>boolean</type>
+          </tag>
+          <tag name="return" line="320" description="" type="string">
+            <type>string</type>
+          </tag>
+          <tag name="throws" line="320" description="" type="\Illuminate\Routing\Exceptions\UrlGenerationException">
+            <type>\Illuminate\Routing\Exceptions\UrlGenerationException</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$route</name>
+          <default/>
+          <type>\Illuminate\Routing\Route</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$parameters</name>
+          <default/>
+          <type>mixed</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$absolute</name>
+          <default/>
+          <type>boolean</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Routing" line="348" package="Default">
+        <name>replaceRoot</name>
+        <full_name>\Illuminate\Routing\UrlGenerator::replaceRoot()</full_name>
+        <docblock line="348">
+          <description>Replace the parameters on the root path.</description>
+          <long-description/>
+          <tag name="param" line="348" description="" type="\Illuminate\Routing\Route" variable="$route">
+            <type>\Illuminate\Routing\Route</type>
+          </tag>
+          <tag name="param" line="348" description="" type="string" variable="$domain">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="348" description="" type="array" variable="$parameters">
+            <type>array</type>
+          </tag>
+          <tag name="return" line="348" description="" type="string">
+            <type>string</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$route</name>
+          <default/>
+          <type>\Illuminate\Routing\Route</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$domain</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="true">
+          <name>$parameters</name>
+          <default/>
+          <type>array</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Routing" line="362" package="Default">
+        <name>replaceRouteParameters</name>
+        <full_name>\Illuminate\Routing\UrlGenerator::replaceRouteParameters()</full_name>
+        <docblock line="362">
+          <description>Replace all of the wildcard parameters for a route path.</description>
+          <long-description/>
+          <tag name="param" line="362" description="" type="string" variable="$path">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="362" description="" type="array" variable="$parameters">
+            <type>array</type>
+          </tag>
+          <tag name="return" line="362" description="" type="string">
+            <type>string</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$path</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="true">
+          <name>$parameters</name>
+          <default/>
+          <type>array</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Routing" line="382" package="Default">
+        <name>replaceNamedParameters</name>
+        <full_name>\Illuminate\Routing\UrlGenerator::replaceNamedParameters()</full_name>
+        <docblock line="382">
+          <description>Replace all of the named parameters in the path.</description>
+          <long-description/>
+          <tag name="param" line="382" description="" type="string" variable="$path">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="382" description="" type="array" variable="$parameters">
+            <type>array</type>
+          </tag>
+          <tag name="return" line="382" description="" type="string">
+            <type>string</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$path</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="true">
+          <name>$parameters</name>
+          <default/>
+          <type>array</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Routing" line="396" package="Default">
+        <name>addQueryString</name>
+        <full_name>\Illuminate\Routing\UrlGenerator::addQueryString()</full_name>
+        <docblock line="396">
+          <description>Add a query string to the URI.</description>
+          <long-description/>
+          <tag name="param" line="396" description="" type="string" variable="$uri">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="396" description="" type="array" variable="$parameters">
+            <type>array</type>
+          </tag>
+          <tag name="return" line="396" description="" type="mixed|string">
+            <type>mixed</type>
+            <type>string</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$uri</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$parameters</name>
+          <default/>
+          <type>array</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Routing" line="416" package="Default">
+        <name>formatParameters</name>
+        <full_name>\Illuminate\Routing\UrlGenerator::formatParameters()</full_name>
+        <docblock line="416">
+          <description>Format the array of URL parameters.</description>
+          <long-description/>
+          <tag name="param" line="416" description="" type="mixed|array" variable="$parameters">
+            <type>mixed</type>
+            <type>array</type>
+          </tag>
+          <tag name="return" line="416" description="" type="array">
+            <type>array</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$parameters</name>
+          <default/>
+          <type>mixed|array</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Routing" line="427" package="Default">
+        <name>replaceRoutableParameters</name>
+        <full_name>\Illuminate\Routing\UrlGenerator::replaceRoutableParameters()</full_name>
+        <docblock line="427">
+          <description>Replace UrlRoutable parameters with their route parameter.</description>
+          <long-description/>
+          <tag name="param" line="427" description="" type="array" variable="$parameters">
+            <type>array</type>
+          </tag>
+          <tag name="return" line="427" description="" type="array">
+            <type>array</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$parameters</name>
+          <default>array()</default>
+          <type>array</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Routing" line="446" package="Default">
+        <name>getRouteQueryString</name>
+        <full_name>\Illuminate\Routing\UrlGenerator::getRouteQueryString()</full_name>
+        <docblock line="446">
+          <description>Get the query string for a given route.</description>
+          <long-description/>
+          <tag name="param" line="446" description="" type="array" variable="$parameters">
+            <type>array</type>
+          </tag>
+          <tag name="return" line="446" description="" type="string">
+            <type>string</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$parameters</name>
+          <default/>
+          <type>array</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Routing" line="477" package="Default">
+        <name>getStringParameters</name>
+        <full_name>\Illuminate\Routing\UrlGenerator::getStringParameters()</full_name>
+        <docblock line="477">
+          <description>Get the string parameters from a given list.</description>
+          <long-description/>
+          <tag name="param" line="477" description="" type="array" variable="$parameters">
+            <type>array</type>
+          </tag>
+          <tag name="return" line="477" description="" type="array">
+            <type>array</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$parameters</name>
+          <default/>
+          <type>array</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Routing" line="490" package="Default">
+        <name>getNumericParameters</name>
+        <full_name>\Illuminate\Routing\UrlGenerator::getNumericParameters()</full_name>
+        <docblock line="490">
+          <description>Get the numeric parameters from a given list.</description>
+          <long-description/>
+          <tag name="param" line="490" description="" type="array" variable="$parameters">
+            <type>array</type>
+          </tag>
+          <tag name="return" line="490" description="" type="array">
+            <type>array</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$parameters</name>
+          <default/>
+          <type>array</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Routing" line="504" package="Default">
+        <name>getRouteDomain</name>
+        <full_name>\Illuminate\Routing\UrlGenerator::getRouteDomain()</full_name>
+        <docblock line="504">
+          <description>Get the formatted domain for a given route.</description>
+          <long-description/>
+          <tag name="param" line="504" description="" type="\Illuminate\Routing\Route" variable="$route">
+            <type>\Illuminate\Routing\Route</type>
+          </tag>
+          <tag name="param" line="504" description="" type="array" variable="$parameters">
+            <type>array</type>
+          </tag>
+          <tag name="return" line="504" description="" type="string">
+            <type>string</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$route</name>
+          <default/>
+          <type>\Illuminate\Routing\Route</type>
+        </argument>
+        <argument line="0" by_reference="true">
+          <name>$parameters</name>
+          <default/>
+          <type>array</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Routing" line="516" package="Default">
+        <name>formatDomain</name>
+        <full_name>\Illuminate\Routing\UrlGenerator::formatDomain()</full_name>
+        <docblock line="516">
+          <description>Format the domain and port for the route and request.</description>
+          <long-description/>
+          <tag name="param" line="516" description="" type="\Illuminate\Routing\Route" variable="$route">
+            <type>\Illuminate\Routing\Route</type>
+          </tag>
+          <tag name="param" line="516" description="" type="array" variable="$parameters">
+            <type>array</type>
+          </tag>
+          <tag name="return" line="516" description="" type="string">
+            <type>string</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$route</name>
+          <default/>
+          <type>\Illuminate\Routing\Route</type>
+        </argument>
+        <argument line="0" by_reference="true">
+          <name>$parameters</name>
+          <default/>
+          <type>array</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Routing" line="527" package="Default">
+        <name>getDomainAndScheme</name>
+        <full_name>\Illuminate\Routing\UrlGenerator::getDomainAndScheme()</full_name>
+        <docblock line="527">
+          <description>Get the domain and scheme for the route.</description>
+          <long-description/>
+          <tag name="param" line="527" description="" type="\Illuminate\Routing\Route" variable="$route">
+            <type>\Illuminate\Routing\Route</type>
+          </tag>
+          <tag name="return" line="527" description="" type="string">
+            <type>string</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$route</name>
+          <default/>
+          <type>\Illuminate\Routing\Route</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Routing" line="538" package="Default">
+        <name>addPortToDomain</name>
+        <full_name>\Illuminate\Routing\UrlGenerator::addPortToDomain()</full_name>
+        <docblock line="538">
+          <description>Add the port to the domain if necessary.</description>
+          <long-description/>
+          <tag name="param" line="538" description="" type="string" variable="$domain">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="538" description="" type="string">
+            <type>string</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$domain</name>
+          <default/>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Routing" line="558" package="Default">
+        <name>getRouteRoot</name>
+        <full_name>\Illuminate\Routing\UrlGenerator::getRouteRoot()</full_name>
+        <docblock line="558">
+          <description>Get the root of the route URL.</description>
+          <long-description/>
+          <tag name="param" line="558" description="" type="\Illuminate\Routing\Route" variable="$route">
+            <type>\Illuminate\Routing\Route</type>
+          </tag>
+          <tag name="param" line="558" description="" type="string" variable="$domain">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="558" description="" type="string">
+            <type>string</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$route</name>
+          <default/>
+          <type>\Illuminate\Routing\Route</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$domain</name>
+          <default/>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Routing" line="569" package="Default">
+        <name>getRouteScheme</name>
+        <full_name>\Illuminate\Routing\UrlGenerator::getRouteScheme()</full_name>
+        <docblock line="569">
+          <description>Get the scheme for the given route.</description>
+          <long-description/>
+          <tag name="param" line="569" description="" type="\Illuminate\Routing\Route" variable="$route">
+            <type>\Illuminate\Routing\Route</type>
+          </tag>
+          <tag name="return" line="569" description="" type="string">
+            <type>string</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$route</name>
+          <default/>
+          <type>\Illuminate\Routing\Route</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Routing" line="590" package="Default">
+        <name>action</name>
+        <full_name>\Illuminate\Routing\UrlGenerator::action()</full_name>
+        <docblock line="590">
+          <description>Get the URL to a controller action.</description>
+          <long-description/>
+          <tag name="param" line="590" description="" type="string" variable="$action">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="590" description="" type="mixed" variable="$parameters">
+            <type>mixed</type>
+          </tag>
+          <tag name="param" line="590" description="" type="boolean" variable="$absolute">
+            <type>boolean</type>
+          </tag>
+          <tag name="return" line="590" description="" type="string">
+            <type>string</type>
+          </tag>
+          <tag name="throws" line="590" description="" type="\InvalidArgumentException">
+            <type>\InvalidArgumentException</type>
+          </tag>
+          <tag name="inherited_from" description="\Illuminate\Contracts\Routing\UrlGenerator::action()" refers="\Illuminate\Contracts\Routing\UrlGenerator::action()" link="/classes/Illuminate.Contracts.Routing.UrlGenerator.html#method_action"/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$action</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$parameters</name>
+          <default>array()</default>
+          <type>mixed</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$absolute</name>
+          <default>true</default>
+          <type>boolean</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Routing" line="612" package="Default">
+        <name>getRootUrl</name>
+        <full_name>\Illuminate\Routing\UrlGenerator::getRootUrl()</full_name>
+        <docblock line="612">
+          <description>Get the base URL for the request.</description>
+          <long-description/>
+          <tag name="param" line="612" description="" type="string" variable="$scheme">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="612" description="" type="string" variable="$root">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="612" description="" type="string">
+            <type>string</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$scheme</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$root</name>
+          <default>null</default>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Routing" line="633" package="Default">
+        <name>forceRootUrl</name>
+        <full_name>\Illuminate\Routing\UrlGenerator::forceRootUrl()</full_name>
+        <docblock line="633">
+          <description>Set the forced root URL.</description>
+          <long-description/>
+          <tag name="param" line="633" description="" type="string" variable="$root">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="633" description="" type="void">
+            <type>void</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$root</name>
+          <default/>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Routing" line="645" package="Default">
+        <name>isValidUrl</name>
+        <full_name>\Illuminate\Routing\UrlGenerator::isValidUrl()</full_name>
+        <docblock line="645">
+          <description>Determine if the given path is a valid URL.</description>
+          <long-description/>
+          <tag name="param" line="645" description="" type="string" variable="$path">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="645" description="" type="boolean">
+            <type>boolean</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$path</name>
+          <default/>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Routing" line="662" package="Default">
+        <name>trimUrl</name>
+        <full_name>\Illuminate\Routing\UrlGenerator::trimUrl()</full_name>
+        <docblock line="662">
+          <description>Format the given URL segments into a single URL.</description>
+          <long-description/>
+          <tag name="param" line="662" description="" type="string" variable="$root">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="662" description="" type="string" variable="$path">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="662" description="" type="string" variable="$tail">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="662" description="" type="string">
+            <type>string</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$root</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$path</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$tail</name>
+          <default>''</default>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Routing" line="672" package="Default">
+        <name>getRequest</name>
+        <full_name>\Illuminate\Routing\UrlGenerator::getRequest()</full_name>
+        <docblock line="672">
+          <description>Get the request instance.</description>
+          <long-description/>
+          <tag name="return" line="672" description="" type="\Illuminate\Http\Request">
+            <type>\Illuminate\Http\Request</type>
+          </tag>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Routing" line="683" package="Default">
+        <name>setRequest</name>
+        <full_name>\Illuminate\Routing\UrlGenerator::setRequest()</full_name>
+        <docblock line="683">
+          <description>Set the current request instance.</description>
+          <long-description/>
+          <tag name="param" line="683" description="" type="\Illuminate\Http\Request" variable="$request">
+            <type>\Illuminate\Http\Request</type>
+          </tag>
+          <tag name="return" line="683" description="" type="void">
+            <type>void</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$request</name>
+          <default/>
+          <type>\Illuminate\Http\Request</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Routing" line="697" package="Default">
+        <name>setRoutes</name>
+        <full_name>\Illuminate\Routing\UrlGenerator::setRoutes()</full_name>
+        <docblock line="697">
+          <description>Set the route collection.</description>
+          <long-description/>
+          <tag name="param" line="697" description="" type="\Illuminate\Routing\RouteCollection" variable="$routes">
+            <type>\Illuminate\Routing\RouteCollection</type>
+          </tag>
+          <tag name="return" line="697" description="" type="\Illuminate\Routing\UrlGenerator">
+            <type>\Illuminate\Routing\UrlGenerator</type>
+          </tag>
+          <tag name="fluent" description="This method is part of a fluent interface and will return the same instance"/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$routes</name>
+          <default/>
+          <type>\Illuminate\Routing\RouteCollection</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Routing" line="709" package="Default">
+        <name>getPreviousUrlFromSession</name>
+        <full_name>\Illuminate\Routing\UrlGenerator::getPreviousUrlFromSession()</full_name>
+        <docblock line="709">
+          <description>Get the previous URL from the session if possible.</description>
+          <long-description/>
+          <tag name="return" line="709" description="" type="string|null">
+            <type>string</type>
+            <type>null</type>
+          </tag>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Routing" line="721" package="Default">
+        <name>getSession</name>
+        <full_name>\Illuminate\Routing\UrlGenerator::getSession()</full_name>
+        <docblock line="721">
+          <description>Get the session implementation from the resolver.</description>
+          <long-description/>
+          <tag name="return" line="721" description="" type="\Illuminate\Session\Store|null">
+            <type>\Illuminate\Session\Store</type>
+            <type>null</type>
+          </tag>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Routing" line="734" package="Default">
+        <name>setSessionResolver</name>
+        <full_name>\Illuminate\Routing\UrlGenerator::setSessionResolver()</full_name>
+        <docblock line="734">
+          <description>Set the session resolver for the generator.</description>
+          <long-description/>
+          <tag name="param" line="734" description="" type="callable" variable="$sessionResolver">
+            <type>callable</type>
+          </tag>
+          <tag name="return" line="734" description="" type="\Illuminate\Routing\UrlGenerator">
+            <type>\Illuminate\Routing\UrlGenerator</type>
+          </tag>
+          <tag name="fluent" description="This method is part of a fluent interface and will return the same instance"/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$sessionResolver</name>
+          <default/>
+          <type>callable</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Routing" line="747" package="Default">
+        <name>setRootControllerNamespace</name>
+        <full_name>\Illuminate\Routing\UrlGenerator::setRootControllerNamespace()</full_name>
+        <docblock line="747">
+          <description>Set the root controller namespace.</description>
+          <long-description/>
+          <tag name="param" line="747" description="" type="string" variable="$rootNamespace">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="747" description="" type="\Illuminate\Routing\UrlGenerator">
+            <type>\Illuminate\Routing\UrlGenerator</type>
+          </tag>
+          <tag name="inherited_from" description="\Illuminate\Contracts\Routing\UrlGenerator::setRootControllerNamespace()" refers="\Illuminate\Contracts\Routing\UrlGenerator::setRootControllerNamespace()" link="/classes/Illuminate.Contracts.Routing.UrlGenerator.html#method_setRootControllerNamespace"/>
+          <tag name="fluent" description="This method is part of a fluent interface and will return the same instance"/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$rootNamespace</name>
+          <default/>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="true" visibility="public" namespace="Illuminate\Routing" line="24" package="Default">
+        <name>macro</name>
+        <full_name>\Illuminate\Support\Traits\Macroable::macro()</full_name>
+        <docblock line="24">
+          <description>Register a custom macro.</description>
+          <long-description/>
+          <tag name="param" line="24" description="" type="string" variable="$name">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="24" description="" type="callable" variable="$macro">
+            <type>callable</type>
+          </tag>
+          <tag name="return" line="24" description="" type="void">
+            <type>void</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$name</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$macro</name>
+          <default/>
+          <type>callable</type>
+        </argument>
+        <inherited_from>\Illuminate\Support\Traits\Macroable</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="true" visibility="public" namespace="Illuminate\Routing" line="35" package="Default">
+        <name>hasMacro</name>
+        <full_name>\Illuminate\Support\Traits\Macroable::hasMacro()</full_name>
+        <docblock line="35">
+          <description>Checks if macro is registered.</description>
+          <long-description/>
+          <tag name="param" line="35" description="" type="string" variable="$name">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="35" description="" type="boolean">
+            <type>boolean</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$name</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <inherited_from>\Illuminate\Support\Traits\Macroable</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="true" visibility="public" namespace="Illuminate\Routing" line="49" package="Default">
+        <name>__callStatic</name>
+        <full_name>\Illuminate\Support\Traits\Macroable::__callStatic()</full_name>
+        <docblock line="49">
+          <description>Dynamically handle calls to the class.</description>
+          <long-description/>
+          <tag name="param" line="49" description="" type="string" variable="$method">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="49" description="" type="array" variable="$parameters">
+            <type>array</type>
+          </tag>
+          <tag name="return" line="49" description="" type="mixed">
+            <type>mixed</type>
+          </tag>
+          <tag name="throws" line="49" description="" type="\BadMethodCallException">
+            <type>\BadMethodCallException</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$method</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$parameters</name>
+          <default/>
+          <type>array</type>
+        </argument>
+        <inherited_from>\Illuminate\Support\Traits\Macroable</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Routing" line="71" package="Default">
+        <name>__call</name>
+        <full_name>\Illuminate\Support\Traits\Macroable::__call()</full_name>
+        <docblock line="71">
+          <description>Dynamically handle calls to the class.</description>
+          <long-description/>
+          <tag name="param" line="71" description="" type="string" variable="$method">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="71" description="" type="array" variable="$parameters">
+            <type>array</type>
+          </tag>
+          <tag name="return" line="71" description="" type="mixed">
+            <type>mixed</type>
+          </tag>
+          <tag name="throws" line="71" description="" type="\BadMethodCallException">
+            <type>\BadMethodCallException</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$method</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$parameters</name>
+          <default/>
+          <type>array</type>
+        </argument>
+        <inherited_from>\Illuminate\Support\Traits\Macroable</inherited_from>
+      </method>
+    </class>
+    <parse_markers>
+      <error line="0" code="PPC:ERR-50000">No summary was found for this file</error>
+      <error line="14" code="PPC:ERR-50005">No summary for class \Illuminate\Routing\UrlGenerator</error>
+    </parse_markers>
+    <source>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</source>
+  <type>class</type></file>

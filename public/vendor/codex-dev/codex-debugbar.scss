@@ -1,0 +1,87 @@
+@import "../../bower_components/bootstrap-sass/assets/stylesheets/bootstrap/variables";
+@import "../../bower_components/bootstrap-sass/assets/stylesheets/bootstrap/mixins";
+@import "../../bower_components/sass-material-colors/sass/sass-material-colors-function";
+@import "codemirror";
+@import "zenburn";
+
+
+
+
+$prefix: phpdebugbar-widgets-codex;
+@mixin material-colors($selector){
+
+    @each $color-name, $color-variants in $material-colors {
+        @each $color-variant, $hex-value in $color-variants {
+            @if $color-variant == '300' or $color-variant == '500' or $color-variant == '700' {
+                $name: #{$color-name}-#{$color-variant};
+                @if $color-variant == '300' {
+                    $name: light-#{$color-name};
+                } @else if $color-variant == '500' {
+                    $name: #{$color-name};
+                } @else if $color-variant == '700' {
+                    $name: dark-#{$color-name};
+                }
+                #{$selector}{
+                    @content
+                }
+            }
+        }
+    }
+}
+.#{$prefix} {
+    @import "../../bower_components/bootstrap-sass/assets/stylesheets/bootstrap/navs";
+    @import "navs";
+
+    @each $color-name, $color-variants in $material-colors {
+        @each $color-variant, $hex-value in $color-variants {
+            @if $color-variant == '300' or $color-variant == '500' or $color-variant == '700' {
+                $name: #{$color-name}-#{$color-variant};
+                @if $color-variant == '300' {
+                    $name: light-#{$color-name};
+                } @else if $color-variant == '500' {
+                    $name: #{$color-name};
+                } @else if $color-variant == '700' {
+                    $name: dark-#{$color-name};
+                }
+                .text-#{$name},
+                .hover-text-#{$name}:hover {
+                    color: #{$hex-value} !important;
+                }
+                //.bg-#{$name},
+                //.hover-bg-#{$name}:hover {
+                //    background-color: #{$hex-value}
+                //}
+                .border-#{$name},
+                .hover-border-#{$name}:hover {
+                    border-color: #{$hex-value} !important;
+                }
+                .tab-border-#{$name} {
+                    border-left-color: #{$hex-value} !important;
+                }
+            }
+        }
+    }
+
+    .tabbable {
+        height: 100%;
+        &.tabs-left {
+            > .nav-tabs {
+                height: 100%;
+                border-right: 1px solid #dddddd;
+
+            }
+
+            i.tab-icon {
+                margin-right: 5px;
+                margin-left: -5px;
+            }
+        }
+    }
+
+    .prism-show-language {
+        position: static;
+        margin-bottom: -20px;
+    }
+
+}
+

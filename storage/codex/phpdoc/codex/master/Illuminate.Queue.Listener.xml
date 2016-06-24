@@ -1,0 +1,413 @@
+<file path="codex/vendor/laravel/framework/src/Illuminate/Queue/Listener.php" generated-path="codex.vendor.laravel.framework.src.Illuminate.Queue.Listener.html" hash="7fb6bacb8c1b94b55dcb737b3f0175ed" package="Default">
+    <docblock line="0">
+      <description/>
+      <long-description/>
+      <tag name="package" line="0" description="Default"/>
+    </docblock>
+    <namespace-alias name="Closure">\Closure</namespace-alias>
+    <namespace-alias name="Process">\Symfony\Component\Process\Process</namespace-alias>
+    <namespace-alias name="ProcessUtils">\Symfony\Component\Process\ProcessUtils</namespace-alias>
+    <namespace-alias name="PhpExecutableFinder">\Symfony\Component\Process\PhpExecutableFinder</namespace-alias>
+    <class final="false" abstract="false" namespace="Illuminate\Queue" line="10" package="Default">
+      <extends/>
+      <name>Listener</name>
+      <full_name>\Illuminate\Queue\Listener</full_name>
+      <docblock line="10">
+        <description/>
+        <long-description/>
+        <tag name="package" line="10" description="Default"/>
+      </docblock>
+      <property static="false" visibility="protected" namespace="Illuminate\Queue" line="17" package="Default">
+        <name>$commandPath</name>
+        <full_name>\Illuminate\Queue\Listener::commandPath</full_name>
+        <default/>
+        <docblock line="17">
+          <description>The command working path.</description>
+          <long-description/>
+          <tag name="var" line="17" description="" type="string" variable="">
+            <type>string</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" namespace="Illuminate\Queue" line="24" package="Default">
+        <name>$environment</name>
+        <full_name>\Illuminate\Queue\Listener::environment</full_name>
+        <default/>
+        <docblock line="24">
+          <description>The environment the workers should run under.</description>
+          <long-description/>
+          <tag name="var" line="24" description="" type="string" variable="">
+            <type>string</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" namespace="Illuminate\Queue" line="31" package="Default">
+        <name>$sleep</name>
+        <full_name>\Illuminate\Queue\Listener::sleep</full_name>
+        <default>3</default>
+        <docblock line="31">
+          <description>The amount of seconds to wait before polling the queue.</description>
+          <long-description/>
+          <tag name="var" line="31" description="" type="integer" variable="">
+            <type>integer</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" namespace="Illuminate\Queue" line="38" package="Default">
+        <name>$maxTries</name>
+        <full_name>\Illuminate\Queue\Listener::maxTries</full_name>
+        <default>0</default>
+        <docblock line="38">
+          <description>The amount of times to try a job before logging it failed.</description>
+          <long-description/>
+          <tag name="var" line="38" description="" type="integer" variable="">
+            <type>integer</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" namespace="Illuminate\Queue" line="45" package="Default">
+        <name>$workerCommand</name>
+        <full_name>\Illuminate\Queue\Listener::workerCommand</full_name>
+        <default/>
+        <docblock line="45">
+          <description>The queue worker command line.</description>
+          <long-description/>
+          <tag name="var" line="45" description="" type="string" variable="">
+            <type>string</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" namespace="Illuminate\Queue" line="52" package="Default">
+        <name>$outputHandler</name>
+        <full_name>\Illuminate\Queue\Listener::outputHandler</full_name>
+        <default/>
+        <docblock line="52">
+          <description>The output handler callback.</description>
+          <long-description/>
+          <tag name="var" line="52" description="" type="\Closure|null" variable="">
+            <type>\Closure</type>
+            <type>null</type>
+          </tag>
+        </docblock>
+      </property>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Queue" line="60" package="Default">
+        <name>__construct</name>
+        <full_name>\Illuminate\Queue\Listener::__construct()</full_name>
+        <docblock line="60">
+          <description>Create a new queue listener.</description>
+          <long-description/>
+          <tag name="param" line="60" description="" type="string" variable="$commandPath">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="60" description="" type="void">
+            <type>void</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$commandPath</name>
+          <default/>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Queue" line="71" package="Default">
+        <name>buildWorkerCommand</name>
+        <full_name>\Illuminate\Queue\Listener::buildWorkerCommand()</full_name>
+        <docblock line="71">
+          <description>Build the environment specific worker command.</description>
+          <long-description/>
+          <tag name="return" line="71" description="" type="string">
+            <type>string</type>
+          </tag>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Queue" line="100" package="Default">
+        <name>listen</name>
+        <full_name>\Illuminate\Queue\Listener::listen()</full_name>
+        <docblock line="100">
+          <description>Listen to the given queue connection.</description>
+          <long-description/>
+          <tag name="param" line="100" description="" type="string" variable="$connection">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="100" description="" type="string" variable="$queue">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="100" description="" type="string" variable="$delay">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="100" description="" type="string" variable="$memory">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="100" description="" type="integer" variable="$timeout">
+            <type>integer</type>
+          </tag>
+          <tag name="return" line="100" description="" type="void">
+            <type>void</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$connection</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$queue</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$delay</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$memory</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$timeout</name>
+          <default>60</default>
+          <type>integer</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Queue" line="116" package="Default">
+        <name>runProcess</name>
+        <full_name>\Illuminate\Queue\Listener::runProcess()</full_name>
+        <docblock line="116">
+          <description>Run the given process.</description>
+          <long-description/>
+          <tag name="param" line="116" description="" type="\Symfony\Component\Process\Process" variable="$process">
+            <type>\Symfony\Component\Process\Process</type>
+          </tag>
+          <tag name="param" line="116" description="" type="integer" variable="$memory">
+            <type>integer</type>
+          </tag>
+          <tag name="return" line="116" description="" type="void">
+            <type>void</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$process</name>
+          <default/>
+          <type>\Symfony\Component\Process\Process</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$memory</name>
+          <default/>
+          <type>integer</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Queue" line="140" package="Default">
+        <name>makeProcess</name>
+        <full_name>\Illuminate\Queue\Listener::makeProcess()</full_name>
+        <docblock line="140">
+          <description>Create a new Symfony process for the worker.</description>
+          <long-description/>
+          <tag name="param" line="140" description="" type="string" variable="$connection">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="140" description="" type="string" variable="$queue">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="140" description="" type="integer" variable="$delay">
+            <type>integer</type>
+          </tag>
+          <tag name="param" line="140" description="" type="integer" variable="$memory">
+            <type>integer</type>
+          </tag>
+          <tag name="param" line="140" description="" type="integer" variable="$timeout">
+            <type>integer</type>
+          </tag>
+          <tag name="return" line="140" description="" type="\Symfony\Component\Process\Process">
+            <type>\Symfony\Component\Process\Process</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$connection</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$queue</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$delay</name>
+          <default/>
+          <type>integer</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$memory</name>
+          <default/>
+          <type>integer</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$timeout</name>
+          <default/>
+          <type>integer</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Queue" line="174" package="Default">
+        <name>handleWorkerOutput</name>
+        <full_name>\Illuminate\Queue\Listener::handleWorkerOutput()</full_name>
+        <docblock line="174">
+          <description>Handle output from the worker process.</description>
+          <long-description/>
+          <tag name="param" line="174" description="" type="integer" variable="$type">
+            <type>integer</type>
+          </tag>
+          <tag name="param" line="174" description="" type="string" variable="$line">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="174" description="" type="void">
+            <type>void</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$type</name>
+          <default/>
+          <type>integer</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$line</name>
+          <default/>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Queue" line="187" package="Default">
+        <name>memoryExceeded</name>
+        <full_name>\Illuminate\Queue\Listener::memoryExceeded()</full_name>
+        <docblock line="187">
+          <description>Determine if the memory limit has been exceeded.</description>
+          <long-description/>
+          <tag name="param" line="187" description="" type="integer" variable="$memoryLimit">
+            <type>integer</type>
+          </tag>
+          <tag name="return" line="187" description="" type="boolean">
+            <type>boolean</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$memoryLimit</name>
+          <default/>
+          <type>integer</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Queue" line="197" package="Default">
+        <name>stop</name>
+        <full_name>\Illuminate\Queue\Listener::stop()</full_name>
+        <docblock line="197">
+          <description>Stop listening and bail out of the script.</description>
+          <long-description/>
+          <tag name="return" line="197" description="" type="void">
+            <type>void</type>
+          </tag>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Queue" line="208" package="Default">
+        <name>setOutputHandler</name>
+        <full_name>\Illuminate\Queue\Listener::setOutputHandler()</full_name>
+        <docblock line="208">
+          <description>Set the output handler callback.</description>
+          <long-description/>
+          <tag name="param" line="208" description="" type="\Closure" variable="$outputHandler">
+            <type>\Closure</type>
+          </tag>
+          <tag name="return" line="208" description="" type="void">
+            <type>void</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$outputHandler</name>
+          <default/>
+          <type>\Closure</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Queue" line="218" package="Default">
+        <name>getEnvironment</name>
+        <full_name>\Illuminate\Queue\Listener::getEnvironment()</full_name>
+        <docblock line="218">
+          <description>Get the current listener environment.</description>
+          <long-description/>
+          <tag name="return" line="218" description="" type="string">
+            <type>string</type>
+          </tag>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Queue" line="229" package="Default">
+        <name>setEnvironment</name>
+        <full_name>\Illuminate\Queue\Listener::setEnvironment()</full_name>
+        <docblock line="229">
+          <description>Set the current environment.</description>
+          <long-description/>
+          <tag name="param" line="229" description="" type="string" variable="$environment">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="229" description="" type="void">
+            <type>void</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$environment</name>
+          <default/>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Queue" line="239" package="Default">
+        <name>getSleep</name>
+        <full_name>\Illuminate\Queue\Listener::getSleep()</full_name>
+        <docblock line="239">
+          <description>Get the amount of seconds to wait before polling the queue.</description>
+          <long-description/>
+          <tag name="return" line="239" description="" type="integer">
+            <type>integer</type>
+          </tag>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Queue" line="250" package="Default">
+        <name>setSleep</name>
+        <full_name>\Illuminate\Queue\Listener::setSleep()</full_name>
+        <docblock line="250">
+          <description>Set the amount of seconds to wait before polling the queue.</description>
+          <long-description/>
+          <tag name="param" line="250" description="" type="integer" variable="$sleep">
+            <type>integer</type>
+          </tag>
+          <tag name="return" line="250" description="" type="void">
+            <type>void</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$sleep</name>
+          <default/>
+          <type>integer</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Queue" line="261" package="Default">
+        <name>setMaxTries</name>
+        <full_name>\Illuminate\Queue\Listener::setMaxTries()</full_name>
+        <docblock line="261">
+          <description>Set the amount of times to try a job before logging it failed.</description>
+          <long-description/>
+          <tag name="param" line="261" description="" type="integer" variable="$tries">
+            <type>integer</type>
+          </tag>
+          <tag name="return" line="261" description="" type="void">
+            <type>void</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$tries</name>
+          <default/>
+          <type>integer</type>
+        </argument>
+      </method>
+    </class>
+    <parse_markers>
+      <error line="0" code="PPC:ERR-50000">No summary was found for this file</error>
+      <error line="10" code="PPC:ERR-50005">No summary for class \Illuminate\Queue\Listener</error>
+    </parse_markers>
+    <source>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</source>
+  <type>class</type></file>

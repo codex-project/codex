@@ -1,0 +1,432 @@
+<file path="codex/vendor/laravel/framework/src/Illuminate/Cache/RedisStore.php" generated-path="codex.vendor.laravel.framework.src.Illuminate.Cache.RedisStore.html" hash="c336109258bf70e181ca54e8b54eca4f" package="Default">
+    <docblock line="0">
+      <description/>
+      <long-description/>
+      <tag name="package" line="0" description="Default"/>
+    </docblock>
+    <namespace-alias name="Store">\Illuminate\Contracts\Cache\Store</namespace-alias>
+    <namespace-alias name="Redis">\Illuminate\Redis\Database</namespace-alias>
+    <class final="false" abstract="false" namespace="Illuminate\Cache" line="8" package="Default">
+      <extends>\Illuminate\Cache\TaggableStore</extends>
+      <implements>\Illuminate\Contracts\Cache\Store</implements>
+      <name>RedisStore</name>
+      <full_name>\Illuminate\Cache\RedisStore</full_name>
+      <docblock line="8">
+        <description/>
+        <long-description/>
+        <tag name="package" line="8" description="Default"/>
+        <tag name="inherited_from" description="\Illuminate\Cache\TaggableStore" refers="\Illuminate\Cache\TaggableStore" link="/classes/Illuminate.Cache.TaggableStore.html"/>
+      </docblock>
+      <property static="false" visibility="protected" namespace="Illuminate\Cache" line="15" package="Default">
+        <name>$redis</name>
+        <full_name>\Illuminate\Cache\RedisStore::redis</full_name>
+        <default/>
+        <docblock line="15">
+          <description>The Redis database connection.</description>
+          <long-description/>
+          <tag name="var" line="15" description="" type="\Illuminate\Redis\Database" variable="">
+            <type>\Illuminate\Redis\Database</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" namespace="Illuminate\Cache" line="22" package="Default">
+        <name>$prefix</name>
+        <full_name>\Illuminate\Cache\RedisStore::prefix</full_name>
+        <default/>
+        <docblock line="22">
+          <description>A string that should be prepended to keys.</description>
+          <long-description/>
+          <tag name="var" line="22" description="" type="string" variable="">
+            <type>string</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" namespace="Illuminate\Cache" line="29" package="Default">
+        <name>$connection</name>
+        <full_name>\Illuminate\Cache\RedisStore::connection</full_name>
+        <default/>
+        <docblock line="29">
+          <description>The Redis connection that should be used.</description>
+          <long-description/>
+          <tag name="var" line="29" description="" type="string" variable="">
+            <type>string</type>
+          </tag>
+        </docblock>
+      </property>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Cache" line="39" package="Default">
+        <name>__construct</name>
+        <full_name>\Illuminate\Cache\RedisStore::__construct()</full_name>
+        <docblock line="39">
+          <description>Create a new Redis store.</description>
+          <long-description/>
+          <tag name="param" line="39" description="" type="\Illuminate\Redis\Database" variable="$redis">
+            <type>\Illuminate\Redis\Database</type>
+          </tag>
+          <tag name="param" line="39" description="" type="string" variable="$prefix">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="39" description="" type="string" variable="$connection">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="39" description="" type="void">
+            <type>void</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$redis</name>
+          <default/>
+          <type>\Illuminate\Redis\Database</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$prefix</name>
+          <default>''</default>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$connection</name>
+          <default>'default'</default>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Cache" line="52" package="Default">
+        <name>get</name>
+        <full_name>\Illuminate\Cache\RedisStore::get()</full_name>
+        <docblock line="52">
+          <description>Retrieve an item from the cache by key.</description>
+          <long-description/>
+          <tag name="param" line="52" description="" type="string|array" variable="$key">
+            <type>string</type>
+            <type>array</type>
+          </tag>
+          <tag name="return" line="52" description="" type="mixed">
+            <type>mixed</type>
+          </tag>
+          <tag name="inherited_from" description="\Illuminate\Contracts\Cache\Store::get()" refers="\Illuminate\Contracts\Cache\Store::get()" link="/classes/Illuminate.Contracts.Cache.Store.html#method_get"/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$key</name>
+          <default/>
+          <type>string|array</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Cache" line="67" package="Default">
+        <name>many</name>
+        <full_name>\Illuminate\Cache\RedisStore::many()</full_name>
+        <docblock line="67">
+          <description>Retrieve multiple items from the cache by key.</description>
+          <long-description>Items not found in the cache will have a null value.</long-description>
+          <tag name="param" line="67" description="" type="array" variable="$keys">
+            <type>array</type>
+          </tag>
+          <tag name="return" line="67" description="" type="array">
+            <type>array</type>
+          </tag>
+          <tag name="inherited_from" description="\Illuminate\Contracts\Cache\Store::many()" refers="\Illuminate\Contracts\Cache\Store::many()" link="/classes/Illuminate.Contracts.Cache.Store.html#method_many"/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$keys</name>
+          <default/>
+          <type>array</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Cache" line="92" package="Default">
+        <name>put</name>
+        <full_name>\Illuminate\Cache\RedisStore::put()</full_name>
+        <docblock line="92">
+          <description>Store an item in the cache for a given number of minutes.</description>
+          <long-description/>
+          <tag name="param" line="92" description="" type="string" variable="$key">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="92" description="" type="mixed" variable="$value">
+            <type>mixed</type>
+          </tag>
+          <tag name="param" line="92" description="" type="integer" variable="$minutes">
+            <type>integer</type>
+          </tag>
+          <tag name="return" line="92" description="" type="void">
+            <type>void</type>
+          </tag>
+          <tag name="inherited_from" description="\Illuminate\Contracts\Cache\Store::put()" refers="\Illuminate\Contracts\Cache\Store::put()" link="/classes/Illuminate.Contracts.Cache.Store.html#method_put"/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$key</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$value</name>
+          <default/>
+          <type>mixed</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$minutes</name>
+          <default/>
+          <type>integer</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Cache" line="108" package="Default">
+        <name>putMany</name>
+        <full_name>\Illuminate\Cache\RedisStore::putMany()</full_name>
+        <docblock line="108">
+          <description>Store multiple items in the cache for a given number of minutes.</description>
+          <long-description/>
+          <tag name="param" line="108" description="" type="array" variable="$values">
+            <type>array</type>
+          </tag>
+          <tag name="param" line="108" description="" type="integer" variable="$minutes">
+            <type>integer</type>
+          </tag>
+          <tag name="return" line="108" description="" type="void">
+            <type>void</type>
+          </tag>
+          <tag name="inherited_from" description="\Illuminate\Contracts\Cache\Store::putMany()" refers="\Illuminate\Contracts\Cache\Store::putMany()" link="/classes/Illuminate.Contracts.Cache.Store.html#method_putMany"/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$values</name>
+          <default/>
+          <type>array</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$minutes</name>
+          <default/>
+          <type>integer</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Cache" line="126" package="Default">
+        <name>increment</name>
+        <full_name>\Illuminate\Cache\RedisStore::increment()</full_name>
+        <docblock line="126">
+          <description>Increment the value of an item in the cache.</description>
+          <long-description/>
+          <tag name="param" line="126" description="" type="string" variable="$key">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="126" description="" type="mixed" variable="$value">
+            <type>mixed</type>
+          </tag>
+          <tag name="return" line="126" description="" type="integer">
+            <type>integer</type>
+          </tag>
+          <tag name="inherited_from" description="\Illuminate\Contracts\Cache\Store::increment()" refers="\Illuminate\Contracts\Cache\Store::increment()" link="/classes/Illuminate.Contracts.Cache.Store.html#method_increment"/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$key</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$value</name>
+          <default>1</default>
+          <type>mixed</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Cache" line="138" package="Default">
+        <name>decrement</name>
+        <full_name>\Illuminate\Cache\RedisStore::decrement()</full_name>
+        <docblock line="138">
+          <description>Decrement the value of an item in the cache.</description>
+          <long-description/>
+          <tag name="param" line="138" description="" type="string" variable="$key">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="138" description="" type="mixed" variable="$value">
+            <type>mixed</type>
+          </tag>
+          <tag name="return" line="138" description="" type="integer">
+            <type>integer</type>
+          </tag>
+          <tag name="inherited_from" description="\Illuminate\Contracts\Cache\Store::decrement()" refers="\Illuminate\Contracts\Cache\Store::decrement()" link="/classes/Illuminate.Contracts.Cache.Store.html#method_decrement"/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$key</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$value</name>
+          <default>1</default>
+          <type>mixed</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Cache" line="150" package="Default">
+        <name>forever</name>
+        <full_name>\Illuminate\Cache\RedisStore::forever()</full_name>
+        <docblock line="150">
+          <description>Store an item in the cache indefinitely.</description>
+          <long-description/>
+          <tag name="param" line="150" description="" type="string" variable="$key">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="150" description="" type="mixed" variable="$value">
+            <type>mixed</type>
+          </tag>
+          <tag name="return" line="150" description="" type="void">
+            <type>void</type>
+          </tag>
+          <tag name="inherited_from" description="\Illuminate\Contracts\Cache\Store::forever()" refers="\Illuminate\Contracts\Cache\Store::forever()" link="/classes/Illuminate.Contracts.Cache.Store.html#method_forever"/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$key</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$value</name>
+          <default/>
+          <type>mixed</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Cache" line="163" package="Default">
+        <name>forget</name>
+        <full_name>\Illuminate\Cache\RedisStore::forget()</full_name>
+        <docblock line="163">
+          <description>Remove an item from the cache.</description>
+          <long-description/>
+          <tag name="param" line="163" description="" type="string" variable="$key">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="163" description="" type="boolean">
+            <type>boolean</type>
+          </tag>
+          <tag name="inherited_from" description="\Illuminate\Contracts\Cache\Store::forget()" refers="\Illuminate\Contracts\Cache\Store::forget()" link="/classes/Illuminate.Contracts.Cache.Store.html#method_forget"/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$key</name>
+          <default/>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Cache" line="173" package="Default">
+        <name>flush</name>
+        <full_name>\Illuminate\Cache\RedisStore::flush()</full_name>
+        <docblock line="173">
+          <description>Remove all items from the cache.</description>
+          <long-description/>
+          <tag name="return" line="173" description="" type="void">
+            <type>void</type>
+          </tag>
+          <tag name="inherited_from" description="\Illuminate\Contracts\Cache\Store::flush()" refers="\Illuminate\Contracts\Cache\Store::flush()" link="/classes/Illuminate.Contracts.Cache.Store.html#method_flush"/>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Cache" line="184" package="Default">
+        <name>tags</name>
+        <full_name>\Illuminate\Cache\RedisStore::tags()</full_name>
+        <docblock line="184">
+          <description>Begin executing a new tags operation.</description>
+          <long-description/>
+          <tag name="param" line="184" description="" type="array|mixed" variable="$names">
+            <type>array</type>
+            <type>mixed</type>
+          </tag>
+          <tag name="return" line="184" description="" type="\Illuminate\Cache\RedisTaggedCache">
+            <type>\Illuminate\Cache\RedisTaggedCache</type>
+          </tag>
+          <tag name="inherited_from" description="\Illuminate\Cache\TaggableStore::tags()" refers="\Illuminate\Cache\TaggableStore::tags()" link="/classes/Illuminate.Cache.TaggableStore.html#method_tags"/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$names</name>
+          <default/>
+          <type>array|mixed</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Cache" line="194" package="Default">
+        <name>connection</name>
+        <full_name>\Illuminate\Cache\RedisStore::connection()</full_name>
+        <docblock line="194">
+          <description>Get the Redis connection instance.</description>
+          <long-description/>
+          <tag name="return" line="194" description="" type="\Predis\ClientInterface">
+            <type>\Predis\ClientInterface</type>
+          </tag>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Cache" line="205" package="Default">
+        <name>setConnection</name>
+        <full_name>\Illuminate\Cache\RedisStore::setConnection()</full_name>
+        <docblock line="205">
+          <description>Set the connection name to be used.</description>
+          <long-description/>
+          <tag name="param" line="205" description="" type="string" variable="$connection">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="205" description="" type="void">
+            <type>void</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$connection</name>
+          <default/>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Cache" line="215" package="Default">
+        <name>getRedis</name>
+        <full_name>\Illuminate\Cache\RedisStore::getRedis()</full_name>
+        <docblock line="215">
+          <description>Get the Redis database instance.</description>
+          <long-description/>
+          <tag name="return" line="215" description="" type="\Illuminate\Redis\Database">
+            <type>\Illuminate\Redis\Database</type>
+          </tag>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Cache" line="225" package="Default">
+        <name>getPrefix</name>
+        <full_name>\Illuminate\Cache\RedisStore::getPrefix()</full_name>
+        <docblock line="225">
+          <description>Get the cache key prefix.</description>
+          <long-description/>
+          <tag name="return" line="225" description="" type="string">
+            <type>string</type>
+          </tag>
+          <tag name="inherited_from" description="\Illuminate\Contracts\Cache\Store::getPrefix()" refers="\Illuminate\Contracts\Cache\Store::getPrefix()" link="/classes/Illuminate.Contracts.Cache.Store.html#method_getPrefix"/>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Cache" line="236" package="Default">
+        <name>setPrefix</name>
+        <full_name>\Illuminate\Cache\RedisStore::setPrefix()</full_name>
+        <docblock line="236">
+          <description>Set the cache key prefix.</description>
+          <long-description/>
+          <tag name="param" line="236" description="" type="string" variable="$prefix">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="236" description="" type="void">
+            <type>void</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$prefix</name>
+          <default/>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Cache" line="13" package="Default">
+        <name>tags</name>
+        <full_name>\Illuminate\Cache\TaggableStore::tags()</full_name>
+        <docblock line="13">
+          <description>Begin executing a new tags operation.</description>
+          <long-description/>
+          <tag name="param" line="13" description="" type="array|mixed" variable="$names">
+            <type>array</type>
+            <type>mixed</type>
+          </tag>
+          <tag name="return" line="13" description="" type="\Illuminate\Cache\TaggedCache">
+            <type>\Illuminate\Cache\TaggedCache</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$names</name>
+          <default/>
+          <type>array|mixed</type>
+        </argument>
+        <inherited_from>\Illuminate\Cache\TaggableStore</inherited_from>
+      </method>
+    </class>
+    <parse_markers>
+      <error line="0" code="PPC:ERR-50000">No summary was found for this file</error>
+      <error line="8" code="PPC:ERR-50005">No summary for class \Illuminate\Cache\RedisStore</error>
+    </parse_markers>
+    <source>eJzNWNtu20YQfddXTAABogzl9tKHtHGaOkBhBAUCJ2+WIazIobQIuSS4S0Vq43/v7IUSb0vKlwL1i23u7FzOOTPk7m8f8m0+mQiWosxZiHCdJGXKBVO4vGLhFn+dTErZfJwJVbBQSWuw/KqygsxaVjcYcbn8xBRbM1phEswTchcmTLr/zFbAvUIRSfjGNhu2TtA+5WmeYIpCSTAPJv9MgH5eX1yY33AB37Zo3UBUhQkzITBUPBOvnFVl/PuOFbD0JujMXpvfeZEp8oIRTAuXdCv0R5Cq4GIDassUyG1WJhGskXZiTrXQTpXBdzzI3jTsXl9I8hHzfTfmqdxTle34REL0iJAnh92wVwUSXMBA4A8XX2o+OmFyVrAUBjAGB2d7h4Oyqty7fMryaFKgKgsBu4xHzdrKdcJDiEthYVqtaDM5KkMV2BpsKosqKLyH2WxRj6GfRBizMlGzuXFqBah/pmrL5ctL44LsKpW0liWqL8Z54ILMOyaNcA0atNF9h4wbJDBwR3QI4ApTiIssJRGQ8nUvwvqgVeejxiL5kxUFO1AKZNkGMuV7HEZygyrQO9uQ8BiCF8DlSpRJEkx3LClR19SuM5i/vDQ+7IIF5pXxOJ/X/Okfl5RxmmLBQ+d3Dh/ARXgHpZC0xBL+N1bLJ5jvx3BMiV5Og8agKc+D89qYikxBnJUiAi5qW37wJIEt25mOISjApORjpEaFbHNh1ga5SJk4BNaF8dCRqfP0Hm7vXGObxxZ0jD7THlo0HlYpy4OjZ0txPx1d5mp4L1wm9XAGAekTQ2rUUE+pvjmmSUO4QlB5oRfJlNOEpY69hEoOzTxd2bcmk1trfXdH8Z8kpOOfFQz2t69T7UusatOGRKgmEseG71CQRNI1FpDF1HqiVNh9YbSnYL1r3Zrp2iPS7VUulIXFRXjw8MxL2/ILF2BxdNURXNX2w0j34Hxy4VyTk5Ttg7e1YHWrPiXRvMV9z2A5uaCqf3lTlTEfpq41GZ7OYNXrVsi9LD2For9qw8CGGOCptxF1wcFo8xGgA63nwPcrprelevPBPYaBl6RrERbm89DQYpVFHPQ13DO2VPVGEmqQDl4l10CBJP22zURzpjYB0F7Wh35BDyv4E/6PwYnwOcDRXh4HzsBk1q+KmAtaSEY+oh4DzGgX637bYdHA5b8YsZ7h+RgwbzDNvJ+jD4LQgbTOsmQMJN83qHMRaB9zn2ySvk/PsfLoO67vA7FT4NlMJ6XcBmeNZWMarf2T8A/ckIj1tCyVhtWe1BTbSMhyLFjvabj+TvrpZDs1twDtWpbtGwF7qtOHdYzMg8FKdR6B9eyh63iurLm0HC3MGj3+WolzoWVvkq58atGbv0j0OuiKxEEWFJTOEz7I/kQ7GTvHaU6HRCZCL7HLL+aot7xKOA2wa6GwiFk4jECdzsEBZ1w36O8Iwj/UXEW1WjQq+hrCdy3wjMdrGh5Xtaxr+Y4p/Lxjb5Ov423PKFtnXvd0j7jG+hy6xjK27xX9zeTGjSfVvvuZblruOmE4r+r+aEQoY4mNXM48QBqtS5B+SRyvYV4Aprk6HM11g7sUZ+9m1OWzWVXb/eRfDkn4ZA==</source>
+  <type>class</type></file>

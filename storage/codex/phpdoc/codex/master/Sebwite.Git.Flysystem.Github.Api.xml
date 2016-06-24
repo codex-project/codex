@@ -1,0 +1,665 @@
+<file path="sebwite/workbench/sebwite/git/src/Flysystem/Github/Api.php" generated-path="sebwite.workbench.sebwite.git.src.Flysystem.Github.Api.html" hash="e6f6e837c8c0925747413dc5b9f07f58" package="Default">
+    <docblock line="0">
+      <description/>
+      <long-description/>
+      <tag name="package" line="0" description="Default"/>
+    </docblock>
+    <namespace-alias name="GitData">\Github\Api\GitData</namespace-alias>
+    <namespace-alias name="Client">\Github\Client</namespace-alias>
+    <namespace-alias name="AdapterInterface">\League\Flysystem\AdapterInterface</namespace-alias>
+    <namespace-alias name="MimeType">\League\Flysystem\Util\MimeType</namespace-alias>
+    <namespace-alias name="RuntimeException">\RuntimeException</namespace-alias>
+    <namespace-alias name="SebwiteGitException">\Sebwite\Git\Exceptions\SebwiteGitException</namespace-alias>
+    <namespace-alias name="ApiInterface">\Sebwite\Git\Flysystem\ApiInterface</namespace-alias>
+    <namespace-alias name="SettingsInterface">\Sebwite\Git\Flysystem\SettingsInterface</namespace-alias>
+    <namespace-alias name="Manager">\Sebwite\Git\Manager</namespace-alias>
+    <class final="false" abstract="false" namespace="Sebwite\Git\Flysystem\Github" line="21" package="Sebwite\Git">
+      <extends/>
+      <implements>\Sebwite\Git\Flysystem\ApiInterface</implements>
+      <name>Api</name>
+      <full_name>\Sebwite\Git\Flysystem\Github\Api</full_name>
+      <docblock line="21">
+        <description>This is the class Api.</description>
+        <long-description/>
+        <tag name="package" line="21" description="Sebwite\Git"/>
+        <tag name="author" line="21" description="Potherca"/>
+        <tag name="copyright" line="21" description="Copyright (c) 2015 Potherca &lt;potherca@gmail.com&gt;"/>
+      </docblock>
+      <constant namespace="Sebwite\Git\Flysystem\Github" line="24" package="Sebwite\Git">
+        <name>ERROR_NOT_FOUND</name>
+        <full_name>\Sebwite\Git\Flysystem\Github\Api::ERROR_NOT_FOUND</full_name>
+        <value>'Not Found'</value>
+        <docblock line="24">
+          <description/>
+          <long-description/>
+        </docblock>
+      </constant>
+      <constant namespace="Sebwite\Git\Flysystem\Github" line="26" package="Sebwite\Git">
+        <name>API_GIT_DATA</name>
+        <full_name>\Sebwite\Git\Flysystem\Github\Api::API_GIT_DATA</full_name>
+        <value>'git'</value>
+        <docblock line="26">
+          <description/>
+          <long-description/>
+        </docblock>
+      </constant>
+      <constant namespace="Sebwite\Git\Flysystem\Github" line="27" package="Sebwite\Git">
+        <name>API_REPO</name>
+        <full_name>\Sebwite\Git\Flysystem\Github\Api::API_REPO</full_name>
+        <value>'repo'</value>
+        <docblock line="27">
+          <description/>
+          <long-description/>
+        </docblock>
+      </constant>
+      <constant namespace="Sebwite\Git\Flysystem\Github" line="29" package="Sebwite\Git">
+        <name>KEY_BLOB</name>
+        <full_name>\Sebwite\Git\Flysystem\Github\Api::KEY_BLOB</full_name>
+        <value>'blob'</value>
+        <docblock line="29">
+          <description/>
+          <long-description/>
+        </docblock>
+      </constant>
+      <constant namespace="Sebwite\Git\Flysystem\Github" line="30" package="Sebwite\Git">
+        <name>KEY_DIRECTORY</name>
+        <full_name>\Sebwite\Git\Flysystem\Github\Api::KEY_DIRECTORY</full_name>
+        <value>'dir'</value>
+        <docblock line="30">
+          <description/>
+          <long-description/>
+        </docblock>
+      </constant>
+      <constant namespace="Sebwite\Git\Flysystem\Github" line="31" package="Sebwite\Git">
+        <name>KEY_FILE</name>
+        <full_name>\Sebwite\Git\Flysystem\Github\Api::KEY_FILE</full_name>
+        <value>'file'</value>
+        <docblock line="31">
+          <description/>
+          <long-description/>
+        </docblock>
+      </constant>
+      <constant namespace="Sebwite\Git\Flysystem\Github" line="32" package="Sebwite\Git">
+        <name>KEY_FILENAME</name>
+        <full_name>\Sebwite\Git\Flysystem\Github\Api::KEY_FILENAME</full_name>
+        <value>'basename'</value>
+        <docblock line="32">
+          <description/>
+          <long-description/>
+        </docblock>
+      </constant>
+      <constant namespace="Sebwite\Git\Flysystem\Github" line="33" package="Sebwite\Git">
+        <name>KEY_MODE</name>
+        <full_name>\Sebwite\Git\Flysystem\Github\Api::KEY_MODE</full_name>
+        <value>'mode'</value>
+        <docblock line="33">
+          <description/>
+          <long-description/>
+        </docblock>
+      </constant>
+      <constant namespace="Sebwite\Git\Flysystem\Github" line="34" package="Sebwite\Git">
+        <name>KEY_NAME</name>
+        <full_name>\Sebwite\Git\Flysystem\Github\Api::KEY_NAME</full_name>
+        <value>'name'</value>
+        <docblock line="34">
+          <description/>
+          <long-description/>
+        </docblock>
+      </constant>
+      <constant namespace="Sebwite\Git\Flysystem\Github" line="35" package="Sebwite\Git">
+        <name>KEY_PATH</name>
+        <full_name>\Sebwite\Git\Flysystem\Github\Api::KEY_PATH</full_name>
+        <value>'path'</value>
+        <docblock line="35">
+          <description/>
+          <long-description/>
+        </docblock>
+      </constant>
+      <constant namespace="Sebwite\Git\Flysystem\Github" line="36" package="Sebwite\Git">
+        <name>KEY_SHA</name>
+        <full_name>\Sebwite\Git\Flysystem\Github\Api::KEY_SHA</full_name>
+        <value>'sha'</value>
+        <docblock line="36">
+          <description/>
+          <long-description/>
+        </docblock>
+      </constant>
+      <constant namespace="Sebwite\Git\Flysystem\Github" line="37" package="Sebwite\Git">
+        <name>KEY_SIZE</name>
+        <full_name>\Sebwite\Git\Flysystem\Github\Api::KEY_SIZE</full_name>
+        <value>'size'</value>
+        <docblock line="37">
+          <description/>
+          <long-description/>
+        </docblock>
+      </constant>
+      <constant namespace="Sebwite\Git\Flysystem\Github" line="38" package="Sebwite\Git">
+        <name>KEY_STREAM</name>
+        <full_name>\Sebwite\Git\Flysystem\Github\Api::KEY_STREAM</full_name>
+        <value>'stream'</value>
+        <docblock line="38">
+          <description/>
+          <long-description/>
+        </docblock>
+      </constant>
+      <constant namespace="Sebwite\Git\Flysystem\Github" line="39" package="Sebwite\Git">
+        <name>KEY_TIMESTAMP</name>
+        <full_name>\Sebwite\Git\Flysystem\Github\Api::KEY_TIMESTAMP</full_name>
+        <value>'timestamp'</value>
+        <docblock line="39">
+          <description/>
+          <long-description/>
+        </docblock>
+      </constant>
+      <constant namespace="Sebwite\Git\Flysystem\Github" line="40" package="Sebwite\Git">
+        <name>KEY_TREE</name>
+        <full_name>\Sebwite\Git\Flysystem\Github\Api::KEY_TREE</full_name>
+        <value>'tree'</value>
+        <docblock line="40">
+          <description/>
+          <long-description/>
+        </docblock>
+      </constant>
+      <constant namespace="Sebwite\Git\Flysystem\Github" line="41" package="Sebwite\Git">
+        <name>KEY_TYPE</name>
+        <full_name>\Sebwite\Git\Flysystem\Github\Api::KEY_TYPE</full_name>
+        <value>'type'</value>
+        <docblock line="41">
+          <description/>
+          <long-description/>
+        </docblock>
+      </constant>
+      <constant namespace="Sebwite\Git\Flysystem\Github" line="42" package="Sebwite\Git">
+        <name>KEY_VISIBILITY</name>
+        <full_name>\Sebwite\Git\Flysystem\Github\Api::KEY_VISIBILITY</full_name>
+        <value>'visibility'</value>
+        <docblock line="42">
+          <description/>
+          <long-description/>
+        </docblock>
+      </constant>
+      <constant namespace="Sebwite\Git\Flysystem\Github" line="43" package="Sebwite\Git">
+        <name>ERROR_NO_NAME</name>
+        <full_name>\Sebwite\Git\Flysystem\Github\Api::ERROR_NO_NAME</full_name>
+        <value>'Could not set name for entry'</value>
+        <docblock line="43">
+          <description/>
+          <long-description/>
+        </docblock>
+      </constant>
+      <property static="false" visibility="protected" namespace="Sebwite\Git\Flysystem\Github" line="46" package="Sebwite\Git">
+        <name>$client</name>
+        <full_name>\Sebwite\Git\Flysystem\Github\Api::client</full_name>
+        <default/>
+        <docblock line="46">
+          <description/>
+          <long-description/>
+          <tag name="var" line="46" description="" type="\Github\Client" variable="">
+            <type>\Github\Client</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" namespace="Sebwite\Git\Flysystem\Github" line="49" package="Sebwite\Git">
+        <name>$settings</name>
+        <full_name>\Sebwite\Git\Flysystem\Github\Api::settings</full_name>
+        <default/>
+        <docblock line="49">
+          <description/>
+          <long-description/>
+          <tag name="var" line="49" description="" type="\Sebwite\Git\Flysystem\SettingsInterface" variable="">
+            <type>\Sebwite\Git\Flysystem\SettingsInterface</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" namespace="Sebwite\Git\Flysystem\Github" line="52" package="Sebwite\Git">
+        <name>$isAuthenticationAttempted</name>
+        <full_name>\Sebwite\Git\Flysystem\Github\Api::isAuthenticationAttempted</full_name>
+        <default>false</default>
+        <docblock line="52">
+          <description/>
+          <long-description/>
+          <tag name="var" line="52" description="" type="boolean" variable="">
+            <type>boolean</type>
+          </tag>
+        </docblock>
+      </property>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Sebwite\Git\Flysystem\Github" line="58" package="Sebwite\Git">
+        <name>getClient</name>
+        <full_name>\Sebwite\Git\Flysystem\Github\Api::getClient()</full_name>
+        <docblock line="58">
+          <description>getClient method</description>
+          <long-description/>
+          <tag name="return" line="58" description="" type="\Github\Client">
+            <type>\Github\Client</type>
+          </tag>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Sebwite\Git\Flysystem\Github" line="69" package="Sebwite\Git">
+        <name>getApi</name>
+        <full_name>\Sebwite\Git\Flysystem\Github\Api::getApi()</full_name>
+        <docblock line="69">
+          <description/>
+          <long-description/>
+          <tag name="param" line="69" description="" type="string" variable="$name">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="69" description="" type="\Github\Api\ApiInterface">
+            <type>\Github\Api\ApiInterface</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$name</name>
+          <default/>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Sebwite\Git\Flysystem\Github" line="78" package="Sebwite\Git">
+        <name>getGitDataApi</name>
+        <full_name>\Sebwite\Git\Flysystem\Github\Api::getGitDataApi()</full_name>
+        <docblock line="78">
+          <description/>
+          <long-description/>
+          <tag name="return" line="78" description="" type="\Github\Api\GitData">
+            <type>\Github\Api\GitData</type>
+          </tag>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Sebwite\Git\Flysystem\Github" line="86" package="Sebwite\Git">
+        <name>getRepositoryApi</name>
+        <full_name>\Sebwite\Git\Flysystem\Github\Api::getRepositoryApi()</full_name>
+        <docblock line="86">
+          <description/>
+          <long-description/>
+          <tag name="return" line="86" description="" type="\Github\Api\Repo">
+            <type>\Github\Api\Repo</type>
+          </tag>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Sebwite\Git\Flysystem\Github" line="94" package="Sebwite\Git">
+        <name>getRepositoryContent</name>
+        <full_name>\Sebwite\Git\Flysystem\Github\Api::getRepositoryContent()</full_name>
+        <docblock line="94">
+          <description/>
+          <long-description/>
+          <tag name="return" line="94" description="" type="\Github\Api\Repository\Contents">
+            <type>\Github\Api\Repository\Contents</type>
+          </tag>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Sebwite\Git\Flysystem\Github" line="100" package="Sebwite\Git">
+        <name>__construct</name>
+        <full_name>\Sebwite\Git\Flysystem\Github\Api::__construct()</full_name>
+        <docblock line="100">
+          <description/>
+          <long-description/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$client</name>
+          <default/>
+          <type>\Github\Client</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$settings</name>
+          <default/>
+          <type>\Sebwite\Git\Flysystem\SettingsInterface</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Sebwite\Git\Flysystem\Github" line="114" package="Sebwite\Git">
+        <name>authenticate</name>
+        <full_name>\Sebwite\Git\Flysystem\Github\Api::authenticate()</full_name>
+        <docblock line="114">
+          <description/>
+          <long-description/>
+          <tag name="throws" line="114" description="" type="\Github\Exception\InvalidArgumentException">
+            <type>\Github\Exception\InvalidArgumentException</type>
+          </tag>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Sebwite\Git\Flysystem\Github" line="155" package="Sebwite\Git">
+        <name>exists</name>
+        <full_name>\Sebwite\Git\Flysystem\Github\Api::exists()</full_name>
+        <docblock line="155">
+          <description/>
+          <long-description/>
+          <tag name="param" line="155" description="" type="string" variable="$path">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="155" description="" type="boolean">
+            <type>boolean</type>
+          </tag>
+          <tag name="inherited_from" description="\Sebwite\Git\Flysystem\ApiInterface::exists()" refers="\Sebwite\Git\Flysystem\ApiInterface::exists()" link="/classes/Sebwite.Git.Flysystem.ApiInterface.html#method_exists"/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$path</name>
+          <default/>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Sebwite\Git\Flysystem\Github" line="172" package="Sebwite\Git">
+        <name>getFileContents</name>
+        <full_name>\Sebwite\Git\Flysystem\Github\Api::getFileContents()</full_name>
+        <docblock line="172">
+          <description/>
+          <long-description/>
+          <tag name="param" line="172" description="" type="" variable="$path"/>
+          <tag name="return" line="172" description="" type="null|string">
+            <type>null</type>
+            <type>string</type>
+          </tag>
+          <tag name="throws" line="172" description="" type="\Github\Exception\ErrorException">
+            <type>\Github\Exception\ErrorException</type>
+          </tag>
+          <tag name="inherited_from" description="\Sebwite\Git\Flysystem\ApiInterface::getFileContents()" refers="\Sebwite\Git\Flysystem\ApiInterface::getFileContents()" link="/classes/Sebwite.Git.Flysystem.ApiInterface.html#method_getFileContents"/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$path</name>
+          <default/>
+          <type/>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Sebwite\Git\Flysystem\Github" line="187" package="Sebwite\Git">
+        <name>getLastUpdatedTimestamp</name>
+        <full_name>\Sebwite\Git\Flysystem\Github\Api::getLastUpdatedTimestamp()</full_name>
+        <docblock line="187">
+          <description/>
+          <long-description/>
+          <tag name="param" line="187" description="" type="string" variable="$path">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="187" description="" type="array">
+            <type>array</type>
+          </tag>
+          <tag name="inherited_from" description="\Sebwite\Git\Flysystem\ApiInterface::getLastUpdatedTimestamp()" refers="\Sebwite\Git\Flysystem\ApiInterface::getLastUpdatedTimestamp()" link="/classes/Sebwite.Git.Flysystem.ApiInterface.html#method_getLastUpdatedTimestamp"/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$path</name>
+          <default/>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Sebwite\Git\Flysystem\Github" line="203" package="Sebwite\Git">
+        <name>getCreatedTimestamp</name>
+        <full_name>\Sebwite\Git\Flysystem\Github\Api::getCreatedTimestamp()</full_name>
+        <docblock line="203">
+          <description/>
+          <long-description/>
+          <tag name="param" line="203" description="" type="string" variable="$path">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="203" description="" type="array">
+            <type>array</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$path</name>
+          <default/>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Sebwite\Git\Flysystem\Github" line="219" package="Sebwite\Git">
+        <name>getMetaData</name>
+        <full_name>\Sebwite\Git\Flysystem\Github\Api::getMetaData()</full_name>
+        <docblock line="219">
+          <description/>
+          <long-description/>
+          <tag name="param" line="219" description="" type="string" variable="$path">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="219" description="" type="array|boolean">
+            <type>array</type>
+            <type>boolean</type>
+          </tag>
+          <tag name="inherited_from" description="\Sebwite\Git\Flysystem\ApiInterface::getMetaData()" refers="\Sebwite\Git\Flysystem\ApiInterface::getMetaData()" link="/classes/Sebwite.Git.Flysystem.ApiInterface.html#method_getMetaData"/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$path</name>
+          <default/>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Sebwite\Git\Flysystem\Github" line="251" package="Sebwite\Git">
+        <name>getRecursiveMetadata</name>
+        <full_name>\Sebwite\Git\Flysystem\Github\Api::getRecursiveMetadata()</full_name>
+        <docblock line="251">
+          <description/>
+          <long-description/>
+          <tag name="param" line="251" description="" type="string" variable="$path">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="251" description="" type="boolean" variable="$recursive">
+            <type>boolean</type>
+          </tag>
+          <tag name="return" line="251" description="" type="array">
+            <type>array</type>
+          </tag>
+          <tag name="inherited_from" description="\Sebwite\Git\Flysystem\ApiInterface::getRecursiveMetadata()" refers="\Sebwite\Git\Flysystem\ApiInterface::getRecursiveMetadata()" link="/classes/Sebwite.Git.Flysystem.ApiInterface.html#method_getRecursiveMetadata"/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$path</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$recursive</name>
+          <default/>
+          <type>boolean</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Sebwite\Git\Flysystem\Github" line="275" package="Sebwite\Git">
+        <name>guessMimeType</name>
+        <full_name>\Sebwite\Git\Flysystem\Github\Api::guessMimeType()</full_name>
+        <docblock line="275">
+          <description/>
+          <long-description/>
+          <tag name="param" line="275" description="" type="string" variable="$path">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="275" description="" type="null|string">
+            <type>null</type>
+            <type>string</type>
+          </tag>
+          <tag name="inherited_from" description="\Sebwite\Git\Flysystem\ApiInterface::guessMimeType()" refers="\Sebwite\Git\Flysystem\ApiInterface::guessMimeType()" link="/classes/Sebwite.Git.Flysystem.ApiInterface.html#method_guessMimeType"/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$path</name>
+          <default/>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Sebwite\Git\Flysystem\Github" line="300" package="Sebwite\Git">
+        <name>extractMetaDataFromTreeInfo</name>
+        <full_name>\Sebwite\Git\Flysystem\Github\Api::extractMetaDataFromTreeInfo()</full_name>
+        <docblock line="300">
+          <description/>
+          <long-description/>
+          <tag name="param" line="300" description="" type="array" variable="$tree">
+            <type>array</type>
+          </tag>
+          <tag name="param" line="300" description="" type="string" variable="$path">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="300" description="" type="boolean" variable="$recursive">
+            <type>boolean</type>
+          </tag>
+          <tag name="return" line="300" description="" type="array">
+            <type>array</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$tree</name>
+          <default/>
+          <type>array</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$path</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$recursive</name>
+          <default/>
+          <type>boolean</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Sebwite\Git\Flysystem\Github" line="344" package="Sebwite\Git">
+        <name>guessVisibility</name>
+        <full_name>\Sebwite\Git\Flysystem\Github\Api::guessVisibility()</full_name>
+        <docblock line="344">
+          <description/>
+          <long-description/>
+          <tag name="param" line="344" description="" type="" variable="$permissions"/>
+          <tag name="return" line="344" description="" type="string">
+            <type>string</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$permissions</name>
+          <default/>
+          <type/>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Sebwite\Git\Flysystem\Github" line="354" package="Sebwite\Git">
+        <name>normalizeTreeMetadata</name>
+        <full_name>\Sebwite\Git\Flysystem\Github\Api::normalizeTreeMetadata()</full_name>
+        <docblock line="354">
+          <description/>
+          <long-description/>
+          <tag name="param" line="354" description="" type="array" variable="$metadata">
+            <type>array</type>
+          </tag>
+          <tag name="return" line="354" description="" type="array">
+            <type>array</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$metadata</name>
+          <default/>
+          <type>array</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Sebwite\Git\Flysystem\Github" line="385" package="Sebwite\Git">
+        <name>commitsForFile</name>
+        <full_name>\Sebwite\Git\Flysystem\Github\Api::commitsForFile()</full_name>
+        <docblock line="385">
+          <description/>
+          <long-description/>
+          <tag name="param" line="385" description="" type="" variable="$path"/>
+          <tag name="return" line="385" description="" type="array">
+            <type>array</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$path</name>
+          <default/>
+          <type/>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Sebwite\Git\Flysystem\Github" line="404" package="Sebwite\Git">
+        <name>setDefaultValue</name>
+        <full_name>\Sebwite\Git\Flysystem\Github\Api::setDefaultValue()</full_name>
+        <docblock line="404">
+          <description/>
+          <long-description/>
+          <tag name="param" line="404" description="" type="array" variable="$entry">
+            <type>array</type>
+          </tag>
+          <tag name="param" line="404" description="" type="string" variable="$key">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="404" description="" type="boolean" variable="$default">
+            <type>boolean</type>
+          </tag>
+          <tag name="return" line="404" description="" type="mixed">
+            <type>mixed</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="true">
+          <name>$entry</name>
+          <default/>
+          <type>array</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$key</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$default</name>
+          <default>false</default>
+          <type>boolean</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Sebwite\Git\Flysystem\Github" line="415" package="Sebwite\Git">
+        <name>setEntryType</name>
+        <full_name>\Sebwite\Git\Flysystem\Github\Api::setEntryType()</full_name>
+        <docblock line="415">
+          <description/>
+          <long-description/>
+          <tag name="param" line="415" description="" type="" variable="$entry"/>
+        </docblock>
+        <argument line="0" by_reference="true">
+          <name>$entry</name>
+          <default/>
+          <type/>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Sebwite\Git\Flysystem\Github" line="435" package="Sebwite\Git">
+        <name>setEntryVisibility</name>
+        <full_name>\Sebwite\Git\Flysystem\Github\Api::setEntryVisibility()</full_name>
+        <docblock line="435">
+          <description/>
+          <long-description/>
+          <tag name="param" line="435" description="" type="" variable="$entry"/>
+        </docblock>
+        <argument line="0" by_reference="true">
+          <name>$entry</name>
+          <default/>
+          <type/>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Sebwite\Git\Flysystem\Github" line="450" package="Sebwite\Git">
+        <name>setEntryName</name>
+        <full_name>\Sebwite\Git\Flysystem\Github\Api::setEntryName()</full_name>
+        <docblock line="450">
+          <description/>
+          <long-description/>
+          <tag name="param" line="450" description="" type="" variable="$entry"/>
+        </docblock>
+        <argument line="0" by_reference="true">
+          <name>$entry</name>
+          <default/>
+          <type/>
+        </argument>
+      </method>
+    </class>
+    <parse_markers>
+      <error line="0" code="PPC:ERR-50000">No summary was found for this file</error>
+      <error line="69" code="PPC:ERR-50008">No summary for method getApi()</error>
+      <error line="78" code="PPC:ERR-50008">No summary for method getGitDataApi()</error>
+      <error line="86" code="PPC:ERR-50008">No summary for method getRepositoryApi()</error>
+      <error line="94" code="PPC:ERR-50008">No summary for method getRepositoryContent()</error>
+      <error line="100" code="PPC:ERR-50015">Argument $client is missing from the Docblock of __construct</error>
+      <error line="100" code="PPC:ERR-50015">Argument $settings is missing from the Docblock of __construct</error>
+      <error line="100" code="PPC:ERR-50008">No summary for method __construct()</error>
+      <error line="114" code="PPC:ERR-50008">No summary for method authenticate()</error>
+      <error line="155" code="PPC:ERR-50008">No summary for method exists()</error>
+      <error line="172" code="PPC:ERR-50008">No summary for method getFileContents()</error>
+      <error line="187" code="PPC:ERR-50008">No summary for method getLastUpdatedTimestamp()</error>
+      <error line="203" code="PPC:ERR-50008">No summary for method getCreatedTimestamp()</error>
+      <error line="219" code="PPC:ERR-50008">No summary for method getMetaData()</error>
+      <error line="251" code="PPC:ERR-50008">No summary for method getRecursiveMetadata()</error>
+      <error line="275" code="PPC:ERR-50008">No summary for method guessMimeType()</error>
+      <error line="300" code="PPC:ERR-50008">No summary for method extractMetaDataFromTreeInfo()</error>
+      <error line="344" code="PPC:ERR-50008">No summary for method guessVisibility()</error>
+      <error line="354" code="PPC:ERR-50008">No summary for method normalizeTreeMetadata()</error>
+      <error line="385" code="PPC:ERR-50008">No summary for method commitsForFile()</error>
+      <error line="404" code="PPC:ERR-50008">No summary for method setDefaultValue()</error>
+      <error line="415" code="PPC:ERR-50008">No summary for method setEntryType()</error>
+      <error line="435" code="PPC:ERR-50008">No summary for method setEntryVisibility()</error>
+      <error line="450" code="PPC:ERR-50008">No summary for method setEntryName()</error>
+      <error line="46" code="PPC:ERR-50007">No summary for property $client</error>
+      <error line="49" code="PPC:ERR-50007">No summary for property $settings</error>
+      <error line="52" code="PPC:ERR-50007">No summary for property $isAuthenticationAttempted</error>
+    </parse_markers>
+    <source>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</source>
+  <type>class</type></file>

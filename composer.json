@@ -11,10 +11,10 @@
         "php": ">=5.5.9",
         "laravel/framework": "5.2.*",
         "predis/predis": "1.1.*",
-        "codex/core": "1.0.*",
-        "codex/addon-git": "1.0.*",
-        "codex/addon-phpdoc": "1.0.*",
-        "codex/addon-auth": "1.0.*"
+        "codex/core": "2.0.0-beta",
+        "codex/addon-git": "2.0.0-beta",
+        "codex/addon-phpdoc": "2.0.0-beta",
+        "codex/addon-auth": "2.0.0-beta"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",
@@ -45,14 +45,17 @@
         ],
         "post-install-cmd": [
             "Illuminate\\Foundation\\ComposerScripts::postInstall",
-            "php artisan optimize"
+            "php artisan optimize",
+            "plesk php artisan vendor:publish --tag=public --force"
         ],
         "post-update-cmd": [
             "Illuminate\\Foundation\\ComposerScripts::postUpdate",
-            "php artisan optimize"
+            "php artisan optimize",
+            "plesk php artisan vendor:publish --tag=public --force"
         ]
     },
     "config": {
-        "preferred-install": "dist"
+        "preferred-install": "dist",
+        "bin-dir": "bin"
     }
 }

@@ -1,0 +1,698 @@
+<file path="codex/vendor/laravel/framework/src/Illuminate/Events/Dispatcher.php" generated-path="codex.vendor.laravel.framework.src.Illuminate.Events.Dispatcher.html" hash="61453f08af705a97767e8d9960717641" package="Default">
+    <docblock line="0">
+      <description/>
+      <long-description/>
+      <tag name="package" line="0" description="Default"/>
+    </docblock>
+    <namespace-alias name="Exception">\Exception</namespace-alias>
+    <namespace-alias name="ReflectionClass">\ReflectionClass</namespace-alias>
+    <namespace-alias name="Str">\Illuminate\Support\Str</namespace-alias>
+    <namespace-alias name="Container">\Illuminate\Container\Container</namespace-alias>
+    <namespace-alias name="ShouldBroadcast">\Illuminate\Contracts\Broadcasting\ShouldBroadcast</namespace-alias>
+    <namespace-alias name="ShouldBroadcastNow">\Illuminate\Contracts\Broadcasting\ShouldBroadcastNow</namespace-alias>
+    <namespace-alias name="DispatcherContract">\Illuminate\Contracts\Events\Dispatcher</namespace-alias>
+    <namespace-alias name="ContainerContract">\Illuminate\Contracts\Container\Container</namespace-alias>
+    <class final="false" abstract="false" namespace="Illuminate\Events" line="14" package="Default">
+      <extends/>
+      <implements>\Illuminate\Contracts\Events\Dispatcher</implements>
+      <name>Dispatcher</name>
+      <full_name>\Illuminate\Events\Dispatcher</full_name>
+      <docblock line="14">
+        <description/>
+        <long-description/>
+        <tag name="package" line="14" description="Default"/>
+      </docblock>
+      <property static="false" visibility="protected" namespace="Illuminate\Events" line="21" package="Default">
+        <name>$container</name>
+        <full_name>\Illuminate\Events\Dispatcher::container</full_name>
+        <default/>
+        <docblock line="21">
+          <description>The IoC container instance.</description>
+          <long-description/>
+          <tag name="var" line="21" description="" type="\Illuminate\Contracts\Container\Container" variable="">
+            <type>\Illuminate\Contracts\Container\Container</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" namespace="Illuminate\Events" line="28" package="Default">
+        <name>$listeners</name>
+        <full_name>\Illuminate\Events\Dispatcher::listeners</full_name>
+        <default>array()</default>
+        <docblock line="28">
+          <description>The registered event listeners.</description>
+          <long-description/>
+          <tag name="var" line="28" description="" type="array" variable="">
+            <type>array</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" namespace="Illuminate\Events" line="35" package="Default">
+        <name>$wildcards</name>
+        <full_name>\Illuminate\Events\Dispatcher::wildcards</full_name>
+        <default>array()</default>
+        <docblock line="35">
+          <description>The wildcard listeners.</description>
+          <long-description/>
+          <tag name="var" line="35" description="" type="array" variable="">
+            <type>array</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" namespace="Illuminate\Events" line="42" package="Default">
+        <name>$sorted</name>
+        <full_name>\Illuminate\Events\Dispatcher::sorted</full_name>
+        <default>array()</default>
+        <docblock line="42">
+          <description>The sorted event listeners.</description>
+          <long-description/>
+          <tag name="var" line="42" description="" type="array" variable="">
+            <type>array</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" namespace="Illuminate\Events" line="49" package="Default">
+        <name>$firing</name>
+        <full_name>\Illuminate\Events\Dispatcher::firing</full_name>
+        <default>array()</default>
+        <docblock line="49">
+          <description>The event firing stack.</description>
+          <long-description/>
+          <tag name="var" line="49" description="" type="array" variable="">
+            <type>array</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" namespace="Illuminate\Events" line="56" package="Default">
+        <name>$queueResolver</name>
+        <full_name>\Illuminate\Events\Dispatcher::queueResolver</full_name>
+        <default/>
+        <docblock line="56">
+          <description>The queue resolver instance.</description>
+          <long-description/>
+          <tag name="var" line="56" description="" type="callable" variable="">
+            <type>callable</type>
+          </tag>
+        </docblock>
+      </property>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Events" line="64" package="Default">
+        <name>__construct</name>
+        <full_name>\Illuminate\Events\Dispatcher::__construct()</full_name>
+        <docblock line="64">
+          <description>Create a new event dispatcher instance.</description>
+          <long-description/>
+          <tag name="param" line="64" description="" type="\Illuminate\Contracts\Container\Container|null" variable="$container">
+            <type>\Illuminate\Contracts\Container\Container</type>
+            <type>null</type>
+          </tag>
+          <tag name="return" line="64" description="" type="void">
+            <type>void</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$container</name>
+          <default>null</default>
+          <type>\Illuminate\Contracts\Container\Container|null</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Events" line="77" package="Default">
+        <name>listen</name>
+        <full_name>\Illuminate\Events\Dispatcher::listen()</full_name>
+        <docblock line="77">
+          <description>Register an event listener with the dispatcher.</description>
+          <long-description/>
+          <tag name="param" line="77" description="" type="string|array" variable="$events">
+            <type>string</type>
+            <type>array</type>
+          </tag>
+          <tag name="param" line="77" description="" type="mixed" variable="$listener">
+            <type>mixed</type>
+          </tag>
+          <tag name="param" line="77" description="" type="integer" variable="$priority">
+            <type>integer</type>
+          </tag>
+          <tag name="return" line="77" description="" type="void">
+            <type>void</type>
+          </tag>
+          <tag name="inherited_from" description="\Illuminate\Contracts\Events\Dispatcher::listen()" refers="\Illuminate\Contracts\Events\Dispatcher::listen()" link="/classes/Illuminate.Contracts.Events.Dispatcher.html#method_listen"/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$events</name>
+          <default/>
+          <type>string|array</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$listener</name>
+          <default/>
+          <type>mixed</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$priority</name>
+          <default>0</default>
+          <type>integer</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Events" line="97" package="Default">
+        <name>setupWildcardListen</name>
+        <full_name>\Illuminate\Events\Dispatcher::setupWildcardListen()</full_name>
+        <docblock line="97">
+          <description>Setup a wildcard listener callback.</description>
+          <long-description/>
+          <tag name="param" line="97" description="" type="string" variable="$event">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="97" description="" type="mixed" variable="$listener">
+            <type>mixed</type>
+          </tag>
+          <tag name="return" line="97" description="" type="void">
+            <type>void</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$event</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$listener</name>
+          <default/>
+          <type>mixed</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Events" line="108" package="Default">
+        <name>hasListeners</name>
+        <full_name>\Illuminate\Events\Dispatcher::hasListeners()</full_name>
+        <docblock line="108">
+          <description>Determine if a given event has listeners.</description>
+          <long-description/>
+          <tag name="param" line="108" description="" type="string" variable="$eventName">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="108" description="" type="boolean">
+            <type>boolean</type>
+          </tag>
+          <tag name="inherited_from" description="\Illuminate\Contracts\Events\Dispatcher::hasListeners()" refers="\Illuminate\Contracts\Events\Dispatcher::hasListeners()" link="/classes/Illuminate.Contracts.Events.Dispatcher.html#method_hasListeners"/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$eventName</name>
+          <default/>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Events" line="120" package="Default">
+        <name>push</name>
+        <full_name>\Illuminate\Events\Dispatcher::push()</full_name>
+        <docblock line="120">
+          <description>Register an event and payload to be fired later.</description>
+          <long-description/>
+          <tag name="param" line="120" description="" type="string" variable="$event">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="120" description="" type="array" variable="$payload">
+            <type>array</type>
+          </tag>
+          <tag name="return" line="120" description="" type="void">
+            <type>void</type>
+          </tag>
+          <tag name="inherited_from" description="\Illuminate\Contracts\Events\Dispatcher::push()" refers="\Illuminate\Contracts\Events\Dispatcher::push()" link="/classes/Illuminate.Contracts.Events.Dispatcher.html#method_push"/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$event</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$payload</name>
+          <default>array()</default>
+          <type>array</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Events" line="133" package="Default">
+        <name>subscribe</name>
+        <full_name>\Illuminate\Events\Dispatcher::subscribe()</full_name>
+        <docblock line="133">
+          <description>Register an event subscriber with the dispatcher.</description>
+          <long-description/>
+          <tag name="param" line="133" description="" type="object|string" variable="$subscriber">
+            <type>object</type>
+            <type>string</type>
+          </tag>
+          <tag name="return" line="133" description="" type="void">
+            <type>void</type>
+          </tag>
+          <tag name="inherited_from" description="\Illuminate\Contracts\Events\Dispatcher::subscribe()" refers="\Illuminate\Contracts\Events\Dispatcher::subscribe()" link="/classes/Illuminate.Contracts.Events.Dispatcher.html#method_subscribe"/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$subscriber</name>
+          <default/>
+          <type>object|string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Events" line="146" package="Default">
+        <name>resolveSubscriber</name>
+        <full_name>\Illuminate\Events\Dispatcher::resolveSubscriber()</full_name>
+        <docblock line="146">
+          <description>Resolve the subscriber instance.</description>
+          <long-description/>
+          <tag name="param" line="146" description="" type="object|string" variable="$subscriber">
+            <type>object</type>
+            <type>string</type>
+          </tag>
+          <tag name="return" line="146" description="" type="mixed">
+            <type>mixed</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$subscriber</name>
+          <default/>
+          <type>object|string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Events" line="162" package="Default">
+        <name>until</name>
+        <full_name>\Illuminate\Events\Dispatcher::until()</full_name>
+        <docblock line="162">
+          <description>Fire an event until the first non-null response is returned.</description>
+          <long-description/>
+          <tag name="param" line="162" description="" type="string|object" variable="$event">
+            <type>string</type>
+            <type>object</type>
+          </tag>
+          <tag name="param" line="162" description="" type="array" variable="$payload">
+            <type>array</type>
+          </tag>
+          <tag name="return" line="162" description="" type="mixed">
+            <type>mixed</type>
+          </tag>
+          <tag name="inherited_from" description="\Illuminate\Contracts\Events\Dispatcher::until()" refers="\Illuminate\Contracts\Events\Dispatcher::until()" link="/classes/Illuminate.Contracts.Events.Dispatcher.html#method_until"/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$event</name>
+          <default/>
+          <type>string|object</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$payload</name>
+          <default>array()</default>
+          <type>array</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Events" line="173" package="Default">
+        <name>flush</name>
+        <full_name>\Illuminate\Events\Dispatcher::flush()</full_name>
+        <docblock line="173">
+          <description>Flush a set of pushed events.</description>
+          <long-description/>
+          <tag name="param" line="173" description="" type="string" variable="$event">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="173" description="" type="void">
+            <type>void</type>
+          </tag>
+          <tag name="inherited_from" description="\Illuminate\Contracts\Events\Dispatcher::flush()" refers="\Illuminate\Contracts\Events\Dispatcher::flush()" link="/classes/Illuminate.Contracts.Events.Dispatcher.html#method_flush"/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$event</name>
+          <default/>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Events" line="183" package="Default">
+        <name>firing</name>
+        <full_name>\Illuminate\Events\Dispatcher::firing()</full_name>
+        <docblock line="183">
+          <description>Get the event that is currently firing.</description>
+          <long-description/>
+          <tag name="return" line="183" description="" type="string">
+            <type>string</type>
+          </tag>
+          <tag name="inherited_from" description="\Illuminate\Contracts\Events\Dispatcher::firing()" refers="\Illuminate\Contracts\Events\Dispatcher::firing()" link="/classes/Illuminate.Contracts.Events.Dispatcher.html#method_firing"/>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Events" line="196" package="Default">
+        <name>fire</name>
+        <full_name>\Illuminate\Events\Dispatcher::fire()</full_name>
+        <docblock line="196">
+          <description>Fire an event and call the listeners.</description>
+          <long-description/>
+          <tag name="param" line="196" description="" type="string|object" variable="$event">
+            <type>string</type>
+            <type>object</type>
+          </tag>
+          <tag name="param" line="196" description="" type="mixed" variable="$payload">
+            <type>mixed</type>
+          </tag>
+          <tag name="param" line="196" description="" type="boolean" variable="$halt">
+            <type>boolean</type>
+          </tag>
+          <tag name="return" line="196" description="" type="array|null">
+            <type>array</type>
+            <type>null</type>
+          </tag>
+          <tag name="inherited_from" description="\Illuminate\Contracts\Events\Dispatcher::fire()" refers="\Illuminate\Contracts\Events\Dispatcher::fire()" link="/classes/Illuminate.Contracts.Events.Dispatcher.html#method_fire"/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$event</name>
+          <default/>
+          <type>string|object</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$payload</name>
+          <default>array()</default>
+          <type>mixed</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$halt</name>
+          <default>false</default>
+          <type>boolean</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Events" line="253" package="Default">
+        <name>broadcastEvent</name>
+        <full_name>\Illuminate\Events\Dispatcher::broadcastEvent()</full_name>
+        <docblock line="253">
+          <description>Broadcast the given event class.</description>
+          <long-description/>
+          <tag name="param" line="253" description="" type="\Illuminate\Contracts\Broadcasting\ShouldBroadcast" variable="$event">
+            <type>\Illuminate\Contracts\Broadcasting\ShouldBroadcast</type>
+          </tag>
+          <tag name="return" line="253" description="" type="void">
+            <type>void</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$event</name>
+          <default/>
+          <type>\Illuminate\Contracts\Broadcasting\ShouldBroadcast</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Events" line="272" package="Default">
+        <name>getListeners</name>
+        <full_name>\Illuminate\Events\Dispatcher::getListeners()</full_name>
+        <docblock line="272">
+          <description>Get all of the listeners for a given event name.</description>
+          <long-description/>
+          <tag name="param" line="272" description="" type="string" variable="$eventName">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="272" description="" type="array">
+            <type>array</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$eventName</name>
+          <default/>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Events" line="289" package="Default">
+        <name>getWildcardListeners</name>
+        <full_name>\Illuminate\Events\Dispatcher::getWildcardListeners()</full_name>
+        <docblock line="289">
+          <description>Get the wildcard listeners for the event.</description>
+          <long-description/>
+          <tag name="param" line="289" description="" type="string" variable="$eventName">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="289" description="" type="array">
+            <type>array</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$eventName</name>
+          <default/>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Events" line="308" package="Default">
+        <name>sortListeners</name>
+        <full_name>\Illuminate\Events\Dispatcher::sortListeners()</full_name>
+        <docblock line="308">
+          <description>Sort the listeners for a given event by priority.</description>
+          <long-description/>
+          <tag name="param" line="308" description="" type="string" variable="$eventName">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="308" description="" type="array">
+            <type>array</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$eventName</name>
+          <default/>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Events" line="330" package="Default">
+        <name>makeListener</name>
+        <full_name>\Illuminate\Events\Dispatcher::makeListener()</full_name>
+        <docblock line="330">
+          <description>Register an event listener with the dispatcher.</description>
+          <long-description/>
+          <tag name="param" line="330" description="" type="mixed" variable="$listener">
+            <type>mixed</type>
+          </tag>
+          <tag name="return" line="330" description="" type="mixed">
+            <type>mixed</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$listener</name>
+          <default/>
+          <type>mixed</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Events" line="341" package="Default">
+        <name>createClassListener</name>
+        <full_name>\Illuminate\Events\Dispatcher::createClassListener()</full_name>
+        <docblock line="341">
+          <description>Create a class based listener using the IoC container.</description>
+          <long-description/>
+          <tag name="param" line="341" description="" type="mixed" variable="$listener">
+            <type>mixed</type>
+          </tag>
+          <tag name="return" line="341" description="" type="\Closure">
+            <type>\Closure</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$listener</name>
+          <default/>
+          <type>mixed</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Events" line="359" package="Default">
+        <name>createClassCallable</name>
+        <full_name>\Illuminate\Events\Dispatcher::createClassCallable()</full_name>
+        <docblock line="359">
+          <description>Create the class based event callable.</description>
+          <long-description/>
+          <tag name="param" line="359" description="" type="string" variable="$listener">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="359" description="" type="\Illuminate\Container\Container" variable="$container">
+            <type>\Illuminate\Container\Container</type>
+          </tag>
+          <tag name="return" line="359" description="" type="callable">
+            <type>callable</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$listener</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$container</name>
+          <default/>
+          <type>\Illuminate\Container\Container</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Events" line="376" package="Default">
+        <name>parseClassCallable</name>
+        <full_name>\Illuminate\Events\Dispatcher::parseClassCallable()</full_name>
+        <docblock line="376">
+          <description>Parse the class listener into class and method.</description>
+          <long-description/>
+          <tag name="param" line="376" description="" type="string" variable="$listener">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="376" description="" type="array">
+            <type>array</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$listener</name>
+          <default/>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Events" line="389" package="Default">
+        <name>handlerShouldBeQueued</name>
+        <full_name>\Illuminate\Events\Dispatcher::handlerShouldBeQueued()</full_name>
+        <docblock line="389">
+          <description>Determine if the event handler class should be queued.</description>
+          <long-description/>
+          <tag name="param" line="389" description="" type="string" variable="$class">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="389" description="" type="boolean">
+            <type>boolean</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$class</name>
+          <default/>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Events" line="407" package="Default">
+        <name>createQueuedHandlerCallable</name>
+        <full_name>\Illuminate\Events\Dispatcher::createQueuedHandlerCallable()</full_name>
+        <docblock line="407">
+          <description>Create a callable for putting an event handler on the queue.</description>
+          <long-description/>
+          <tag name="param" line="407" description="" type="string" variable="$class">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="407" description="" type="string" variable="$method">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="407" description="" type="\Closure">
+            <type>\Closure</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$class</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$method</name>
+          <default/>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Events" line="428" package="Default">
+        <name>cloneArgumentsForQueueing</name>
+        <full_name>\Illuminate\Events\Dispatcher::cloneArgumentsForQueueing()</full_name>
+        <docblock line="428">
+          <description>Clone the given arguments for queueing.</description>
+          <long-description/>
+          <tag name="param" line="428" description="" type="array" variable="$arguments">
+            <type>array</type>
+          </tag>
+          <tag name="return" line="428" description="" type="array">
+            <type>array</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$arguments</name>
+          <default/>
+          <type>array</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Events" line="443" package="Default">
+        <name>callQueueMethodOnHandler</name>
+        <full_name>\Illuminate\Events\Dispatcher::callQueueMethodOnHandler()</full_name>
+        <docblock line="443">
+          <description>Call the queue method on the handler class.</description>
+          <long-description/>
+          <tag name="param" line="443" description="" type="string" variable="$class">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="443" description="" type="string" variable="$method">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="443" description="" type="array" variable="$arguments">
+            <type>array</type>
+          </tag>
+          <tag name="return" line="443" description="" type="void">
+            <type>void</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$class</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$method</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$arguments</name>
+          <default/>
+          <type>array</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Events" line="458" package="Default">
+        <name>forget</name>
+        <full_name>\Illuminate\Events\Dispatcher::forget()</full_name>
+        <docblock line="458">
+          <description>Remove a set of listeners from the dispatcher.</description>
+          <long-description/>
+          <tag name="param" line="458" description="" type="string" variable="$event">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="458" description="" type="void">
+            <type>void</type>
+          </tag>
+          <tag name="inherited_from" description="\Illuminate\Contracts\Events\Dispatcher::forget()" refers="\Illuminate\Contracts\Events\Dispatcher::forget()" link="/classes/Illuminate.Contracts.Events.Dispatcher.html#method_forget"/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$event</name>
+          <default/>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Events" line="472" package="Default">
+        <name>forgetPushed</name>
+        <full_name>\Illuminate\Events\Dispatcher::forgetPushed()</full_name>
+        <docblock line="472">
+          <description>Forget all of the pushed listeners.</description>
+          <long-description/>
+          <tag name="return" line="472" description="" type="void">
+            <type>void</type>
+          </tag>
+          <tag name="inherited_from" description="\Illuminate\Contracts\Events\Dispatcher::forgetPushed()" refers="\Illuminate\Contracts\Events\Dispatcher::forgetPushed()" link="/classes/Illuminate.Contracts.Events.Dispatcher.html#method_forgetPushed"/>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Events" line="486" package="Default">
+        <name>resolveQueue</name>
+        <full_name>\Illuminate\Events\Dispatcher::resolveQueue()</full_name>
+        <docblock line="486">
+          <description>Get the queue implementation from the resolver.</description>
+          <long-description/>
+          <tag name="return" line="486" description="" type="\Illuminate\Contracts\Queue\Queue">
+            <type>\Illuminate\Contracts\Queue\Queue</type>
+          </tag>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Events" line="497" package="Default">
+        <name>setQueueResolver</name>
+        <full_name>\Illuminate\Events\Dispatcher::setQueueResolver()</full_name>
+        <docblock line="497">
+          <description>Set the queue resolver implementation.</description>
+          <long-description/>
+          <tag name="param" line="497" description="" type="callable" variable="$resolver">
+            <type>callable</type>
+          </tag>
+          <tag name="return" line="497" description="" type="\Illuminate\Events\Dispatcher">
+            <type>\Illuminate\Events\Dispatcher</type>
+          </tag>
+          <tag name="fluent" description="This method is part of a fluent interface and will return the same instance"/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$resolver</name>
+          <default/>
+          <type>callable</type>
+        </argument>
+      </method>
+    </class>
+    <parse_markers>
+      <error line="0" code="PPC:ERR-50000">No summary was found for this file</error>
+      <error line="14" code="PPC:ERR-50005">No summary for class \Illuminate\Events\Dispatcher</error>
+    </parse_markers>
+    <source>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</source>
+  <type>class</type></file>

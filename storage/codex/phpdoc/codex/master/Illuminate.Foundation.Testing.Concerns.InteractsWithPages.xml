@@ -1,0 +1,1225 @@
+<file path="codex/vendor/laravel/framework/src/Illuminate/Foundation/Testing/Concerns/InteractsWithPages.php" generated-path="codex.vendor.laravel.framework.src.Illuminate.Foundation.Testing.Concerns.InteractsWithPages.html" hash="77b3ac8e0e9ec915e3172a2d7af86f66" package="Default">
+    <docblock line="0">
+      <description/>
+      <long-description/>
+      <tag name="package" line="0" description="Default"/>
+    </docblock>
+    <namespace-alias name="Closure">\Closure</namespace-alias>
+    <namespace-alias name="InvalidArgumentException">\InvalidArgumentException</namespace-alias>
+    <namespace-alias name="UploadedFile">\Illuminate\Http\UploadedFile</namespace-alias>
+    <namespace-alias name="Form">\Symfony\Component\DomCrawler\Form</namespace-alias>
+    <namespace-alias name="Crawler">\Symfony\Component\DomCrawler\Crawler</namespace-alias>
+    <namespace-alias name="HttpException">\Illuminate\Foundation\Testing\HttpException</namespace-alias>
+    <namespace-alias name="HasText">\Illuminate\Foundation\Testing\Constraints\HasText</namespace-alias>
+    <namespace-alias name="HasLink">\Illuminate\Foundation\Testing\Constraints\HasLink</namespace-alias>
+    <namespace-alias name="HasValue">\Illuminate\Foundation\Testing\Constraints\HasValue</namespace-alias>
+    <namespace-alias name="HasSource">\Illuminate\Foundation\Testing\Constraints\HasSource</namespace-alias>
+    <namespace-alias name="IsChecked">\Illuminate\Foundation\Testing\Constraints\IsChecked</namespace-alias>
+    <namespace-alias name="HasElement">\Illuminate\Foundation\Testing\Constraints\HasElement</namespace-alias>
+    <namespace-alias name="IsSelected">\Illuminate\Foundation\Testing\Constraints\IsSelected</namespace-alias>
+    <namespace-alias name="HasInElement">\Illuminate\Foundation\Testing\Constraints\HasInElement</namespace-alias>
+    <namespace-alias name="PageConstraint">\Illuminate\Foundation\Testing\Constraints\PageConstraint</namespace-alias>
+    <namespace-alias name="ReversePageConstraint">\Illuminate\Foundation\Testing\Constraints\ReversePageConstraint</namespace-alias>
+    <namespace-alias name="PHPUnitException">\PHPUnit_Framework_ExpectationFailedException</namespace-alias>
+    <trait namespace="Illuminate\Foundation\Testing\Concerns" line="23" package="Default">
+      <name>InteractsWithPages</name>
+      <full_name>\Illuminate\Foundation\Testing\Concerns\InteractsWithPages</full_name>
+      <docblock line="23">
+        <description/>
+        <long-description/>
+        <tag name="package" line="23" description="Default"/>
+      </docblock>
+      <property static="false" visibility="protected" namespace="Illuminate\Foundation\Testing\Concerns" line="30" package="Default">
+        <name>$crawler</name>
+        <full_name>\Illuminate\Foundation\Testing\Concerns\InteractsWithPages::crawler</full_name>
+        <default/>
+        <docblock line="30">
+          <description>The DomCrawler instance.</description>
+          <long-description/>
+          <tag name="var" line="30" description="" type="\Symfony\Component\DomCrawler\Crawler" variable="">
+            <type>\Symfony\Component\DomCrawler\Crawler</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" namespace="Illuminate\Foundation\Testing\Concerns" line="37" package="Default">
+        <name>$subCrawlers</name>
+        <full_name>\Illuminate\Foundation\Testing\Concerns\InteractsWithPages::subCrawlers</full_name>
+        <default>array()</default>
+        <docblock line="37">
+          <description>Nested crawler instances used by the "within" method.</description>
+          <long-description/>
+          <tag name="var" line="37" description="" type="array" variable="">
+            <type>array</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" namespace="Illuminate\Foundation\Testing\Concerns" line="44" package="Default">
+        <name>$inputs</name>
+        <full_name>\Illuminate\Foundation\Testing\Concerns\InteractsWithPages::inputs</full_name>
+        <default>array()</default>
+        <docblock line="44">
+          <description>All of the stored inputs for the current page.</description>
+          <long-description/>
+          <tag name="var" line="44" description="" type="array" variable="">
+            <type>array</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" namespace="Illuminate\Foundation\Testing\Concerns" line="51" package="Default">
+        <name>$uploads</name>
+        <full_name>\Illuminate\Foundation\Testing\Concerns\InteractsWithPages::uploads</full_name>
+        <default>array()</default>
+        <docblock line="51">
+          <description>All of the stored uploads for the current page.</description>
+          <long-description/>
+          <tag name="var" line="51" description="" type="array" variable="">
+            <type>array</type>
+          </tag>
+        </docblock>
+      </property>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Foundation\Testing\Concerns" line="59" package="Default">
+        <name>visit</name>
+        <full_name>\Illuminate\Foundation\Testing\Concerns\InteractsWithPages::visit()</full_name>
+        <docblock line="59">
+          <description>Visit the given URI with a GET request.</description>
+          <long-description/>
+          <tag name="param" line="59" description="" type="string" variable="$uri">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="59" description="" type="\Illuminate\Foundation\Testing\Concerns\InteractsWithPages">
+            <type>\Illuminate\Foundation\Testing\Concerns\InteractsWithPages</type>
+          </tag>
+          <tag name="fluent" description="This method is part of a fluent interface and will return the same instance"/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$uri</name>
+          <default/>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Foundation\Testing\Concerns" line="74" package="Default">
+        <name>makeRequest</name>
+        <full_name>\Illuminate\Foundation\Testing\Concerns\InteractsWithPages::makeRequest()</full_name>
+        <docblock line="74">
+          <description>Make a request to the application and create a Crawler instance.</description>
+          <long-description/>
+          <tag name="param" line="74" description="" type="string" variable="$method">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="74" description="" type="string" variable="$uri">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="74" description="" type="array" variable="$parameters">
+            <type>array</type>
+          </tag>
+          <tag name="param" line="74" description="" type="array" variable="$cookies">
+            <type>array</type>
+          </tag>
+          <tag name="param" line="74" description="" type="array" variable="$files">
+            <type>array</type>
+          </tag>
+          <tag name="return" line="74" description="" type="\Illuminate\Foundation\Testing\Concerns\InteractsWithPages">
+            <type>\Illuminate\Foundation\Testing\Concerns\InteractsWithPages</type>
+          </tag>
+          <tag name="fluent" description="This method is part of a fluent interface and will return the same instance"/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$method</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$uri</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$parameters</name>
+          <default>array()</default>
+          <type>array</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$cookies</name>
+          <default>array()</default>
+          <type>array</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$files</name>
+          <default>array()</default>
+          <type>array</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Foundation\Testing\Concerns" line="94" package="Default">
+        <name>resetPageContext</name>
+        <full_name>\Illuminate\Foundation\Testing\Concerns\InteractsWithPages::resetPageContext()</full_name>
+        <docblock line="94">
+          <description>Clean the crawler and the subcrawlers values to reset the page context.</description>
+          <long-description/>
+          <tag name="return" line="94" description="" type="void">
+            <type>void</type>
+          </tag>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Foundation\Testing\Concerns" line="108" package="Default">
+        <name>makeRequestUsingForm</name>
+        <full_name>\Illuminate\Foundation\Testing\Concerns\InteractsWithPages::makeRequestUsingForm()</full_name>
+        <docblock line="108">
+          <description>Make a request to the application using the given form.</description>
+          <long-description/>
+          <tag name="param" line="108" description="" type="\Symfony\Component\DomCrawler\Form" variable="$form">
+            <type>\Symfony\Component\DomCrawler\Form</type>
+          </tag>
+          <tag name="param" line="108" description="" type="array" variable="$uploads">
+            <type>array</type>
+          </tag>
+          <tag name="return" line="108" description="" type="\Illuminate\Foundation\Testing\Concerns\InteractsWithPages">
+            <type>\Illuminate\Foundation\Testing\Concerns\InteractsWithPages</type>
+          </tag>
+          <tag name="fluent" description="This method is part of a fluent interface and will return the same instance"/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$form</name>
+          <default/>
+          <type>\Symfony\Component\DomCrawler\Form</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$uploads</name>
+          <default>array()</default>
+          <type>array</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Foundation\Testing\Concerns" line="123" package="Default">
+        <name>extractParametersFromForm</name>
+        <full_name>\Illuminate\Foundation\Testing\Concerns\InteractsWithPages::extractParametersFromForm()</full_name>
+        <docblock line="123">
+          <description>Extract the parameters from the given form.</description>
+          <long-description/>
+          <tag name="param" line="123" description="" type="\Symfony\Component\DomCrawler\Form" variable="$form">
+            <type>\Symfony\Component\DomCrawler\Form</type>
+          </tag>
+          <tag name="return" line="123" description="" type="array">
+            <type>array</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$form</name>
+          <default/>
+          <type>\Symfony\Component\DomCrawler\Form</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Foundation\Testing\Concerns" line="135" package="Default">
+        <name>followRedirects</name>
+        <full_name>\Illuminate\Foundation\Testing\Concerns\InteractsWithPages::followRedirects()</full_name>
+        <docblock line="135">
+          <description>Follow redirects from the last response.</description>
+          <long-description/>
+          <tag name="return" line="135" description="" type="\Illuminate\Foundation\Testing\Concerns\InteractsWithPages">
+            <type>\Illuminate\Foundation\Testing\Concerns\InteractsWithPages</type>
+          </tag>
+          <tag name="fluent" description="This method is part of a fluent interface and will return the same instance"/>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Foundation\Testing\Concerns" line="149" package="Default">
+        <name>clearInputs</name>
+        <full_name>\Illuminate\Foundation\Testing\Concerns\InteractsWithPages::clearInputs()</full_name>
+        <docblock line="149">
+          <description>Clear the inputs for the current page.</description>
+          <long-description/>
+          <tag name="return" line="149" description="" type="\Illuminate\Foundation\Testing\Concerns\InteractsWithPages">
+            <type>\Illuminate\Foundation\Testing\Concerns\InteractsWithPages</type>
+          </tag>
+          <tag name="fluent" description="This method is part of a fluent interface and will return the same instance"/>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Foundation\Testing\Concerns" line="164" package="Default">
+        <name>seePageIs</name>
+        <full_name>\Illuminate\Foundation\Testing\Concerns\InteractsWithPages::seePageIs()</full_name>
+        <docblock line="164">
+          <description>Assert that the current page matches a given URI.</description>
+          <long-description/>
+          <tag name="param" line="164" description="" type="string" variable="$uri">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="164" description="" type="\Illuminate\Foundation\Testing\Concerns\InteractsWithPages">
+            <type>\Illuminate\Foundation\Testing\Concerns\InteractsWithPages</type>
+          </tag>
+          <tag name="fluent" description="This method is part of a fluent interface and will return the same instance"/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$uri</name>
+          <default/>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Foundation\Testing\Concerns" line="184" package="Default">
+        <name>assertPageLoaded</name>
+        <full_name>\Illuminate\Foundation\Testing\Concerns\InteractsWithPages::assertPageLoaded()</full_name>
+        <docblock line="184">
+          <description>Assert that a given page successfully loaded.</description>
+          <long-description/>
+          <tag name="param" line="184" description="" type="string" variable="$uri">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="184" description="" type="string|null" variable="$message">
+            <type>string</type>
+            <type>null</type>
+          </tag>
+          <tag name="return" line="184" description="" type="void">
+            <type>void</type>
+          </tag>
+          <tag name="throws" line="184" description="" type="\Illuminate\Foundation\Testing\HttpException">
+            <type>\Illuminate\Foundation\Testing\HttpException</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$uri</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$message</name>
+          <default>null</default>
+          <type>string|null</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Foundation\Testing\Concerns" line="207" package="Default">
+        <name>within</name>
+        <full_name>\Illuminate\Foundation\Testing\Concerns\InteractsWithPages::within()</full_name>
+        <docblock line="207">
+          <description>Narrow the test content to a specific area of the page.</description>
+          <long-description/>
+          <tag name="param" line="207" description="" type="string" variable="$element">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="207" description="" type="\Closure" variable="$callback">
+            <type>\Closure</type>
+          </tag>
+          <tag name="return" line="207" description="" type="\Illuminate\Foundation\Testing\Concerns\InteractsWithPages">
+            <type>\Illuminate\Foundation\Testing\Concerns\InteractsWithPages</type>
+          </tag>
+          <tag name="fluent" description="This method is part of a fluent interface and will return the same instance"/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$element</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$callback</name>
+          <default/>
+          <type>\Closure</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Foundation\Testing\Concerns" line="223" package="Default">
+        <name>crawler</name>
+        <full_name>\Illuminate\Foundation\Testing\Concerns\InteractsWithPages::crawler()</full_name>
+        <docblock line="223">
+          <description>Get the current crawler according to the test context.</description>
+          <long-description/>
+          <tag name="return" line="223" description="" type="\Symfony\Component\DomCrawler\Crawler">
+            <type>\Symfony\Component\DomCrawler\Crawler</type>
+          </tag>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Foundation\Testing\Concerns" line="240" package="Default">
+        <name>assertInPage</name>
+        <full_name>\Illuminate\Foundation\Testing\Concerns\InteractsWithPages::assertInPage()</full_name>
+        <docblock line="240">
+          <description>Assert the given constraint.</description>
+          <long-description/>
+          <tag name="param" line="240" description="" type="\Illuminate\Foundation\Testing\Constraints\PageConstraint" variable="$constraint">
+            <type>\Illuminate\Foundation\Testing\Constraints\PageConstraint</type>
+          </tag>
+          <tag name="param" line="240" description="" type="boolean" variable="$reverse">
+            <type>boolean</type>
+          </tag>
+          <tag name="param" line="240" description="" type="string" variable="$message">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="240" description="" type="\Illuminate\Foundation\Testing\Concerns\InteractsWithPages">
+            <type>\Illuminate\Foundation\Testing\Concerns\InteractsWithPages</type>
+          </tag>
+          <tag name="fluent" description="This method is part of a fluent interface and will return the same instance"/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$constraint</name>
+          <default/>
+          <type>\Illuminate\Foundation\Testing\Constraints\PageConstraint</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$reverse</name>
+          <default>false</default>
+          <type>boolean</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$message</name>
+          <default>''</default>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Foundation\Testing\Concerns" line="261" package="Default">
+        <name>see</name>
+        <full_name>\Illuminate\Foundation\Testing\Concerns\InteractsWithPages::see()</full_name>
+        <docblock line="261">
+          <description>Assert that a given string is seen on the current HTML.</description>
+          <long-description/>
+          <tag name="param" line="261" description="" type="string" variable="$text">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="261" description="" type="boolean" variable="$negate">
+            <type>boolean</type>
+          </tag>
+          <tag name="return" line="261" description="" type="\Illuminate\Foundation\Testing\Concerns\InteractsWithPages">
+            <type>\Illuminate\Foundation\Testing\Concerns\InteractsWithPages</type>
+          </tag>
+          <tag name="fluent" description="This method is part of a fluent interface and will return the same instance"/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$text</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$negate</name>
+          <default>false</default>
+          <type>boolean</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Foundation\Testing\Concerns" line="272" package="Default">
+        <name>dontSee</name>
+        <full_name>\Illuminate\Foundation\Testing\Concerns\InteractsWithPages::dontSee()</full_name>
+        <docblock line="272">
+          <description>Assert that a given string is not seen on the current HTML.</description>
+          <long-description/>
+          <tag name="param" line="272" description="" type="string" variable="$text">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="272" description="" type="\Illuminate\Foundation\Testing\Concerns\InteractsWithPages">
+            <type>\Illuminate\Foundation\Testing\Concerns\InteractsWithPages</type>
+          </tag>
+          <tag name="fluent" description="This method is part of a fluent interface and will return the same instance"/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$text</name>
+          <default/>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Foundation\Testing\Concerns" line="285" package="Default">
+        <name>seeElement</name>
+        <full_name>\Illuminate\Foundation\Testing\Concerns\InteractsWithPages::seeElement()</full_name>
+        <docblock line="285">
+          <description>Assert that an element is present on the page.</description>
+          <long-description/>
+          <tag name="param" line="285" description="" type="string" variable="$selector">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="285" description="" type="array" variable="$attributes">
+            <type>array</type>
+          </tag>
+          <tag name="param" line="285" description="" type="boolean" variable="$negate">
+            <type>boolean</type>
+          </tag>
+          <tag name="return" line="285" description="" type="\Illuminate\Foundation\Testing\Concerns\InteractsWithPages">
+            <type>\Illuminate\Foundation\Testing\Concerns\InteractsWithPages</type>
+          </tag>
+          <tag name="fluent" description="This method is part of a fluent interface and will return the same instance"/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$selector</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$attributes</name>
+          <default>array()</default>
+          <type>array</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$negate</name>
+          <default>false</default>
+          <type>boolean</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Foundation\Testing\Concerns" line="297" package="Default">
+        <name>dontSeeElement</name>
+        <full_name>\Illuminate\Foundation\Testing\Concerns\InteractsWithPages::dontSeeElement()</full_name>
+        <docblock line="297">
+          <description>Assert that an element is not present on the page.</description>
+          <long-description/>
+          <tag name="param" line="297" description="" type="string" variable="$selector">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="297" description="" type="array" variable="$attributes">
+            <type>array</type>
+          </tag>
+          <tag name="return" line="297" description="" type="\Illuminate\Foundation\Testing\Concerns\InteractsWithPages">
+            <type>\Illuminate\Foundation\Testing\Concerns\InteractsWithPages</type>
+          </tag>
+          <tag name="fluent" description="This method is part of a fluent interface and will return the same instance"/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$selector</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$attributes</name>
+          <default>array()</default>
+          <type>array</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Foundation\Testing\Concerns" line="309" package="Default">
+        <name>seeText</name>
+        <full_name>\Illuminate\Foundation\Testing\Concerns\InteractsWithPages::seeText()</full_name>
+        <docblock line="309">
+          <description>Assert that a given string is seen on the current text.</description>
+          <long-description/>
+          <tag name="param" line="309" description="" type="string" variable="$text">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="309" description="" type="boolean" variable="$negate">
+            <type>boolean</type>
+          </tag>
+          <tag name="return" line="309" description="" type="\Illuminate\Foundation\Testing\Concerns\InteractsWithPages">
+            <type>\Illuminate\Foundation\Testing\Concerns\InteractsWithPages</type>
+          </tag>
+          <tag name="fluent" description="This method is part of a fluent interface and will return the same instance"/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$text</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$negate</name>
+          <default>false</default>
+          <type>boolean</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Foundation\Testing\Concerns" line="320" package="Default">
+        <name>dontSeeText</name>
+        <full_name>\Illuminate\Foundation\Testing\Concerns\InteractsWithPages::dontSeeText()</full_name>
+        <docblock line="320">
+          <description>Assert that a given string is not seen on the current text.</description>
+          <long-description/>
+          <tag name="param" line="320" description="" type="string" variable="$text">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="320" description="" type="\Illuminate\Foundation\Testing\Concerns\InteractsWithPages">
+            <type>\Illuminate\Foundation\Testing\Concerns\InteractsWithPages</type>
+          </tag>
+          <tag name="fluent" description="This method is part of a fluent interface and will return the same instance"/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$text</name>
+          <default/>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Foundation\Testing\Concerns" line="333" package="Default">
+        <name>seeInElement</name>
+        <full_name>\Illuminate\Foundation\Testing\Concerns\InteractsWithPages::seeInElement()</full_name>
+        <docblock line="333">
+          <description>Assert that a given string is seen inside an element.</description>
+          <long-description/>
+          <tag name="param" line="333" description="" type="string" variable="$element">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="333" description="" type="string" variable="$text">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="333" description="" type="boolean" variable="$negate">
+            <type>boolean</type>
+          </tag>
+          <tag name="return" line="333" description="" type="\Illuminate\Foundation\Testing\Concerns\InteractsWithPages">
+            <type>\Illuminate\Foundation\Testing\Concerns\InteractsWithPages</type>
+          </tag>
+          <tag name="fluent" description="This method is part of a fluent interface and will return the same instance"/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$element</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$text</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$negate</name>
+          <default>false</default>
+          <type>boolean</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Foundation\Testing\Concerns" line="345" package="Default">
+        <name>dontSeeInElement</name>
+        <full_name>\Illuminate\Foundation\Testing\Concerns\InteractsWithPages::dontSeeInElement()</full_name>
+        <docblock line="345">
+          <description>Assert that a given string is not seen inside an element.</description>
+          <long-description/>
+          <tag name="param" line="345" description="" type="string" variable="$element">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="345" description="" type="string" variable="$text">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="345" description="" type="\Illuminate\Foundation\Testing\Concerns\InteractsWithPages">
+            <type>\Illuminate\Foundation\Testing\Concerns\InteractsWithPages</type>
+          </tag>
+          <tag name="fluent" description="This method is part of a fluent interface and will return the same instance"/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$element</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$text</name>
+          <default/>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Foundation\Testing\Concerns" line="358" package="Default">
+        <name>seeLink</name>
+        <full_name>\Illuminate\Foundation\Testing\Concerns\InteractsWithPages::seeLink()</full_name>
+        <docblock line="358">
+          <description>Assert that a given link is seen on the page.</description>
+          <long-description/>
+          <tag name="param" line="358" description="" type="string" variable="$text">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="358" description="" type="string|null" variable="$url">
+            <type>string</type>
+            <type>null</type>
+          </tag>
+          <tag name="param" line="358" description="" type="boolean" variable="$negate">
+            <type>boolean</type>
+          </tag>
+          <tag name="return" line="358" description="" type="\Illuminate\Foundation\Testing\Concerns\InteractsWithPages">
+            <type>\Illuminate\Foundation\Testing\Concerns\InteractsWithPages</type>
+          </tag>
+          <tag name="fluent" description="This method is part of a fluent interface and will return the same instance"/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$text</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$url</name>
+          <default>null</default>
+          <type>string|null</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$negate</name>
+          <default>false</default>
+          <type>boolean</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Foundation\Testing\Concerns" line="370" package="Default">
+        <name>dontSeeLink</name>
+        <full_name>\Illuminate\Foundation\Testing\Concerns\InteractsWithPages::dontSeeLink()</full_name>
+        <docblock line="370">
+          <description>Assert that a given link is not seen on the page.</description>
+          <long-description/>
+          <tag name="param" line="370" description="" type="string" variable="$text">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="370" description="" type="string|null" variable="$url">
+            <type>string</type>
+            <type>null</type>
+          </tag>
+          <tag name="return" line="370" description="" type="\Illuminate\Foundation\Testing\Concerns\InteractsWithPages">
+            <type>\Illuminate\Foundation\Testing\Concerns\InteractsWithPages</type>
+          </tag>
+          <tag name="fluent" description="This method is part of a fluent interface and will return the same instance"/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$text</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$url</name>
+          <default>null</default>
+          <type>string|null</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Foundation\Testing\Concerns" line="383" package="Default">
+        <name>seeInField</name>
+        <full_name>\Illuminate\Foundation\Testing\Concerns\InteractsWithPages::seeInField()</full_name>
+        <docblock line="383">
+          <description>Assert that an input field contains the given value.</description>
+          <long-description/>
+          <tag name="param" line="383" description="" type="string" variable="$selector">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="383" description="" type="string" variable="$expected">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="383" description="" type="boolean" variable="$negate">
+            <type>boolean</type>
+          </tag>
+          <tag name="return" line="383" description="" type="\Illuminate\Foundation\Testing\Concerns\InteractsWithPages">
+            <type>\Illuminate\Foundation\Testing\Concerns\InteractsWithPages</type>
+          </tag>
+          <tag name="fluent" description="This method is part of a fluent interface and will return the same instance"/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$selector</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$expected</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$negate</name>
+          <default>false</default>
+          <type>boolean</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Foundation\Testing\Concerns" line="395" package="Default">
+        <name>dontSeeInField</name>
+        <full_name>\Illuminate\Foundation\Testing\Concerns\InteractsWithPages::dontSeeInField()</full_name>
+        <docblock line="395">
+          <description>Assert that an input field does not contain the given value.</description>
+          <long-description/>
+          <tag name="param" line="395" description="" type="string" variable="$selector">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="395" description="" type="string" variable="$value">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="395" description="" type="\Illuminate\Foundation\Testing\Concerns\InteractsWithPages">
+            <type>\Illuminate\Foundation\Testing\Concerns\InteractsWithPages</type>
+          </tag>
+          <tag name="fluent" description="This method is part of a fluent interface and will return the same instance"/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$selector</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$value</name>
+          <default/>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Foundation\Testing\Concerns" line="408" package="Default">
+        <name>seeIsSelected</name>
+        <full_name>\Illuminate\Foundation\Testing\Concerns\InteractsWithPages::seeIsSelected()</full_name>
+        <docblock line="408">
+          <description>Assert that the expected value is selected.</description>
+          <long-description/>
+          <tag name="param" line="408" description="" type="string" variable="$selector">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="408" description="" type="string" variable="$value">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="408" description="" type="boolean" variable="$negate">
+            <type>boolean</type>
+          </tag>
+          <tag name="return" line="408" description="" type="\Illuminate\Foundation\Testing\Concerns\InteractsWithPages">
+            <type>\Illuminate\Foundation\Testing\Concerns\InteractsWithPages</type>
+          </tag>
+          <tag name="fluent" description="This method is part of a fluent interface and will return the same instance"/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$selector</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$value</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$negate</name>
+          <default>false</default>
+          <type>boolean</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Foundation\Testing\Concerns" line="420" package="Default">
+        <name>dontSeeIsSelected</name>
+        <full_name>\Illuminate\Foundation\Testing\Concerns\InteractsWithPages::dontSeeIsSelected()</full_name>
+        <docblock line="420">
+          <description>Assert that the given value is not selected.</description>
+          <long-description/>
+          <tag name="param" line="420" description="" type="string" variable="$selector">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="420" description="" type="string" variable="$value">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="420" description="" type="\Illuminate\Foundation\Testing\Concerns\InteractsWithPages">
+            <type>\Illuminate\Foundation\Testing\Concerns\InteractsWithPages</type>
+          </tag>
+          <tag name="fluent" description="This method is part of a fluent interface and will return the same instance"/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$selector</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$value</name>
+          <default/>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Foundation\Testing\Concerns" line="432" package="Default">
+        <name>seeIsChecked</name>
+        <full_name>\Illuminate\Foundation\Testing\Concerns\InteractsWithPages::seeIsChecked()</full_name>
+        <docblock line="432">
+          <description>Assert that the given checkbox is selected.</description>
+          <long-description/>
+          <tag name="param" line="432" description="" type="string" variable="$selector">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="432" description="" type="boolean" variable="$negate">
+            <type>boolean</type>
+          </tag>
+          <tag name="return" line="432" description="" type="\Illuminate\Foundation\Testing\Concerns\InteractsWithPages">
+            <type>\Illuminate\Foundation\Testing\Concerns\InteractsWithPages</type>
+          </tag>
+          <tag name="fluent" description="This method is part of a fluent interface and will return the same instance"/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$selector</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$negate</name>
+          <default>false</default>
+          <type>boolean</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Foundation\Testing\Concerns" line="443" package="Default">
+        <name>dontSeeIsChecked</name>
+        <full_name>\Illuminate\Foundation\Testing\Concerns\InteractsWithPages::dontSeeIsChecked()</full_name>
+        <docblock line="443">
+          <description>Assert that the given checkbox is not selected.</description>
+          <long-description/>
+          <tag name="param" line="443" description="" type="string" variable="$selector">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="443" description="" type="\Illuminate\Foundation\Testing\Concerns\InteractsWithPages">
+            <type>\Illuminate\Foundation\Testing\Concerns\InteractsWithPages</type>
+          </tag>
+          <tag name="fluent" description="This method is part of a fluent interface and will return the same instance"/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$selector</name>
+          <default/>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Foundation\Testing\Concerns" line="456" package="Default">
+        <name>click</name>
+        <full_name>\Illuminate\Foundation\Testing\Concerns\InteractsWithPages::click()</full_name>
+        <docblock line="456">
+          <description>Click a link with the given body, name, or ID attribute.</description>
+          <long-description/>
+          <tag name="param" line="456" description="" type="string" variable="$name">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="456" description="" type="\Illuminate\Foundation\Testing\Concerns\InteractsWithPages">
+            <type>\Illuminate\Foundation\Testing\Concerns\InteractsWithPages</type>
+          </tag>
+          <tag name="throws" line="456" description="" type="\InvalidArgumentException">
+            <type>\InvalidArgumentException</type>
+          </tag>
+          <tag name="fluent" description="This method is part of a fluent interface and will return the same instance"/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$name</name>
+          <default/>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Foundation\Testing\Concerns" line="482" package="Default">
+        <name>type</name>
+        <full_name>\Illuminate\Foundation\Testing\Concerns\InteractsWithPages::type()</full_name>
+        <docblock line="482">
+          <description>Fill an input field with the given text.</description>
+          <long-description/>
+          <tag name="param" line="482" description="" type="string" variable="$text">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="482" description="" type="string" variable="$element">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="482" description="" type="\Illuminate\Foundation\Testing\Concerns\InteractsWithPages">
+            <type>\Illuminate\Foundation\Testing\Concerns\InteractsWithPages</type>
+          </tag>
+          <tag name="fluent" description="This method is part of a fluent interface and will return the same instance"/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$text</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$element</name>
+          <default/>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Foundation\Testing\Concerns" line="493" package="Default">
+        <name>check</name>
+        <full_name>\Illuminate\Foundation\Testing\Concerns\InteractsWithPages::check()</full_name>
+        <docblock line="493">
+          <description>Check a checkbox on the page.</description>
+          <long-description/>
+          <tag name="param" line="493" description="" type="string" variable="$element">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="493" description="" type="\Illuminate\Foundation\Testing\Concerns\InteractsWithPages">
+            <type>\Illuminate\Foundation\Testing\Concerns\InteractsWithPages</type>
+          </tag>
+          <tag name="fluent" description="This method is part of a fluent interface and will return the same instance"/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$element</name>
+          <default/>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Foundation\Testing\Concerns" line="504" package="Default">
+        <name>uncheck</name>
+        <full_name>\Illuminate\Foundation\Testing\Concerns\InteractsWithPages::uncheck()</full_name>
+        <docblock line="504">
+          <description>Uncheck a checkbox on the page.</description>
+          <long-description/>
+          <tag name="param" line="504" description="" type="string" variable="$element">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="504" description="" type="\Illuminate\Foundation\Testing\Concerns\InteractsWithPages">
+            <type>\Illuminate\Foundation\Testing\Concerns\InteractsWithPages</type>
+          </tag>
+          <tag name="fluent" description="This method is part of a fluent interface and will return the same instance"/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$element</name>
+          <default/>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Foundation\Testing\Concerns" line="516" package="Default">
+        <name>select</name>
+        <full_name>\Illuminate\Foundation\Testing\Concerns\InteractsWithPages::select()</full_name>
+        <docblock line="516">
+          <description>Select an option from a drop-down.</description>
+          <long-description/>
+          <tag name="param" line="516" description="" type="string" variable="$option">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="516" description="" type="string" variable="$element">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="516" description="" type="\Illuminate\Foundation\Testing\Concerns\InteractsWithPages">
+            <type>\Illuminate\Foundation\Testing\Concerns\InteractsWithPages</type>
+          </tag>
+          <tag name="fluent" description="This method is part of a fluent interface and will return the same instance"/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$option</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$element</name>
+          <default/>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Foundation\Testing\Concerns" line="528" package="Default">
+        <name>attach</name>
+        <full_name>\Illuminate\Foundation\Testing\Concerns\InteractsWithPages::attach()</full_name>
+        <docblock line="528">
+          <description>Attach a file to a form field on the page.</description>
+          <long-description/>
+          <tag name="param" line="528" description="" type="string" variable="$absolutePath">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="528" description="" type="string" variable="$element">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="528" description="" type="\Illuminate\Foundation\Testing\Concerns\InteractsWithPages">
+            <type>\Illuminate\Foundation\Testing\Concerns\InteractsWithPages</type>
+          </tag>
+          <tag name="fluent" description="This method is part of a fluent interface and will return the same instance"/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$absolutePath</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$element</name>
+          <default/>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Foundation\Testing\Concerns" line="541" package="Default">
+        <name>press</name>
+        <full_name>\Illuminate\Foundation\Testing\Concerns\InteractsWithPages::press()</full_name>
+        <docblock line="541">
+          <description>Submit a form using the button with the given text value.</description>
+          <long-description/>
+          <tag name="param" line="541" description="" type="string" variable="$buttonText">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="541" description="" type="\Illuminate\Foundation\Testing\Concerns\InteractsWithPages">
+            <type>\Illuminate\Foundation\Testing\Concerns\InteractsWithPages</type>
+          </tag>
+          <tag name="fluent" description="This method is part of a fluent interface and will return the same instance"/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$buttonText</name>
+          <default/>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Foundation\Testing\Concerns" line="554" package="Default">
+        <name>submitForm</name>
+        <full_name>\Illuminate\Foundation\Testing\Concerns\InteractsWithPages::submitForm()</full_name>
+        <docblock line="554">
+          <description>Submit a form on the page with the given input.</description>
+          <long-description/>
+          <tag name="param" line="554" description="" type="string" variable="$buttonText">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="554" description="" type="array" variable="$inputs">
+            <type>array</type>
+          </tag>
+          <tag name="param" line="554" description="" type="array" variable="$uploads">
+            <type>array</type>
+          </tag>
+          <tag name="return" line="554" description="" type="\Illuminate\Foundation\Testing\Concerns\InteractsWithPages">
+            <type>\Illuminate\Foundation\Testing\Concerns\InteractsWithPages</type>
+          </tag>
+          <tag name="fluent" description="This method is part of a fluent interface and will return the same instance"/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$buttonText</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$inputs</name>
+          <default>array()</default>
+          <type>array</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$uploads</name>
+          <default>array()</default>
+          <type>array</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Foundation\Testing\Concerns" line="568" package="Default">
+        <name>fillForm</name>
+        <full_name>\Illuminate\Foundation\Testing\Concerns\InteractsWithPages::fillForm()</full_name>
+        <docblock line="568">
+          <description>Fill the form with the given data.</description>
+          <long-description/>
+          <tag name="param" line="568" description="" type="string" variable="$buttonText">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="568" description="" type="array" variable="$inputs">
+            <type>array</type>
+          </tag>
+          <tag name="return" line="568" description="" type="\Symfony\Component\DomCrawler\Form">
+            <type>\Symfony\Component\DomCrawler\Form</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$buttonText</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$inputs</name>
+          <default>array()</default>
+          <type>array</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Foundation\Testing\Concerns" line="587" package="Default">
+        <name>getForm</name>
+        <full_name>\Illuminate\Foundation\Testing\Concerns\InteractsWithPages::getForm()</full_name>
+        <docblock line="587">
+          <description>Get the form from the page with the given submit button text.</description>
+          <long-description/>
+          <tag name="param" line="587" description="" type="string|null" variable="$buttonText">
+            <type>string</type>
+            <type>null</type>
+          </tag>
+          <tag name="return" line="587" description="" type="\Symfony\Component\DomCrawler\Form">
+            <type>\Symfony\Component\DomCrawler\Form</type>
+          </tag>
+          <tag name="throws" line="587" description="" type="\InvalidArgumentException">
+            <type>\InvalidArgumentException</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$buttonText</name>
+          <default>null</default>
+          <type>string|null</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Foundation\Testing\Concerns" line="609" package="Default">
+        <name>storeInput</name>
+        <full_name>\Illuminate\Foundation\Testing\Concerns\InteractsWithPages::storeInput()</full_name>
+        <docblock line="609">
+          <description>Store a form input in the local array.</description>
+          <long-description/>
+          <tag name="param" line="609" description="" type="string" variable="$element">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="609" description="" type="string" variable="$text">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="609" description="" type="\Illuminate\Foundation\Testing\Concerns\InteractsWithPages">
+            <type>\Illuminate\Foundation\Testing\Concerns\InteractsWithPages</type>
+          </tag>
+          <tag name="fluent" description="This method is part of a fluent interface and will return the same instance"/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$element</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$text</name>
+          <default/>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Foundation\Testing\Concerns" line="628" package="Default">
+        <name>assertFilterProducesResults</name>
+        <full_name>\Illuminate\Foundation\Testing\Concerns\InteractsWithPages::assertFilterProducesResults()</full_name>
+        <docblock line="628">
+          <description>Assert that a filtered Crawler returns nodes.</description>
+          <long-description/>
+          <tag name="param" line="628" description="" type="string" variable="$filter">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="628" description="" type="void">
+            <type>void</type>
+          </tag>
+          <tag name="throws" line="628" description="" type="\InvalidArgumentException">
+            <type>\InvalidArgumentException</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$filter</name>
+          <default/>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Foundation\Testing\Concerns" line="646" package="Default">
+        <name>filterByNameOrId</name>
+        <full_name>\Illuminate\Foundation\Testing\Concerns\InteractsWithPages::filterByNameOrId()</full_name>
+        <docblock line="646">
+          <description>Filter elements according to the given name or ID attribute.</description>
+          <long-description/>
+          <tag name="param" line="646" description="" type="string" variable="$name">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="646" description="" type="array|string" variable="$elements">
+            <type>array</type>
+            <type>string</type>
+          </tag>
+          <tag name="return" line="646" description="" type="\Symfony\Component\DomCrawler\Crawler">
+            <type>\Symfony\Component\DomCrawler\Crawler</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$name</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$elements</name>
+          <default>'*'</default>
+          <type>array|string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Foundation\Testing\Concerns" line="668" package="Default">
+        <name>convertUploadsForTesting</name>
+        <full_name>\Illuminate\Foundation\Testing\Concerns\InteractsWithPages::convertUploadsForTesting()</full_name>
+        <docblock line="668">
+          <description>Convert the given uploads to UploadedFile instances.</description>
+          <long-description/>
+          <tag name="param" line="668" description="" type="\Symfony\Component\DomCrawler\Form" variable="$form">
+            <type>\Symfony\Component\DomCrawler\Form</type>
+          </tag>
+          <tag name="param" line="668" description="" type="array" variable="$uploads">
+            <type>array</type>
+          </tag>
+          <tag name="return" line="668" description="" type="array">
+            <type>array</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$form</name>
+          <default/>
+          <type>\Symfony\Component\DomCrawler\Form</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$uploads</name>
+          <default/>
+          <type>array</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Foundation\Testing\Concerns" line="691" package="Default">
+        <name>getUploadedFileForTesting</name>
+        <full_name>\Illuminate\Foundation\Testing\Concerns\InteractsWithPages::getUploadedFileForTesting()</full_name>
+        <docblock line="691">
+          <description>Create an UploadedFile instance for testing.</description>
+          <long-description/>
+          <tag name="param" line="691" description="" type="array" variable="$file">
+            <type>array</type>
+          </tag>
+          <tag name="param" line="691" description="" type="array" variable="$uploads">
+            <type>array</type>
+          </tag>
+          <tag name="param" line="691" description="" type="string" variable="$name">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="691" description="" type="\Illuminate\Http\UploadedFile">
+            <type>\Illuminate\Http\UploadedFile</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$file</name>
+          <default/>
+          <type>array</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$uploads</name>
+          <default/>
+          <type>array</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$name</name>
+          <default/>
+          <type>string</type>
+        </argument>
+      </method>
+    </trait>
+    <parse_markers>
+      <error line="0" code="PPC:ERR-50000">No summary was found for this file</error>
+      <error line="23" code="PPC:ERR-50010">No summary for trait ""</error>
+    </parse_markers>
+    <source>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</source>
+  <type>trait</type></file>

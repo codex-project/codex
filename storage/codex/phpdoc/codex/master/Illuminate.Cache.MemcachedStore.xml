@@ -1,0 +1,398 @@
+<file path="codex/vendor/laravel/framework/src/Illuminate/Cache/MemcachedStore.php" generated-path="codex.vendor.laravel.framework.src.Illuminate.Cache.MemcachedStore.html" hash="110991f51543aacf5fd11e89fc60c631" package="Default">
+    <docblock line="0">
+      <description/>
+      <long-description/>
+      <tag name="package" line="0" description="Default"/>
+    </docblock>
+    <namespace-alias name="Memcached">\Memcached</namespace-alias>
+    <namespace-alias name="Store">\Illuminate\Contracts\Cache\Store</namespace-alias>
+    <class final="false" abstract="false" namespace="Illuminate\Cache" line="8" package="Default">
+      <extends>\Illuminate\Cache\TaggableStore</extends>
+      <implements>\Illuminate\Contracts\Cache\Store</implements>
+      <name>MemcachedStore</name>
+      <full_name>\Illuminate\Cache\MemcachedStore</full_name>
+      <docblock line="8">
+        <description/>
+        <long-description/>
+        <tag name="package" line="8" description="Default"/>
+        <tag name="inherited_from" description="\Illuminate\Cache\TaggableStore" refers="\Illuminate\Cache\TaggableStore" link="/classes/Illuminate.Cache.TaggableStore.html"/>
+      </docblock>
+      <property static="false" visibility="protected" namespace="Illuminate\Cache" line="15" package="Default">
+        <name>$memcached</name>
+        <full_name>\Illuminate\Cache\MemcachedStore::memcached</full_name>
+        <default/>
+        <docblock line="15">
+          <description>The Memcached instance.</description>
+          <long-description/>
+          <tag name="var" line="15" description="" type="\Memcached" variable="">
+            <type>\Memcached</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" namespace="Illuminate\Cache" line="22" package="Default">
+        <name>$prefix</name>
+        <full_name>\Illuminate\Cache\MemcachedStore::prefix</full_name>
+        <default/>
+        <docblock line="22">
+          <description>A string that should be prepended to keys.</description>
+          <long-description/>
+          <tag name="var" line="22" description="" type="string" variable="">
+            <type>string</type>
+          </tag>
+        </docblock>
+      </property>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Cache" line="31" package="Default">
+        <name>__construct</name>
+        <full_name>\Illuminate\Cache\MemcachedStore::__construct()</full_name>
+        <docblock line="31">
+          <description>Create a new Memcached store.</description>
+          <long-description/>
+          <tag name="param" line="31" description="" type="\Memcached" variable="$memcached">
+            <type>\Memcached</type>
+          </tag>
+          <tag name="param" line="31" description="" type="string" variable="$prefix">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="31" description="" type="void">
+            <type>void</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$memcached</name>
+          <default/>
+          <type>\Memcached</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$prefix</name>
+          <default>''</default>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Cache" line="43" package="Default">
+        <name>get</name>
+        <full_name>\Illuminate\Cache\MemcachedStore::get()</full_name>
+        <docblock line="43">
+          <description>Retrieve an item from the cache by key.</description>
+          <long-description/>
+          <tag name="param" line="43" description="" type="string|array" variable="$key">
+            <type>string</type>
+            <type>array</type>
+          </tag>
+          <tag name="return" line="43" description="" type="mixed">
+            <type>mixed</type>
+          </tag>
+          <tag name="inherited_from" description="\Illuminate\Contracts\Cache\Store::get()" refers="\Illuminate\Contracts\Cache\Store::get()" link="/classes/Illuminate.Contracts.Cache.Store.html#method_get"/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$key</name>
+          <default/>
+          <type>string|array</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Cache" line="60" package="Default">
+        <name>many</name>
+        <full_name>\Illuminate\Cache\MemcachedStore::many()</full_name>
+        <docblock line="60">
+          <description>Retrieve multiple items from the cache by key.</description>
+          <long-description>Items not found in the cache will have a null value.</long-description>
+          <tag name="param" line="60" description="" type="array" variable="$keys">
+            <type>array</type>
+          </tag>
+          <tag name="return" line="60" description="" type="array">
+            <type>array</type>
+          </tag>
+          <tag name="inherited_from" description="\Illuminate\Contracts\Cache\Store::many()" refers="\Illuminate\Contracts\Cache\Store::many()" link="/classes/Illuminate.Contracts.Cache.Store.html#method_many"/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$keys</name>
+          <default/>
+          <type>array</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Cache" line="83" package="Default">
+        <name>put</name>
+        <full_name>\Illuminate\Cache\MemcachedStore::put()</full_name>
+        <docblock line="83">
+          <description>Store an item in the cache for a given number of minutes.</description>
+          <long-description/>
+          <tag name="param" line="83" description="" type="string" variable="$key">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="83" description="" type="mixed" variable="$value">
+            <type>mixed</type>
+          </tag>
+          <tag name="param" line="83" description="" type="integer" variable="$minutes">
+            <type>integer</type>
+          </tag>
+          <tag name="return" line="83" description="" type="void">
+            <type>void</type>
+          </tag>
+          <tag name="inherited_from" description="\Illuminate\Contracts\Cache\Store::put()" refers="\Illuminate\Contracts\Cache\Store::put()" link="/classes/Illuminate.Contracts.Cache.Store.html#method_put"/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$key</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$value</name>
+          <default/>
+          <type>mixed</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$minutes</name>
+          <default/>
+          <type>integer</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Cache" line="95" package="Default">
+        <name>putMany</name>
+        <full_name>\Illuminate\Cache\MemcachedStore::putMany()</full_name>
+        <docblock line="95">
+          <description>Store multiple items in the cache for a given number of minutes.</description>
+          <long-description/>
+          <tag name="param" line="95" description="" type="array" variable="$values">
+            <type>array</type>
+          </tag>
+          <tag name="param" line="95" description="" type="integer" variable="$minutes">
+            <type>integer</type>
+          </tag>
+          <tag name="return" line="95" description="" type="void">
+            <type>void</type>
+          </tag>
+          <tag name="inherited_from" description="\Illuminate\Contracts\Cache\Store::putMany()" refers="\Illuminate\Contracts\Cache\Store::putMany()" link="/classes/Illuminate.Contracts.Cache.Store.html#method_putMany"/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$values</name>
+          <default/>
+          <type>array</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$minutes</name>
+          <default/>
+          <type>integer</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Cache" line="114" package="Default">
+        <name>add</name>
+        <full_name>\Illuminate\Cache\MemcachedStore::add()</full_name>
+        <docblock line="114">
+          <description>Store an item in the cache if the key doesn't exist.</description>
+          <long-description/>
+          <tag name="param" line="114" description="" type="string" variable="$key">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="114" description="" type="mixed" variable="$value">
+            <type>mixed</type>
+          </tag>
+          <tag name="param" line="114" description="" type="integer" variable="$minutes">
+            <type>integer</type>
+          </tag>
+          <tag name="return" line="114" description="" type="boolean">
+            <type>boolean</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$key</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$value</name>
+          <default/>
+          <type>mixed</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$minutes</name>
+          <default/>
+          <type>integer</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Cache" line="126" package="Default">
+        <name>increment</name>
+        <full_name>\Illuminate\Cache\MemcachedStore::increment()</full_name>
+        <docblock line="126">
+          <description>Increment the value of an item in the cache.</description>
+          <long-description/>
+          <tag name="param" line="126" description="" type="string" variable="$key">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="126" description="" type="mixed" variable="$value">
+            <type>mixed</type>
+          </tag>
+          <tag name="return" line="126" description="" type="integer|boolean">
+            <type>integer</type>
+            <type>boolean</type>
+          </tag>
+          <tag name="inherited_from" description="\Illuminate\Contracts\Cache\Store::increment()" refers="\Illuminate\Contracts\Cache\Store::increment()" link="/classes/Illuminate.Contracts.Cache.Store.html#method_increment"/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$key</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$value</name>
+          <default>1</default>
+          <type>mixed</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Cache" line="138" package="Default">
+        <name>decrement</name>
+        <full_name>\Illuminate\Cache\MemcachedStore::decrement()</full_name>
+        <docblock line="138">
+          <description>Decrement the value of an item in the cache.</description>
+          <long-description/>
+          <tag name="param" line="138" description="" type="string" variable="$key">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="138" description="" type="mixed" variable="$value">
+            <type>mixed</type>
+          </tag>
+          <tag name="return" line="138" description="" type="integer|boolean">
+            <type>integer</type>
+            <type>boolean</type>
+          </tag>
+          <tag name="inherited_from" description="\Illuminate\Contracts\Cache\Store::decrement()" refers="\Illuminate\Contracts\Cache\Store::decrement()" link="/classes/Illuminate.Contracts.Cache.Store.html#method_decrement"/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$key</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$value</name>
+          <default>1</default>
+          <type>mixed</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Cache" line="150" package="Default">
+        <name>forever</name>
+        <full_name>\Illuminate\Cache\MemcachedStore::forever()</full_name>
+        <docblock line="150">
+          <description>Store an item in the cache indefinitely.</description>
+          <long-description/>
+          <tag name="param" line="150" description="" type="string" variable="$key">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="150" description="" type="mixed" variable="$value">
+            <type>mixed</type>
+          </tag>
+          <tag name="return" line="150" description="" type="void">
+            <type>void</type>
+          </tag>
+          <tag name="inherited_from" description="\Illuminate\Contracts\Cache\Store::forever()" refers="\Illuminate\Contracts\Cache\Store::forever()" link="/classes/Illuminate.Contracts.Cache.Store.html#method_forever"/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$key</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$value</name>
+          <default/>
+          <type>mixed</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Cache" line="161" package="Default">
+        <name>forget</name>
+        <full_name>\Illuminate\Cache\MemcachedStore::forget()</full_name>
+        <docblock line="161">
+          <description>Remove an item from the cache.</description>
+          <long-description/>
+          <tag name="param" line="161" description="" type="string" variable="$key">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="161" description="" type="boolean">
+            <type>boolean</type>
+          </tag>
+          <tag name="inherited_from" description="\Illuminate\Contracts\Cache\Store::forget()" refers="\Illuminate\Contracts\Cache\Store::forget()" link="/classes/Illuminate.Contracts.Cache.Store.html#method_forget"/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$key</name>
+          <default/>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Cache" line="171" package="Default">
+        <name>flush</name>
+        <full_name>\Illuminate\Cache\MemcachedStore::flush()</full_name>
+        <docblock line="171">
+          <description>Remove all items from the cache.</description>
+          <long-description/>
+          <tag name="return" line="171" description="" type="void">
+            <type>void</type>
+          </tag>
+          <tag name="inherited_from" description="\Illuminate\Contracts\Cache\Store::flush()" refers="\Illuminate\Contracts\Cache\Store::flush()" link="/classes/Illuminate.Contracts.Cache.Store.html#method_flush"/>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Cache" line="181" package="Default">
+        <name>getMemcached</name>
+        <full_name>\Illuminate\Cache\MemcachedStore::getMemcached()</full_name>
+        <docblock line="181">
+          <description>Get the underlying Memcached connection.</description>
+          <long-description/>
+          <tag name="return" line="181" description="" type="\Memcached">
+            <type>\Memcached</type>
+          </tag>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Cache" line="191" package="Default">
+        <name>getPrefix</name>
+        <full_name>\Illuminate\Cache\MemcachedStore::getPrefix()</full_name>
+        <docblock line="191">
+          <description>Get the cache key prefix.</description>
+          <long-description/>
+          <tag name="return" line="191" description="" type="string">
+            <type>string</type>
+          </tag>
+          <tag name="inherited_from" description="\Illuminate\Contracts\Cache\Store::getPrefix()" refers="\Illuminate\Contracts\Cache\Store::getPrefix()" link="/classes/Illuminate.Contracts.Cache.Store.html#method_getPrefix"/>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Cache" line="202" package="Default">
+        <name>setPrefix</name>
+        <full_name>\Illuminate\Cache\MemcachedStore::setPrefix()</full_name>
+        <docblock line="202">
+          <description>Set the cache key prefix.</description>
+          <long-description/>
+          <tag name="param" line="202" description="" type="string" variable="$prefix">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="202" description="" type="void">
+            <type>void</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$prefix</name>
+          <default/>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Cache" line="13" package="Default">
+        <name>tags</name>
+        <full_name>\Illuminate\Cache\TaggableStore::tags()</full_name>
+        <docblock line="13">
+          <description>Begin executing a new tags operation.</description>
+          <long-description/>
+          <tag name="param" line="13" description="" type="array|mixed" variable="$names">
+            <type>array</type>
+            <type>mixed</type>
+          </tag>
+          <tag name="return" line="13" description="" type="\Illuminate\Cache\TaggedCache">
+            <type>\Illuminate\Cache\TaggedCache</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$names</name>
+          <default/>
+          <type>array|mixed</type>
+        </argument>
+        <inherited_from>\Illuminate\Cache\TaggableStore</inherited_from>
+      </method>
+    </class>
+    <parse_markers>
+      <error line="0" code="PPC:ERR-50000">No summary was found for this file</error>
+      <error line="8" code="PPC:ERR-50005">No summary for class \Illuminate\Cache\MemcachedStore</error>
+    </parse_markers>
+    <source>eJzNV01v2zgQvftXTIEFbAdu2r3sIdmkLVKjCBbBFk6QS1MYtDyyiUqkQFJujG3++45IyqYl0XaaxaK62JLm8715FPnnu2JZ9HqC5agLliBcZ1mZc8EMPlyxZInnvV6pEW4wT6rb+bm9Da2kMIolRjv7h1sjVeWVZEzrrZ99DPhoUMw13LHFgs0ydE95XmSYozAa7IPePz2g683Jif2FE7hbBiUAF9owkeCpf11bvV8xBQ8bO//4jf0tlDSYGPL+Ld/20szzAbRRXCzALJkBvZRlNocZkjcWVDh5GwnfcK07UzvfWFqKkfLHds4rhYQjMBD4PWhSV0i00hRMsRyCJiHop2nle7GXT78xUWhKJWAleQOncpbxBNJSJIZLAdNpIgluVSZmsM00quPBBfT7Q+vpSLO5zJLr15cazWdrNPDGw/OmySYgxQl5qUyeWkhNkBrCFWElgBvMIVUyJ6oQrB/M1hU3McwcGj+YUmxNBZBlE4ycPzanpoHGAgkF8mx1vGJZiVUTjb5eX1oX99ShcGoD+DmoLp7CoNNvgrrMzJWc42AIFxfwdhikrC5ft8u+BffpEH45heWkOYuiPg7Ga2sqpIFUlqISYeDynWcZLNnKjnFJ/21FMSYCCnSTA/tuLwc5E+uBC2EjtLhwMOP8L3pJlFjTac6KwSaE4zACZourANiRTxmw58DXMe5vKqgHOzWNLESjrdbPzj6N76afJ+Pb8eR+PP178nE8ef6AvIoPiIMgJZKmVfm2fV/GMBybXqdfIvMZF1h7+YaHMZW6Nb2W6M6YpFLRgCz4CgUlz2eoQKYkO1EabC+pjVVsR7H+nVXshoTmWy6Mo8hnePbiV5RO7nXTo02oyJIX0KM7dd+ORPX88fYAmA29vhzTWoGOyk7cXgLaTSBRl2IPcrU07msdffkazD61h9QnCcDrjGk7CXBx6WM3Z74R8EubhK+VWFtr5n4uGzq+b3R1DIudkiBtVzdVR3OJWvQNbZK4Nv+/GmZSZnuJZfP5kWrYXUoDIG2IF4viWiTK7hctdO7TSzPfhe9/CKNvimD8cRAqXle4AxiN3e9HQxWEiAIWRegj/uoIzfHFCAUhno/QPknSRj/lgl5kBzaTP4POwfWzWvFWqHZwiXxu2t+nuGgmmMvo1vlZbR67XlAjsf3yHk4zNNi9Yd7fF206u3azrc6OpiEr9XJw+Dvv7WLlfUKnQdoyo8rWFZrbsxsdrQTadLEyY6fZ9rlkY9iqOQL2oYqdGKoPk6chUmLXqbddnj8J7q+tPiJ3F3Z7bGHN4f3Jo2/7/BpRYX0SfgWYF2a9MYd3de7T/lkfzuioXPf21PsXHUn57Q==</source>
+  <type>class</type></file>

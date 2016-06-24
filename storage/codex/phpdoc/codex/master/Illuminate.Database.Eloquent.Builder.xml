@@ -1,0 +1,2056 @@
+<file path="codex/vendor/laravel/framework/src/Illuminate/Database/Eloquent/Builder.php" generated-path="codex.vendor.laravel.framework.src.Illuminate.Database.Eloquent.Builder.html" hash="c0c49ed9a4a2eb82a126fe41ead11738" package="Default">
+    <docblock line="0">
+      <description/>
+      <long-description/>
+      <tag name="package" line="0" description="Default"/>
+    </docblock>
+    <namespace-alias name="Closure">\Closure</namespace-alias>
+    <namespace-alias name="Arr">\Illuminate\Support\Arr</namespace-alias>
+    <namespace-alias name="Str">\Illuminate\Support\Str</namespace-alias>
+    <namespace-alias name="Paginator">\Illuminate\Pagination\Paginator</namespace-alias>
+    <namespace-alias name="Expression">\Illuminate\Database\Query\Expression</namespace-alias>
+    <namespace-alias name="LengthAwarePaginator">\Illuminate\Pagination\LengthAwarePaginator</namespace-alias>
+    <namespace-alias name="Relation">\Illuminate\Database\Eloquent\Relations\Relation</namespace-alias>
+    <namespace-alias name="QueryBuilder">\Illuminate\Database\Query\Builder</namespace-alias>
+    <class final="false" abstract="false" namespace="Illuminate\Database\Eloquent" line="14" package="Default">
+      <extends/>
+      <name>Builder</name>
+      <full_name>\Illuminate\Database\Eloquent\Builder</full_name>
+      <docblock line="14">
+        <description/>
+        <long-description/>
+        <tag name="package" line="14" description="Default"/>
+      </docblock>
+      <property static="false" visibility="protected" namespace="Illuminate\Database\Eloquent" line="21" package="Default">
+        <name>$query</name>
+        <full_name>\Illuminate\Database\Eloquent\Builder::query</full_name>
+        <default/>
+        <docblock line="21">
+          <description>The base query builder instance.</description>
+          <long-description/>
+          <tag name="var" line="21" description="" type="\Illuminate\Database\Query\Builder" variable="">
+            <type>\Illuminate\Database\Query\Builder</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" namespace="Illuminate\Database\Eloquent" line="28" package="Default">
+        <name>$model</name>
+        <full_name>\Illuminate\Database\Eloquent\Builder::model</full_name>
+        <default/>
+        <docblock line="28">
+          <description>The model being queried.</description>
+          <long-description/>
+          <tag name="var" line="28" description="" type="\Illuminate\Database\Eloquent\Model" variable="">
+            <type>\Illuminate\Database\Eloquent\Model</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" namespace="Illuminate\Database\Eloquent" line="35" package="Default">
+        <name>$eagerLoad</name>
+        <full_name>\Illuminate\Database\Eloquent\Builder::eagerLoad</full_name>
+        <default>array()</default>
+        <docblock line="35">
+          <description>The relationships that should be eager loaded.</description>
+          <long-description/>
+          <tag name="var" line="35" description="" type="array" variable="">
+            <type>array</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" namespace="Illuminate\Database\Eloquent" line="42" package="Default">
+        <name>$macros</name>
+        <full_name>\Illuminate\Database\Eloquent\Builder::macros</full_name>
+        <default>array()</default>
+        <docblock line="42">
+          <description>All of the registered builder macros.</description>
+          <long-description/>
+          <tag name="var" line="42" description="" type="array" variable="">
+            <type>array</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" namespace="Illuminate\Database\Eloquent" line="49" package="Default">
+        <name>$onDelete</name>
+        <full_name>\Illuminate\Database\Eloquent\Builder::onDelete</full_name>
+        <default/>
+        <docblock line="49">
+          <description>A replacement for the typical delete function.</description>
+          <long-description/>
+          <tag name="var" line="49" description="" type="\Closure" variable="">
+            <type>\Closure</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" namespace="Illuminate\Database\Eloquent" line="56" package="Default">
+        <name>$passthru</name>
+        <full_name>\Illuminate\Database\Eloquent\Builder::passthru</full_name>
+        <default>array('insert', 'insertGetId', 'getBindings', 'toSql', 'exists', 'count', 'min', 'max', 'avg', 'sum', 'getConnection')</default>
+        <docblock line="56">
+          <description>The methods that should be returned from query builder.</description>
+          <long-description/>
+          <tag name="var" line="56" description="" type="array" variable="">
+            <type>array</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" namespace="Illuminate\Database\Eloquent" line="66" package="Default">
+        <name>$scopes</name>
+        <full_name>\Illuminate\Database\Eloquent\Builder::scopes</full_name>
+        <default>array()</default>
+        <docblock line="66">
+          <description>Applied global scopes.</description>
+          <long-description/>
+          <tag name="var" line="66" description="" type="array" variable="">
+            <type>array</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" namespace="Illuminate\Database\Eloquent" line="73" package="Default">
+        <name>$removedScopes</name>
+        <full_name>\Illuminate\Database\Eloquent\Builder::removedScopes</full_name>
+        <default>array()</default>
+        <docblock line="73">
+          <description>Removed global scopes.</description>
+          <long-description/>
+          <tag name="var" line="73" description="" type="array" variable="">
+            <type>array</type>
+          </tag>
+        </docblock>
+      </property>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Eloquent" line="81" package="Default">
+        <name>__construct</name>
+        <full_name>\Illuminate\Database\Eloquent\Builder::__construct()</full_name>
+        <docblock line="81">
+          <description>Create a new Eloquent query builder instance.</description>
+          <long-description/>
+          <tag name="param" line="81" description="" type="\Illuminate\Database\Query\Builder" variable="$query">
+            <type>\Illuminate\Database\Query\Builder</type>
+          </tag>
+          <tag name="return" line="81" description="" type="void">
+            <type>void</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$query</name>
+          <default/>
+          <type>\Illuminate\Database\Query\Builder</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Eloquent" line="93" package="Default">
+        <name>withGlobalScope</name>
+        <full_name>\Illuminate\Database\Eloquent\Builder::withGlobalScope()</full_name>
+        <docblock line="93">
+          <description>Register a new global scope.</description>
+          <long-description/>
+          <tag name="param" line="93" description="" type="string" variable="$identifier">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="93" description="" type="\Illuminate\Database\Eloquent\Scope|\Closure" variable="$scope">
+            <type>\Illuminate\Database\Eloquent\Scope</type>
+            <type>\Closure</type>
+          </tag>
+          <tag name="return" line="93" description="" type="\Illuminate\Database\Eloquent\Builder">
+            <type>\Illuminate\Database\Eloquent\Builder</type>
+          </tag>
+          <tag name="fluent" description="This method is part of a fluent interface and will return the same instance"/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$identifier</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$scope</name>
+          <default/>
+          <type>\Illuminate\Database\Eloquent\Scope|\Closure</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Eloquent" line="110" package="Default">
+        <name>withoutGlobalScope</name>
+        <full_name>\Illuminate\Database\Eloquent\Builder::withoutGlobalScope()</full_name>
+        <docblock line="110">
+          <description>Remove a registered global scope.</description>
+          <long-description/>
+          <tag name="param" line="110" description="" type="\Illuminate\Database\Eloquent\Scope|string" variable="$scope">
+            <type>\Illuminate\Database\Eloquent\Scope</type>
+            <type>string</type>
+          </tag>
+          <tag name="return" line="110" description="" type="\Illuminate\Database\Eloquent\Builder">
+            <type>\Illuminate\Database\Eloquent\Builder</type>
+          </tag>
+          <tag name="fluent" description="This method is part of a fluent interface and will return the same instance"/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$scope</name>
+          <default/>
+          <type>\Illuminate\Database\Eloquent\Scope|string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Eloquent" line="129" package="Default">
+        <name>withoutGlobalScopes</name>
+        <full_name>\Illuminate\Database\Eloquent\Builder::withoutGlobalScopes()</full_name>
+        <docblock line="129">
+          <description>Remove all or passed registered global scopes.</description>
+          <long-description/>
+          <tag name="param" line="129" description="" type="array|null" variable="$scopes">
+            <type>array</type>
+            <type>null</type>
+          </tag>
+          <tag name="return" line="129" description="" type="\Illuminate\Database\Eloquent\Builder">
+            <type>\Illuminate\Database\Eloquent\Builder</type>
+          </tag>
+          <tag name="fluent" description="This method is part of a fluent interface and will return the same instance"/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$scopes</name>
+          <default>null</default>
+          <type>array|null</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Eloquent" line="147" package="Default">
+        <name>removedScopes</name>
+        <full_name>\Illuminate\Database\Eloquent\Builder::removedScopes()</full_name>
+        <docblock line="147">
+          <description>Get an array of global scopes that were removed from the query.</description>
+          <long-description/>
+          <tag name="return" line="147" description="" type="array">
+            <type>array</type>
+          </tag>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Eloquent" line="159" package="Default">
+        <name>find</name>
+        <full_name>\Illuminate\Database\Eloquent\Builder::find()</full_name>
+        <docblock line="159">
+          <description>Find a model by its primary key.</description>
+          <long-description/>
+          <tag name="param" line="159" description="" type="mixed" variable="$id">
+            <type>mixed</type>
+          </tag>
+          <tag name="param" line="159" description="" type="array" variable="$columns">
+            <type>array</type>
+          </tag>
+          <tag name="return" line="159" description="" type="\Illuminate\Database\Eloquent\Model|\Illuminate\Database\Eloquent\Collection|array&lt;mixed,static&gt;|static|null">
+            <type>\Illuminate\Database\Eloquent\Model</type>
+            <type>\Illuminate\Database\Eloquent\Collection</type>
+            <type>array&lt;mixed,static&gt;</type>
+            <type>static</type>
+            <type>null</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$id</name>
+          <default/>
+          <type>mixed</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$columns</name>
+          <default>array('*')</default>
+          <type>array</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Eloquent" line="177" package="Default">
+        <name>findMany</name>
+        <full_name>\Illuminate\Database\Eloquent\Builder::findMany()</full_name>
+        <docblock line="177">
+          <description>Find multiple models by their primary keys.</description>
+          <long-description/>
+          <tag name="param" line="177" description="" type="array" variable="$ids">
+            <type>array</type>
+          </tag>
+          <tag name="param" line="177" description="" type="array" variable="$columns">
+            <type>array</type>
+          </tag>
+          <tag name="return" line="177" description="" type="\Illuminate\Database\Eloquent\Collection">
+            <type>\Illuminate\Database\Eloquent\Collection</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$ids</name>
+          <default/>
+          <type>array</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$columns</name>
+          <default>array('*')</default>
+          <type>array</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Eloquent" line="197" package="Default">
+        <name>findOrFail</name>
+        <full_name>\Illuminate\Database\Eloquent\Builder::findOrFail()</full_name>
+        <docblock line="197">
+          <description>Find a model by its primary key or throw an exception.</description>
+          <long-description/>
+          <tag name="param" line="197" description="" type="mixed" variable="$id">
+            <type>mixed</type>
+          </tag>
+          <tag name="param" line="197" description="" type="array" variable="$columns">
+            <type>array</type>
+          </tag>
+          <tag name="return" line="197" description="" type="\Illuminate\Database\Eloquent\Model|\Illuminate\Database\Eloquent\Collection">
+            <type>\Illuminate\Database\Eloquent\Model</type>
+            <type>\Illuminate\Database\Eloquent\Collection</type>
+          </tag>
+          <tag name="throws" line="197" description="" type="\Illuminate\Database\Eloquent\ModelNotFoundException">
+            <type>\Illuminate\Database\Eloquent\ModelNotFoundException</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$id</name>
+          <default/>
+          <type>mixed</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$columns</name>
+          <default>array('*')</default>
+          <type>array</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Eloquent" line="219" package="Default">
+        <name>findOrNew</name>
+        <full_name>\Illuminate\Database\Eloquent\Builder::findOrNew()</full_name>
+        <docblock line="219">
+          <description>Find a model by its primary key or return fresh model instance.</description>
+          <long-description/>
+          <tag name="param" line="219" description="" type="mixed" variable="$id">
+            <type>mixed</type>
+          </tag>
+          <tag name="param" line="219" description="" type="array" variable="$columns">
+            <type>array</type>
+          </tag>
+          <tag name="return" line="219" description="" type="\Illuminate\Database\Eloquent\Model">
+            <type>\Illuminate\Database\Eloquent\Model</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$id</name>
+          <default/>
+          <type>mixed</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$columns</name>
+          <default>array('*')</default>
+          <type>array</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Eloquent" line="234" package="Default">
+        <name>firstOrNew</name>
+        <full_name>\Illuminate\Database\Eloquent\Builder::firstOrNew()</full_name>
+        <docblock line="234">
+          <description>Get the first record matching the attributes or instantiate it.</description>
+          <long-description/>
+          <tag name="param" line="234" description="" type="array" variable="$attributes">
+            <type>array</type>
+          </tag>
+          <tag name="return" line="234" description="" type="\Illuminate\Database\Eloquent\Model">
+            <type>\Illuminate\Database\Eloquent\Model</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$attributes</name>
+          <default/>
+          <type>array</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Eloquent" line="249" package="Default">
+        <name>firstOrCreate</name>
+        <full_name>\Illuminate\Database\Eloquent\Builder::firstOrCreate()</full_name>
+        <docblock line="249">
+          <description>Get the first record matching the attributes or create it.</description>
+          <long-description/>
+          <tag name="param" line="249" description="" type="array" variable="$attributes">
+            <type>array</type>
+          </tag>
+          <tag name="return" line="249" description="" type="\Illuminate\Database\Eloquent\Model">
+            <type>\Illuminate\Database\Eloquent\Model</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$attributes</name>
+          <default/>
+          <type>array</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Eloquent" line="269" package="Default">
+        <name>updateOrCreate</name>
+        <full_name>\Illuminate\Database\Eloquent\Builder::updateOrCreate()</full_name>
+        <docblock line="269">
+          <description>Create or update a record matching the attributes, and fill it with values.</description>
+          <long-description/>
+          <tag name="param" line="269" description="" type="array" variable="$attributes">
+            <type>array</type>
+          </tag>
+          <tag name="param" line="269" description="" type="array" variable="$values">
+            <type>array</type>
+          </tag>
+          <tag name="return" line="269" description="" type="\Illuminate\Database\Eloquent\Model">
+            <type>\Illuminate\Database\Eloquent\Model</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$attributes</name>
+          <default/>
+          <type>array</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$values</name>
+          <default>array()</default>
+          <type>array</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Eloquent" line="284" package="Default">
+        <name>first</name>
+        <full_name>\Illuminate\Database\Eloquent\Builder::first()</full_name>
+        <docblock line="284">
+          <description>Execute the query and get the first result.</description>
+          <long-description/>
+          <tag name="param" line="284" description="" type="array" variable="$columns">
+            <type>array</type>
+          </tag>
+          <tag name="return" line="284" description="" type="\Illuminate\Database\Eloquent\Model|static|null">
+            <type>\Illuminate\Database\Eloquent\Model</type>
+            <type>static</type>
+            <type>null</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$columns</name>
+          <default>array('*')</default>
+          <type>array</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Eloquent" line="297" package="Default">
+        <name>firstOrFail</name>
+        <full_name>\Illuminate\Database\Eloquent\Builder::firstOrFail()</full_name>
+        <docblock line="297">
+          <description>Execute the query and get the first result or throw an exception.</description>
+          <long-description/>
+          <tag name="param" line="297" description="" type="array" variable="$columns">
+            <type>array</type>
+          </tag>
+          <tag name="return" line="297" description="" type="\Illuminate\Database\Eloquent\Model|static">
+            <type>\Illuminate\Database\Eloquent\Model</type>
+            <type>static</type>
+          </tag>
+          <tag name="throws" line="297" description="" type="\Illuminate\Database\Eloquent\ModelNotFoundException">
+            <type>\Illuminate\Database\Eloquent\ModelNotFoundException</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$columns</name>
+          <default>array('*')</default>
+          <type>array</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Eloquent" line="312" package="Default">
+        <name>get</name>
+        <full_name>\Illuminate\Database\Eloquent\Builder::get()</full_name>
+        <docblock line="312">
+          <description>Execute the query as a "select" statement.</description>
+          <long-description/>
+          <tag name="param" line="312" description="" type="array" variable="$columns">
+            <type>array</type>
+          </tag>
+          <tag name="return" line="312" description="" type="\Illuminate\Database\Eloquent\Collection|array&lt;mixed,static&gt;">
+            <type>\Illuminate\Database\Eloquent\Collection</type>
+            <type>array&lt;mixed,static&gt;</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$columns</name>
+          <default>array('*')</default>
+          <type>array</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Eloquent" line="334" package="Default">
+        <name>value</name>
+        <full_name>\Illuminate\Database\Eloquent\Builder::value()</full_name>
+        <docblock line="334">
+          <description>Get a single column's value from the first result of a query.</description>
+          <long-description/>
+          <tag name="param" line="334" description="" type="string" variable="$column">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="334" description="" type="mixed">
+            <type>mixed</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$column</name>
+          <default/>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Eloquent" line="348" package="Default">
+        <name>cursor</name>
+        <full_name>\Illuminate\Database\Eloquent\Builder::cursor()</full_name>
+        <docblock line="348">
+          <description>Get a generator for the given query.</description>
+          <long-description/>
+          <tag name="return" line="348" description="" type="\Generator">
+            <type>\Generator</type>
+          </tag>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Eloquent" line="364" package="Default">
+        <name>chunk</name>
+        <full_name>\Illuminate\Database\Eloquent\Builder::chunk()</full_name>
+        <docblock line="364">
+          <description>Chunk the results of the query.</description>
+          <long-description/>
+          <tag name="param" line="364" description="" type="integer" variable="$count">
+            <type>integer</type>
+          </tag>
+          <tag name="param" line="364" description="" type="callable" variable="$callback">
+            <type>callable</type>
+          </tag>
+          <tag name="return" line="364" description="" type="boolean">
+            <type>boolean</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$count</name>
+          <default/>
+          <type>integer</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$callback</name>
+          <default/>
+          <type>callable</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Eloquent" line="392" package="Default">
+        <name>chunkById</name>
+        <full_name>\Illuminate\Database\Eloquent\Builder::chunkById()</full_name>
+        <docblock line="392">
+          <description>Chunk the results of a query by comparing numeric IDs.</description>
+          <long-description/>
+          <tag name="param" line="392" description="" type="integer" variable="$count">
+            <type>integer</type>
+          </tag>
+          <tag name="param" line="392" description="" type="callable" variable="$callback">
+            <type>callable</type>
+          </tag>
+          <tag name="param" line="392" description="" type="string" variable="$column">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="392" description="" type="boolean">
+            <type>boolean</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$count</name>
+          <default/>
+          <type>integer</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$callback</name>
+          <default/>
+          <type>callable</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$column</name>
+          <default>'id'</default>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Eloquent" line="418" package="Default">
+        <name>each</name>
+        <full_name>\Illuminate\Database\Eloquent\Builder::each()</full_name>
+        <docblock line="418">
+          <description>Execute a callback over each item while chunking.</description>
+          <long-description/>
+          <tag name="param" line="418" description="" type="callable" variable="$callback">
+            <type>callable</type>
+          </tag>
+          <tag name="param" line="418" description="" type="integer" variable="$count">
+            <type>integer</type>
+          </tag>
+          <tag name="return" line="418" description="" type="boolean">
+            <type>boolean</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$callback</name>
+          <default/>
+          <type>callable</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$count</name>
+          <default>1000</default>
+          <type>integer</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Eloquent" line="440" package="Default">
+        <name>pluck</name>
+        <full_name>\Illuminate\Database\Eloquent\Builder::pluck()</full_name>
+        <docblock line="440">
+          <description>Get an array with the values of a given column.</description>
+          <long-description/>
+          <tag name="param" line="440" description="" type="string" variable="$column">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="440" description="" type="string|null" variable="$key">
+            <type>string</type>
+            <type>null</type>
+          </tag>
+          <tag name="return" line="440" description="" type="\Illuminate\Support\Collection">
+            <type>\Illuminate\Support\Collection</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$column</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$key</name>
+          <default>null</default>
+          <type>string|null</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Eloquent" line="467" package="Default">
+        <name>lists</name>
+        <full_name>\Illuminate\Database\Eloquent\Builder::lists()</full_name>
+        <docblock line="467">
+          <description>Alias for the "pluck" method.</description>
+          <long-description/>
+          <tag name="param" line="467" description="" type="string" variable="$column">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="467" description="" type="string" variable="$key">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="467" description="" type="\Illuminate\Support\Collection">
+            <type>\Illuminate\Support\Collection</type>
+          </tag>
+          <tag name="deprecated" line="467" description="since version 5.2. Use the &quot;pluck&quot; method directly."/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$column</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$key</name>
+          <default>null</default>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Eloquent" line="483" package="Default">
+        <name>paginate</name>
+        <full_name>\Illuminate\Database\Eloquent\Builder::paginate()</full_name>
+        <docblock line="483">
+          <description>Paginate the given query.</description>
+          <long-description/>
+          <tag name="param" line="483" description="" type="integer" variable="$perPage">
+            <type>integer</type>
+          </tag>
+          <tag name="param" line="483" description="" type="array" variable="$columns">
+            <type>array</type>
+          </tag>
+          <tag name="param" line="483" description="" type="string" variable="$pageName">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="483" description="" type="integer|null" variable="$page">
+            <type>integer</type>
+            <type>null</type>
+          </tag>
+          <tag name="return" line="483" description="" type="\Illuminate\Contracts\Pagination\LengthAwarePaginator">
+            <type>\Illuminate\Contracts\Pagination\LengthAwarePaginator</type>
+          </tag>
+          <tag name="throws" line="483" description="" type="\InvalidArgumentException">
+            <type>\InvalidArgumentException</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$perPage</name>
+          <default>null</default>
+          <type>integer</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$columns</name>
+          <default>array('*')</default>
+          <type>array</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$pageName</name>
+          <default>'page'</default>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$page</name>
+          <default>null</default>
+          <type>integer|null</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Eloquent" line="509" package="Default">
+        <name>simplePaginate</name>
+        <full_name>\Illuminate\Database\Eloquent\Builder::simplePaginate()</full_name>
+        <docblock line="509">
+          <description>Paginate the given query into a simple paginator.</description>
+          <long-description/>
+          <tag name="param" line="509" description="" type="integer" variable="$perPage">
+            <type>integer</type>
+          </tag>
+          <tag name="param" line="509" description="" type="array" variable="$columns">
+            <type>array</type>
+          </tag>
+          <tag name="param" line="509" description="" type="string" variable="$pageName">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="509" description="" type="integer|null" variable="$page">
+            <type>integer</type>
+            <type>null</type>
+          </tag>
+          <tag name="return" line="509" description="" type="\Illuminate\Contracts\Pagination\Paginator">
+            <type>\Illuminate\Contracts\Pagination\Paginator</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$perPage</name>
+          <default>null</default>
+          <type>integer</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$columns</name>
+          <default>array('*')</default>
+          <type>array</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$pageName</name>
+          <default>'page'</default>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$page</name>
+          <default>null</default>
+          <type>integer|null</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Eloquent" line="529" package="Default">
+        <name>update</name>
+        <full_name>\Illuminate\Database\Eloquent\Builder::update()</full_name>
+        <docblock line="529">
+          <description>Update a record in the database.</description>
+          <long-description/>
+          <tag name="param" line="529" description="" type="array" variable="$values">
+            <type>array</type>
+          </tag>
+          <tag name="return" line="529" description="" type="integer">
+            <type>integer</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$values</name>
+          <default/>
+          <type>array</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Eloquent" line="542" package="Default">
+        <name>increment</name>
+        <full_name>\Illuminate\Database\Eloquent\Builder::increment()</full_name>
+        <docblock line="542">
+          <description>Increment a column's value by a given amount.</description>
+          <long-description/>
+          <tag name="param" line="542" description="" type="string" variable="$column">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="542" description="" type="integer" variable="$amount">
+            <type>integer</type>
+          </tag>
+          <tag name="param" line="542" description="" type="array" variable="$extra">
+            <type>array</type>
+          </tag>
+          <tag name="return" line="542" description="" type="integer">
+            <type>integer</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$column</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$amount</name>
+          <default>1</default>
+          <type>integer</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$extra</name>
+          <default>array()</default>
+          <type>array</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Eloquent" line="557" package="Default">
+        <name>decrement</name>
+        <full_name>\Illuminate\Database\Eloquent\Builder::decrement()</full_name>
+        <docblock line="557">
+          <description>Decrement a column's value by a given amount.</description>
+          <long-description/>
+          <tag name="param" line="557" description="" type="string" variable="$column">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="557" description="" type="integer" variable="$amount">
+            <type>integer</type>
+          </tag>
+          <tag name="param" line="557" description="" type="array" variable="$extra">
+            <type>array</type>
+          </tag>
+          <tag name="return" line="557" description="" type="integer">
+            <type>integer</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$column</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$amount</name>
+          <default>1</default>
+          <type>integer</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$extra</name>
+          <default>array()</default>
+          <type>array</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Database\Eloquent" line="570" package="Default">
+        <name>addUpdatedAtColumn</name>
+        <full_name>\Illuminate\Database\Eloquent\Builder::addUpdatedAtColumn()</full_name>
+        <docblock line="570">
+          <description>Add the "updated at" column to an array of values.</description>
+          <long-description/>
+          <tag name="param" line="570" description="" type="array" variable="$values">
+            <type>array</type>
+          </tag>
+          <tag name="return" line="570" description="" type="array">
+            <type>array</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$values</name>
+          <default/>
+          <type>array</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Eloquent" line="586" package="Default">
+        <name>delete</name>
+        <full_name>\Illuminate\Database\Eloquent\Builder::delete()</full_name>
+        <docblock line="586">
+          <description>Delete a record from the database.</description>
+          <long-description/>
+          <tag name="return" line="586" description="" type="mixed">
+            <type>mixed</type>
+          </tag>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Eloquent" line="600" package="Default">
+        <name>forceDelete</name>
+        <full_name>\Illuminate\Database\Eloquent\Builder::forceDelete()</full_name>
+        <docblock line="600">
+          <description>Run the default delete function on the builder.</description>
+          <long-description/>
+          <tag name="return" line="600" description="" type="mixed">
+            <type>mixed</type>
+          </tag>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Eloquent" line="611" package="Default">
+        <name>onDelete</name>
+        <full_name>\Illuminate\Database\Eloquent\Builder::onDelete()</full_name>
+        <docblock line="611">
+          <description>Register a replacement for the default delete function.</description>
+          <long-description/>
+          <tag name="param" line="611" description="" type="\Closure" variable="$callback">
+            <type>\Closure</type>
+          </tag>
+          <tag name="return" line="611" description="" type="void">
+            <type>void</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$callback</name>
+          <default/>
+          <type>\Closure</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Eloquent" line="622" package="Default">
+        <name>getModels</name>
+        <full_name>\Illuminate\Database\Eloquent\Builder::getModels()</full_name>
+        <docblock line="622">
+          <description>Get the hydrated models without eager loading.</description>
+          <long-description/>
+          <tag name="param" line="622" description="" type="array" variable="$columns">
+            <type>array</type>
+          </tag>
+          <tag name="return" line="622" description="" type="array&lt;mixed,\Illuminate\Database\Eloquent\Model&gt;">
+            <type>array&lt;mixed,\Illuminate\Database\Eloquent\Model&gt;</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$columns</name>
+          <default>array('*')</default>
+          <type>array</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Eloquent" line="637" package="Default">
+        <name>eagerLoadRelations</name>
+        <full_name>\Illuminate\Database\Eloquent\Builder::eagerLoadRelations()</full_name>
+        <docblock line="637">
+          <description>Eager load the relationships for the models.</description>
+          <long-description/>
+          <tag name="param" line="637" description="" type="array" variable="$models">
+            <type>array</type>
+          </tag>
+          <tag name="return" line="637" description="" type="array">
+            <type>array</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$models</name>
+          <default/>
+          <type>array</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Database\Eloquent" line="659" package="Default">
+        <name>loadRelation</name>
+        <full_name>\Illuminate\Database\Eloquent\Builder::loadRelation()</full_name>
+        <docblock line="659">
+          <description>Eagerly load the relationship on a set of models.</description>
+          <long-description/>
+          <tag name="param" line="659" description="" type="array" variable="$models">
+            <type>array</type>
+          </tag>
+          <tag name="param" line="659" description="" type="string" variable="$name">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="659" description="" type="\Closure" variable="$constraints">
+            <type>\Closure</type>
+          </tag>
+          <tag name="return" line="659" description="" type="array">
+            <type>array</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$models</name>
+          <default/>
+          <type>array</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$name</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$constraints</name>
+          <default/>
+          <type>\Closure</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Eloquent" line="686" package="Default">
+        <name>getRelation</name>
+        <full_name>\Illuminate\Database\Eloquent\Builder::getRelation()</full_name>
+        <docblock line="686">
+          <description>Get the relation instance for the given relation name.</description>
+          <long-description/>
+          <tag name="param" line="686" description="" type="string" variable="$name">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="686" description="" type="\Illuminate\Database\Eloquent\Relations\Relation">
+            <type>\Illuminate\Database\Eloquent\Relations\Relation</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$name</name>
+          <default/>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Database\Eloquent" line="713" package="Default">
+        <name>nestedRelations</name>
+        <full_name>\Illuminate\Database\Eloquent\Builder::nestedRelations()</full_name>
+        <docblock line="713">
+          <description>Get the deeply nested relations for a given top-level relation.</description>
+          <long-description/>
+          <tag name="param" line="713" description="" type="string" variable="$relation">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="713" description="" type="array">
+            <type>array</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$relation</name>
+          <default/>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Database\Eloquent" line="736" package="Default">
+        <name>isNested</name>
+        <full_name>\Illuminate\Database\Eloquent\Builder::isNested()</full_name>
+        <docblock line="736">
+          <description>Determine if the relationship is nested.</description>
+          <long-description/>
+          <tag name="param" line="736" description="" type="string" variable="$name">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="736" description="" type="string" variable="$relation">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="736" description="" type="boolean">
+            <type>boolean</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$name</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$relation</name>
+          <default/>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Eloquent" line="750" package="Default">
+        <name>when</name>
+        <full_name>\Illuminate\Database\Eloquent\Builder::when()</full_name>
+        <docblock line="750">
+          <description>Apply the callback's query changes if the given "value" is true.</description>
+          <long-description/>
+          <tag name="param" line="750" description="" type="boolean" variable="$value">
+            <type>boolean</type>
+          </tag>
+          <tag name="param" line="750" description="" type="\Closure" variable="$callback">
+            <type>\Closure</type>
+          </tag>
+          <tag name="return" line="750" description="" type="\Illuminate\Database\Eloquent\Builder">
+            <type>\Illuminate\Database\Eloquent\Builder</type>
+          </tag>
+          <tag name="fluent" description="This method is part of a fluent interface and will return the same instance"/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$value</name>
+          <default/>
+          <type>boolean</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$callback</name>
+          <default/>
+          <type>\Closure</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Eloquent" line="770" package="Default">
+        <name>where</name>
+        <full_name>\Illuminate\Database\Eloquent\Builder::where()</full_name>
+        <docblock line="770">
+          <description>Add a basic where clause to the query.</description>
+          <long-description/>
+          <tag name="param" line="770" description="" type="string" variable="$column">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="770" description="" type="string" variable="$operator">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="770" description="" type="mixed" variable="$value">
+            <type>mixed</type>
+          </tag>
+          <tag name="param" line="770" description="" type="string" variable="$boolean">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="770" description="" type="\Illuminate\Database\Eloquent\Builder">
+            <type>\Illuminate\Database\Eloquent\Builder</type>
+          </tag>
+          <tag name="fluent" description="This method is part of a fluent interface and will return the same instance"/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$column</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$operator</name>
+          <default>null</default>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$value</name>
+          <default>null</default>
+          <type>mixed</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$boolean</name>
+          <default>'and'</default>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Eloquent" line="793" package="Default">
+        <name>orWhere</name>
+        <full_name>\Illuminate\Database\Eloquent\Builder::orWhere()</full_name>
+        <docblock line="793">
+          <description>Add an "or where" clause to the query.</description>
+          <long-description/>
+          <tag name="param" line="793" description="" type="string" variable="$column">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="793" description="" type="string" variable="$operator">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="793" description="" type="mixed" variable="$value">
+            <type>mixed</type>
+          </tag>
+          <tag name="return" line="793" description="" type="\Illuminate\Database\Eloquent\Builder|static">
+            <type>\Illuminate\Database\Eloquent\Builder</type>
+            <type>static</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$column</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$operator</name>
+          <default>null</default>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$value</name>
+          <default>null</default>
+          <type>mixed</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Eloquent" line="808" package="Default">
+        <name>has</name>
+        <full_name>\Illuminate\Database\Eloquent\Builder::has()</full_name>
+        <docblock line="808">
+          <description>Add a relationship count / exists condition to the query.</description>
+          <long-description/>
+          <tag name="param" line="808" description="" type="string" variable="$relation">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="808" description="" type="string" variable="$operator">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="808" description="" type="integer" variable="$count">
+            <type>integer</type>
+          </tag>
+          <tag name="param" line="808" description="" type="string" variable="$boolean">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="808" description="" type="\Closure|null" variable="$callback">
+            <type>\Closure</type>
+            <type>null</type>
+          </tag>
+          <tag name="return" line="808" description="" type="\Illuminate\Database\Eloquent\Builder|static">
+            <type>\Illuminate\Database\Eloquent\Builder</type>
+            <type>static</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$relation</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$operator</name>
+          <default>'&gt;='</default>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$count</name>
+          <default>1</default>
+          <type>integer</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$boolean</name>
+          <default>'and'</default>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$callback</name>
+          <default>null</default>
+          <type>\Closure|null</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Database\Eloquent" line="843" package="Default">
+        <name>hasNested</name>
+        <full_name>\Illuminate\Database\Eloquent\Builder::hasNested()</full_name>
+        <docblock line="843">
+          <description>Add nested relationship count / exists conditions to the query.</description>
+          <long-description/>
+          <tag name="param" line="843" description="" type="string" variable="$relations">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="843" description="" type="string" variable="$operator">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="843" description="" type="integer" variable="$count">
+            <type>integer</type>
+          </tag>
+          <tag name="param" line="843" description="" type="string" variable="$boolean">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="843" description="" type="\Closure|null" variable="$callback">
+            <type>\Closure</type>
+            <type>null</type>
+          </tag>
+          <tag name="return" line="843" description="" type="\Illuminate\Database\Eloquent\Builder|static">
+            <type>\Illuminate\Database\Eloquent\Builder</type>
+            <type>static</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$relations</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$operator</name>
+          <default>'&gt;='</default>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$count</name>
+          <default>1</default>
+          <type>integer</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$boolean</name>
+          <default>'and'</default>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$callback</name>
+          <default>null</default>
+          <type>\Closure|null</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Eloquent" line="869" package="Default">
+        <name>doesntHave</name>
+        <full_name>\Illuminate\Database\Eloquent\Builder::doesntHave()</full_name>
+        <docblock line="869">
+          <description>Add a relationship count / exists condition to the query.</description>
+          <long-description/>
+          <tag name="param" line="869" description="" type="string" variable="$relation">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="869" description="" type="string" variable="$boolean">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="869" description="" type="\Closure|null" variable="$callback">
+            <type>\Closure</type>
+            <type>null</type>
+          </tag>
+          <tag name="return" line="869" description="" type="\Illuminate\Database\Eloquent\Builder|static">
+            <type>\Illuminate\Database\Eloquent\Builder</type>
+            <type>static</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$relation</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$boolean</name>
+          <default>'and'</default>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$callback</name>
+          <default>null</default>
+          <type>\Closure|null</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Eloquent" line="883" package="Default">
+        <name>whereHas</name>
+        <full_name>\Illuminate\Database\Eloquent\Builder::whereHas()</full_name>
+        <docblock line="883">
+          <description>Add a relationship count / exists condition to the query with where clauses.</description>
+          <long-description/>
+          <tag name="param" line="883" description="" type="string" variable="$relation">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="883" description="" type="\Closure" variable="$callback">
+            <type>\Closure</type>
+          </tag>
+          <tag name="param" line="883" description="" type="string" variable="$operator">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="883" description="" type="integer" variable="$count">
+            <type>integer</type>
+          </tag>
+          <tag name="return" line="883" description="" type="\Illuminate\Database\Eloquent\Builder|static">
+            <type>\Illuminate\Database\Eloquent\Builder</type>
+            <type>static</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$relation</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$callback</name>
+          <default/>
+          <type>\Closure</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$operator</name>
+          <default>'&gt;='</default>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$count</name>
+          <default>1</default>
+          <type>integer</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Eloquent" line="895" package="Default">
+        <name>whereDoesntHave</name>
+        <full_name>\Illuminate\Database\Eloquent\Builder::whereDoesntHave()</full_name>
+        <docblock line="895">
+          <description>Add a relationship count / exists condition to the query with where clauses.</description>
+          <long-description/>
+          <tag name="param" line="895" description="" type="string" variable="$relation">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="895" description="" type="\Closure|null" variable="$callback">
+            <type>\Closure</type>
+            <type>null</type>
+          </tag>
+          <tag name="return" line="895" description="" type="\Illuminate\Database\Eloquent\Builder|static">
+            <type>\Illuminate\Database\Eloquent\Builder</type>
+            <type>static</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$relation</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$callback</name>
+          <default>null</default>
+          <type>\Closure|null</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Eloquent" line="908" package="Default">
+        <name>orHas</name>
+        <full_name>\Illuminate\Database\Eloquent\Builder::orHas()</full_name>
+        <docblock line="908">
+          <description>Add a relationship count / exists condition to the query with an "or".</description>
+          <long-description/>
+          <tag name="param" line="908" description="" type="string" variable="$relation">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="908" description="" type="string" variable="$operator">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="908" description="" type="integer" variable="$count">
+            <type>integer</type>
+          </tag>
+          <tag name="return" line="908" description="" type="\Illuminate\Database\Eloquent\Builder|static">
+            <type>\Illuminate\Database\Eloquent\Builder</type>
+            <type>static</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$relation</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$operator</name>
+          <default>'&gt;='</default>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$count</name>
+          <default>1</default>
+          <type>integer</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Eloquent" line="922" package="Default">
+        <name>orWhereHas</name>
+        <full_name>\Illuminate\Database\Eloquent\Builder::orWhereHas()</full_name>
+        <docblock line="922">
+          <description>Add a relationship count / exists condition to the query with where clauses and an "or".</description>
+          <long-description/>
+          <tag name="param" line="922" description="" type="string" variable="$relation">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="922" description="" type="\Closure" variable="$callback">
+            <type>\Closure</type>
+          </tag>
+          <tag name="param" line="922" description="" type="string" variable="$operator">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="922" description="" type="integer" variable="$count">
+            <type>integer</type>
+          </tag>
+          <tag name="return" line="922" description="" type="\Illuminate\Database\Eloquent\Builder|static">
+            <type>\Illuminate\Database\Eloquent\Builder</type>
+            <type>static</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$relation</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$callback</name>
+          <default/>
+          <type>\Closure</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$operator</name>
+          <default>'&gt;='</default>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$count</name>
+          <default>1</default>
+          <type>integer</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Database\Eloquent" line="937" package="Default">
+        <name>addHasWhere</name>
+        <full_name>\Illuminate\Database\Eloquent\Builder::addHasWhere()</full_name>
+        <docblock line="937">
+          <description>Add the "has" condition where clause to the query.</description>
+          <long-description/>
+          <tag name="param" line="937" description="" type="\Illuminate\Database\Eloquent\Builder" variable="$hasQuery">
+            <type>\Illuminate\Database\Eloquent\Builder</type>
+          </tag>
+          <tag name="param" line="937" description="" type="\Illuminate\Database\Eloquent\Relations\Relation" variable="$relation">
+            <type>\Illuminate\Database\Eloquent\Relations\Relation</type>
+          </tag>
+          <tag name="param" line="937" description="" type="string" variable="$operator">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="937" description="" type="integer" variable="$count">
+            <type>integer</type>
+          </tag>
+          <tag name="param" line="937" description="" type="string" variable="$boolean">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="937" description="" type="\Illuminate\Database\Eloquent\Builder">
+            <type>\Illuminate\Database\Eloquent\Builder</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$hasQuery</name>
+          <default/>
+          <type>\Illuminate\Database\Eloquent\Builder</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$relation</name>
+          <default/>
+          <type>\Illuminate\Database\Eloquent\Relations\Relation</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$operator</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$count</name>
+          <default/>
+          <type>integer</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$boolean</name>
+          <default/>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Database\Eloquent" line="957" package="Default">
+        <name>shouldRunExistsQuery</name>
+        <full_name>\Illuminate\Database\Eloquent\Builder::shouldRunExistsQuery()</full_name>
+        <docblock line="957">
+          <description>Check if we can run an "exists" query to optimize performance.</description>
+          <long-description/>
+          <tag name="param" line="957" description="" type="string" variable="$operator">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="957" description="" type="integer" variable="$count">
+            <type>integer</type>
+          </tag>
+          <tag name="return" line="957" description="" type="boolean">
+            <type>boolean</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$operator</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$count</name>
+          <default/>
+          <type>integer</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Database\Eloquent" line="971" package="Default">
+        <name>whereCountQuery</name>
+        <full_name>\Illuminate\Database\Eloquent\Builder::whereCountQuery()</full_name>
+        <docblock line="971">
+          <description>Add a sub query count clause to the query.</description>
+          <long-description/>
+          <tag name="param" line="971" description="" type="\Illuminate\Database\Query\Builder" variable="$query">
+            <type>\Illuminate\Database\Query\Builder</type>
+          </tag>
+          <tag name="param" line="971" description="" type="string" variable="$operator">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="971" description="" type="integer" variable="$count">
+            <type>integer</type>
+          </tag>
+          <tag name="param" line="971" description="" type="string" variable="$boolean">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="971" description="" type="\Illuminate\Database\Eloquent\Builder">
+            <type>\Illuminate\Database\Eloquent\Builder</type>
+          </tag>
+          <tag name="fluent" description="This method is part of a fluent interface and will return the same instance"/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$query</name>
+          <default/>
+          <type>\Illuminate\Database\Query\Builder</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$operator</name>
+          <default>'&gt;='</default>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$count</name>
+          <default>1</default>
+          <type>integer</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$boolean</name>
+          <default>'and'</default>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Database\Eloquent" line="989" package="Default">
+        <name>mergeModelDefinedRelationWheresToHasQuery</name>
+        <full_name>\Illuminate\Database\Eloquent\Builder::mergeModelDefinedRelationWheresToHasQuery()</full_name>
+        <docblock line="989">
+          <description>Merge the "wheres" from a relation query to a has query.</description>
+          <long-description/>
+          <tag name="param" line="989" description="" type="\Illuminate\Database\Eloquent\Builder" variable="$hasQuery">
+            <type>\Illuminate\Database\Eloquent\Builder</type>
+          </tag>
+          <tag name="param" line="989" description="" type="\Illuminate\Database\Eloquent\Relations\Relation" variable="$relation">
+            <type>\Illuminate\Database\Eloquent\Relations\Relation</type>
+          </tag>
+          <tag name="return" line="989" description="" type="void">
+            <type>void</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$hasQuery</name>
+          <default/>
+          <type>\Illuminate\Database\Eloquent\Builder</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$relation</name>
+          <default/>
+          <type>\Illuminate\Database\Eloquent\Relations\Relation</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Database\Eloquent" line="1009" package="Default">
+        <name>getHasRelationQuery</name>
+        <full_name>\Illuminate\Database\Eloquent\Builder::getHasRelationQuery()</full_name>
+        <docblock line="1009">
+          <description>Get the "has relation" base query instance.</description>
+          <long-description/>
+          <tag name="param" line="1009" description="" type="string" variable="$relation">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="1009" description="" type="\Illuminate\Database\Eloquent\Relations\Relation">
+            <type>\Illuminate\Database\Eloquent\Relations\Relation</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$relation</name>
+          <default/>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Eloquent" line="1022" package="Default">
+        <name>with</name>
+        <full_name>\Illuminate\Database\Eloquent\Builder::with()</full_name>
+        <docblock line="1022">
+          <description>Set the relationships that should be eager loaded.</description>
+          <long-description/>
+          <tag name="param" line="1022" description="" type="mixed" variable="$relations">
+            <type>mixed</type>
+          </tag>
+          <tag name="return" line="1022" description="" type="\Illuminate\Database\Eloquent\Builder">
+            <type>\Illuminate\Database\Eloquent\Builder</type>
+          </tag>
+          <tag name="fluent" description="This method is part of a fluent interface and will return the same instance"/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$relations</name>
+          <default/>
+          <type>mixed</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Eloquent" line="1041" package="Default">
+        <name>withCount</name>
+        <full_name>\Illuminate\Database\Eloquent\Builder::withCount()</full_name>
+        <docblock line="1041">
+          <description>Add subselect queries to count the relations.</description>
+          <long-description/>
+          <tag name="param" line="1041" description="" type="mixed" variable="$relations">
+            <type>mixed</type>
+          </tag>
+          <tag name="return" line="1041" description="" type="\Illuminate\Database\Eloquent\Builder">
+            <type>\Illuminate\Database\Eloquent\Builder</type>
+          </tag>
+          <tag name="fluent" description="This method is part of a fluent interface and will return the same instance"/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$relations</name>
+          <default/>
+          <type>mixed</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Database\Eloquent" line="1075" package="Default">
+        <name>parseWithRelations</name>
+        <full_name>\Illuminate\Database\Eloquent\Builder::parseWithRelations()</full_name>
+        <docblock line="1075">
+          <description>Parse a list of relations into individuals.</description>
+          <long-description/>
+          <tag name="param" line="1075" description="" type="array" variable="$relations">
+            <type>array</type>
+          </tag>
+          <tag name="return" line="1075" description="" type="array">
+            <type>array</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$relations</name>
+          <default/>
+          <type>array</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Database\Eloquent" line="1109" package="Default">
+        <name>parseNestedWith</name>
+        <full_name>\Illuminate\Database\Eloquent\Builder::parseNestedWith()</full_name>
+        <docblock line="1109">
+          <description>Parse the nested relationships in a relation.</description>
+          <long-description/>
+          <tag name="param" line="1109" description="" type="string" variable="$name">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="1109" description="" type="array" variable="$results">
+            <type>array</type>
+          </tag>
+          <tag name="return" line="1109" description="" type="array">
+            <type>array</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$name</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$results</name>
+          <default/>
+          <type>array</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Database\Eloquent" line="1136" package="Default">
+        <name>callScope</name>
+        <full_name>\Illuminate\Database\Eloquent\Builder::callScope()</full_name>
+        <docblock line="1136">
+          <description>Call the given model scope on the underlying model.</description>
+          <long-description/>
+          <tag name="param" line="1136" description="" type="string" variable="$scope">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="1136" description="" type="array" variable="$parameters">
+            <type>array</type>
+          </tag>
+          <tag name="return" line="1136" description="" type="\Illuminate\Database\Query\Builder">
+            <type>\Illuminate\Database\Query\Builder</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$scope</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$parameters</name>
+          <default/>
+          <type>array</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Eloquent" line="1161" package="Default">
+        <name>applyScopes</name>
+        <full_name>\Illuminate\Database\Eloquent\Builder::applyScopes()</full_name>
+        <docblock line="1161">
+          <description>Apply the scopes to the Eloquent builder instance and return it.</description>
+          <long-description/>
+          <tag name="return" line="1161" description="" type="\Illuminate\Database\Eloquent\Builder|static">
+            <type>\Illuminate\Database\Eloquent\Builder</type>
+            <type>static</type>
+          </tag>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Database\Eloquent" line="1201" package="Default">
+        <name>applyScope</name>
+        <full_name>\Illuminate\Database\Eloquent\Builder::applyScope()</full_name>
+        <docblock line="1201">
+          <description>Apply a single scope on the given builder instance.</description>
+          <long-description/>
+          <tag name="param" line="1201" description="" type="\Illuminate\Database\Eloquent\Scope|\Closure" variable="$scope">
+            <type>\Illuminate\Database\Eloquent\Scope</type>
+            <type>\Closure</type>
+          </tag>
+          <tag name="param" line="1201" description="" type="\Illuminate\Database\Eloquent\Builder" variable="$builder">
+            <type>\Illuminate\Database\Eloquent\Builder</type>
+          </tag>
+          <tag name="return" line="1201" description="" type="void">
+            <type>void</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$scope</name>
+          <default/>
+          <type>\Illuminate\Database\Eloquent\Scope|\Closure</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$builder</name>
+          <default/>
+          <type>\Illuminate\Database\Eloquent\Builder</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Database\Eloquent" line="1217" package="Default">
+        <name>shouldNestWheresForScope</name>
+        <full_name>\Illuminate\Database\Eloquent\Builder::shouldNestWheresForScope()</full_name>
+        <docblock line="1217">
+          <description>Determine if the scope added after the given offset should be nested.</description>
+          <long-description/>
+          <tag name="param" line="1217" description="" type="\Illuminate\Database\Query\Builder" variable="$query">
+            <type>\Illuminate\Database\Query\Builder</type>
+          </tag>
+          <tag name="param" line="1217" description="" type="integer" variable="$originalWhereCount">
+            <type>integer</type>
+          </tag>
+          <tag name="return" line="1217" description="" type="boolean">
+            <type>boolean</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$query</name>
+          <default/>
+          <type>\Illuminate\Database\Query\Builder</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$originalWhereCount</name>
+          <default/>
+          <type>integer</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Database\Eloquent" line="1229" package="Default">
+        <name>nestWheresForScope</name>
+        <full_name>\Illuminate\Database\Eloquent\Builder::nestWheresForScope()</full_name>
+        <docblock line="1229">
+          <description>Nest where conditions by slicing them at the given where count.</description>
+          <long-description/>
+          <tag name="param" line="1229" description="" type="\Illuminate\Database\Query\Builder" variable="$query">
+            <type>\Illuminate\Database\Query\Builder</type>
+          </tag>
+          <tag name="param" line="1229" description="" type="integer|array" variable="$whereCounts">
+            <type>integer</type>
+            <type>array</type>
+          </tag>
+          <tag name="return" line="1229" description="" type="void">
+            <type>void</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$query</name>
+          <default/>
+          <type>\Illuminate\Database\Query\Builder</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$whereCounts</name>
+          <default/>
+          <type>integer|array</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Database\Eloquent" line="1264" package="Default">
+        <name>sliceWhereConditions</name>
+        <full_name>\Illuminate\Database\Eloquent\Builder::sliceWhereConditions()</full_name>
+        <docblock line="1264">
+          <description>Create a slice of where conditions at the given offsets and nest them if needed.</description>
+          <long-description/>
+          <tag name="param" line="1264" description="" type="\Illuminate\Database\Query\Builder" variable="$query">
+            <type>\Illuminate\Database\Query\Builder</type>
+          </tag>
+          <tag name="param" line="1264" description="" type="array" variable="$wheres">
+            <type>array</type>
+          </tag>
+          <tag name="param" line="1264" description="" type="integer" variable="$sliceFrom">
+            <type>integer</type>
+          </tag>
+          <tag name="param" line="1264" description="" type="integer" variable="$sliceTo">
+            <type>integer</type>
+          </tag>
+          <tag name="return" line="1264" description="" type="void">
+            <type>void</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$query</name>
+          <default/>
+          <type>\Illuminate\Database\Query\Builder</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$wheres</name>
+          <default/>
+          <type>array</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$sliceFrom</name>
+          <default/>
+          <type>integer</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$sliceTo</name>
+          <default/>
+          <type>integer</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Database\Eloquent" line="1286" package="Default">
+        <name>nestWhereSlice</name>
+        <full_name>\Illuminate\Database\Eloquent\Builder::nestWhereSlice()</full_name>
+        <docblock line="1286">
+          <description>Create a where array with nested where conditions.</description>
+          <long-description/>
+          <tag name="param" line="1286" description="" type="array" variable="$whereSlice">
+            <type>array</type>
+          </tag>
+          <tag name="return" line="1286" description="" type="array">
+            <type>array</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$whereSlice</name>
+          <default/>
+          <type>array</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Eloquent" line="1300" package="Default">
+        <name>getQuery</name>
+        <full_name>\Illuminate\Database\Eloquent\Builder::getQuery()</full_name>
+        <docblock line="1300">
+          <description>Get the underlying query builder instance.</description>
+          <long-description/>
+          <tag name="return" line="1300" description="" type="\Illuminate\Database\Query\Builder|static">
+            <type>\Illuminate\Database\Query\Builder</type>
+            <type>static</type>
+          </tag>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Eloquent" line="1310" package="Default">
+        <name>toBase</name>
+        <full_name>\Illuminate\Database\Eloquent\Builder::toBase()</full_name>
+        <docblock line="1310">
+          <description>Get a base query builder instance.</description>
+          <long-description/>
+          <tag name="return" line="1310" description="" type="\Illuminate\Database\Query\Builder">
+            <type>\Illuminate\Database\Query\Builder</type>
+          </tag>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Eloquent" line="1321" package="Default">
+        <name>setQuery</name>
+        <full_name>\Illuminate\Database\Eloquent\Builder::setQuery()</full_name>
+        <docblock line="1321">
+          <description>Set the underlying query builder instance.</description>
+          <long-description/>
+          <tag name="param" line="1321" description="" type="\Illuminate\Database\Query\Builder" variable="$query">
+            <type>\Illuminate\Database\Query\Builder</type>
+          </tag>
+          <tag name="return" line="1321" description="" type="\Illuminate\Database\Eloquent\Builder">
+            <type>\Illuminate\Database\Eloquent\Builder</type>
+          </tag>
+          <tag name="fluent" description="This method is part of a fluent interface and will return the same instance"/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$query</name>
+          <default/>
+          <type>\Illuminate\Database\Query\Builder</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Eloquent" line="1333" package="Default">
+        <name>getEagerLoads</name>
+        <full_name>\Illuminate\Database\Eloquent\Builder::getEagerLoads()</full_name>
+        <docblock line="1333">
+          <description>Get the relationships being eagerly loaded.</description>
+          <long-description/>
+          <tag name="return" line="1333" description="" type="array">
+            <type>array</type>
+          </tag>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Eloquent" line="1344" package="Default">
+        <name>setEagerLoads</name>
+        <full_name>\Illuminate\Database\Eloquent\Builder::setEagerLoads()</full_name>
+        <docblock line="1344">
+          <description>Set the relationships being eagerly loaded.</description>
+          <long-description/>
+          <tag name="param" line="1344" description="" type="array" variable="$eagerLoad">
+            <type>array</type>
+          </tag>
+          <tag name="return" line="1344" description="" type="\Illuminate\Database\Eloquent\Builder">
+            <type>\Illuminate\Database\Eloquent\Builder</type>
+          </tag>
+          <tag name="fluent" description="This method is part of a fluent interface and will return the same instance"/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$eagerLoad</name>
+          <default/>
+          <type>array</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Eloquent" line="1356" package="Default">
+        <name>getModel</name>
+        <full_name>\Illuminate\Database\Eloquent\Builder::getModel()</full_name>
+        <docblock line="1356">
+          <description>Get the model instance being queried.</description>
+          <long-description/>
+          <tag name="return" line="1356" description="" type="\Illuminate\Database\Eloquent\Model">
+            <type>\Illuminate\Database\Eloquent\Model</type>
+          </tag>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Eloquent" line="1367" package="Default">
+        <name>setModel</name>
+        <full_name>\Illuminate\Database\Eloquent\Builder::setModel()</full_name>
+        <docblock line="1367">
+          <description>Set a model instance for the model being queried.</description>
+          <long-description/>
+          <tag name="param" line="1367" description="" type="\Illuminate\Database\Eloquent\Model" variable="$model">
+            <type>\Illuminate\Database\Eloquent\Model</type>
+          </tag>
+          <tag name="return" line="1367" description="" type="\Illuminate\Database\Eloquent\Builder">
+            <type>\Illuminate\Database\Eloquent\Builder</type>
+          </tag>
+          <tag name="fluent" description="This method is part of a fluent interface and will return the same instance"/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$model</name>
+          <default/>
+          <type>\Illuminate\Database\Eloquent\Model</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Eloquent" line="1383" package="Default">
+        <name>macro</name>
+        <full_name>\Illuminate\Database\Eloquent\Builder::macro()</full_name>
+        <docblock line="1383">
+          <description>Extend the builder with a given callback.</description>
+          <long-description/>
+          <tag name="param" line="1383" description="" type="string" variable="$name">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="1383" description="" type="\Closure" variable="$callback">
+            <type>\Closure</type>
+          </tag>
+          <tag name="return" line="1383" description="" type="void">
+            <type>void</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$name</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$callback</name>
+          <default/>
+          <type>\Closure</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Eloquent" line="1394" package="Default">
+        <name>getMacro</name>
+        <full_name>\Illuminate\Database\Eloquent\Builder::getMacro()</full_name>
+        <docblock line="1394">
+          <description>Get the given macro by name.</description>
+          <long-description/>
+          <tag name="param" line="1394" description="" type="string" variable="$name">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="1394" description="" type="\Closure">
+            <type>\Closure</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$name</name>
+          <default/>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Eloquent" line="1406" package="Default">
+        <name>__call</name>
+        <full_name>\Illuminate\Database\Eloquent\Builder::__call()</full_name>
+        <docblock line="1406">
+          <description>Dynamically handle calls into the query instance.</description>
+          <long-description/>
+          <tag name="param" line="1406" description="" type="string" variable="$method">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="1406" description="" type="array" variable="$parameters">
+            <type>array</type>
+          </tag>
+          <tag name="return" line="1406" description="" type="mixed">
+            <type>mixed</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$method</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$parameters</name>
+          <default/>
+          <type>array</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Eloquent" line="1432" package="Default">
+        <name>__clone</name>
+        <full_name>\Illuminate\Database\Eloquent\Builder::__clone()</full_name>
+        <docblock line="1432">
+          <description>Force a clone of the underlying query builder when cloning.</description>
+          <long-description/>
+          <tag name="return" line="1432" description="" type="void">
+            <type>void</type>
+          </tag>
+        </docblock>
+      </method>
+    </class>
+    <parse_markers>
+      <error line="0" code="PPC:ERR-50000">No summary was found for this file</error>
+      <error line="14" code="PPC:ERR-50005">No summary for class \Illuminate\Database\Eloquent\Builder</error>
+    </parse_markers>
+    <source>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</source>
+  <type>class</type></file>

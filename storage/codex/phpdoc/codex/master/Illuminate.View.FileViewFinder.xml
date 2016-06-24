@@ -1,0 +1,391 @@
+<file path="codex/vendor/laravel/framework/src/Illuminate/View/FileViewFinder.php" generated-path="codex.vendor.laravel.framework.src.Illuminate.View.FileViewFinder.html" hash="b7591fd454c70fb5b722926121bac069" package="Default">
+    <docblock line="0">
+      <description/>
+      <long-description/>
+      <tag name="package" line="0" description="Default"/>
+    </docblock>
+    <namespace-alias name="InvalidArgumentException">\InvalidArgumentException</namespace-alias>
+    <namespace-alias name="Filesystem">\Illuminate\Filesystem\Filesystem</namespace-alias>
+    <class final="false" abstract="false" namespace="Illuminate\View" line="8" package="Default">
+      <extends/>
+      <implements>\Illuminate\View\ViewFinderInterface</implements>
+      <name>FileViewFinder</name>
+      <full_name>\Illuminate\View\FileViewFinder</full_name>
+      <docblock line="8">
+        <description/>
+        <long-description/>
+        <tag name="package" line="8" description="Default"/>
+      </docblock>
+      <property static="false" visibility="protected" namespace="Illuminate\View" line="15" package="Default">
+        <name>$files</name>
+        <full_name>\Illuminate\View\FileViewFinder::files</full_name>
+        <default/>
+        <docblock line="15">
+          <description>The filesystem instance.</description>
+          <long-description/>
+          <tag name="var" line="15" description="" type="\Illuminate\Filesystem\Filesystem" variable="">
+            <type>\Illuminate\Filesystem\Filesystem</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" namespace="Illuminate\View" line="22" package="Default">
+        <name>$paths</name>
+        <full_name>\Illuminate\View\FileViewFinder::paths</full_name>
+        <default/>
+        <docblock line="22">
+          <description>The array of active view paths.</description>
+          <long-description/>
+          <tag name="var" line="22" description="" type="array" variable="">
+            <type>array</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" namespace="Illuminate\View" line="29" package="Default">
+        <name>$views</name>
+        <full_name>\Illuminate\View\FileViewFinder::views</full_name>
+        <default>array()</default>
+        <docblock line="29">
+          <description>The array of views that have been located.</description>
+          <long-description/>
+          <tag name="var" line="29" description="" type="array" variable="">
+            <type>array</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" namespace="Illuminate\View" line="36" package="Default">
+        <name>$hints</name>
+        <full_name>\Illuminate\View\FileViewFinder::hints</full_name>
+        <default>array()</default>
+        <docblock line="36">
+          <description>The namespace to file path hints.</description>
+          <long-description/>
+          <tag name="var" line="36" description="" type="array" variable="">
+            <type>array</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" namespace="Illuminate\View" line="43" package="Default">
+        <name>$extensions</name>
+        <full_name>\Illuminate\View\FileViewFinder::extensions</full_name>
+        <default>array('blade.php', 'php')</default>
+        <docblock line="43">
+          <description>Register a view extension with the finder.</description>
+          <long-description/>
+          <tag name="var" line="43" description="" type="array" variable="">
+            <type>array</type>
+          </tag>
+        </docblock>
+      </property>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\View" line="53" package="Default">
+        <name>__construct</name>
+        <full_name>\Illuminate\View\FileViewFinder::__construct()</full_name>
+        <docblock line="53">
+          <description>Create a new file view loader instance.</description>
+          <long-description/>
+          <tag name="param" line="53" description="" type="\Illuminate\Filesystem\Filesystem" variable="$files">
+            <type>\Illuminate\Filesystem\Filesystem</type>
+          </tag>
+          <tag name="param" line="53" description="" type="array" variable="$paths">
+            <type>array</type>
+          </tag>
+          <tag name="param" line="53" description="" type="array" variable="$extensions">
+            <type>array</type>
+          </tag>
+          <tag name="return" line="53" description="" type="void">
+            <type>void</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$files</name>
+          <default/>
+          <type>\Illuminate\Filesystem\Filesystem</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$paths</name>
+          <default/>
+          <type>array</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$extensions</name>
+          <default>null</default>
+          <type>array</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\View" line="69" package="Default">
+        <name>find</name>
+        <full_name>\Illuminate\View\FileViewFinder::find()</full_name>
+        <docblock line="69">
+          <description>Get the fully qualified location of the view.</description>
+          <long-description/>
+          <tag name="param" line="69" description="" type="string" variable="$name">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="69" description="" type="string">
+            <type>string</type>
+          </tag>
+          <tag name="inherited_from" description="\Illuminate\View\ViewFinderInterface::find()" refers="\Illuminate\View\ViewFinderInterface::find()" link="/classes/Illuminate.View.ViewFinderInterface.html#method_find"/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$name</name>
+          <default/>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\View" line="88" package="Default">
+        <name>findNamedPathView</name>
+        <full_name>\Illuminate\View\FileViewFinder::findNamedPathView()</full_name>
+        <docblock line="88">
+          <description>Get the path to a template with a named path.</description>
+          <long-description/>
+          <tag name="param" line="88" description="" type="string" variable="$name">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="88" description="" type="string">
+            <type>string</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$name</name>
+          <default/>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\View" line="103" package="Default">
+        <name>getNamespaceSegments</name>
+        <full_name>\Illuminate\View\FileViewFinder::getNamespaceSegments()</full_name>
+        <docblock line="103">
+          <description>Get the segments of a template with a named path.</description>
+          <long-description/>
+          <tag name="param" line="103" description="" type="string" variable="$name">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="103" description="" type="array">
+            <type>array</type>
+          </tag>
+          <tag name="throws" line="103" description="" type="\InvalidArgumentException">
+            <type>\InvalidArgumentException</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$name</name>
+          <default/>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\View" line="127" package="Default">
+        <name>findInPaths</name>
+        <full_name>\Illuminate\View\FileViewFinder::findInPaths()</full_name>
+        <docblock line="127">
+          <description>Find the given view in the list of paths.</description>
+          <long-description/>
+          <tag name="param" line="127" description="" type="string" variable="$name">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="127" description="" type="array" variable="$paths">
+            <type>array</type>
+          </tag>
+          <tag name="return" line="127" description="" type="string">
+            <type>string</type>
+          </tag>
+          <tag name="throws" line="127" description="" type="\InvalidArgumentException">
+            <type>\InvalidArgumentException</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$name</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$paths</name>
+          <default/>
+          <type>array</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\View" line="146" package="Default">
+        <name>getPossibleViewFiles</name>
+        <full_name>\Illuminate\View\FileViewFinder::getPossibleViewFiles()</full_name>
+        <docblock line="146">
+          <description>Get an array of possible view files.</description>
+          <long-description/>
+          <tag name="param" line="146" description="" type="string" variable="$name">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="146" description="" type="array">
+            <type>array</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$name</name>
+          <default/>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\View" line="159" package="Default">
+        <name>addLocation</name>
+        <full_name>\Illuminate\View\FileViewFinder::addLocation()</full_name>
+        <docblock line="159">
+          <description>Add a location to the finder.</description>
+          <long-description/>
+          <tag name="param" line="159" description="" type="string" variable="$location">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="159" description="" type="void">
+            <type>void</type>
+          </tag>
+          <tag name="inherited_from" description="\Illuminate\View\ViewFinderInterface::addLocation()" refers="\Illuminate\View\ViewFinderInterface::addLocation()" link="/classes/Illuminate.View.ViewFinderInterface.html#method_addLocation"/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$location</name>
+          <default/>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\View" line="171" package="Default">
+        <name>addNamespace</name>
+        <full_name>\Illuminate\View\FileViewFinder::addNamespace()</full_name>
+        <docblock line="171">
+          <description>Add a namespace hint to the finder.</description>
+          <long-description/>
+          <tag name="param" line="171" description="" type="string" variable="$namespace">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="171" description="" type="string|array" variable="$hints">
+            <type>string</type>
+            <type>array</type>
+          </tag>
+          <tag name="return" line="171" description="" type="void">
+            <type>void</type>
+          </tag>
+          <tag name="inherited_from" description="\Illuminate\View\ViewFinderInterface::addNamespace()" refers="\Illuminate\View\ViewFinderInterface::addNamespace()" link="/classes/Illuminate.View.ViewFinderInterface.html#method_addNamespace"/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$namespace</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$hints</name>
+          <default/>
+          <type>string|array</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\View" line="189" package="Default">
+        <name>prependNamespace</name>
+        <full_name>\Illuminate\View\FileViewFinder::prependNamespace()</full_name>
+        <docblock line="189">
+          <description>Prepend a namespace hint to the finder.</description>
+          <long-description/>
+          <tag name="param" line="189" description="" type="string" variable="$namespace">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="189" description="" type="string|array" variable="$hints">
+            <type>string</type>
+            <type>array</type>
+          </tag>
+          <tag name="return" line="189" description="" type="void">
+            <type>void</type>
+          </tag>
+          <tag name="inherited_from" description="\Illuminate\View\ViewFinderInterface::prependNamespace()" refers="\Illuminate\View\ViewFinderInterface::prependNamespace()" link="/classes/Illuminate.View.ViewFinderInterface.html#method_prependNamespace"/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$namespace</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$hints</name>
+          <default/>
+          <type>string|array</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\View" line="206" package="Default">
+        <name>addExtension</name>
+        <full_name>\Illuminate\View\FileViewFinder::addExtension()</full_name>
+        <docblock line="206">
+          <description>Register an extension with the view finder.</description>
+          <long-description/>
+          <tag name="param" line="206" description="" type="string" variable="$extension">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="206" description="" type="void">
+            <type>void</type>
+          </tag>
+          <tag name="inherited_from" description="\Illuminate\View\ViewFinderInterface::addExtension()" refers="\Illuminate\View\ViewFinderInterface::addExtension()" link="/classes/Illuminate.View.ViewFinderInterface.html#method_addExtension"/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$extension</name>
+          <default/>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\View" line="221" package="Default">
+        <name>hasHintInformation</name>
+        <full_name>\Illuminate\View\FileViewFinder::hasHintInformation()</full_name>
+        <docblock line="221">
+          <description>Returns whether or not the view specify a hint information.</description>
+          <long-description/>
+          <tag name="param" line="221" description="" type="string" variable="$name">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="221" description="" type="boolean">
+            <type>boolean</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$name</name>
+          <default/>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\View" line="231" package="Default">
+        <name>getFilesystem</name>
+        <full_name>\Illuminate\View\FileViewFinder::getFilesystem()</full_name>
+        <docblock line="231">
+          <description>Get the filesystem instance.</description>
+          <long-description/>
+          <tag name="return" line="231" description="" type="\Illuminate\Filesystem\Filesystem">
+            <type>\Illuminate\Filesystem\Filesystem</type>
+          </tag>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\View" line="241" package="Default">
+        <name>getPaths</name>
+        <full_name>\Illuminate\View\FileViewFinder::getPaths()</full_name>
+        <docblock line="241">
+          <description>Get the active view paths.</description>
+          <long-description/>
+          <tag name="return" line="241" description="" type="array">
+            <type>array</type>
+          </tag>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\View" line="251" package="Default">
+        <name>getHints</name>
+        <full_name>\Illuminate\View\FileViewFinder::getHints()</full_name>
+        <docblock line="251">
+          <description>Get the namespace to file path hints.</description>
+          <long-description/>
+          <tag name="return" line="251" description="" type="array">
+            <type>array</type>
+          </tag>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\View" line="261" package="Default">
+        <name>getExtensions</name>
+        <full_name>\Illuminate\View\FileViewFinder::getExtensions()</full_name>
+        <docblock line="261">
+          <description>Get registered extensions.</description>
+          <long-description/>
+          <tag name="return" line="261" description="" type="array">
+            <type>array</type>
+          </tag>
+        </docblock>
+      </method>
+    </class>
+    <parse_markers>
+      <error line="0" code="PPC:ERR-50000">No summary was found for this file</error>
+      <error line="8" code="PPC:ERR-50005">No summary for class \Illuminate\View\FileViewFinder</error>
+    </parse_markers>
+    <source>eJzNWEtv2zgQvvtXTIsAlgOvU+yxabob7KYbA90gyAa9OIHBSLRFQKa0IpUHuvnvOxxSD8ukHac51IfYETkPfjPzzVCffivSYjCQbMVVwWIO0yyrVkIyzW++Cf5wPBhUCp/Ke5aJ5LRcVisu9dljzAstcnlsV1uZLyLj6klpvur8RCVxxpQC88ho/SJkwksQqyLjRp+C9ulUal4u0JXB9wHg5+jwkL7hEK5TDotGKwipNJMxn7j1etvv96yEm11Oud1H9F2Uueax5gkckAH02GOblSV7gnwBLNbinsM9Og0F06nyukDbQ2ZIbIcZo1+BTpmGlKG9O84lZHmMZ0r2t2i1ncDs1m+2zQGdE8x0NEgFxmd/ayQWsHbFlwJDgBoshPxRc6kwneBBoEVNYTa5sL/ZRhXZHt5lLOETTPHhGIbmy+PNHyVHQNEXia7QucmpLGeUo6EkK1jJVrA7z8ClVF/QRtklQmixPU6zo+S6KiXc5yJZB6G6y0QMi0rGpjJhPo9RTJdVrKOON9aZsbNgrTf/raEnqywbkWpbiOZzoFOhfvlMOnBLXSy9ZVJqlrtJbj5iAZFQiuuoY2o06hjoaFlzprO/Nfc8sH/7Ef2La5tEeIIn+LdC6loIzA4qHYMN1pZZN3EOxRWRE3KJzpiy6INvF7fCbxI4IuE+hh0Q7EGpMGe093YDDGfRs7WLw5pytzdl6hyLcCoXebmic1t/EE10f+Wc28OgCUMdf5lc4KPkEgNsqNsp87r0UoVTabQpq2q8lktOcTjSxFRIWwwwx4vM1DNRCSNWS2j9zSLdsM1asH149CKfIevZFeLZseXkUQvDkuuLevUfvqTW2EAbAHQNOqOvgY4oeNbau90Jo3I2qce9NZRd3m7WdFrm2JVuQgPGLuS3INanruZwJ9hwiixPeITUrkX88eP59OJ6fnl6fT7/8+zr9O/p9dnVGDZwN7UV55XEGNa6RvDuBH7tlxAditpJ6FjRe5MlUNcBliowib2GdhPQk/f+ajJOvIM1/nBxrn2afbjdpJGXuHSRU7O3xZRwTCyDdF7C7HtX+fNtyLc6MevNoXQzgx7l2xKnKGnbrZD0xJSIyT7/VLU1zdZbZ7+x+ur5zbLQR1+WuHpJiGhyFqcQReTmyG0DjD/96oet2d8SxGWulLir52hsvy7dSYfpx30dddZ0e7fproi0YwzjeN2uJ8Oj4cTq8SnqhrkWPd7Y9Tzw/9fJlb1rROYa4ahk0mSfn8eYbAfowmFlU4xO/sPUtY2KQrHpZUFX63zFiqjR0ZmLRmCuVnVwvT0afZ6XHDk65tFwYkbco2HNWxN8MGm1dep1vDlgBQE9TRIk/mZuwg67ZTjvI1mL7T26siT56mSjRktgFKX6mdEoUe/cfpj2mkNkt9+RGmH/jv/quZ0o+TXnbprZ+pxA+jYQqO9YDZnQA/+8HRoJNobvWqnLTl4ueVC68czbDkJSJlbOU3+gLjGpufzJg1VYJ3/SgNHDnZPgWwWsvdBL32Xese+LgtaIv6Z6zmrhLo96rl/RgXHmsQFNcVbGaUfIx5Fm1juBBcvUBh9XshOyVmRmzQTQtqZRNBULj/C4g0WQn68IGwUPKUegS8BhzfTJBnRV8FgsnrCSqH5Eexd8VR+8y/NsawxCd85AB0Rj2KLrkWnLND6Cz/Bh1+3lJa8GneE93w72Tomdvt0ZBc7WHbd2eb77fWJ4ENn0zc6h291yb2a2u7XXG8F9PDQ5ssvDrYRjPCwd6eAM1lbND7nV0Mcu3/ovo54Hz4P/AeY2vGs=</source>
+  <type>class</type></file>

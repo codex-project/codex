@@ -1,0 +1,818 @@
+<file path="codex/vendor/laravel/framework/src/Illuminate/Translation/Translator.php" generated-path="codex.vendor.laravel.framework.src.Illuminate.Translation.Translator.html" hash="c96f571474e97e29f8bd1b895be79670" package="Default">
+    <docblock line="0">
+      <description/>
+      <long-description/>
+      <tag name="package" line="0" description="Default"/>
+    </docblock>
+    <namespace-alias name="Arr">\Illuminate\Support\Arr</namespace-alias>
+    <namespace-alias name="Str">\Illuminate\Support\Str</namespace-alias>
+    <namespace-alias name="Collection">\Illuminate\Support\Collection</namespace-alias>
+    <namespace-alias name="NamespacedItemResolver">\Illuminate\Support\NamespacedItemResolver</namespace-alias>
+    <namespace-alias name="MessageSelector">\Symfony\Component\Translation\MessageSelector</namespace-alias>
+    <namespace-alias name="TranslatorInterface">\Symfony\Component\Translation\TranslatorInterface</namespace-alias>
+    <class final="false" abstract="false" namespace="Illuminate\Translation" line="12" package="Default">
+      <extends>\Illuminate\Support\NamespacedItemResolver</extends>
+      <implements>\Symfony\Component\Translation\TranslatorInterface</implements>
+      <name>Translator</name>
+      <full_name>\Illuminate\Translation\Translator</full_name>
+      <docblock line="12">
+        <description/>
+        <long-description/>
+        <tag name="package" line="12" description="Default"/>
+        <tag name="inherited_from" description="\Illuminate\Support\NamespacedItemResolver" refers="\Illuminate\Support\NamespacedItemResolver" link="/classes/Illuminate.Support.NamespacedItemResolver.html"/>
+      </docblock>
+      <property static="false" visibility="protected" namespace="Illuminate\Translation" line="19" package="Default">
+        <name>$loader</name>
+        <full_name>\Illuminate\Translation\Translator::loader</full_name>
+        <default/>
+        <docblock line="19">
+          <description>The loader implementation.</description>
+          <long-description/>
+          <tag name="var" line="19" description="" type="\Illuminate\Translation\LoaderInterface" variable="">
+            <type>\Illuminate\Translation\LoaderInterface</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" namespace="Illuminate\Translation" line="26" package="Default">
+        <name>$locale</name>
+        <full_name>\Illuminate\Translation\Translator::locale</full_name>
+        <default/>
+        <docblock line="26">
+          <description>The default locale being used by the translator.</description>
+          <long-description/>
+          <tag name="var" line="26" description="" type="string" variable="">
+            <type>string</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" namespace="Illuminate\Translation" line="33" package="Default">
+        <name>$fallback</name>
+        <full_name>\Illuminate\Translation\Translator::fallback</full_name>
+        <default/>
+        <docblock line="33">
+          <description>The fallback locale used by the translator.</description>
+          <long-description/>
+          <tag name="var" line="33" description="" type="string" variable="">
+            <type>string</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" namespace="Illuminate\Translation" line="40" package="Default">
+        <name>$loaded</name>
+        <full_name>\Illuminate\Translation\Translator::loaded</full_name>
+        <default>array()</default>
+        <docblock line="40">
+          <description>The array of loaded translation groups.</description>
+          <long-description/>
+          <tag name="var" line="40" description="" type="array" variable="">
+            <type>array</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" namespace="Illuminate\Translation" line="47" package="Default">
+        <name>$selector</name>
+        <full_name>\Illuminate\Translation\Translator::selector</full_name>
+        <default/>
+        <docblock line="47">
+          <description>The message selector.</description>
+          <long-description/>
+          <tag name="var" line="47" description="" type="\Symfony\Component\Translation\MessageSelector" variable="">
+            <type>\Symfony\Component\Translation\MessageSelector</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" namespace="Illuminate\Translation" line="12" package="Default">
+        <name>$parsed</name>
+        <full_name>\Illuminate\Support\NamespacedItemResolver::parsed</full_name>
+        <default>array()</default>
+        <docblock line="12">
+          <description>A cache of the parsed items.</description>
+          <long-description/>
+          <tag name="var" line="12" description="" type="array" variable="">
+            <type>array</type>
+          </tag>
+        </docblock>
+      </property>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Translation" line="56" package="Default">
+        <name>__construct</name>
+        <full_name>\Illuminate\Translation\Translator::__construct()</full_name>
+        <docblock line="56">
+          <description>Create a new translator instance.</description>
+          <long-description/>
+          <tag name="param" line="56" description="" type="\Illuminate\Translation\LoaderInterface" variable="$loader">
+            <type>\Illuminate\Translation\LoaderInterface</type>
+          </tag>
+          <tag name="param" line="56" description="" type="string" variable="$locale">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="56" description="" type="void">
+            <type>void</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$loader</name>
+          <default/>
+          <type>\Illuminate\Translation\LoaderInterface</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$locale</name>
+          <default/>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Translation" line="69" package="Default">
+        <name>hasForLocale</name>
+        <full_name>\Illuminate\Translation\Translator::hasForLocale()</full_name>
+        <docblock line="69">
+          <description>Determine if a translation exists for a given locale.</description>
+          <long-description/>
+          <tag name="param" line="69" description="" type="string" variable="$key">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="69" description="" type="string|null" variable="$locale">
+            <type>string</type>
+            <type>null</type>
+          </tag>
+          <tag name="return" line="69" description="" type="boolean">
+            <type>boolean</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$key</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$locale</name>
+          <default>null</default>
+          <type>string|null</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Translation" line="82" package="Default">
+        <name>has</name>
+        <full_name>\Illuminate\Translation\Translator::has()</full_name>
+        <docblock line="82">
+          <description>Determine if a translation exists.</description>
+          <long-description/>
+          <tag name="param" line="82" description="" type="string" variable="$key">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="82" description="" type="string|null" variable="$locale">
+            <type>string</type>
+            <type>null</type>
+          </tag>
+          <tag name="param" line="82" description="" type="boolean" variable="$fallback">
+            <type>boolean</type>
+          </tag>
+          <tag name="return" line="82" description="" type="boolean">
+            <type>boolean</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$key</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$locale</name>
+          <default>null</default>
+          <type>string|null</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$fallback</name>
+          <default>true</default>
+          <type>boolean</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Translation" line="96" package="Default">
+        <name>get</name>
+        <full_name>\Illuminate\Translation\Translator::get()</full_name>
+        <docblock line="96">
+          <description>Get the translation for the given key.</description>
+          <long-description/>
+          <tag name="param" line="96" description="" type="string" variable="$key">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="96" description="" type="array" variable="$replace">
+            <type>array</type>
+          </tag>
+          <tag name="param" line="96" description="" type="string|null" variable="$locale">
+            <type>string</type>
+            <type>null</type>
+          </tag>
+          <tag name="param" line="96" description="" type="boolean" variable="$fallback">
+            <type>boolean</type>
+          </tag>
+          <tag name="return" line="96" description="" type="string|array|null">
+            <type>string</type>
+            <type>array</type>
+            <type>null</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$key</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$replace</name>
+          <default>array()</default>
+          <type>array</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$locale</name>
+          <default>null</default>
+          <type>string|null</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$fallback</name>
+          <default>true</default>
+          <type>boolean</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Translation" line="137" package="Default">
+        <name>getLine</name>
+        <full_name>\Illuminate\Translation\Translator::getLine()</full_name>
+        <docblock line="137">
+          <description>Retrieve a language line out the loaded array.</description>
+          <long-description/>
+          <tag name="param" line="137" description="" type="string" variable="$namespace">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="137" description="" type="string" variable="$group">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="137" description="" type="string" variable="$locale">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="137" description="" type="string" variable="$item">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="137" description="" type="array" variable="$replace">
+            <type>array</type>
+          </tag>
+          <tag name="return" line="137" description="" type="string|array|null">
+            <type>string</type>
+            <type>array</type>
+            <type>null</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$namespace</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$group</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$locale</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$item</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$replace</name>
+          <default/>
+          <type>array</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Translation" line="155" package="Default">
+        <name>makeReplacements</name>
+        <full_name>\Illuminate\Translation\Translator::makeReplacements()</full_name>
+        <docblock line="155">
+          <description>Make the place-holder replacements on a line.</description>
+          <long-description/>
+          <tag name="param" line="155" description="" type="string" variable="$line">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="155" description="" type="array" variable="$replace">
+            <type>array</type>
+          </tag>
+          <tag name="return" line="155" description="" type="string">
+            <type>string</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$line</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$replace</name>
+          <default/>
+          <type>array</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Translation" line="176" package="Default">
+        <name>sortReplacements</name>
+        <full_name>\Illuminate\Translation\Translator::sortReplacements()</full_name>
+        <docblock line="176">
+          <description>Sort the replacements array.</description>
+          <long-description/>
+          <tag name="param" line="176" description="" type="array" variable="$replace">
+            <type>array</type>
+          </tag>
+          <tag name="return" line="176" description="" type="array">
+            <type>array</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$replace</name>
+          <default/>
+          <type>array</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Translation" line="192" package="Default">
+        <name>choice</name>
+        <full_name>\Illuminate\Translation\Translator::choice()</full_name>
+        <docblock line="192">
+          <description>Get a translation according to an integer value.</description>
+          <long-description/>
+          <tag name="param" line="192" description="" type="string" variable="$key">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="192" description="" type="integer|array|\Countable" variable="$number">
+            <type>integer</type>
+            <type>array</type>
+            <type>\Countable</type>
+          </tag>
+          <tag name="param" line="192" description="" type="array" variable="$replace">
+            <type>array</type>
+          </tag>
+          <tag name="param" line="192" description="" type="string" variable="$locale">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="192" description="" type="string">
+            <type>string</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$key</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$number</name>
+          <default/>
+          <type>integer|array|\Countable</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$replace</name>
+          <default>array()</default>
+          <type>array</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$locale</name>
+          <default>null</default>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Translation" line="214" package="Default">
+        <name>trans</name>
+        <full_name>\Illuminate\Translation\Translator::trans()</full_name>
+        <docblock line="214">
+          <description>Get the translation for a given key.</description>
+          <long-description/>
+          <tag name="param" line="214" description="" type="string" variable="$id">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="214" description="" type="array" variable="$parameters">
+            <type>array</type>
+          </tag>
+          <tag name="param" line="214" description="" type="string" variable="$domain">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="214" description="" type="string" variable="$locale">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="214" description="" type="string|array|null">
+            <type>string</type>
+            <type>array</type>
+            <type>null</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$id</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$parameters</name>
+          <default>array()</default>
+          <type>array</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$domain</name>
+          <default>'messages'</default>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$locale</name>
+          <default>null</default>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Translation" line="229" package="Default">
+        <name>transChoice</name>
+        <full_name>\Illuminate\Translation\Translator::transChoice()</full_name>
+        <docblock line="229">
+          <description>Get a translation according to an integer value.</description>
+          <long-description/>
+          <tag name="param" line="229" description="" type="string" variable="$id">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="229" description="" type="integer|array|\Countable" variable="$number">
+            <type>integer</type>
+            <type>array</type>
+            <type>\Countable</type>
+          </tag>
+          <tag name="param" line="229" description="" type="array" variable="$parameters">
+            <type>array</type>
+          </tag>
+          <tag name="param" line="229" description="" type="string" variable="$domain">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="229" description="" type="string" variable="$locale">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="229" description="" type="string">
+            <type>string</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$id</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$number</name>
+          <default/>
+          <type>integer|array|\Countable</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$parameters</name>
+          <default>array()</default>
+          <type>array</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$domain</name>
+          <default>'messages'</default>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$locale</name>
+          <default>null</default>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Translation" line="242" package="Default">
+        <name>load</name>
+        <full_name>\Illuminate\Translation\Translator::load()</full_name>
+        <docblock line="242">
+          <description>Load the specified language group.</description>
+          <long-description/>
+          <tag name="param" line="242" description="" type="string" variable="$namespace">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="242" description="" type="string" variable="$group">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="242" description="" type="string" variable="$locale">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="242" description="" type="void">
+            <type>void</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$namespace</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$group</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$locale</name>
+          <default/>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Translation" line="264" package="Default">
+        <name>isLoaded</name>
+        <full_name>\Illuminate\Translation\Translator::isLoaded()</full_name>
+        <docblock line="264">
+          <description>Determine if the given group has been loaded.</description>
+          <long-description/>
+          <tag name="param" line="264" description="" type="string" variable="$namespace">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="264" description="" type="string" variable="$group">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="264" description="" type="string" variable="$locale">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="264" description="" type="boolean">
+            <type>boolean</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$namespace</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$group</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$locale</name>
+          <default/>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Translation" line="276" package="Default">
+        <name>addNamespace</name>
+        <full_name>\Illuminate\Translation\Translator::addNamespace()</full_name>
+        <docblock line="276">
+          <description>Add a new namespace to the loader.</description>
+          <long-description/>
+          <tag name="param" line="276" description="" type="string" variable="$namespace">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="276" description="" type="string" variable="$hint">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="276" description="" type="void">
+            <type>void</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$namespace</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$hint</name>
+          <default/>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Translation" line="287" package="Default">
+        <name>parseKey</name>
+        <full_name>\Illuminate\Translation\Translator::parseKey()</full_name>
+        <docblock line="287">
+          <description>Parse a key into namespace, group, and item.</description>
+          <long-description/>
+          <tag name="param" line="287" description="" type="string" variable="$key">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="287" description="" type="array">
+            <type>array</type>
+          </tag>
+          <tag name="inherited_from" description="\Illuminate\Support\NamespacedItemResolver::parseKey()" refers="\Illuminate\Support\NamespacedItemResolver::parseKey()" link="/classes/Illuminate.Support.NamespacedItemResolver.html#method_parseKey"/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$key</name>
+          <default/>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Translation" line="304" package="Default">
+        <name>parseLocale</name>
+        <full_name>\Illuminate\Translation\Translator::parseLocale()</full_name>
+        <docblock line="304">
+          <description>Get the array of locales to be checked.</description>
+          <long-description/>
+          <tag name="param" line="304" description="" type="string|null" variable="$locale">
+            <type>string</type>
+            <type>null</type>
+          </tag>
+          <tag name="return" line="304" description="" type="array">
+            <type>array</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$locale</name>
+          <default/>
+          <type>string|null</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Translation" line="314" package="Default">
+        <name>getSelector</name>
+        <full_name>\Illuminate\Translation\Translator::getSelector()</full_name>
+        <docblock line="314">
+          <description>Get the message selector instance.</description>
+          <long-description/>
+          <tag name="return" line="314" description="" type="\Symfony\Component\Translation\MessageSelector">
+            <type>\Symfony\Component\Translation\MessageSelector</type>
+          </tag>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Translation" line="329" package="Default">
+        <name>setSelector</name>
+        <full_name>\Illuminate\Translation\Translator::setSelector()</full_name>
+        <docblock line="329">
+          <description>Set the message selector instance.</description>
+          <long-description/>
+          <tag name="param" line="329" description="" type="\Symfony\Component\Translation\MessageSelector" variable="$selector">
+            <type>\Symfony\Component\Translation\MessageSelector</type>
+          </tag>
+          <tag name="return" line="329" description="" type="void">
+            <type>void</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$selector</name>
+          <default/>
+          <type>\Symfony\Component\Translation\MessageSelector</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Translation" line="339" package="Default">
+        <name>getLoader</name>
+        <full_name>\Illuminate\Translation\Translator::getLoader()</full_name>
+        <docblock line="339">
+          <description>Get the language line loader implementation.</description>
+          <long-description/>
+          <tag name="return" line="339" description="" type="\Illuminate\Translation\LoaderInterface">
+            <type>\Illuminate\Translation\LoaderInterface</type>
+          </tag>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Translation" line="349" package="Default">
+        <name>locale</name>
+        <full_name>\Illuminate\Translation\Translator::locale()</full_name>
+        <docblock line="349">
+          <description>Get the default locale being used.</description>
+          <long-description/>
+          <tag name="return" line="349" description="" type="string">
+            <type>string</type>
+          </tag>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Translation" line="359" package="Default">
+        <name>getLocale</name>
+        <full_name>\Illuminate\Translation\Translator::getLocale()</full_name>
+        <docblock line="359">
+          <description>Get the default locale being used.</description>
+          <long-description/>
+          <tag name="return" line="359" description="" type="string">
+            <type>string</type>
+          </tag>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Translation" line="370" package="Default">
+        <name>setLocale</name>
+        <full_name>\Illuminate\Translation\Translator::setLocale()</full_name>
+        <docblock line="370">
+          <description>Set the default locale.</description>
+          <long-description/>
+          <tag name="param" line="370" description="" type="string" variable="$locale">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="370" description="" type="void">
+            <type>void</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$locale</name>
+          <default/>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Translation" line="380" package="Default">
+        <name>getFallback</name>
+        <full_name>\Illuminate\Translation\Translator::getFallback()</full_name>
+        <docblock line="380">
+          <description>Get the fallback locale being used.</description>
+          <long-description/>
+          <tag name="return" line="380" description="" type="string">
+            <type>string</type>
+          </tag>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Translation" line="391" package="Default">
+        <name>setFallback</name>
+        <full_name>\Illuminate\Translation\Translator::setFallback()</full_name>
+        <docblock line="391">
+          <description>Set the fallback locale being used.</description>
+          <long-description/>
+          <tag name="param" line="391" description="" type="string" variable="$fallback">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="391" description="" type="void">
+            <type>void</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$fallback</name>
+          <default/>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Translation" line="20" package="Default">
+        <name>parseKey</name>
+        <full_name>\Illuminate\Support\NamespacedItemResolver::parseKey()</full_name>
+        <docblock line="20">
+          <description>Parse a key into namespace, group, and item.</description>
+          <long-description/>
+          <tag name="param" line="20" description="" type="string" variable="$key">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="20" description="" type="array">
+            <type>array</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$key</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <inherited_from>\Illuminate\Support\NamespacedItemResolver</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Translation" line="52" package="Default">
+        <name>parseBasicSegments</name>
+        <full_name>\Illuminate\Support\NamespacedItemResolver::parseBasicSegments()</full_name>
+        <docblock line="52">
+          <description>Parse an array of basic segments.</description>
+          <long-description/>
+          <tag name="param" line="52" description="" type="array" variable="$segments">
+            <type>array</type>
+          </tag>
+          <tag name="return" line="52" description="" type="array">
+            <type>array</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$segments</name>
+          <default/>
+          <type>array</type>
+        </argument>
+        <inherited_from>\Illuminate\Support\NamespacedItemResolver</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Translation" line="79" package="Default">
+        <name>parseNamespacedSegments</name>
+        <full_name>\Illuminate\Support\NamespacedItemResolver::parseNamespacedSegments()</full_name>
+        <docblock line="79">
+          <description>Parse an array of namespaced segments.</description>
+          <long-description/>
+          <tag name="param" line="79" description="" type="string" variable="$key">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="79" description="" type="array">
+            <type>array</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$key</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <inherited_from>\Illuminate\Support\NamespacedItemResolver</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Translation" line="100" package="Default">
+        <name>setParsedKey</name>
+        <full_name>\Illuminate\Support\NamespacedItemResolver::setParsedKey()</full_name>
+        <docblock line="100">
+          <description>Set the parsed value of a key.</description>
+          <long-description/>
+          <tag name="param" line="100" description="" type="string" variable="$key">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="100" description="" type="array" variable="$parsed">
+            <type>array</type>
+          </tag>
+          <tag name="return" line="100" description="" type="void">
+            <type>void</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$key</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$parsed</name>
+          <default/>
+          <type>array</type>
+        </argument>
+        <inherited_from>\Illuminate\Support\NamespacedItemResolver</inherited_from>
+      </method>
+    </class>
+    <parse_markers>
+      <error line="0" code="PPC:ERR-50000">No summary was found for this file</error>
+      <error line="12" code="PPC:ERR-50005">No summary for class \Illuminate\Translation\Translator</error>
+    </parse_markers>
+    <source>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</source>
+  <type>class</type></file>

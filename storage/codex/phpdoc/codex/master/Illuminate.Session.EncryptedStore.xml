@@ -1,0 +1,1140 @@
+<file path="codex/vendor/laravel/framework/src/Illuminate/Session/EncryptedStore.php" generated-path="codex.vendor.laravel.framework.src.Illuminate.Session.EncryptedStore.html" hash="77a4f1d876f9504896a6a9e6a69f647c" package="Default">
+    <docblock line="0">
+      <description/>
+      <long-description/>
+      <tag name="package" line="0" description="Default"/>
+    </docblock>
+    <namespace-alias name="SessionHandlerInterface">\SessionHandlerInterface</namespace-alias>
+    <namespace-alias name="DecryptException">\Illuminate\Contracts\Encryption\DecryptException</namespace-alias>
+    <namespace-alias name="EncrypterContract">\Illuminate\Contracts\Encryption\Encrypter</namespace-alias>
+    <class final="false" abstract="false" namespace="Illuminate\Session" line="9" package="Default">
+      <extends>\Illuminate\Session\Store</extends>
+      <name>EncryptedStore</name>
+      <full_name>\Illuminate\Session\EncryptedStore</full_name>
+      <docblock line="9">
+        <description/>
+        <long-description/>
+        <tag name="package" line="9" description="Default"/>
+        <tag name="inherited_from" description="\Illuminate\Session\Store" refers="\Illuminate\Session\Store" link="/classes/Illuminate.Session.Store.html"/>
+      </docblock>
+      <property static="false" visibility="protected" namespace="Illuminate\Session" line="16" package="Default">
+        <name>$encrypter</name>
+        <full_name>\Illuminate\Session\EncryptedStore::encrypter</full_name>
+        <default/>
+        <docblock line="16">
+          <description>The encrypter instance.</description>
+          <long-description/>
+          <tag name="var" line="16" description="" type="\Illuminate\Contracts\Encryption\Encrypter" variable="">
+            <type>\Illuminate\Contracts\Encryption\Encrypter</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" namespace="Illuminate\Session" line="20" package="Default">
+        <name>$id</name>
+        <full_name>\Illuminate\Session\Store::id</full_name>
+        <default/>
+        <docblock line="20">
+          <description>The session ID.</description>
+          <long-description/>
+          <tag name="var" line="20" description="" type="string" variable="">
+            <type>string</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" namespace="Illuminate\Session" line="27" package="Default">
+        <name>$name</name>
+        <full_name>\Illuminate\Session\Store::name</full_name>
+        <default/>
+        <docblock line="27">
+          <description>The session name.</description>
+          <long-description/>
+          <tag name="var" line="27" description="" type="string" variable="">
+            <type>string</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" namespace="Illuminate\Session" line="34" package="Default">
+        <name>$attributes</name>
+        <full_name>\Illuminate\Session\Store::attributes</full_name>
+        <default>array()</default>
+        <docblock line="34">
+          <description>The session attributes.</description>
+          <long-description/>
+          <tag name="var" line="34" description="" type="array" variable="">
+            <type>array</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" namespace="Illuminate\Session" line="41" package="Default">
+        <name>$bags</name>
+        <full_name>\Illuminate\Session\Store::bags</full_name>
+        <default>array()</default>
+        <docblock line="41">
+          <description>The session bags.</description>
+          <long-description/>
+          <tag name="var" line="41" description="" type="array" variable="">
+            <type>array</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" namespace="Illuminate\Session" line="48" package="Default">
+        <name>$metaBag</name>
+        <full_name>\Illuminate\Session\Store::metaBag</full_name>
+        <default/>
+        <docblock line="48">
+          <description>The meta-data bag instance.</description>
+          <long-description/>
+          <tag name="var" line="48" description="" type="\Symfony\Component\HttpFoundation\Session\Storage\MetadataBag" variable="">
+            <type>\Symfony\Component\HttpFoundation\Session\Storage\MetadataBag</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" namespace="Illuminate\Session" line="55" package="Default">
+        <name>$bagData</name>
+        <full_name>\Illuminate\Session\Store::bagData</full_name>
+        <default>array()</default>
+        <docblock line="55">
+          <description>Local copies of the session bag data.</description>
+          <long-description/>
+          <tag name="var" line="55" description="" type="array" variable="">
+            <type>array</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" namespace="Illuminate\Session" line="62" package="Default">
+        <name>$handler</name>
+        <full_name>\Illuminate\Session\Store::handler</full_name>
+        <default/>
+        <docblock line="62">
+          <description>The session handler implementation.</description>
+          <long-description/>
+          <tag name="var" line="62" description="" type="\SessionHandlerInterface" variable="">
+            <type>\SessionHandlerInterface</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" namespace="Illuminate\Session" line="69" package="Default">
+        <name>$started</name>
+        <full_name>\Illuminate\Session\Store::started</full_name>
+        <default>false</default>
+        <docblock line="69">
+          <description>Session store started status.</description>
+          <long-description/>
+          <tag name="var" line="69" description="" type="boolean" variable="">
+            <type>boolean</type>
+          </tag>
+        </docblock>
+      </property>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Session" line="27" package="Default">
+        <name>__construct</name>
+        <full_name>\Illuminate\Session\EncryptedStore::__construct()</full_name>
+        <docblock line="27">
+          <description>Create a new session instance.</description>
+          <long-description/>
+          <tag name="param" line="27" description="" type="string" variable="$name">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="27" description="" type="\SessionHandlerInterface" variable="$handler">
+            <type>\SessionHandlerInterface</type>
+          </tag>
+          <tag name="param" line="27" description="" type="\Illuminate\Contracts\Encryption\Encrypter" variable="$encrypter">
+            <type>\Illuminate\Contracts\Encryption\Encrypter</type>
+          </tag>
+          <tag name="param" line="27" description="" type="string|null" variable="$id">
+            <type>string</type>
+            <type>null</type>
+          </tag>
+          <tag name="return" line="27" description="" type="void">
+            <type>void</type>
+          </tag>
+          <tag name="inherited_from" description="\Illuminate\Session\Store::__construct()" refers="\Illuminate\Session\Store::__construct()" link="/classes/Illuminate.Session.Store.html#method___construct"/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$name</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$handler</name>
+          <default/>
+          <type>\SessionHandlerInterface</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$encrypter</name>
+          <default/>
+          <type>\Illuminate\Contracts\Encryption\Encrypter</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$id</name>
+          <default>null</default>
+          <type>string|null</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Session" line="40" package="Default">
+        <name>prepareForUnserialize</name>
+        <full_name>\Illuminate\Session\EncryptedStore::prepareForUnserialize()</full_name>
+        <docblock line="40">
+          <description>Prepare the raw string data from the session for unserialization.</description>
+          <long-description/>
+          <tag name="param" line="40" description="" type="string" variable="$data">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="40" description="" type="string">
+            <type>string</type>
+          </tag>
+          <tag name="inherited_from" description="\Illuminate\Session\Store::prepareForUnserialize()" refers="\Illuminate\Session\Store::prepareForUnserialize()" link="/classes/Illuminate.Session.Store.html#method_prepareForUnserialize"/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$data</name>
+          <default/>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Session" line="55" package="Default">
+        <name>prepareForStorage</name>
+        <full_name>\Illuminate\Session\EncryptedStore::prepareForStorage()</full_name>
+        <docblock line="55">
+          <description>Prepare the serialized session data for storage.</description>
+          <long-description/>
+          <tag name="param" line="55" description="" type="string" variable="$data">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="55" description="" type="string">
+            <type>string</type>
+          </tag>
+          <tag name="inherited_from" description="\Illuminate\Session\Store::prepareForStorage()" refers="\Illuminate\Session\Store::prepareForStorage()" link="/classes/Illuminate.Session.Store.html#method_prepareForStorage"/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$data</name>
+          <default/>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Session" line="65" package="Default">
+        <name>getEncrypter</name>
+        <full_name>\Illuminate\Session\EncryptedStore::getEncrypter()</full_name>
+        <docblock line="65">
+          <description>Get the encrypter instance.</description>
+          <long-description/>
+          <tag name="return" line="65" description="" type="\Illuminate\Contracts\Encryption\Encrypter">
+            <type>\Illuminate\Contracts\Encryption\Encrypter</type>
+          </tag>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Session" line="79" package="Default">
+        <name>__construct</name>
+        <full_name>\Illuminate\Session\Store::__construct()</full_name>
+        <docblock line="79">
+          <description>Create a new session instance.</description>
+          <long-description/>
+          <tag name="param" line="79" description="" type="string" variable="$name">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="79" description="" type="\SessionHandlerInterface" variable="$handler">
+            <type>\SessionHandlerInterface</type>
+          </tag>
+          <tag name="param" line="79" description="" type="string|null" variable="$id">
+            <type>string</type>
+            <type>null</type>
+          </tag>
+          <tag name="return" line="79" description="" type="void">
+            <type>void</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$name</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$handler</name>
+          <default/>
+          <type>\SessionHandlerInterface</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$id</name>
+          <default>null</default>
+          <type>string|null</type>
+        </argument>
+        <inherited_from>\Illuminate\Session\Store</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Session" line="90" package="Default">
+        <name>start</name>
+        <full_name>\Illuminate\Session\Store::start()</full_name>
+        <docblock line="90">
+          <description>{@inheritdoc}</description>
+          <long-description/>
+        </docblock>
+        <inherited_from>\Illuminate\Session\Store</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Session" line="106" package="Default">
+        <name>loadSession</name>
+        <full_name>\Illuminate\Session\Store::loadSession()</full_name>
+        <docblock line="106">
+          <description>Load the session data from the handler.</description>
+          <long-description/>
+          <tag name="return" line="106" description="" type="void">
+            <type>void</type>
+          </tag>
+        </docblock>
+        <inherited_from>\Illuminate\Session\Store</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Session" line="122" package="Default">
+        <name>readFromHandler</name>
+        <full_name>\Illuminate\Session\Store::readFromHandler()</full_name>
+        <docblock line="122">
+          <description>Read the session data from the handler.</description>
+          <long-description/>
+          <tag name="return" line="122" description="" type="array">
+            <type>array</type>
+          </tag>
+        </docblock>
+        <inherited_from>\Illuminate\Session\Store</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Session" line="143" package="Default">
+        <name>prepareForUnserialize</name>
+        <full_name>\Illuminate\Session\Store::prepareForUnserialize()</full_name>
+        <docblock line="143">
+          <description>Prepare the raw string data from the session for unserialization.</description>
+          <long-description/>
+          <tag name="param" line="143" description="" type="string" variable="$data">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="143" description="" type="string">
+            <type>string</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$data</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <inherited_from>\Illuminate\Session\Store</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Session" line="154" package="Default">
+        <name>initializeLocalBag</name>
+        <full_name>\Illuminate\Session\Store::initializeLocalBag()</full_name>
+        <docblock line="154">
+          <description>Initialize a bag in storage if it doesn't exist.</description>
+          <long-description/>
+          <tag name="param" line="154" description="" type="\Symfony\Component\HttpFoundation\Session\SessionBagInterface" variable="$bag">
+            <type>\Symfony\Component\HttpFoundation\Session\SessionBagInterface</type>
+          </tag>
+          <tag name="return" line="154" description="" type="void">
+            <type>void</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$bag</name>
+          <default/>
+          <type>\Symfony\Component\HttpFoundation\Session\SessionBagInterface</type>
+        </argument>
+        <inherited_from>\Illuminate\Session\Store</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Session" line="162" package="Default">
+        <name>getId</name>
+        <full_name>\Illuminate\Session\Store::getId()</full_name>
+        <docblock line="162">
+          <description>{@inheritdoc}</description>
+          <long-description/>
+        </docblock>
+        <inherited_from>\Illuminate\Session\Store</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Session" line="170" package="Default">
+        <name>setId</name>
+        <full_name>\Illuminate\Session\Store::setId()</full_name>
+        <docblock line="170">
+          <description>{@inheritdoc}</description>
+          <long-description/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$id</name>
+          <default/>
+          <type/>
+        </argument>
+        <inherited_from>\Illuminate\Session\Store</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Session" line="185" package="Default">
+        <name>isValidId</name>
+        <full_name>\Illuminate\Session\Store::isValidId()</full_name>
+        <docblock line="185">
+          <description>Determine if this is a valid session ID.</description>
+          <long-description/>
+          <tag name="param" line="185" description="" type="string" variable="$id">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="185" description="" type="boolean">
+            <type>boolean</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$id</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <inherited_from>\Illuminate\Session\Store</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Session" line="195" package="Default">
+        <name>generateSessionId</name>
+        <full_name>\Illuminate\Session\Store::generateSessionId()</full_name>
+        <docblock line="195">
+          <description>Get a new, random session ID.</description>
+          <long-description/>
+          <tag name="return" line="195" description="" type="string">
+            <type>string</type>
+          </tag>
+        </docblock>
+        <inherited_from>\Illuminate\Session\Store</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Session" line="203" package="Default">
+        <name>getName</name>
+        <full_name>\Illuminate\Session\Store::getName()</full_name>
+        <docblock line="203">
+          <description>{@inheritdoc}</description>
+          <long-description/>
+        </docblock>
+        <inherited_from>\Illuminate\Session\Store</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Session" line="211" package="Default">
+        <name>setName</name>
+        <full_name>\Illuminate\Session\Store::setName()</full_name>
+        <docblock line="211">
+          <description>{@inheritdoc}</description>
+          <long-description/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$name</name>
+          <default/>
+          <type/>
+        </argument>
+        <inherited_from>\Illuminate\Session\Store</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Session" line="219" package="Default">
+        <name>invalidate</name>
+        <full_name>\Illuminate\Session\Store::invalidate()</full_name>
+        <docblock line="219">
+          <description>{@inheritdoc}</description>
+          <long-description/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$lifetime</name>
+          <default>null</default>
+          <type/>
+        </argument>
+        <inherited_from>\Illuminate\Session\Store</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Session" line="229" package="Default">
+        <name>migrate</name>
+        <full_name>\Illuminate\Session\Store::migrate()</full_name>
+        <docblock line="229">
+          <description>{@inheritdoc}</description>
+          <long-description/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$destroy</name>
+          <default>false</default>
+          <type/>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$lifetime</name>
+          <default>null</default>
+          <type/>
+        </argument>
+        <inherited_from>\Illuminate\Session\Store</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Session" line="248" package="Default">
+        <name>regenerate</name>
+        <full_name>\Illuminate\Session\Store::regenerate()</full_name>
+        <docblock line="248">
+          <description>Generate a new session identifier.</description>
+          <long-description/>
+          <tag name="param" line="248" description="" type="boolean" variable="$destroy">
+            <type>boolean</type>
+          </tag>
+          <tag name="return" line="248" description="" type="boolean">
+            <type>boolean</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$destroy</name>
+          <default>false</default>
+          <type>boolean</type>
+        </argument>
+        <inherited_from>\Illuminate\Session\Store</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Session" line="256" package="Default">
+        <name>save</name>
+        <full_name>\Illuminate\Session\Store::save()</full_name>
+        <docblock line="256">
+          <description>{@inheritdoc}</description>
+          <long-description/>
+        </docblock>
+        <inherited_from>\Illuminate\Session\Store</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Session" line="273" package="Default">
+        <name>prepareForStorage</name>
+        <full_name>\Illuminate\Session\Store::prepareForStorage()</full_name>
+        <docblock line="273">
+          <description>Prepare the serialized session data for storage.</description>
+          <long-description/>
+          <tag name="param" line="273" description="" type="string" variable="$data">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="273" description="" type="string">
+            <type>string</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$data</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <inherited_from>\Illuminate\Session\Store</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Session" line="283" package="Default">
+        <name>addBagDataToSession</name>
+        <full_name>\Illuminate\Session\Store::addBagDataToSession()</full_name>
+        <docblock line="283">
+          <description>Merge all of the bag data into the session.</description>
+          <long-description/>
+          <tag name="return" line="283" description="" type="void">
+            <type>void</type>
+          </tag>
+        </docblock>
+        <inherited_from>\Illuminate\Session\Store</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Session" line="299" package="Default">
+        <name>ageFlashData</name>
+        <full_name>\Illuminate\Session\Store::ageFlashData()</full_name>
+        <docblock line="299">
+          <description>Age the flash data for the session.</description>
+          <long-description/>
+          <tag name="return" line="299" description="" type="void">
+            <type>void</type>
+          </tag>
+        </docblock>
+        <inherited_from>\Illuminate\Session\Store</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Session" line="311" package="Default">
+        <name>has</name>
+        <full_name>\Illuminate\Session\Store::has()</full_name>
+        <docblock line="311">
+          <description>{@inheritdoc}</description>
+          <long-description/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$name</name>
+          <default/>
+          <type/>
+        </argument>
+        <inherited_from>\Illuminate\Session\Store</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Session" line="327" package="Default">
+        <name>get</name>
+        <full_name>\Illuminate\Session\Store::get()</full_name>
+        <docblock line="327">
+          <description>{@inheritdoc}</description>
+          <long-description/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$name</name>
+          <default/>
+          <type/>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$default</name>
+          <default>null</default>
+          <type/>
+        </argument>
+        <inherited_from>\Illuminate\Session\Store</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Session" line="339" package="Default">
+        <name>pull</name>
+        <full_name>\Illuminate\Session\Store::pull()</full_name>
+        <docblock line="339">
+          <description>Get the value of a given key and then forget it.</description>
+          <long-description/>
+          <tag name="param" line="339" description="" type="string" variable="$key">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="339" description="" type="string" variable="$default">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="339" description="" type="mixed">
+            <type>mixed</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$key</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$default</name>
+          <default>null</default>
+          <type>string</type>
+        </argument>
+        <inherited_from>\Illuminate\Session\Store</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Session" line="350" package="Default">
+        <name>hasOldInput</name>
+        <full_name>\Illuminate\Session\Store::hasOldInput()</full_name>
+        <docblock line="350">
+          <description>Determine if the session contains old input.</description>
+          <long-description/>
+          <tag name="param" line="350" description="" type="string" variable="$key">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="350" description="" type="boolean">
+            <type>boolean</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$key</name>
+          <default>null</default>
+          <type>string</type>
+        </argument>
+        <inherited_from>\Illuminate\Session\Store</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Session" line="364" package="Default">
+        <name>getOldInput</name>
+        <full_name>\Illuminate\Session\Store::getOldInput()</full_name>
+        <docblock line="364">
+          <description>Get the requested item from the flashed input array.</description>
+          <long-description/>
+          <tag name="param" line="364" description="" type="string" variable="$key">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="364" description="" type="mixed" variable="$default">
+            <type>mixed</type>
+          </tag>
+          <tag name="return" line="364" description="" type="mixed">
+            <type>mixed</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$key</name>
+          <default>null</default>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$default</name>
+          <default>null</default>
+          <type>mixed</type>
+        </argument>
+        <inherited_from>\Illuminate\Session\Store</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Session" line="377" package="Default">
+        <name>set</name>
+        <full_name>\Illuminate\Session\Store::set()</full_name>
+        <docblock line="377">
+          <description>{@inheritdoc}</description>
+          <long-description/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$name</name>
+          <default/>
+          <type/>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$value</name>
+          <default/>
+          <type/>
+        </argument>
+        <inherited_from>\Illuminate\Session\Store</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Session" line="389" package="Default">
+        <name>put</name>
+        <full_name>\Illuminate\Session\Store::put()</full_name>
+        <docblock line="389">
+          <description>Put a key / value pair or array of key / value pairs in the session.</description>
+          <long-description/>
+          <tag name="param" line="389" description="" type="string|array" variable="$key">
+            <type>string</type>
+            <type>array</type>
+          </tag>
+          <tag name="param" line="389" description="" type="mixed" variable="$value">
+            <type>mixed</type>
+          </tag>
+          <tag name="return" line="389" description="" type="void">
+            <type>void</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$key</name>
+          <default/>
+          <type>string|array</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$value</name>
+          <default>null</default>
+          <type>mixed</type>
+        </argument>
+        <inherited_from>\Illuminate\Session\Store</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Session" line="407" package="Default">
+        <name>push</name>
+        <full_name>\Illuminate\Session\Store::push()</full_name>
+        <docblock line="407">
+          <description>Push a value onto a session array.</description>
+          <long-description/>
+          <tag name="param" line="407" description="" type="string" variable="$key">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="407" description="" type="mixed" variable="$value">
+            <type>mixed</type>
+          </tag>
+          <tag name="return" line="407" description="" type="void">
+            <type>void</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$key</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$value</name>
+          <default/>
+          <type>mixed</type>
+        </argument>
+        <inherited_from>\Illuminate\Session\Store</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Session" line="423" package="Default">
+        <name>flash</name>
+        <full_name>\Illuminate\Session\Store::flash()</full_name>
+        <docblock line="423">
+          <description>Flash a key / value pair to the session.</description>
+          <long-description/>
+          <tag name="param" line="423" description="" type="string" variable="$key">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="423" description="" type="mixed" variable="$value">
+            <type>mixed</type>
+          </tag>
+          <tag name="return" line="423" description="" type="void">
+            <type>void</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$key</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$value</name>
+          <default/>
+          <type>mixed</type>
+        </argument>
+        <inherited_from>\Illuminate\Session\Store</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Session" line="440" package="Default">
+        <name>now</name>
+        <full_name>\Illuminate\Session\Store::now()</full_name>
+        <docblock line="440">
+          <description>Flash a key / value pair to the session
+for immediate use.</description>
+          <long-description/>
+          <tag name="param" line="440" description="" type="string" variable="$key">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="440" description="" type="mixed" variable="$value">
+            <type>mixed</type>
+          </tag>
+          <tag name="return" line="440" description="" type="void">
+            <type>void</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$key</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$value</name>
+          <default/>
+          <type>mixed</type>
+        </argument>
+        <inherited_from>\Illuminate\Session\Store</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Session" line="453" package="Default">
+        <name>flashInput</name>
+        <full_name>\Illuminate\Session\Store::flashInput()</full_name>
+        <docblock line="453">
+          <description>Flash an input array to the session.</description>
+          <long-description/>
+          <tag name="param" line="453" description="" type="array" variable="$value">
+            <type>array</type>
+          </tag>
+          <tag name="return" line="453" description="" type="void">
+            <type>void</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$value</name>
+          <default/>
+          <type>array</type>
+        </argument>
+        <inherited_from>\Illuminate\Session\Store</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Session" line="463" package="Default">
+        <name>reflash</name>
+        <full_name>\Illuminate\Session\Store::reflash()</full_name>
+        <docblock line="463">
+          <description>Reflash all of the session flash data.</description>
+          <long-description/>
+          <tag name="return" line="463" description="" type="void">
+            <type>void</type>
+          </tag>
+        </docblock>
+        <inherited_from>\Illuminate\Session\Store</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Session" line="476" package="Default">
+        <name>keep</name>
+        <full_name>\Illuminate\Session\Store::keep()</full_name>
+        <docblock line="476">
+          <description>Reflash a subset of the current flash data.</description>
+          <long-description/>
+          <tag name="param" line="476" description="" type="array|mixed" variable="$keys">
+            <type>array</type>
+            <type>mixed</type>
+          </tag>
+          <tag name="return" line="476" description="" type="void">
+            <type>void</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$keys</name>
+          <default>null</default>
+          <type>array|mixed</type>
+        </argument>
+        <inherited_from>\Illuminate\Session\Store</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Session" line="491" package="Default">
+        <name>mergeNewFlashes</name>
+        <full_name>\Illuminate\Session\Store::mergeNewFlashes()</full_name>
+        <docblock line="491">
+          <description>Merge new flash keys into the new flash array.</description>
+          <long-description/>
+          <tag name="param" line="491" description="" type="array" variable="$keys">
+            <type>array</type>
+          </tag>
+          <tag name="return" line="491" description="" type="void">
+            <type>void</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$keys</name>
+          <default/>
+          <type>array</type>
+        </argument>
+        <inherited_from>\Illuminate\Session\Store</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Session" line="504" package="Default">
+        <name>removeFromOldFlashData</name>
+        <full_name>\Illuminate\Session\Store::removeFromOldFlashData()</full_name>
+        <docblock line="504">
+          <description>Remove the given keys from the old flash data.</description>
+          <long-description/>
+          <tag name="param" line="504" description="" type="array" variable="$keys">
+            <type>array</type>
+          </tag>
+          <tag name="return" line="504" description="" type="void">
+            <type>void</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$keys</name>
+          <default/>
+          <type>array</type>
+        </argument>
+        <inherited_from>\Illuminate\Session\Store</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Session" line="512" package="Default">
+        <name>all</name>
+        <full_name>\Illuminate\Session\Store::all()</full_name>
+        <docblock line="512">
+          <description>{@inheritdoc}</description>
+          <long-description/>
+        </docblock>
+        <inherited_from>\Illuminate\Session\Store</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Session" line="520" package="Default">
+        <name>replace</name>
+        <full_name>\Illuminate\Session\Store::replace()</full_name>
+        <docblock line="520">
+          <description>{@inheritdoc}</description>
+          <long-description/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$attributes</name>
+          <default/>
+          <type>array</type>
+        </argument>
+        <inherited_from>\Illuminate\Session\Store</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Session" line="528" package="Default">
+        <name>remove</name>
+        <full_name>\Illuminate\Session\Store::remove()</full_name>
+        <docblock line="528">
+          <description>{@inheritdoc}</description>
+          <long-description/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$name</name>
+          <default/>
+          <type/>
+        </argument>
+        <inherited_from>\Illuminate\Session\Store</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Session" line="539" package="Default">
+        <name>forget</name>
+        <full_name>\Illuminate\Session\Store::forget()</full_name>
+        <docblock line="539">
+          <description>Remove one or many items from the session.</description>
+          <long-description/>
+          <tag name="param" line="539" description="" type="string|array" variable="$keys">
+            <type>string</type>
+            <type>array</type>
+          </tag>
+          <tag name="return" line="539" description="" type="void">
+            <type>void</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$keys</name>
+          <default/>
+          <type>string|array</type>
+        </argument>
+        <inherited_from>\Illuminate\Session\Store</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Session" line="547" package="Default">
+        <name>clear</name>
+        <full_name>\Illuminate\Session\Store::clear()</full_name>
+        <docblock line="547">
+          <description>{@inheritdoc}</description>
+          <long-description/>
+        </docblock>
+        <inherited_from>\Illuminate\Session\Store</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Session" line="561" package="Default">
+        <name>flush</name>
+        <full_name>\Illuminate\Session\Store::flush()</full_name>
+        <docblock line="561">
+          <description>Remove all of the items from the session.</description>
+          <long-description/>
+          <tag name="return" line="561" description="" type="void">
+            <type>void</type>
+          </tag>
+        </docblock>
+        <inherited_from>\Illuminate\Session\Store</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Session" line="569" package="Default">
+        <name>isStarted</name>
+        <full_name>\Illuminate\Session\Store::isStarted()</full_name>
+        <docblock line="569">
+          <description>{@inheritdoc}</description>
+          <long-description/>
+        </docblock>
+        <inherited_from>\Illuminate\Session\Store</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Session" line="577" package="Default">
+        <name>registerBag</name>
+        <full_name>\Illuminate\Session\Store::registerBag()</full_name>
+        <docblock line="577">
+          <description>{@inheritdoc}</description>
+          <long-description/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$bag</name>
+          <default/>
+          <type>\Symfony\Component\HttpFoundation\Session\SessionBagInterface</type>
+        </argument>
+        <inherited_from>\Illuminate\Session\Store</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Session" line="585" package="Default">
+        <name>getBag</name>
+        <full_name>\Illuminate\Session\Store::getBag()</full_name>
+        <docblock line="585">
+          <description>{@inheritdoc}</description>
+          <long-description/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$name</name>
+          <default/>
+          <type/>
+        </argument>
+        <inherited_from>\Illuminate\Session\Store</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Session" line="595" package="Default">
+        <name>getMetadataBag</name>
+        <full_name>\Illuminate\Session\Store::getMetadataBag()</full_name>
+        <docblock line="595">
+          <description>{@inheritdoc}</description>
+          <long-description/>
+        </docblock>
+        <inherited_from>\Illuminate\Session\Store</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Session" line="606" package="Default">
+        <name>getBagData</name>
+        <full_name>\Illuminate\Session\Store::getBagData()</full_name>
+        <docblock line="606">
+          <description>Get the raw bag data array for a given bag.</description>
+          <long-description/>
+          <tag name="param" line="606" description="" type="string" variable="$name">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="606" description="" type="array">
+            <type>array</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$name</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <inherited_from>\Illuminate\Session\Store</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Session" line="616" package="Default">
+        <name>token</name>
+        <full_name>\Illuminate\Session\Store::token()</full_name>
+        <docblock line="616">
+          <description>Get the CSRF token value.</description>
+          <long-description/>
+          <tag name="return" line="616" description="" type="string">
+            <type>string</type>
+          </tag>
+        </docblock>
+        <inherited_from>\Illuminate\Session\Store</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Session" line="626" package="Default">
+        <name>getToken</name>
+        <full_name>\Illuminate\Session\Store::getToken()</full_name>
+        <docblock line="626">
+          <description>Get the CSRF token value.</description>
+          <long-description/>
+          <tag name="return" line="626" description="" type="string">
+            <type>string</type>
+          </tag>
+        </docblock>
+        <inherited_from>\Illuminate\Session\Store</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Session" line="636" package="Default">
+        <name>regenerateToken</name>
+        <full_name>\Illuminate\Session\Store::regenerateToken()</full_name>
+        <docblock line="636">
+          <description>Regenerate the CSRF token value.</description>
+          <long-description/>
+          <tag name="return" line="636" description="" type="void">
+            <type>void</type>
+          </tag>
+        </docblock>
+        <inherited_from>\Illuminate\Session\Store</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Session" line="646" package="Default">
+        <name>previousUrl</name>
+        <full_name>\Illuminate\Session\Store::previousUrl()</full_name>
+        <docblock line="646">
+          <description>Get the previous URL from the session.</description>
+          <long-description/>
+          <tag name="return" line="646" description="" type="string|null">
+            <type>string</type>
+            <type>null</type>
+          </tag>
+        </docblock>
+        <inherited_from>\Illuminate\Session\Store</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Session" line="657" package="Default">
+        <name>setPreviousUrl</name>
+        <full_name>\Illuminate\Session\Store::setPreviousUrl()</full_name>
+        <docblock line="657">
+          <description>Set the "previous" URL in the session.</description>
+          <long-description/>
+          <tag name="param" line="657" description="" type="string" variable="$url">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="657" description="" type="void">
+            <type>void</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$url</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <inherited_from>\Illuminate\Session\Store</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Session" line="668" package="Default">
+        <name>setExists</name>
+        <full_name>\Illuminate\Session\Store::setExists()</full_name>
+        <docblock line="668">
+          <description>Set the existence of the session on the handler if applicable.</description>
+          <long-description/>
+          <tag name="param" line="668" description="" type="boolean" variable="$value">
+            <type>boolean</type>
+          </tag>
+          <tag name="return" line="668" description="" type="void">
+            <type>void</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$value</name>
+          <default/>
+          <type>boolean</type>
+        </argument>
+        <inherited_from>\Illuminate\Session\Store</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Session" line="680" package="Default">
+        <name>getHandler</name>
+        <full_name>\Illuminate\Session\Store::getHandler()</full_name>
+        <docblock line="680">
+          <description>Get the underlying session handler implementation.</description>
+          <long-description/>
+          <tag name="return" line="680" description="" type="\SessionHandlerInterface">
+            <type>\SessionHandlerInterface</type>
+          </tag>
+          <tag name="inherited_from" description="\Illuminate\Session\SessionInterface::getHandler()" refers="\Illuminate\Session\SessionInterface::getHandler()" link="/classes/Illuminate.Session.SessionInterface.html#method_getHandler"/>
+        </docblock>
+        <inherited_from>\Illuminate\Session\Store</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Session" line="690" package="Default">
+        <name>handlerNeedsRequest</name>
+        <full_name>\Illuminate\Session\Store::handlerNeedsRequest()</full_name>
+        <docblock line="690">
+          <description>Determine if the session handler needs a request.</description>
+          <long-description/>
+          <tag name="return" line="690" description="" type="boolean">
+            <type>boolean</type>
+          </tag>
+          <tag name="inherited_from" description="\Illuminate\Session\SessionInterface::handlerNeedsRequest()" refers="\Illuminate\Session\SessionInterface::handlerNeedsRequest()" link="/classes/Illuminate.Session.SessionInterface.html#method_handlerNeedsRequest"/>
+        </docblock>
+        <inherited_from>\Illuminate\Session\Store</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Session" line="701" package="Default">
+        <name>setRequestOnHandler</name>
+        <full_name>\Illuminate\Session\Store::setRequestOnHandler()</full_name>
+        <docblock line="701">
+          <description>Set the request on the handler instance.</description>
+          <long-description/>
+          <tag name="param" line="701" description="" type="\Symfony\Component\HttpFoundation\Request" variable="$request">
+            <type>\Symfony\Component\HttpFoundation\Request</type>
+          </tag>
+          <tag name="return" line="701" description="" type="void">
+            <type>void</type>
+          </tag>
+          <tag name="inherited_from" description="\Illuminate\Session\SessionInterface::setRequestOnHandler()" refers="\Illuminate\Session\SessionInterface::setRequestOnHandler()" link="/classes/Illuminate.Session.SessionInterface.html#method_setRequestOnHandler"/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$request</name>
+          <default/>
+          <type>\Symfony\Component\HttpFoundation\Request</type>
+        </argument>
+        <inherited_from>\Illuminate\Session\Store</inherited_from>
+      </method>
+    </class>
+    <parse_markers>
+      <error line="0" code="PPC:ERR-50000">No summary was found for this file</error>
+      <error line="9" code="PPC:ERR-50005">No summary for class \Illuminate\Session\EncryptedStore</error>
+    </parse_markers>
+    <source>eJytVE2P0zAQvedXzCGHtOqy9y27IC0L7A2pcKKoGpxpE5Ta0XiyH0D/O46TuCVptBHCF3+M582bN2O/flNmZRRp3JMtURHcF0W1zzUKrVdkbW70MooqS9DuPqJOC+J7LcRb57D0xhOvW6OFUYld32nFz6U4p/U78su7J0X+YJpXuyQGtBA23VXHSxVoj5Z0JYYJ6ElIpxb8LvoVgRuX87mfYQ6fM3clAOfaCmpFr1pzd+vtAzKsJxNs3S79XLIRUo4PxCGQI9vjccvkcAFB0yPYRtxxOiUy7gGscK53ENf16tvWIxWCOGtOBg7T9T8mcp7Rb10VBcR5GsxMUrGGBxPOWnGq70WuYFtpVceAzUYZlzRXShKf1mKs00Iei2EvnBBc1DTgGmpGMx+yaYF6xJLl9uLmWP7rYYk8SWTScnV1htyRhAszW3qXw6C4n5hqDBDXbIyPXd1SFIQtm703dEXfGoZKW+Ici/wn1rK8UH+Ia6S+1o1xpBWD4GVD7b3hLyEmJR6wL5fw88muHm2kvo4XN2nzwFucZXA6gEJRGST9H8AJPzsP/sMavXHQJqXk67dTrAlih4zSIG8jutPYug8Bdy+9rf+j7aqJdV7XURXb5V8qDvP9QOJznfCLtZH+9SPrvdUdSbiYTEyqS+IQ/QF0DwGF</source>
+  <type>class</type></file>

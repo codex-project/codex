@@ -1,0 +1,391 @@
+<file path="codex/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php" generated-path="codex.vendor.laravel.framework.src.Illuminate.Foundation.Console.Kernel.html" hash="90057dd7bea5b022a69d05b7725b8eb6" package="Default">
+    <docblock line="0">
+      <description/>
+      <long-description/>
+      <tag name="package" line="0" description="Default"/>
+    </docblock>
+    <namespace-alias name="Exception">\Exception</namespace-alias>
+    <namespace-alias name="Throwable">\Throwable</namespace-alias>
+    <namespace-alias name="Dispatcher">\Illuminate\Contracts\Events\Dispatcher</namespace-alias>
+    <namespace-alias name="Schedule">\Illuminate\Console\Scheduling\Schedule</namespace-alias>
+    <namespace-alias name="Artisan">\Illuminate\Console\Application</namespace-alias>
+    <namespace-alias name="Application">\Illuminate\Contracts\Foundation\Application</namespace-alias>
+    <namespace-alias name="KernelContract">\Illuminate\Contracts\Console\Kernel</namespace-alias>
+    <namespace-alias name="FatalThrowableError">\Symfony\Component\Debug\Exception\FatalThrowableError</namespace-alias>
+    <constant namespace="" line="70" package="Default">
+      <name>ARTISAN_BINARY</name>
+      <full_name>\ARTISAN_BINARY</full_name>
+      <value>'artisan'</value>
+      <docblock line="70">
+        <description/>
+        <long-description/>
+        <tag name="package" line="70" description="Default"/>
+      </docblock>
+    </constant>
+    <class final="false" abstract="false" namespace="Illuminate\Foundation\Console" line="14" package="Default">
+      <extends/>
+      <implements>\Illuminate\Contracts\Console\Kernel</implements>
+      <name>Kernel</name>
+      <full_name>\Illuminate\Foundation\Console\Kernel</full_name>
+      <docblock line="14">
+        <description/>
+        <long-description/>
+        <tag name="package" line="14" description="Default"/>
+      </docblock>
+      <property static="false" visibility="protected" namespace="Illuminate\Foundation\Console" line="21" package="Default">
+        <name>$app</name>
+        <full_name>\Illuminate\Foundation\Console\Kernel::app</full_name>
+        <default/>
+        <docblock line="21">
+          <description>The application implementation.</description>
+          <long-description/>
+          <tag name="var" line="21" description="" type="\Illuminate\Contracts\Foundation\Application" variable="">
+            <type>\Illuminate\Contracts\Foundation\Application</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" namespace="Illuminate\Foundation\Console" line="28" package="Default">
+        <name>$events</name>
+        <full_name>\Illuminate\Foundation\Console\Kernel::events</full_name>
+        <default/>
+        <docblock line="28">
+          <description>The event dispatcher implementation.</description>
+          <long-description/>
+          <tag name="var" line="28" description="" type="\Illuminate\Contracts\Events\Dispatcher" variable="">
+            <type>\Illuminate\Contracts\Events\Dispatcher</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" namespace="Illuminate\Foundation\Console" line="35" package="Default">
+        <name>$artisan</name>
+        <full_name>\Illuminate\Foundation\Console\Kernel::artisan</full_name>
+        <default/>
+        <docblock line="35">
+          <description>The Artisan application instance.</description>
+          <long-description/>
+          <tag name="var" line="35" description="" type="\Illuminate\Console\Application" variable="">
+            <type>\Illuminate\Console\Application</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" namespace="Illuminate\Foundation\Console" line="42" package="Default">
+        <name>$commands</name>
+        <full_name>\Illuminate\Foundation\Console\Kernel::commands</full_name>
+        <default>array()</default>
+        <docblock line="42">
+          <description>The Artisan commands provided by the application.</description>
+          <long-description/>
+          <tag name="var" line="42" description="" type="array" variable="">
+            <type>array</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" namespace="Illuminate\Foundation\Console" line="49" package="Default">
+        <name>$bootstrappers</name>
+        <full_name>\Illuminate\Foundation\Console\Kernel::bootstrappers</full_name>
+        <default>array('Illuminate\Foundation\Bootstrap\DetectEnvironment', 'Illuminate\Foundation\Bootstrap\LoadConfiguration', 'Illuminate\Foundation\Bootstrap\ConfigureLogging', 'Illuminate\Foundation\Bootstrap\HandleExceptions', 'Illuminate\Foundation\Bootstrap\RegisterFacades', 'Illuminate\Foundation\Bootstrap\SetRequestForConsole', 'Illuminate\Foundation\Bootstrap\RegisterProviders', 'Illuminate\Foundation\Bootstrap\BootProviders')</default>
+        <docblock line="49">
+          <description>The bootstrap classes for the application.</description>
+          <long-description/>
+          <tag name="var" line="49" description="" type="array" variable="">
+            <type>array</type>
+          </tag>
+        </docblock>
+      </property>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Foundation\Console" line="67" package="Default">
+        <name>__construct</name>
+        <full_name>\Illuminate\Foundation\Console\Kernel::__construct()</full_name>
+        <docblock line="67">
+          <description>Create a new console kernel instance.</description>
+          <long-description/>
+          <tag name="param" line="67" description="" type="\Illuminate\Contracts\Foundation\Application" variable="$app">
+            <type>\Illuminate\Contracts\Foundation\Application</type>
+          </tag>
+          <tag name="param" line="67" description="" type="\Illuminate\Contracts\Events\Dispatcher" variable="$events">
+            <type>\Illuminate\Contracts\Events\Dispatcher</type>
+          </tag>
+          <tag name="return" line="67" description="" type="void">
+            <type>void</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$app</name>
+          <default/>
+          <type>\Illuminate\Contracts\Foundation\Application</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$events</name>
+          <default/>
+          <type>\Illuminate\Contracts\Events\Dispatcher</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Foundation\Console" line="86" package="Default">
+        <name>defineConsoleSchedule</name>
+        <full_name>\Illuminate\Foundation\Console\Kernel::defineConsoleSchedule()</full_name>
+        <docblock line="86">
+          <description>Define the application's command schedule.</description>
+          <long-description/>
+          <tag name="return" line="86" description="" type="void">
+            <type>void</type>
+          </tag>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Foundation\Console" line="102" package="Default">
+        <name>handle</name>
+        <full_name>\Illuminate\Foundation\Console\Kernel::handle()</full_name>
+        <docblock line="102">
+          <description>Run the console application.</description>
+          <long-description/>
+          <tag name="param" line="102" description="" type="\Symfony\Component\Console\Input\InputInterface" variable="$input">
+            <type>\Symfony\Component\Console\Input\InputInterface</type>
+          </tag>
+          <tag name="param" line="102" description="" type="\Symfony\Component\Console\Output\OutputInterface" variable="$output">
+            <type>\Symfony\Component\Console\Output\OutputInterface</type>
+          </tag>
+          <tag name="return" line="102" description="" type="integer">
+            <type>integer</type>
+          </tag>
+          <tag name="inherited_from" description="\Illuminate\Contracts\Console\Kernel::handle()" refers="\Illuminate\Contracts\Console\Kernel::handle()" link="/classes/Illuminate.Contracts.Console.Kernel.html#method_handle"/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$input</name>
+          <default/>
+          <type>\Symfony\Component\Console\Input\InputInterface</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$output</name>
+          <default>null</default>
+          <type>\Symfony\Component\Console\Output\OutputInterface</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Foundation\Console" line="132" package="Default">
+        <name>terminate</name>
+        <full_name>\Illuminate\Foundation\Console\Kernel::terminate()</full_name>
+        <docblock line="132">
+          <description>Terminate the application.</description>
+          <long-description/>
+          <tag name="param" line="132" description="" type="\Symfony\Component\Console\Input\InputInterface" variable="$input">
+            <type>\Symfony\Component\Console\Input\InputInterface</type>
+          </tag>
+          <tag name="param" line="132" description="" type="integer" variable="$status">
+            <type>integer</type>
+          </tag>
+          <tag name="return" line="132" description="" type="void">
+            <type>void</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$input</name>
+          <default/>
+          <type>\Symfony\Component\Console\Input\InputInterface</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$status</name>
+          <default/>
+          <type>integer</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Foundation\Console" line="143" package="Default">
+        <name>schedule</name>
+        <full_name>\Illuminate\Foundation\Console\Kernel::schedule()</full_name>
+        <docblock line="143">
+          <description>Define the application's command schedule.</description>
+          <long-description/>
+          <tag name="param" line="143" description="" type="\Illuminate\Console\Scheduling\Schedule" variable="$schedule">
+            <type>\Illuminate\Console\Scheduling\Schedule</type>
+          </tag>
+          <tag name="return" line="143" description="" type="void">
+            <type>void</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$schedule</name>
+          <default/>
+          <type>\Illuminate\Console\Scheduling\Schedule</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Foundation\Console" line="154" package="Default">
+        <name>registerCommand</name>
+        <full_name>\Illuminate\Foundation\Console\Kernel::registerCommand()</full_name>
+        <docblock line="154">
+          <description>Register the given command with the console application.</description>
+          <long-description/>
+          <tag name="param" line="154" description="" type="\Symfony\Component\Console\Command\Command" variable="$command">
+            <type>\Symfony\Component\Console\Command\Command</type>
+          </tag>
+          <tag name="return" line="154" description="" type="void">
+            <type>void</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$command</name>
+          <default/>
+          <type>\Symfony\Component\Console\Command\Command</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Foundation\Console" line="166" package="Default">
+        <name>call</name>
+        <full_name>\Illuminate\Foundation\Console\Kernel::call()</full_name>
+        <docblock line="166">
+          <description>Run an Artisan console command by name.</description>
+          <long-description/>
+          <tag name="param" line="166" description="" type="string" variable="$command">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="166" description="" type="array" variable="$parameters">
+            <type>array</type>
+          </tag>
+          <tag name="return" line="166" description="" type="integer">
+            <type>integer</type>
+          </tag>
+          <tag name="inherited_from" description="\Illuminate\Contracts\Console\Kernel::call()" refers="\Illuminate\Contracts\Console\Kernel::call()" link="/classes/Illuminate.Contracts.Console.Kernel.html#method_call"/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$command</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$parameters</name>
+          <default>array()</default>
+          <type>array</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Foundation\Console" line="180" package="Default">
+        <name>queue</name>
+        <full_name>\Illuminate\Foundation\Console\Kernel::queue()</full_name>
+        <docblock line="180">
+          <description>Queue the given console command.</description>
+          <long-description/>
+          <tag name="param" line="180" description="" type="string" variable="$command">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="180" description="" type="array" variable="$parameters">
+            <type>array</type>
+          </tag>
+          <tag name="return" line="180" description="" type="void">
+            <type>void</type>
+          </tag>
+          <tag name="inherited_from" description="\Illuminate\Contracts\Console\Kernel::queue()" refers="\Illuminate\Contracts\Console\Kernel::queue()" link="/classes/Illuminate.Contracts.Console.Kernel.html#method_queue"/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$command</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$parameters</name>
+          <default>array()</default>
+          <type>array</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Foundation\Console" line="192" package="Default">
+        <name>all</name>
+        <full_name>\Illuminate\Foundation\Console\Kernel::all()</full_name>
+        <docblock line="192">
+          <description>Get all of the commands registered with the console.</description>
+          <long-description/>
+          <tag name="return" line="192" description="" type="array">
+            <type>array</type>
+          </tag>
+          <tag name="inherited_from" description="\Illuminate\Contracts\Console\Kernel::all()" refers="\Illuminate\Contracts\Console\Kernel::all()" link="/classes/Illuminate.Contracts.Console.Kernel.html#method_all"/>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Foundation\Console" line="204" package="Default">
+        <name>output</name>
+        <full_name>\Illuminate\Foundation\Console\Kernel::output()</full_name>
+        <docblock line="204">
+          <description>Get the output for the last run command.</description>
+          <long-description/>
+          <tag name="return" line="204" description="" type="string">
+            <type>string</type>
+          </tag>
+          <tag name="inherited_from" description="\Illuminate\Contracts\Console\Kernel::output()" refers="\Illuminate\Contracts\Console\Kernel::output()" link="/classes/Illuminate.Contracts.Console.Kernel.html#method_output"/>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Foundation\Console" line="216" package="Default">
+        <name>bootstrap</name>
+        <full_name>\Illuminate\Foundation\Console\Kernel::bootstrap()</full_name>
+        <docblock line="216">
+          <description>Bootstrap the application for artisan commands.</description>
+          <long-description/>
+          <tag name="return" line="216" description="" type="void">
+            <type>void</type>
+          </tag>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Foundation\Console" line="233" package="Default">
+        <name>getArtisan</name>
+        <full_name>\Illuminate\Foundation\Console\Kernel::getArtisan()</full_name>
+        <docblock line="233">
+          <description>Get the Artisan application instance.</description>
+          <long-description/>
+          <tag name="return" line="233" description="" type="\Illuminate\Console\Application">
+            <type>\Illuminate\Console\Application</type>
+          </tag>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Foundation\Console" line="248" package="Default">
+        <name>bootstrappers</name>
+        <full_name>\Illuminate\Foundation\Console\Kernel::bootstrappers()</full_name>
+        <docblock line="248">
+          <description>Get the bootstrap classes for the application.</description>
+          <long-description/>
+          <tag name="return" line="248" description="" type="array">
+            <type>array</type>
+          </tag>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Foundation\Console" line="259" package="Default">
+        <name>reportException</name>
+        <full_name>\Illuminate\Foundation\Console\Kernel::reportException()</full_name>
+        <docblock line="259">
+          <description>Report the exception to the exception handler.</description>
+          <long-description/>
+          <tag name="param" line="259" description="" type="\Exception" variable="$e">
+            <type>\Exception</type>
+          </tag>
+          <tag name="return" line="259" description="" type="void">
+            <type>void</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$e</name>
+          <default/>
+          <type>\Exception</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Foundation\Console" line="271" package="Default">
+        <name>renderException</name>
+        <full_name>\Illuminate\Foundation\Console\Kernel::renderException()</full_name>
+        <docblock line="271">
+          <description>Report the exception to the exception handler.</description>
+          <long-description/>
+          <tag name="param" line="271" description="" type="\Symfony\Component\Console\Output\OutputInterface" variable="$output">
+            <type>\Symfony\Component\Console\Output\OutputInterface</type>
+          </tag>
+          <tag name="param" line="271" description="" type="\Exception" variable="$e">
+            <type>\Exception</type>
+          </tag>
+          <tag name="return" line="271" description="" type="void">
+            <type>void</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$output</name>
+          <default/>
+          <type>\Symfony\Component\Console\Output\OutputInterface</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$e</name>
+          <default/>
+          <type>\Exception</type>
+        </argument>
+      </method>
+    </class>
+    <parse_markers>
+      <error line="0" code="PPC:ERR-50000">No summary was found for this file</error>
+      <error line="14" code="PPC:ERR-50005">No summary for class \Illuminate\Foundation\Console\Kernel</error>
+    </parse_markers>
+    <source>eJy9WW1v2zYQ/u5fwQEBLAdOjH3umi2vm7ei3ZIAw1AXBi3RNlGZVCnKXlDkv+/4aominNhJpg+xbPHunjs+d7xTfvq5WBa9HsMrUhY4JWic59WKMizJ5IZXLMOScja55KzkOXnX61UlQdf/pqRQv7/TX++Xgm/wTD1WX2saQEwKnMpycr0mDD6uKFiR6ZKI2FplYnIHT7Mqp2zhbqN69drzoshpqiEiXKJzIWmJ2Q4YNZdqsjsEnKU/iGAkV0bMnVthRO8eVnPOHmD1quAMPJ1ckVm1mPhATW6wxLkP1LUQHCLQS3NcOo2IroqcrFSYAhu97z0E1+j4WH+iY4g4QbjmuxfVX0/tMrf6lzUWaLJHPKzgSH8WgkuSSpKhIzAJoCNYiNpdlPnNPRxQiyddWLTJMg7H8qAZIlZKzFLyHCwhtzrj4fi2C0TKVyvMslIJrmkGcrMHJJsbGAWFhcAPXaa91vfo85c4gBnnsoSwFkjTjJRozsXLLXu1BRHavFkIVz9eOy6cACSFUnLN1lRwptjRHz5f+APHGezNnC4qoZ/tI+wEyQe+WEBp2Uf2N4gzpKxL5XIf2VuyoKUk4ganOCN7id4ReUu+VaSUN1xYUh5i+k9DO7GXcXUXCkZodikIqEAYMbIBomuM6KstZ10JV2CBV2ivgoR07XmehlYFQa5YeHlBZCUYWnOaNVlezcAimlcs1VanU+WTFFUqkzoaBWaIahasgYHW8t2Hmc5R8gPKyJwykiX989v78d35x+nF+OP57T/9waC2VF1mYWvdEPVtoekP3nmBx56/PZJLWp6cAShIR1Okg0cGnnraKJtN4ZMzldoA1PufhAjtYgPUctId0kkdnL1/bDHmSouGVahfujKJSquuRZvOTfOlyePuwBfsTt1zR9ak4W7/ee0J7NCRgw0xVrngHnl1g3bInUjihTujdlsxHTKXYrsKuEuOdk/iXBizopLm75hBhZirvg8dUfXDHmo+VVLpMR91RVz/Em4cZXJnsi11mU0MjKHTouJZ5Xm4d1I8xKnpT6ekHnF1WRh23YJIe0Ang5MzUbHQcJ3NKFV5jhJ/BkAedaSGIAUX0i9MjkiIwy9kUFtrC43ZIWpLWOQ/RhD5jjKGyJEx0nvuwvW/ONBB9HsiTL492ae8Ls2BnPAIaoCs9j8mpAO95ZDRtKvibIXeoFbGD8iu+oW25euQauvrmNe3LWhBAEajrgJnmxXt7ILCIeWd3FC5fMXid2nUuk/kW+m9t11YzFZT4hR17Hqz4uCsJrCr7MMEsZ0kTABcZGCOUHN7VxCgDMIuRxy0z3WXD4/1V+jMRYv5T5XsFOe592JoFdb06eGkIxzxQr2rSAfWanY6A/hXRSrS4FQjgi+M3K7QPcmebwraocGDFPjcj3a/2mPzt//l5KyoymV3T9N+wWMks9/5DJoahXUKezDFYlHa9kldneH+lUgEm4T43CasnVFdppB2Nne1eZERNAigYsOrcUsr2+WWgmw7EjdFw1AtEXQOnWyyBg2bdvpiNL+eO05fl0d+0AsPF+0cDt5cPL8VD9yqAY9ORvXzcInLC0LYxfbtQpa0JqRwWNEr/wZKJWGo1MsJkI/OS6MRGs/RBhwXRNcwlezqdZGYUZCF1tJV2LngK01ZysJIDUFBH7iec5zVNdf4j9eY5ro5g4GECEX/ws3UaLOk0MBtKCxf4a8kljcNtV6X5Kj5ausUfQIpsaElqYsb3YxLNKtBOY02I8qJK4vRj/1PJ8Re79ksaQ571eYpVed5hFO0nKpxwdHBMrnFo2buOL6/R4lql53+bYCGzTl62IjdGkKl+t/BYNCwEbtU1wwer4ntGUpnxG15nLBRuE9tzmGv/7rLb3svgmQLtqMJurG2s9/Rs4fGSPyoBXxv/mAGRdHZ+22nNBhFDmlowxGoMfbteyAH/wgwLxOFOpuNGTNgvWU8Xj7Bv2JkO2bGNwuxsrd9fxoMqSbqj73/AK91NyY=</source>
+  <type>class</type></file>

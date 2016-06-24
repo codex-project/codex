@@ -1,0 +1,490 @@
+<file path="codex/vendor/laravel/framework/src/Illuminate/Routing/Redirector.php" generated-path="codex.vendor.laravel.framework.src.Illuminate.Routing.Redirector.html" hash="2d09d1bd1b2634840616959dd54d9658" package="Default">
+    <docblock line="0">
+      <description/>
+      <long-description/>
+      <tag name="package" line="0" description="Default"/>
+    </docblock>
+    <namespace-alias name="RedirectResponse">\Illuminate\Http\RedirectResponse</namespace-alias>
+    <namespace-alias name="SessionStore">\Illuminate\Session\Store</namespace-alias>
+    <class final="false" abstract="false" namespace="Illuminate\Routing" line="8" package="Default">
+      <extends/>
+      <name>Redirector</name>
+      <full_name>\Illuminate\Routing\Redirector</full_name>
+      <docblock line="8">
+        <description/>
+        <long-description/>
+        <tag name="package" line="8" description="Default"/>
+      </docblock>
+      <property static="false" visibility="protected" namespace="Illuminate\Routing" line="15" package="Default">
+        <name>$generator</name>
+        <full_name>\Illuminate\Routing\Redirector::generator</full_name>
+        <default/>
+        <docblock line="15">
+          <description>The URL generator instance.</description>
+          <long-description/>
+          <tag name="var" line="15" description="" type="\Illuminate\Routing\UrlGenerator" variable="">
+            <type>\Illuminate\Routing\UrlGenerator</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" namespace="Illuminate\Routing" line="22" package="Default">
+        <name>$session</name>
+        <full_name>\Illuminate\Routing\Redirector::session</full_name>
+        <default/>
+        <docblock line="22">
+          <description>The session store instance.</description>
+          <long-description/>
+          <tag name="var" line="22" description="" type="\Illuminate\Session\Store" variable="">
+            <type>\Illuminate\Session\Store</type>
+          </tag>
+        </docblock>
+      </property>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Routing" line="30" package="Default">
+        <name>__construct</name>
+        <full_name>\Illuminate\Routing\Redirector::__construct()</full_name>
+        <docblock line="30">
+          <description>Create a new Redirector instance.</description>
+          <long-description/>
+          <tag name="param" line="30" description="" type="\Illuminate\Routing\UrlGenerator" variable="$generator">
+            <type>\Illuminate\Routing\UrlGenerator</type>
+          </tag>
+          <tag name="return" line="30" description="" type="void">
+            <type>void</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$generator</name>
+          <default/>
+          <type>\Illuminate\Routing\UrlGenerator</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Routing" line="41" package="Default">
+        <name>home</name>
+        <full_name>\Illuminate\Routing\Redirector::home()</full_name>
+        <docblock line="41">
+          <description>Create a new redirect response to the "home" route.</description>
+          <long-description/>
+          <tag name="param" line="41" description="" type="integer" variable="$status">
+            <type>integer</type>
+          </tag>
+          <tag name="return" line="41" description="" type="\Illuminate\Http\RedirectResponse">
+            <type>\Illuminate\Http\RedirectResponse</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$status</name>
+          <default>302</default>
+          <type>integer</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Routing" line="53" package="Default">
+        <name>back</name>
+        <full_name>\Illuminate\Routing\Redirector::back()</full_name>
+        <docblock line="53">
+          <description>Create a new redirect response to the previous location.</description>
+          <long-description/>
+          <tag name="param" line="53" description="" type="integer" variable="$status">
+            <type>integer</type>
+          </tag>
+          <tag name="param" line="53" description="" type="array" variable="$headers">
+            <type>array</type>
+          </tag>
+          <tag name="return" line="53" description="" type="\Illuminate\Http\RedirectResponse">
+            <type>\Illuminate\Http\RedirectResponse</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$status</name>
+          <default>302</default>
+          <type>integer</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$headers</name>
+          <default>array()</default>
+          <type>array</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Routing" line="67" package="Default">
+        <name>refresh</name>
+        <full_name>\Illuminate\Routing\Redirector::refresh()</full_name>
+        <docblock line="67">
+          <description>Create a new redirect response to the current URI.</description>
+          <long-description/>
+          <tag name="param" line="67" description="" type="integer" variable="$status">
+            <type>integer</type>
+          </tag>
+          <tag name="param" line="67" description="" type="array" variable="$headers">
+            <type>array</type>
+          </tag>
+          <tag name="return" line="67" description="" type="\Illuminate\Http\RedirectResponse">
+            <type>\Illuminate\Http\RedirectResponse</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$status</name>
+          <default>302</default>
+          <type>integer</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$headers</name>
+          <default>array()</default>
+          <type>array</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Routing" line="81" package="Default">
+        <name>guest</name>
+        <full_name>\Illuminate\Routing\Redirector::guest()</full_name>
+        <docblock line="81">
+          <description>Create a new redirect response, while putting the current URL in the session.</description>
+          <long-description/>
+          <tag name="param" line="81" description="" type="string" variable="$path">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="81" description="" type="integer" variable="$status">
+            <type>integer</type>
+          </tag>
+          <tag name="param" line="81" description="" type="array" variable="$headers">
+            <type>array</type>
+          </tag>
+          <tag name="param" line="81" description="" type="boolean" variable="$secure">
+            <type>boolean</type>
+          </tag>
+          <tag name="return" line="81" description="" type="\Illuminate\Http\RedirectResponse">
+            <type>\Illuminate\Http\RedirectResponse</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$path</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$status</name>
+          <default>302</default>
+          <type>integer</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$headers</name>
+          <default>array()</default>
+          <type>array</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$secure</name>
+          <default>null</default>
+          <type>boolean</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Routing" line="97" package="Default">
+        <name>intended</name>
+        <full_name>\Illuminate\Routing\Redirector::intended()</full_name>
+        <docblock line="97">
+          <description>Create a new redirect response to the previously intended location.</description>
+          <long-description/>
+          <tag name="param" line="97" description="" type="string" variable="$default">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="97" description="" type="integer" variable="$status">
+            <type>integer</type>
+          </tag>
+          <tag name="param" line="97" description="" type="array" variable="$headers">
+            <type>array</type>
+          </tag>
+          <tag name="param" line="97" description="" type="boolean" variable="$secure">
+            <type>boolean</type>
+          </tag>
+          <tag name="return" line="97" description="" type="\Illuminate\Http\RedirectResponse">
+            <type>\Illuminate\Http\RedirectResponse</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$default</name>
+          <default>'/'</default>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$status</name>
+          <default>302</default>
+          <type>integer</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$headers</name>
+          <default>array()</default>
+          <type>array</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$secure</name>
+          <default>null</default>
+          <type>boolean</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Routing" line="113" package="Default">
+        <name>to</name>
+        <full_name>\Illuminate\Routing\Redirector::to()</full_name>
+        <docblock line="113">
+          <description>Create a new redirect response to the given path.</description>
+          <long-description/>
+          <tag name="param" line="113" description="" type="string" variable="$path">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="113" description="" type="integer" variable="$status">
+            <type>integer</type>
+          </tag>
+          <tag name="param" line="113" description="" type="array" variable="$headers">
+            <type>array</type>
+          </tag>
+          <tag name="param" line="113" description="" type="boolean" variable="$secure">
+            <type>boolean</type>
+          </tag>
+          <tag name="return" line="113" description="" type="\Illuminate\Http\RedirectResponse">
+            <type>\Illuminate\Http\RedirectResponse</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$path</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$status</name>
+          <default>302</default>
+          <type>integer</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$headers</name>
+          <default>array()</default>
+          <type>array</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$secure</name>
+          <default>null</default>
+          <type>boolean</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Routing" line="128" package="Default">
+        <name>away</name>
+        <full_name>\Illuminate\Routing\Redirector::away()</full_name>
+        <docblock line="128">
+          <description>Create a new redirect response to an external URL (no validation).</description>
+          <long-description/>
+          <tag name="param" line="128" description="" type="string" variable="$path">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="128" description="" type="integer" variable="$status">
+            <type>integer</type>
+          </tag>
+          <tag name="param" line="128" description="" type="array" variable="$headers">
+            <type>array</type>
+          </tag>
+          <tag name="return" line="128" description="" type="\Illuminate\Http\RedirectResponse">
+            <type>\Illuminate\Http\RedirectResponse</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$path</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$status</name>
+          <default>302</default>
+          <type>integer</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$headers</name>
+          <default>array()</default>
+          <type>array</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Routing" line="141" package="Default">
+        <name>secure</name>
+        <full_name>\Illuminate\Routing\Redirector::secure()</full_name>
+        <docblock line="141">
+          <description>Create a new redirect response to the given HTTPS path.</description>
+          <long-description/>
+          <tag name="param" line="141" description="" type="string" variable="$path">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="141" description="" type="integer" variable="$status">
+            <type>integer</type>
+          </tag>
+          <tag name="param" line="141" description="" type="array" variable="$headers">
+            <type>array</type>
+          </tag>
+          <tag name="return" line="141" description="" type="\Illuminate\Http\RedirectResponse">
+            <type>\Illuminate\Http\RedirectResponse</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$path</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$status</name>
+          <default>302</default>
+          <type>integer</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$headers</name>
+          <default>array()</default>
+          <type>array</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Routing" line="155" package="Default">
+        <name>route</name>
+        <full_name>\Illuminate\Routing\Redirector::route()</full_name>
+        <docblock line="155">
+          <description>Create a new redirect response to a named route.</description>
+          <long-description/>
+          <tag name="param" line="155" description="" type="string" variable="$route">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="155" description="" type="array" variable="$parameters">
+            <type>array</type>
+          </tag>
+          <tag name="param" line="155" description="" type="integer" variable="$status">
+            <type>integer</type>
+          </tag>
+          <tag name="param" line="155" description="" type="array" variable="$headers">
+            <type>array</type>
+          </tag>
+          <tag name="return" line="155" description="" type="\Illuminate\Http\RedirectResponse">
+            <type>\Illuminate\Http\RedirectResponse</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$route</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$parameters</name>
+          <default>array()</default>
+          <type>array</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$status</name>
+          <default>302</default>
+          <type>integer</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$headers</name>
+          <default>array()</default>
+          <type>array</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Routing" line="171" package="Default">
+        <name>action</name>
+        <full_name>\Illuminate\Routing\Redirector::action()</full_name>
+        <docblock line="171">
+          <description>Create a new redirect response to a controller action.</description>
+          <long-description/>
+          <tag name="param" line="171" description="" type="string" variable="$action">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="171" description="" type="array" variable="$parameters">
+            <type>array</type>
+          </tag>
+          <tag name="param" line="171" description="" type="integer" variable="$status">
+            <type>integer</type>
+          </tag>
+          <tag name="param" line="171" description="" type="array" variable="$headers">
+            <type>array</type>
+          </tag>
+          <tag name="return" line="171" description="" type="\Illuminate\Http\RedirectResponse">
+            <type>\Illuminate\Http\RedirectResponse</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$action</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$parameters</name>
+          <default>array()</default>
+          <type>array</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$status</name>
+          <default>302</default>
+          <type>integer</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$headers</name>
+          <default>array()</default>
+          <type>array</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Routing" line="186" package="Default">
+        <name>createRedirect</name>
+        <full_name>\Illuminate\Routing\Redirector::createRedirect()</full_name>
+        <docblock line="186">
+          <description>Create a new redirect response.</description>
+          <long-description/>
+          <tag name="param" line="186" description="" type="string" variable="$path">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="186" description="" type="integer" variable="$status">
+            <type>integer</type>
+          </tag>
+          <tag name="param" line="186" description="" type="array" variable="$headers">
+            <type>array</type>
+          </tag>
+          <tag name="return" line="186" description="" type="\Illuminate\Http\RedirectResponse">
+            <type>\Illuminate\Http\RedirectResponse</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$path</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$status</name>
+          <default/>
+          <type>integer</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$headers</name>
+          <default/>
+          <type>array</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Routing" line="204" package="Default">
+        <name>getUrlGenerator</name>
+        <full_name>\Illuminate\Routing\Redirector::getUrlGenerator()</full_name>
+        <docblock line="204">
+          <description>Get the URL generator instance.</description>
+          <long-description/>
+          <tag name="return" line="204" description="" type="\Illuminate\Routing\UrlGenerator">
+            <type>\Illuminate\Routing\UrlGenerator</type>
+          </tag>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Routing" line="215" package="Default">
+        <name>setSession</name>
+        <full_name>\Illuminate\Routing\Redirector::setSession()</full_name>
+        <docblock line="215">
+          <description>Set the active session store.</description>
+          <long-description/>
+          <tag name="param" line="215" description="" type="\Illuminate\Session\Store" variable="$session">
+            <type>\Illuminate\Session\Store</type>
+          </tag>
+          <tag name="return" line="215" description="" type="void">
+            <type>void</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$session</name>
+          <default/>
+          <type>\Illuminate\Session\Store</type>
+        </argument>
+      </method>
+    </class>
+    <parse_markers>
+      <error line="0" code="PPC:ERR-50000">No summary was found for this file</error>
+      <error line="8" code="PPC:ERR-50005">No summary for class \Illuminate\Routing\Redirector</error>
+    </parse_markers>
+    <source>eJzdWN9P2zAQfs9fYSGkJqjAtD0y2KQ9ABIPUwtP64RMcm2iuXbnOGVo4n/f2XHc/GjSsBYY60ub2r777vvO5/g+flrEC8/jdA7pgoZALhnL5gmnCiYjkamEz048L0srAxdKLSYjiBIJoRrhQsFTOKnPGkOaJoJPxkpIIDQl9g/zjEZDRtOUFGaE9H57BD/HBwfmmxyQ6xjIzeiKzICDpDiFJDxVlIdwZKcUMz8vqSSTJvbJjWTnxWo7+dh8L6RQ6BYisu/MI6g1CNIcNklNHL0RVMJvc21tNx1/kYBGCCUc7ksctbtfUEnnZCMHpBSuWytBZZKTpUiiKtDsjiUhmWY8VJqB29sQlVYyC5VfMbqyGZiFuZL6s6/iJD08Wyl4WuFbT3nsDl7a4PFHnmhECaJQl71YzGGPSIyylY6EK8SAlKksrYc72ZTRnVxo5761jEF9ePe+Hrp1YxlQwq9zcXhmsPsDbWsQDAugwXa8LCQsE4GomAipxtpJTpMeO0qlpA84GgONQO6YvTsa/qiyN3Se8Pnb90Ye6RU6eRocFuH6gd1FTe5Dw1sB0De2HNsrx1vyHmZSAlJ6M7r8BxmXMEXA8ZNI75HBM0D3PzNIlR+gFlTFfrA7aofkPk4YpnSmdCWr0XyFfJq/bBVtYx0rll5M9jW8Fkk2aNIUxY7fCcHy5YDAYLeazQyvBrbjdK1ww8I/PvGMsZYqbHlCnTLlDzLJjjB64BFEg+GanTVFS37Qvq10QlSwrVA5QDuqZeyBFFA3ljUndwRTmjH1lhQvgvQL8Cjo4HiwpfpapFXtLGUB6ttIA+v4VWWfJUvgRDv57/Z0g71dSFratCv7JSv9j8YWYbfQk3ICvxRITpmp2T4XZElZEplNHLyowDtRkN7Thz4adp+mz0/8aiNdXF9/Hb/8dtoJ23kCb893Z9XCK802JQuH8P4cdV9FHMVmViuJ5hnUmrL0qjLkN5Uc+7CM0pWrJ7zLtxavVi9/dRptpSjedJUUjIEkNOz1upFPe2vC5qh9i/75pO3w85LivoEC6LpDTqO+Z0VdDBf9aaWNVLjt4tYZSabET9IUlF99fQyCkqeKNz1F2e5XfdGJW/LoNXGalcV1svuuuS5nCjNtmXEOyhyKPVuKa9Tb3FWs3+BAlef63WfUxsbY2EagN9Gy1pns0xGstmRd+7Ee8sZGYEngclPXGey+f+r64BqfeaCP3h+cRbmJ</source>
+  <type>class</type></file>

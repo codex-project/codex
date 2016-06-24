@@ -1,0 +1,513 @@
+<file path="codex/vendor/laravel/framework/src/Illuminate/Database/Query/JoinClause.php" generated-path="codex.vendor.laravel.framework.src.Illuminate.Database.Query.JoinClause.html" hash="b66071c2ae8f8c9fc256e28a528826fd" package="Default">
+    <docblock line="0">
+      <description/>
+      <long-description/>
+      <tag name="package" line="0" description="Default"/>
+    </docblock>
+    <namespace-alias name="Closure">\Closure</namespace-alias>
+    <namespace-alias name="InvalidArgumentException">\InvalidArgumentException</namespace-alias>
+    <class final="false" abstract="false" namespace="Illuminate\Database\Query" line="8" package="Default">
+      <extends/>
+      <name>JoinClause</name>
+      <full_name>\Illuminate\Database\Query\JoinClause</full_name>
+      <docblock line="8">
+        <description/>
+        <long-description/>
+        <tag name="package" line="8" description="Default"/>
+      </docblock>
+      <property static="false" visibility="public" namespace="Illuminate\Database\Query" line="15" package="Default">
+        <name>$type</name>
+        <full_name>\Illuminate\Database\Query\JoinClause::type</full_name>
+        <default/>
+        <docblock line="15">
+          <description>The type of join being performed.</description>
+          <long-description/>
+          <tag name="var" line="15" description="" type="string" variable="">
+            <type>string</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="false" visibility="public" namespace="Illuminate\Database\Query" line="22" package="Default">
+        <name>$table</name>
+        <full_name>\Illuminate\Database\Query\JoinClause::table</full_name>
+        <default/>
+        <docblock line="22">
+          <description>The table the join clause is joining to.</description>
+          <long-description/>
+          <tag name="var" line="22" description="" type="string" variable="">
+            <type>string</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="false" visibility="public" namespace="Illuminate\Database\Query" line="29" package="Default">
+        <name>$clauses</name>
+        <full_name>\Illuminate\Database\Query\JoinClause::clauses</full_name>
+        <default>array()</default>
+        <docblock line="29">
+          <description>The "on" clauses for the join.</description>
+          <long-description/>
+          <tag name="var" line="29" description="" type="array" variable="">
+            <type>array</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="false" visibility="public" namespace="Illuminate\Database\Query" line="36" package="Default">
+        <name>$bindings</name>
+        <full_name>\Illuminate\Database\Query\JoinClause::bindings</full_name>
+        <default>array()</default>
+        <docblock line="36">
+          <description>The "on" bindings for the join.</description>
+          <long-description/>
+          <tag name="var" line="36" description="" type="array" variable="">
+            <type>array</type>
+          </tag>
+        </docblock>
+      </property>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Query" line="45" package="Default">
+        <name>__construct</name>
+        <full_name>\Illuminate\Database\Query\JoinClause::__construct()</full_name>
+        <docblock line="45">
+          <description>Create a new join clause instance.</description>
+          <long-description/>
+          <tag name="param" line="45" description="" type="string" variable="$type">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="45" description="" type="string" variable="$table">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="45" description="" type="void">
+            <type>void</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$type</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$table</name>
+          <default/>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Query" line="72" package="Default">
+        <name>on</name>
+        <full_name>\Illuminate\Database\Query\JoinClause::on()</full_name>
+        <docblock line="72">
+          <description>Add an "on" clause to the join.</description>
+          <long-description>On clauses can be chained, e.g.
+
+ $join-&gt;on('contacts.user_id', '=', 'users.id')
+      -&gt;on('contacts.info_id', '=', 'info.id')
+
+will produce the following SQL:
+
+on `contacts`.`user_id` = `users`.`id`  and `contacts`.`info_id` = `info`.`id`</long-description>
+          <tag name="param" line="72" description="" type="\Closure|string" variable="$first">
+            <type>\Closure</type>
+            <type>string</type>
+          </tag>
+          <tag name="param" line="72" description="" type="string|null" variable="$operator">
+            <type>string</type>
+            <type>null</type>
+          </tag>
+          <tag name="param" line="72" description="" type="string|null" variable="$second">
+            <type>string</type>
+            <type>null</type>
+          </tag>
+          <tag name="param" line="72" description="" type="string" variable="$boolean">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="72" description="" type="boolean" variable="$where">
+            <type>boolean</type>
+          </tag>
+          <tag name="return" line="72" description="" type="\Illuminate\Database\Query\JoinClause">
+            <type>\Illuminate\Database\Query\JoinClause</type>
+          </tag>
+          <tag name="throws" line="72" description="" type="\InvalidArgumentException">
+            <type>\InvalidArgumentException</type>
+          </tag>
+          <tag name="fluent" description="This method is part of a fluent interface and will return the same instance"/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$first</name>
+          <default/>
+          <type>\Closure|string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$operator</name>
+          <default>null</default>
+          <type>string|null</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$second</name>
+          <default>null</default>
+          <type>string|null</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$boolean</name>
+          <default>'and'</default>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$where</name>
+          <default>false</default>
+          <type>boolean</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Query" line="105" package="Default">
+        <name>orOn</name>
+        <full_name>\Illuminate\Database\Query\JoinClause::orOn()</full_name>
+        <docblock line="105">
+          <description>Add an "or on" clause to the join.</description>
+          <long-description/>
+          <tag name="param" line="105" description="" type="\Closure|string" variable="$first">
+            <type>\Closure</type>
+            <type>string</type>
+          </tag>
+          <tag name="param" line="105" description="" type="string|null" variable="$operator">
+            <type>string</type>
+            <type>null</type>
+          </tag>
+          <tag name="param" line="105" description="" type="string|null" variable="$second">
+            <type>string</type>
+            <type>null</type>
+          </tag>
+          <tag name="return" line="105" description="" type="\Illuminate\Database\Query\JoinClause">
+            <type>\Illuminate\Database\Query\JoinClause</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$first</name>
+          <default/>
+          <type>\Closure|string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$operator</name>
+          <default>null</default>
+          <type>string|null</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$second</name>
+          <default>null</default>
+          <type>string|null</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Query" line="119" package="Default">
+        <name>where</name>
+        <full_name>\Illuminate\Database\Query\JoinClause::where()</full_name>
+        <docblock line="119">
+          <description>Add an "on where" clause to the join.</description>
+          <long-description/>
+          <tag name="param" line="119" description="" type="\Closure|string" variable="$first">
+            <type>\Closure</type>
+            <type>string</type>
+          </tag>
+          <tag name="param" line="119" description="" type="string|null" variable="$operator">
+            <type>string</type>
+            <type>null</type>
+          </tag>
+          <tag name="param" line="119" description="" type="string|null" variable="$second">
+            <type>string</type>
+            <type>null</type>
+          </tag>
+          <tag name="param" line="119" description="" type="string" variable="$boolean">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="119" description="" type="\Illuminate\Database\Query\JoinClause">
+            <type>\Illuminate\Database\Query\JoinClause</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$first</name>
+          <default/>
+          <type>\Closure|string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$operator</name>
+          <default>null</default>
+          <type>string|null</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$second</name>
+          <default>null</default>
+          <type>string|null</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$boolean</name>
+          <default>'and'</default>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Query" line="132" package="Default">
+        <name>orWhere</name>
+        <full_name>\Illuminate\Database\Query\JoinClause::orWhere()</full_name>
+        <docblock line="132">
+          <description>Add an "or on where" clause to the join.</description>
+          <long-description/>
+          <tag name="param" line="132" description="" type="\Closure|string" variable="$first">
+            <type>\Closure</type>
+            <type>string</type>
+          </tag>
+          <tag name="param" line="132" description="" type="string|null" variable="$operator">
+            <type>string</type>
+            <type>null</type>
+          </tag>
+          <tag name="param" line="132" description="" type="string|null" variable="$second">
+            <type>string</type>
+            <type>null</type>
+          </tag>
+          <tag name="return" line="132" description="" type="\Illuminate\Database\Query\JoinClause">
+            <type>\Illuminate\Database\Query\JoinClause</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$first</name>
+          <default/>
+          <type>\Closure|string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$operator</name>
+          <default>null</default>
+          <type>string|null</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$second</name>
+          <default>null</default>
+          <type>string|null</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Query" line="144" package="Default">
+        <name>whereNull</name>
+        <full_name>\Illuminate\Database\Query\JoinClause::whereNull()</full_name>
+        <docblock line="144">
+          <description>Add an "on where is null" clause to the join.</description>
+          <long-description/>
+          <tag name="param" line="144" description="" type="string" variable="$column">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="144" description="" type="string" variable="$boolean">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="144" description="" type="\Illuminate\Database\Query\JoinClause">
+            <type>\Illuminate\Database\Query\JoinClause</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$column</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$boolean</name>
+          <default>'and'</default>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Query" line="155" package="Default">
+        <name>orWhereNull</name>
+        <full_name>\Illuminate\Database\Query\JoinClause::orWhereNull()</full_name>
+        <docblock line="155">
+          <description>Add an "or on where is null" clause to the join.</description>
+          <long-description/>
+          <tag name="param" line="155" description="" type="string" variable="$column">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="155" description="" type="\Illuminate\Database\Query\JoinClause">
+            <type>\Illuminate\Database\Query\JoinClause</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$column</name>
+          <default/>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Query" line="167" package="Default">
+        <name>whereNotNull</name>
+        <full_name>\Illuminate\Database\Query\JoinClause::whereNotNull()</full_name>
+        <docblock line="167">
+          <description>Add an "on where is not null" clause to the join.</description>
+          <long-description/>
+          <tag name="param" line="167" description="" type="string" variable="$column">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="167" description="" type="string" variable="$boolean">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="167" description="" type="\Illuminate\Database\Query\JoinClause">
+            <type>\Illuminate\Database\Query\JoinClause</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$column</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$boolean</name>
+          <default>'and'</default>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Query" line="178" package="Default">
+        <name>orWhereNotNull</name>
+        <full_name>\Illuminate\Database\Query\JoinClause::orWhereNotNull()</full_name>
+        <docblock line="178">
+          <description>Add an "or on where is not null" clause to the join.</description>
+          <long-description/>
+          <tag name="param" line="178" description="" type="string" variable="$column">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="178" description="" type="\Illuminate\Database\Query\JoinClause">
+            <type>\Illuminate\Database\Query\JoinClause</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$column</name>
+          <default/>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Query" line="190" package="Default">
+        <name>whereIn</name>
+        <full_name>\Illuminate\Database\Query\JoinClause::whereIn()</full_name>
+        <docblock line="190">
+          <description>Add an "on where in (.</description>
+          <long-description>..)" clause to the join.</long-description>
+          <tag name="param" line="190" description="" type="string" variable="$column">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="190" description="" type="array" variable="$values">
+            <type>array</type>
+          </tag>
+          <tag name="return" line="190" description="" type="\Illuminate\Database\Query\JoinClause">
+            <type>\Illuminate\Database\Query\JoinClause</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$column</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$values</name>
+          <default/>
+          <type>array</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Query" line="202" package="Default">
+        <name>whereNotIn</name>
+        <full_name>\Illuminate\Database\Query\JoinClause::whereNotIn()</full_name>
+        <docblock line="202">
+          <description>Add an "on where not in (.</description>
+          <long-description>..)" clause to the join.</long-description>
+          <tag name="param" line="202" description="" type="string" variable="$column">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="202" description="" type="array" variable="$values">
+            <type>array</type>
+          </tag>
+          <tag name="return" line="202" description="" type="\Illuminate\Database\Query\JoinClause">
+            <type>\Illuminate\Database\Query\JoinClause</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$column</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$values</name>
+          <default/>
+          <type>array</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Query" line="214" package="Default">
+        <name>orWhereIn</name>
+        <full_name>\Illuminate\Database\Query\JoinClause::orWhereIn()</full_name>
+        <docblock line="214">
+          <description>Add an "or on where in (.</description>
+          <long-description>..)" clause to the join.</long-description>
+          <tag name="param" line="214" description="" type="string" variable="$column">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="214" description="" type="array" variable="$values">
+            <type>array</type>
+          </tag>
+          <tag name="return" line="214" description="" type="\Illuminate\Database\Query\JoinClause">
+            <type>\Illuminate\Database\Query\JoinClause</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$column</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$values</name>
+          <default/>
+          <type>array</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Query" line="226" package="Default">
+        <name>orWhereNotIn</name>
+        <full_name>\Illuminate\Database\Query\JoinClause::orWhereNotIn()</full_name>
+        <docblock line="226">
+          <description>Add an "or on where not in (.</description>
+          <long-description>..)" clause to the join.</long-description>
+          <tag name="param" line="226" description="" type="string" variable="$column">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="226" description="" type="array" variable="$values">
+            <type>array</type>
+          </tag>
+          <tag name="return" line="226" description="" type="\Illuminate\Database\Query\JoinClause">
+            <type>\Illuminate\Database\Query\JoinClause</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$column</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$values</name>
+          <default/>
+          <type>array</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Query" line="238" package="Default">
+        <name>nest</name>
+        <full_name>\Illuminate\Database\Query\JoinClause::nest()</full_name>
+        <docblock line="238">
+          <description>Add a nested where statement to the query.</description>
+          <long-description/>
+          <tag name="param" line="238" description="" type="\Closure" variable="$callback">
+            <type>\Closure</type>
+          </tag>
+          <tag name="param" line="238" description="" type="string" variable="$boolean">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="238" description="" type="\Illuminate\Database\Query\JoinClause">
+            <type>\Illuminate\Database\Query\JoinClause</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$callback</name>
+          <default/>
+          <type>\Closure</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$boolean</name>
+          <default>'and'</default>
+          <type>string</type>
+        </argument>
+      </method>
+    </class>
+    <parse_markers>
+      <error line="0" code="PPC:ERR-50000">No summary was found for this file</error>
+      <error line="8" code="PPC:ERR-50005">No summary for class \Illuminate\Database\Query\JoinClause</error>
+    </parse_markers>
+    <source>eJzVWEuP2zYQvvtXDAIjkhda59BbN9422OawRZEgaIEe4sBLS7StViZVklpnkc1/7wxFybQs+ZG1g6wONik+Zuabb4bUvP4lX+S9nmBLrnMWc7jNsmKZCmb4+Ddm2JRpPv5QcPVw1esVmsNNJnWh+JXt3Ip7lqXJGzUvllyYt59jnptUCpwbZ0xr+F2m4iZjOLf3pQf4vLq4sP9wAX8tOJiHnIOcwT84D6Y8FXPIuZpJteTJ0E2s5v96zxRoo3CSe/XK/ufFNEtj6NNeKLhNCptm+IstKye2CkGqbZdkGnm0MNqyXdoLKV44GRrQlFpwqwymFHtoFVFtMYKPn3ZImqYiQS2fJKreo13WjeLIB2Ag+GoTQqENEzHfEpczxZbgAITSN92DhGU9qrgplIB7mSZtus4KERPFYDKJJYpXRWxCu3/kdhrY6SXd6OmbRaovry3VRhVNmoOWIaParzT0dQuHN0kCTPgORuZ0Yv5e1CyIGbEb4gVLBU8i4MN5czb0aY/LaynCAA0zLDZ6iIvVJE2CCIIR/VBfD/HFoF5mn8ayVMykv4z6/qpq8SrNMsiVTIq4DI+ZzDK5Iq/8+eGPnxuzEfO7SsTd8M7pdoeo2Ta9oy4ilGxMdNrYidQu53UwZuzyy2PNjlmqtGnnzqMo0ADoS8wZzEi1e5bmqFTSycKplBlnojlOr3F0teBqi6OWPE1DzELJlYZxV27cSWp0Y2lwtLYKcSMLosqCdd+pjC8CBB09XaqJ/RnL9FYgpDNwu9eBi6nXAT7wJtLjm3h5Lbg2a82c3ME6jFysVFLInokolhOm5jocwGv4qbm/hckmlC6gwuCdNMCFLOYLzF3l6DrNySq8hkG3IiUgTdnOqCrrffxEkV+Cu2cnePkSm2vPjEYUXQE8PkLjrZCEcjCgFame2NwbOiGDLYVqz8ayEKae16pNn5zBk8rLV95IaZfLOtasWC7xWDdhYH1HyaBSk9qlGGo5l1LTGkqNUg6hW0vwWbE3Syo4LFF+/9h3Zow7Lztj7+JSLuqIV/X+8IhtxuNmiLWFfr0D+U1VPN91MIH13o+J+r6MezKvWAyekEif5KhqswjwbsL3u4yi5Ef22glj5e+j/PLkcDnUAw5++iAguce4oUY/lojO1uXhO1H9HWodOhW+hc3VyiDVCBqdyW8/54prbU9hwiQY+MQubxdHMPuU0J6ajz54u6FqwfqorGxRwGvBMyWZNGfmmYPmFFw7Icon59smjodQron8kawTEA6Hw8EJKWdvsziKF/eC6zMR7tZjTCnQyTuGaHSjdcui6ivpuFOhvMg/TwiROadA0X3LfCuSfmw+PyBd2J6BjUdcUTwInykf19nvTIw8EE1wX88lmNqgRVRXqBD8j2zad+kmEFmWTVn8bxfKZzyNbS2m0qRWZP95bAuMdLfGc5fsTuPQK41GG6VQ/5u/FhHaHfwhKoy4ikVZvXSlh+0CR12zIA95O9jBHWULV4NA/5IAv1LhFUe8TbxKtuXWZMnVnIeN0aiqtlYv2istbdWOr73/ASndWUc=</source>
+  <type>class</type></file>

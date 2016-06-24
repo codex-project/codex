@@ -1,0 +1,466 @@
+<file path="codex/vendor/laravel/framework/src/Illuminate/Session/SessionManager.php" generated-path="codex.vendor.laravel.framework.src.Illuminate.Session.SessionManager.html" hash="c58704580c1e0d3e48f0bf87f4854e5b" package="Default">
+    <docblock line="0">
+      <description/>
+      <long-description/>
+      <tag name="package" line="0" description="Default"/>
+    </docblock>
+    <namespace-alias name="Manager">\Illuminate\Support\Manager</namespace-alias>
+    <namespace-alias name="NullSessionHandler">\Symfony\Component\HttpFoundation\Session\Storage\Handler\NullSessionHandler</namespace-alias>
+    <class final="false" abstract="false" namespace="Illuminate\Session" line="8" package="Default">
+      <extends>\Illuminate\Support\Manager</extends>
+      <name>SessionManager</name>
+      <full_name>\Illuminate\Session\SessionManager</full_name>
+      <docblock line="8">
+        <description/>
+        <long-description/>
+        <tag name="package" line="8" description="Default"/>
+        <tag name="inherited_from" description="\Illuminate\Support\Manager" refers="\Illuminate\Support\Manager" link="/classes/Illuminate.Support.Manager.html"/>
+      </docblock>
+      <property static="false" visibility="protected" namespace="Illuminate\Session" line="15" package="Default">
+        <name>$app</name>
+        <full_name>\Illuminate\Support\Manager::app</full_name>
+        <default/>
+        <docblock line="15">
+          <description>The application instance.</description>
+          <long-description/>
+          <tag name="var" line="15" description="" type="\Illuminate\Foundation\Application" variable="">
+            <type>\Illuminate\Foundation\Application</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" namespace="Illuminate\Session" line="22" package="Default">
+        <name>$customCreators</name>
+        <full_name>\Illuminate\Support\Manager::customCreators</full_name>
+        <default>array()</default>
+        <docblock line="22">
+          <description>The registered custom driver creators.</description>
+          <long-description/>
+          <tag name="var" line="22" description="" type="array" variable="">
+            <type>array</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" namespace="Illuminate\Session" line="29" package="Default">
+        <name>$drivers</name>
+        <full_name>\Illuminate\Support\Manager::drivers</full_name>
+        <default>array()</default>
+        <docblock line="29">
+          <description>The array of created "drivers".</description>
+          <long-description/>
+          <tag name="var" line="29" description="" type="array" variable="">
+            <type>array</type>
+          </tag>
+        </docblock>
+      </property>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Session" line="16" package="Default">
+        <name>callCustomCreator</name>
+        <full_name>\Illuminate\Session\SessionManager::callCustomCreator()</full_name>
+        <docblock line="16">
+          <description>Call a custom driver creator.</description>
+          <long-description/>
+          <tag name="param" line="16" description="" type="string" variable="$driver">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="16" description="" type="mixed">
+            <type>mixed</type>
+          </tag>
+          <tag name="inherited_from" description="\Illuminate\Support\Manager::callCustomCreator()" refers="\Illuminate\Support\Manager::callCustomCreator()" link="/classes/Illuminate.Support.Manager.html#method_callCustomCreator"/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$driver</name>
+          <default/>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Session" line="26" package="Default">
+        <name>createArrayDriver</name>
+        <full_name>\Illuminate\Session\SessionManager::createArrayDriver()</full_name>
+        <docblock line="26">
+          <description>Create an instance of the "array" session driver.</description>
+          <long-description/>
+          <tag name="return" line="26" description="" type="\Illuminate\Session\Store">
+            <type>\Illuminate\Session\Store</type>
+          </tag>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Session" line="36" package="Default">
+        <name>createCookieDriver</name>
+        <full_name>\Illuminate\Session\SessionManager::createCookieDriver()</full_name>
+        <docblock line="36">
+          <description>Create an instance of the "cookie" session driver.</description>
+          <long-description/>
+          <tag name="return" line="36" description="" type="\Illuminate\Session\Store">
+            <type>\Illuminate\Session\Store</type>
+          </tag>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Session" line="48" package="Default">
+        <name>createFileDriver</name>
+        <full_name>\Illuminate\Session\SessionManager::createFileDriver()</full_name>
+        <docblock line="48">
+          <description>Create an instance of the file session driver.</description>
+          <long-description/>
+          <tag name="return" line="48" description="" type="\Illuminate\Session\Store">
+            <type>\Illuminate\Session\Store</type>
+          </tag>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Session" line="58" package="Default">
+        <name>createNativeDriver</name>
+        <full_name>\Illuminate\Session\SessionManager::createNativeDriver()</full_name>
+        <docblock line="58">
+          <description>Create an instance of the file session driver.</description>
+          <long-description/>
+          <tag name="return" line="58" description="" type="\Illuminate\Session\Store">
+            <type>\Illuminate\Session\Store</type>
+          </tag>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Session" line="70" package="Default">
+        <name>createDatabaseDriver</name>
+        <full_name>\Illuminate\Session\SessionManager::createDatabaseDriver()</full_name>
+        <docblock line="70">
+          <description>Create an instance of the database session driver.</description>
+          <long-description/>
+          <tag name="return" line="70" description="" type="\Illuminate\Session\Store">
+            <type>\Illuminate\Session\Store</type>
+          </tag>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Session" line="86" package="Default">
+        <name>createLegacyDatabaseDriver</name>
+        <full_name>\Illuminate\Session\SessionManager::createLegacyDatabaseDriver()</full_name>
+        <docblock line="86">
+          <description>Create an instance of the legacy database session driver.</description>
+          <long-description/>
+          <tag name="return" line="86" description="" type="\Illuminate\Session\Store">
+            <type>\Illuminate\Session\Store</type>
+          </tag>
+          <tag name="deprecated" line="86" description="since version 5.2."/>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Session" line="100" package="Default">
+        <name>getDatabaseConnection</name>
+        <full_name>\Illuminate\Session\SessionManager::getDatabaseConnection()</full_name>
+        <docblock line="100">
+          <description>Get the database connection for the database driver.</description>
+          <long-description/>
+          <tag name="return" line="100" description="" type="\Illuminate\Database\Connection">
+            <type>\Illuminate\Database\Connection</type>
+          </tag>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Session" line="112" package="Default">
+        <name>createApcDriver</name>
+        <full_name>\Illuminate\Session\SessionManager::createApcDriver()</full_name>
+        <docblock line="112">
+          <description>Create an instance of the APC session driver.</description>
+          <long-description/>
+          <tag name="return" line="112" description="" type="\Illuminate\Session\Store">
+            <type>\Illuminate\Session\Store</type>
+          </tag>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Session" line="122" package="Default">
+        <name>createMemcachedDriver</name>
+        <full_name>\Illuminate\Session\SessionManager::createMemcachedDriver()</full_name>
+        <docblock line="122">
+          <description>Create an instance of the Memcached session driver.</description>
+          <long-description/>
+          <tag name="return" line="122" description="" type="\Illuminate\Session\Store">
+            <type>\Illuminate\Session\Store</type>
+          </tag>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Session" line="132" package="Default">
+        <name>createWincacheDriver</name>
+        <full_name>\Illuminate\Session\SessionManager::createWincacheDriver()</full_name>
+        <docblock line="132">
+          <description>Create an instance of the Wincache session driver.</description>
+          <long-description/>
+          <tag name="return" line="132" description="" type="\Illuminate\Session\Store">
+            <type>\Illuminate\Session\Store</type>
+          </tag>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Session" line="142" package="Default">
+        <name>createRedisDriver</name>
+        <full_name>\Illuminate\Session\SessionManager::createRedisDriver()</full_name>
+        <docblock line="142">
+          <description>Create an instance of the Redis session driver.</description>
+          <long-description/>
+          <tag name="return" line="142" description="" type="\Illuminate\Session\Store">
+            <type>\Illuminate\Session\Store</type>
+          </tag>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Session" line="157" package="Default">
+        <name>createCacheBased</name>
+        <full_name>\Illuminate\Session\SessionManager::createCacheBased()</full_name>
+        <docblock line="157">
+          <description>Create an instance of a cache driven driver.</description>
+          <long-description/>
+          <tag name="param" line="157" description="" type="string" variable="$driver">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="157" description="" type="\Illuminate\Session\Store">
+            <type>\Illuminate\Session\Store</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$driver</name>
+          <default/>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Session" line="168" package="Default">
+        <name>createCacheHandler</name>
+        <full_name>\Illuminate\Session\SessionManager::createCacheHandler()</full_name>
+        <docblock line="168">
+          <description>Create the cache based session handler instance.</description>
+          <long-description/>
+          <tag name="param" line="168" description="" type="string" variable="$driver">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="168" description="" type="\Illuminate\Session\CacheBasedSessionHandler">
+            <type>\Illuminate\Session\CacheBasedSessionHandler</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$driver</name>
+          <default/>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Session" line="181" package="Default">
+        <name>buildSession</name>
+        <full_name>\Illuminate\Session\SessionManager::buildSession()</full_name>
+        <docblock line="181">
+          <description>Build the session instance.</description>
+          <long-description/>
+          <tag name="param" line="181" description="" type="\SessionHandlerInterface" variable="$handler">
+            <type>\SessionHandlerInterface</type>
+          </tag>
+          <tag name="return" line="181" description="" type="\Illuminate\Session\Store">
+            <type>\Illuminate\Session\Store</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$handler</name>
+          <default/>
+          <type>\SessionHandlerInterface</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Session" line="197" package="Default">
+        <name>getSessionConfig</name>
+        <full_name>\Illuminate\Session\SessionManager::getSessionConfig()</full_name>
+        <docblock line="197">
+          <description>Get the session configuration.</description>
+          <long-description/>
+          <tag name="return" line="197" description="" type="array">
+            <type>array</type>
+          </tag>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Session" line="207" package="Default">
+        <name>getDefaultDriver</name>
+        <full_name>\Illuminate\Session\SessionManager::getDefaultDriver()</full_name>
+        <docblock line="207">
+          <description>Get the default session driver name.</description>
+          <long-description/>
+          <tag name="return" line="207" description="" type="string">
+            <type>string</type>
+          </tag>
+          <tag name="inherited_from" description="\Illuminate\Support\Manager::getDefaultDriver()" refers="\Illuminate\Support\Manager::getDefaultDriver()" link="/classes/Illuminate.Support.Manager.html#method_getDefaultDriver"/>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Session" line="218" package="Default">
+        <name>setDefaultDriver</name>
+        <full_name>\Illuminate\Session\SessionManager::setDefaultDriver()</full_name>
+        <docblock line="218">
+          <description>Set the default session driver name.</description>
+          <long-description/>
+          <tag name="param" line="218" description="" type="string" variable="$name">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="218" description="" type="void">
+            <type>void</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$name</name>
+          <default/>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Session" line="37" package="Default">
+        <name>__construct</name>
+        <full_name>\Illuminate\Support\Manager::__construct()</full_name>
+        <docblock line="37">
+          <description>Create a new manager instance.</description>
+          <long-description/>
+          <tag name="param" line="37" description="" type="\Illuminate\Foundation\Application" variable="$app">
+            <type>\Illuminate\Foundation\Application</type>
+          </tag>
+          <tag name="return" line="37" description="" type="void">
+            <type>void</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$app</name>
+          <default/>
+          <type>\Illuminate\Foundation\Application</type>
+        </argument>
+        <inherited_from>\Illuminate\Support\Manager</inherited_from>
+      </method>
+      <method final="false" abstract="true" static="false" visibility="public" namespace="Illuminate\Session" line="47" package="Default">
+        <name>getDefaultDriver</name>
+        <full_name>\Illuminate\Support\Manager::getDefaultDriver()</full_name>
+        <docblock line="47">
+          <description>Get the default driver name.</description>
+          <long-description/>
+          <tag name="return" line="47" description="" type="string">
+            <type>string</type>
+          </tag>
+        </docblock>
+        <inherited_from>\Illuminate\Support\Manager</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Session" line="55" package="Default">
+        <name>driver</name>
+        <full_name>\Illuminate\Support\Manager::driver()</full_name>
+        <docblock line="55">
+          <description>Get a driver instance.</description>
+          <long-description/>
+          <tag name="param" line="55" description="" type="string" variable="$driver">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="55" description="" type="mixed">
+            <type>mixed</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$driver</name>
+          <default>null</default>
+          <type>string</type>
+        </argument>
+        <inherited_from>\Illuminate\Support\Manager</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Session" line="77" package="Default">
+        <name>createDriver</name>
+        <full_name>\Illuminate\Support\Manager::createDriver()</full_name>
+        <docblock line="77">
+          <description>Create a new driver instance.</description>
+          <long-description/>
+          <tag name="param" line="77" description="" type="string" variable="$driver">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="77" description="" type="mixed">
+            <type>mixed</type>
+          </tag>
+          <tag name="throws" line="77" description="" type="\InvalidArgumentException">
+            <type>\InvalidArgumentException</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$driver</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <inherited_from>\Illuminate\Support\Manager</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Session" line="99" package="Default">
+        <name>callCustomCreator</name>
+        <full_name>\Illuminate\Support\Manager::callCustomCreator()</full_name>
+        <docblock line="99">
+          <description>Call a custom driver creator.</description>
+          <long-description/>
+          <tag name="param" line="99" description="" type="string" variable="$driver">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="99" description="" type="mixed">
+            <type>mixed</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$driver</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <inherited_from>\Illuminate\Support\Manager</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Session" line="111" package="Default">
+        <name>extend</name>
+        <full_name>\Illuminate\Support\Manager::extend()</full_name>
+        <docblock line="111">
+          <description>Register a custom driver creator Closure.</description>
+          <long-description/>
+          <tag name="param" line="111" description="" type="string" variable="$driver">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="111" description="" type="\Closure" variable="$callback">
+            <type>\Closure</type>
+          </tag>
+          <tag name="return" line="111" description="" type="\Illuminate\Session\SessionManager">
+            <type>\Illuminate\Session\SessionManager</type>
+          </tag>
+          <tag name="fluent" description="This method is part of a fluent interface and will return the same instance"/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$driver</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$callback</name>
+          <default/>
+          <type>\Closure</type>
+        </argument>
+        <inherited_from>\Illuminate\Support\Manager</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Session" line="123" package="Default">
+        <name>getDrivers</name>
+        <full_name>\Illuminate\Support\Manager::getDrivers()</full_name>
+        <docblock line="123">
+          <description>Get all of the created "drivers".</description>
+          <long-description/>
+          <tag name="return" line="123" description="" type="array">
+            <type>array</type>
+          </tag>
+        </docblock>
+        <inherited_from>\Illuminate\Support\Manager</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Session" line="135" package="Default">
+        <name>__call</name>
+        <full_name>\Illuminate\Support\Manager::__call()</full_name>
+        <docblock line="135">
+          <description>Dynamically call the default driver instance.</description>
+          <long-description/>
+          <tag name="param" line="135" description="" type="string" variable="$method">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="135" description="" type="array" variable="$parameters">
+            <type>array</type>
+          </tag>
+          <tag name="return" line="135" description="" type="mixed">
+            <type>mixed</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$method</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$parameters</name>
+          <default/>
+          <type>array</type>
+        </argument>
+        <inherited_from>\Illuminate\Support\Manager</inherited_from>
+      </method>
+    </class>
+    <parse_markers>
+      <error line="0" code="PPC:ERR-50000">No summary was found for this file</error>
+      <error line="8" code="PPC:ERR-50005">No summary for class \Illuminate\Session\SessionManager</error>
+    </parse_markers>
+    <source>eJzVWFtv0zAUfs+vsNCkdFPZJCReGLctA4bEEGIPPJA+eM5Ja+E4ke1sVIj/jm9JmpQsaTZV0Je2ybl833eOj+O8fFOsiiDgOANZYALoI2NlRjlWEF+DlDTnp0FQyvaNsihyoeIrzPESxKm9f73O0pyv4yjPipwDV/GlUsX7vOQJVjpMFS6+VrnQbvEl5gkDEX8uGfP3/CWdkTAsJfKXfR4EPxXwRCL/P/gVIP05OTqy3+gIRZgxhBEppcozlAh6q72IAKxTHnujyvZtgQXOEJJKUL5E6MCZ17cFqFJwlNGfkPiLJ/a7ELkCoiBBacmJoYaIzhvZpJFLNvPRDq2Hw2k+PuiBWlH59PVNSVniOc40HC3aixf9sQ5PbZzfwRZtYwgIc0S5VJjrMuYpUitAT7AQeP0ESZfES7IlhYcVbxffVgsG+VsAZybXhc0w24E4hzu03QNTyJI8/0FhT2wjm6yH7gGjKSiaAXpVccZF8T0kOU/pMlx8Dz3G48owXJwGY9Vyqdt6zdppjEG4mDdApnRPShnsR8z3OtOoznHmn/VEua0d/mVibaTdLimwWg12iAErd2kPI+Y9zeHjzV36KX2hBzq+wXJPEl74bH0iasU4OIdayiWoyi2qb5tOadz0XTa8PK3VLuJXabsFaFDOfe75RuopVWCwxGT92MWo7RMoBBBsCiKpSauD2vjPj58dj6vcJ4vw/6pfG/NwFfsr9wFUe7VsEE1z0b43vmgVtLgRZqgaPWqOKUSPrI3pPdpa3+QmXOix3aTdSDOh6c++RHt6mCnIDhtShMkKzrW+ySzEBQknMLuCjJgoyX741ekmsswq/ylcv+mBYpz3Q7XKNpHpnXefQvQrJFTuh6VN1TdjV26ANet6g2Y13EJhIoStIev97EC2xrND+9viMr+lvr6xtkcPjcNxE7kCsKP0+gho28sK3qv7uAPgQ48JTSftfibsL9bYM6FpQqeFmf7NbKkaolLtEcVpGLd3zx306rLstrPOWCqQDzpc2YNUD9QZYTmHdnA7AvRW5iDV0OY1mt5SnJuS2kpU6g+pHrfhfOQKRGreztQr8tG69O/LrSM4TdHA2gZOxLpQemFvuHXUfudstNh2erTMbFkHpkd9pvUo5y0PjwBEuGhF9mWxpUHA9LNWL0CHa1cYmwkGHgWr+ruwpbAvxvr2A/vqpl2+8oZR0nqu85WLbMCBre3vjMzauB91AikumepsY8i8M+zD7sbGEPgLF3jUvtxTDoeln8P1BA7d0WeMugRvc5rcS0926dkwW5NsFDkz54x3RfJ38Adq0Ks3</source>
+  <type>class</type></file>

@@ -1,0 +1,285 @@
+<file path="codex/workbench/codex/core/src/Addons/Scanner/ClassInspector.php" generated-path="codex.workbench.codex.core.src.Addons.Scanner.ClassInspector.html" hash="0e6fc7a78274c58bbc18656c3b803424" package="Default">
+    <docblock line="0">
+      <description>Copyright (c) 2012-2013 Maximilian Reichel &lt;info@phramz.com&gt;</description>
+      <long-description>Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is furnished
+to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+THE SOFTWARE.</long-description>
+      <tag name="package" line="0" description="Default"/>
+    </docblock>
+    <namespace-alias name="ClassNotFoundException">\Codex\Addons\Exception\ClassNotFoundException</namespace-alias>
+    <namespace-alias name="Reader">\Doctrine\Common\Annotations\Reader</namespace-alias>
+    <class final="false" abstract="false" namespace="Codex\Addons\Scanner" line="32" package="Codex\Core\Addons\Scanner">
+      <extends/>
+      <name>ClassInspector</name>
+      <full_name>\Codex\Addons\Scanner\ClassInspector</full_name>
+      <docblock line="32">
+        <description>Class ClassInspector</description>
+        <long-description/>
+        <tag name="package" line="32" description="Codex\Core\Addons\Scanner"/>
+      </docblock>
+      <property static="false" visibility="private" namespace="Codex\Addons\Scanner" line="37" package="Codex\Core\Addons\Scanner">
+        <name>$className</name>
+        <full_name>\Codex\Addons\Scanner\ClassInspector::className</full_name>
+        <default>null</default>
+        <docblock line="37">
+          <description/>
+          <long-description/>
+          <tag name="var" line="37" description="" type="null|string" variable="">
+            <type>null</type>
+            <type>string</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="false" visibility="private" namespace="Codex\Addons\Scanner" line="42" package="Codex\Core\Addons\Scanner">
+        <name>$reader</name>
+        <full_name>\Codex\Addons\Scanner\ClassInspector::reader</full_name>
+        <default>null</default>
+        <docblock line="42">
+          <description/>
+          <long-description/>
+          <tag name="var" line="42" description="" type="\Doctrine\Common\Annotations\Reader" variable="">
+            <type>\Doctrine\Common\Annotations\Reader</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="false" visibility="private" namespace="Codex\Addons\Scanner" line="47" package="Codex\Core\Addons\Scanner">
+        <name>$reflectionClass</name>
+        <full_name>\Codex\Addons\Scanner\ClassInspector::reflectionClass</full_name>
+        <default>null</default>
+        <docblock line="47">
+          <description/>
+          <long-description/>
+          <tag name="var" line="47" description="" type="\ReflectionClass" variable="">
+            <type>\ReflectionClass</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="false" visibility="private" namespace="Codex\Addons\Scanner" line="52" package="Codex\Core\Addons\Scanner">
+        <name>$reflectionMethods</name>
+        <full_name>\Codex\Addons\Scanner\ClassInspector::reflectionMethods</full_name>
+        <default>array()</default>
+        <docblock line="52">
+          <description/>
+          <long-description/>
+          <tag name="var" line="52" description="" type="array|array&lt;mixed,\ReflectionMethod&gt;" variable="">
+            <type>array</type>
+            <type>array&lt;mixed,\ReflectionMethod&gt;</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="false" visibility="private" namespace="Codex\Addons\Scanner" line="57" package="Codex\Core\Addons\Scanner">
+        <name>$reflectionProperties</name>
+        <full_name>\Codex\Addons\Scanner\ClassInspector::reflectionProperties</full_name>
+        <default>array()</default>
+        <docblock line="57">
+          <description/>
+          <long-description/>
+          <tag name="var" line="57" description="" type="array|array&lt;mixed,\ReflectionProperty&gt;" variable="">
+            <type>array</type>
+            <type>array&lt;mixed,\ReflectionProperty&gt;</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="false" visibility="private" namespace="Codex\Addons\Scanner" line="62" package="Codex\Core\Addons\Scanner">
+        <name>$classAnnotations</name>
+        <full_name>\Codex\Addons\Scanner\ClassInspector::classAnnotations</full_name>
+        <default>null</default>
+        <docblock line="62">
+          <description/>
+          <long-description/>
+          <tag name="var" line="62" description="" type="null|array" variable="">
+            <type>null</type>
+            <type>array</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="false" visibility="private" namespace="Codex\Addons\Scanner" line="67" package="Codex\Core\Addons\Scanner">
+        <name>$methodAnnotations</name>
+        <full_name>\Codex\Addons\Scanner\ClassInspector::methodAnnotations</full_name>
+        <default>null</default>
+        <docblock line="67">
+          <description/>
+          <long-description/>
+          <tag name="var" line="67" description="" type="null|array" variable="">
+            <type>null</type>
+            <type>array</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="false" visibility="private" namespace="Codex\Addons\Scanner" line="72" package="Codex\Core\Addons\Scanner">
+        <name>$propertyAnnotations</name>
+        <full_name>\Codex\Addons\Scanner\ClassInspector::propertyAnnotations</full_name>
+        <default>null</default>
+        <docblock line="72">
+          <description/>
+          <long-description/>
+          <tag name="var" line="72" description="" type="null|array" variable="">
+            <type>null</type>
+            <type>array</type>
+          </tag>
+        </docblock>
+      </property>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Codex\Addons\Scanner" line="79" package="Codex\Core\Addons\Scanner">
+        <name>__construct</name>
+        <full_name>\Codex\Addons\Scanner\ClassInspector::__construct()</full_name>
+        <docblock line="79">
+          <description/>
+          <long-description/>
+          <tag name="param" line="79" description="&lt;p&gt;The class to inspect&lt;/p&gt;" type="string" variable="$classname">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="79" description="&lt;p&gt;The annotation reader&lt;/p&gt;" type="\Doctrine\Common\Annotations\Reader" variable="$reader">
+            <type>\Doctrine\Common\Annotations\Reader</type>
+          </tag>
+          <tag name="throws" line="79" description="" type="\Codex\Addons\Exception\ClassNotFoundException">
+            <type>\Codex\Addons\Exception\ClassNotFoundException</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$classname</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$reader</name>
+          <default/>
+          <type>\Doctrine\Common\Annotations\Reader</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Codex\Addons\Scanner" line="98" package="Codex\Core\Addons\Scanner">
+        <name>containsClassAnnotation</name>
+        <full_name>\Codex\Addons\Scanner\ClassInspector::containsClassAnnotation()</full_name>
+        <docblock line="98">
+          <description>Returns TRUE if the class is annotated with the given annotationName</description>
+          <long-description/>
+          <tag name="param" line="98" description="" type="string" variable="$annotationName">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="98" description="" type="boolean">
+            <type>boolean</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$annotationName</name>
+          <default/>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Codex\Addons\Scanner" line="114" package="Codex\Core\Addons\Scanner">
+        <name>containsMethodAnnotation</name>
+        <full_name>\Codex\Addons\Scanner\ClassInspector::containsMethodAnnotation()</full_name>
+        <docblock line="114">
+          <description>Returns TRUE if any of the class-methods is annotated with the given annotationName</description>
+          <long-description/>
+          <tag name="param" line="114" description="" type="string" variable="$annotationName">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="114" description="" type="boolean">
+            <type>boolean</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$annotationName</name>
+          <default/>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Codex\Addons\Scanner" line="132" package="Codex\Core\Addons\Scanner">
+        <name>containsPropertyAnnotation</name>
+        <full_name>\Codex\Addons\Scanner\ClassInspector::containsPropertyAnnotation()</full_name>
+        <docblock line="132">
+          <description>Returns TRUE if any of the class-properties is annotated with the given annotationName</description>
+          <long-description/>
+          <tag name="param" line="132" description="" type="string" variable="$annotationName">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="132" description="" type="boolean">
+            <type>boolean</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$annotationName</name>
+          <default/>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Codex\Addons\Scanner" line="148" package="Codex\Core\Addons\Scanner">
+        <name>getClassName</name>
+        <full_name>\Codex\Addons\Scanner\ClassInspector::getClassName()</full_name>
+        <docblock line="148">
+          <description/>
+          <long-description/>
+          <tag name="return" line="148" description="" type="null|string">
+            <type>null</type>
+            <type>string</type>
+          </tag>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Codex\Addons\Scanner" line="156" package="Codex\Core\Addons\Scanner">
+        <name>getClassAnnotations</name>
+        <full_name>\Codex\Addons\Scanner\ClassInspector::getClassAnnotations()</full_name>
+        <docblock line="156">
+          <description/>
+          <long-description/>
+          <tag name="return" line="156" description="" type="array|null">
+            <type>array</type>
+            <type>null</type>
+          </tag>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Codex\Addons\Scanner" line="168" package="Codex\Core\Addons\Scanner">
+        <name>getMethodAnnotations</name>
+        <full_name>\Codex\Addons\Scanner\ClassInspector::getMethodAnnotations()</full_name>
+        <docblock line="168">
+          <description/>
+          <long-description/>
+          <tag name="return" line="168" description="" type="array|null">
+            <type>array</type>
+            <type>null</type>
+          </tag>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Codex\Addons\Scanner" line="186" package="Codex\Core\Addons\Scanner">
+        <name>getPropertyAnnotations</name>
+        <full_name>\Codex\Addons\Scanner\ClassInspector::getPropertyAnnotations()</full_name>
+        <docblock line="186">
+          <description/>
+          <long-description/>
+          <tag name="return" line="186" description="" type="array|null">
+            <type>array</type>
+            <type>null</type>
+          </tag>
+        </docblock>
+      </method>
+    </class>
+    <parse_markers>
+      <error line="79" code="PPC:ERR-50008">No summary for method __construct()</error>
+      <error line="148" code="PPC:ERR-50008">No summary for method getClassName()</error>
+      <error line="156" code="PPC:ERR-50008">No summary for method getClassAnnotations()</error>
+      <error line="168" code="PPC:ERR-50008">No summary for method getMethodAnnotations()</error>
+      <error line="186" code="PPC:ERR-50008">No summary for method getPropertyAnnotations()</error>
+      <error line="37" code="PPC:ERR-50007">No summary for property $className</error>
+      <error line="42" code="PPC:ERR-50007">No summary for property $reader</error>
+      <error line="47" code="PPC:ERR-50007">No summary for property $reflectionClass</error>
+      <error line="52" code="PPC:ERR-50007">No summary for property $reflectionMethods</error>
+      <error line="57" code="PPC:ERR-50007">No summary for property $reflectionProperties</error>
+      <error line="62" code="PPC:ERR-50007">No summary for property $classAnnotations</error>
+      <error line="67" code="PPC:ERR-50007">No summary for property $methodAnnotations</error>
+      <error line="72" code="PPC:ERR-50007">No summary for property $propertyAnnotations</error>
+    </parse_markers>
+    <source>eJzlV9tu20YQfddXDIwUkAw5btO3Jk5DS1RERCIFioprxEGwIlciW4pLLCnbapN/78ySsnjTpWkKBChhyODu7Jnbmdnhq19jP25dnp+34Bx6It7IYOmn0HY78OLHn15c4M/PMGaPwSoIAxaBzQPX5yG8CqKFeBP7kq3+fO6K1Ws8TxATLldBkgQigiABn0s+38BSsijlXhcWknMQC3B9Jpe8C6kAFm0g5jLBA2KesiAKoiUwcNEUwkPh1EekRCzSByY5ynvAkkS4AUNI8IS7XvEoZSmpXAQhT6Cd+hzOpvmJs47S43EWEmAQAW1vd+EhSH2xTkHyJJWBSzBdFHLDtUeWbLdDDECuhI6rKCWEh9DrBF0hg7uwEl6woP9c+Rev52GQ+F3wAkKfr1NcTGjR5RGdQm8uhYSEh8o4BAnQAeX0zkYlRopiCm6ahyuhlQdfrMr+YKwWaxmhVu7l9nkCw6f0/s7dlFboxEKEoXggH10ReQG5lvySZ9HBfTYX91y5lVEiEilanZlCGYl3mc63Ep+FIcx5Hj7MDgablT2TZEaSIh8CFkIspNJb9fj51o6hDlNr4Nxotg7GFCa29d7o630406b4ftaFG8MZWjMHUMLWTOcWrAFo5i28M8x+F/TfJrY+nYJlE5oxnowMHZcNszea9Q3zLVzjUdNyYGSMDQdxHUvpzNEMfUp4Y93uDfFVuzZGhnPbJayB4ZiEPLBs0GCi2Y7Rm400GyYze2JNdTSij8imYQ5sVKSPddN5jopxDfT3+ALToTYakTaC02bohk2GQs+a3NrG26EDQ2vU13HxWkf7tOuRnmlD73ojzRh3oa+Ntbe6OmUhkHKSJDMz4Wao0ypp1fCv5xiWSf70LNOx8bWL7trO0+kbY6p3QbONKUVmYFtj5SlFFw9ZCgePmnoGRJEvJwhF6H021Z8woa9rI4TDbJnVhFKSL1sRW/EkZkifnvD4453meUiIu6nLoojLl60WVld5S390eUy0ueuF2AlMkQ7EOvKell+qI33hYsVF/K4nViuU1SJkqSrg5M7mzFPY275HONmvESUxFomQtP4G7fqDLbf6e0Lyin3KBbfp+F8twEcpoAfB7pmEaB2Gn6kVRMt8/VL9j2Vwj/0MniksE2MCV0oYjWzCyTxohpBq7/B5DMEi5KrbKbv3IZWEDkMyKdnmcwF4zLF1eh8+HsPO5AhdQbQ7pyqYSIFNKN0cV5FLUgc6pkVlSIkcSFCBTIeDcgxtpXz/ZnBxHpGTAGOGlzdkZMz9omJUzT+jNN4UQUboyqGMfk9UU9fFk0qQRXLCm9SX4iGvj1qxlv1QNyPeX5HKGnz6hFcTGrh20/bOwG5FfUedzeqNnlRuCm/0PKML6+J1sbZ2cC+bRJ9qKNeRh68mVasP/lCrrYLpnT3K6qXQrOHi9ZKnuVD7GFiJ9AfwdnJFyC/gstT1ob3rt/CMP3YqoVXJVW4357edIDmjdNE+cxVDcETDASKj1w8JXuCF4HRJgTKJ+m07ey+a1Mp+q0y2eYoTTwKOPdMhyCaJTAOOKTkvcRihUU7tLYN7HhUIS5TYUxV7hKTSCHMhwoMERvrSSJv0yk2jXcGtMniBFw2j2OdZo4hU2k67g1Nw0b5qYjAORTVUyDh1uRwnrar2ykl6cgex9Cr18aWQjVZFesHCJBc/niSa+0UhVxernPvfS87Gldb8FUmrQtSzllSDv0MpCB1J9b9P98GUl9P+35Ig3vWs74UHk9qd+hVMqIP877mwTcTekbiSj20TJLvb1ZDnWNWL/pjubKQkC05SXcpexQIKOgHB1dVVyQ5tf4L3iBWvaxo+mi+A5hu9dF0eCk8B6ttFqaHhnRCm2hC8J05Nw3J5mN8+6ETtOyezrf7hsXVn+1Srtz6dUQVWV5sqaZ/ZH2qnVYYzYn9sLMgmRtSDXbfq9Mt7n7HfjhyNPfAEejR81OwhSPPnz+kU2VrY8Om4OZ0mhbm7zJQt1AGuNHjwoQHhq/jSFP8m6/4xZxqM3rLmS+tvZgO+Ww==</source>
+  <type>class</type></file>

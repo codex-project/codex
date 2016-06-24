@@ -1,0 +1,588 @@
+<file path="sebwite/workbench/sebwite/git/src/Filesystem/AbstractFilesystem.php" generated-path="sebwite.workbench.sebwite.git.src.Filesystem.AbstractFilesystem.html" hash="cacd6e2d1e65bc756caea94e3e8823db" package="Default">
+    <docblock line="0">
+      <description>Part of the $author$ PHP packages.</description>
+      <long-description>License and copyright information bundled with this package in the LICENSE file</long-description>
+      <tag name="package" line="0" description="Default"/>
+    </docblock>
+    <namespace-alias name="CloudFilesystemContract">\Illuminate\Contracts\Filesystem\Cloud</namespace-alias>
+    <namespace-alias name="FilesystemContract">\Illuminate\Contracts\Filesystem\Filesystem</namespace-alias>
+    <namespace-alias name="AdapterInterface">\Sebwite\Git\Remotes\AdapterInterface</namespace-alias>
+    <namespace-alias name="Remote">\Sebwite\Git\Remotes\Remote</namespace-alias>
+    <class final="false" abstract="true" namespace="Sebwite\Git\Filesystem" line="17" package="Default">
+      <extends/>
+      <implements>\Illuminate\Contracts\Filesystem\Filesystem</implements>
+      <implements>\Illuminate\Contracts\Filesystem\Cloud</implements>
+      <name>AbstractFilesystem</name>
+      <full_name>\Sebwite\Git\Filesystem\AbstractFilesystem</full_name>
+      <docblock line="17">
+        <description/>
+        <long-description/>
+        <tag name="package" line="17" description="Default"/>
+      </docblock>
+      <property static="false" visibility="protected" namespace="Sebwite\Git\Filesystem" line="19" package="Default">
+        <name>$api</name>
+        <full_name>\Sebwite\Git\Filesystem\AbstractFilesystem::api</full_name>
+        <default/>
+        <docblock line="19">
+          <description/>
+          <long-description/>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" namespace="Sebwite\Git\Filesystem" line="21" package="Default">
+        <name>$repo</name>
+        <full_name>\Sebwite\Git\Filesystem\AbstractFilesystem::repo</full_name>
+        <default/>
+        <docblock line="21">
+          <description/>
+          <long-description/>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" namespace="Sebwite\Git\Filesystem" line="23" package="Default">
+        <name>$owner</name>
+        <full_name>\Sebwite\Git\Filesystem\AbstractFilesystem::owner</full_name>
+        <default/>
+        <docblock line="23">
+          <description/>
+          <long-description/>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" namespace="Sebwite\Git\Filesystem" line="25" package="Default">
+        <name>$ref</name>
+        <full_name>\Sebwite\Git\Filesystem\AbstractFilesystem::ref</full_name>
+        <default/>
+        <docblock line="25">
+          <description/>
+          <long-description/>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" namespace="Sebwite\Git\Filesystem" line="27" package="Default">
+        <name>$config</name>
+        <full_name>\Sebwite\Git\Filesystem\AbstractFilesystem::config</full_name>
+        <default/>
+        <docblock line="27">
+          <description/>
+          <long-description/>
+        </docblock>
+      </property>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Sebwite\Git\Filesystem" line="35" package="Default">
+        <name>__construct</name>
+        <full_name>\Sebwite\Git\Filesystem\AbstractFilesystem::__construct()</full_name>
+        <docblock line="35">
+          <description>AbstractFilesystem constructor.</description>
+          <long-description/>
+          <tag name="param" line="35" description="" type="\Sebwite\Git\Remotes\Remote" variable="$remote">
+            <type>\Sebwite\Git\Remotes\Remote</type>
+          </tag>
+          <tag name="param" line="35" description="" type="array" variable="$config">
+            <type>array</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$remote</name>
+          <default/>
+          <type>\Sebwite\Git\Remotes\Remote</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$config</name>
+          <default>array()</default>
+          <type>array</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Sebwite\Git\Filesystem" line="41" package="Default">
+        <name>repo</name>
+        <full_name>\Sebwite\Git\Filesystem\AbstractFilesystem::repo()</full_name>
+        <docblock line="41">
+          <description/>
+          <long-description/>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Sebwite\Git\Filesystem" line="44" package="Default">
+        <name>owner</name>
+        <full_name>\Sebwite\Git\Filesystem\AbstractFilesystem::owner()</full_name>
+        <docblock line="44">
+          <description/>
+          <long-description/>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Sebwite\Git\Filesystem" line="47" package="Default">
+        <name>ref</name>
+        <full_name>\Sebwite\Git\Filesystem\AbstractFilesystem::ref()</full_name>
+        <docblock line="47">
+          <description/>
+          <long-description/>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Sebwite\Git\Filesystem" line="59" package="Default">
+        <name>exists</name>
+        <full_name>\Sebwite\Git\Filesystem\AbstractFilesystem::exists()</full_name>
+        <docblock line="59">
+          <description>Determine if a file exists.</description>
+          <long-description/>
+          <tag name="param" line="59" description="" type="string" variable="$path">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="59" description="" type="boolean">
+            <type>boolean</type>
+          </tag>
+          <tag name="inherited_from" description="\Illuminate\Contracts\Filesystem\Filesystem::exists()" refers="\Illuminate\Contracts\Filesystem\Filesystem::exists()" link="/classes/Illuminate.Contracts.Filesystem.Filesystem.html#method_exists"/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$path</name>
+          <default/>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Sebwite\Git\Filesystem" line="73" package="Default">
+        <name>get</name>
+        <full_name>\Sebwite\Git\Filesystem\AbstractFilesystem::get()</full_name>
+        <docblock line="73">
+          <description>Get the contents of a file.</description>
+          <long-description/>
+          <tag name="param" line="73" description="" type="string" variable="$path">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="73" description="" type="string">
+            <type>string</type>
+          </tag>
+          <tag name="throws" line="73" description="" type="\Illuminate\Contracts\Filesystem\FileNotFoundException">
+            <type>\Illuminate\Contracts\Filesystem\FileNotFoundException</type>
+          </tag>
+          <tag name="inherited_from" description="\Illuminate\Contracts\Filesystem\Filesystem::get()" refers="\Illuminate\Contracts\Filesystem\Filesystem::get()" link="/classes/Illuminate.Contracts.Filesystem.Filesystem.html#method_get"/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$path</name>
+          <default/>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Sebwite\Git\Filesystem" line="87" package="Default">
+        <name>put</name>
+        <full_name>\Sebwite\Git\Filesystem\AbstractFilesystem::put()</full_name>
+        <docblock line="87">
+          <description>Write the contents of a file.</description>
+          <long-description/>
+          <tag name="param" line="87" description="" type="string" variable="$path">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="87" description="" type="string|resource" variable="$contents">
+            <type>string</type>
+            <type>resource</type>
+          </tag>
+          <tag name="param" line="87" description="" type="string" variable="$visibility">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="87" description="" type="boolean">
+            <type>boolean</type>
+          </tag>
+          <tag name="inherited_from" description="\Illuminate\Contracts\Filesystem\Filesystem::put()" refers="\Illuminate\Contracts\Filesystem\Filesystem::put()" link="/classes/Illuminate.Contracts.Filesystem.Filesystem.html#method_put"/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$path</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$contents</name>
+          <default/>
+          <type>string|resource</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$visibility</name>
+          <default>null</default>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Sebwite\Git\Filesystem" line="99" package="Default">
+        <name>getVisibility</name>
+        <full_name>\Sebwite\Git\Filesystem\AbstractFilesystem::getVisibility()</full_name>
+        <docblock line="99">
+          <description>Get the visibility for the given path.</description>
+          <long-description/>
+          <tag name="param" line="99" description="" type="string" variable="$path">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="99" description="" type="string">
+            <type>string</type>
+          </tag>
+          <tag name="inherited_from" description="\Illuminate\Contracts\Filesystem\Filesystem::getVisibility()" refers="\Illuminate\Contracts\Filesystem\Filesystem::getVisibility()" link="/classes/Illuminate.Contracts.Filesystem.Filesystem.html#method_getVisibility"/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$path</name>
+          <default/>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Sebwite\Git\Filesystem" line="112" package="Default">
+        <name>setVisibility</name>
+        <full_name>\Sebwite\Git\Filesystem\AbstractFilesystem::setVisibility()</full_name>
+        <docblock line="112">
+          <description>Set the visibility for the given path.</description>
+          <long-description/>
+          <tag name="param" line="112" description="" type="string" variable="$path">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="112" description="" type="string" variable="$visibility">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="112" description="" type="void">
+            <type>void</type>
+          </tag>
+          <tag name="inherited_from" description="\Illuminate\Contracts\Filesystem\Filesystem::setVisibility()" refers="\Illuminate\Contracts\Filesystem\Filesystem::setVisibility()" link="/classes/Illuminate.Contracts.Filesystem.Filesystem.html#method_setVisibility"/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$path</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$visibility</name>
+          <default/>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Sebwite\Git\Filesystem" line="125" package="Default">
+        <name>prepend</name>
+        <full_name>\Sebwite\Git\Filesystem\AbstractFilesystem::prepend()</full_name>
+        <docblock line="125">
+          <description>Prepend to a file.</description>
+          <long-description/>
+          <tag name="param" line="125" description="" type="string" variable="$path">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="125" description="" type="string" variable="$data">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="125" description="" type="integer">
+            <type>integer</type>
+          </tag>
+          <tag name="inherited_from" description="\Illuminate\Contracts\Filesystem\Filesystem::prepend()" refers="\Illuminate\Contracts\Filesystem\Filesystem::prepend()" link="/classes/Illuminate.Contracts.Filesystem.Filesystem.html#method_prepend"/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$path</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$data</name>
+          <default/>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Sebwite\Git\Filesystem" line="138" package="Default">
+        <name>append</name>
+        <full_name>\Sebwite\Git\Filesystem\AbstractFilesystem::append()</full_name>
+        <docblock line="138">
+          <description>Append to a file.</description>
+          <long-description/>
+          <tag name="param" line="138" description="" type="string" variable="$path">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="138" description="" type="string" variable="$data">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="138" description="" type="integer">
+            <type>integer</type>
+          </tag>
+          <tag name="inherited_from" description="\Illuminate\Contracts\Filesystem\Filesystem::append()" refers="\Illuminate\Contracts\Filesystem\Filesystem::append()" link="/classes/Illuminate.Contracts.Filesystem.Filesystem.html#method_append"/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$path</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$data</name>
+          <default/>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Sebwite\Git\Filesystem" line="150" package="Default">
+        <name>delete</name>
+        <full_name>\Sebwite\Git\Filesystem\AbstractFilesystem::delete()</full_name>
+        <docblock line="150">
+          <description>Delete the file at a given path.</description>
+          <long-description/>
+          <tag name="param" line="150" description="" type="string|array" variable="$paths">
+            <type>string</type>
+            <type>array</type>
+          </tag>
+          <tag name="return" line="150" description="" type="boolean">
+            <type>boolean</type>
+          </tag>
+          <tag name="inherited_from" description="\Illuminate\Contracts\Filesystem\Filesystem::delete()" refers="\Illuminate\Contracts\Filesystem\Filesystem::delete()" link="/classes/Illuminate.Contracts.Filesystem.Filesystem.html#method_delete"/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$paths</name>
+          <default/>
+          <type>string|array</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Sebwite\Git\Filesystem" line="163" package="Default">
+        <name>copy</name>
+        <full_name>\Sebwite\Git\Filesystem\AbstractFilesystem::copy()</full_name>
+        <docblock line="163">
+          <description>Copy a file to a new location.</description>
+          <long-description/>
+          <tag name="param" line="163" description="" type="string" variable="$from">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="163" description="" type="string" variable="$to">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="163" description="" type="boolean">
+            <type>boolean</type>
+          </tag>
+          <tag name="inherited_from" description="\Illuminate\Contracts\Filesystem\Filesystem::copy()" refers="\Illuminate\Contracts\Filesystem\Filesystem::copy()" link="/classes/Illuminate.Contracts.Filesystem.Filesystem.html#method_copy"/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$from</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$to</name>
+          <default/>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Sebwite\Git\Filesystem" line="176" package="Default">
+        <name>move</name>
+        <full_name>\Sebwite\Git\Filesystem\AbstractFilesystem::move()</full_name>
+        <docblock line="176">
+          <description>Move a file to a new location.</description>
+          <long-description/>
+          <tag name="param" line="176" description="" type="string" variable="$from">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="176" description="" type="string" variable="$to">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="176" description="" type="boolean">
+            <type>boolean</type>
+          </tag>
+          <tag name="inherited_from" description="\Illuminate\Contracts\Filesystem\Filesystem::move()" refers="\Illuminate\Contracts\Filesystem\Filesystem::move()" link="/classes/Illuminate.Contracts.Filesystem.Filesystem.html#method_move"/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$from</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$to</name>
+          <default/>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Sebwite\Git\Filesystem" line="188" package="Default">
+        <name>size</name>
+        <full_name>\Sebwite\Git\Filesystem\AbstractFilesystem::size()</full_name>
+        <docblock line="188">
+          <description>Get the file size of a given file.</description>
+          <long-description/>
+          <tag name="param" line="188" description="" type="string" variable="$path">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="188" description="" type="integer">
+            <type>integer</type>
+          </tag>
+          <tag name="inherited_from" description="\Illuminate\Contracts\Filesystem\Filesystem::size()" refers="\Illuminate\Contracts\Filesystem\Filesystem::size()" link="/classes/Illuminate.Contracts.Filesystem.Filesystem.html#method_size"/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$path</name>
+          <default/>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Sebwite\Git\Filesystem" line="200" package="Default">
+        <name>lastModified</name>
+        <full_name>\Sebwite\Git\Filesystem\AbstractFilesystem::lastModified()</full_name>
+        <docblock line="200">
+          <description>Get the file's last modification time.</description>
+          <long-description/>
+          <tag name="param" line="200" description="" type="string" variable="$path">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="200" description="" type="integer">
+            <type>integer</type>
+          </tag>
+          <tag name="inherited_from" description="\Illuminate\Contracts\Filesystem\Filesystem::lastModified()" refers="\Illuminate\Contracts\Filesystem\Filesystem::lastModified()" link="/classes/Illuminate.Contracts.Filesystem.Filesystem.html#method_lastModified"/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$path</name>
+          <default/>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Sebwite\Git\Filesystem" line="213" package="Default">
+        <name>files</name>
+        <full_name>\Sebwite\Git\Filesystem\AbstractFilesystem::files()</full_name>
+        <docblock line="213">
+          <description>Get an array of all files in a directory.</description>
+          <long-description/>
+          <tag name="param" line="213" description="" type="string|null" variable="$directory">
+            <type>string</type>
+            <type>null</type>
+          </tag>
+          <tag name="param" line="213" description="" type="boolean" variable="$recursive">
+            <type>boolean</type>
+          </tag>
+          <tag name="return" line="213" description="" type="array">
+            <type>array</type>
+          </tag>
+          <tag name="inherited_from" description="\Illuminate\Contracts\Filesystem\Filesystem::files()" refers="\Illuminate\Contracts\Filesystem\Filesystem::files()" link="/classes/Illuminate.Contracts.Filesystem.Filesystem.html#method_files"/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$directory</name>
+          <default>null</default>
+          <type>string|null</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$recursive</name>
+          <default>false</default>
+          <type>boolean</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Sebwite\Git\Filesystem" line="225" package="Default">
+        <name>allFiles</name>
+        <full_name>\Sebwite\Git\Filesystem\AbstractFilesystem::allFiles()</full_name>
+        <docblock line="225">
+          <description>Get all of the files from the given directory (recursive).</description>
+          <long-description/>
+          <tag name="param" line="225" description="" type="string|null" variable="$directory">
+            <type>string</type>
+            <type>null</type>
+          </tag>
+          <tag name="return" line="225" description="" type="array">
+            <type>array</type>
+          </tag>
+          <tag name="inherited_from" description="\Illuminate\Contracts\Filesystem\Filesystem::allFiles()" refers="\Illuminate\Contracts\Filesystem\Filesystem::allFiles()" link="/classes/Illuminate.Contracts.Filesystem.Filesystem.html#method_allFiles"/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$directory</name>
+          <default>null</default>
+          <type>string|null</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Sebwite\Git\Filesystem" line="238" package="Default">
+        <name>directories</name>
+        <full_name>\Sebwite\Git\Filesystem\AbstractFilesystem::directories()</full_name>
+        <docblock line="238">
+          <description>Get all of the directories within a given directory.</description>
+          <long-description/>
+          <tag name="param" line="238" description="" type="string|null" variable="$directory">
+            <type>string</type>
+            <type>null</type>
+          </tag>
+          <tag name="param" line="238" description="" type="boolean" variable="$recursive">
+            <type>boolean</type>
+          </tag>
+          <tag name="return" line="238" description="" type="array">
+            <type>array</type>
+          </tag>
+          <tag name="inherited_from" description="\Illuminate\Contracts\Filesystem\Filesystem::directories()" refers="\Illuminate\Contracts\Filesystem\Filesystem::directories()" link="/classes/Illuminate.Contracts.Filesystem.Filesystem.html#method_directories"/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$directory</name>
+          <default>null</default>
+          <type>string|null</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$recursive</name>
+          <default>false</default>
+          <type>boolean</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Sebwite\Git\Filesystem" line="250" package="Default">
+        <name>allDirectories</name>
+        <full_name>\Sebwite\Git\Filesystem\AbstractFilesystem::allDirectories()</full_name>
+        <docblock line="250">
+          <description>Get all (recursive) of the directories within a given directory.</description>
+          <long-description/>
+          <tag name="param" line="250" description="" type="string|null" variable="$directory">
+            <type>string</type>
+            <type>null</type>
+          </tag>
+          <tag name="return" line="250" description="" type="array">
+            <type>array</type>
+          </tag>
+          <tag name="inherited_from" description="\Illuminate\Contracts\Filesystem\Filesystem::allDirectories()" refers="\Illuminate\Contracts\Filesystem\Filesystem::allDirectories()" link="/classes/Illuminate.Contracts.Filesystem.Filesystem.html#method_allDirectories"/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$directory</name>
+          <default>null</default>
+          <type>string|null</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Sebwite\Git\Filesystem" line="262" package="Default">
+        <name>makeDirectory</name>
+        <full_name>\Sebwite\Git\Filesystem\AbstractFilesystem::makeDirectory()</full_name>
+        <docblock line="262">
+          <description>Create a directory.</description>
+          <long-description/>
+          <tag name="param" line="262" description="" type="string" variable="$path">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="262" description="" type="boolean">
+            <type>boolean</type>
+          </tag>
+          <tag name="inherited_from" description="\Illuminate\Contracts\Filesystem\Filesystem::makeDirectory()" refers="\Illuminate\Contracts\Filesystem\Filesystem::makeDirectory()" link="/classes/Illuminate.Contracts.Filesystem.Filesystem.html#method_makeDirectory"/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$path</name>
+          <default/>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Sebwite\Git\Filesystem" line="274" package="Default">
+        <name>deleteDirectory</name>
+        <full_name>\Sebwite\Git\Filesystem\AbstractFilesystem::deleteDirectory()</full_name>
+        <docblock line="274">
+          <description>Recursively delete a directory.</description>
+          <long-description/>
+          <tag name="param" line="274" description="" type="string" variable="$directory">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="274" description="" type="boolean">
+            <type>boolean</type>
+          </tag>
+          <tag name="inherited_from" description="\Illuminate\Contracts\Filesystem\Filesystem::deleteDirectory()" refers="\Illuminate\Contracts\Filesystem\Filesystem::deleteDirectory()" link="/classes/Illuminate.Contracts.Filesystem.Filesystem.html#method_deleteDirectory"/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$directory</name>
+          <default/>
+          <type>string</type>
+        </argument>
+      </method>
+    </class>
+    <markers>
+      <todo line="75">Implement get() method.</todo>
+      <todo line="89">Implement put() method.</todo>
+      <todo line="101">Implement getVisibility() method.</todo>
+      <todo line="114">Implement setVisibility() method.</todo>
+      <todo line="127">Implement prepend() method.</todo>
+      <todo line="140">Implement append() method.</todo>
+      <todo line="152">Implement delete() method.</todo>
+      <todo line="165">Implement copy() method.</todo>
+      <todo line="178">Implement move() method.</todo>
+      <todo line="190">Implement size() method.</todo>
+      <todo line="202">Implement lastModified() method.</todo>
+      <todo line="215">Implement files() method.</todo>
+      <todo line="227">Implement allFiles() method.</todo>
+      <todo line="240">Implement directories() method.</todo>
+      <todo line="252">Implement allDirectories() method.</todo>
+      <todo line="264">Implement makeDirectory() method.</todo>
+      <todo line="276">Implement deleteDirectory() method.</todo>
+    </markers>
+    <parse_markers>
+      <error line="17" code="PPC:ERR-50005">No summary for class \Sebwite\Git\Filesystem\AbstractFilesystem</error>
+      <error line="41" code="PPC:ERR-50008">No summary for method repo()</error>
+      <error line="44" code="PPC:ERR-50008">No summary for method owner()</error>
+      <error line="47" code="PPC:ERR-50008">No summary for method ref()</error>
+      <error line="19" code="PPC:ERR-50007">No summary for property $api</error>
+      <error line="21" code="PPC:ERR-50007">No summary for property $repo</error>
+      <error line="23" code="PPC:ERR-50007">No summary for property $owner</error>
+      <error line="25" code="PPC:ERR-50007">No summary for property $ref</error>
+      <error line="27" code="PPC:ERR-50007">No summary for property $config</error>
+    </parse_markers>
+    <source>eJzNWNtu2zgQffdX8MGA7cCN3ze9bGAn3QC9BMmi+7BeFLQ0solSpEBScd02/75DipLliyzaSYHowbaow5k5Z0ZD0q/fZYusMzo765AzckuVITIhZgGkS3OzkKpLbv+6JRmNvtE56HNEWeAHFoHQQKiISSSzlWLzhSFMJFKl1DApyCwXMYeYLJlZoD2mSxuIcvY/3IyvPt1fkYRxQJOjTqcjaAoaYUDuYYYTYfqemek1AvRKG0gvEJOj1xvO85QJioCxFEbRyOgabDrmMo8J1cT9WD8owRdBVtY/rakmK/VI7yCVBvT0MqaZAXUj8CNBOs3I4ht50Zl2RknEqdbk0t/WYmBpxiEFYfbFMmyi2vnZIXhlCt1EBvPRpRlDf1uDCjK5OyqXAtQ+cLI7GEmRsLkfd+Vkr7N9TBCKY3lkpDr3sBL9Z0YVTcm0WSvr3n5vzaBK0RXZf/nY/IxREXk+4ywiSS4iV65fv1ZR9TcdDb1tb4W8If/+N3A2CmmdB1vgr95WiEhyjrr0/ZzBxTYSk4Aw78FNFLv4x22Rq2htuvqDtX8FJldiM4xXb+dg+j0L1QylXvUqsw1WXboDzTpsq0WslOAwk96Q9FKKFVKzu1NOE8Dn+NZiG0kIdc2DwHemjW4oJYJJZWJOuhk1i22ID2gmJT9YHYWHvrPRkHvMqKNyR5d9P1RkaUiq28TdWSPVoNd8M+M1vu/BuG6JYhn37suS9hP4FpDth2ah5FKTaUhf/CTNtcQOf/U9gsxKdFA+m+G92o1G5O/Pk89/kJuyuTnsgKSAa0983iDKPwp7w2myVFddny3QLwVa5gqXoW5pv9XaA9Nsxjgzq1NrLMu9SMO122HdMDYMkXMeoKE11aZhWVg1+7h4u6E5ewCMB0N5rhprLIsvlfdjCqQ2q43m/TPT3HnWmvgHyeKDMuhdGTbyHqCJPkqTW2xMgBs3I49vJTvPYmpoA3MmzOGKL+KoKFtTIdXtp7XRvMxeBEuanULSz2rjOAEOvhW6pZDizODC/uU3NhapG9i1tq3YRVDQ0wHEPL6N2BgPFeX67jIoYEm4jNzhoi2TiZJp0zMjT2Vqzzl9Z9uu3jKAq5vRxvSjfIAXxjTFkI5j6maELjmOqmY/oFi1i3J94pam7S207oKXGAc+hk1PEzy2WRlilrAidcSw9Hcysg4/On8QBzPbmBTCkAp//LGp4tyx1fYIT0nMFNgz3Kqly9hNC/a9Er2NstVYRowHoihXGguiQRQXy0FZXID9tTu/axrWbONQQrmGAL0Ka0FCIUn/z0mhkX19avuMdUD9KpDBScodrwnGdr1flpCVqJx8pAqlK4Za2D+BXM1safGiKqcW8LPVT91mqH61+vjtWp5US5NDQoVV1OQIXcYK8Cwa3nCedtRP6Tcoows/lGzOamN0VyaYr/x+6Bh2bTkM3LLVSFYWg/dv+7g+Pnb+BxjIaXI=</source>
+  <type>class</type></file>

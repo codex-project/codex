@@ -1,0 +1,436 @@
+<file path="codex/vendor/laravel/framework/src/Illuminate/Database/Schema/Builder.php" generated-path="codex.vendor.laravel.framework.src.Illuminate.Database.Schema.Builder.html" hash="d66cd42831fe0c2ccfbc4df8acab22e9" package="Default">
+    <docblock line="0">
+      <description/>
+      <long-description/>
+      <tag name="package" line="0" description="Default"/>
+    </docblock>
+    <namespace-alias name="Closure">\Closure</namespace-alias>
+    <namespace-alias name="Connection">\Illuminate\Database\Connection</namespace-alias>
+    <class final="false" abstract="false" namespace="Illuminate\Database\Schema" line="8" package="Default">
+      <extends/>
+      <name>Builder</name>
+      <full_name>\Illuminate\Database\Schema\Builder</full_name>
+      <docblock line="8">
+        <description/>
+        <long-description/>
+        <tag name="package" line="8" description="Default"/>
+      </docblock>
+      <property static="false" visibility="protected" namespace="Illuminate\Database\Schema" line="15" package="Default">
+        <name>$connection</name>
+        <full_name>\Illuminate\Database\Schema\Builder::connection</full_name>
+        <default/>
+        <docblock line="15">
+          <description>The database connection instance.</description>
+          <long-description/>
+          <tag name="var" line="15" description="" type="\Illuminate\Database\Connection" variable="">
+            <type>\Illuminate\Database\Connection</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" namespace="Illuminate\Database\Schema" line="22" package="Default">
+        <name>$grammar</name>
+        <full_name>\Illuminate\Database\Schema\Builder::grammar</full_name>
+        <default/>
+        <docblock line="22">
+          <description>The schema grammar instance.</description>
+          <long-description/>
+          <tag name="var" line="22" description="" type="\Illuminate\Database\Schema\Grammars\Grammar" variable="">
+            <type>\Illuminate\Database\Schema\Grammars\Grammar</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" namespace="Illuminate\Database\Schema" line="29" package="Default">
+        <name>$resolver</name>
+        <full_name>\Illuminate\Database\Schema\Builder::resolver</full_name>
+        <default/>
+        <docblock line="29">
+          <description>The Blueprint resolver callback.</description>
+          <long-description/>
+          <tag name="var" line="29" description="" type="\Closure" variable="">
+            <type>\Closure</type>
+          </tag>
+        </docblock>
+      </property>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Schema" line="37" package="Default">
+        <name>__construct</name>
+        <full_name>\Illuminate\Database\Schema\Builder::__construct()</full_name>
+        <docblock line="37">
+          <description>Create a new database Schema manager.</description>
+          <long-description/>
+          <tag name="param" line="37" description="" type="\Illuminate\Database\Connection" variable="$connection">
+            <type>\Illuminate\Database\Connection</type>
+          </tag>
+          <tag name="return" line="37" description="" type="void">
+            <type>void</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$connection</name>
+          <default/>
+          <type>\Illuminate\Database\Connection</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Schema" line="49" package="Default">
+        <name>hasTable</name>
+        <full_name>\Illuminate\Database\Schema\Builder::hasTable()</full_name>
+        <docblock line="49">
+          <description>Determine if the given table exists.</description>
+          <long-description/>
+          <tag name="param" line="49" description="" type="string" variable="$table">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="49" description="" type="boolean">
+            <type>boolean</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$table</name>
+          <default/>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Schema" line="65" package="Default">
+        <name>hasColumn</name>
+        <full_name>\Illuminate\Database\Schema\Builder::hasColumn()</full_name>
+        <docblock line="65">
+          <description>Determine if the given table has a given column.</description>
+          <long-description/>
+          <tag name="param" line="65" description="" type="string" variable="$table">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="65" description="" type="string" variable="$column">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="65" description="" type="boolean">
+            <type>boolean</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$table</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$column</name>
+          <default/>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Schema" line="79" package="Default">
+        <name>hasColumns</name>
+        <full_name>\Illuminate\Database\Schema\Builder::hasColumns()</full_name>
+        <docblock line="79">
+          <description>Determine if the given table has given columns.</description>
+          <long-description/>
+          <tag name="param" line="79" description="" type="string" variable="$table">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="79" description="" type="array" variable="$columns">
+            <type>array</type>
+          </tag>
+          <tag name="return" line="79" description="" type="boolean">
+            <type>boolean</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$table</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$columns</name>
+          <default/>
+          <type>array</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Schema" line="99" package="Default">
+        <name>getColumnType</name>
+        <full_name>\Illuminate\Database\Schema\Builder::getColumnType()</full_name>
+        <docblock line="99">
+          <description>Get the data type for the given column name.</description>
+          <long-description/>
+          <tag name="param" line="99" description="" type="string" variable="$table">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="99" description="" type="string" variable="$column">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="99" description="" type="string">
+            <type>string</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$table</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$column</name>
+          <default/>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Schema" line="112" package="Default">
+        <name>getColumnListing</name>
+        <full_name>\Illuminate\Database\Schema\Builder::getColumnListing()</full_name>
+        <docblock line="112">
+          <description>Get the column listing for a given table.</description>
+          <long-description/>
+          <tag name="param" line="112" description="" type="string" variable="$table">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="112" description="" type="array">
+            <type>array</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$table</name>
+          <default/>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Schema" line="128" package="Default">
+        <name>table</name>
+        <full_name>\Illuminate\Database\Schema\Builder::table()</full_name>
+        <docblock line="128">
+          <description>Modify a table on the schema.</description>
+          <long-description/>
+          <tag name="param" line="128" description="" type="string" variable="$table">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="128" description="" type="\Closure" variable="$callback">
+            <type>\Closure</type>
+          </tag>
+          <tag name="return" line="128" description="" type="\Illuminate\Database\Schema\Blueprint">
+            <type>\Illuminate\Database\Schema\Blueprint</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$table</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$callback</name>
+          <default/>
+          <type>\Closure</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Schema" line="140" package="Default">
+        <name>create</name>
+        <full_name>\Illuminate\Database\Schema\Builder::create()</full_name>
+        <docblock line="140">
+          <description>Create a new table on the schema.</description>
+          <long-description/>
+          <tag name="param" line="140" description="" type="string" variable="$table">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="140" description="" type="\Closure" variable="$callback">
+            <type>\Closure</type>
+          </tag>
+          <tag name="return" line="140" description="" type="\Illuminate\Database\Schema\Blueprint">
+            <type>\Illuminate\Database\Schema\Blueprint</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$table</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$callback</name>
+          <default/>
+          <type>\Closure</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Schema" line="157" package="Default">
+        <name>drop</name>
+        <full_name>\Illuminate\Database\Schema\Builder::drop()</full_name>
+        <docblock line="157">
+          <description>Drop a table from the schema.</description>
+          <long-description/>
+          <tag name="param" line="157" description="" type="string" variable="$table">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="157" description="" type="\Illuminate\Database\Schema\Blueprint">
+            <type>\Illuminate\Database\Schema\Blueprint</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$table</name>
+          <default/>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Schema" line="172" package="Default">
+        <name>dropIfExists</name>
+        <full_name>\Illuminate\Database\Schema\Builder::dropIfExists()</full_name>
+        <docblock line="172">
+          <description>Drop a table from the schema if it exists.</description>
+          <long-description/>
+          <tag name="param" line="172" description="" type="string" variable="$table">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="172" description="" type="\Illuminate\Database\Schema\Blueprint">
+            <type>\Illuminate\Database\Schema\Blueprint</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$table</name>
+          <default/>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Schema" line="188" package="Default">
+        <name>rename</name>
+        <full_name>\Illuminate\Database\Schema\Builder::rename()</full_name>
+        <docblock line="188">
+          <description>Rename a table on the schema.</description>
+          <long-description/>
+          <tag name="param" line="188" description="" type="string" variable="$from">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="188" description="" type="string" variable="$to">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="188" description="" type="\Illuminate\Database\Schema\Blueprint">
+            <type>\Illuminate\Database\Schema\Blueprint</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$from</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$to</name>
+          <default/>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Schema" line="202" package="Default">
+        <name>enableForeignKeyConstraints</name>
+        <full_name>\Illuminate\Database\Schema\Builder::enableForeignKeyConstraints()</full_name>
+        <docblock line="202">
+          <description>Enable foreign key constraints.</description>
+          <long-description/>
+          <tag name="return" line="202" description="" type="boolean">
+            <type>boolean</type>
+          </tag>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Schema" line="214" package="Default">
+        <name>disableForeignKeyConstraints</name>
+        <full_name>\Illuminate\Database\Schema\Builder::disableForeignKeyConstraints()</full_name>
+        <docblock line="214">
+          <description>Disable foreign key constraints.</description>
+          <long-description/>
+          <tag name="return" line="214" description="" type="boolean">
+            <type>boolean</type>
+          </tag>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Database\Schema" line="227" package="Default">
+        <name>build</name>
+        <full_name>\Illuminate\Database\Schema\Builder::build()</full_name>
+        <docblock line="227">
+          <description>Execute the blueprint to build / modify the table.</description>
+          <long-description/>
+          <tag name="param" line="227" description="" type="\Illuminate\Database\Schema\Blueprint" variable="$blueprint">
+            <type>\Illuminate\Database\Schema\Blueprint</type>
+          </tag>
+          <tag name="return" line="227" description="" type="void">
+            <type>void</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$blueprint</name>
+          <default/>
+          <type>\Illuminate\Database\Schema\Blueprint</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Database\Schema" line="239" package="Default">
+        <name>createBlueprint</name>
+        <full_name>\Illuminate\Database\Schema\Builder::createBlueprint()</full_name>
+        <docblock line="239">
+          <description>Create a new command set with a Closure.</description>
+          <long-description/>
+          <tag name="param" line="239" description="" type="string" variable="$table">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="239" description="" type="\Closure|null" variable="$callback">
+            <type>\Closure</type>
+            <type>null</type>
+          </tag>
+          <tag name="return" line="239" description="" type="\Illuminate\Database\Schema\Blueprint">
+            <type>\Illuminate\Database\Schema\Blueprint</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$table</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$callback</name>
+          <default>null</default>
+          <type>\Closure|null</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Schema" line="253" package="Default">
+        <name>getConnection</name>
+        <full_name>\Illuminate\Database\Schema\Builder::getConnection()</full_name>
+        <docblock line="253">
+          <description>Get the database connection instance.</description>
+          <long-description/>
+          <tag name="return" line="253" description="" type="\Illuminate\Database\Connection">
+            <type>\Illuminate\Database\Connection</type>
+          </tag>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Schema" line="264" package="Default">
+        <name>setConnection</name>
+        <full_name>\Illuminate\Database\Schema\Builder::setConnection()</full_name>
+        <docblock line="264">
+          <description>Set the database connection instance.</description>
+          <long-description/>
+          <tag name="param" line="264" description="" type="\Illuminate\Database\Connection" variable="$connection">
+            <type>\Illuminate\Database\Connection</type>
+          </tag>
+          <tag name="return" line="264" description="" type="\Illuminate\Database\Schema\Builder">
+            <type>\Illuminate\Database\Schema\Builder</type>
+          </tag>
+          <tag name="fluent" description="This method is part of a fluent interface and will return the same instance"/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$connection</name>
+          <default/>
+          <type>\Illuminate\Database\Connection</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Schema" line="277" package="Default">
+        <name>blueprintResolver</name>
+        <full_name>\Illuminate\Database\Schema\Builder::blueprintResolver()</full_name>
+        <docblock line="277">
+          <description>Set the Schema Blueprint resolver callback.</description>
+          <long-description/>
+          <tag name="param" line="277" description="" type="\Closure" variable="$resolver">
+            <type>\Closure</type>
+          </tag>
+          <tag name="return" line="277" description="" type="void">
+            <type>void</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$resolver</name>
+          <default/>
+          <type>\Closure</type>
+        </argument>
+      </method>
+    </class>
+    <parse_markers>
+      <error line="0" code="PPC:ERR-50000">No summary was found for this file</error>
+      <error line="8" code="PPC:ERR-50005">No summary for class \Illuminate\Database\Schema\Builder</error>
+    </parse_markers>
+    <source>eJzVmFlvGzcQgN/1K1jAQFaGEvfddRrEdoOgB4zEb3UhUKuRRYRLbkmuDzT+7x2SS+69Ol2gepG0y7m+GZJD/vRzvs4nE0Ez0DlNgXzmvMiYoAburqihC6rh7mu6hoyeTyaFBnLJpS4UnLs/faMvpRCQGiYFSqScak0+FowvQU3+mRD8nJ2eum9ySm7XQJalIEmjIGFCGypSeFcODOM/PFBF7satlmPP3HeupMHHsCQnad2vHj+0i5LcK5plaGV3Fzymu09egQ4/hvwpDfU785EXkCsmDFGgJX8ARVLK+YKm3/odKtMyZCxo6Vq7VIBREEoEPFa58LGQjAp6D6pjMqfoPNmUCVKHHmUVmEIJ8iDZsultseAsJatCeOH5HIW1UUVqkprOmsqpk/NFZT8nZs302/e1Orpopr01MKS6MQofg/HhlwlMpl7ypcPuCgwojB8IWxGDabtnDyAIguBA4Ilpo4fQYWBM3FtX7OA2nIWUfBTOmupbK5h4+Q4J/Te3YTXitGSynHFwktfOPRtbDYtz/KIL0kFxYjcKVuwpmb7zg2vSpeupLIRJejRo4Pgzsa7NyJ9e/K/plLwnP+7FFxFg1fonqcQ6FDuybr/1SvZJxaWTLHMxC5o6SfGPkS+aNJLLR1BJGNsFycScKkWfw5AZcX/nGc2TN5WGN7OYZjDekd8wsxhSqI3pfvVr+dbp7lrK5VvndBW93p+vjoC9zqCxuwzYUaUM0t4XWy0lK4mrZLomIRdYeTqmuWbafhBl8kOVvZ5cz5ouTtsaakWwolzDeePty6T61a4ZXC1hKNmfwLgc2zWemOccbFS1rJfVaVuBV5lI/vVoqmMqbtG9jdPpGKtVv+yVTK2zMDCvvX7rov/5ByIb3iQC95Iv91Xm4NP6hNtvp3BFth3UVn0fFadtMApudL98WPr7tyPvXbkf9Uy+0VTdSG1ulExBa6lsPnL/pxVy6d5gkn6XS7Z6xoR4CojNxJZwU2KG5kPoyeyMKHu3dvbG+sjYAo5m19S6gFloziuDAy3SwjbkcZN2HWA0Vyv3oGQQW6N5/L+h83HvwG4Rm/KqynvZNZqqKBVGN3uuYC2pBjZ7snrC6kP6M3KlZB7LeKVktkM2+leYw0Ev0aehVedgpk75axGzmzkzB7Xyx8H3edVcH18FYzRyCM4vYDuI/VbSE4t/GK88PlvlvE2cYduWyb3IWukhsMECqj6A6rXw5Yl9KLsX5Bs8E386pijVrcxte2twan/xWn+F58tKZ9ImMbwNa4M4MkASjUZ1YLu/3mjTfoanK9OvgmLp9f63LK42Gx2Fcf0EaYEbsJ1iVaEaSVxhkTOS+b7Gvh9tMreaSfXCbvPtXufEy6eI2Fd7pa5W94Ozrt2rRNSzFtPtehTknlGxJBqb8kdm1vi43Pf3O/OERuW7KDg/brfS5TfUqHU6F1yqrD9tqvZkyjSGHmiGW8HOCTTc5aC+eaFBza0PbalwjK13itVRtXs4tfzHusxtDq5bXxSPcR+6K+47OIWRWy8BQ1F83SeKI9yzOgdH49SNOI901drLaROb8tZ5l8vv7oEhyGxeoVoc4przpdSQxIkVJ0o/hujmRf2m3cf6MvkXhvuPMw==</source>
+  <type>class</type></file>

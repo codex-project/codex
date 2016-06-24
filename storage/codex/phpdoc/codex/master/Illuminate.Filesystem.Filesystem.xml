@@ -1,0 +1,847 @@
+<file path="codex/vendor/laravel/framework/src/Illuminate/Filesystem/Filesystem.php" generated-path="codex.vendor.laravel.framework.src.Illuminate.Filesystem.Filesystem.html" hash="2f5ffa1453a8b87999b8cd0ef13790b9" package="Default">
+    <docblock line="0">
+      <description/>
+      <long-description/>
+      <tag name="package" line="0" description="Default"/>
+    </docblock>
+    <namespace-alias name="ErrorException">\ErrorException</namespace-alias>
+    <namespace-alias name="FilesystemIterator">\FilesystemIterator</namespace-alias>
+    <namespace-alias name="Finder">\Symfony\Component\Finder\Finder</namespace-alias>
+    <namespace-alias name="Macroable">\Illuminate\Support\Traits\Macroable</namespace-alias>
+    <namespace-alias name="FileNotFoundException">\Illuminate\Contracts\Filesystem\FileNotFoundException</namespace-alias>
+    <class final="false" abstract="false" namespace="Illuminate\Filesystem" line="11" package="Default">
+      <extends/>
+      <name>Filesystem</name>
+      <full_name>\Illuminate\Filesystem\Filesystem</full_name>
+      <docblock line="11">
+        <description/>
+        <long-description/>
+        <tag name="package" line="11" description="Default"/>
+      </docblock>
+      <property static="true" visibility="protected" namespace="Illuminate\Filesystem" line="15" package="Default">
+        <name>$macros</name>
+        <full_name>\Illuminate\Support\Traits\Macroable::macros</full_name>
+        <default>array()</default>
+        <docblock line="15">
+          <description>The registered string macros.</description>
+          <long-description/>
+          <tag name="var" line="15" description="" type="array" variable="">
+            <type>array</type>
+          </tag>
+        </docblock>
+      </property>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Filesystem" line="21" package="Default">
+        <name>exists</name>
+        <full_name>\Illuminate\Filesystem\Filesystem::exists()</full_name>
+        <docblock line="21">
+          <description>Determine if a file or directory exists.</description>
+          <long-description/>
+          <tag name="param" line="21" description="" type="string" variable="$path">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="21" description="" type="boolean">
+            <type>boolean</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$path</name>
+          <default/>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Filesystem" line="35" package="Default">
+        <name>get</name>
+        <full_name>\Illuminate\Filesystem\Filesystem::get()</full_name>
+        <docblock line="35">
+          <description>Get the contents of a file.</description>
+          <long-description/>
+          <tag name="param" line="35" description="" type="string" variable="$path">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="35" description="" type="boolean" variable="$lock">
+            <type>boolean</type>
+          </tag>
+          <tag name="return" line="35" description="" type="string">
+            <type>string</type>
+          </tag>
+          <tag name="throws" line="35" description="" type="\Illuminate\Contracts\Filesystem\FileNotFoundException">
+            <type>\Illuminate\Contracts\Filesystem\FileNotFoundException</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$path</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$lock</name>
+          <default>false</default>
+          <type>boolean</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Filesystem" line="50" package="Default">
+        <name>sharedGet</name>
+        <full_name>\Illuminate\Filesystem\Filesystem::sharedGet()</full_name>
+        <docblock line="50">
+          <description>Get contents of a file with shared access.</description>
+          <long-description/>
+          <tag name="param" line="50" description="" type="string" variable="$path">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="50" description="" type="string">
+            <type>string</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$path</name>
+          <default/>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Filesystem" line="79" package="Default">
+        <name>getRequire</name>
+        <full_name>\Illuminate\Filesystem\Filesystem::getRequire()</full_name>
+        <docblock line="79">
+          <description>Get the returned value of a file.</description>
+          <long-description/>
+          <tag name="param" line="79" description="" type="string" variable="$path">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="79" description="" type="mixed">
+            <type>mixed</type>
+          </tag>
+          <tag name="throws" line="79" description="" type="\Illuminate\Contracts\Filesystem\FileNotFoundException">
+            <type>\Illuminate\Contracts\Filesystem\FileNotFoundException</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$path</name>
+          <default/>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Filesystem" line="94" package="Default">
+        <name>requireOnce</name>
+        <full_name>\Illuminate\Filesystem\Filesystem::requireOnce()</full_name>
+        <docblock line="94">
+          <description>Require the given file once.</description>
+          <long-description/>
+          <tag name="param" line="94" description="" type="string" variable="$file">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="94" description="" type="mixed">
+            <type>mixed</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$file</name>
+          <default/>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Filesystem" line="107" package="Default">
+        <name>put</name>
+        <full_name>\Illuminate\Filesystem\Filesystem::put()</full_name>
+        <docblock line="107">
+          <description>Write the contents of a file.</description>
+          <long-description/>
+          <tag name="param" line="107" description="" type="string" variable="$path">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="107" description="" type="string" variable="$contents">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="107" description="" type="boolean" variable="$lock">
+            <type>boolean</type>
+          </tag>
+          <tag name="return" line="107" description="" type="integer">
+            <type>integer</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$path</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$contents</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$lock</name>
+          <default>false</default>
+          <type>boolean</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Filesystem" line="119" package="Default">
+        <name>prepend</name>
+        <full_name>\Illuminate\Filesystem\Filesystem::prepend()</full_name>
+        <docblock line="119">
+          <description>Prepend to a file.</description>
+          <long-description/>
+          <tag name="param" line="119" description="" type="string" variable="$path">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="119" description="" type="string" variable="$data">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="119" description="" type="integer">
+            <type>integer</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$path</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$data</name>
+          <default/>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Filesystem" line="135" package="Default">
+        <name>append</name>
+        <full_name>\Illuminate\Filesystem\Filesystem::append()</full_name>
+        <docblock line="135">
+          <description>Append to a file.</description>
+          <long-description/>
+          <tag name="param" line="135" description="" type="string" variable="$path">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="135" description="" type="string" variable="$data">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="135" description="" type="integer">
+            <type>integer</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$path</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$data</name>
+          <default/>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Filesystem" line="146" package="Default">
+        <name>delete</name>
+        <full_name>\Illuminate\Filesystem\Filesystem::delete()</full_name>
+        <docblock line="146">
+          <description>Delete the file at a given path.</description>
+          <long-description/>
+          <tag name="param" line="146" description="" type="string|array" variable="$paths">
+            <type>string</type>
+            <type>array</type>
+          </tag>
+          <tag name="return" line="146" description="" type="boolean">
+            <type>boolean</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$paths</name>
+          <default/>
+          <type>string|array</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Filesystem" line="172" package="Default">
+        <name>move</name>
+        <full_name>\Illuminate\Filesystem\Filesystem::move()</full_name>
+        <docblock line="172">
+          <description>Move a file to a new location.</description>
+          <long-description/>
+          <tag name="param" line="172" description="" type="string" variable="$path">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="172" description="" type="string" variable="$target">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="172" description="" type="boolean">
+            <type>boolean</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$path</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$target</name>
+          <default/>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Filesystem" line="184" package="Default">
+        <name>copy</name>
+        <full_name>\Illuminate\Filesystem\Filesystem::copy()</full_name>
+        <docblock line="184">
+          <description>Copy a file to a new location.</description>
+          <long-description/>
+          <tag name="param" line="184" description="" type="string" variable="$path">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="184" description="" type="string" variable="$target">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="184" description="" type="boolean">
+            <type>boolean</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$path</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$target</name>
+          <default/>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Filesystem" line="195" package="Default">
+        <name>name</name>
+        <full_name>\Illuminate\Filesystem\Filesystem::name()</full_name>
+        <docblock line="195">
+          <description>Extract the file name from a file path.</description>
+          <long-description/>
+          <tag name="param" line="195" description="" type="string" variable="$path">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="195" description="" type="string">
+            <type>string</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$path</name>
+          <default/>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Filesystem" line="206" package="Default">
+        <name>basename</name>
+        <full_name>\Illuminate\Filesystem\Filesystem::basename()</full_name>
+        <docblock line="206">
+          <description>Extract the trailing name component from a file path.</description>
+          <long-description/>
+          <tag name="param" line="206" description="" type="string" variable="$path">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="206" description="" type="string">
+            <type>string</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$path</name>
+          <default/>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Filesystem" line="217" package="Default">
+        <name>dirname</name>
+        <full_name>\Illuminate\Filesystem\Filesystem::dirname()</full_name>
+        <docblock line="217">
+          <description>Extract the parent directory from a file path.</description>
+          <long-description/>
+          <tag name="param" line="217" description="" type="string" variable="$path">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="217" description="" type="string">
+            <type>string</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$path</name>
+          <default/>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Filesystem" line="228" package="Default">
+        <name>extension</name>
+        <full_name>\Illuminate\Filesystem\Filesystem::extension()</full_name>
+        <docblock line="228">
+          <description>Extract the file extension from a file path.</description>
+          <long-description/>
+          <tag name="param" line="228" description="" type="string" variable="$path">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="228" description="" type="string">
+            <type>string</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$path</name>
+          <default/>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Filesystem" line="239" package="Default">
+        <name>type</name>
+        <full_name>\Illuminate\Filesystem\Filesystem::type()</full_name>
+        <docblock line="239">
+          <description>Get the file type of a given file.</description>
+          <long-description/>
+          <tag name="param" line="239" description="" type="string" variable="$path">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="239" description="" type="string">
+            <type>string</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$path</name>
+          <default/>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Filesystem" line="250" package="Default">
+        <name>mimeType</name>
+        <full_name>\Illuminate\Filesystem\Filesystem::mimeType()</full_name>
+        <docblock line="250">
+          <description>Get the mime-type of a given file.</description>
+          <long-description/>
+          <tag name="param" line="250" description="" type="string" variable="$path">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="250" description="" type="string|false">
+            <type>string</type>
+            <type>false</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$path</name>
+          <default/>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Filesystem" line="261" package="Default">
+        <name>size</name>
+        <full_name>\Illuminate\Filesystem\Filesystem::size()</full_name>
+        <docblock line="261">
+          <description>Get the file size of a given file.</description>
+          <long-description/>
+          <tag name="param" line="261" description="" type="string" variable="$path">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="261" description="" type="integer">
+            <type>integer</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$path</name>
+          <default/>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Filesystem" line="272" package="Default">
+        <name>lastModified</name>
+        <full_name>\Illuminate\Filesystem\Filesystem::lastModified()</full_name>
+        <docblock line="272">
+          <description>Get the file's last modification time.</description>
+          <long-description/>
+          <tag name="param" line="272" description="" type="string" variable="$path">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="272" description="" type="integer">
+            <type>integer</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$path</name>
+          <default/>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Filesystem" line="283" package="Default">
+        <name>isDirectory</name>
+        <full_name>\Illuminate\Filesystem\Filesystem::isDirectory()</full_name>
+        <docblock line="283">
+          <description>Determine if the given path is a directory.</description>
+          <long-description/>
+          <tag name="param" line="283" description="" type="string" variable="$directory">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="283" description="" type="boolean">
+            <type>boolean</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$directory</name>
+          <default/>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Filesystem" line="294" package="Default">
+        <name>isWritable</name>
+        <full_name>\Illuminate\Filesystem\Filesystem::isWritable()</full_name>
+        <docblock line="294">
+          <description>Determine if the given path is writable.</description>
+          <long-description/>
+          <tag name="param" line="294" description="" type="string" variable="$path">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="294" description="" type="boolean">
+            <type>boolean</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$path</name>
+          <default/>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Filesystem" line="305" package="Default">
+        <name>isFile</name>
+        <full_name>\Illuminate\Filesystem\Filesystem::isFile()</full_name>
+        <docblock line="305">
+          <description>Determine if the given path is a file.</description>
+          <long-description/>
+          <tag name="param" line="305" description="" type="string" variable="$file">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="305" description="" type="boolean">
+            <type>boolean</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$file</name>
+          <default/>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Filesystem" line="317" package="Default">
+        <name>glob</name>
+        <full_name>\Illuminate\Filesystem\Filesystem::glob()</full_name>
+        <docblock line="317">
+          <description>Find path names matching a given pattern.</description>
+          <long-description/>
+          <tag name="param" line="317" description="" type="string" variable="$pattern">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="317" description="" type="integer" variable="$flags">
+            <type>integer</type>
+          </tag>
+          <tag name="return" line="317" description="" type="array">
+            <type>array</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$pattern</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$flags</name>
+          <default>0</default>
+          <type>integer</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Filesystem" line="328" package="Default">
+        <name>files</name>
+        <full_name>\Illuminate\Filesystem\Filesystem::files()</full_name>
+        <docblock line="328">
+          <description>Get an array of all files in a directory.</description>
+          <long-description/>
+          <tag name="param" line="328" description="" type="string" variable="$directory">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="328" description="" type="array">
+            <type>array</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$directory</name>
+          <default/>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Filesystem" line="351" package="Default">
+        <name>allFiles</name>
+        <full_name>\Illuminate\Filesystem\Filesystem::allFiles()</full_name>
+        <docblock line="351">
+          <description>Get all of the files from the given directory (recursive).</description>
+          <long-description/>
+          <tag name="param" line="351" description="" type="string" variable="$directory">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="351" description="" type="boolean" variable="$hidden">
+            <type>boolean</type>
+          </tag>
+          <tag name="return" line="351" description="" type="array">
+            <type>array</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$directory</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$hidden</name>
+          <default>false</default>
+          <type>boolean</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Filesystem" line="362" package="Default">
+        <name>directories</name>
+        <full_name>\Illuminate\Filesystem\Filesystem::directories()</full_name>
+        <docblock line="362">
+          <description>Get all of the directories within a given directory.</description>
+          <long-description/>
+          <tag name="param" line="362" description="" type="string" variable="$directory">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="362" description="" type="array">
+            <type>array</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$directory</name>
+          <default/>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Filesystem" line="382" package="Default">
+        <name>makeDirectory</name>
+        <full_name>\Illuminate\Filesystem\Filesystem::makeDirectory()</full_name>
+        <docblock line="382">
+          <description>Create a directory.</description>
+          <long-description/>
+          <tag name="param" line="382" description="" type="string" variable="$path">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="382" description="" type="integer" variable="$mode">
+            <type>integer</type>
+          </tag>
+          <tag name="param" line="382" description="" type="boolean" variable="$recursive">
+            <type>boolean</type>
+          </tag>
+          <tag name="param" line="382" description="" type="boolean" variable="$force">
+            <type>boolean</type>
+          </tag>
+          <tag name="return" line="382" description="" type="boolean">
+            <type>boolean</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$path</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$mode</name>
+          <default>493</default>
+          <type>integer</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$recursive</name>
+          <default>false</default>
+          <type>boolean</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$force</name>
+          <default>false</default>
+          <type>boolean</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Filesystem" line="399" package="Default">
+        <name>copyDirectory</name>
+        <full_name>\Illuminate\Filesystem\Filesystem::copyDirectory()</full_name>
+        <docblock line="399">
+          <description>Copy a directory from one location to another.</description>
+          <long-description/>
+          <tag name="param" line="399" description="" type="string" variable="$directory">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="399" description="" type="string" variable="$destination">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="399" description="" type="integer" variable="$options">
+            <type>integer</type>
+          </tag>
+          <tag name="return" line="399" description="" type="boolean">
+            <type>boolean</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$directory</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$destination</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$options</name>
+          <default>null</default>
+          <type>integer</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Filesystem" line="452" package="Default">
+        <name>deleteDirectory</name>
+        <full_name>\Illuminate\Filesystem\Filesystem::deleteDirectory()</full_name>
+        <docblock line="452">
+          <description>Recursively delete a directory.</description>
+          <long-description>The directory itself may be optionally preserved.</long-description>
+          <tag name="param" line="452" description="" type="string" variable="$directory">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="452" description="" type="boolean" variable="$preserve">
+            <type>boolean</type>
+          </tag>
+          <tag name="return" line="452" description="" type="boolean">
+            <type>boolean</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$directory</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$preserve</name>
+          <default>false</default>
+          <type>boolean</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Filesystem" line="489" package="Default">
+        <name>cleanDirectory</name>
+        <full_name>\Illuminate\Filesystem\Filesystem::cleanDirectory()</full_name>
+        <docblock line="489">
+          <description>Empty the specified directory of all files and folders.</description>
+          <long-description/>
+          <tag name="param" line="489" description="" type="string" variable="$directory">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="489" description="" type="boolean">
+            <type>boolean</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$directory</name>
+          <default/>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="true" visibility="public" namespace="Illuminate\Filesystem" line="24" package="Default">
+        <name>macro</name>
+        <full_name>\Illuminate\Support\Traits\Macroable::macro()</full_name>
+        <docblock line="24">
+          <description>Register a custom macro.</description>
+          <long-description/>
+          <tag name="param" line="24" description="" type="string" variable="$name">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="24" description="" type="callable" variable="$macro">
+            <type>callable</type>
+          </tag>
+          <tag name="return" line="24" description="" type="void">
+            <type>void</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$name</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$macro</name>
+          <default/>
+          <type>callable</type>
+        </argument>
+        <inherited_from>\Illuminate\Support\Traits\Macroable</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="true" visibility="public" namespace="Illuminate\Filesystem" line="35" package="Default">
+        <name>hasMacro</name>
+        <full_name>\Illuminate\Support\Traits\Macroable::hasMacro()</full_name>
+        <docblock line="35">
+          <description>Checks if macro is registered.</description>
+          <long-description/>
+          <tag name="param" line="35" description="" type="string" variable="$name">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="35" description="" type="boolean">
+            <type>boolean</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$name</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <inherited_from>\Illuminate\Support\Traits\Macroable</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="true" visibility="public" namespace="Illuminate\Filesystem" line="49" package="Default">
+        <name>__callStatic</name>
+        <full_name>\Illuminate\Support\Traits\Macroable::__callStatic()</full_name>
+        <docblock line="49">
+          <description>Dynamically handle calls to the class.</description>
+          <long-description/>
+          <tag name="param" line="49" description="" type="string" variable="$method">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="49" description="" type="array" variable="$parameters">
+            <type>array</type>
+          </tag>
+          <tag name="return" line="49" description="" type="mixed">
+            <type>mixed</type>
+          </tag>
+          <tag name="throws" line="49" description="" type="\BadMethodCallException">
+            <type>\BadMethodCallException</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$method</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$parameters</name>
+          <default/>
+          <type>array</type>
+        </argument>
+        <inherited_from>\Illuminate\Support\Traits\Macroable</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Filesystem" line="71" package="Default">
+        <name>__call</name>
+        <full_name>\Illuminate\Support\Traits\Macroable::__call()</full_name>
+        <docblock line="71">
+          <description>Dynamically handle calls to the class.</description>
+          <long-description/>
+          <tag name="param" line="71" description="" type="string" variable="$method">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="71" description="" type="array" variable="$parameters">
+            <type>array</type>
+          </tag>
+          <tag name="return" line="71" description="" type="mixed">
+            <type>mixed</type>
+          </tag>
+          <tag name="throws" line="71" description="" type="\BadMethodCallException">
+            <type>\BadMethodCallException</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$method</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$parameters</name>
+          <default/>
+          <type>array</type>
+        </argument>
+        <inherited_from>\Illuminate\Support\Traits\Macroable</inherited_from>
+      </method>
+    </class>
+    <parse_markers>
+      <error line="0" code="PPC:ERR-50000">No summary was found for this file</error>
+      <error line="11" code="PPC:ERR-50005">No summary for class \Illuminate\Filesystem\Filesystem</error>
+    </parse_markers>
+    <source>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</source>
+  <type>class</type></file>

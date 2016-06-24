@@ -1,0 +1,710 @@
+<file path="codex/vendor/laravel/framework/src/Illuminate/Queue/Worker.php" generated-path="codex.vendor.laravel.framework.src.Illuminate.Queue.Worker.html" hash="dd70f14577f52f5086dd04209020b13d" package="Default">
+    <docblock line="0">
+      <description/>
+      <long-description/>
+      <tag name="package" line="0" description="Default"/>
+    </docblock>
+    <namespace-alias name="Exception">\Exception</namespace-alias>
+    <namespace-alias name="Throwable">\Throwable</namespace-alias>
+    <namespace-alias name="Job">\Illuminate\Contracts\Queue\Job</namespace-alias>
+    <namespace-alias name="Dispatcher">\Illuminate\Contracts\Events\Dispatcher</namespace-alias>
+    <namespace-alias name="ExceptionHandler">\Illuminate\Contracts\Debug\ExceptionHandler</namespace-alias>
+    <namespace-alias name="FailedJobProviderInterface">\Illuminate\Queue\Failed\FailedJobProviderInterface</namespace-alias>
+    <namespace-alias name="FatalThrowableError">\Symfony\Component\Debug\Exception\FatalThrowableError</namespace-alias>
+    <namespace-alias name="CacheContract">\Illuminate\Contracts\Cache\Repository</namespace-alias>
+    <class final="false" abstract="false" namespace="Illuminate\Queue" line="14" package="Default">
+      <extends/>
+      <name>Worker</name>
+      <full_name>\Illuminate\Queue\Worker</full_name>
+      <docblock line="14">
+        <description/>
+        <long-description/>
+        <tag name="package" line="14" description="Default"/>
+      </docblock>
+      <property static="false" visibility="protected" namespace="Illuminate\Queue" line="21" package="Default">
+        <name>$manager</name>
+        <full_name>\Illuminate\Queue\Worker::manager</full_name>
+        <default/>
+        <docblock line="21">
+          <description>The queue manager instance.</description>
+          <long-description/>
+          <tag name="var" line="21" description="" type="\Illuminate\Queue\QueueManager" variable="">
+            <type>\Illuminate\Queue\QueueManager</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" namespace="Illuminate\Queue" line="28" package="Default">
+        <name>$failer</name>
+        <full_name>\Illuminate\Queue\Worker::failer</full_name>
+        <default/>
+        <docblock line="28">
+          <description>The failed job provider implementation.</description>
+          <long-description/>
+          <tag name="var" line="28" description="" type="\Illuminate\Queue\Failed\FailedJobProviderInterface" variable="">
+            <type>\Illuminate\Queue\Failed\FailedJobProviderInterface</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" namespace="Illuminate\Queue" line="35" package="Default">
+        <name>$events</name>
+        <full_name>\Illuminate\Queue\Worker::events</full_name>
+        <default/>
+        <docblock line="35">
+          <description>The event dispatcher instance.</description>
+          <long-description/>
+          <tag name="var" line="35" description="" type="\Illuminate\Contracts\Events\Dispatcher" variable="">
+            <type>\Illuminate\Contracts\Events\Dispatcher</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" namespace="Illuminate\Queue" line="42" package="Default">
+        <name>$cache</name>
+        <full_name>\Illuminate\Queue\Worker::cache</full_name>
+        <default/>
+        <docblock line="42">
+          <description>The cache repository implementation.</description>
+          <long-description/>
+          <tag name="var" line="42" description="" type="\Illuminate\Contracts\Cache\Repository" variable="">
+            <type>\Illuminate\Contracts\Cache\Repository</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" namespace="Illuminate\Queue" line="49" package="Default">
+        <name>$exceptions</name>
+        <full_name>\Illuminate\Queue\Worker::exceptions</full_name>
+        <default/>
+        <docblock line="49">
+          <description>The exception handler instance.</description>
+          <long-description/>
+          <tag name="var" line="49" description="" type="\Illuminate\Foundation\Exceptions\Handler" variable="">
+            <type>\Illuminate\Foundation\Exceptions\Handler</type>
+          </tag>
+        </docblock>
+      </property>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Queue" line="59" package="Default">
+        <name>__construct</name>
+        <full_name>\Illuminate\Queue\Worker::__construct()</full_name>
+        <docblock line="59">
+          <description>Create a new queue worker.</description>
+          <long-description/>
+          <tag name="param" line="59" description="" type="\Illuminate\Queue\QueueManager" variable="$manager">
+            <type>\Illuminate\Queue\QueueManager</type>
+          </tag>
+          <tag name="param" line="59" description="" type="\Illuminate\Queue\Failed\FailedJobProviderInterface" variable="$failer">
+            <type>\Illuminate\Queue\Failed\FailedJobProviderInterface</type>
+          </tag>
+          <tag name="param" line="59" description="" type="\Illuminate\Contracts\Events\Dispatcher" variable="$events">
+            <type>\Illuminate\Contracts\Events\Dispatcher</type>
+          </tag>
+          <tag name="return" line="59" description="" type="void">
+            <type>void</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$manager</name>
+          <default/>
+          <type>\Illuminate\Queue\QueueManager</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$failer</name>
+          <default>null</default>
+          <type>\Illuminate\Queue\Failed\FailedJobProviderInterface</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$events</name>
+          <default>null</default>
+          <type>\Illuminate\Contracts\Events\Dispatcher</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Queue" line="79" package="Default">
+        <name>daemon</name>
+        <full_name>\Illuminate\Queue\Worker::daemon()</full_name>
+        <docblock line="79">
+          <description>Listen to the given queue in a loop.</description>
+          <long-description/>
+          <tag name="param" line="79" description="" type="string" variable="$connectionName">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="79" description="" type="string" variable="$queue">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="79" description="" type="integer" variable="$delay">
+            <type>integer</type>
+          </tag>
+          <tag name="param" line="79" description="" type="integer" variable="$memory">
+            <type>integer</type>
+          </tag>
+          <tag name="param" line="79" description="" type="integer" variable="$sleep">
+            <type>integer</type>
+          </tag>
+          <tag name="param" line="79" description="" type="integer" variable="$maxTries">
+            <type>integer</type>
+          </tag>
+          <tag name="return" line="79" description="" type="array">
+            <type>array</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$connectionName</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$queue</name>
+          <default>null</default>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$delay</name>
+          <default>0</default>
+          <type>integer</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$memory</name>
+          <default>128</default>
+          <type>integer</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$sleep</name>
+          <default>3</default>
+          <type>integer</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$maxTries</name>
+          <default>0</default>
+          <type>integer</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Queue" line="108" package="Default">
+        <name>runNextJobForDaemon</name>
+        <full_name>\Illuminate\Queue\Worker::runNextJobForDaemon()</full_name>
+        <docblock line="108">
+          <description>Run the next job for the daemon worker.</description>
+          <long-description/>
+          <tag name="param" line="108" description="" type="string" variable="$connectionName">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="108" description="" type="string" variable="$queue">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="108" description="" type="integer" variable="$delay">
+            <type>integer</type>
+          </tag>
+          <tag name="param" line="108" description="" type="integer" variable="$sleep">
+            <type>integer</type>
+          </tag>
+          <tag name="param" line="108" description="" type="integer" variable="$maxTries">
+            <type>integer</type>
+          </tag>
+          <tag name="return" line="108" description="" type="void">
+            <type>void</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$connectionName</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$queue</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$delay</name>
+          <default/>
+          <type>integer</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$sleep</name>
+          <default/>
+          <type>integer</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$maxTries</name>
+          <default/>
+          <type>integer</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Queue" line="128" package="Default">
+        <name>daemonShouldRun</name>
+        <full_name>\Illuminate\Queue\Worker::daemonShouldRun()</full_name>
+        <docblock line="128">
+          <description>Determine if the daemon should process on this iteration.</description>
+          <long-description/>
+          <tag name="return" line="128" description="" type="boolean">
+            <type>boolean</type>
+          </tag>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Queue" line="144" package="Default">
+        <name>pop</name>
+        <full_name>\Illuminate\Queue\Worker::pop()</full_name>
+        <docblock line="144">
+          <description>Listen to the given queue.</description>
+          <long-description/>
+          <tag name="param" line="144" description="" type="string" variable="$connectionName">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="144" description="" type="string" variable="$queue">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="144" description="" type="integer" variable="$delay">
+            <type>integer</type>
+          </tag>
+          <tag name="param" line="144" description="" type="integer" variable="$sleep">
+            <type>integer</type>
+          </tag>
+          <tag name="param" line="144" description="" type="integer" variable="$maxTries">
+            <type>integer</type>
+          </tag>
+          <tag name="return" line="144" description="" type="array">
+            <type>array</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$connectionName</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$queue</name>
+          <default>null</default>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$delay</name>
+          <default>0</default>
+          <type>integer</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$sleep</name>
+          <default>3</default>
+          <type>integer</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$maxTries</name>
+          <default>0</default>
+          <type>integer</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Queue" line="177" package="Default">
+        <name>getNextJob</name>
+        <full_name>\Illuminate\Queue\Worker::getNextJob()</full_name>
+        <docblock line="177">
+          <description>Get the next job from the queue connection.</description>
+          <long-description/>
+          <tag name="param" line="177" description="" type="\Illuminate\Contracts\Queue\Queue" variable="$connection">
+            <type>\Illuminate\Contracts\Queue\Queue</type>
+          </tag>
+          <tag name="param" line="177" description="" type="string" variable="$queue">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="177" description="" type="\Illuminate\Contracts\Queue\Job|null">
+            <type>\Illuminate\Contracts\Queue\Job</type>
+            <type>null</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$connection</name>
+          <default/>
+          <type>\Illuminate\Contracts\Queue\Queue</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$queue</name>
+          <default/>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Queue" line="201" package="Default">
+        <name>process</name>
+        <full_name>\Illuminate\Queue\Worker::process()</full_name>
+        <docblock line="201">
+          <description>Process a given job from the queue.</description>
+          <long-description/>
+          <tag name="param" line="201" description="" type="string" variable="$connection">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="201" description="" type="\Illuminate\Contracts\Queue\Job" variable="$job">
+            <type>\Illuminate\Contracts\Queue\Job</type>
+          </tag>
+          <tag name="param" line="201" description="" type="integer" variable="$maxTries">
+            <type>integer</type>
+          </tag>
+          <tag name="param" line="201" description="" type="integer" variable="$delay">
+            <type>integer</type>
+          </tag>
+          <tag name="return" line="201" description="" type="array|null">
+            <type>array</type>
+            <type>null</type>
+          </tag>
+          <tag name="throws" line="201" description="" type="\Throwable">
+            <type>\Throwable</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$connection</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$job</name>
+          <default/>
+          <type>\Illuminate\Contracts\Queue\Job</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$maxTries</name>
+          <default>0</default>
+          <type>integer</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$delay</name>
+          <default>0</default>
+          <type>integer</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Queue" line="236" package="Default">
+        <name>handleJobException</name>
+        <full_name>\Illuminate\Queue\Worker::handleJobException()</full_name>
+        <docblock line="236">
+          <description>Handle an exception that occurred while the job was running.</description>
+          <long-description/>
+          <tag name="param" line="236" description="" type="string" variable="$connection">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="236" description="" type="\Illuminate\Contracts\Queue\Job" variable="$job">
+            <type>\Illuminate\Contracts\Queue\Job</type>
+          </tag>
+          <tag name="param" line="236" description="" type="integer" variable="$delay">
+            <type>integer</type>
+          </tag>
+          <tag name="param" line="236" description="" type="\Throwable" variable="$e">
+            <type>\Throwable</type>
+          </tag>
+          <tag name="return" line="236" description="" type="void">
+            <type>void</type>
+          </tag>
+          <tag name="throws" line="236" description="" type="\Throwable">
+            <type>\Throwable</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$connection</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$job</name>
+          <default/>
+          <type>\Illuminate\Contracts\Queue\Job</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$delay</name>
+          <default/>
+          <type>integer</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$e</name>
+          <default/>
+          <type>\Throwable</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Queue" line="261" package="Default">
+        <name>raiseBeforeJobEvent</name>
+        <full_name>\Illuminate\Queue\Worker::raiseBeforeJobEvent()</full_name>
+        <docblock line="261">
+          <description>Raise the before queue job event.</description>
+          <long-description/>
+          <tag name="param" line="261" description="" type="string" variable="$connection">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="261" description="" type="\Illuminate\Contracts\Queue\Job" variable="$job">
+            <type>\Illuminate\Contracts\Queue\Job</type>
+          </tag>
+          <tag name="return" line="261" description="" type="void">
+            <type>void</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$connection</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$job</name>
+          <default/>
+          <type>\Illuminate\Contracts\Queue\Job</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Queue" line="277" package="Default">
+        <name>raiseAfterJobEvent</name>
+        <full_name>\Illuminate\Queue\Worker::raiseAfterJobEvent()</full_name>
+        <docblock line="277">
+          <description>Raise the after queue job event.</description>
+          <long-description/>
+          <tag name="param" line="277" description="" type="string" variable="$connection">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="277" description="" type="\Illuminate\Contracts\Queue\Job" variable="$job">
+            <type>\Illuminate\Contracts\Queue\Job</type>
+          </tag>
+          <tag name="return" line="277" description="" type="void">
+            <type>void</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$connection</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$job</name>
+          <default/>
+          <type>\Illuminate\Contracts\Queue\Job</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Queue" line="294" package="Default">
+        <name>raiseExceptionOccurredJobEvent</name>
+        <full_name>\Illuminate\Queue\Worker::raiseExceptionOccurredJobEvent()</full_name>
+        <docblock line="294">
+          <description>Raise the exception occurred queue job event.</description>
+          <long-description/>
+          <tag name="param" line="294" description="" type="string" variable="$connection">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="294" description="" type="\Illuminate\Contracts\Queue\Job" variable="$job">
+            <type>\Illuminate\Contracts\Queue\Job</type>
+          </tag>
+          <tag name="param" line="294" description="" type="\Throwable" variable="$exception">
+            <type>\Throwable</type>
+          </tag>
+          <tag name="return" line="294" description="" type="void">
+            <type>void</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$connection</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$job</name>
+          <default/>
+          <type>\Illuminate\Contracts\Queue\Job</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$exception</name>
+          <default/>
+          <type>\Throwable</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Queue" line="310" package="Default">
+        <name>logFailedJob</name>
+        <full_name>\Illuminate\Queue\Worker::logFailedJob()</full_name>
+        <docblock line="310">
+          <description>Log a failed job into storage.</description>
+          <long-description/>
+          <tag name="param" line="310" description="" type="string" variable="$connection">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="310" description="" type="\Illuminate\Contracts\Queue\Job" variable="$job">
+            <type>\Illuminate\Contracts\Queue\Job</type>
+          </tag>
+          <tag name="return" line="310" description="" type="array">
+            <type>array</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$connection</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$job</name>
+          <default/>
+          <type>\Illuminate\Contracts\Queue\Job</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Queue" line="332" package="Default">
+        <name>raiseFailedJobEvent</name>
+        <full_name>\Illuminate\Queue\Worker::raiseFailedJobEvent()</full_name>
+        <docblock line="332">
+          <description>Raise the failed queue job event.</description>
+          <long-description/>
+          <tag name="param" line="332" description="" type="string" variable="$connection">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="332" description="" type="\Illuminate\Contracts\Queue\Job" variable="$job">
+            <type>\Illuminate\Contracts\Queue\Job</type>
+          </tag>
+          <tag name="return" line="332" description="" type="void">
+            <type>void</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$connection</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$job</name>
+          <default/>
+          <type>\Illuminate\Contracts\Queue\Job</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Queue" line="347" package="Default">
+        <name>memoryExceeded</name>
+        <full_name>\Illuminate\Queue\Worker::memoryExceeded()</full_name>
+        <docblock line="347">
+          <description>Determine if the memory limit has been exceeded.</description>
+          <long-description/>
+          <tag name="param" line="347" description="" type="integer" variable="$memoryLimit">
+            <type>integer</type>
+          </tag>
+          <tag name="return" line="347" description="" type="boolean">
+            <type>boolean</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$memoryLimit</name>
+          <default/>
+          <type>integer</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Queue" line="357" package="Default">
+        <name>stop</name>
+        <full_name>\Illuminate\Queue\Worker::stop()</full_name>
+        <docblock line="357">
+          <description>Stop listening and bail out of the script.</description>
+          <long-description/>
+          <tag name="return" line="357" description="" type="void">
+            <type>void</type>
+          </tag>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Queue" line="370" package="Default">
+        <name>sleep</name>
+        <full_name>\Illuminate\Queue\Worker::sleep()</full_name>
+        <docblock line="370">
+          <description>Sleep the script for a given number of seconds.</description>
+          <long-description/>
+          <tag name="param" line="370" description="" type="integer" variable="$seconds">
+            <type>integer</type>
+          </tag>
+          <tag name="return" line="370" description="" type="void">
+            <type>void</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$seconds</name>
+          <default/>
+          <type>integer</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Queue" line="380" package="Default">
+        <name>getTimestampOfLastQueueRestart</name>
+        <full_name>\Illuminate\Queue\Worker::getTimestampOfLastQueueRestart()</full_name>
+        <docblock line="380">
+          <description>Get the last queue restart timestamp, or null.</description>
+          <long-description/>
+          <tag name="return" line="380" description="" type="integer|null">
+            <type>integer</type>
+            <type>null</type>
+          </tag>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Queue" line="393" package="Default">
+        <name>queueShouldRestart</name>
+        <full_name>\Illuminate\Queue\Worker::queueShouldRestart()</full_name>
+        <docblock line="393">
+          <description>Determine if the queue worker should restart.</description>
+          <long-description/>
+          <tag name="param" line="393" description="" type="integer|null" variable="$lastRestart">
+            <type>integer</type>
+            <type>null</type>
+          </tag>
+          <tag name="return" line="393" description="" type="boolean">
+            <type>boolean</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$lastRestart</name>
+          <default/>
+          <type>integer|null</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Queue" line="404" package="Default">
+        <name>setDaemonExceptionHandler</name>
+        <full_name>\Illuminate\Queue\Worker::setDaemonExceptionHandler()</full_name>
+        <docblock line="404">
+          <description>Set the exception handler to use in Daemon mode.</description>
+          <long-description/>
+          <tag name="param" line="404" description="" type="\Illuminate\Contracts\Debug\ExceptionHandler" variable="$handler">
+            <type>\Illuminate\Contracts\Debug\ExceptionHandler</type>
+          </tag>
+          <tag name="return" line="404" description="" type="void">
+            <type>void</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$handler</name>
+          <default/>
+          <type>\Illuminate\Contracts\Debug\ExceptionHandler</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Queue" line="415" package="Default">
+        <name>setCache</name>
+        <full_name>\Illuminate\Queue\Worker::setCache()</full_name>
+        <docblock line="415">
+          <description>Set the cache repository implementation.</description>
+          <long-description/>
+          <tag name="param" line="415" description="" type="\Illuminate\Contracts\Cache\Repository" variable="$cache">
+            <type>\Illuminate\Contracts\Cache\Repository</type>
+          </tag>
+          <tag name="return" line="415" description="" type="void">
+            <type>void</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$cache</name>
+          <default/>
+          <type>\Illuminate\Contracts\Cache\Repository</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Queue" line="425" package="Default">
+        <name>getManager</name>
+        <full_name>\Illuminate\Queue\Worker::getManager()</full_name>
+        <docblock line="425">
+          <description>Get the queue manager instance.</description>
+          <long-description/>
+          <tag name="return" line="425" description="" type="\Illuminate\Queue\QueueManager">
+            <type>\Illuminate\Queue\QueueManager</type>
+          </tag>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Queue" line="436" package="Default">
+        <name>setManager</name>
+        <full_name>\Illuminate\Queue\Worker::setManager()</full_name>
+        <docblock line="436">
+          <description>Set the queue manager instance.</description>
+          <long-description/>
+          <tag name="param" line="436" description="" type="\Illuminate\Queue\QueueManager" variable="$manager">
+            <type>\Illuminate\Queue\QueueManager</type>
+          </tag>
+          <tag name="return" line="436" description="" type="void">
+            <type>void</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$manager</name>
+          <default/>
+          <type>\Illuminate\Queue\QueueManager</type>
+        </argument>
+      </method>
+    </class>
+    <parse_markers>
+      <error line="0" code="PPC:ERR-50000">No summary was found for this file</error>
+      <error line="14" code="PPC:ERR-50005">No summary for class \Illuminate\Queue\Worker</error>
+    </parse_markers>
+    <source>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</source>
+  <type>class</type></file>

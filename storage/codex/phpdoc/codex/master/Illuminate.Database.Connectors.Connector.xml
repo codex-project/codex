@@ -1,0 +1,196 @@
+<file path="codex/vendor/laravel/framework/src/Illuminate/Database/Connectors/Connector.php" generated-path="codex.vendor.laravel.framework.src.Illuminate.Database.Connectors.Connector.html" hash="6fc32c9a034ce4b69d4fbdffb7dea31e" package="Default">
+    <docblock line="0">
+      <description/>
+      <long-description/>
+      <tag name="package" line="0" description="Default"/>
+    </docblock>
+    <namespace-alias name="PDO">\PDO</namespace-alias>
+    <namespace-alias name="Exception">\Exception</namespace-alias>
+    <namespace-alias name="Arr">\Illuminate\Support\Arr</namespace-alias>
+    <namespace-alias name="DetectsLostConnections">\Illuminate\Database\DetectsLostConnections</namespace-alias>
+    <class final="false" abstract="false" namespace="Illuminate\Database\Connectors" line="10" package="Default">
+      <extends/>
+      <name>Connector</name>
+      <full_name>\Illuminate\Database\Connectors\Connector</full_name>
+      <docblock line="10">
+        <description/>
+        <long-description/>
+        <tag name="package" line="10" description="Default"/>
+      </docblock>
+      <property static="false" visibility="protected" namespace="Illuminate\Database\Connectors" line="19" package="Default">
+        <name>$options</name>
+        <full_name>\Illuminate\Database\Connectors\Connector::options</full_name>
+        <default>array(\PDO::ATTR_CASE =&gt; \PDO::CASE_NATURAL, \PDO::ATTR_ERRMODE =&gt; \PDO::ERRMODE_EXCEPTION, \PDO::ATTR_ORACLE_NULLS =&gt; \PDO::NULL_NATURAL, \PDO::ATTR_STRINGIFY_FETCHES =&gt; false, \PDO::ATTR_EMULATE_PREPARES =&gt; false)</default>
+        <docblock line="19">
+          <description>The default PDO connection options.</description>
+          <long-description/>
+          <tag name="var" line="19" description="" type="array" variable="">
+            <type>array</type>
+          </tag>
+        </docblock>
+      </property>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Connectors" line="33" package="Default">
+        <name>getOptions</name>
+        <full_name>\Illuminate\Database\Connectors\Connector::getOptions()</full_name>
+        <docblock line="33">
+          <description>Get the PDO options based on the configuration.</description>
+          <long-description/>
+          <tag name="param" line="33" description="" type="array" variable="$config">
+            <type>array</type>
+          </tag>
+          <tag name="return" line="33" description="" type="array">
+            <type>array</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$config</name>
+          <default/>
+          <type>array</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Connectors" line="48" package="Default">
+        <name>createConnection</name>
+        <full_name>\Illuminate\Database\Connectors\Connector::createConnection()</full_name>
+        <docblock line="48">
+          <description>Create a new PDO connection.</description>
+          <long-description/>
+          <tag name="param" line="48" description="" type="string" variable="$dsn">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="48" description="" type="array" variable="$config">
+            <type>array</type>
+          </tag>
+          <tag name="param" line="48" description="" type="array" variable="$options">
+            <type>array</type>
+          </tag>
+          <tag name="return" line="48" description="" type="\PDO">
+            <type>\PDO</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$dsn</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$config</name>
+          <default/>
+          <type>array</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$options</name>
+          <default/>
+          <type>array</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Connectors" line="70" package="Default">
+        <name>getDefaultOptions</name>
+        <full_name>\Illuminate\Database\Connectors\Connector::getDefaultOptions()</full_name>
+        <docblock line="70">
+          <description>Get the default PDO connection options.</description>
+          <long-description/>
+          <tag name="return" line="70" description="" type="array">
+            <type>array</type>
+          </tag>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Connectors" line="81" package="Default">
+        <name>setDefaultOptions</name>
+        <full_name>\Illuminate\Database\Connectors\Connector::setDefaultOptions()</full_name>
+        <docblock line="81">
+          <description>Set the default PDO connection options.</description>
+          <long-description/>
+          <tag name="param" line="81" description="" type="array" variable="$options">
+            <type>array</type>
+          </tag>
+          <tag name="return" line="81" description="" type="void">
+            <type>void</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$options</name>
+          <default/>
+          <type>array</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Database\Connectors" line="98" package="Default">
+        <name>tryAgainIfCausedByLostConnection</name>
+        <full_name>\Illuminate\Database\Connectors\Connector::tryAgainIfCausedByLostConnection()</full_name>
+        <docblock line="98">
+          <description>Handle a exception that occurred during connect execution.</description>
+          <long-description/>
+          <tag name="param" line="98" description="" type="\Exception" variable="$e">
+            <type>\Exception</type>
+          </tag>
+          <tag name="param" line="98" description="" type="string" variable="$dsn">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="98" description="" type="string" variable="$username">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="98" description="" type="string" variable="$password">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="98" description="" type="array" variable="$options">
+            <type>array</type>
+          </tag>
+          <tag name="return" line="98" description="" type="\PDO">
+            <type>\PDO</type>
+          </tag>
+          <tag name="throws" line="98" description="" type="\Exception">
+            <type>\Exception</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$e</name>
+          <default/>
+          <type>\Exception</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$dsn</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$username</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$password</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$options</name>
+          <default/>
+          <type>array</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Database\Connectors" line="16" package="Default">
+        <name>causedByLostConnection</name>
+        <full_name>\Illuminate\Database\DetectsLostConnections::causedByLostConnection()</full_name>
+        <docblock line="16">
+          <description>Determine if the given exception was caused by a lost connection.</description>
+          <long-description/>
+          <tag name="param" line="16" description="" type="\Exception" variable="$e">
+            <type>\Exception</type>
+          </tag>
+          <tag name="return" line="16" description="" type="boolean">
+            <type>boolean</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$e</name>
+          <default/>
+          <type>\Exception</type>
+        </argument>
+        <inherited_from>\Illuminate\Database\DetectsLostConnections</inherited_from>
+      </method>
+    </class>
+    <parse_markers>
+      <error line="0" code="PPC:ERR-50000">No summary was found for this file</error>
+      <error line="10" code="PPC:ERR-50005">No summary for class \Illuminate\Database\Connectors\Connector</error>
+    </parse_markers>
+    <source>eJylVVtvmzAUfudXnIdITbpsfU/WbozQNlLaRIRKm5oKuWACGgVkm7ZR1f8+G4zDNb2MF2LO7Tufv3Py/UcapJoWowdMU+RimEdR9hDGiOHNDDF0jyjeGEkcY5clhE41LaMYVrPlNP9hPrs4ZWESF8dK8DpL04SwjU5Iy6YSzzDjeekioUzW4KlEETdClIKqq71owB+RpjdEOJwcH+dvOAY7wOBhH2URE3DBVc6Q5IjpN+laRvx8RAQQIWgnv5zk75QkoiL2YCAD4RRuCxf+8NyTiW7blmPoaxNOz4ov4uBc6/aNpS/GHc6mZV0tZ3t/eXbM34a5sufL666gpaUbC572ZrFYq0hxOlRpbVvz64v5+R/n3LSNSzOP9FFEcSeuq5uFbpvOyjJXutVyvmsTfYEZsCDXRMksiMv1gFMtDJx5P9xmBAlbi/QUEfQABe8Ag8JZWQlmGYm7biW7j0IX/Cwu7nSL2bIoPixSyUyj3PtFdVq5Q67MyYTHDaXrGI6k8WgMt3cj2ap4qjAcL/R95y/eDQcsCOnXMxk0VrlH8EX9nuY5XlusGQTzSQAEMX5q6LOPIspIGG95Cx6Ne+hr8dc0S1RNfjccwUF63RzufuCGAsQYalSrY0lDk3o+vkQsmm7uS+tRlfhByvfAU0K87pjSWothZFepWmTxEp5AUi2xKzjjfZXKHU5VhldwEXMDGKplBwM86i4hJcEh6FsUxnPfQLyM92tX31fDWmweL2C8A1ctsAqyJVaBqE995cx+cEF+ZBpnRepyKJtiKEHWRqgP7vpzcBurpUf7j0noHWyGtpp5Q+e1noQo3mjvEsVeJHYBVgJjAWKQuG5GCF+kXpZPvmyZu2E3O7QpNnulcmF9ZI8oWynCXodSmv+xapSJBSR5ohXYPX/A6krenK/qqL5vsJq3GPpQLni3uwZfAs0tIHv87KKp7DDBCMdeSuZV+wdI5slf</source>
+  <type>class</type></file>

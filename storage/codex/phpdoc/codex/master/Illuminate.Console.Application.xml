@@ -1,0 +1,239 @@
+<file path="codex/vendor/laravel/framework/src/Illuminate/Console/Application.php" generated-path="codex.vendor.laravel.framework.src.Illuminate.Console.Application.html" hash="273fb65cf4a75965f14e67dea698b31f" package="Default">
+    <docblock line="0">
+      <description/>
+      <long-description/>
+      <tag name="package" line="0" description="Default"/>
+    </docblock>
+    <namespace-alias name="Dispatcher">\Illuminate\Contracts\Events\Dispatcher</namespace-alias>
+    <namespace-alias name="Container">\Illuminate\Contracts\Container\Container</namespace-alias>
+    <namespace-alias name="ArrayInput">\Symfony\Component\Console\Input\ArrayInput</namespace-alias>
+    <namespace-alias name="InputOption">\Symfony\Component\Console\Input\InputOption</namespace-alias>
+    <namespace-alias name="BufferedOutput">\Symfony\Component\Console\Output\BufferedOutput</namespace-alias>
+    <namespace-alias name="SymfonyApplication">\Symfony\Component\Console\Application</namespace-alias>
+    <namespace-alias name="SymfonyCommand">\Symfony\Component\Console\Command\Command</namespace-alias>
+    <namespace-alias name="ApplicationContract">\Illuminate\Contracts\Console\Application</namespace-alias>
+    <class final="false" abstract="false" namespace="Illuminate\Console" line="14" package="Default">
+      <extends>\Symfony\Component\Console\Application</extends>
+      <implements>\Illuminate\Contracts\Console\Application</implements>
+      <name>Application</name>
+      <full_name>\Illuminate\Console\Application</full_name>
+      <docblock line="14">
+        <description/>
+        <long-description/>
+        <tag name="package" line="14" description="Default"/>
+      </docblock>
+      <property static="false" visibility="protected" namespace="Illuminate\Console" line="21" package="Default">
+        <name>$laravel</name>
+        <full_name>\Illuminate\Console\Application::laravel</full_name>
+        <default/>
+        <docblock line="21">
+          <description>The Laravel application instance.</description>
+          <long-description/>
+          <tag name="var" line="21" description="" type="\Illuminate\Contracts\Container\Container" variable="">
+            <type>\Illuminate\Contracts\Container\Container</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" namespace="Illuminate\Console" line="28" package="Default">
+        <name>$lastOutput</name>
+        <full_name>\Illuminate\Console\Application::lastOutput</full_name>
+        <default/>
+        <docblock line="28">
+          <description>The output from the previous command.</description>
+          <long-description/>
+          <tag name="var" line="28" description="" type="\Symfony\Component\Console\Output\BufferedOutput" variable="">
+            <type>\Symfony\Component\Console\Output\BufferedOutput</type>
+          </tag>
+        </docblock>
+      </property>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Console" line="38" package="Default">
+        <name>__construct</name>
+        <full_name>\Illuminate\Console\Application::__construct()</full_name>
+        <docblock line="38">
+          <description>Create a new Artisan console application.</description>
+          <long-description/>
+          <tag name="param" line="38" description="" type="\Illuminate\Contracts\Container\Container" variable="$laravel">
+            <type>\Illuminate\Contracts\Container\Container</type>
+          </tag>
+          <tag name="param" line="38" description="" type="\Illuminate\Contracts\Events\Dispatcher" variable="$events">
+            <type>\Illuminate\Contracts\Events\Dispatcher</type>
+          </tag>
+          <tag name="param" line="38" description="" type="string" variable="$version">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="38" description="" type="void">
+            <type>void</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$laravel</name>
+          <default/>
+          <type>\Illuminate\Contracts\Container\Container</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$events</name>
+          <default/>
+          <type>\Illuminate\Contracts\Events\Dispatcher</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$version</name>
+          <default/>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Console" line="56" package="Default">
+        <name>call</name>
+        <full_name>\Illuminate\Console\Application::call()</full_name>
+        <docblock line="56">
+          <description>Run an Artisan console command by name.</description>
+          <long-description/>
+          <tag name="param" line="56" description="" type="string" variable="$command">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="56" description="" type="array" variable="$parameters">
+            <type>array</type>
+          </tag>
+          <tag name="return" line="56" description="" type="integer">
+            <type>integer</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$command</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$parameters</name>
+          <default>array()</default>
+          <type>array</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Console" line="76" package="Default">
+        <name>output</name>
+        <full_name>\Illuminate\Console\Application::output()</full_name>
+        <docblock line="76">
+          <description>Get the output for the last run command.</description>
+          <long-description/>
+          <tag name="return" line="76" description="" type="string">
+            <type>string</type>
+          </tag>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Console" line="87" package="Default">
+        <name>add</name>
+        <full_name>\Illuminate\Console\Application::add()</full_name>
+        <docblock line="87">
+          <description>Add a command to the console.</description>
+          <long-description/>
+          <tag name="param" line="87" description="" type="\Symfony\Component\Console\Command\Command" variable="$command">
+            <type>\Symfony\Component\Console\Command\Command</type>
+          </tag>
+          <tag name="return" line="87" description="" type="\Symfony\Component\Console\Command\Command">
+            <type>\Symfony\Component\Console\Command\Command</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$command</name>
+          <default/>
+          <type>\Symfony\Component\Console\Command\Command</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Console" line="102" package="Default">
+        <name>addToParent</name>
+        <full_name>\Illuminate\Console\Application::addToParent()</full_name>
+        <docblock line="102">
+          <description>Add the command to the parent instance.</description>
+          <long-description/>
+          <tag name="param" line="102" description="" type="\Symfony\Component\Console\Command\Command" variable="$command">
+            <type>\Symfony\Component\Console\Command\Command</type>
+          </tag>
+          <tag name="return" line="102" description="" type="\Symfony\Component\Console\Command\Command">
+            <type>\Symfony\Component\Console\Command\Command</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$command</name>
+          <default/>
+          <type>\Symfony\Component\Console\Command\Command</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Console" line="113" package="Default">
+        <name>resolve</name>
+        <full_name>\Illuminate\Console\Application::resolve()</full_name>
+        <docblock line="113">
+          <description>Add a command, resolving through the application.</description>
+          <long-description/>
+          <tag name="param" line="113" description="" type="string" variable="$command">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="113" description="" type="\Symfony\Component\Console\Command\Command">
+            <type>\Symfony\Component\Console\Command\Command</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$command</name>
+          <default/>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Console" line="124" package="Default">
+        <name>resolveCommands</name>
+        <full_name>\Illuminate\Console\Application::resolveCommands()</full_name>
+        <docblock line="124">
+          <description>Resolve an array of commands through the application.</description>
+          <long-description/>
+          <tag name="param" line="124" description="" type="array|mixed" variable="$commands">
+            <type>array</type>
+            <type>mixed</type>
+          </tag>
+          <tag name="return" line="124" description="" type="\Illuminate\Console\Application">
+            <type>\Illuminate\Console\Application</type>
+          </tag>
+          <tag name="fluent" description="This method is part of a fluent interface and will return the same instance"/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$commands</name>
+          <default/>
+          <type>array|mixed</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Console" line="142" package="Default">
+        <name>getDefaultInputDefinition</name>
+        <full_name>\Illuminate\Console\Application::getDefaultInputDefinition()</full_name>
+        <docblock line="142">
+          <description>Get the default input definitions for the applications.</description>
+          <long-description>This is used to add the --env option to every available command.</long-description>
+          <tag name="return" line="142" description="" type="\Symfony\Component\Console\Input\InputDefinition">
+            <type>\Symfony\Component\Console\Input\InputDefinition</type>
+          </tag>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Console" line="156" package="Default">
+        <name>getEnvironmentOption</name>
+        <full_name>\Illuminate\Console\Application::getEnvironmentOption()</full_name>
+        <docblock line="156">
+          <description>Get the global environment option for the definition.</description>
+          <long-description/>
+          <tag name="return" line="156" description="" type="\Symfony\Component\Console\Input\InputOption">
+            <type>\Symfony\Component\Console\Input\InputOption</type>
+          </tag>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Console" line="168" package="Default">
+        <name>getLaravel</name>
+        <full_name>\Illuminate\Console\Application::getLaravel()</full_name>
+        <docblock line="168">
+          <description>Get the Laravel application instance.</description>
+          <long-description/>
+          <tag name="return" line="168" description="" type="\Illuminate\Contracts\Foundation\Application">
+            <type>\Illuminate\Contracts\Foundation\Application</type>
+          </tag>
+        </docblock>
+      </method>
+    </class>
+    <parse_markers>
+      <error line="0" code="PPC:ERR-50000">No summary was found for this file</error>
+      <error line="14" code="PPC:ERR-50005">No summary for class \Illuminate\Console\Application</error>
+    </parse_markers>
+    <source>eJzNV99v2zYQfvdfwYcAlgO7fXdXt17iDgGCpVizvcyFwUgnm6hECiSlxljzv+9IURKtH7ay7WF5iCXy+PG7u4934k8fskM2mXCagspoCOQuSfKUcapheyO4Egm8m0xy1Z7QkoZabTcFcPy5ZbhYhweQ74ZtzRNlHGTzVFp/Oaax4EccTjPBEbDaeXvHs1xv11LSo30cZ2//P2SaCX5pwUOuzYqf8zgGCVH5emnROssSFlKDT6iqDL3RSwA4klIeVb8eiBs5H8U+Et5rZYt5CxOqTuYIPGvgUR9pwtIsgdTksw9t8teE4N/b62v7S67J4wHIPZW0gIRQH4crTXkIb5xhZf+xoJJsx0rDrXprfzMpNIQaInKVlDuicz10hM0fiaVIicb3TELBRK5IWMa1n9Ir5THMTOlKQG1yNxLQY0IJh+9kLTVTlCMpu4sfvA7BDN1NyfiwkTpC4yA6BxgBwI611ystGd/jdAFSIdV6XoLOJSeFYNFpaPIndIvEOQ+tLnY747CWeaiDhm9Fd048Do7CvN5sZhFLCVpsKtFgufQxp5UYPyFf+C7kt6kH4HJi/q70ganFym1M3nuiapko0Otci80z00FMEwWzPpMbw3rzHIItOaq2bExLdxarmEkIjARc2J0SvmiKD3wfWMyZ2+Slo6LfcjzrvKMfJ27ydCSmjg9pqE6gs2/PU1Nmcdq+gsa4tVPMuD6b4ZAmSVDBzx2gh4eh/vNrO5Wn86FIEjxPgTc6W6zwHGdYtmrs3mxWpw9RTIjbNf0fJU6CyhOD6BbJnAflEa5aks90sdLCzgSz2bxLrId1DwkU8wkHF3tHZUgav4C2Fa+qgELaV7M5QdKDBdChl9o4m9wSOWinr6LXycKH7hgeAEBngxlZkul0yJV1hB2xFrUW1hGn9cH6OL7ZdvXvXBiPcTZONIqC025e79iOHYtJLem6bYqYuHUzz9Rqxpla2bhiF5wWM68+vXQlVJoiwUfx2RZQ/0ANJ6OM/0k6yvo73Or/B2mpG7OfmdrxkRlyHKp2Y3I7KmS1fucIgVwLU3n1QYp8f7ABHNHzB+v1f6vXkh8EF0LQiKclucUqpd+85cPdq9zIdLCyM6DS3SL12thYgB8pewZPOZ1+ZYmOcd7FSdVeqE6Xqpm+J0zt7P6etal2tcXS4u/2oNFurwK/mmNhBhoemnOvzNd7Hbz2iXddp52ii6f8UpuIIKamsTHTwswb48y2n7pzeElQ7Sw84g4YBYKXFFsRqCsSiwXwggjbyMw4fvbII6EFZQl9aj5UhprQGUF7F7vbmuyl844JuC39bC3sNLGrJgKY3+q0n1nvd/JmrT0e5cWzOiSIseEFk4Kbm5Wbm/X19wbmUvL2iXiiCYEGt4p5lbwG69/FuuQ7Is49PrZDnIJSdA8Y36m5qvns/QajDiJPIvvNkvMI5JtpN1bmC8zjF0yt8PBrn+cJXiS8qeXyj/X975vdw+fHu4df1/fzmsdgmaqi/KqrbRXV3jvWJ4GeWAD/1n62Lu2bBn/pg8u7ubxMXiZ/A35wowE=</source>
+  <type>class</type></file>

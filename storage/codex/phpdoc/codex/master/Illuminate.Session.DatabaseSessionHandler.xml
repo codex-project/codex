@@ -1,0 +1,253 @@
+<file path="codex/vendor/laravel/framework/src/Illuminate/Session/DatabaseSessionHandler.php" generated-path="codex.vendor.laravel.framework.src.Illuminate.Session.DatabaseSessionHandler.html" hash="d38d1a7ad7bf58cc8a03b8a2a6314060" package="Default">
+    <docblock line="0">
+      <description/>
+      <long-description/>
+      <tag name="package" line="0" description="Default"/>
+    </docblock>
+    <namespace-alias name="SessionHandlerInterface">\SessionHandlerInterface</namespace-alias>
+    <namespace-alias name="Guard">\Illuminate\Contracts\Auth\Guard</namespace-alias>
+    <namespace-alias name="ConnectionInterface">\Illuminate\Database\ConnectionInterface</namespace-alias>
+    <namespace-alias name="Container">\Illuminate\Contracts\Container\Container</namespace-alias>
+    <class final="false" abstract="false" namespace="Illuminate\Session" line="10" package="Default">
+      <extends/>
+      <implements>\SessionHandlerInterface</implements>
+      <implements>\Illuminate\Session\ExistenceAwareInterface</implements>
+      <name>DatabaseSessionHandler</name>
+      <full_name>\Illuminate\Session\DatabaseSessionHandler</full_name>
+      <docblock line="10">
+        <description/>
+        <long-description/>
+        <tag name="package" line="10" description="Default"/>
+      </docblock>
+      <property static="false" visibility="protected" namespace="Illuminate\Session" line="17" package="Default">
+        <name>$connection</name>
+        <full_name>\Illuminate\Session\DatabaseSessionHandler::connection</full_name>
+        <default/>
+        <docblock line="17">
+          <description>The database connection instance.</description>
+          <long-description/>
+          <tag name="var" line="17" description="" type="\Illuminate\Database\ConnectionInterface" variable="">
+            <type>\Illuminate\Database\ConnectionInterface</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" namespace="Illuminate\Session" line="24" package="Default">
+        <name>$table</name>
+        <full_name>\Illuminate\Session\DatabaseSessionHandler::table</full_name>
+        <default/>
+        <docblock line="24">
+          <description>The name of the session table.</description>
+          <long-description/>
+          <tag name="var" line="24" description="" type="string" variable="">
+            <type>string</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" namespace="Illuminate\Session" line="31" package="Default">
+        <name>$container</name>
+        <full_name>\Illuminate\Session\DatabaseSessionHandler::container</full_name>
+        <default/>
+        <docblock line="31">
+          <description>The container instance.</description>
+          <long-description/>
+          <tag name="var" line="31" description="" type="\Illuminate\Contracts\Container\Container" variable="">
+            <type>\Illuminate\Contracts\Container\Container</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" namespace="Illuminate\Session" line="38" package="Default">
+        <name>$exists</name>
+        <full_name>\Illuminate\Session\DatabaseSessionHandler::exists</full_name>
+        <default/>
+        <docblock line="38">
+          <description>The existence state of the session.</description>
+          <long-description/>
+          <tag name="var" line="38" description="" type="boolean" variable="">
+            <type>boolean</type>
+          </tag>
+        </docblock>
+      </property>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Session" line="48" package="Default">
+        <name>__construct</name>
+        <full_name>\Illuminate\Session\DatabaseSessionHandler::__construct()</full_name>
+        <docblock line="48">
+          <description>Create a new database session handler instance.</description>
+          <long-description/>
+          <tag name="param" line="48" description="" type="\Illuminate\Database\ConnectionInterface" variable="$connection">
+            <type>\Illuminate\Database\ConnectionInterface</type>
+          </tag>
+          <tag name="param" line="48" description="" type="string" variable="$table">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="48" description="" type="\Illuminate\Contracts\Container\Container|null" variable="$container">
+            <type>\Illuminate\Contracts\Container\Container</type>
+            <type>null</type>
+          </tag>
+          <tag name="return" line="48" description="" type="void">
+            <type>void</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$connection</name>
+          <default/>
+          <type>\Illuminate\Database\ConnectionInterface</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$table</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$container</name>
+          <default>null</default>
+          <type>\Illuminate\Contracts\Container\Container|null</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Session" line="58" package="Default">
+        <name>open</name>
+        <full_name>\Illuminate\Session\DatabaseSessionHandler::open()</full_name>
+        <docblock line="58">
+          <description>{@inheritdoc}</description>
+          <long-description/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$savePath</name>
+          <default/>
+          <type/>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$sessionName</name>
+          <default/>
+          <type/>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Session" line="66" package="Default">
+        <name>close</name>
+        <full_name>\Illuminate\Session\DatabaseSessionHandler::close()</full_name>
+        <docblock line="66">
+          <description>{@inheritdoc}</description>
+          <long-description/>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Session" line="74" package="Default">
+        <name>read</name>
+        <full_name>\Illuminate\Session\DatabaseSessionHandler::read()</full_name>
+        <docblock line="74">
+          <description>{@inheritdoc}</description>
+          <long-description/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$sessionId</name>
+          <default/>
+          <type/>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Session" line="88" package="Default">
+        <name>write</name>
+        <full_name>\Illuminate\Session\DatabaseSessionHandler::write()</full_name>
+        <docblock line="88">
+          <description>{@inheritdoc}</description>
+          <long-description/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$sessionId</name>
+          <default/>
+          <type/>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$data</name>
+          <default/>
+          <type/>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Session" line="113" package="Default">
+        <name>getDefaultPayload</name>
+        <full_name>\Illuminate\Session\DatabaseSessionHandler::getDefaultPayload()</full_name>
+        <docblock line="113">
+          <description>Get the default payload for the session.</description>
+          <long-description/>
+          <tag name="param" line="113" description="" type="string" variable="$data">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="113" description="" type="array">
+            <type>array</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$data</name>
+          <default/>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Session" line="139" package="Default">
+        <name>destroy</name>
+        <full_name>\Illuminate\Session\DatabaseSessionHandler::destroy()</full_name>
+        <docblock line="139">
+          <description>{@inheritdoc}</description>
+          <long-description/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$sessionId</name>
+          <default/>
+          <type/>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Session" line="147" package="Default">
+        <name>gc</name>
+        <full_name>\Illuminate\Session\DatabaseSessionHandler::gc()</full_name>
+        <docblock line="147">
+          <description>{@inheritdoc}</description>
+          <long-description/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$lifetime</name>
+          <default/>
+          <type/>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Session" line="157" package="Default">
+        <name>getQuery</name>
+        <full_name>\Illuminate\Session\DatabaseSessionHandler::getQuery()</full_name>
+        <docblock line="157">
+          <description>Get a fresh query builder instance for the table.</description>
+          <long-description/>
+          <tag name="return" line="157" description="" type="\Illuminate\Database\Query\Builder">
+            <type>\Illuminate\Database\Query\Builder</type>
+          </tag>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Session" line="168" package="Default">
+        <name>setExists</name>
+        <full_name>\Illuminate\Session\DatabaseSessionHandler::setExists()</full_name>
+        <docblock line="168">
+          <description>Set the existence state for the session.</description>
+          <long-description/>
+          <tag name="param" line="168" description="" type="boolean" variable="$value">
+            <type>boolean</type>
+          </tag>
+          <tag name="return" line="168" description="" type="\Illuminate\Session\DatabaseSessionHandler">
+            <type>\Illuminate\Session\DatabaseSessionHandler</type>
+          </tag>
+          <tag name="inherited_from" description="\Illuminate\Session\ExistenceAwareInterface::setExists()" refers="\Illuminate\Session\ExistenceAwareInterface::setExists()" link="/classes/Illuminate.Session.ExistenceAwareInterface.html#method_setExists"/>
+          <tag name="fluent" description="This method is part of a fluent interface and will return the same instance"/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$value</name>
+          <default/>
+          <type>boolean</type>
+        </argument>
+      </method>
+    </class>
+    <parse_markers>
+      <error line="0" code="PPC:ERR-50000">No summary was found for this file</error>
+      <error line="10" code="PPC:ERR-50005">No summary for class \Illuminate\Session\DatabaseSessionHandler</error>
+      <error line="58" code="PPC:ERR-50015">Argument $savePath is missing from the Docblock of open</error>
+      <error line="58" code="PPC:ERR-50015">Argument $sessionName is missing from the Docblock of open</error>
+      <error line="74" code="PPC:ERR-50015">Argument $sessionId is missing from the Docblock of read</error>
+      <error line="88" code="PPC:ERR-50015">Argument $sessionId is missing from the Docblock of write</error>
+      <error line="88" code="PPC:ERR-50015">Argument $data is missing from the Docblock of write</error>
+      <error line="139" code="PPC:ERR-50015">Argument $sessionId is missing from the Docblock of destroy</error>
+      <error line="147" code="PPC:ERR-50015">Argument $lifetime is missing from the Docblock of gc</error>
+    </parse_markers>
+    <source>eJy1V01v20YQvetXTAEDogyp8aHtIY7UuEmR+lKkSHuKAmHFHZrbUktmdylHSP3fO7tcUvxYsiqM8mDT2Nk3H+/NcPzqxyItZjPJDqgLFiPcZ1l5EJIZ3H5ArUUub2ezUiP4v35hkmeo7qVBldCFW3fYuvUml0ax2OjtXWnS7buSKT4wessM2zPtrCXGhoAvQbRvTEhU5zeKLs6Y1lBDduMEcSgyPKA0eiyDJfz8RWiDMsa7R6awOZh9nQE9L66v3W+4ht9TBO79QNyEDkJqw+j+t96wtn99ZAq2F+btL71wvwuVGzpHDldnP5RrICDLHeQJGHrXVYpAXrJwNNooIR/GfLl7YTdxXfHLs50kbiLdhtlAGFhzRZmQj17iwZD2eZ6NeXNweujqjUKLzkDi45nyurxpLa6xShRMsQNcTD20We6DVIyBJ2fKxWS9/5ZllkGrvg2SQlMqCcdc8G6Zyn0mYkhKWal8t6O7FE0ZmyiURCuHpY92CY3/lmdYgw1m4bxUTWafK5MKvdq4i2RSi7F33EZpi2VoVnfnuttD1uhpQPjX10KmqIThefw0WYa8QBldaXbE98yklKlXxa/Uh/2UfGmpZvh8x3GWa4z+Vxekeh7VCd3zAUN1A6whyvd/UkUXdb0f0PxWojpFi9UmEbKD4tvLPiKBSGiNpjlfbQp2ynLGF4uWpxaTVYuSyyrFjolP3vbVD9/tOMY5xwDyWR1Pzy7RIxlhKzsSgJ0Pg1J5307IdYXeYsLKzLyvjqLqYq8633TzHilKn6h2hh24S8Da3D1SFTCaCz4/K5vwV5uyoGgp8UBNATMajj1ob/fRQn2yVWjAehwGgqC5isoEfZ3vhuURpvcdGveZ4BUBUJOT5Gry89EfwZaw/txkSrHTyPelUc0Y+eOq+Tj373NYb2qF04fPKdzdXcKcNh+zo4kvjsKcnKERB5oRn4ai6szN3ijt68JnVkczLq4GYbXZ5yV1vVv3Xr50K9mwoRtN0IandrUwWiAH9hd2MUgMPJqQ9yCCucLPJWozn3Avih3jXBHp4QjOGOS+iBZ9xXbzYA+0XjogXe5JKlHH2D5RJaDFtKeUehpVNP+DQFd3DpQ4vlnC9zc3HchwOYKkPWfScYpL5aep78F/mB8cM6T5sXh+XA9xdJWJBK3UL4+o2yrUO6/W9LNqF1jBGfHfQ7XThEFC+knhs3UD+1JkvLUQNoMlvIh7qoLroYt7+1MFeMFY8XmGt4LBMuTXq6i9a43m+cFPzf7OfeHUtHs3MXJkWYn91J3/SZZpR3D/l+moQhhhuhn/ldXtsB+sXZ3h0+wfQW1bvg==</source>
+  <type>class</type></file>

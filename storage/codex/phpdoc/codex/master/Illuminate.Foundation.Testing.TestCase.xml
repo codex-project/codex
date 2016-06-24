@@ -1,0 +1,2343 @@
+<file path="codex/vendor/laravel/framework/src/Illuminate/Foundation/Testing/TestCase.php" generated-path="codex.vendor.laravel.framework.src.Illuminate.Foundation.Testing.TestCase.html" hash="1cd3cbc11542e29187c62cdfe589b027" package="Default">
+    <docblock line="0">
+      <description/>
+      <long-description/>
+      <tag name="package" line="0" description="Default"/>
+    </docblock>
+    <namespace-alias name="Mockery">\Mockery</namespace-alias>
+    <namespace-alias name="PHPUnit_Framework_TestCase">\PHPUnit_Framework_TestCase</namespace-alias>
+    <class final="false" abstract="true" namespace="Illuminate\Foundation\Testing" line="8" package="Default">
+      <extends>\PHPUnit_Framework_TestCase</extends>
+      <name>TestCase</name>
+      <full_name>\Illuminate\Foundation\Testing\TestCase</full_name>
+      <docblock line="8">
+        <description/>
+        <long-description/>
+        <tag name="package" line="8" description="Default"/>
+      </docblock>
+      <property static="false" visibility="protected" namespace="Illuminate\Foundation\Testing" line="24" package="Default">
+        <name>$app</name>
+        <full_name>\Illuminate\Foundation\Testing\TestCase::app</full_name>
+        <default/>
+        <docblock line="24">
+          <description>The Illuminate application instance.</description>
+          <long-description/>
+          <tag name="var" line="24" description="" type="\Illuminate\Foundation\Application" variable="">
+            <type>\Illuminate\Foundation\Application</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" namespace="Illuminate\Foundation\Testing" line="31" package="Default">
+        <name>$afterApplicationCreatedCallbacks</name>
+        <full_name>\Illuminate\Foundation\Testing\TestCase::afterApplicationCreatedCallbacks</full_name>
+        <default>array()</default>
+        <docblock line="31">
+          <description>The callbacks that should be run after the application is created.</description>
+          <long-description/>
+          <tag name="var" line="31" description="" type="array" variable="">
+            <type>array</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" namespace="Illuminate\Foundation\Testing" line="38" package="Default">
+        <name>$beforeApplicationDestroyedCallbacks</name>
+        <full_name>\Illuminate\Foundation\Testing\TestCase::beforeApplicationDestroyedCallbacks</full_name>
+        <default>array()</default>
+        <docblock line="38">
+          <description>The callbacks that should be run before the application is destroyed.</description>
+          <long-description/>
+          <tag name="var" line="38" description="" type="array" variable="">
+            <type>array</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" namespace="Illuminate\Foundation\Testing" line="45" package="Default">
+        <name>$setUpHasRun</name>
+        <full_name>\Illuminate\Foundation\Testing\TestCase::setUpHasRun</full_name>
+        <default>false</default>
+        <docblock line="45">
+          <description>Indicates if we have made it through the base setUp function.</description>
+          <long-description/>
+          <tag name="var" line="45" description="" type="boolean" variable="">
+            <type>boolean</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" namespace="Illuminate\Foundation\Testing" line="22" package="Default">
+        <name>$response</name>
+        <full_name>\Illuminate\Foundation\Testing\Concerns\MakesHttpRequests::response</full_name>
+        <default/>
+        <docblock line="22">
+          <description>The last response returned by the application.</description>
+          <long-description/>
+          <tag name="var" line="22" description="" type="\Illuminate\Http\Response" variable="">
+            <type>\Illuminate\Http\Response</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" namespace="Illuminate\Foundation\Testing" line="29" package="Default">
+        <name>$currentUri</name>
+        <full_name>\Illuminate\Foundation\Testing\Concerns\MakesHttpRequests::currentUri</full_name>
+        <default/>
+        <docblock line="29">
+          <description>The current URL being viewed.</description>
+          <long-description/>
+          <tag name="var" line="29" description="" type="string" variable="">
+            <type>string</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" namespace="Illuminate\Foundation\Testing" line="36" package="Default">
+        <name>$serverVariables</name>
+        <full_name>\Illuminate\Foundation\Testing\Concerns\MakesHttpRequests::serverVariables</full_name>
+        <default>array()</default>
+        <docblock line="36">
+          <description>Additional server variables for the request.</description>
+          <long-description/>
+          <tag name="var" line="36" description="" type="array" variable="">
+            <type>array</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" namespace="Illuminate\Foundation\Testing" line="14" package="Default">
+        <name>$code</name>
+        <full_name>\Illuminate\Foundation\Testing\Concerns\InteractsWithConsole::code</full_name>
+        <default/>
+        <docblock line="14">
+          <description>The last code returned by Artisan CLI.</description>
+          <long-description/>
+          <tag name="var" line="14" description="" type="integer" variable="">
+            <type>integer</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" namespace="Illuminate\Foundation\Testing" line="15" package="Default">
+        <name>$firedEvents</name>
+        <full_name>\Illuminate\Foundation\Testing\Concerns\MocksApplicationServices::firedEvents</full_name>
+        <default>array()</default>
+        <docblock line="15">
+          <description>All of the fired events.</description>
+          <long-description/>
+          <tag name="var" line="15" description="" type="array" variable="">
+            <type>array</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" namespace="Illuminate\Foundation\Testing" line="22" package="Default">
+        <name>$dispatchedJobs</name>
+        <full_name>\Illuminate\Foundation\Testing\Concerns\MocksApplicationServices::dispatchedJobs</full_name>
+        <default>array()</default>
+        <docblock line="22">
+          <description>All of the dispatched jobs.</description>
+          <long-description/>
+          <tag name="var" line="22" description="" type="array" variable="">
+            <type>array</type>
+          </tag>
+        </docblock>
+      </property>
+      <method final="false" abstract="true" static="false" visibility="public" namespace="Illuminate\Foundation\Testing" line="54" package="Default">
+        <name>createApplication</name>
+        <full_name>\Illuminate\Foundation\Testing\TestCase::createApplication()</full_name>
+        <docblock line="54">
+          <description>Creates the application.</description>
+          <long-description>Needs to be implemented by subclasses.</long-description>
+          <tag name="return" line="54" description="" type="\Symfony\Component\HttpKernel\HttpKernelInterface">
+            <type>\Symfony\Component\HttpKernel\HttpKernelInterface</type>
+          </tag>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Foundation\Testing" line="61" package="Default">
+        <name>setUp</name>
+        <full_name>\Illuminate\Foundation\Testing\TestCase::setUp()</full_name>
+        <docblock line="61">
+          <description>Setup the test environment.</description>
+          <long-description/>
+          <tag name="return" line="61" description="" type="void">
+            <type>void</type>
+          </tag>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Foundation\Testing" line="81" package="Default">
+        <name>refreshApplication</name>
+        <full_name>\Illuminate\Foundation\Testing\TestCase::refreshApplication()</full_name>
+        <docblock line="81">
+          <description>Refresh the application instance.</description>
+          <long-description/>
+          <tag name="return" line="81" description="" type="void">
+            <type>void</type>
+          </tag>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Foundation\Testing" line="93" package="Default">
+        <name>setUpTraits</name>
+        <full_name>\Illuminate\Foundation\Testing\TestCase::setUpTraits()</full_name>
+        <docblock line="93">
+          <description>Boot the testing helper traits.</description>
+          <long-description/>
+          <tag name="return" line="93" description="" type="void">
+            <type>void</type>
+          </tag>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Foundation\Testing" line="119" package="Default">
+        <name>tearDown</name>
+        <full_name>\Illuminate\Foundation\Testing\TestCase::tearDown()</full_name>
+        <docblock line="119">
+          <description>Clean up the testing environment before the next test.</description>
+          <long-description/>
+          <tag name="return" line="119" description="" type="void">
+            <type>void</type>
+          </tag>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Foundation\Testing" line="151" package="Default">
+        <name>afterApplicationCreated</name>
+        <full_name>\Illuminate\Foundation\Testing\TestCase::afterApplicationCreated()</full_name>
+        <docblock line="151">
+          <description>Register a callback to be run after the application is created.</description>
+          <long-description/>
+          <tag name="param" line="151" description="" type="callable" variable="$callback">
+            <type>callable</type>
+          </tag>
+          <tag name="return" line="151" description="" type="void">
+            <type>void</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$callback</name>
+          <default/>
+          <type>callable</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Foundation\Testing" line="166" package="Default">
+        <name>beforeApplicationDestroyed</name>
+        <full_name>\Illuminate\Foundation\Testing\TestCase::beforeApplicationDestroyed()</full_name>
+        <docblock line="166">
+          <description>Register a callback to be run before the application is destroyed.</description>
+          <long-description/>
+          <tag name="param" line="166" description="" type="callable" variable="$callback">
+            <type>callable</type>
+          </tag>
+          <tag name="return" line="166" description="" type="void">
+            <type>void</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$callback</name>
+          <default/>
+          <type>callable</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Foundation\Testing" line="14" package="Default">
+        <name>instance</name>
+        <full_name>\Illuminate\Foundation\Testing\Concerns\InteractsWithContainer::instance()</full_name>
+        <docblock line="14">
+          <description>Register an instance of an object in the container.</description>
+          <long-description/>
+          <tag name="param" line="14" description="" type="string" variable="$abstract">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="14" description="" type="object" variable="$instance">
+            <type>object</type>
+          </tag>
+          <tag name="return" line="14" description="" type="object">
+            <type>object</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$abstract</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$instance</name>
+          <default/>
+          <type>object</type>
+        </argument>
+        <inherited_from>\Illuminate\Foundation\Testing\Concerns\InteractsWithContainer</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Foundation\Testing" line="43" package="Default">
+        <name>withoutMiddleware</name>
+        <full_name>\Illuminate\Foundation\Testing\Concerns\MakesHttpRequests::withoutMiddleware()</full_name>
+        <docblock line="43">
+          <description>Disable middleware for the test.</description>
+          <long-description/>
+          <tag name="return" line="43" description="" type="\Illuminate\Foundation\Testing\TestCase">
+            <type>\Illuminate\Foundation\Testing\TestCase</type>
+          </tag>
+          <tag name="fluent" description="This method is part of a fluent interface and will return the same instance"/>
+        </docblock>
+        <inherited_from>\Illuminate\Foundation\Testing\Concerns\MakesHttpRequests</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Foundation\Testing" line="59" package="Default">
+        <name>json</name>
+        <full_name>\Illuminate\Foundation\Testing\Concerns\MakesHttpRequests::json()</full_name>
+        <docblock line="59">
+          <description>Visit the given URI with a JSON request.</description>
+          <long-description/>
+          <tag name="param" line="59" description="" type="string" variable="$method">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="59" description="" type="string" variable="$uri">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="59" description="" type="array" variable="$data">
+            <type>array</type>
+          </tag>
+          <tag name="param" line="59" description="" type="array" variable="$headers">
+            <type>array</type>
+          </tag>
+          <tag name="return" line="59" description="" type="\Illuminate\Foundation\Testing\TestCase">
+            <type>\Illuminate\Foundation\Testing\TestCase</type>
+          </tag>
+          <tag name="fluent" description="This method is part of a fluent interface and will return the same instance"/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$method</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$uri</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$data</name>
+          <default>array()</default>
+          <type>array</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$headers</name>
+          <default>array()</default>
+          <type>array</type>
+        </argument>
+        <inherited_from>\Illuminate\Foundation\Testing\Concerns\MakesHttpRequests</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Foundation\Testing" line="84" package="Default">
+        <name>extractFilesFromDataArray</name>
+        <full_name>\Illuminate\Foundation\Testing\Concerns\MakesHttpRequests::extractFilesFromDataArray()</full_name>
+        <docblock line="84">
+          <description>Extract the file uploads from the given data array.</description>
+          <long-description/>
+          <tag name="param" line="84" description="" type="array" variable="$data">
+            <type>array</type>
+          </tag>
+          <tag name="return" line="84" description="" type="array">
+            <type>array</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="true">
+          <name>$data</name>
+          <default/>
+          <type>array</type>
+        </argument>
+        <inherited_from>\Illuminate\Foundation\Testing\Concerns\MakesHttpRequests</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Foundation\Testing" line="106" package="Default">
+        <name>get</name>
+        <full_name>\Illuminate\Foundation\Testing\Concerns\MakesHttpRequests::get()</full_name>
+        <docblock line="106">
+          <description>Visit the given URI with a GET request.</description>
+          <long-description/>
+          <tag name="param" line="106" description="" type="string" variable="$uri">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="106" description="" type="array" variable="$headers">
+            <type>array</type>
+          </tag>
+          <tag name="return" line="106" description="" type="\Illuminate\Foundation\Testing\TestCase">
+            <type>\Illuminate\Foundation\Testing\TestCase</type>
+          </tag>
+          <tag name="fluent" description="This method is part of a fluent interface and will return the same instance"/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$uri</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$headers</name>
+          <default>array()</default>
+          <type>array</type>
+        </argument>
+        <inherited_from>\Illuminate\Foundation\Testing\Concerns\MakesHttpRequests</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Foundation\Testing" line="123" package="Default">
+        <name>post</name>
+        <full_name>\Illuminate\Foundation\Testing\Concerns\MakesHttpRequests::post()</full_name>
+        <docblock line="123">
+          <description>Visit the given URI with a POST request.</description>
+          <long-description/>
+          <tag name="param" line="123" description="" type="string" variable="$uri">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="123" description="" type="array" variable="$data">
+            <type>array</type>
+          </tag>
+          <tag name="param" line="123" description="" type="array" variable="$headers">
+            <type>array</type>
+          </tag>
+          <tag name="return" line="123" description="" type="\Illuminate\Foundation\Testing\TestCase">
+            <type>\Illuminate\Foundation\Testing\TestCase</type>
+          </tag>
+          <tag name="fluent" description="This method is part of a fluent interface and will return the same instance"/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$uri</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$data</name>
+          <default>array()</default>
+          <type>array</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$headers</name>
+          <default>array()</default>
+          <type>array</type>
+        </argument>
+        <inherited_from>\Illuminate\Foundation\Testing\Concerns\MakesHttpRequests</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Foundation\Testing" line="140" package="Default">
+        <name>put</name>
+        <full_name>\Illuminate\Foundation\Testing\Concerns\MakesHttpRequests::put()</full_name>
+        <docblock line="140">
+          <description>Visit the given URI with a PUT request.</description>
+          <long-description/>
+          <tag name="param" line="140" description="" type="string" variable="$uri">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="140" description="" type="array" variable="$data">
+            <type>array</type>
+          </tag>
+          <tag name="param" line="140" description="" type="array" variable="$headers">
+            <type>array</type>
+          </tag>
+          <tag name="return" line="140" description="" type="\Illuminate\Foundation\Testing\TestCase">
+            <type>\Illuminate\Foundation\Testing\TestCase</type>
+          </tag>
+          <tag name="fluent" description="This method is part of a fluent interface and will return the same instance"/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$uri</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$data</name>
+          <default>array()</default>
+          <type>array</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$headers</name>
+          <default>array()</default>
+          <type>array</type>
+        </argument>
+        <inherited_from>\Illuminate\Foundation\Testing\Concerns\MakesHttpRequests</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Foundation\Testing" line="157" package="Default">
+        <name>patch</name>
+        <full_name>\Illuminate\Foundation\Testing\Concerns\MakesHttpRequests::patch()</full_name>
+        <docblock line="157">
+          <description>Visit the given URI with a PATCH request.</description>
+          <long-description/>
+          <tag name="param" line="157" description="" type="string" variable="$uri">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="157" description="" type="array" variable="$data">
+            <type>array</type>
+          </tag>
+          <tag name="param" line="157" description="" type="array" variable="$headers">
+            <type>array</type>
+          </tag>
+          <tag name="return" line="157" description="" type="\Illuminate\Foundation\Testing\TestCase">
+            <type>\Illuminate\Foundation\Testing\TestCase</type>
+          </tag>
+          <tag name="fluent" description="This method is part of a fluent interface and will return the same instance"/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$uri</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$data</name>
+          <default>array()</default>
+          <type>array</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$headers</name>
+          <default>array()</default>
+          <type>array</type>
+        </argument>
+        <inherited_from>\Illuminate\Foundation\Testing\Concerns\MakesHttpRequests</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Foundation\Testing" line="174" package="Default">
+        <name>delete</name>
+        <full_name>\Illuminate\Foundation\Testing\Concerns\MakesHttpRequests::delete()</full_name>
+        <docblock line="174">
+          <description>Visit the given URI with a DELETE request.</description>
+          <long-description/>
+          <tag name="param" line="174" description="" type="string" variable="$uri">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="174" description="" type="array" variable="$data">
+            <type>array</type>
+          </tag>
+          <tag name="param" line="174" description="" type="array" variable="$headers">
+            <type>array</type>
+          </tag>
+          <tag name="return" line="174" description="" type="\Illuminate\Foundation\Testing\TestCase">
+            <type>\Illuminate\Foundation\Testing\TestCase</type>
+          </tag>
+          <tag name="fluent" description="This method is part of a fluent interface and will return the same instance"/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$uri</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$data</name>
+          <default>array()</default>
+          <type>array</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$headers</name>
+          <default>array()</default>
+          <type>array</type>
+        </argument>
+        <inherited_from>\Illuminate\Foundation\Testing\Concerns\MakesHttpRequests</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Foundation\Testing" line="191" package="Default">
+        <name>handle</name>
+        <full_name>\Illuminate\Foundation\Testing\Concerns\MakesHttpRequests::handle()</full_name>
+        <docblock line="191">
+          <description>Send the given request through the application.</description>
+          <long-description>This method allows you to fully customize the entire Request object.</long-description>
+          <tag name="param" line="191" description="" type="\Illuminate\Http\Request" variable="$request">
+            <type>\Illuminate\Http\Request</type>
+          </tag>
+          <tag name="return" line="191" description="" type="\Illuminate\Foundation\Testing\TestCase">
+            <type>\Illuminate\Foundation\Testing\TestCase</type>
+          </tag>
+          <tag name="fluent" description="This method is part of a fluent interface and will return the same instance"/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$request</name>
+          <default/>
+          <type>\Illuminate\Http\Request</type>
+        </argument>
+        <inherited_from>\Illuminate\Foundation\Testing\Concerns\MakesHttpRequests</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Foundation\Testing" line="206" package="Default">
+        <name>shouldReturnJson</name>
+        <full_name>\Illuminate\Foundation\Testing\Concerns\MakesHttpRequests::shouldReturnJson()</full_name>
+        <docblock line="206">
+          <description>Assert that the response contains JSON.</description>
+          <long-description/>
+          <tag name="param" line="206" description="" type="array|null" variable="$data">
+            <type>array</type>
+            <type>null</type>
+          </tag>
+          <tag name="return" line="206" description="" type="\Illuminate\Foundation\Testing\TestCase">
+            <type>\Illuminate\Foundation\Testing\TestCase</type>
+          </tag>
+          <tag name="fluent" description="This method is part of a fluent interface and will return the same instance"/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$data</name>
+          <default>null</default>
+          <type>array|null</type>
+        </argument>
+        <inherited_from>\Illuminate\Foundation\Testing\Concerns\MakesHttpRequests</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Foundation\Testing" line="217" package="Default">
+        <name>receiveJson</name>
+        <full_name>\Illuminate\Foundation\Testing\Concerns\MakesHttpRequests::receiveJson()</full_name>
+        <docblock line="217">
+          <description>Assert that the response contains JSON.</description>
+          <long-description/>
+          <tag name="param" line="217" description="" type="array|null" variable="$data">
+            <type>array</type>
+            <type>null</type>
+          </tag>
+          <tag name="return" line="217" description="" type="$this|null">
+            <type>\Illuminate\Foundation\Testing\TestCase</type>
+            <type>null</type>
+          </tag>
+          <tag name="fluent" description="This method is part of a fluent interface and will return the same instance"/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$data</name>
+          <default>null</default>
+          <type>array|null</type>
+        </argument>
+        <inherited_from>\Illuminate\Foundation\Testing\Concerns\MakesHttpRequests</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Foundation\Testing" line="228" package="Default">
+        <name>seeJsonEquals</name>
+        <full_name>\Illuminate\Foundation\Testing\Concerns\MakesHttpRequests::seeJsonEquals()</full_name>
+        <docblock line="228">
+          <description>Assert that the response contains an exact JSON array.</description>
+          <long-description/>
+          <tag name="param" line="228" description="" type="array" variable="$data">
+            <type>array</type>
+          </tag>
+          <tag name="return" line="228" description="" type="\Illuminate\Foundation\Testing\TestCase">
+            <type>\Illuminate\Foundation\Testing\TestCase</type>
+          </tag>
+          <tag name="fluent" description="This method is part of a fluent interface and will return the same instance"/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$data</name>
+          <default/>
+          <type>array</type>
+        </argument>
+        <inherited_from>\Illuminate\Foundation\Testing\Concerns\MakesHttpRequests</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Foundation\Testing" line="246" package="Default">
+        <name>seeJson</name>
+        <full_name>\Illuminate\Foundation\Testing\Concerns\MakesHttpRequests::seeJson()</full_name>
+        <docblock line="246">
+          <description>Assert that the response contains JSON.</description>
+          <long-description/>
+          <tag name="param" line="246" description="" type="array|null" variable="$data">
+            <type>array</type>
+            <type>null</type>
+          </tag>
+          <tag name="param" line="246" description="" type="boolean" variable="$negate">
+            <type>boolean</type>
+          </tag>
+          <tag name="return" line="246" description="" type="\Illuminate\Foundation\Testing\TestCase">
+            <type>\Illuminate\Foundation\Testing\TestCase</type>
+          </tag>
+          <tag name="fluent" description="This method is part of a fluent interface and will return the same instance"/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$data</name>
+          <default>null</default>
+          <type>array|null</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$negate</name>
+          <default>false</default>
+          <type>boolean</type>
+        </argument>
+        <inherited_from>\Illuminate\Foundation\Testing\Concerns\MakesHttpRequests</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Foundation\Testing" line="271" package="Default">
+        <name>dontSeeJson</name>
+        <full_name>\Illuminate\Foundation\Testing\Concerns\MakesHttpRequests::dontSeeJson()</full_name>
+        <docblock line="271">
+          <description>Assert that the response doesn't contain JSON.</description>
+          <long-description/>
+          <tag name="param" line="271" description="" type="array|null" variable="$data">
+            <type>array</type>
+            <type>null</type>
+          </tag>
+          <tag name="return" line="271" description="" type="\Illuminate\Foundation\Testing\TestCase">
+            <type>\Illuminate\Foundation\Testing\TestCase</type>
+          </tag>
+          <tag name="fluent" description="This method is part of a fluent interface and will return the same instance"/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$data</name>
+          <default>null</default>
+          <type>array|null</type>
+        </argument>
+        <inherited_from>\Illuminate\Foundation\Testing\Concerns\MakesHttpRequests</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Foundation\Testing" line="283" package="Default">
+        <name>seeJsonStructure</name>
+        <full_name>\Illuminate\Foundation\Testing\Concerns\MakesHttpRequests::seeJsonStructure()</full_name>
+        <docblock line="283">
+          <description>Assert that the JSON response has a given structure.</description>
+          <long-description/>
+          <tag name="param" line="283" description="" type="array|null" variable="$structure">
+            <type>array</type>
+            <type>null</type>
+          </tag>
+          <tag name="param" line="283" description="" type="array|null" variable="$responseData">
+            <type>array</type>
+            <type>null</type>
+          </tag>
+          <tag name="return" line="283" description="" type="\Illuminate\Foundation\Testing\TestCase">
+            <type>\Illuminate\Foundation\Testing\TestCase</type>
+          </tag>
+          <tag name="fluent" description="This method is part of a fluent interface and will return the same instance"/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$structure</name>
+          <default>null</default>
+          <type>array|null</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$responseData</name>
+          <default>null</default>
+          <type>array|null</type>
+        </argument>
+        <inherited_from>\Illuminate\Foundation\Testing\Concerns\MakesHttpRequests</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Foundation\Testing" line="318" package="Default">
+        <name>seeJsonContains</name>
+        <full_name>\Illuminate\Foundation\Testing\Concerns\MakesHttpRequests::seeJsonContains()</full_name>
+        <docblock line="318">
+          <description>Assert that the response contains the given JSON.</description>
+          <long-description/>
+          <tag name="param" line="318" description="" type="array" variable="$data">
+            <type>array</type>
+          </tag>
+          <tag name="param" line="318" description="" type="boolean" variable="$negate">
+            <type>boolean</type>
+          </tag>
+          <tag name="return" line="318" description="" type="\Illuminate\Foundation\Testing\TestCase">
+            <type>\Illuminate\Foundation\Testing\TestCase</type>
+          </tag>
+          <tag name="fluent" description="This method is part of a fluent interface and will return the same instance"/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$data</name>
+          <default/>
+          <type>array</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$negate</name>
+          <default>false</default>
+          <type>boolean</type>
+        </argument>
+        <inherited_from>\Illuminate\Foundation\Testing\Concerns\MakesHttpRequests</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Foundation\Testing" line="344" package="Default">
+        <name>seeJsonSubset</name>
+        <full_name>\Illuminate\Foundation\Testing\Concerns\MakesHttpRequests::seeJsonSubset()</full_name>
+        <docblock line="344">
+          <description>Assert that the response is a superset of the given JSON.</description>
+          <long-description/>
+          <tag name="param" line="344" description="" type="array" variable="$data">
+            <type>array</type>
+          </tag>
+          <tag name="return" line="344" description="" type="\Illuminate\Foundation\Testing\TestCase">
+            <type>\Illuminate\Foundation\Testing\TestCase</type>
+          </tag>
+          <tag name="fluent" description="This method is part of a fluent interface and will return the same instance"/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$data</name>
+          <default/>
+          <type>array</type>
+        </argument>
+        <inherited_from>\Illuminate\Foundation\Testing\Concerns\MakesHttpRequests</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Foundation\Testing" line="356" package="Default">
+        <name>decodeResponseJson</name>
+        <full_name>\Illuminate\Foundation\Testing\Concerns\MakesHttpRequests::decodeResponseJson()</full_name>
+        <docblock line="356">
+          <description>Validate and return the decoded response JSON.</description>
+          <long-description/>
+          <tag name="return" line="356" description="" type="array">
+            <type>array</type>
+          </tag>
+        </docblock>
+        <inherited_from>\Illuminate\Foundation\Testing\Concerns\MakesHttpRequests</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Foundation\Testing" line="374" package="Default">
+        <name>formatToExpectedJson</name>
+        <full_name>\Illuminate\Foundation\Testing\Concerns\MakesHttpRequests::formatToExpectedJson()</full_name>
+        <docblock line="374">
+          <description>Format the given key and value into a JSON string for expectation checks.</description>
+          <long-description/>
+          <tag name="param" line="374" description="" type="string" variable="$key">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="374" description="" type="mixed" variable="$value">
+            <type>mixed</type>
+          </tag>
+          <tag name="return" line="374" description="" type="string">
+            <type>string</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$key</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$value</name>
+          <default/>
+          <type>mixed</type>
+        </argument>
+        <inherited_from>\Illuminate\Foundation\Testing\Concerns\MakesHttpRequests</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Foundation\Testing" line="395" package="Default">
+        <name>seeStatusCode</name>
+        <full_name>\Illuminate\Foundation\Testing\Concerns\MakesHttpRequests::seeStatusCode()</full_name>
+        <docblock line="395">
+          <description>Asserts that the status code of the response matches the given code.</description>
+          <long-description/>
+          <tag name="param" line="395" description="" type="integer" variable="$status">
+            <type>integer</type>
+          </tag>
+          <tag name="return" line="395" description="" type="\Illuminate\Foundation\Testing\TestCase">
+            <type>\Illuminate\Foundation\Testing\TestCase</type>
+          </tag>
+          <tag name="fluent" description="This method is part of a fluent interface and will return the same instance"/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$status</name>
+          <default/>
+          <type>integer</type>
+        </argument>
+        <inherited_from>\Illuminate\Foundation\Testing\Concerns\MakesHttpRequests</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Foundation\Testing" line="409" package="Default">
+        <name>seeHeader</name>
+        <full_name>\Illuminate\Foundation\Testing\Concerns\MakesHttpRequests::seeHeader()</full_name>
+        <docblock line="409">
+          <description>Asserts that the response contains the given header and equals the optional value.</description>
+          <long-description/>
+          <tag name="param" line="409" description="" type="string" variable="$headerName">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="409" description="" type="mixed" variable="$value">
+            <type>mixed</type>
+          </tag>
+          <tag name="return" line="409" description="" type="\Illuminate\Foundation\Testing\TestCase">
+            <type>\Illuminate\Foundation\Testing\TestCase</type>
+          </tag>
+          <tag name="fluent" description="This method is part of a fluent interface and will return the same instance"/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$headerName</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$value</name>
+          <default>null</default>
+          <type>mixed</type>
+        </argument>
+        <inherited_from>\Illuminate\Foundation\Testing\Concerns\MakesHttpRequests</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Foundation\Testing" line="432" package="Default">
+        <name>seePlainCookie</name>
+        <full_name>\Illuminate\Foundation\Testing\Concerns\MakesHttpRequests::seePlainCookie()</full_name>
+        <docblock line="432">
+          <description>Asserts that the response contains the given cookie and equals the optional value.</description>
+          <long-description/>
+          <tag name="param" line="432" description="" type="string" variable="$cookieName">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="432" description="" type="mixed" variable="$value">
+            <type>mixed</type>
+          </tag>
+          <tag name="return" line="432" description="" type="\Illuminate\Foundation\Testing\TestCase">
+            <type>\Illuminate\Foundation\Testing\TestCase</type>
+          </tag>
+          <tag name="fluent" description="This method is part of a fluent interface and will return the same instance"/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$cookieName</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$value</name>
+          <default>null</default>
+          <type>mixed</type>
+        </argument>
+        <inherited_from>\Illuminate\Foundation\Testing\Concerns\MakesHttpRequests</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Foundation\Testing" line="445" package="Default">
+        <name>seeCookie</name>
+        <full_name>\Illuminate\Foundation\Testing\Concerns\MakesHttpRequests::seeCookie()</full_name>
+        <docblock line="445">
+          <description>Asserts that the response contains the given cookie and equals the optional value.</description>
+          <long-description/>
+          <tag name="param" line="445" description="" type="string" variable="$cookieName">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="445" description="" type="mixed" variable="$value">
+            <type>mixed</type>
+          </tag>
+          <tag name="param" line="445" description="" type="boolean" variable="$encrypted">
+            <type>boolean</type>
+          </tag>
+          <tag name="return" line="445" description="" type="\Illuminate\Foundation\Testing\TestCase">
+            <type>\Illuminate\Foundation\Testing\TestCase</type>
+          </tag>
+          <tag name="fluent" description="This method is part of a fluent interface and will return the same instance"/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$cookieName</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$value</name>
+          <default>null</default>
+          <type>mixed</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$encrypted</name>
+          <default>true</default>
+          <type>boolean</type>
+        </argument>
+        <inherited_from>\Illuminate\Foundation\Testing\Concerns\MakesHttpRequests</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Foundation\Testing" line="483" package="Default">
+        <name>withServerVariables</name>
+        <full_name>\Illuminate\Foundation\Testing\Concerns\MakesHttpRequests::withServerVariables()</full_name>
+        <docblock line="483">
+          <description>Define a set of server variables to be sent with the requests.</description>
+          <long-description/>
+          <tag name="param" line="483" description="" type="array" variable="$server">
+            <type>array</type>
+          </tag>
+          <tag name="return" line="483" description="" type="\Illuminate\Foundation\Testing\TestCase">
+            <type>\Illuminate\Foundation\Testing\TestCase</type>
+          </tag>
+          <tag name="fluent" description="This method is part of a fluent interface and will return the same instance"/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$server</name>
+          <default/>
+          <type>array</type>
+        </argument>
+        <inherited_from>\Illuminate\Foundation\Testing\Concerns\MakesHttpRequests</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Foundation\Testing" line="502" package="Default">
+        <name>call</name>
+        <full_name>\Illuminate\Foundation\Testing\Concerns\MakesHttpRequests::call()</full_name>
+        <docblock line="502">
+          <description>Call the given URI and return the Response.</description>
+          <long-description/>
+          <tag name="param" line="502" description="" type="string" variable="$method">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="502" description="" type="string" variable="$uri">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="502" description="" type="array" variable="$parameters">
+            <type>array</type>
+          </tag>
+          <tag name="param" line="502" description="" type="array" variable="$cookies">
+            <type>array</type>
+          </tag>
+          <tag name="param" line="502" description="" type="array" variable="$files">
+            <type>array</type>
+          </tag>
+          <tag name="param" line="502" description="" type="array" variable="$server">
+            <type>array</type>
+          </tag>
+          <tag name="param" line="502" description="" type="string" variable="$content">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="502" description="" type="\Illuminate\Http\Response">
+            <type>\Illuminate\Http\Response</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$method</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$uri</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$parameters</name>
+          <default>array()</default>
+          <type>array</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$cookies</name>
+          <default>array()</default>
+          <type>array</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$files</name>
+          <default>array()</default>
+          <type>array</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$server</name>
+          <default>array()</default>
+          <type>array</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$content</name>
+          <default>null</default>
+          <type>string</type>
+        </argument>
+        <inherited_from>\Illuminate\Foundation\Testing\Concerns\MakesHttpRequests</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Foundation\Testing" line="534" package="Default">
+        <name>callSecure</name>
+        <full_name>\Illuminate\Foundation\Testing\Concerns\MakesHttpRequests::callSecure()</full_name>
+        <docblock line="534">
+          <description>Call the given HTTPS URI and return the Response.</description>
+          <long-description/>
+          <tag name="param" line="534" description="" type="string" variable="$method">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="534" description="" type="string" variable="$uri">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="534" description="" type="array" variable="$parameters">
+            <type>array</type>
+          </tag>
+          <tag name="param" line="534" description="" type="array" variable="$cookies">
+            <type>array</type>
+          </tag>
+          <tag name="param" line="534" description="" type="array" variable="$files">
+            <type>array</type>
+          </tag>
+          <tag name="param" line="534" description="" type="array" variable="$server">
+            <type>array</type>
+          </tag>
+          <tag name="param" line="534" description="" type="string" variable="$content">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="534" description="" type="\Illuminate\Http\Response">
+            <type>\Illuminate\Http\Response</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$method</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$uri</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$parameters</name>
+          <default>array()</default>
+          <type>array</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$cookies</name>
+          <default>array()</default>
+          <type>array</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$files</name>
+          <default>array()</default>
+          <type>array</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$server</name>
+          <default>array()</default>
+          <type>array</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$content</name>
+          <default>null</default>
+          <type>string</type>
+        </argument>
+        <inherited_from>\Illuminate\Foundation\Testing\Concerns\MakesHttpRequests</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Foundation\Testing" line="554" package="Default">
+        <name>action</name>
+        <full_name>\Illuminate\Foundation\Testing\Concerns\MakesHttpRequests::action()</full_name>
+        <docblock line="554">
+          <description>Call a controller action and return the Response.</description>
+          <long-description/>
+          <tag name="param" line="554" description="" type="string" variable="$method">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="554" description="" type="string" variable="$action">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="554" description="" type="array" variable="$wildcards">
+            <type>array</type>
+          </tag>
+          <tag name="param" line="554" description="" type="array" variable="$parameters">
+            <type>array</type>
+          </tag>
+          <tag name="param" line="554" description="" type="array" variable="$cookies">
+            <type>array</type>
+          </tag>
+          <tag name="param" line="554" description="" type="array" variable="$files">
+            <type>array</type>
+          </tag>
+          <tag name="param" line="554" description="" type="array" variable="$server">
+            <type>array</type>
+          </tag>
+          <tag name="param" line="554" description="" type="string" variable="$content">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="554" description="" type="\Illuminate\Http\Response">
+            <type>\Illuminate\Http\Response</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$method</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$action</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$wildcards</name>
+          <default>array()</default>
+          <type>array</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$parameters</name>
+          <default>array()</default>
+          <type>array</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$cookies</name>
+          <default>array()</default>
+          <type>array</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$files</name>
+          <default>array()</default>
+          <type>array</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$server</name>
+          <default>array()</default>
+          <type>array</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$content</name>
+          <default>null</default>
+          <type>string</type>
+        </argument>
+        <inherited_from>\Illuminate\Foundation\Testing\Concerns\MakesHttpRequests</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Foundation\Testing" line="574" package="Default">
+        <name>route</name>
+        <full_name>\Illuminate\Foundation\Testing\Concerns\MakesHttpRequests::route()</full_name>
+        <docblock line="574">
+          <description>Call a named route and return the Response.</description>
+          <long-description/>
+          <tag name="param" line="574" description="" type="string" variable="$method">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="574" description="" type="string" variable="$name">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="574" description="" type="array" variable="$routeParameters">
+            <type>array</type>
+          </tag>
+          <tag name="param" line="574" description="" type="array" variable="$parameters">
+            <type>array</type>
+          </tag>
+          <tag name="param" line="574" description="" type="array" variable="$cookies">
+            <type>array</type>
+          </tag>
+          <tag name="param" line="574" description="" type="array" variable="$files">
+            <type>array</type>
+          </tag>
+          <tag name="param" line="574" description="" type="array" variable="$server">
+            <type>array</type>
+          </tag>
+          <tag name="param" line="574" description="" type="string" variable="$content">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="574" description="" type="\Illuminate\Http\Response">
+            <type>\Illuminate\Http\Response</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$method</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$name</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$routeParameters</name>
+          <default>array()</default>
+          <type>array</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$parameters</name>
+          <default>array()</default>
+          <type>array</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$cookies</name>
+          <default>array()</default>
+          <type>array</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$files</name>
+          <default>array()</default>
+          <type>array</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$server</name>
+          <default>array()</default>
+          <type>array</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$content</name>
+          <default>null</default>
+          <type>string</type>
+        </argument>
+        <inherited_from>\Illuminate\Foundation\Testing\Concerns\MakesHttpRequests</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Foundation\Testing" line="587" package="Default">
+        <name>prepareUrlForRequest</name>
+        <full_name>\Illuminate\Foundation\Testing\Concerns\MakesHttpRequests::prepareUrlForRequest()</full_name>
+        <docblock line="587">
+          <description>Turn the given URI into a fully qualified URL.</description>
+          <long-description/>
+          <tag name="param" line="587" description="" type="string" variable="$uri">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="587" description="" type="string">
+            <type>string</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$uri</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <inherited_from>\Illuminate\Foundation\Testing\Concerns\MakesHttpRequests</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Foundation\Testing" line="606" package="Default">
+        <name>transformHeadersToServerVars</name>
+        <full_name>\Illuminate\Foundation\Testing\Concerns\MakesHttpRequests::transformHeadersToServerVars()</full_name>
+        <docblock line="606">
+          <description>Transform headers array to array of $_SERVER vars with HTTP_* format.</description>
+          <long-description/>
+          <tag name="param" line="606" description="" type="array" variable="$headers">
+            <type>array</type>
+          </tag>
+          <tag name="return" line="606" description="" type="array">
+            <type>array</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$headers</name>
+          <default/>
+          <type>array</type>
+        </argument>
+        <inherited_from>\Illuminate\Foundation\Testing\Concerns\MakesHttpRequests</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Foundation\Testing" line="629" package="Default">
+        <name>assertResponseOk</name>
+        <full_name>\Illuminate\Foundation\Testing\Concerns\MakesHttpRequests::assertResponseOk()</full_name>
+        <docblock line="629">
+          <description>Assert that the client response has an OK status code.</description>
+          <long-description/>
+          <tag name="return" line="629" description="" type="\Illuminate\Foundation\Testing\TestCase">
+            <type>\Illuminate\Foundation\Testing\TestCase</type>
+          </tag>
+          <tag name="fluent" description="This method is part of a fluent interface and will return the same instance"/>
+        </docblock>
+        <inherited_from>\Illuminate\Foundation\Testing\Concerns\MakesHttpRequests</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Foundation\Testing" line="644" package="Default">
+        <name>assertResponseStatus</name>
+        <full_name>\Illuminate\Foundation\Testing\Concerns\MakesHttpRequests::assertResponseStatus()</full_name>
+        <docblock line="644">
+          <description>Assert that the client response has a given code.</description>
+          <long-description/>
+          <tag name="param" line="644" description="" type="integer" variable="$code">
+            <type>integer</type>
+          </tag>
+          <tag name="return" line="644" description="" type="\Illuminate\Foundation\Testing\TestCase">
+            <type>\Illuminate\Foundation\Testing\TestCase</type>
+          </tag>
+          <tag name="fluent" description="This method is part of a fluent interface and will return the same instance"/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$code</name>
+          <default/>
+          <type>integer</type>
+        </argument>
+        <inherited_from>\Illuminate\Foundation\Testing\Concerns\MakesHttpRequests</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Foundation\Testing" line="660" package="Default">
+        <name>assertViewHas</name>
+        <full_name>\Illuminate\Foundation\Testing\Concerns\MakesHttpRequests::assertViewHas()</full_name>
+        <docblock line="660">
+          <description>Assert that the response view has a given piece of bound data.</description>
+          <long-description/>
+          <tag name="param" line="660" description="" type="string|array" variable="$key">
+            <type>string</type>
+            <type>array</type>
+          </tag>
+          <tag name="param" line="660" description="" type="mixed" variable="$value">
+            <type>mixed</type>
+          </tag>
+          <tag name="return" line="660" description="" type="\Illuminate\Foundation\Testing\TestCase">
+            <type>\Illuminate\Foundation\Testing\TestCase</type>
+          </tag>
+          <tag name="fluent" description="This method is part of a fluent interface and will return the same instance"/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$key</name>
+          <default/>
+          <type>string|array</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$value</name>
+          <default>null</default>
+          <type>mixed</type>
+        </argument>
+        <inherited_from>\Illuminate\Foundation\Testing\Concerns\MakesHttpRequests</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Foundation\Testing" line="685" package="Default">
+        <name>assertViewHasAll</name>
+        <full_name>\Illuminate\Foundation\Testing\Concerns\MakesHttpRequests::assertViewHasAll()</full_name>
+        <docblock line="685">
+          <description>Assert that the view has a given list of bound data.</description>
+          <long-description/>
+          <tag name="param" line="685" description="" type="array" variable="$bindings">
+            <type>array</type>
+          </tag>
+          <tag name="return" line="685" description="" type="\Illuminate\Foundation\Testing\TestCase">
+            <type>\Illuminate\Foundation\Testing\TestCase</type>
+          </tag>
+          <tag name="fluent" description="This method is part of a fluent interface and will return the same instance"/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$bindings</name>
+          <default/>
+          <type>array</type>
+        </argument>
+        <inherited_from>\Illuminate\Foundation\Testing\Concerns\MakesHttpRequests</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Foundation\Testing" line="704" package="Default">
+        <name>assertViewMissing</name>
+        <full_name>\Illuminate\Foundation\Testing\Concerns\MakesHttpRequests::assertViewMissing()</full_name>
+        <docblock line="704">
+          <description>Assert that the response view is missing a piece of bound data.</description>
+          <long-description/>
+          <tag name="param" line="704" description="" type="string" variable="$key">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="704" description="" type="\Illuminate\Foundation\Testing\TestCase">
+            <type>\Illuminate\Foundation\Testing\TestCase</type>
+          </tag>
+          <tag name="fluent" description="This method is part of a fluent interface and will return the same instance"/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$key</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <inherited_from>\Illuminate\Foundation\Testing\Concerns\MakesHttpRequests</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Foundation\Testing" line="722" package="Default">
+        <name>assertRedirectedTo</name>
+        <full_name>\Illuminate\Foundation\Testing\Concerns\MakesHttpRequests::assertRedirectedTo()</full_name>
+        <docblock line="722">
+          <description>Assert whether the client was redirected to a given URI.</description>
+          <long-description/>
+          <tag name="param" line="722" description="" type="string" variable="$uri">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="722" description="" type="array" variable="$with">
+            <type>array</type>
+          </tag>
+          <tag name="return" line="722" description="" type="\Illuminate\Foundation\Testing\TestCase">
+            <type>\Illuminate\Foundation\Testing\TestCase</type>
+          </tag>
+          <tag name="fluent" description="This method is part of a fluent interface and will return the same instance"/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$uri</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$with</name>
+          <default>array()</default>
+          <type>array</type>
+        </argument>
+        <inherited_from>\Illuminate\Foundation\Testing\Concerns\MakesHttpRequests</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Foundation\Testing" line="741" package="Default">
+        <name>assertRedirectedToRoute</name>
+        <full_name>\Illuminate\Foundation\Testing\Concerns\MakesHttpRequests::assertRedirectedToRoute()</full_name>
+        <docblock line="741">
+          <description>Assert whether the client was redirected to a given route.</description>
+          <long-description/>
+          <tag name="param" line="741" description="" type="string" variable="$name">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="741" description="" type="array" variable="$parameters">
+            <type>array</type>
+          </tag>
+          <tag name="param" line="741" description="" type="array" variable="$with">
+            <type>array</type>
+          </tag>
+          <tag name="return" line="741" description="" type="\Illuminate\Foundation\Testing\TestCase">
+            <type>\Illuminate\Foundation\Testing\TestCase</type>
+          </tag>
+          <tag name="fluent" description="This method is part of a fluent interface and will return the same instance"/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$name</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$parameters</name>
+          <default>array()</default>
+          <type>array</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$with</name>
+          <default>array()</default>
+          <type>array</type>
+        </argument>
+        <inherited_from>\Illuminate\Foundation\Testing\Concerns\MakesHttpRequests</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Foundation\Testing" line="754" package="Default">
+        <name>assertRedirectedToAction</name>
+        <full_name>\Illuminate\Foundation\Testing\Concerns\MakesHttpRequests::assertRedirectedToAction()</full_name>
+        <docblock line="754">
+          <description>Assert whether the client was redirected to a given action.</description>
+          <long-description/>
+          <tag name="param" line="754" description="" type="string" variable="$name">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="754" description="" type="array" variable="$parameters">
+            <type>array</type>
+          </tag>
+          <tag name="param" line="754" description="" type="array" variable="$with">
+            <type>array</type>
+          </tag>
+          <tag name="return" line="754" description="" type="\Illuminate\Foundation\Testing\TestCase">
+            <type>\Illuminate\Foundation\Testing\TestCase</type>
+          </tag>
+          <tag name="fluent" description="This method is part of a fluent interface and will return the same instance"/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$name</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$parameters</name>
+          <default>array()</default>
+          <type>array</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$with</name>
+          <default>array()</default>
+          <type>array</type>
+        </argument>
+        <inherited_from>\Illuminate\Foundation\Testing\Concerns\MakesHttpRequests</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Foundation\Testing" line="764" package="Default">
+        <name>dump</name>
+        <full_name>\Illuminate\Foundation\Testing\Concerns\MakesHttpRequests::dump()</full_name>
+        <docblock line="764">
+          <description>Dump the content from the last response.</description>
+          <long-description/>
+          <tag name="return" line="764" description="" type="void">
+            <type>void</type>
+          </tag>
+        </docblock>
+        <inherited_from>\Illuminate\Foundation\Testing\Concerns\MakesHttpRequests</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Foundation\Testing" line="16" package="Default">
+        <name>actingAs</name>
+        <full_name>\Illuminate\Foundation\Testing\Concerns\ImpersonatesUsers::actingAs()</full_name>
+        <docblock line="16">
+          <description>Set the currently logged in user for the application.</description>
+          <long-description/>
+          <tag name="param" line="16" description="" type="\Illuminate\Contracts\Auth\Authenticatable" variable="$user">
+            <type>\Illuminate\Contracts\Auth\Authenticatable</type>
+          </tag>
+          <tag name="param" line="16" description="" type="string|null" variable="$driver">
+            <type>string</type>
+            <type>null</type>
+          </tag>
+          <tag name="return" line="16" description="" type="\Illuminate\Foundation\Testing\TestCase">
+            <type>\Illuminate\Foundation\Testing\TestCase</type>
+          </tag>
+          <tag name="fluent" description="This method is part of a fluent interface and will return the same instance"/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$user</name>
+          <default/>
+          <type>\Illuminate\Contracts\Auth\Authenticatable</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$driver</name>
+          <default>null</default>
+          <type>string|null</type>
+        </argument>
+        <inherited_from>\Illuminate\Foundation\Testing\Concerns\ImpersonatesUsers</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Foundation\Testing" line="30" package="Default">
+        <name>be</name>
+        <full_name>\Illuminate\Foundation\Testing\Concerns\ImpersonatesUsers::be()</full_name>
+        <docblock line="30">
+          <description>Set the currently logged in user for the application.</description>
+          <long-description/>
+          <tag name="param" line="30" description="" type="\Illuminate\Contracts\Auth\Authenticatable" variable="$user">
+            <type>\Illuminate\Contracts\Auth\Authenticatable</type>
+          </tag>
+          <tag name="param" line="30" description="" type="string|null" variable="$driver">
+            <type>string</type>
+            <type>null</type>
+          </tag>
+          <tag name="return" line="30" description="" type="void">
+            <type>void</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$user</name>
+          <default/>
+          <type>\Illuminate\Contracts\Auth\Authenticatable</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$driver</name>
+          <default>null</default>
+          <type>string|null</type>
+        </argument>
+        <inherited_from>\Illuminate\Foundation\Testing\Concerns\ImpersonatesUsers</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Foundation\Testing" line="13" package="Default">
+        <name>seeIsAuthenticated</name>
+        <full_name>\Illuminate\Foundation\Testing\Concerns\InteractsWithAuthentication::seeIsAuthenticated()</full_name>
+        <docblock line="13">
+          <description>Assert that the user is authenticated.</description>
+          <long-description/>
+          <tag name="param" line="13" description="" type="string|null" variable="$guard">
+            <type>string</type>
+            <type>null</type>
+          </tag>
+          <tag name="return" line="13" description="" type="\Illuminate\Foundation\Testing\TestCase">
+            <type>\Illuminate\Foundation\Testing\TestCase</type>
+          </tag>
+          <tag name="fluent" description="This method is part of a fluent interface and will return the same instance"/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$guard</name>
+          <default>null</default>
+          <type>string|null</type>
+        </argument>
+        <inherited_from>\Illuminate\Foundation\Testing\Concerns\InteractsWithAuthentication</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Foundation\Testing" line="26" package="Default">
+        <name>dontSeeIsAuthenticated</name>
+        <full_name>\Illuminate\Foundation\Testing\Concerns\InteractsWithAuthentication::dontSeeIsAuthenticated()</full_name>
+        <docblock line="26">
+          <description>Assert that the user is not authenticated.</description>
+          <long-description/>
+          <tag name="param" line="26" description="" type="string|null" variable="$guard">
+            <type>string</type>
+            <type>null</type>
+          </tag>
+          <tag name="return" line="26" description="" type="\Illuminate\Foundation\Testing\TestCase">
+            <type>\Illuminate\Foundation\Testing\TestCase</type>
+          </tag>
+          <tag name="fluent" description="This method is part of a fluent interface and will return the same instance"/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$guard</name>
+          <default>null</default>
+          <type>string|null</type>
+        </argument>
+        <inherited_from>\Illuminate\Foundation\Testing\Concerns\InteractsWithAuthentication</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Foundation\Testing" line="39" package="Default">
+        <name>isAuthenticated</name>
+        <full_name>\Illuminate\Foundation\Testing\Concerns\InteractsWithAuthentication::isAuthenticated()</full_name>
+        <docblock line="39">
+          <description>Return true if the user is authenticated, false otherwise.</description>
+          <long-description/>
+          <tag name="param" line="39" description="" type="string|null" variable="$guard">
+            <type>string</type>
+            <type>null</type>
+          </tag>
+          <tag name="return" line="39" description="" type="boolean">
+            <type>boolean</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$guard</name>
+          <default>null</default>
+          <type>string|null</type>
+        </argument>
+        <inherited_from>\Illuminate\Foundation\Testing\Concerns\InteractsWithAuthentication</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Foundation\Testing" line="51" package="Default">
+        <name>seeIsAuthenticatedAs</name>
+        <full_name>\Illuminate\Foundation\Testing\Concerns\InteractsWithAuthentication::seeIsAuthenticatedAs()</full_name>
+        <docblock line="51">
+          <description>Assert that the user is authenticated as the given user.</description>
+          <long-description/>
+          <tag name="param" line="51" description="" type="" variable="$user"/>
+          <tag name="param" line="51" description="" type="string|null" variable="$guard">
+            <type>string</type>
+            <type>null</type>
+          </tag>
+          <tag name="return" line="51" description="" type="\Illuminate\Foundation\Testing\TestCase">
+            <type>\Illuminate\Foundation\Testing\TestCase</type>
+          </tag>
+          <tag name="fluent" description="This method is part of a fluent interface and will return the same instance"/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$user</name>
+          <default/>
+          <type/>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$guard</name>
+          <default>null</default>
+          <type>string|null</type>
+        </argument>
+        <inherited_from>\Illuminate\Foundation\Testing\Concerns\InteractsWithAuthentication</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Foundation\Testing" line="75" package="Default">
+        <name>seeCredentials</name>
+        <full_name>\Illuminate\Foundation\Testing\Concerns\InteractsWithAuthentication::seeCredentials()</full_name>
+        <docblock line="75">
+          <description>Assert that the given credentials are valid.</description>
+          <long-description/>
+          <tag name="param" line="75" description="" type="array" variable="$credentials">
+            <type>array</type>
+          </tag>
+          <tag name="param" line="75" description="" type="string|null" variable="$guard">
+            <type>string</type>
+            <type>null</type>
+          </tag>
+          <tag name="return" line="75" description="" type="\Illuminate\Foundation\Testing\TestCase">
+            <type>\Illuminate\Foundation\Testing\TestCase</type>
+          </tag>
+          <tag name="fluent" description="This method is part of a fluent interface and will return the same instance"/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$credentials</name>
+          <default/>
+          <type>array</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$guard</name>
+          <default>null</default>
+          <type>string|null</type>
+        </argument>
+        <inherited_from>\Illuminate\Foundation\Testing\Concerns\InteractsWithAuthentication</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Foundation\Testing" line="91" package="Default">
+        <name>dontSeeCredentials</name>
+        <full_name>\Illuminate\Foundation\Testing\Concerns\InteractsWithAuthentication::dontSeeCredentials()</full_name>
+        <docblock line="91">
+          <description>Assert that the given credentials are invalid.</description>
+          <long-description/>
+          <tag name="param" line="91" description="" type="array" variable="$credentials">
+            <type>array</type>
+          </tag>
+          <tag name="param" line="91" description="" type="string|null" variable="$guard">
+            <type>string</type>
+            <type>null</type>
+          </tag>
+          <tag name="return" line="91" description="" type="\Illuminate\Foundation\Testing\TestCase">
+            <type>\Illuminate\Foundation\Testing\TestCase</type>
+          </tag>
+          <tag name="fluent" description="This method is part of a fluent interface and will return the same instance"/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$credentials</name>
+          <default/>
+          <type>array</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$guard</name>
+          <default>null</default>
+          <type>string|null</type>
+        </argument>
+        <inherited_from>\Illuminate\Foundation\Testing\Concerns\InteractsWithAuthentication</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Foundation\Testing" line="107" package="Default">
+        <name>hasCredentials</name>
+        <full_name>\Illuminate\Foundation\Testing\Concerns\InteractsWithAuthentication::hasCredentials()</full_name>
+        <docblock line="107">
+          <description>Return true is the credentials are valid, false otherwise.</description>
+          <long-description/>
+          <tag name="param" line="107" description="" type="array" variable="$credentials">
+            <type>array</type>
+          </tag>
+          <tag name="param" line="107" description="" type="string|null" variable="$guard">
+            <type>string</type>
+            <type>null</type>
+          </tag>
+          <tag name="return" line="107" description="" type="boolean">
+            <type>boolean</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$credentials</name>
+          <default/>
+          <type>array</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$guard</name>
+          <default>null</default>
+          <type>string|null</type>
+        </argument>
+        <inherited_from>\Illuminate\Foundation\Testing\Concerns\InteractsWithAuthentication</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Foundation\Testing" line="23" package="Default">
+        <name>artisan</name>
+        <full_name>\Illuminate\Foundation\Testing\Concerns\InteractsWithConsole::artisan()</full_name>
+        <docblock line="23">
+          <description>Call artisan command and return code.</description>
+          <long-description/>
+          <tag name="param" line="23" description="" type="string" variable="$command">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="23" description="" type="array" variable="$parameters">
+            <type>array</type>
+          </tag>
+          <tag name="return" line="23" description="" type="integer">
+            <type>integer</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$command</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$parameters</name>
+          <default>array()</default>
+          <type>array</type>
+        </argument>
+        <inherited_from>\Illuminate\Foundation\Testing\Concerns\InteractsWithConsole</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Foundation\Testing" line="15" package="Default">
+        <name>seeInDatabase</name>
+        <full_name>\Illuminate\Foundation\Testing\Concerns\InteractsWithDatabase::seeInDatabase()</full_name>
+        <docblock line="15">
+          <description>Assert that a given where condition exists in the database.</description>
+          <long-description/>
+          <tag name="param" line="15" description="" type="string" variable="$table">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="15" description="" type="array" variable="$data">
+            <type>array</type>
+          </tag>
+          <tag name="param" line="15" description="" type="string" variable="$connection">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="15" description="" type="\Illuminate\Foundation\Testing\TestCase">
+            <type>\Illuminate\Foundation\Testing\TestCase</type>
+          </tag>
+          <tag name="fluent" description="This method is part of a fluent interface and will return the same instance"/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$table</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$data</name>
+          <default/>
+          <type>array</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$connection</name>
+          <default>null</default>
+          <type>string</type>
+        </argument>
+        <inherited_from>\Illuminate\Foundation\Testing\Concerns\InteractsWithDatabase</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Foundation\Testing" line="38" package="Default">
+        <name>missingFromDatabase</name>
+        <full_name>\Illuminate\Foundation\Testing\Concerns\InteractsWithDatabase::missingFromDatabase()</full_name>
+        <docblock line="38">
+          <description>Assert that a given where condition does not exist in the database.</description>
+          <long-description/>
+          <tag name="param" line="38" description="" type="string" variable="$table">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="38" description="" type="array" variable="$data">
+            <type>array</type>
+          </tag>
+          <tag name="param" line="38" description="" type="string" variable="$connection">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="38" description="" type="\Illuminate\Foundation\Testing\TestCase">
+            <type>\Illuminate\Foundation\Testing\TestCase</type>
+          </tag>
+          <tag name="fluent" description="This method is part of a fluent interface and will return the same instance"/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$table</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$data</name>
+          <default/>
+          <type>array</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$connection</name>
+          <default>null</default>
+          <type>string</type>
+        </argument>
+        <inherited_from>\Illuminate\Foundation\Testing\Concerns\InteractsWithDatabase</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Foundation\Testing" line="51" package="Default">
+        <name>dontSeeInDatabase</name>
+        <full_name>\Illuminate\Foundation\Testing\Concerns\InteractsWithDatabase::dontSeeInDatabase()</full_name>
+        <docblock line="51">
+          <description>Assert that a given where condition does not exist in the database.</description>
+          <long-description/>
+          <tag name="param" line="51" description="" type="string" variable="$table">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="51" description="" type="array" variable="$data">
+            <type>array</type>
+          </tag>
+          <tag name="param" line="51" description="" type="string" variable="$connection">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="51" description="" type="\Illuminate\Foundation\Testing\TestCase">
+            <type>\Illuminate\Foundation\Testing\TestCase</type>
+          </tag>
+          <tag name="fluent" description="This method is part of a fluent interface and will return the same instance"/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$table</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$data</name>
+          <default/>
+          <type>array</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$connection</name>
+          <default>null</default>
+          <type>string</type>
+        </argument>
+        <inherited_from>\Illuminate\Foundation\Testing\Concerns\InteractsWithDatabase</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Foundation\Testing" line="64" package="Default">
+        <name>notSeeInDatabase</name>
+        <full_name>\Illuminate\Foundation\Testing\Concerns\InteractsWithDatabase::notSeeInDatabase()</full_name>
+        <docblock line="64">
+          <description>Assert that a given where condition does not exist in the database.</description>
+          <long-description/>
+          <tag name="param" line="64" description="" type="string" variable="$table">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="64" description="" type="array" variable="$data">
+            <type>array</type>
+          </tag>
+          <tag name="param" line="64" description="" type="string" variable="$connection">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="64" description="" type="\Illuminate\Foundation\Testing\TestCase">
+            <type>\Illuminate\Foundation\Testing\TestCase</type>
+          </tag>
+          <tag name="fluent" description="This method is part of a fluent interface and will return the same instance"/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$table</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$data</name>
+          <default/>
+          <type>array</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$connection</name>
+          <default>null</default>
+          <type>string</type>
+        </argument>
+        <inherited_from>\Illuminate\Foundation\Testing\Concerns\InteractsWithDatabase</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Foundation\Testing" line="85" package="Default">
+        <name>seed</name>
+        <full_name>\Illuminate\Foundation\Testing\Concerns\InteractsWithDatabase::seed()</full_name>
+        <docblock line="85">
+          <description>Seed a given database connection.</description>
+          <long-description/>
+          <tag name="param" line="85" description="" type="string" variable="$class">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="85" description="" type="void">
+            <type>void</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$class</name>
+          <default>'DatabaseSeeder'</default>
+          <type>string</type>
+        </argument>
+        <inherited_from>\Illuminate\Foundation\Testing\Concerns\InteractsWithDatabase</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Foundation\Testing" line="15" package="Default">
+        <name>withSession</name>
+        <full_name>\Illuminate\Foundation\Testing\Concerns\InteractsWithSession::withSession()</full_name>
+        <docblock line="15">
+          <description>Set the session to the given array.</description>
+          <long-description/>
+          <tag name="param" line="15" description="" type="array" variable="$data">
+            <type>array</type>
+          </tag>
+          <tag name="return" line="15" description="" type="\Illuminate\Foundation\Testing\TestCase">
+            <type>\Illuminate\Foundation\Testing\TestCase</type>
+          </tag>
+          <tag name="fluent" description="This method is part of a fluent interface and will return the same instance"/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$data</name>
+          <default/>
+          <type>array</type>
+        </argument>
+        <inherited_from>\Illuminate\Foundation\Testing\Concerns\InteractsWithSession</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Foundation\Testing" line="28" package="Default">
+        <name>session</name>
+        <full_name>\Illuminate\Foundation\Testing\Concerns\InteractsWithSession::session()</full_name>
+        <docblock line="28">
+          <description>Set the session to the given array.</description>
+          <long-description/>
+          <tag name="param" line="28" description="" type="array" variable="$data">
+            <type>array</type>
+          </tag>
+          <tag name="return" line="28" description="" type="void">
+            <type>void</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$data</name>
+          <default/>
+          <type>array</type>
+        </argument>
+        <inherited_from>\Illuminate\Foundation\Testing\Concerns\InteractsWithSession</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Foundation\Testing" line="42" package="Default">
+        <name>startSession</name>
+        <full_name>\Illuminate\Foundation\Testing\Concerns\InteractsWithSession::startSession()</full_name>
+        <docblock line="42">
+          <description>Start the session for the application.</description>
+          <long-description/>
+          <tag name="return" line="42" description="" type="void">
+            <type>void</type>
+          </tag>
+        </docblock>
+        <inherited_from>\Illuminate\Foundation\Testing\Concerns\InteractsWithSession</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Foundation\Testing" line="54" package="Default">
+        <name>flushSession</name>
+        <full_name>\Illuminate\Foundation\Testing\Concerns\InteractsWithSession::flushSession()</full_name>
+        <docblock line="54">
+          <description>Flush all of the current session data.</description>
+          <long-description/>
+          <tag name="return" line="54" description="" type="void">
+            <type>void</type>
+          </tag>
+        </docblock>
+        <inherited_from>\Illuminate\Foundation\Testing\Concerns\InteractsWithSession</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Foundation\Testing" line="68" package="Default">
+        <name>seeInSession</name>
+        <full_name>\Illuminate\Foundation\Testing\Concerns\InteractsWithSession::seeInSession()</full_name>
+        <docblock line="68">
+          <description>Assert that the session has a given value.</description>
+          <long-description/>
+          <tag name="param" line="68" description="" type="string|array" variable="$key">
+            <type>string</type>
+            <type>array</type>
+          </tag>
+          <tag name="param" line="68" description="" type="mixed" variable="$value">
+            <type>mixed</type>
+          </tag>
+          <tag name="return" line="68" description="" type="void">
+            <type>void</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$key</name>
+          <default/>
+          <type>string|array</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$value</name>
+          <default>null</default>
+          <type>mixed</type>
+        </argument>
+        <inherited_from>\Illuminate\Foundation\Testing\Concerns\InteractsWithSession</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Foundation\Testing" line="82" package="Default">
+        <name>assertSessionHas</name>
+        <full_name>\Illuminate\Foundation\Testing\Concerns\InteractsWithSession::assertSessionHas()</full_name>
+        <docblock line="82">
+          <description>Assert that the session has a given value.</description>
+          <long-description/>
+          <tag name="param" line="82" description="" type="string|array" variable="$key">
+            <type>string</type>
+            <type>array</type>
+          </tag>
+          <tag name="param" line="82" description="" type="mixed" variable="$value">
+            <type>mixed</type>
+          </tag>
+          <tag name="return" line="82" description="" type="void">
+            <type>void</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$key</name>
+          <default/>
+          <type>string|array</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$value</name>
+          <default>null</default>
+          <type>mixed</type>
+        </argument>
+        <inherited_from>\Illuminate\Foundation\Testing\Concerns\InteractsWithSession</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Foundation\Testing" line="101" package="Default">
+        <name>assertSessionHasAll</name>
+        <full_name>\Illuminate\Foundation\Testing\Concerns\InteractsWithSession::assertSessionHasAll()</full_name>
+        <docblock line="101">
+          <description>Assert that the session has a given list of values.</description>
+          <long-description/>
+          <tag name="param" line="101" description="" type="array" variable="$bindings">
+            <type>array</type>
+          </tag>
+          <tag name="return" line="101" description="" type="void">
+            <type>void</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$bindings</name>
+          <default/>
+          <type>array</type>
+        </argument>
+        <inherited_from>\Illuminate\Foundation\Testing\Concerns\InteractsWithSession</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Foundation\Testing" line="118" package="Default">
+        <name>assertSessionMissing</name>
+        <full_name>\Illuminate\Foundation\Testing\Concerns\InteractsWithSession::assertSessionMissing()</full_name>
+        <docblock line="118">
+          <description>Assert that the session does not have a given key.</description>
+          <long-description/>
+          <tag name="param" line="118" description="" type="string|array" variable="$key">
+            <type>string</type>
+            <type>array</type>
+          </tag>
+          <tag name="return" line="118" description="" type="void">
+            <type>void</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$key</name>
+          <default/>
+          <type>string|array</type>
+        </argument>
+        <inherited_from>\Illuminate\Foundation\Testing\Concerns\InteractsWithSession</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Foundation\Testing" line="136" package="Default">
+        <name>assertSessionHasErrors</name>
+        <full_name>\Illuminate\Foundation\Testing\Concerns\InteractsWithSession::assertSessionHasErrors()</full_name>
+        <docblock line="136">
+          <description>Assert that the session has errors bound.</description>
+          <long-description/>
+          <tag name="param" line="136" description="" type="string|array" variable="$bindings">
+            <type>string</type>
+            <type>array</type>
+          </tag>
+          <tag name="param" line="136" description="" type="mixed" variable="$format">
+            <type>mixed</type>
+          </tag>
+          <tag name="return" line="136" description="" type="void">
+            <type>void</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$bindings</name>
+          <default>array()</default>
+          <type>string|array</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$format</name>
+          <default>null</default>
+          <type>mixed</type>
+        </argument>
+        <inherited_from>\Illuminate\Foundation\Testing\Concerns\InteractsWithSession</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Foundation\Testing" line="158" package="Default">
+        <name>assertHasOldInput</name>
+        <full_name>\Illuminate\Foundation\Testing\Concerns\InteractsWithSession::assertHasOldInput()</full_name>
+        <docblock line="158">
+          <description>Assert that the session has old input.</description>
+          <long-description/>
+          <tag name="return" line="158" description="" type="void">
+            <type>void</type>
+          </tag>
+        </docblock>
+        <inherited_from>\Illuminate\Foundation\Testing\Concerns\InteractsWithSession</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Foundation\Testing" line="34" package="Default">
+        <name>expectsEvents</name>
+        <full_name>\Illuminate\Foundation\Testing\Concerns\MocksApplicationServices::expectsEvents()</full_name>
+        <docblock line="34">
+          <description>Specify a list of events that should be fired for the given operation.</description>
+          <long-description>These events will be mocked, so that handlers will not actually be executed.</long-description>
+          <tag name="param" line="34" description="" type="array|string" variable="$events">
+            <type>array</type>
+            <type>string</type>
+          </tag>
+          <tag name="return" line="34" description="" type="\Illuminate\Foundation\Testing\TestCase">
+            <type>\Illuminate\Foundation\Testing\TestCase</type>
+          </tag>
+          <tag name="throws" line="34" description="" type="\Exception">
+            <type>\Exception</type>
+          </tag>
+          <tag name="fluent" description="This method is part of a fluent interface and will return the same instance"/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$events</name>
+          <default/>
+          <type>array|string</type>
+        </argument>
+        <inherited_from>\Illuminate\Foundation\Testing\Concerns\MocksApplicationServices</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Foundation\Testing" line="61" package="Default">
+        <name>doesntExpectEvents</name>
+        <full_name>\Illuminate\Foundation\Testing\Concerns\MocksApplicationServices::doesntExpectEvents()</full_name>
+        <docblock line="61">
+          <description>Specify a list of events that should not be fired for the given operation.</description>
+          <long-description>These events will be mocked, so that handlers will not actually be executed.</long-description>
+          <tag name="param" line="61" description="" type="array|string" variable="$events">
+            <type>array</type>
+            <type>string</type>
+          </tag>
+          <tag name="return" line="61" description="" type="\Illuminate\Foundation\Testing\TestCase">
+            <type>\Illuminate\Foundation\Testing\TestCase</type>
+          </tag>
+          <tag name="fluent" description="This method is part of a fluent interface and will return the same instance"/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$events</name>
+          <default/>
+          <type>array|string</type>
+        </argument>
+        <inherited_from>\Illuminate\Foundation\Testing\Concerns\MocksApplicationServices</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Foundation\Testing" line="83" package="Default">
+        <name>withoutEvents</name>
+        <full_name>\Illuminate\Foundation\Testing\Concerns\MocksApplicationServices::withoutEvents()</full_name>
+        <docblock line="83">
+          <description>Mock the event dispatcher so all events are silenced and collected.</description>
+          <long-description/>
+          <tag name="return" line="83" description="" type="\Illuminate\Foundation\Testing\TestCase">
+            <type>\Illuminate\Foundation\Testing\TestCase</type>
+          </tag>
+          <tag name="fluent" description="This method is part of a fluent interface and will return the same instance"/>
+        </docblock>
+        <inherited_from>\Illuminate\Foundation\Testing\Concerns\MocksApplicationServices</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Foundation\Testing" line="102" package="Default">
+        <name>withoutObservers</name>
+        <full_name>\Illuminate\Foundation\Testing\Concerns\MocksApplicationServices::withoutObservers()</full_name>
+        <docblock line="102">
+          <description>Specify a list of observers that will not run for the given operation.</description>
+          <long-description/>
+          <tag name="param" line="102" description="" type="array|string" variable="$observers">
+            <type>array</type>
+            <type>string</type>
+          </tag>
+          <tag name="return" line="102" description="" type="\Illuminate\Foundation\Testing\TestCase">
+            <type>\Illuminate\Foundation\Testing\TestCase</type>
+          </tag>
+          <tag name="fluent" description="This method is part of a fluent interface and will return the same instance"/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$observers</name>
+          <default/>
+          <type>array|string</type>
+        </argument>
+        <inherited_from>\Illuminate\Foundation\Testing\Concerns\MocksApplicationServices</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Foundation\Testing" line="121" package="Default">
+        <name>getFiredEvents</name>
+        <full_name>\Illuminate\Foundation\Testing\Concerns\MocksApplicationServices::getFiredEvents()</full_name>
+        <docblock line="121">
+          <description>Filter the given events against the fired events.</description>
+          <long-description/>
+          <tag name="param" line="121" description="" type="array" variable="$events">
+            <type>array</type>
+          </tag>
+          <tag name="return" line="121" description="" type="array">
+            <type>array</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$events</name>
+          <default/>
+          <type>array</type>
+        </argument>
+        <inherited_from>\Illuminate\Foundation\Testing\Concerns\MocksApplicationServices</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Foundation\Testing" line="134" package="Default">
+        <name>expectsJobs</name>
+        <full_name>\Illuminate\Foundation\Testing\Concerns\MocksApplicationServices::expectsJobs()</full_name>
+        <docblock line="134">
+          <description>Specify a list of jobs that should be dispatched for the given operation.</description>
+          <long-description>These jobs will be mocked, so that handlers will not actually be executed.</long-description>
+          <tag name="param" line="134" description="" type="array|string" variable="$jobs">
+            <type>array</type>
+            <type>string</type>
+          </tag>
+          <tag name="return" line="134" description="" type="\Illuminate\Foundation\Testing\TestCase">
+            <type>\Illuminate\Foundation\Testing\TestCase</type>
+          </tag>
+          <tag name="fluent" description="This method is part of a fluent interface and will return the same instance"/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$jobs</name>
+          <default/>
+          <type>array|string</type>
+        </argument>
+        <inherited_from>\Illuminate\Foundation\Testing\Concerns\MocksApplicationServices</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Foundation\Testing" line="161" package="Default">
+        <name>doesntExpectJobs</name>
+        <full_name>\Illuminate\Foundation\Testing\Concerns\MocksApplicationServices::doesntExpectJobs()</full_name>
+        <docblock line="161">
+          <description>Specify a list of jobs that should not be dispatched for the given operation.</description>
+          <long-description>These jobs will be mocked, so that handlers will not actually be executed.</long-description>
+          <tag name="param" line="161" description="" type="array|string" variable="$jobs">
+            <type>array</type>
+            <type>string</type>
+          </tag>
+          <tag name="return" line="161" description="" type="\Illuminate\Foundation\Testing\TestCase">
+            <type>\Illuminate\Foundation\Testing\TestCase</type>
+          </tag>
+          <tag name="fluent" description="This method is part of a fluent interface and will return the same instance"/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$jobs</name>
+          <default/>
+          <type>array|string</type>
+        </argument>
+        <inherited_from>\Illuminate\Foundation\Testing\Concerns\MocksApplicationServices</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Foundation\Testing" line="183" package="Default">
+        <name>withoutJobs</name>
+        <full_name>\Illuminate\Foundation\Testing\Concerns\MocksApplicationServices::withoutJobs()</full_name>
+        <docblock line="183">
+          <description>Mock the job dispatcher so all jobs are silenced and collected.</description>
+          <long-description/>
+          <tag name="return" line="183" description="" type="\Illuminate\Foundation\Testing\TestCase">
+            <type>\Illuminate\Foundation\Testing\TestCase</type>
+          </tag>
+          <tag name="fluent" description="This method is part of a fluent interface and will return the same instance"/>
+        </docblock>
+        <inherited_from>\Illuminate\Foundation\Testing\Concerns\MocksApplicationServices</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Foundation\Testing" line="204" package="Default">
+        <name>getDispatchedJobs</name>
+        <full_name>\Illuminate\Foundation\Testing\Concerns\MocksApplicationServices::getDispatchedJobs()</full_name>
+        <docblock line="204">
+          <description>Filter the given jobs against the dispatched jobs.</description>
+          <long-description/>
+          <tag name="param" line="204" description="" type="array" variable="$jobs">
+            <type>array</type>
+          </tag>
+          <tag name="return" line="204" description="" type="array">
+            <type>array</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$jobs</name>
+          <default/>
+          <type>array</type>
+        </argument>
+        <inherited_from>\Illuminate\Foundation\Testing\Concerns\MocksApplicationServices</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Foundation\Testing" line="216" package="Default">
+        <name>getDispatched</name>
+        <full_name>\Illuminate\Foundation\Testing\Concerns\MocksApplicationServices::getDispatched()</full_name>
+        <docblock line="216">
+          <description>Filter the given classes against an array of dispatched classes.</description>
+          <long-description/>
+          <tag name="param" line="216" description="" type="array" variable="$classes">
+            <type>array</type>
+          </tag>
+          <tag name="param" line="216" description="" type="array" variable="$dispatched">
+            <type>array</type>
+          </tag>
+          <tag name="return" line="216" description="" type="array">
+            <type>array</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$classes</name>
+          <default/>
+          <type>array</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$dispatched</name>
+          <default/>
+          <type>array</type>
+        </argument>
+        <inherited_from>\Illuminate\Foundation\Testing\Concerns\MocksApplicationServices</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Foundation\Testing" line="230" package="Default">
+        <name>wasDispatched</name>
+        <full_name>\Illuminate\Foundation\Testing\Concerns\MocksApplicationServices::wasDispatched()</full_name>
+        <docblock line="230">
+          <description>Check if the given class exists in an array of dispatched classes.</description>
+          <long-description/>
+          <tag name="param" line="230" description="" type="string" variable="$needle">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="230" description="" type="array" variable="$haystack">
+            <type>array</type>
+          </tag>
+          <tag name="return" line="230" description="" type="boolean">
+            <type>boolean</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$needle</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$haystack</name>
+          <default/>
+          <type>array</type>
+        </argument>
+        <inherited_from>\Illuminate\Foundation\Testing\Concerns\MocksApplicationServices</inherited_from>
+      </method>
+    </class>
+    <parse_markers>
+      <error line="0" code="PPC:ERR-50000">No summary was found for this file</error>
+      <error line="8" code="PPC:ERR-50005">No summary for class \Illuminate\Foundation\Testing\TestCase</error>
+    </parse_markers>
+    <source>eJytV9tu2zgQffdXcIEAloN2+95supt1GiRYpAhy6T7EgUFJI4sITWo5lFOjyL93SF0sy1KsuqsX2+Jczpy50X/8maXZaKT4EjDjEbArKfOlUNzC7ELnKuZWaDW7B7RCLU5GoxyBXevoGcz6xP+4ubx5UMLOLwzZeNHmee6EpxyBpHmI1vDIskhyRFadMPhmQcX4hvLo+4jR4zxMtYrAKJxdKQvOGv4rbEpvLRcKzDsv6J5a8Jo/A15am93CfzkZxA6Zq2UGBrWLFB+QvnbJNB2e5TYFZUXkKdknTW9RS9gnds4tDyncfXJ3gNjt1SUDz7JMlsDuwKxEBEjsO7kPx8eFzjG7T5vpZXyjw4RCy8ng76VspfLXihs2666Jhs9S/IP/zIy2EFmI2RG56IYRcSlDTsCZTbllmOpcxiwEZnLFeEKB00ELIrLIAGGIO0FyY/i6F4ez2MA7LQxNaxSn7PHpAKQhJNpAF9SYqs7o9SFgC6MNtOeVrX14r1TsVACZSNgLsJSvgC15DExYAml0vkg9WFdxDME+ZCzJVeScdOIMtZZ9ML36Jcdb4uGUJVz6hm8hKojGNkNtZ18AaBhY7XgVy0zCkhqNnIRrhnnoZwfgDkIDNjeKze7Wy0Sr9Wyql5lWpDlzrf8PdQfIxlffTwnNuK2I6gmV5SHBq/koi62RhmCyG98dQch8dBSlZaBWwmjl0PehXWkR91Bau/bUBhN//L3ueMpp8Bs7sqnA95+IzEnjzD3liYHEAKYt4JXQ62jUkvfO7g0XFusI3eOKkEcpCyqP+3qIIzuquqWNzb2f0yw3cxdksJHbi6yuMGtyKKRfd9JwW8S824h9Y+0nktHFZyszWU7bbBWMz25u5p+/fD21xbYcN+nc5I1iKX90llh3hH9rbes6I9ssBZm5KekT98vFVuW/FdgRpcwNGz+v5okUWeCb0aUS5wai3KBYQUAs0178+NEfTpphu6IV1L028LYeq31HDhVyjwBLvadJT0WHsBCqQ7GnrvtcXouF4YMc0mjfVRrozS1rndtrEccSXriBfc5igTyUsFG40OZMSncP+kmfn1c0d/YGV/orhHt9dVfhVAJXrDHxXCU2hl5zISq643mZXylOC9yc65fdlnMUFKUI34RDPy4vpeOduMsDx4tGeIPS/tHanoVDVvRb49A9A0ZiC2MjiYTx/adE5phuzextCWpclUs5fMQ2l3hFCiWF5oxdVzx7xXdsTMBXYL5yI1w14S7ttYctufLm0o9o4FWtpTX8ztTwurVAFhQdzVNeX/jK68hBF9KM0/+ZIsUuaraphEOaoIeSoDa/qZ32/B7G6eOT20mVkZPOrmhUykHL/RDeD7le/7/U99fVcPYH1GY7AQVZr6Mf5i+s6A==</source>
+  <type>class</type></file>

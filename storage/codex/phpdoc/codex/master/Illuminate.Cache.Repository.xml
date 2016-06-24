@@ -1,0 +1,819 @@
+<file path="codex/vendor/laravel/framework/src/Illuminate/Cache/Repository.php" generated-path="codex.vendor.laravel.framework.src.Illuminate.Cache.Repository.html" hash="0e5b4367fb12c59f8d4650f921ad209f" package="Default">
+    <docblock line="0">
+      <description/>
+      <long-description/>
+      <tag name="package" line="0" description="Default"/>
+    </docblock>
+    <namespace-alias name="Closure">\Closure</namespace-alias>
+    <namespace-alias name="DateTime">\DateTime</namespace-alias>
+    <namespace-alias name="ArrayAccess">\ArrayAccess</namespace-alias>
+    <namespace-alias name="Carbon">\Carbon\Carbon</namespace-alias>
+    <namespace-alias name="BadMethodCallException">\BadMethodCallException</namespace-alias>
+    <namespace-alias name="Store">\Illuminate\Contracts\Cache\Store</namespace-alias>
+    <namespace-alias name="Macroable">\Illuminate\Support\Traits\Macroable</namespace-alias>
+    <namespace-alias name="Dispatcher">\Illuminate\Contracts\Events\Dispatcher</namespace-alias>
+    <namespace-alias name="CacheContract">\Illuminate\Contracts\Cache\Repository</namespace-alias>
+    <class final="false" abstract="false" namespace="Illuminate\Cache" line="15" package="Default">
+      <extends/>
+      <implements>\Illuminate\Contracts\Cache\Repository</implements>
+      <implements>\ArrayAccess</implements>
+      <name>Repository</name>
+      <full_name>\Illuminate\Cache\Repository</full_name>
+      <docblock line="15">
+        <description/>
+        <long-description/>
+        <tag name="package" line="15" description="Default"/>
+      </docblock>
+      <property static="false" visibility="protected" namespace="Illuminate\Cache" line="26" package="Default">
+        <name>$store</name>
+        <full_name>\Illuminate\Cache\Repository::store</full_name>
+        <default/>
+        <docblock line="26">
+          <description>The cache store implementation.</description>
+          <long-description/>
+          <tag name="var" line="26" description="" type="\Illuminate\Contracts\Cache\Store" variable="">
+            <type>\Illuminate\Contracts\Cache\Store</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" namespace="Illuminate\Cache" line="33" package="Default">
+        <name>$events</name>
+        <full_name>\Illuminate\Cache\Repository::events</full_name>
+        <default/>
+        <docblock line="33">
+          <description>The event dispatcher implementation.</description>
+          <long-description/>
+          <tag name="var" line="33" description="" type="\Illuminate\Contracts\Events\Dispatcher" variable="">
+            <type>\Illuminate\Contracts\Events\Dispatcher</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" namespace="Illuminate\Cache" line="40" package="Default">
+        <name>$default</name>
+        <full_name>\Illuminate\Cache\Repository::default</full_name>
+        <default>60</default>
+        <docblock line="40">
+          <description>The default number of minutes to store items.</description>
+          <long-description/>
+          <tag name="var" line="40" description="" type="integer" variable="">
+            <type>integer</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="true" visibility="protected" namespace="Illuminate\Cache" line="15" package="Default">
+        <name>$macros</name>
+        <full_name>\Illuminate\Support\Traits\Macroable::macros</full_name>
+        <default>array()</default>
+        <docblock line="15">
+          <description>The registered string macros.</description>
+          <long-description/>
+          <tag name="var" line="15" description="" type="array" variable="">
+            <type>array</type>
+          </tag>
+        </docblock>
+      </property>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Cache" line="48" package="Default">
+        <name>__construct</name>
+        <full_name>\Illuminate\Cache\Repository::__construct()</full_name>
+        <docblock line="48">
+          <description>Create a new cache repository instance.</description>
+          <long-description/>
+          <tag name="param" line="48" description="" type="\Illuminate\Contracts\Cache\Store" variable="$store">
+            <type>\Illuminate\Contracts\Cache\Store</type>
+          </tag>
+          <tag name="return" line="48" description="" type="void">
+            <type>void</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$store</name>
+          <default/>
+          <type>\Illuminate\Contracts\Cache\Store</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Cache" line="59" package="Default">
+        <name>setEventDispatcher</name>
+        <full_name>\Illuminate\Cache\Repository::setEventDispatcher()</full_name>
+        <docblock line="59">
+          <description>Set the event dispatcher instance.</description>
+          <long-description/>
+          <tag name="param" line="59" description="" type="\Illuminate\Contracts\Events\Dispatcher" variable="$events">
+            <type>\Illuminate\Contracts\Events\Dispatcher</type>
+          </tag>
+          <tag name="return" line="59" description="" type="void">
+            <type>void</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$events</name>
+          <default/>
+          <type>\Illuminate\Contracts\Events\Dispatcher</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Cache" line="71" package="Default">
+        <name>fireCacheEvent</name>
+        <full_name>\Illuminate\Cache\Repository::fireCacheEvent()</full_name>
+        <docblock line="71">
+          <description>Fire an event for this cache instance.</description>
+          <long-description/>
+          <tag name="param" line="71" description="" type="string" variable="$event">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="71" description="" type="array" variable="$payload">
+            <type>array</type>
+          </tag>
+          <tag name="return" line="71" description="" type="void">
+            <type>void</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$event</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$payload</name>
+          <default/>
+          <type>array</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Cache" line="111" package="Default">
+        <name>has</name>
+        <full_name>\Illuminate\Cache\Repository::has()</full_name>
+        <docblock line="111">
+          <description>Determine if an item exists in the cache.</description>
+          <long-description/>
+          <tag name="param" line="111" description="" type="string" variable="$key">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="111" description="" type="boolean">
+            <type>boolean</type>
+          </tag>
+          <tag name="inherited_from" description="\Illuminate\Contracts\Cache\Repository::has()" refers="\Illuminate\Contracts\Cache\Repository::has()" link="/classes/Illuminate.Contracts.Cache.Repository.html#method_has"/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$key</name>
+          <default/>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Cache" line="123" package="Default">
+        <name>get</name>
+        <full_name>\Illuminate\Cache\Repository::get()</full_name>
+        <docblock line="123">
+          <description>Retrieve an item from the cache by key.</description>
+          <long-description/>
+          <tag name="param" line="123" description="" type="string" variable="$key">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="123" description="" type="mixed" variable="$default">
+            <type>mixed</type>
+          </tag>
+          <tag name="return" line="123" description="" type="mixed">
+            <type>mixed</type>
+          </tag>
+          <tag name="inherited_from" description="\Illuminate\Contracts\Cache\Repository::get()" refers="\Illuminate\Contracts\Cache\Repository::get()" link="/classes/Illuminate.Contracts.Cache.Repository.html#method_get"/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$key</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$default</name>
+          <default>null</default>
+          <type>mixed</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Cache" line="150" package="Default">
+        <name>many</name>
+        <full_name>\Illuminate\Cache\Repository::many()</full_name>
+        <docblock line="150">
+          <description>Retrieve multiple items from the cache by key.</description>
+          <long-description>Items not found in the cache will have a null value.</long-description>
+          <tag name="param" line="150" description="" type="array" variable="$keys">
+            <type>array</type>
+          </tag>
+          <tag name="return" line="150" description="" type="array">
+            <type>array</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$keys</name>
+          <default/>
+          <type>array</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Cache" line="180" package="Default">
+        <name>pull</name>
+        <full_name>\Illuminate\Cache\Repository::pull()</full_name>
+        <docblock line="180">
+          <description>Retrieve an item from the cache and delete it.</description>
+          <long-description/>
+          <tag name="param" line="180" description="" type="string" variable="$key">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="180" description="" type="mixed" variable="$default">
+            <type>mixed</type>
+          </tag>
+          <tag name="return" line="180" description="" type="mixed">
+            <type>mixed</type>
+          </tag>
+          <tag name="inherited_from" description="\Illuminate\Contracts\Cache\Repository::pull()" refers="\Illuminate\Contracts\Cache\Repository::pull()" link="/classes/Illuminate.Contracts.Cache.Repository.html#method_pull"/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$key</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$default</name>
+          <default>null</default>
+          <type>mixed</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Cache" line="197" package="Default">
+        <name>put</name>
+        <full_name>\Illuminate\Cache\Repository::put()</full_name>
+        <docblock line="197">
+          <description>Store an item in the cache.</description>
+          <long-description/>
+          <tag name="param" line="197" description="" type="string" variable="$key">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="197" description="" type="mixed" variable="$value">
+            <type>mixed</type>
+          </tag>
+          <tag name="param" line="197" description="" type="\DateTime|integer" variable="$minutes">
+            <type>\DateTime</type>
+            <type>integer</type>
+          </tag>
+          <tag name="return" line="197" description="" type="void">
+            <type>void</type>
+          </tag>
+          <tag name="inherited_from" description="\Illuminate\Contracts\Cache\Repository::put()" refers="\Illuminate\Contracts\Cache\Repository::put()" link="/classes/Illuminate.Contracts.Cache.Repository.html#method_put"/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$key</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$value</name>
+          <default/>
+          <type>mixed</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$minutes</name>
+          <default>null</default>
+          <type>\DateTime|integer</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Cache" line="219" package="Default">
+        <name>putMany</name>
+        <full_name>\Illuminate\Cache\Repository::putMany()</full_name>
+        <docblock line="219">
+          <description>Store multiple items in the cache for a given number of minutes.</description>
+          <long-description/>
+          <tag name="param" line="219" description="" type="array" variable="$values">
+            <type>array</type>
+          </tag>
+          <tag name="param" line="219" description="" type="integer" variable="$minutes">
+            <type>integer</type>
+          </tag>
+          <tag name="return" line="219" description="" type="void">
+            <type>void</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$values</name>
+          <default/>
+          <type>array</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$minutes</name>
+          <default/>
+          <type>integer</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Cache" line="240" package="Default">
+        <name>add</name>
+        <full_name>\Illuminate\Cache\Repository::add()</full_name>
+        <docblock line="240">
+          <description>Store an item in the cache if the key does not exist.</description>
+          <long-description/>
+          <tag name="param" line="240" description="" type="string" variable="$key">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="240" description="" type="mixed" variable="$value">
+            <type>mixed</type>
+          </tag>
+          <tag name="param" line="240" description="" type="\DateTime|integer" variable="$minutes">
+            <type>\DateTime</type>
+            <type>integer</type>
+          </tag>
+          <tag name="return" line="240" description="" type="boolean">
+            <type>boolean</type>
+          </tag>
+          <tag name="inherited_from" description="\Illuminate\Contracts\Cache\Repository::add()" refers="\Illuminate\Contracts\Cache\Repository::add()" link="/classes/Illuminate.Contracts.Cache.Repository.html#method_add"/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$key</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$value</name>
+          <default/>
+          <type>mixed</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$minutes</name>
+          <default/>
+          <type>\DateTime|integer</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Cache" line="268" package="Default">
+        <name>forever</name>
+        <full_name>\Illuminate\Cache\Repository::forever()</full_name>
+        <docblock line="268">
+          <description>Store an item in the cache indefinitely.</description>
+          <long-description/>
+          <tag name="param" line="268" description="" type="string" variable="$key">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="268" description="" type="mixed" variable="$value">
+            <type>mixed</type>
+          </tag>
+          <tag name="return" line="268" description="" type="void">
+            <type>void</type>
+          </tag>
+          <tag name="inherited_from" description="\Illuminate\Contracts\Cache\Repository::forever()" refers="\Illuminate\Contracts\Cache\Repository::forever()" link="/classes/Illuminate.Contracts.Cache.Repository.html#method_forever"/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$key</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$value</name>
+          <default/>
+          <type>mixed</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Cache" line="283" package="Default">
+        <name>remember</name>
+        <full_name>\Illuminate\Cache\Repository::remember()</full_name>
+        <docblock line="283">
+          <description>Get an item from the cache, or store the default value.</description>
+          <long-description/>
+          <tag name="param" line="283" description="" type="string" variable="$key">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="283" description="" type="\DateTime|integer" variable="$minutes">
+            <type>\DateTime</type>
+            <type>integer</type>
+          </tag>
+          <tag name="param" line="283" description="" type="\Closure" variable="$callback">
+            <type>\Closure</type>
+          </tag>
+          <tag name="return" line="283" description="" type="mixed">
+            <type>mixed</type>
+          </tag>
+          <tag name="inherited_from" description="\Illuminate\Contracts\Cache\Repository::remember()" refers="\Illuminate\Contracts\Cache\Repository::remember()" link="/classes/Illuminate.Contracts.Cache.Repository.html#method_remember"/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$key</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$minutes</name>
+          <default/>
+          <type>\DateTime|integer</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$callback</name>
+          <default/>
+          <type>\Closure</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Cache" line="304" package="Default">
+        <name>sear</name>
+        <full_name>\Illuminate\Cache\Repository::sear()</full_name>
+        <docblock line="304">
+          <description>Get an item from the cache, or store the default value forever.</description>
+          <long-description/>
+          <tag name="param" line="304" description="" type="string" variable="$key">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="304" description="" type="\Closure" variable="$callback">
+            <type>\Closure</type>
+          </tag>
+          <tag name="return" line="304" description="" type="mixed">
+            <type>mixed</type>
+          </tag>
+          <tag name="inherited_from" description="\Illuminate\Contracts\Cache\Repository::sear()" refers="\Illuminate\Contracts\Cache\Repository::sear()" link="/classes/Illuminate.Contracts.Cache.Repository.html#method_sear"/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$key</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$callback</name>
+          <default/>
+          <type>\Closure</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Cache" line="316" package="Default">
+        <name>rememberForever</name>
+        <full_name>\Illuminate\Cache\Repository::rememberForever()</full_name>
+        <docblock line="316">
+          <description>Get an item from the cache, or store the default value forever.</description>
+          <long-description/>
+          <tag name="param" line="316" description="" type="string" variable="$key">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="316" description="" type="\Closure" variable="$callback">
+            <type>\Closure</type>
+          </tag>
+          <tag name="return" line="316" description="" type="mixed">
+            <type>mixed</type>
+          </tag>
+          <tag name="inherited_from" description="\Illuminate\Contracts\Cache\Repository::rememberForever()" refers="\Illuminate\Contracts\Cache\Repository::rememberForever()" link="/classes/Illuminate.Contracts.Cache.Repository.html#method_rememberForever"/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$key</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$callback</name>
+          <default/>
+          <type>\Closure</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Cache" line="336" package="Default">
+        <name>forget</name>
+        <full_name>\Illuminate\Cache\Repository::forget()</full_name>
+        <docblock line="336">
+          <description>Remove an item from the cache.</description>
+          <long-description/>
+          <tag name="param" line="336" description="" type="string" variable="$key">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="336" description="" type="boolean">
+            <type>boolean</type>
+          </tag>
+          <tag name="inherited_from" description="\Illuminate\Contracts\Cache\Repository::forget()" refers="\Illuminate\Contracts\Cache\Repository::forget()" link="/classes/Illuminate.Contracts.Cache.Repository.html#method_forget"/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$key</name>
+          <default/>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Cache" line="353" package="Default">
+        <name>tags</name>
+        <full_name>\Illuminate\Cache\Repository::tags()</full_name>
+        <docblock line="353">
+          <description>Begin executing a new tags operation if the store supports it.</description>
+          <long-description/>
+          <tag name="param" line="353" description="" type="array|mixed" variable="$names">
+            <type>array</type>
+            <type>mixed</type>
+          </tag>
+          <tag name="return" line="353" description="" type="\Illuminate\Cache\TaggedCache">
+            <type>\Illuminate\Cache\TaggedCache</type>
+          </tag>
+          <tag name="throws" line="353" description="" type="\BadMethodCallException">
+            <type>\BadMethodCallException</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$names</name>
+          <default/>
+          <type>array|mixed</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Cache" line="376" package="Default">
+        <name>itemKey</name>
+        <full_name>\Illuminate\Cache\Repository::itemKey()</full_name>
+        <docblock line="376">
+          <description>Format the key for a cache item.</description>
+          <long-description/>
+          <tag name="param" line="376" description="" type="string" variable="$key">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="376" description="" type="string">
+            <type>string</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$key</name>
+          <default/>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Cache" line="386" package="Default">
+        <name>getDefaultCacheTime</name>
+        <full_name>\Illuminate\Cache\Repository::getDefaultCacheTime()</full_name>
+        <docblock line="386">
+          <description>Get the default cache time.</description>
+          <long-description/>
+          <tag name="return" line="386" description="" type="integer">
+            <type>integer</type>
+          </tag>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Cache" line="397" package="Default">
+        <name>setDefaultCacheTime</name>
+        <full_name>\Illuminate\Cache\Repository::setDefaultCacheTime()</full_name>
+        <docblock line="397">
+          <description>Set the default cache time in minutes.</description>
+          <long-description/>
+          <tag name="param" line="397" description="" type="integer" variable="$minutes">
+            <type>integer</type>
+          </tag>
+          <tag name="return" line="397" description="" type="void">
+            <type>void</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$minutes</name>
+          <default/>
+          <type>integer</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Cache" line="407" package="Default">
+        <name>getStore</name>
+        <full_name>\Illuminate\Cache\Repository::getStore()</full_name>
+        <docblock line="407">
+          <description>Get the cache store implementation.</description>
+          <long-description/>
+          <tag name="return" line="407" description="" type="\Illuminate\Contracts\Cache\Store">
+            <type>\Illuminate\Contracts\Cache\Store</type>
+          </tag>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Cache" line="418" package="Default">
+        <name>offsetExists</name>
+        <full_name>\Illuminate\Cache\Repository::offsetExists()</full_name>
+        <docblock line="418">
+          <description>Determine if a cached value exists.</description>
+          <long-description/>
+          <tag name="param" line="418" description="" type="string" variable="$key">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="418" description="" type="boolean">
+            <type>boolean</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$key</name>
+          <default/>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Cache" line="429" package="Default">
+        <name>offsetGet</name>
+        <full_name>\Illuminate\Cache\Repository::offsetGet()</full_name>
+        <docblock line="429">
+          <description>Retrieve an item from the cache by key.</description>
+          <long-description/>
+          <tag name="param" line="429" description="" type="string" variable="$key">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="429" description="" type="mixed">
+            <type>mixed</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$key</name>
+          <default/>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Cache" line="441" package="Default">
+        <name>offsetSet</name>
+        <full_name>\Illuminate\Cache\Repository::offsetSet()</full_name>
+        <docblock line="441">
+          <description>Store an item in the cache for the default time.</description>
+          <long-description/>
+          <tag name="param" line="441" description="" type="string" variable="$key">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="441" description="" type="mixed" variable="$value">
+            <type>mixed</type>
+          </tag>
+          <tag name="return" line="441" description="" type="void">
+            <type>void</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$key</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$value</name>
+          <default/>
+          <type>mixed</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Cache" line="452" package="Default">
+        <name>offsetUnset</name>
+        <full_name>\Illuminate\Cache\Repository::offsetUnset()</full_name>
+        <docblock line="452">
+          <description>Remove an item from the cache.</description>
+          <long-description/>
+          <tag name="param" line="452" description="" type="string" variable="$key">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="452" description="" type="void">
+            <type>void</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$key</name>
+          <default/>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Cache" line="463" package="Default">
+        <name>getMinutes</name>
+        <full_name>\Illuminate\Cache\Repository::getMinutes()</full_name>
+        <docblock line="463">
+          <description>Calculate the number of minutes with the given duration.</description>
+          <long-description/>
+          <tag name="param" line="463" description="" type="\DateTime|integer" variable="$duration">
+            <type>\DateTime</type>
+            <type>integer</type>
+          </tag>
+          <tag name="return" line="463" description="" type="integer|null">
+            <type>integer</type>
+            <type>null</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$duration</name>
+          <default/>
+          <type>\DateTime|integer</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Cache" line="481" package="Default">
+        <name>__call</name>
+        <full_name>\Illuminate\Cache\Repository::__call()</full_name>
+        <docblock line="481">
+          <description>Handle dynamic calls into macros or pass missing methods to the store.</description>
+          <long-description/>
+          <tag name="param" line="481" description="" type="string" variable="$method">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="481" description="" type="array" variable="$parameters">
+            <type>array</type>
+          </tag>
+          <tag name="return" line="481" description="" type="mixed">
+            <type>mixed</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$method</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$parameters</name>
+          <default/>
+          <type>array</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Cache" line="495" package="Default">
+        <name>__clone</name>
+        <full_name>\Illuminate\Cache\Repository::__clone()</full_name>
+        <docblock line="495">
+          <description>Clone cache repository instance.</description>
+          <long-description/>
+          <tag name="return" line="495" description="" type="void">
+            <type>void</type>
+          </tag>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="true" visibility="public" namespace="Illuminate\Cache" line="24" package="Default">
+        <name>macro</name>
+        <full_name>\Illuminate\Support\Traits\Macroable::macro()</full_name>
+        <docblock line="24">
+          <description>Register a custom macro.</description>
+          <long-description/>
+          <tag name="param" line="24" description="" type="string" variable="$name">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="24" description="" type="callable" variable="$macro">
+            <type>callable</type>
+          </tag>
+          <tag name="return" line="24" description="" type="void">
+            <type>void</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$name</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$macro</name>
+          <default/>
+          <type>callable</type>
+        </argument>
+        <inherited_from>\Illuminate\Support\Traits\Macroable</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="true" visibility="public" namespace="Illuminate\Cache" line="35" package="Default">
+        <name>hasMacro</name>
+        <full_name>\Illuminate\Support\Traits\Macroable::hasMacro()</full_name>
+        <docblock line="35">
+          <description>Checks if macro is registered.</description>
+          <long-description/>
+          <tag name="param" line="35" description="" type="string" variable="$name">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="35" description="" type="boolean">
+            <type>boolean</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$name</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <inherited_from>\Illuminate\Support\Traits\Macroable</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="true" visibility="public" namespace="Illuminate\Cache" line="49" package="Default">
+        <name>__callStatic</name>
+        <full_name>\Illuminate\Support\Traits\Macroable::__callStatic()</full_name>
+        <docblock line="49">
+          <description>Dynamically handle calls to the class.</description>
+          <long-description/>
+          <tag name="param" line="49" description="" type="string" variable="$method">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="49" description="" type="array" variable="$parameters">
+            <type>array</type>
+          </tag>
+          <tag name="return" line="49" description="" type="mixed">
+            <type>mixed</type>
+          </tag>
+          <tag name="throws" line="49" description="" type="\BadMethodCallException">
+            <type>\BadMethodCallException</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$method</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$parameters</name>
+          <default/>
+          <type>array</type>
+        </argument>
+        <inherited_from>\Illuminate\Support\Traits\Macroable</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Cache" line="71" package="Default">
+        <name>__call</name>
+        <full_name>\Illuminate\Support\Traits\Macroable::__call()</full_name>
+        <docblock line="71">
+          <description>Dynamically handle calls to the class.</description>
+          <long-description/>
+          <tag name="param" line="71" description="" type="string" variable="$method">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="71" description="" type="array" variable="$parameters">
+            <type>array</type>
+          </tag>
+          <tag name="return" line="71" description="" type="mixed">
+            <type>mixed</type>
+          </tag>
+          <tag name="throws" line="71" description="" type="\BadMethodCallException">
+            <type>\BadMethodCallException</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$method</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$parameters</name>
+          <default/>
+          <type>array</type>
+        </argument>
+        <inherited_from>\Illuminate\Support\Traits\Macroable</inherited_from>
+      </method>
+    </class>
+    <parse_markers>
+      <error line="0" code="PPC:ERR-50000">No summary was found for this file</error>
+      <error line="15" code="PPC:ERR-50005">No summary for class \Illuminate\Cache\Repository</error>
+    </parse_markers>
+    <source>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</source>
+  <type>class</type></file>

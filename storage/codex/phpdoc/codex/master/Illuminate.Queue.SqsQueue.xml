@@ -1,0 +1,670 @@
+<file path="codex/vendor/laravel/framework/src/Illuminate/Queue/SqsQueue.php" generated-path="codex.vendor.laravel.framework.src.Illuminate.Queue.SqsQueue.html" hash="ff43ab48c4846f70e428f0d86a936297" package="Default">
+    <docblock line="0">
+      <description/>
+      <long-description/>
+      <tag name="package" line="0" description="Default"/>
+    </docblock>
+    <namespace-alias name="SqsClient">\Aws\Sqs\SqsClient</namespace-alias>
+    <namespace-alias name="SqsJob">\Illuminate\Queue\Jobs\SqsJob</namespace-alias>
+    <namespace-alias name="QueueContract">\Illuminate\Contracts\Queue\Queue</namespace-alias>
+    <class final="false" abstract="false" namespace="Illuminate\Queue" line="9" package="Default">
+      <extends>\Illuminate\Queue\Queue</extends>
+      <implements>\Illuminate\Contracts\Queue\Queue</implements>
+      <name>SqsQueue</name>
+      <full_name>\Illuminate\Queue\SqsQueue</full_name>
+      <docblock line="9">
+        <description/>
+        <long-description/>
+        <tag name="package" line="9" description="Default"/>
+        <tag name="inherited_from" description="\Illuminate\Queue\Queue" refers="\Illuminate\Queue\Queue" link="/classes/Illuminate.Queue.Queue.html"/>
+      </docblock>
+      <property static="false" visibility="protected" namespace="Illuminate\Queue" line="16" package="Default">
+        <name>$sqs</name>
+        <full_name>\Illuminate\Queue\SqsQueue::sqs</full_name>
+        <default/>
+        <docblock line="16">
+          <description>The Amazon SQS instance.</description>
+          <long-description/>
+          <tag name="var" line="16" description="" type="\Aws\Sqs\SqsClient" variable="">
+            <type>\Aws\Sqs\SqsClient</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" namespace="Illuminate\Queue" line="23" package="Default">
+        <name>$default</name>
+        <full_name>\Illuminate\Queue\SqsQueue::default</full_name>
+        <default/>
+        <docblock line="23">
+          <description>The name of the default tube.</description>
+          <long-description/>
+          <tag name="var" line="23" description="" type="string" variable="">
+            <type>string</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" namespace="Illuminate\Queue" line="30" package="Default">
+        <name>$prefix</name>
+        <full_name>\Illuminate\Queue\SqsQueue::prefix</full_name>
+        <default/>
+        <docblock line="30">
+          <description>The sqs prefix url.</description>
+          <long-description/>
+          <tag name="var" line="30" description="" type="string" variable="">
+            <type>string</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" namespace="Illuminate\Queue" line="37" package="Default">
+        <name>$jobCreator</name>
+        <full_name>\Illuminate\Queue\SqsQueue::jobCreator</full_name>
+        <default/>
+        <docblock line="37">
+          <description>The job creator callback.</description>
+          <long-description/>
+          <tag name="var" line="37" description="" type="callable|null" variable="">
+            <type>callable</type>
+            <type>null</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" namespace="Illuminate\Queue" line="20" package="Default">
+        <name>$container</name>
+        <full_name>\Illuminate\Queue\Queue::container</full_name>
+        <default/>
+        <docblock line="20">
+          <description>The IoC container instance.</description>
+          <long-description/>
+          <tag name="var" line="20" description="" type="\Illuminate\Container\Container" variable="">
+            <type>\Illuminate\Container\Container</type>
+          </tag>
+        </docblock>
+      </property>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Queue" line="47" package="Default">
+        <name>__construct</name>
+        <full_name>\Illuminate\Queue\SqsQueue::__construct()</full_name>
+        <docblock line="47">
+          <description>Create a new Amazon SQS queue instance.</description>
+          <long-description/>
+          <tag name="param" line="47" description="" type="\Aws\Sqs\SqsClient" variable="$sqs">
+            <type>\Aws\Sqs\SqsClient</type>
+          </tag>
+          <tag name="param" line="47" description="" type="string" variable="$default">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="47" description="" type="string" variable="$prefix">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="47" description="" type="void">
+            <type>void</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$sqs</name>
+          <default/>
+          <type>\Aws\Sqs\SqsClient</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$default</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$prefix</name>
+          <default>''</default>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Queue" line="62" package="Default">
+        <name>push</name>
+        <full_name>\Illuminate\Queue\SqsQueue::push()</full_name>
+        <docblock line="62">
+          <description>Push a new job onto the queue.</description>
+          <long-description/>
+          <tag name="param" line="62" description="" type="string" variable="$job">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="62" description="" type="mixed" variable="$data">
+            <type>mixed</type>
+          </tag>
+          <tag name="param" line="62" description="" type="string" variable="$queue">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="62" description="" type="mixed">
+            <type>mixed</type>
+          </tag>
+          <tag name="inherited_from" description="\Illuminate\Contracts\Queue\Queue::push()" refers="\Illuminate\Contracts\Queue\Queue::push()" link="/classes/Illuminate.Contracts.Queue.Queue.html#method_push"/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$job</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$data</name>
+          <default>''</default>
+          <type>mixed</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$queue</name>
+          <default>null</default>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Queue" line="75" package="Default">
+        <name>pushRaw</name>
+        <full_name>\Illuminate\Queue\SqsQueue::pushRaw()</full_name>
+        <docblock line="75">
+          <description>Push a raw payload onto the queue.</description>
+          <long-description/>
+          <tag name="param" line="75" description="" type="string" variable="$payload">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="75" description="" type="string" variable="$queue">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="75" description="" type="array" variable="$options">
+            <type>array</type>
+          </tag>
+          <tag name="return" line="75" description="" type="mixed">
+            <type>mixed</type>
+          </tag>
+          <tag name="inherited_from" description="\Illuminate\Contracts\Queue\Queue::pushRaw()" refers="\Illuminate\Contracts\Queue\Queue::pushRaw()" link="/classes/Illuminate.Contracts.Queue.Queue.html#method_pushRaw"/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$payload</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$queue</name>
+          <default>null</default>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$options</name>
+          <default>array()</default>
+          <type>array</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Queue" line="91" package="Default">
+        <name>later</name>
+        <full_name>\Illuminate\Queue\SqsQueue::later()</full_name>
+        <docblock line="91">
+          <description>Push a new job onto the queue after a delay.</description>
+          <long-description/>
+          <tag name="param" line="91" description="" type="\DateTime|integer" variable="$delay">
+            <type>\DateTime</type>
+            <type>integer</type>
+          </tag>
+          <tag name="param" line="91" description="" type="string" variable="$job">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="91" description="" type="mixed" variable="$data">
+            <type>mixed</type>
+          </tag>
+          <tag name="param" line="91" description="" type="string" variable="$queue">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="91" description="" type="mixed">
+            <type>mixed</type>
+          </tag>
+          <tag name="inherited_from" description="\Illuminate\Contracts\Queue\Queue::later()" refers="\Illuminate\Contracts\Queue\Queue::later()" link="/classes/Illuminate.Contracts.Queue.Queue.html#method_later"/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$delay</name>
+          <default/>
+          <type>\DateTime|integer</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$job</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$data</name>
+          <default>''</default>
+          <type>mixed</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$queue</name>
+          <default>null</default>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Queue" line="109" package="Default">
+        <name>pop</name>
+        <full_name>\Illuminate\Queue\SqsQueue::pop()</full_name>
+        <docblock line="109">
+          <description>Pop the next job off of the queue.</description>
+          <long-description/>
+          <tag name="param" line="109" description="" type="string" variable="$queue">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="109" description="" type="\Illuminate\Contracts\Queue\Job|null">
+            <type>\Illuminate\Contracts\Queue\Job</type>
+            <type>null</type>
+          </tag>
+          <tag name="inherited_from" description="\Illuminate\Contracts\Queue\Queue::pop()" refers="\Illuminate\Contracts\Queue\Queue::pop()" link="/classes/Illuminate.Contracts.Queue.Queue.html#method_pop"/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$queue</name>
+          <default>null</default>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Queue" line="132" package="Default">
+        <name>createJobsUsing</name>
+        <full_name>\Illuminate\Queue\SqsQueue::createJobsUsing()</full_name>
+        <docblock line="132">
+          <description>Define the job creator callback for the connection.</description>
+          <long-description/>
+          <tag name="param" line="132" description="" type="callable" variable="$callback">
+            <type>callable</type>
+          </tag>
+          <tag name="return" line="132" description="" type="\Illuminate\Queue\SqsQueue">
+            <type>\Illuminate\Queue\SqsQueue</type>
+          </tag>
+          <tag name="fluent" description="This method is part of a fluent interface and will return the same instance"/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$callback</name>
+          <default/>
+          <type>callable</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Queue" line="145" package="Default">
+        <name>getQueue</name>
+        <full_name>\Illuminate\Queue\SqsQueue::getQueue()</full_name>
+        <docblock line="145">
+          <description>Get the queue or return the default.</description>
+          <long-description/>
+          <tag name="param" line="145" description="" type="string|null" variable="$queue">
+            <type>string</type>
+            <type>null</type>
+          </tag>
+          <tag name="return" line="145" description="" type="string">
+            <type>string</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$queue</name>
+          <default/>
+          <type>string|null</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Queue" line="161" package="Default">
+        <name>getSqs</name>
+        <full_name>\Illuminate\Queue\SqsQueue::getSqs()</full_name>
+        <docblock line="161">
+          <description>Get the underlying SQS instance.</description>
+          <long-description/>
+          <tag name="return" line="161" description="" type="\Aws\Sqs\SqsClient">
+            <type>\Aws\Sqs\SqsClient</type>
+          </tag>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Queue" line="30" package="Default">
+        <name>pushOn</name>
+        <full_name>\Illuminate\Queue\Queue::pushOn()</full_name>
+        <docblock line="30">
+          <description>Push a new job onto the queue.</description>
+          <long-description/>
+          <tag name="param" line="30" description="" type="string" variable="$queue">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="30" description="" type="string" variable="$job">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="30" description="" type="mixed" variable="$data">
+            <type>mixed</type>
+          </tag>
+          <tag name="return" line="30" description="" type="mixed">
+            <type>mixed</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$queue</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$job</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$data</name>
+          <default>''</default>
+          <type>mixed</type>
+        </argument>
+        <inherited_from>\Illuminate\Queue\Queue</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Queue" line="44" package="Default">
+        <name>laterOn</name>
+        <full_name>\Illuminate\Queue\Queue::laterOn()</full_name>
+        <docblock line="44">
+          <description>Push a new job onto the queue after a delay.</description>
+          <long-description/>
+          <tag name="param" line="44" description="" type="string" variable="$queue">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="44" description="" type="\DateTime|integer" variable="$delay">
+            <type>\DateTime</type>
+            <type>integer</type>
+          </tag>
+          <tag name="param" line="44" description="" type="string" variable="$job">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="44" description="" type="mixed" variable="$data">
+            <type>mixed</type>
+          </tag>
+          <tag name="return" line="44" description="" type="mixed">
+            <type>mixed</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$queue</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$delay</name>
+          <default/>
+          <type>\DateTime|integer</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$job</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$data</name>
+          <default>''</default>
+          <type>mixed</type>
+        </argument>
+        <inherited_from>\Illuminate\Queue\Queue</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Queue" line="57" package="Default">
+        <name>bulk</name>
+        <full_name>\Illuminate\Queue\Queue::bulk()</full_name>
+        <docblock line="57">
+          <description>Push an array of jobs onto the queue.</description>
+          <long-description/>
+          <tag name="param" line="57" description="" type="array" variable="$jobs">
+            <type>array</type>
+          </tag>
+          <tag name="param" line="57" description="" type="mixed" variable="$data">
+            <type>mixed</type>
+          </tag>
+          <tag name="param" line="57" description="" type="string" variable="$queue">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="57" description="" type="mixed">
+            <type>mixed</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$jobs</name>
+          <default/>
+          <type>array</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$data</name>
+          <default>''</default>
+          <type>mixed</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$queue</name>
+          <default>null</default>
+          <type>string</type>
+        </argument>
+        <inherited_from>\Illuminate\Queue\Queue</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Queue" line="72" package="Default">
+        <name>createPayload</name>
+        <full_name>\Illuminate\Queue\Queue::createPayload()</full_name>
+        <docblock line="72">
+          <description>Create a payload string from the given job and data.</description>
+          <long-description/>
+          <tag name="param" line="72" description="" type="string" variable="$job">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="72" description="" type="mixed" variable="$data">
+            <type>mixed</type>
+          </tag>
+          <tag name="param" line="72" description="" type="string" variable="$queue">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="72" description="" type="string">
+            <type>string</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$job</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$data</name>
+          <default>''</default>
+          <type>mixed</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$queue</name>
+          <default>null</default>
+          <type>string</type>
+        </argument>
+        <inherited_from>\Illuminate\Queue\Queue</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Queue" line="93" package="Default">
+        <name>createPlainPayload</name>
+        <full_name>\Illuminate\Queue\Queue::createPlainPayload()</full_name>
+        <docblock line="93">
+          <description>Create a typical, "plain" queue payload array.</description>
+          <long-description/>
+          <tag name="param" line="93" description="" type="string" variable="$job">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="93" description="" type="mixed" variable="$data">
+            <type>mixed</type>
+          </tag>
+          <tag name="return" line="93" description="" type="array">
+            <type>array</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$job</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$data</name>
+          <default/>
+          <type>mixed</type>
+        </argument>
+        <inherited_from>\Illuminate\Queue\Queue</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Queue" line="104" package="Default">
+        <name>prepareQueueableEntities</name>
+        <full_name>\Illuminate\Queue\Queue::prepareQueueableEntities()</full_name>
+        <docblock line="104">
+          <description>Prepare any queueable entities for storage in the queue.</description>
+          <long-description/>
+          <tag name="param" line="104" description="" type="mixed" variable="$data">
+            <type>mixed</type>
+          </tag>
+          <tag name="return" line="104" description="" type="mixed">
+            <type>mixed</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$data</name>
+          <default/>
+          <type>mixed</type>
+        </argument>
+        <inherited_from>\Illuminate\Queue\Queue</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Queue" line="129" package="Default">
+        <name>prepareQueueableEntity</name>
+        <full_name>\Illuminate\Queue\Queue::prepareQueueableEntity()</full_name>
+        <docblock line="129">
+          <description>Prepare a single queueable entity for storage on the queue.</description>
+          <long-description/>
+          <tag name="param" line="129" description="" type="mixed" variable="$value">
+            <type>mixed</type>
+          </tag>
+          <tag name="return" line="129" description="" type="mixed">
+            <type>mixed</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$value</name>
+          <default/>
+          <type>mixed</type>
+        </argument>
+        <inherited_from>\Illuminate\Queue\Queue</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Queue" line="145" package="Default">
+        <name>createClosurePayload</name>
+        <full_name>\Illuminate\Queue\Queue::createClosurePayload()</full_name>
+        <docblock line="145">
+          <description>Create a payload string for the given Closure job.</description>
+          <long-description/>
+          <tag name="param" line="145" description="" type="\Closure" variable="$job">
+            <type>\Closure</type>
+          </tag>
+          <tag name="param" line="145" description="" type="mixed" variable="$data">
+            <type>mixed</type>
+          </tag>
+          <tag name="return" line="145" description="" type="array">
+            <type>array</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$job</name>
+          <default/>
+          <type>\Closure</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$data</name>
+          <default/>
+          <type>mixed</type>
+        </argument>
+        <inherited_from>\Illuminate\Queue\Queue</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Queue" line="160" package="Default">
+        <name>setMeta</name>
+        <full_name>\Illuminate\Queue\Queue::setMeta()</full_name>
+        <docblock line="160">
+          <description>Set additional meta on a payload string.</description>
+          <long-description/>
+          <tag name="param" line="160" description="" type="string" variable="$payload">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="160" description="" type="string" variable="$key">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="160" description="" type="string" variable="$value">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="160" description="" type="string">
+            <type>string</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$payload</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$key</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$value</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <inherited_from>\Illuminate\Queue\Queue</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Queue" line="173" package="Default">
+        <name>getSeconds</name>
+        <full_name>\Illuminate\Queue\Queue::getSeconds()</full_name>
+        <docblock line="173">
+          <description>Calculate the number of seconds with the given delay.</description>
+          <long-description/>
+          <tag name="param" line="173" description="" type="\DateTime|integer" variable="$delay">
+            <type>\DateTime</type>
+            <type>integer</type>
+          </tag>
+          <tag name="return" line="173" description="" type="integer">
+            <type>integer</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$delay</name>
+          <default/>
+          <type>\DateTime|integer</type>
+        </argument>
+        <inherited_from>\Illuminate\Queue\Queue</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Queue" line="187" package="Default">
+        <name>getTime</name>
+        <full_name>\Illuminate\Queue\Queue::getTime()</full_name>
+        <docblock line="187">
+          <description>Get the current UNIX timestamp.</description>
+          <long-description/>
+          <tag name="return" line="187" description="" type="integer">
+            <type>integer</type>
+          </tag>
+        </docblock>
+        <inherited_from>\Illuminate\Queue\Queue</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Queue" line="198" package="Default">
+        <name>setContainer</name>
+        <full_name>\Illuminate\Queue\Queue::setContainer()</full_name>
+        <docblock line="198">
+          <description>Set the IoC container instance.</description>
+          <long-description/>
+          <tag name="param" line="198" description="" type="\Illuminate\Container\Container" variable="$container">
+            <type>\Illuminate\Container\Container</type>
+          </tag>
+          <tag name="return" line="198" description="" type="void">
+            <type>void</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$container</name>
+          <default/>
+          <type>\Illuminate\Container\Container</type>
+        </argument>
+        <inherited_from>\Illuminate\Queue\Queue</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Queue" line="209" package="Default">
+        <name>setEncrypter</name>
+        <full_name>\Illuminate\Queue\Queue::setEncrypter()</full_name>
+        <docblock line="209">
+          <description>Set the encrypter instance.</description>
+          <long-description/>
+          <tag name="param" line="209" description="" type="\Illuminate\Contracts\Encryption\Encrypter" variable="$crypt">
+            <type>\Illuminate\Contracts\Encryption\Encrypter</type>
+          </tag>
+          <tag name="return" line="209" description="" type="void">
+            <type>void</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$crypt</name>
+          <default/>
+          <type>\Illuminate\Contracts\Encryption\Encrypter</type>
+        </argument>
+        <inherited_from>\Illuminate\Queue\Queue</inherited_from>
+      </method>
+    </class>
+    <parse_markers>
+      <error line="0" code="PPC:ERR-50000">No summary was found for this file</error>
+      <error line="9" code="PPC:ERR-50005">No summary for class \Illuminate\Queue\SqsQueue</error>
+    </parse_markers>
+    <source>eJzNV1tv2zYUfvevOAMKSAq8pM/LnNZLuiFDVrS59MU2DFqiEm0UpZBUEm/Nf9/hTZZpyWm6lwmwdTlXfuc71NHP7+q7ejTipKSyJimFc8aasuBE0fnnhjb0eDRqJIXpo5xf3ZvfKSsoV8fmcag9/71aGSU872icVlwJkirpdM0/EAnmwksxYMqIlIBerAZ9UpRnTg2Ksma0xAwCu9E/I8Dj6ODAnOEAru8w75L8XXG4+nwFBZeK8JQeOrlXe/9ABMx3FujER+Zci0rRVNEM3sh7iSn2hNIYQpWDwuuM5qRhClSz6o8nlSj47VAMZ94fBxNAXZoXT9AI9h3erXG/8z+rFaSCElUJSAljK5L+1RtCC8mK0a+8YWwoEno7tc52oxkBlh84feyW6d5WeahYNRGkhJ56gSlNqGeRgBbSQbkFpRULqhrB4aEqsu3FNStWpJA3PFUFZrxcphWmKppUxZtUdCbjNubYe4cJRFFi/Fiy6uONuivkjye6qhPHrkDUGreVCxQ82yYd5mjx8w7onxp55yDXlcbWqQxfDehDWLcYoUkoK4snLLTGlygyaGjch9ga073g1phtrKOOrX+D39i5wxtNvRBO59xDhx4uyWPsbg2z6SeyZhXJup4T7zV5ATlBHqG29q9Fz5l9I0hOSoQga41vVWtI5PeBaCBw8QP8xi6ED4CPZ4sdjgp8O6BQG234in+4L/9BpSS3NJ5FZju+ESyCyYlXu6XKPI4dvGOInMEvVba2mi6xReI2iW4ZfWDjKfa251n0UqH6KQ4kV1SgOKOMrAc3lzNkyXVR0q+F2VeM8v+mKxgmJ2Kb1Bhe2R4e7E0hh3uiUw4bbWOExbiiuPNl0iXSV7shorSK+vivrEHRmU7ApWNlFptNRovkFfypasMXjmOHZVCe+9f6tzV6b13newYhHJZ6XqNhH1d1vL+0XjgAYrecA/0saEqLB+ortVWosL+NU0R/qnDdq0bRj3qGNLJZNK1xCngqSlztpfV5WjVcRYtF67ObT5FDnGqFuM1s5mslo0UCJ/A26SzV27jcN2NGqNShox5YljiRiqWGdNd03DYEVocUnG6e2Le5W3CbYXK8FeoZKENAB+PrDckOxvErA3WhmL1dhHFH21e7jD7DoYFTQ+C+8Q5yvNFCzIdTQ7YhivuhDxnkrUOem5XsJbLdcPSHwo3Eholbp63PgRFpUytNW688sPEMtfdvVHVeB+jKGXWm9v0Nbjp1qMv7Bu9g+WFbDnaxvXj3UzDlBW2TFwxfB0scyWNPnF/PL64/XC6/TC/Oz6bXH5Y3lxcJ/DCZQE6QoWGLeNDu7dfehkwhrALXVsZbMym2/1GUHOLfYfzC/ORxb3hGBVvrnXLvR5nfNl/4LtsFFxXj/UNhO2M/j55H/wLEQE+2</source>
+  <type>class</type></file>

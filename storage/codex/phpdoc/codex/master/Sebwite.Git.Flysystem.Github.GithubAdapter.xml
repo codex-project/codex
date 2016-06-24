@@ -1,0 +1,497 @@
+<file path="sebwite/workbench/sebwite/git/src/Flysystem/Github/GithubAdapter.php" generated-path="sebwite.workbench.sebwite.git.src.Flysystem.Github.GithubAdapter.html" hash="c6612ac2009458e5e7a0ef799d3b6778" package="Default">
+    <docblock line="0">
+      <description/>
+      <long-description/>
+      <tag name="package" line="0" description="Default"/>
+    </docblock>
+    <namespace-alias name="AbstractAdapter">\League\Flysystem\Adapter\AbstractAdapter</namespace-alias>
+    <namespace-alias name="StreamedTrait">\League\Flysystem\Adapter\Polyfill\StreamedTrait</namespace-alias>
+    <namespace-alias name="Config">\League\Flysystem\Config</namespace-alias>
+    <namespace-alias name="Exception">\League\Flysystem\Exception</namespace-alias>
+    <namespace-alias name="ApiInterface">\Sebwite\Git\Flysystem\ApiInterface</namespace-alias>
+    <class final="false" abstract="false" namespace="Sebwite\Git\Flysystem\Github" line="18" package="Sebwite\Git">
+      <extends>\League\Flysystem\Adapter\AbstractAdapter</extends>
+      <name>GithubAdapter</name>
+      <full_name>\Sebwite\Git\Flysystem\Github\GithubAdapter</full_name>
+      <docblock line="18">
+        <description>This is the class GithubAdapter.</description>
+        <long-description/>
+        <tag name="package" line="18" description="Sebwite\Git"/>
+        <tag name="author" line="18" description="Potherca"/>
+        <tag name="copyright" line="18" description="Copyright (c) 2015 Potherca &lt;potherca@gmail.com&gt;"/>
+      </docblock>
+      <constant namespace="Sebwite\Git\Flysystem\Github" line="22" package="Sebwite\Git">
+        <name>COMMITTER_MAIL</name>
+        <full_name>\Sebwite\Git\Flysystem\Github\GithubAdapter::COMMITTER_MAIL</full_name>
+        <value>'email'</value>
+        <docblock line="22">
+          <description/>
+          <long-description/>
+        </docblock>
+      </constant>
+      <constant namespace="Sebwite\Git\Flysystem\Github" line="23" package="Sebwite\Git">
+        <name>COMMITTER_NAME</name>
+        <full_name>\Sebwite\Git\Flysystem\Github\GithubAdapter::COMMITTER_NAME</full_name>
+        <value>'name'</value>
+        <docblock line="23">
+          <description/>
+          <long-description/>
+        </docblock>
+      </constant>
+      <constant namespace="Sebwite\Git\Flysystem\Github" line="25" package="Sebwite\Git">
+        <name>VISIBILITY_PRIVATE</name>
+        <full_name>\Sebwite\Git\Flysystem\Github\GithubAdapter::VISIBILITY_PRIVATE</full_name>
+        <value>'private'</value>
+        <docblock line="25">
+          <description/>
+          <long-description/>
+        </docblock>
+      </constant>
+      <constant namespace="Sebwite\Git\Flysystem\Github" line="26" package="Sebwite\Git">
+        <name>VISIBILITY_PUBLIC</name>
+        <full_name>\Sebwite\Git\Flysystem\Github\GithubAdapter::VISIBILITY_PUBLIC</full_name>
+        <value>'public'</value>
+        <docblock line="26">
+          <description/>
+          <long-description/>
+        </docblock>
+      </constant>
+      <property static="false" visibility="private" namespace="Sebwite\Git\Flysystem\Github" line="29" package="Sebwite\Git">
+        <name>$api</name>
+        <full_name>\Sebwite\Git\Flysystem\Github\GithubAdapter::api</full_name>
+        <default/>
+        <docblock line="29">
+          <description/>
+          <long-description/>
+          <tag name="var" line="29" description="" type="\Sebwite\Git\Flysystem\ApiInterface" variable="">
+            <type>\Sebwite\Git\Flysystem\ApiInterface</type>
+          </tag>
+        </docblock>
+      </property>
+      <method final="true" abstract="false" static="false" visibility="public" namespace="Sebwite\Git\Flysystem\Github" line="34" package="Sebwite\Git">
+        <name>getApi</name>
+        <full_name>\Sebwite\Git\Flysystem\Github\GithubAdapter::getApi()</full_name>
+        <docblock line="34">
+          <description/>
+          <long-description/>
+          <tag name="return" line="34" description="" type="\Sebwite\Git\Flysystem\ApiInterface">
+            <type>\Sebwite\Git\Flysystem\ApiInterface</type>
+          </tag>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Sebwite\Git\Flysystem\Github" line="42" package="Sebwite\Git">
+        <name>__construct</name>
+        <full_name>\Sebwite\Git\Flysystem\Github\GithubAdapter::__construct()</full_name>
+        <docblock line="42">
+          <description/>
+          <long-description/>
+          <tag name="param" line="42" description="" type="\Sebwite\Git\Flysystem\ApiInterface" variable="$api">
+            <type>\Sebwite\Git\Flysystem\ApiInterface</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$api</name>
+          <default/>
+          <type>\Sebwite\Git\Flysystem\ApiInterface</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Sebwite\Git\Flysystem\Github" line="56" package="Sebwite\Git">
+        <name>write</name>
+        <full_name>\Sebwite\Git\Flysystem\Github\GithubAdapter::write()</full_name>
+        <docblock line="56">
+          <description>Write a new file.</description>
+          <long-description/>
+          <tag name="param" line="56" description="" type="string" variable="$path">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="56" description="" type="string" variable="$contents">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="56" description="&lt;p&gt;Config object&lt;/p&gt;" type="\League\Flysystem\Config" variable="$config">
+            <type>\League\Flysystem\Config</type>
+          </tag>
+          <tag name="return" line="56" description="false on failure file meta data on success" type="array|false">
+            <type>array</type>
+            <type>false</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$path</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$contents</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$config</name>
+          <default/>
+          <type>\League\Flysystem\Config</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Sebwite\Git\Flysystem\Github" line="71" package="Sebwite\Git">
+        <name>update</name>
+        <full_name>\Sebwite\Git\Flysystem\Github\GithubAdapter::update()</full_name>
+        <docblock line="71">
+          <description>Update a file.</description>
+          <long-description/>
+          <tag name="param" line="71" description="" type="string" variable="$path">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="71" description="" type="string" variable="$contents">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="71" description="&lt;p&gt;Config object&lt;/p&gt;" type="\League\Flysystem\Config" variable="$config">
+            <type>\League\Flysystem\Config</type>
+          </tag>
+          <tag name="return" line="71" description="false on failure file meta data on success" type="array|false">
+            <type>array</type>
+            <type>false</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$path</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$contents</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$config</name>
+          <default/>
+          <type>\League\Flysystem\Config</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Sebwite\Git\Flysystem\Github" line="85" package="Sebwite\Git">
+        <name>rename</name>
+        <full_name>\Sebwite\Git\Flysystem\Github\GithubAdapter::rename()</full_name>
+        <docblock line="85">
+          <description>Rename a file.</description>
+          <long-description/>
+          <tag name="param" line="85" description="" type="string" variable="$path">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="85" description="" type="string" variable="$newpath">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="85" description="" type="boolean">
+            <type>boolean</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$path</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$newpath</name>
+          <default/>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Sebwite\Git\Flysystem\Github" line="99" package="Sebwite\Git">
+        <name>copy</name>
+        <full_name>\Sebwite\Git\Flysystem\Github\GithubAdapter::copy()</full_name>
+        <docblock line="99">
+          <description>Copy a file.</description>
+          <long-description/>
+          <tag name="param" line="99" description="" type="string" variable="$path">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="99" description="" type="string" variable="$newpath">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="99" description="" type="boolean">
+            <type>boolean</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$path</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$newpath</name>
+          <default/>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Sebwite\Git\Flysystem\Github" line="112" package="Sebwite\Git">
+        <name>delete</name>
+        <full_name>\Sebwite\Git\Flysystem\Github\GithubAdapter::delete()</full_name>
+        <docblock line="112">
+          <description>Delete a file.</description>
+          <long-description/>
+          <tag name="param" line="112" description="" type="string" variable="$path">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="112" description="" type="boolean">
+            <type>boolean</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$path</name>
+          <default/>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Sebwite\Git\Flysystem\Github" line="125" package="Sebwite\Git">
+        <name>deleteDir</name>
+        <full_name>\Sebwite\Git\Flysystem\Github\GithubAdapter::deleteDir()</full_name>
+        <docblock line="125">
+          <description>Delete a directory.</description>
+          <long-description/>
+          <tag name="param" line="125" description="" type="string" variable="$dirname">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="125" description="" type="boolean">
+            <type>boolean</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$dirname</name>
+          <default/>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Sebwite\Git\Flysystem\Github" line="139" package="Sebwite\Git">
+        <name>createDir</name>
+        <full_name>\Sebwite\Git\Flysystem\Github\GithubAdapter::createDir()</full_name>
+        <docblock line="139">
+          <description>Create a directory.</description>
+          <long-description/>
+          <tag name="param" line="139" description="&lt;p&gt;directory name&lt;/p&gt;" type="string" variable="$dirname">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="139" description="" type="\League\Flysystem\Config" variable="$config">
+            <type>\League\Flysystem\Config</type>
+          </tag>
+          <tag name="return" line="139" description="" type="array|false">
+            <type>array</type>
+            <type>false</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$dirname</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$config</name>
+          <default/>
+          <type>\League\Flysystem\Config</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Sebwite\Git\Flysystem\Github" line="153" package="Sebwite\Git">
+        <name>setVisibility</name>
+        <full_name>\Sebwite\Git\Flysystem\Github\GithubAdapter::setVisibility()</full_name>
+        <docblock line="153">
+          <description>Set the visibility for a file.</description>
+          <long-description/>
+          <tag name="param" line="153" description="" type="string" variable="$path">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="153" description="" type="string" variable="$visibility">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="153" description="file meta data" type="array|false">
+            <type>array</type>
+            <type>false</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$path</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$visibility</name>
+          <default/>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Sebwite\Git\Flysystem\Github" line="165" package="Sebwite\Git">
+        <name>has</name>
+        <full_name>\Sebwite\Git\Flysystem\Github\GithubAdapter::has()</full_name>
+        <docblock line="165">
+          <description>Check that a file or directory exists in the repository</description>
+          <long-description/>
+          <tag name="param" line="165" description="" type="string" variable="$path">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="165" description="" type="array|boolean|null">
+            <type>array</type>
+            <type>boolean</type>
+            <type>null</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$path</name>
+          <default/>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Sebwite\Git\Flysystem\Github" line="177" package="Sebwite\Git">
+        <name>read</name>
+        <full_name>\Sebwite\Git\Flysystem\Github\GithubAdapter::read()</full_name>
+        <docblock line="177">
+          <description>Read a file</description>
+          <long-description/>
+          <tag name="param" line="177" description="" type="string" variable="$path">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="177" description="" type="array|false">
+            <type>array</type>
+            <type>false</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$path</name>
+          <default/>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Sebwite\Git\Flysystem\Github" line="190" package="Sebwite\Git">
+        <name>listContents</name>
+        <full_name>\Sebwite\Git\Flysystem\Github\GithubAdapter::listContents()</full_name>
+        <docblock line="190">
+          <description>List contents of a directory.</description>
+          <long-description/>
+          <tag name="param" line="190" description="" type="string" variable="$path">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="190" description="" type="boolean" variable="$recursive">
+            <type>boolean</type>
+          </tag>
+          <tag name="return" line="190" description="" type="array">
+            <type>array</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$path</name>
+          <default>'/'</default>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$recursive</name>
+          <default>false</default>
+          <type>boolean</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Sebwite\Git\Flysystem\Github" line="202" package="Sebwite\Git">
+        <name>getMetadata</name>
+        <full_name>\Sebwite\Git\Flysystem\Github\GithubAdapter::getMetadata()</full_name>
+        <docblock line="202">
+          <description>Get all the meta data of a file or directory.</description>
+          <long-description/>
+          <tag name="param" line="202" description="" type="string" variable="$path">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="202" description="" type="array|false">
+            <type>array</type>
+            <type>false</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$path</name>
+          <default/>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Sebwite\Git\Flysystem\Github" line="214" package="Sebwite\Git">
+        <name>getSize</name>
+        <full_name>\Sebwite\Git\Flysystem\Github\GithubAdapter::getSize()</full_name>
+        <docblock line="214">
+          <description>Get all the meta data of a file or directory.</description>
+          <long-description/>
+          <tag name="param" line="214" description="" type="string" variable="$path">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="214" description="" type="array|false">
+            <type>array</type>
+            <type>false</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$path</name>
+          <default/>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Sebwite\Git\Flysystem\Github" line="226" package="Sebwite\Git">
+        <name>getMimetype</name>
+        <full_name>\Sebwite\Git\Flysystem\Github\GithubAdapter::getMimetype()</full_name>
+        <docblock line="226">
+          <description>Get the mimetype of a file.</description>
+          <long-description/>
+          <tag name="param" line="226" description="" type="string" variable="$path">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="226" description="" type="array|false">
+            <type>array</type>
+            <type>false</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$path</name>
+          <default/>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Sebwite\Git\Flysystem\Github" line="238" package="Sebwite\Git">
+        <name>getTimestamp</name>
+        <full_name>\Sebwite\Git\Flysystem\Github\GithubAdapter::getTimestamp()</full_name>
+        <docblock line="238">
+          <description>Get the timestamp of a file.</description>
+          <long-description/>
+          <tag name="param" line="238" description="" type="string" variable="$path">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="238" description="" type="array|false">
+            <type>array</type>
+            <type>false</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$path</name>
+          <default/>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Sebwite\Git\Flysystem\Github" line="250" package="Sebwite\Git">
+        <name>getVisibility</name>
+        <full_name>\Sebwite\Git\Flysystem\Github\GithubAdapter::getVisibility()</full_name>
+        <docblock line="250">
+          <description>Get the visibility of a file.</description>
+          <long-description/>
+          <tag name="param" line="250" description="" type="string" variable="$path">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="250" description="" type="array|false">
+            <type>array</type>
+            <type>false</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$path</name>
+          <default/>
+          <type>string</type>
+        </argument>
+      </method>
+    </class>
+    <markers>
+      <todo line="155">Implement setVisibility() method.</todo>
+    </markers>
+    <parse_markers>
+      <error line="0" code="PPC:ERR-50000">No summary was found for this file</error>
+      <error line="34" code="PPC:ERR-50008">No summary for method getApi()</error>
+      <error line="42" code="PPC:ERR-50008">No summary for method __construct()</error>
+      <error line="29" code="PPC:ERR-50007">No summary for property $api</error>
+    </parse_markers>
+    <source>eJzdWFtv2kgUfudXzAMSEKWhu9K+JG0aSmhlLSQRuFlVTYUGe4xn68toZpyE3fa/75nx3WATwip0F0UBc2bO+b7vXMbmzTvmslaAfSIYtgiakcUDleTuI5V3H7yVWAlJfHXlRouzVqsVCYLGBC8jUjAPbMwk4XeDhZAcWzK5PmtefRN6K4d63t1McgIAbJNjKms2DcPAocsa4+jRIkzSMIjtmzkMGDUCiOsATWDSPzpqoSNkulQg+JMuQZaHhUAx1wTkCaxRyy5AnG94SVDyKoTQZhxJN+SpFd2E4I9bWNuskK04Xboytg2zy67VQ7++/uW3bDl6w5JPF0sfU+/ECv1z8NFvbYCGyKMkgS1QRfXW3y0VRgtRFlZ/b4WBkGh4PZkYpjmazicDY4zeog5RATtnG9dcDSYjtUaVSafk59aYGe+NsWF+nt9MjduBqdcxTu+xJCVvxZWf3o+NoV4YLTxqpS4hJejiHnNUTJVir4yJT9TGjObr9bsSmRMZ8aC0M7HF2x0aYA/F8ZATBZYqF7QkEnZ0e3pJrJt6Jc7aEorj1bkOqL7+sR6WYY79Ml4FsBS6GnQ+14rwyJLdtZ1VKDkG0KvdAOUPDvWIMArIA5D1yEliqECFuDRYojbD0q0xATooLCkq5rgDtVm9J5fh4k9iyWqsREDMOV59d7AHtRj/B/oO1FnEiQaJfCIxsjH8A4uILIsI0Sjeg6LZ1fCPc6jHFXRVFaXLwwctTTYqup1EsdgvBkRBCD25IrIHSBgLuSR2p3eWOen3L8zry+vTSnmkNfTq3IJu2wCuV5eyT8zGOmf/43xFmuOhEoa2ZKwGXW3GpkSNwL0zBrwK1moWFmHoNWrKNYoMdeLtQBKug7lRYOoUVKffofVTB/JPol4VSqN2l8Qjz5gXO+tj6zgxrAPpUoKwVQ+bchhqIV9tEQXWqWLdT5dLyrupp4OqUwJS22/6TNpdo3w9Kki2+WzZfpo0t6OGWGTzk5wO68BqZZ4RqR8h7qmgC+pRuUIOPA/sO+hyd085sUsHdKPkgsjbzHU2f/JoVcFBq1gqw2ce8eGMrLjoqcBuaJ/UlaFLrG+gEJaJJgjUyUuMPFIh4Tks0CJywkJBleHZMy7WRXX09yDymtvaxWLzrKurixjtluE0JdhOuO7JYnsHQZ3ajRS+FJ8zTk9/H32eD6+vzNGVOUNvz9cZwqcPAHyY3A8lvr/WcR2DHii9eUKhs8O42VD8KmuoDdsjLuh93bTW2jSq4gGqMgP1yNnvHBecwzda3qemHj5N070TaDXVaVn/ZF5ri+IjjAnsebrKC7fSzqameP4B/9SyATJlDjuooDZe5hv/M4Rn9K+aO5t/h6wmSoHqipGc58vkMgnbPAk6KbrO5s6P4IlOeTJzT7V9nxKWsF5I7LMXZmymcXfO6BgLGT9+21Un28gWjviXZVs9sdd+KlqbavnNTttPGl39irTXUCsKmzr98jorkR+tfwAiWoM8</source>
+  <type>class</type></file>

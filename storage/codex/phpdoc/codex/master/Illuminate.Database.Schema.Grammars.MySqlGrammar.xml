@@ -1,0 +1,2215 @@
+<file path="codex/vendor/laravel/framework/src/Illuminate/Database/Schema/Grammars/MySqlGrammar.php" generated-path="codex.vendor.laravel.framework.src.Illuminate.Database.Schema.Grammars.MySqlGrammar.html" hash="88ed941eee280221356e7dd81cc3342f" package="Default">
+    <docblock line="0">
+      <description/>
+      <long-description/>
+      <tag name="package" line="0" description="Default"/>
+    </docblock>
+    <namespace-alias name="Fluent">\Illuminate\Support\Fluent</namespace-alias>
+    <namespace-alias name="Connection">\Illuminate\Database\Connection</namespace-alias>
+    <namespace-alias name="Blueprint">\Illuminate\Database\Schema\Blueprint</namespace-alias>
+    <class final="false" abstract="false" namespace="Illuminate\Database\Schema\Grammars" line="9" package="Default">
+      <extends>\Illuminate\Database\Schema\Grammars\Grammar</extends>
+      <name>MySqlGrammar</name>
+      <full_name>\Illuminate\Database\Schema\Grammars\MySqlGrammar</full_name>
+      <docblock line="9">
+        <description/>
+        <long-description/>
+        <tag name="package" line="9" description="Default"/>
+        <tag name="inherited_from" description="\Illuminate\Database\Schema\Grammars\Grammar" refers="\Illuminate\Database\Schema\Grammars\Grammar" link="/classes/Illuminate.Database.Schema.Grammars.Grammar.html"/>
+      </docblock>
+      <property static="false" visibility="protected" namespace="Illuminate\Database\Schema\Grammars" line="16" package="Default">
+        <name>$modifiers</name>
+        <full_name>\Illuminate\Database\Schema\Grammars\MySqlGrammar::modifiers</full_name>
+        <default>array('VirtualAs', 'StoredAs', 'Unsigned', 'Charset', 'Collate', 'Nullable', 'Default', 'Increment', 'Comment', 'After', 'First')</default>
+        <docblock line="16">
+          <description>The possible column modifiers.</description>
+          <long-description/>
+          <tag name="var" line="16" description="" type="array" variable="">
+            <type>array</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" namespace="Illuminate\Database\Schema\Grammars" line="26" package="Default">
+        <name>$serials</name>
+        <full_name>\Illuminate\Database\Schema\Grammars\MySqlGrammar::serials</full_name>
+        <default>array('bigInteger', 'integer', 'mediumInteger', 'smallInteger', 'tinyInteger')</default>
+        <docblock line="26">
+          <description>The possible column serials.</description>
+          <long-description/>
+          <tag name="var" line="26" description="" type="array" variable="">
+            <type>array</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" namespace="Illuminate\Database\Schema\Grammars" line="14" package="Default">
+        <name>$tablePrefix</name>
+        <full_name>\Illuminate\Database\Grammar::tablePrefix</full_name>
+        <default>''</default>
+        <docblock line="14">
+          <description>The grammar table prefix.</description>
+          <long-description/>
+          <tag name="var" line="14" description="" type="string" variable="">
+            <type>string</type>
+          </tag>
+        </docblock>
+      </property>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Schema\Grammars" line="33" package="Default">
+        <name>compileTableExists</name>
+        <full_name>\Illuminate\Database\Schema\Grammars\MySqlGrammar::compileTableExists()</full_name>
+        <docblock line="33">
+          <description>Compile the query to determine the list of tables.</description>
+          <long-description/>
+          <tag name="return" line="33" description="" type="string">
+            <type>string</type>
+          </tag>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Schema\Grammars" line="43" package="Default">
+        <name>compileColumnExists</name>
+        <full_name>\Illuminate\Database\Schema\Grammars\MySqlGrammar::compileColumnExists()</full_name>
+        <docblock line="43">
+          <description>Compile the query to determine the list of columns.</description>
+          <long-description/>
+          <tag name="return" line="43" description="" type="string">
+            <type>string</type>
+          </tag>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Schema\Grammars" line="56" package="Default">
+        <name>compileCreate</name>
+        <full_name>\Illuminate\Database\Schema\Grammars\MySqlGrammar::compileCreate()</full_name>
+        <docblock line="56">
+          <description>Compile a create table command.</description>
+          <long-description/>
+          <tag name="param" line="56" description="" type="\Illuminate\Database\Schema\Blueprint" variable="$blueprint">
+            <type>\Illuminate\Database\Schema\Blueprint</type>
+          </tag>
+          <tag name="param" line="56" description="" type="\Illuminate\Support\Fluent" variable="$command">
+            <type>\Illuminate\Support\Fluent</type>
+          </tag>
+          <tag name="param" line="56" description="" type="\Illuminate\Database\Connection" variable="$connection">
+            <type>\Illuminate\Database\Connection</type>
+          </tag>
+          <tag name="return" line="56" description="" type="string">
+            <type>string</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$blueprint</name>
+          <default/>
+          <type>\Illuminate\Database\Schema\Blueprint</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$command</name>
+          <default/>
+          <type>\Illuminate\Support\Fluent</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$connection</name>
+          <default/>
+          <type>\Illuminate\Database\Connection</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Database\Schema\Grammars" line="86" package="Default">
+        <name>compileCreateEncoding</name>
+        <full_name>\Illuminate\Database\Schema\Grammars\MySqlGrammar::compileCreateEncoding()</full_name>
+        <docblock line="86">
+          <description>Append the character set specifications to a command.</description>
+          <long-description/>
+          <tag name="param" line="86" description="" type="string" variable="$sql">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="86" description="" type="\Illuminate\Database\Connection" variable="$connection">
+            <type>\Illuminate\Database\Connection</type>
+          </tag>
+          <tag name="param" line="86" description="" type="\Illuminate\Database\Schema\Blueprint" variable="$blueprint">
+            <type>\Illuminate\Database\Schema\Blueprint</type>
+          </tag>
+          <tag name="return" line="86" description="" type="string">
+            <type>string</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$sql</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$connection</name>
+          <default/>
+          <type>\Illuminate\Database\Connection</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$blueprint</name>
+          <default/>
+          <type>\Illuminate\Database\Schema\Blueprint</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Schema\Grammars" line="110" package="Default">
+        <name>compileAdd</name>
+        <full_name>\Illuminate\Database\Schema\Grammars\MySqlGrammar::compileAdd()</full_name>
+        <docblock line="110">
+          <description>Compile an add column command.</description>
+          <long-description/>
+          <tag name="param" line="110" description="" type="\Illuminate\Database\Schema\Blueprint" variable="$blueprint">
+            <type>\Illuminate\Database\Schema\Blueprint</type>
+          </tag>
+          <tag name="param" line="110" description="" type="\Illuminate\Support\Fluent" variable="$command">
+            <type>\Illuminate\Support\Fluent</type>
+          </tag>
+          <tag name="return" line="110" description="" type="string">
+            <type>string</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$blueprint</name>
+          <default/>
+          <type>\Illuminate\Database\Schema\Blueprint</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$command</name>
+          <default/>
+          <type>\Illuminate\Support\Fluent</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Schema\Grammars" line="126" package="Default">
+        <name>compilePrimary</name>
+        <full_name>\Illuminate\Database\Schema\Grammars\MySqlGrammar::compilePrimary()</full_name>
+        <docblock line="126">
+          <description>Compile a primary key command.</description>
+          <long-description/>
+          <tag name="param" line="126" description="" type="\Illuminate\Database\Schema\Blueprint" variable="$blueprint">
+            <type>\Illuminate\Database\Schema\Blueprint</type>
+          </tag>
+          <tag name="param" line="126" description="" type="\Illuminate\Support\Fluent" variable="$command">
+            <type>\Illuminate\Support\Fluent</type>
+          </tag>
+          <tag name="return" line="126" description="" type="string">
+            <type>string</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$blueprint</name>
+          <default/>
+          <type>\Illuminate\Database\Schema\Blueprint</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$command</name>
+          <default/>
+          <type>\Illuminate\Support\Fluent</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Schema\Grammars" line="140" package="Default">
+        <name>compileUnique</name>
+        <full_name>\Illuminate\Database\Schema\Grammars\MySqlGrammar::compileUnique()</full_name>
+        <docblock line="140">
+          <description>Compile a unique key command.</description>
+          <long-description/>
+          <tag name="param" line="140" description="" type="\Illuminate\Database\Schema\Blueprint" variable="$blueprint">
+            <type>\Illuminate\Database\Schema\Blueprint</type>
+          </tag>
+          <tag name="param" line="140" description="" type="\Illuminate\Support\Fluent" variable="$command">
+            <type>\Illuminate\Support\Fluent</type>
+          </tag>
+          <tag name="return" line="140" description="" type="string">
+            <type>string</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$blueprint</name>
+          <default/>
+          <type>\Illuminate\Database\Schema\Blueprint</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$command</name>
+          <default/>
+          <type>\Illuminate\Support\Fluent</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Schema\Grammars" line="152" package="Default">
+        <name>compileIndex</name>
+        <full_name>\Illuminate\Database\Schema\Grammars\MySqlGrammar::compileIndex()</full_name>
+        <docblock line="152">
+          <description>Compile a plain index key command.</description>
+          <long-description/>
+          <tag name="param" line="152" description="" type="\Illuminate\Database\Schema\Blueprint" variable="$blueprint">
+            <type>\Illuminate\Database\Schema\Blueprint</type>
+          </tag>
+          <tag name="param" line="152" description="" type="\Illuminate\Support\Fluent" variable="$command">
+            <type>\Illuminate\Support\Fluent</type>
+          </tag>
+          <tag name="return" line="152" description="" type="string">
+            <type>string</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$blueprint</name>
+          <default/>
+          <type>\Illuminate\Database\Schema\Blueprint</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$command</name>
+          <default/>
+          <type>\Illuminate\Support\Fluent</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Database\Schema\Grammars" line="165" package="Default">
+        <name>compileKey</name>
+        <full_name>\Illuminate\Database\Schema\Grammars\MySqlGrammar::compileKey()</full_name>
+        <docblock line="165">
+          <description>Compile an index creation command.</description>
+          <long-description/>
+          <tag name="param" line="165" description="" type="\Illuminate\Database\Schema\Blueprint" variable="$blueprint">
+            <type>\Illuminate\Database\Schema\Blueprint</type>
+          </tag>
+          <tag name="param" line="165" description="" type="\Illuminate\Support\Fluent" variable="$command">
+            <type>\Illuminate\Support\Fluent</type>
+          </tag>
+          <tag name="param" line="165" description="" type="string" variable="$type">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="165" description="" type="string">
+            <type>string</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$blueprint</name>
+          <default/>
+          <type>\Illuminate\Database\Schema\Blueprint</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$command</name>
+          <default/>
+          <type>\Illuminate\Support\Fluent</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$type</name>
+          <default/>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Schema\Grammars" line="183" package="Default">
+        <name>compileDrop</name>
+        <full_name>\Illuminate\Database\Schema\Grammars\MySqlGrammar::compileDrop()</full_name>
+        <docblock line="183">
+          <description>Compile a drop table command.</description>
+          <long-description/>
+          <tag name="param" line="183" description="" type="\Illuminate\Database\Schema\Blueprint" variable="$blueprint">
+            <type>\Illuminate\Database\Schema\Blueprint</type>
+          </tag>
+          <tag name="param" line="183" description="" type="\Illuminate\Support\Fluent" variable="$command">
+            <type>\Illuminate\Support\Fluent</type>
+          </tag>
+          <tag name="return" line="183" description="" type="string">
+            <type>string</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$blueprint</name>
+          <default/>
+          <type>\Illuminate\Database\Schema\Blueprint</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$command</name>
+          <default/>
+          <type>\Illuminate\Support\Fluent</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Schema\Grammars" line="195" package="Default">
+        <name>compileDropIfExists</name>
+        <full_name>\Illuminate\Database\Schema\Grammars\MySqlGrammar::compileDropIfExists()</full_name>
+        <docblock line="195">
+          <description>Compile a drop table (if exists) command.</description>
+          <long-description/>
+          <tag name="param" line="195" description="" type="\Illuminate\Database\Schema\Blueprint" variable="$blueprint">
+            <type>\Illuminate\Database\Schema\Blueprint</type>
+          </tag>
+          <tag name="param" line="195" description="" type="\Illuminate\Support\Fluent" variable="$command">
+            <type>\Illuminate\Support\Fluent</type>
+          </tag>
+          <tag name="return" line="195" description="" type="string">
+            <type>string</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$blueprint</name>
+          <default/>
+          <type>\Illuminate\Database\Schema\Blueprint</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$command</name>
+          <default/>
+          <type>\Illuminate\Support\Fluent</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Schema\Grammars" line="207" package="Default">
+        <name>compileDropColumn</name>
+        <full_name>\Illuminate\Database\Schema\Grammars\MySqlGrammar::compileDropColumn()</full_name>
+        <docblock line="207">
+          <description>Compile a drop column command.</description>
+          <long-description/>
+          <tag name="param" line="207" description="" type="\Illuminate\Database\Schema\Blueprint" variable="$blueprint">
+            <type>\Illuminate\Database\Schema\Blueprint</type>
+          </tag>
+          <tag name="param" line="207" description="" type="\Illuminate\Support\Fluent" variable="$command">
+            <type>\Illuminate\Support\Fluent</type>
+          </tag>
+          <tag name="return" line="207" description="" type="string">
+            <type>string</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$blueprint</name>
+          <default/>
+          <type>\Illuminate\Database\Schema\Blueprint</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$command</name>
+          <default/>
+          <type>\Illuminate\Support\Fluent</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Schema\Grammars" line="223" package="Default">
+        <name>compileDropPrimary</name>
+        <full_name>\Illuminate\Database\Schema\Grammars\MySqlGrammar::compileDropPrimary()</full_name>
+        <docblock line="223">
+          <description>Compile a drop primary key command.</description>
+          <long-description/>
+          <tag name="param" line="223" description="" type="\Illuminate\Database\Schema\Blueprint" variable="$blueprint">
+            <type>\Illuminate\Database\Schema\Blueprint</type>
+          </tag>
+          <tag name="param" line="223" description="" type="\Illuminate\Support\Fluent" variable="$command">
+            <type>\Illuminate\Support\Fluent</type>
+          </tag>
+          <tag name="return" line="223" description="" type="string">
+            <type>string</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$blueprint</name>
+          <default/>
+          <type>\Illuminate\Database\Schema\Blueprint</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$command</name>
+          <default/>
+          <type>\Illuminate\Support\Fluent</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Schema\Grammars" line="235" package="Default">
+        <name>compileDropUnique</name>
+        <full_name>\Illuminate\Database\Schema\Grammars\MySqlGrammar::compileDropUnique()</full_name>
+        <docblock line="235">
+          <description>Compile a drop unique key command.</description>
+          <long-description/>
+          <tag name="param" line="235" description="" type="\Illuminate\Database\Schema\Blueprint" variable="$blueprint">
+            <type>\Illuminate\Database\Schema\Blueprint</type>
+          </tag>
+          <tag name="param" line="235" description="" type="\Illuminate\Support\Fluent" variable="$command">
+            <type>\Illuminate\Support\Fluent</type>
+          </tag>
+          <tag name="return" line="235" description="" type="string">
+            <type>string</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$blueprint</name>
+          <default/>
+          <type>\Illuminate\Database\Schema\Blueprint</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$command</name>
+          <default/>
+          <type>\Illuminate\Support\Fluent</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Schema\Grammars" line="251" package="Default">
+        <name>compileDropIndex</name>
+        <full_name>\Illuminate\Database\Schema\Grammars\MySqlGrammar::compileDropIndex()</full_name>
+        <docblock line="251">
+          <description>Compile a drop index command.</description>
+          <long-description/>
+          <tag name="param" line="251" description="" type="\Illuminate\Database\Schema\Blueprint" variable="$blueprint">
+            <type>\Illuminate\Database\Schema\Blueprint</type>
+          </tag>
+          <tag name="param" line="251" description="" type="\Illuminate\Support\Fluent" variable="$command">
+            <type>\Illuminate\Support\Fluent</type>
+          </tag>
+          <tag name="return" line="251" description="" type="string">
+            <type>string</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$blueprint</name>
+          <default/>
+          <type>\Illuminate\Database\Schema\Blueprint</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$command</name>
+          <default/>
+          <type>\Illuminate\Support\Fluent</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Schema\Grammars" line="267" package="Default">
+        <name>compileDropForeign</name>
+        <full_name>\Illuminate\Database\Schema\Grammars\MySqlGrammar::compileDropForeign()</full_name>
+        <docblock line="267">
+          <description>Compile a drop foreign key command.</description>
+          <long-description/>
+          <tag name="param" line="267" description="" type="\Illuminate\Database\Schema\Blueprint" variable="$blueprint">
+            <type>\Illuminate\Database\Schema\Blueprint</type>
+          </tag>
+          <tag name="param" line="267" description="" type="\Illuminate\Support\Fluent" variable="$command">
+            <type>\Illuminate\Support\Fluent</type>
+          </tag>
+          <tag name="return" line="267" description="" type="string">
+            <type>string</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$blueprint</name>
+          <default/>
+          <type>\Illuminate\Database\Schema\Blueprint</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$command</name>
+          <default/>
+          <type>\Illuminate\Support\Fluent</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Schema\Grammars" line="283" package="Default">
+        <name>compileRename</name>
+        <full_name>\Illuminate\Database\Schema\Grammars\MySqlGrammar::compileRename()</full_name>
+        <docblock line="283">
+          <description>Compile a rename table command.</description>
+          <long-description/>
+          <tag name="param" line="283" description="" type="\Illuminate\Database\Schema\Blueprint" variable="$blueprint">
+            <type>\Illuminate\Database\Schema\Blueprint</type>
+          </tag>
+          <tag name="param" line="283" description="" type="\Illuminate\Support\Fluent" variable="$command">
+            <type>\Illuminate\Support\Fluent</type>
+          </tag>
+          <tag name="return" line="283" description="" type="string">
+            <type>string</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$blueprint</name>
+          <default/>
+          <type>\Illuminate\Database\Schema\Blueprint</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$command</name>
+          <default/>
+          <type>\Illuminate\Support\Fluent</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Schema\Grammars" line="295" package="Default">
+        <name>compileEnableForeignKeyConstraints</name>
+        <full_name>\Illuminate\Database\Schema\Grammars\MySqlGrammar::compileEnableForeignKeyConstraints()</full_name>
+        <docblock line="295">
+          <description>Compile the command to enable foreign key constraints.</description>
+          <long-description/>
+          <tag name="return" line="295" description="" type="string">
+            <type>string</type>
+          </tag>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Schema\Grammars" line="305" package="Default">
+        <name>compileDisableForeignKeyConstraints</name>
+        <full_name>\Illuminate\Database\Schema\Grammars\MySqlGrammar::compileDisableForeignKeyConstraints()</full_name>
+        <docblock line="305">
+          <description>Compile the command to disable foreign key constraints.</description>
+          <long-description/>
+          <tag name="return" line="305" description="" type="string">
+            <type>string</type>
+          </tag>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Database\Schema\Grammars" line="316" package="Default">
+        <name>typeChar</name>
+        <full_name>\Illuminate\Database\Schema\Grammars\MySqlGrammar::typeChar()</full_name>
+        <docblock line="316">
+          <description>Create the column definition for a char type.</description>
+          <long-description/>
+          <tag name="param" line="316" description="" type="\Illuminate\Support\Fluent" variable="$column">
+            <type>\Illuminate\Support\Fluent</type>
+          </tag>
+          <tag name="return" line="316" description="" type="string">
+            <type>string</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$column</name>
+          <default/>
+          <type>\Illuminate\Support\Fluent</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Database\Schema\Grammars" line="327" package="Default">
+        <name>typeString</name>
+        <full_name>\Illuminate\Database\Schema\Grammars\MySqlGrammar::typeString()</full_name>
+        <docblock line="327">
+          <description>Create the column definition for a string type.</description>
+          <long-description/>
+          <tag name="param" line="327" description="" type="\Illuminate\Support\Fluent" variable="$column">
+            <type>\Illuminate\Support\Fluent</type>
+          </tag>
+          <tag name="return" line="327" description="" type="string">
+            <type>string</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$column</name>
+          <default/>
+          <type>\Illuminate\Support\Fluent</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Database\Schema\Grammars" line="338" package="Default">
+        <name>typeText</name>
+        <full_name>\Illuminate\Database\Schema\Grammars\MySqlGrammar::typeText()</full_name>
+        <docblock line="338">
+          <description>Create the column definition for a text type.</description>
+          <long-description/>
+          <tag name="param" line="338" description="" type="\Illuminate\Support\Fluent" variable="$column">
+            <type>\Illuminate\Support\Fluent</type>
+          </tag>
+          <tag name="return" line="338" description="" type="string">
+            <type>string</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$column</name>
+          <default/>
+          <type>\Illuminate\Support\Fluent</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Database\Schema\Grammars" line="349" package="Default">
+        <name>typeMediumText</name>
+        <full_name>\Illuminate\Database\Schema\Grammars\MySqlGrammar::typeMediumText()</full_name>
+        <docblock line="349">
+          <description>Create the column definition for a medium text type.</description>
+          <long-description/>
+          <tag name="param" line="349" description="" type="\Illuminate\Support\Fluent" variable="$column">
+            <type>\Illuminate\Support\Fluent</type>
+          </tag>
+          <tag name="return" line="349" description="" type="string">
+            <type>string</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$column</name>
+          <default/>
+          <type>\Illuminate\Support\Fluent</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Database\Schema\Grammars" line="360" package="Default">
+        <name>typeLongText</name>
+        <full_name>\Illuminate\Database\Schema\Grammars\MySqlGrammar::typeLongText()</full_name>
+        <docblock line="360">
+          <description>Create the column definition for a long text type.</description>
+          <long-description/>
+          <tag name="param" line="360" description="" type="\Illuminate\Support\Fluent" variable="$column">
+            <type>\Illuminate\Support\Fluent</type>
+          </tag>
+          <tag name="return" line="360" description="" type="string">
+            <type>string</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$column</name>
+          <default/>
+          <type>\Illuminate\Support\Fluent</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Database\Schema\Grammars" line="371" package="Default">
+        <name>typeBigInteger</name>
+        <full_name>\Illuminate\Database\Schema\Grammars\MySqlGrammar::typeBigInteger()</full_name>
+        <docblock line="371">
+          <description>Create the column definition for a big integer type.</description>
+          <long-description/>
+          <tag name="param" line="371" description="" type="\Illuminate\Support\Fluent" variable="$column">
+            <type>\Illuminate\Support\Fluent</type>
+          </tag>
+          <tag name="return" line="371" description="" type="string">
+            <type>string</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$column</name>
+          <default/>
+          <type>\Illuminate\Support\Fluent</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Database\Schema\Grammars" line="382" package="Default">
+        <name>typeInteger</name>
+        <full_name>\Illuminate\Database\Schema\Grammars\MySqlGrammar::typeInteger()</full_name>
+        <docblock line="382">
+          <description>Create the column definition for a integer type.</description>
+          <long-description/>
+          <tag name="param" line="382" description="" type="\Illuminate\Support\Fluent" variable="$column">
+            <type>\Illuminate\Support\Fluent</type>
+          </tag>
+          <tag name="return" line="382" description="" type="string">
+            <type>string</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$column</name>
+          <default/>
+          <type>\Illuminate\Support\Fluent</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Database\Schema\Grammars" line="393" package="Default">
+        <name>typeMediumInteger</name>
+        <full_name>\Illuminate\Database\Schema\Grammars\MySqlGrammar::typeMediumInteger()</full_name>
+        <docblock line="393">
+          <description>Create the column definition for a medium integer type.</description>
+          <long-description/>
+          <tag name="param" line="393" description="" type="\Illuminate\Support\Fluent" variable="$column">
+            <type>\Illuminate\Support\Fluent</type>
+          </tag>
+          <tag name="return" line="393" description="" type="string">
+            <type>string</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$column</name>
+          <default/>
+          <type>\Illuminate\Support\Fluent</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Database\Schema\Grammars" line="404" package="Default">
+        <name>typeTinyInteger</name>
+        <full_name>\Illuminate\Database\Schema\Grammars\MySqlGrammar::typeTinyInteger()</full_name>
+        <docblock line="404">
+          <description>Create the column definition for a tiny integer type.</description>
+          <long-description/>
+          <tag name="param" line="404" description="" type="\Illuminate\Support\Fluent" variable="$column">
+            <type>\Illuminate\Support\Fluent</type>
+          </tag>
+          <tag name="return" line="404" description="" type="string">
+            <type>string</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$column</name>
+          <default/>
+          <type>\Illuminate\Support\Fluent</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Database\Schema\Grammars" line="415" package="Default">
+        <name>typeSmallInteger</name>
+        <full_name>\Illuminate\Database\Schema\Grammars\MySqlGrammar::typeSmallInteger()</full_name>
+        <docblock line="415">
+          <description>Create the column definition for a small integer type.</description>
+          <long-description/>
+          <tag name="param" line="415" description="" type="\Illuminate\Support\Fluent" variable="$column">
+            <type>\Illuminate\Support\Fluent</type>
+          </tag>
+          <tag name="return" line="415" description="" type="string">
+            <type>string</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$column</name>
+          <default/>
+          <type>\Illuminate\Support\Fluent</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Database\Schema\Grammars" line="426" package="Default">
+        <name>typeFloat</name>
+        <full_name>\Illuminate\Database\Schema\Grammars\MySqlGrammar::typeFloat()</full_name>
+        <docblock line="426">
+          <description>Create the column definition for a float type.</description>
+          <long-description/>
+          <tag name="param" line="426" description="" type="\Illuminate\Support\Fluent" variable="$column">
+            <type>\Illuminate\Support\Fluent</type>
+          </tag>
+          <tag name="return" line="426" description="" type="string">
+            <type>string</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$column</name>
+          <default/>
+          <type>\Illuminate\Support\Fluent</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Database\Schema\Grammars" line="437" package="Default">
+        <name>typeDouble</name>
+        <full_name>\Illuminate\Database\Schema\Grammars\MySqlGrammar::typeDouble()</full_name>
+        <docblock line="437">
+          <description>Create the column definition for a double type.</description>
+          <long-description/>
+          <tag name="param" line="437" description="" type="\Illuminate\Support\Fluent" variable="$column">
+            <type>\Illuminate\Support\Fluent</type>
+          </tag>
+          <tag name="return" line="437" description="" type="string">
+            <type>string</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$column</name>
+          <default/>
+          <type>\Illuminate\Support\Fluent</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Database\Schema\Grammars" line="452" package="Default">
+        <name>typeDecimal</name>
+        <full_name>\Illuminate\Database\Schema\Grammars\MySqlGrammar::typeDecimal()</full_name>
+        <docblock line="452">
+          <description>Create the column definition for a decimal type.</description>
+          <long-description/>
+          <tag name="param" line="452" description="" type="\Illuminate\Support\Fluent" variable="$column">
+            <type>\Illuminate\Support\Fluent</type>
+          </tag>
+          <tag name="return" line="452" description="" type="string">
+            <type>string</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$column</name>
+          <default/>
+          <type>\Illuminate\Support\Fluent</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Database\Schema\Grammars" line="463" package="Default">
+        <name>typeBoolean</name>
+        <full_name>\Illuminate\Database\Schema\Grammars\MySqlGrammar::typeBoolean()</full_name>
+        <docblock line="463">
+          <description>Create the column definition for a boolean type.</description>
+          <long-description/>
+          <tag name="param" line="463" description="" type="\Illuminate\Support\Fluent" variable="$column">
+            <type>\Illuminate\Support\Fluent</type>
+          </tag>
+          <tag name="return" line="463" description="" type="string">
+            <type>string</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$column</name>
+          <default/>
+          <type>\Illuminate\Support\Fluent</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Database\Schema\Grammars" line="474" package="Default">
+        <name>typeEnum</name>
+        <full_name>\Illuminate\Database\Schema\Grammars\MySqlGrammar::typeEnum()</full_name>
+        <docblock line="474">
+          <description>Create the column definition for an enum type.</description>
+          <long-description/>
+          <tag name="param" line="474" description="" type="\Illuminate\Support\Fluent" variable="$column">
+            <type>\Illuminate\Support\Fluent</type>
+          </tag>
+          <tag name="return" line="474" description="" type="string">
+            <type>string</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$column</name>
+          <default/>
+          <type>\Illuminate\Support\Fluent</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Database\Schema\Grammars" line="485" package="Default">
+        <name>typeJson</name>
+        <full_name>\Illuminate\Database\Schema\Grammars\MySqlGrammar::typeJson()</full_name>
+        <docblock line="485">
+          <description>Create the column definition for a json type.</description>
+          <long-description/>
+          <tag name="param" line="485" description="" type="\Illuminate\Support\Fluent" variable="$column">
+            <type>\Illuminate\Support\Fluent</type>
+          </tag>
+          <tag name="return" line="485" description="" type="string">
+            <type>string</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$column</name>
+          <default/>
+          <type>\Illuminate\Support\Fluent</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Database\Schema\Grammars" line="496" package="Default">
+        <name>typeJsonb</name>
+        <full_name>\Illuminate\Database\Schema\Grammars\MySqlGrammar::typeJsonb()</full_name>
+        <docblock line="496">
+          <description>Create the column definition for a jsonb type.</description>
+          <long-description/>
+          <tag name="param" line="496" description="" type="\Illuminate\Support\Fluent" variable="$column">
+            <type>\Illuminate\Support\Fluent</type>
+          </tag>
+          <tag name="return" line="496" description="" type="string">
+            <type>string</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$column</name>
+          <default/>
+          <type>\Illuminate\Support\Fluent</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Database\Schema\Grammars" line="507" package="Default">
+        <name>typeDate</name>
+        <full_name>\Illuminate\Database\Schema\Grammars\MySqlGrammar::typeDate()</full_name>
+        <docblock line="507">
+          <description>Create the column definition for a date type.</description>
+          <long-description/>
+          <tag name="param" line="507" description="" type="\Illuminate\Support\Fluent" variable="$column">
+            <type>\Illuminate\Support\Fluent</type>
+          </tag>
+          <tag name="return" line="507" description="" type="string">
+            <type>string</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$column</name>
+          <default/>
+          <type>\Illuminate\Support\Fluent</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Database\Schema\Grammars" line="518" package="Default">
+        <name>typeDateTime</name>
+        <full_name>\Illuminate\Database\Schema\Grammars\MySqlGrammar::typeDateTime()</full_name>
+        <docblock line="518">
+          <description>Create the column definition for a date-time type.</description>
+          <long-description/>
+          <tag name="param" line="518" description="" type="\Illuminate\Support\Fluent" variable="$column">
+            <type>\Illuminate\Support\Fluent</type>
+          </tag>
+          <tag name="return" line="518" description="" type="string">
+            <type>string</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$column</name>
+          <default/>
+          <type>\Illuminate\Support\Fluent</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Database\Schema\Grammars" line="529" package="Default">
+        <name>typeDateTimeTz</name>
+        <full_name>\Illuminate\Database\Schema\Grammars\MySqlGrammar::typeDateTimeTz()</full_name>
+        <docblock line="529">
+          <description>Create the column definition for a date-time type.</description>
+          <long-description/>
+          <tag name="param" line="529" description="" type="\Illuminate\Support\Fluent" variable="$column">
+            <type>\Illuminate\Support\Fluent</type>
+          </tag>
+          <tag name="return" line="529" description="" type="string">
+            <type>string</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$column</name>
+          <default/>
+          <type>\Illuminate\Support\Fluent</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Database\Schema\Grammars" line="540" package="Default">
+        <name>typeTime</name>
+        <full_name>\Illuminate\Database\Schema\Grammars\MySqlGrammar::typeTime()</full_name>
+        <docblock line="540">
+          <description>Create the column definition for a time type.</description>
+          <long-description/>
+          <tag name="param" line="540" description="" type="\Illuminate\Support\Fluent" variable="$column">
+            <type>\Illuminate\Support\Fluent</type>
+          </tag>
+          <tag name="return" line="540" description="" type="string">
+            <type>string</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$column</name>
+          <default/>
+          <type>\Illuminate\Support\Fluent</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Database\Schema\Grammars" line="551" package="Default">
+        <name>typeTimeTz</name>
+        <full_name>\Illuminate\Database\Schema\Grammars\MySqlGrammar::typeTimeTz()</full_name>
+        <docblock line="551">
+          <description>Create the column definition for a time type.</description>
+          <long-description/>
+          <tag name="param" line="551" description="" type="\Illuminate\Support\Fluent" variable="$column">
+            <type>\Illuminate\Support\Fluent</type>
+          </tag>
+          <tag name="return" line="551" description="" type="string">
+            <type>string</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$column</name>
+          <default/>
+          <type>\Illuminate\Support\Fluent</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Database\Schema\Grammars" line="562" package="Default">
+        <name>typeTimestamp</name>
+        <full_name>\Illuminate\Database\Schema\Grammars\MySqlGrammar::typeTimestamp()</full_name>
+        <docblock line="562">
+          <description>Create the column definition for a timestamp type.</description>
+          <long-description/>
+          <tag name="param" line="562" description="" type="\Illuminate\Support\Fluent" variable="$column">
+            <type>\Illuminate\Support\Fluent</type>
+          </tag>
+          <tag name="return" line="562" description="" type="string">
+            <type>string</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$column</name>
+          <default/>
+          <type>\Illuminate\Support\Fluent</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Database\Schema\Grammars" line="577" package="Default">
+        <name>typeTimestampTz</name>
+        <full_name>\Illuminate\Database\Schema\Grammars\MySqlGrammar::typeTimestampTz()</full_name>
+        <docblock line="577">
+          <description>Create the column definition for a timestamp type.</description>
+          <long-description/>
+          <tag name="param" line="577" description="" type="\Illuminate\Support\Fluent" variable="$column">
+            <type>\Illuminate\Support\Fluent</type>
+          </tag>
+          <tag name="return" line="577" description="" type="string">
+            <type>string</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$column</name>
+          <default/>
+          <type>\Illuminate\Support\Fluent</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Database\Schema\Grammars" line="592" package="Default">
+        <name>typeBinary</name>
+        <full_name>\Illuminate\Database\Schema\Grammars\MySqlGrammar::typeBinary()</full_name>
+        <docblock line="592">
+          <description>Create the column definition for a binary type.</description>
+          <long-description/>
+          <tag name="param" line="592" description="" type="\Illuminate\Support\Fluent" variable="$column">
+            <type>\Illuminate\Support\Fluent</type>
+          </tag>
+          <tag name="return" line="592" description="" type="string">
+            <type>string</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$column</name>
+          <default/>
+          <type>\Illuminate\Support\Fluent</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Database\Schema\Grammars" line="603" package="Default">
+        <name>typeUuid</name>
+        <full_name>\Illuminate\Database\Schema\Grammars\MySqlGrammar::typeUuid()</full_name>
+        <docblock line="603">
+          <description>Create the column definition for a uuid type.</description>
+          <long-description/>
+          <tag name="param" line="603" description="" type="\Illuminate\Support\Fluent" variable="$column">
+            <type>\Illuminate\Support\Fluent</type>
+          </tag>
+          <tag name="return" line="603" description="" type="string">
+            <type>string</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$column</name>
+          <default/>
+          <type>\Illuminate\Support\Fluent</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Database\Schema\Grammars" line="614" package="Default">
+        <name>typeIpAddress</name>
+        <full_name>\Illuminate\Database\Schema\Grammars\MySqlGrammar::typeIpAddress()</full_name>
+        <docblock line="614">
+          <description>Create the column definition for an IP address type.</description>
+          <long-description/>
+          <tag name="param" line="614" description="" type="\Illuminate\Support\Fluent" variable="$column">
+            <type>\Illuminate\Support\Fluent</type>
+          </tag>
+          <tag name="return" line="614" description="" type="string">
+            <type>string</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$column</name>
+          <default/>
+          <type>\Illuminate\Support\Fluent</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Database\Schema\Grammars" line="625" package="Default">
+        <name>typeMacAddress</name>
+        <full_name>\Illuminate\Database\Schema\Grammars\MySqlGrammar::typeMacAddress()</full_name>
+        <docblock line="625">
+          <description>Create the column definition for a MAC address type.</description>
+          <long-description/>
+          <tag name="param" line="625" description="" type="\Illuminate\Support\Fluent" variable="$column">
+            <type>\Illuminate\Support\Fluent</type>
+          </tag>
+          <tag name="return" line="625" description="" type="string">
+            <type>string</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$column</name>
+          <default/>
+          <type>\Illuminate\Support\Fluent</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Database\Schema\Grammars" line="637" package="Default">
+        <name>modifyVirtualAs</name>
+        <full_name>\Illuminate\Database\Schema\Grammars\MySqlGrammar::modifyVirtualAs()</full_name>
+        <docblock line="637">
+          <description>Get the SQL for a generated virtual column modifier.</description>
+          <long-description/>
+          <tag name="param" line="637" description="" type="\Illuminate\Database\Schema\Blueprint" variable="$blueprint">
+            <type>\Illuminate\Database\Schema\Blueprint</type>
+          </tag>
+          <tag name="param" line="637" description="" type="\Illuminate\Support\Fluent" variable="$column">
+            <type>\Illuminate\Support\Fluent</type>
+          </tag>
+          <tag name="return" line="637" description="" type="string|null">
+            <type>string</type>
+            <type>null</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$blueprint</name>
+          <default/>
+          <type>\Illuminate\Database\Schema\Blueprint</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$column</name>
+          <default/>
+          <type>\Illuminate\Support\Fluent</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Database\Schema\Grammars" line="651" package="Default">
+        <name>modifyStoredAs</name>
+        <full_name>\Illuminate\Database\Schema\Grammars\MySqlGrammar::modifyStoredAs()</full_name>
+        <docblock line="651">
+          <description>Get the SQL for a generated stored column modifier.</description>
+          <long-description/>
+          <tag name="param" line="651" description="" type="\Illuminate\Database\Schema\Blueprint" variable="$blueprint">
+            <type>\Illuminate\Database\Schema\Blueprint</type>
+          </tag>
+          <tag name="param" line="651" description="" type="\Illuminate\Support\Fluent" variable="$column">
+            <type>\Illuminate\Support\Fluent</type>
+          </tag>
+          <tag name="return" line="651" description="" type="string|null">
+            <type>string</type>
+            <type>null</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$blueprint</name>
+          <default/>
+          <type>\Illuminate\Database\Schema\Blueprint</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$column</name>
+          <default/>
+          <type>\Illuminate\Support\Fluent</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Database\Schema\Grammars" line="665" package="Default">
+        <name>modifyUnsigned</name>
+        <full_name>\Illuminate\Database\Schema\Grammars\MySqlGrammar::modifyUnsigned()</full_name>
+        <docblock line="665">
+          <description>Get the SQL for an unsigned column modifier.</description>
+          <long-description/>
+          <tag name="param" line="665" description="" type="\Illuminate\Database\Schema\Blueprint" variable="$blueprint">
+            <type>\Illuminate\Database\Schema\Blueprint</type>
+          </tag>
+          <tag name="param" line="665" description="" type="\Illuminate\Support\Fluent" variable="$column">
+            <type>\Illuminate\Support\Fluent</type>
+          </tag>
+          <tag name="return" line="665" description="" type="string|null">
+            <type>string</type>
+            <type>null</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$blueprint</name>
+          <default/>
+          <type>\Illuminate\Database\Schema\Blueprint</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$column</name>
+          <default/>
+          <type>\Illuminate\Support\Fluent</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Database\Schema\Grammars" line="679" package="Default">
+        <name>modifyCharset</name>
+        <full_name>\Illuminate\Database\Schema\Grammars\MySqlGrammar::modifyCharset()</full_name>
+        <docblock line="679">
+          <description>Get the SQL for a character set column modifier.</description>
+          <long-description/>
+          <tag name="param" line="679" description="" type="\Illuminate\Database\Schema\Blueprint" variable="$blueprint">
+            <type>\Illuminate\Database\Schema\Blueprint</type>
+          </tag>
+          <tag name="param" line="679" description="" type="\Illuminate\Support\Fluent" variable="$column">
+            <type>\Illuminate\Support\Fluent</type>
+          </tag>
+          <tag name="return" line="679" description="" type="string|null">
+            <type>string</type>
+            <type>null</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$blueprint</name>
+          <default/>
+          <type>\Illuminate\Database\Schema\Blueprint</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$column</name>
+          <default/>
+          <type>\Illuminate\Support\Fluent</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Database\Schema\Grammars" line="693" package="Default">
+        <name>modifyCollate</name>
+        <full_name>\Illuminate\Database\Schema\Grammars\MySqlGrammar::modifyCollate()</full_name>
+        <docblock line="693">
+          <description>Get the SQL for a collation column modifier.</description>
+          <long-description/>
+          <tag name="param" line="693" description="" type="\Illuminate\Database\Schema\Blueprint" variable="$blueprint">
+            <type>\Illuminate\Database\Schema\Blueprint</type>
+          </tag>
+          <tag name="param" line="693" description="" type="\Illuminate\Support\Fluent" variable="$column">
+            <type>\Illuminate\Support\Fluent</type>
+          </tag>
+          <tag name="return" line="693" description="" type="string|null">
+            <type>string</type>
+            <type>null</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$blueprint</name>
+          <default/>
+          <type>\Illuminate\Database\Schema\Blueprint</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$column</name>
+          <default/>
+          <type>\Illuminate\Support\Fluent</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Database\Schema\Grammars" line="707" package="Default">
+        <name>modifyNullable</name>
+        <full_name>\Illuminate\Database\Schema\Grammars\MySqlGrammar::modifyNullable()</full_name>
+        <docblock line="707">
+          <description>Get the SQL for a nullable column modifier.</description>
+          <long-description/>
+          <tag name="param" line="707" description="" type="\Illuminate\Database\Schema\Blueprint" variable="$blueprint">
+            <type>\Illuminate\Database\Schema\Blueprint</type>
+          </tag>
+          <tag name="param" line="707" description="" type="\Illuminate\Support\Fluent" variable="$column">
+            <type>\Illuminate\Support\Fluent</type>
+          </tag>
+          <tag name="return" line="707" description="" type="string|null">
+            <type>string</type>
+            <type>null</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$blueprint</name>
+          <default/>
+          <type>\Illuminate\Database\Schema\Blueprint</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$column</name>
+          <default/>
+          <type>\Illuminate\Support\Fluent</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Database\Schema\Grammars" line="719" package="Default">
+        <name>modifyDefault</name>
+        <full_name>\Illuminate\Database\Schema\Grammars\MySqlGrammar::modifyDefault()</full_name>
+        <docblock line="719">
+          <description>Get the SQL for a default column modifier.</description>
+          <long-description/>
+          <tag name="param" line="719" description="" type="\Illuminate\Database\Schema\Blueprint" variable="$blueprint">
+            <type>\Illuminate\Database\Schema\Blueprint</type>
+          </tag>
+          <tag name="param" line="719" description="" type="\Illuminate\Support\Fluent" variable="$column">
+            <type>\Illuminate\Support\Fluent</type>
+          </tag>
+          <tag name="return" line="719" description="" type="string|null">
+            <type>string</type>
+            <type>null</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$blueprint</name>
+          <default/>
+          <type>\Illuminate\Database\Schema\Blueprint</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$column</name>
+          <default/>
+          <type>\Illuminate\Support\Fluent</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Database\Schema\Grammars" line="733" package="Default">
+        <name>modifyIncrement</name>
+        <full_name>\Illuminate\Database\Schema\Grammars\MySqlGrammar::modifyIncrement()</full_name>
+        <docblock line="733">
+          <description>Get the SQL for an auto-increment column modifier.</description>
+          <long-description/>
+          <tag name="param" line="733" description="" type="\Illuminate\Database\Schema\Blueprint" variable="$blueprint">
+            <type>\Illuminate\Database\Schema\Blueprint</type>
+          </tag>
+          <tag name="param" line="733" description="" type="\Illuminate\Support\Fluent" variable="$column">
+            <type>\Illuminate\Support\Fluent</type>
+          </tag>
+          <tag name="return" line="733" description="" type="string|null">
+            <type>string</type>
+            <type>null</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$blueprint</name>
+          <default/>
+          <type>\Illuminate\Database\Schema\Blueprint</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$column</name>
+          <default/>
+          <type>\Illuminate\Support\Fluent</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Database\Schema\Grammars" line="747" package="Default">
+        <name>modifyFirst</name>
+        <full_name>\Illuminate\Database\Schema\Grammars\MySqlGrammar::modifyFirst()</full_name>
+        <docblock line="747">
+          <description>Get the SQL for a "first" column modifier.</description>
+          <long-description/>
+          <tag name="param" line="747" description="" type="\Illuminate\Database\Schema\Blueprint" variable="$blueprint">
+            <type>\Illuminate\Database\Schema\Blueprint</type>
+          </tag>
+          <tag name="param" line="747" description="" type="\Illuminate\Support\Fluent" variable="$column">
+            <type>\Illuminate\Support\Fluent</type>
+          </tag>
+          <tag name="return" line="747" description="" type="string|null">
+            <type>string</type>
+            <type>null</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$blueprint</name>
+          <default/>
+          <type>\Illuminate\Database\Schema\Blueprint</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$column</name>
+          <default/>
+          <type>\Illuminate\Support\Fluent</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Database\Schema\Grammars" line="761" package="Default">
+        <name>modifyAfter</name>
+        <full_name>\Illuminate\Database\Schema\Grammars\MySqlGrammar::modifyAfter()</full_name>
+        <docblock line="761">
+          <description>Get the SQL for an "after" column modifier.</description>
+          <long-description/>
+          <tag name="param" line="761" description="" type="\Illuminate\Database\Schema\Blueprint" variable="$blueprint">
+            <type>\Illuminate\Database\Schema\Blueprint</type>
+          </tag>
+          <tag name="param" line="761" description="" type="\Illuminate\Support\Fluent" variable="$column">
+            <type>\Illuminate\Support\Fluent</type>
+          </tag>
+          <tag name="return" line="761" description="" type="string|null">
+            <type>string</type>
+            <type>null</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$blueprint</name>
+          <default/>
+          <type>\Illuminate\Database\Schema\Blueprint</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$column</name>
+          <default/>
+          <type>\Illuminate\Support\Fluent</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Database\Schema\Grammars" line="775" package="Default">
+        <name>modifyComment</name>
+        <full_name>\Illuminate\Database\Schema\Grammars\MySqlGrammar::modifyComment()</full_name>
+        <docblock line="775">
+          <description>Get the SQL for a "comment" column modifier.</description>
+          <long-description/>
+          <tag name="param" line="775" description="" type="\Illuminate\Database\Schema\Blueprint" variable="$blueprint">
+            <type>\Illuminate\Database\Schema\Blueprint</type>
+          </tag>
+          <tag name="param" line="775" description="" type="\Illuminate\Support\Fluent" variable="$column">
+            <type>\Illuminate\Support\Fluent</type>
+          </tag>
+          <tag name="return" line="775" description="" type="string|null">
+            <type>string</type>
+            <type>null</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$blueprint</name>
+          <default/>
+          <type>\Illuminate\Database\Schema\Blueprint</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$column</name>
+          <default/>
+          <type>\Illuminate\Support\Fluent</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Database\Schema\Grammars" line="788" package="Default">
+        <name>wrapValue</name>
+        <full_name>\Illuminate\Database\Schema\Grammars\MySqlGrammar::wrapValue()</full_name>
+        <docblock line="788">
+          <description>Wrap a single string in keyword identifiers.</description>
+          <long-description/>
+          <tag name="param" line="788" description="" type="string" variable="$value">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="788" description="" type="string">
+            <type>string</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$value</name>
+          <default/>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Schema\Grammars" line="28" package="Default">
+        <name>compileRenameColumn</name>
+        <full_name>\Illuminate\Database\Schema\Grammars\Grammar::compileRenameColumn()</full_name>
+        <docblock line="28">
+          <description>Compile a rename column command.</description>
+          <long-description/>
+          <tag name="param" line="28" description="" type="\Illuminate\Database\Schema\Blueprint" variable="$blueprint">
+            <type>\Illuminate\Database\Schema\Blueprint</type>
+          </tag>
+          <tag name="param" line="28" description="" type="\Illuminate\Support\Fluent" variable="$command">
+            <type>\Illuminate\Support\Fluent</type>
+          </tag>
+          <tag name="param" line="28" description="" type="\Illuminate\Database\Connection" variable="$connection">
+            <type>\Illuminate\Database\Connection</type>
+          </tag>
+          <tag name="return" line="28" description="" type="array">
+            <type>array</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$blueprint</name>
+          <default/>
+          <type>\Illuminate\Database\Schema\Blueprint</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$command</name>
+          <default/>
+          <type>\Illuminate\Support\Fluent</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$connection</name>
+          <default/>
+          <type>\Illuminate\Database\Connection</type>
+        </argument>
+        <inherited_from>\Illuminate\Database\Schema\Grammars\Grammar</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Database\Schema\Grammars" line="50" package="Default">
+        <name>getRenamedDiff</name>
+        <full_name>\Illuminate\Database\Schema\Grammars\Grammar::getRenamedDiff()</full_name>
+        <docblock line="50">
+          <description>Get a new column instance with the new column name.</description>
+          <long-description/>
+          <tag name="param" line="50" description="" type="\Illuminate\Database\Schema\Blueprint" variable="$blueprint">
+            <type>\Illuminate\Database\Schema\Blueprint</type>
+          </tag>
+          <tag name="param" line="50" description="" type="\Illuminate\Support\Fluent" variable="$command">
+            <type>\Illuminate\Support\Fluent</type>
+          </tag>
+          <tag name="param" line="50" description="" type="\Doctrine\DBAL\Schema\Column" variable="$column">
+            <type>\Doctrine\DBAL\Schema\Column</type>
+          </tag>
+          <tag name="param" line="50" description="" type="\Doctrine\DBAL\Schema\AbstractSchemaManager" variable="$schema">
+            <type>\Doctrine\DBAL\Schema\AbstractSchemaManager</type>
+          </tag>
+          <tag name="return" line="50" description="" type="\Doctrine\DBAL\Schema\TableDiff">
+            <type>\Doctrine\DBAL\Schema\TableDiff</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$blueprint</name>
+          <default/>
+          <type>\Illuminate\Database\Schema\Blueprint</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$command</name>
+          <default/>
+          <type>\Illuminate\Support\Fluent</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$column</name>
+          <default/>
+          <type>\Doctrine\DBAL\Schema\Column</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$schema</name>
+          <default/>
+          <type>\Doctrine\DBAL\Schema\AbstractSchemaManager</type>
+        </argument>
+        <inherited_from>\Illuminate\Database\Schema\Grammars\Grammar</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Database\Schema\Grammars" line="65" package="Default">
+        <name>setRenamedColumns</name>
+        <full_name>\Illuminate\Database\Schema\Grammars\Grammar::setRenamedColumns()</full_name>
+        <docblock line="65">
+          <description>Set the renamed columns on the table diff.</description>
+          <long-description/>
+          <tag name="param" line="65" description="" type="\Doctrine\DBAL\Schema\TableDiff" variable="$tableDiff">
+            <type>\Doctrine\DBAL\Schema\TableDiff</type>
+          </tag>
+          <tag name="param" line="65" description="" type="\Illuminate\Support\Fluent" variable="$command">
+            <type>\Illuminate\Support\Fluent</type>
+          </tag>
+          <tag name="param" line="65" description="" type="\Doctrine\DBAL\Schema\Column" variable="$column">
+            <type>\Doctrine\DBAL\Schema\Column</type>
+          </tag>
+          <tag name="return" line="65" description="" type="\Doctrine\DBAL\Schema\TableDiff">
+            <type>\Doctrine\DBAL\Schema\TableDiff</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$tableDiff</name>
+          <default/>
+          <type>\Doctrine\DBAL\Schema\TableDiff</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$command</name>
+          <default/>
+          <type>\Illuminate\Support\Fluent</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$column</name>
+          <default/>
+          <type>\Doctrine\DBAL\Schema\Column</type>
+        </argument>
+        <inherited_from>\Illuminate\Database\Schema\Grammars\Grammar</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Schema\Grammars" line="81" package="Default">
+        <name>compileForeign</name>
+        <full_name>\Illuminate\Database\Schema\Grammars\Grammar::compileForeign()</full_name>
+        <docblock line="81">
+          <description>Compile a foreign key command.</description>
+          <long-description/>
+          <tag name="param" line="81" description="" type="\Illuminate\Database\Schema\Blueprint" variable="$blueprint">
+            <type>\Illuminate\Database\Schema\Blueprint</type>
+          </tag>
+          <tag name="param" line="81" description="" type="\Illuminate\Support\Fluent" variable="$command">
+            <type>\Illuminate\Support\Fluent</type>
+          </tag>
+          <tag name="return" line="81" description="" type="string">
+            <type>string</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$blueprint</name>
+          <default/>
+          <type>\Illuminate\Database\Schema\Blueprint</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$command</name>
+          <default/>
+          <type>\Illuminate\Support\Fluent</type>
+        </argument>
+        <inherited_from>\Illuminate\Database\Schema\Grammars\Grammar</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Database\Schema\Grammars" line="120" package="Default">
+        <name>getColumns</name>
+        <full_name>\Illuminate\Database\Schema\Grammars\Grammar::getColumns()</full_name>
+        <docblock line="120">
+          <description>Compile the blueprint's column definitions.</description>
+          <long-description/>
+          <tag name="param" line="120" description="" type="\Illuminate\Database\Schema\Blueprint" variable="$blueprint">
+            <type>\Illuminate\Database\Schema\Blueprint</type>
+          </tag>
+          <tag name="return" line="120" description="" type="array">
+            <type>array</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$blueprint</name>
+          <default/>
+          <type>\Illuminate\Database\Schema\Blueprint</type>
+        </argument>
+        <inherited_from>\Illuminate\Database\Schema\Grammars\Grammar</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Database\Schema\Grammars" line="144" package="Default">
+        <name>addModifiers</name>
+        <full_name>\Illuminate\Database\Schema\Grammars\Grammar::addModifiers()</full_name>
+        <docblock line="144">
+          <description>Add the column modifiers to the definition.</description>
+          <long-description/>
+          <tag name="param" line="144" description="" type="string" variable="$sql">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="144" description="" type="\Illuminate\Database\Schema\Blueprint" variable="$blueprint">
+            <type>\Illuminate\Database\Schema\Blueprint</type>
+          </tag>
+          <tag name="param" line="144" description="" type="\Illuminate\Support\Fluent" variable="$column">
+            <type>\Illuminate\Support\Fluent</type>
+          </tag>
+          <tag name="return" line="144" description="" type="string">
+            <type>string</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$sql</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$blueprint</name>
+          <default/>
+          <type>\Illuminate\Database\Schema\Blueprint</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$column</name>
+          <default/>
+          <type>\Illuminate\Support\Fluent</type>
+        </argument>
+        <inherited_from>\Illuminate\Database\Schema\Grammars\Grammar</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Database\Schema\Grammars" line="162" package="Default">
+        <name>getCommandByName</name>
+        <full_name>\Illuminate\Database\Schema\Grammars\Grammar::getCommandByName()</full_name>
+        <docblock line="162">
+          <description>Get the primary key command if it exists on the blueprint.</description>
+          <long-description/>
+          <tag name="param" line="162" description="" type="\Illuminate\Database\Schema\Blueprint" variable="$blueprint">
+            <type>\Illuminate\Database\Schema\Blueprint</type>
+          </tag>
+          <tag name="param" line="162" description="" type="string" variable="$name">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="162" description="" type="\Illuminate\Support\Fluent|null">
+            <type>\Illuminate\Support\Fluent</type>
+            <type>null</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$blueprint</name>
+          <default/>
+          <type>\Illuminate\Database\Schema\Blueprint</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$name</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <inherited_from>\Illuminate\Database\Schema\Grammars\Grammar</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Database\Schema\Grammars" line="178" package="Default">
+        <name>getCommandsByName</name>
+        <full_name>\Illuminate\Database\Schema\Grammars\Grammar::getCommandsByName()</full_name>
+        <docblock line="178">
+          <description>Get all of the commands with a given name.</description>
+          <long-description/>
+          <tag name="param" line="178" description="" type="\Illuminate\Database\Schema\Blueprint" variable="$blueprint">
+            <type>\Illuminate\Database\Schema\Blueprint</type>
+          </tag>
+          <tag name="param" line="178" description="" type="string" variable="$name">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="178" description="" type="array">
+            <type>array</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$blueprint</name>
+          <default/>
+          <type>\Illuminate\Database\Schema\Blueprint</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$name</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <inherited_from>\Illuminate\Database\Schema\Grammars\Grammar</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Database\Schema\Grammars" line="191" package="Default">
+        <name>getType</name>
+        <full_name>\Illuminate\Database\Schema\Grammars\Grammar::getType()</full_name>
+        <docblock line="191">
+          <description>Get the SQL for the column data type.</description>
+          <long-description/>
+          <tag name="param" line="191" description="" type="\Illuminate\Support\Fluent" variable="$column">
+            <type>\Illuminate\Support\Fluent</type>
+          </tag>
+          <tag name="return" line="191" description="" type="string">
+            <type>string</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$column</name>
+          <default/>
+          <type>\Illuminate\Support\Fluent</type>
+        </argument>
+        <inherited_from>\Illuminate\Database\Schema\Grammars\Grammar</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Schema\Grammars" line="203" package="Default">
+        <name>prefixArray</name>
+        <full_name>\Illuminate\Database\Schema\Grammars\Grammar::prefixArray()</full_name>
+        <docblock line="203">
+          <description>Add a prefix to an array of values.</description>
+          <long-description/>
+          <tag name="param" line="203" description="" type="string" variable="$prefix">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="203" description="" type="array" variable="$values">
+            <type>array</type>
+          </tag>
+          <tag name="return" line="203" description="" type="array">
+            <type>array</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$prefix</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$values</name>
+          <default/>
+          <type>array</type>
+        </argument>
+        <inherited_from>\Illuminate\Database\Schema\Grammars\Grammar</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Schema\Grammars" line="33" package="Default">
+        <name>wrapTable</name>
+        <full_name>\Illuminate\Database\Grammar::wrapTable()</full_name>
+        <docblock line="33">
+          <description>Wrap a table in keyword identifiers.</description>
+          <long-description/>
+          <tag name="param" line="33" description="" type="\Illuminate\Database\Query\Expression|string" variable="$table">
+            <type>\Illuminate\Database\Query\Expression</type>
+            <type>string</type>
+          </tag>
+          <tag name="return" line="33" description="" type="string">
+            <type>string</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$table</name>
+          <default/>
+          <type>\Illuminate\Database\Query\Expression|string</type>
+        </argument>
+        <inherited_from>\Illuminate\Database\Grammar</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Schema\Grammars" line="49" package="Default">
+        <name>wrap</name>
+        <full_name>\Illuminate\Database\Grammar::wrap()</full_name>
+        <docblock line="49">
+          <description>Wrap a value in keyword identifiers.</description>
+          <long-description/>
+          <tag name="param" line="49" description="" type="\Illuminate\Database\Query\Expression|string" variable="$value">
+            <type>\Illuminate\Database\Query\Expression</type>
+            <type>string</type>
+          </tag>
+          <tag name="param" line="49" description="" type="boolean" variable="$prefixAlias">
+            <type>boolean</type>
+          </tag>
+          <tag name="return" line="49" description="" type="string">
+            <type>string</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$value</name>
+          <default/>
+          <type>\Illuminate\Database\Query\Expression|string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$prefixAlias</name>
+          <default>false</default>
+          <type>boolean</type>
+        </argument>
+        <inherited_from>\Illuminate\Database\Grammar</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Database\Schema\Grammars" line="243" package="Default">
+        <name>getDefaultValue</name>
+        <full_name>\Illuminate\Database\Schema\Grammars\Grammar::getDefaultValue()</full_name>
+        <docblock line="243">
+          <description>Format a value so that it can be used in "default" clauses.</description>
+          <long-description/>
+          <tag name="param" line="243" description="" type="mixed" variable="$value">
+            <type>mixed</type>
+          </tag>
+          <tag name="return" line="243" description="" type="string">
+            <type>string</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$value</name>
+          <default/>
+          <type>mixed</type>
+        </argument>
+        <inherited_from>\Illuminate\Database\Schema\Grammars\Grammar</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Database\Schema\Grammars" line="263" package="Default">
+        <name>getDoctrineTableDiff</name>
+        <full_name>\Illuminate\Database\Schema\Grammars\Grammar::getDoctrineTableDiff()</full_name>
+        <docblock line="263">
+          <description>Create an empty Doctrine DBAL TableDiff from the Blueprint.</description>
+          <long-description/>
+          <tag name="param" line="263" description="" type="\Illuminate\Database\Schema\Blueprint" variable="$blueprint">
+            <type>\Illuminate\Database\Schema\Blueprint</type>
+          </tag>
+          <tag name="param" line="263" description="" type="\Doctrine\DBAL\Schema\AbstractSchemaManager" variable="$schema">
+            <type>\Doctrine\DBAL\Schema\AbstractSchemaManager</type>
+          </tag>
+          <tag name="return" line="263" description="" type="\Doctrine\DBAL\Schema\TableDiff">
+            <type>\Doctrine\DBAL\Schema\TableDiff</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$blueprint</name>
+          <default/>
+          <type>\Illuminate\Database\Schema\Blueprint</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$schema</name>
+          <default/>
+          <type>\Doctrine\DBAL\Schema\AbstractSchemaManager</type>
+        </argument>
+        <inherited_from>\Illuminate\Database\Schema\Grammars\Grammar</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Schema\Grammars" line="284" package="Default">
+        <name>compileChange</name>
+        <full_name>\Illuminate\Database\Schema\Grammars\Grammar::compileChange()</full_name>
+        <docblock line="284">
+          <description>Compile a change column command into a series of SQL statements.</description>
+          <long-description/>
+          <tag name="param" line="284" description="" type="\Illuminate\Database\Schema\Blueprint" variable="$blueprint">
+            <type>\Illuminate\Database\Schema\Blueprint</type>
+          </tag>
+          <tag name="param" line="284" description="" type="\Illuminate\Support\Fluent" variable="$command">
+            <type>\Illuminate\Support\Fluent</type>
+          </tag>
+          <tag name="param" line="284" description="" type="\Illuminate\Database\Connection" variable="$connection">
+            <type>\Illuminate\Database\Connection</type>
+          </tag>
+          <tag name="return" line="284" description="" type="array">
+            <type>array</type>
+          </tag>
+          <tag name="throws" line="284" description="" type="\RuntimeException">
+            <type>\RuntimeException</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$blueprint</name>
+          <default/>
+          <type>\Illuminate\Database\Schema\Blueprint</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$command</name>
+          <default/>
+          <type>\Illuminate\Support\Fluent</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$connection</name>
+          <default/>
+          <type>\Illuminate\Database\Connection</type>
+        </argument>
+        <inherited_from>\Illuminate\Database\Schema\Grammars\Grammar</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Database\Schema\Grammars" line="311" package="Default">
+        <name>getChangedDiff</name>
+        <full_name>\Illuminate\Database\Schema\Grammars\Grammar::getChangedDiff()</full_name>
+        <docblock line="311">
+          <description>Get the Doctrine table difference for the given changes.</description>
+          <long-description/>
+          <tag name="param" line="311" description="" type="\Illuminate\Database\Schema\Blueprint" variable="$blueprint">
+            <type>\Illuminate\Database\Schema\Blueprint</type>
+          </tag>
+          <tag name="param" line="311" description="" type="\Doctrine\DBAL\Schema\AbstractSchemaManager" variable="$schema">
+            <type>\Doctrine\DBAL\Schema\AbstractSchemaManager</type>
+          </tag>
+          <tag name="return" line="311" description="" type="\Doctrine\DBAL\Schema\TableDiff|boolean">
+            <type>\Doctrine\DBAL\Schema\TableDiff</type>
+            <type>boolean</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$blueprint</name>
+          <default/>
+          <type>\Illuminate\Database\Schema\Blueprint</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$schema</name>
+          <default/>
+          <type>\Doctrine\DBAL\Schema\AbstractSchemaManager</type>
+        </argument>
+        <inherited_from>\Illuminate\Database\Schema\Grammars\Grammar</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Database\Schema\Grammars" line="325" package="Default">
+        <name>getTableWithColumnChanges</name>
+        <full_name>\Illuminate\Database\Schema\Grammars\Grammar::getTableWithColumnChanges()</full_name>
+        <docblock line="325">
+          <description>Get a copy of the given Doctrine table after making the column changes.</description>
+          <long-description/>
+          <tag name="param" line="325" description="" type="\Illuminate\Database\Schema\Blueprint" variable="$blueprint">
+            <type>\Illuminate\Database\Schema\Blueprint</type>
+          </tag>
+          <tag name="param" line="325" description="" type="\Doctrine\DBAL\Schema\Table" variable="$table">
+            <type>\Doctrine\DBAL\Schema\Table</type>
+          </tag>
+          <tag name="return" line="325" description="" type="\Doctrine\DBAL\Schema\TableDiff">
+            <type>\Doctrine\DBAL\Schema\TableDiff</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$blueprint</name>
+          <default/>
+          <type>\Illuminate\Database\Schema\Blueprint</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$table</name>
+          <default/>
+          <type>\Doctrine\DBAL\Schema\Table</type>
+        </argument>
+        <inherited_from>\Illuminate\Database\Schema\Grammars\Grammar</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Database\Schema\Grammars" line="354" package="Default">
+        <name>getDoctrineColumnForChange</name>
+        <full_name>\Illuminate\Database\Schema\Grammars\Grammar::getDoctrineColumnForChange()</full_name>
+        <docblock line="354">
+          <description>Get the Doctrine column instance for a column change.</description>
+          <long-description/>
+          <tag name="param" line="354" description="" type="\Doctrine\DBAL\Schema\Table" variable="$table">
+            <type>\Doctrine\DBAL\Schema\Table</type>
+          </tag>
+          <tag name="param" line="354" description="" type="\Illuminate\Support\Fluent" variable="$fluent">
+            <type>\Illuminate\Support\Fluent</type>
+          </tag>
+          <tag name="return" line="354" description="" type="\Doctrine\DBAL\Schema\Column">
+            <type>\Doctrine\DBAL\Schema\Column</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$table</name>
+          <default/>
+          <type>\Doctrine\DBAL\Schema\Table</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$fluent</name>
+          <default/>
+          <type>\Illuminate\Support\Fluent</type>
+        </argument>
+        <inherited_from>\Illuminate\Database\Schema\Grammars\Grammar</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Database\Schema\Grammars" line="367" package="Default">
+        <name>getDoctrineColumnChangeOptions</name>
+        <full_name>\Illuminate\Database\Schema\Grammars\Grammar::getDoctrineColumnChangeOptions()</full_name>
+        <docblock line="367">
+          <description>Get the Doctrine column change options.</description>
+          <long-description/>
+          <tag name="param" line="367" description="" type="\Illuminate\Support\Fluent" variable="$fluent">
+            <type>\Illuminate\Support\Fluent</type>
+          </tag>
+          <tag name="return" line="367" description="" type="array">
+            <type>array</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$fluent</name>
+          <default/>
+          <type>\Illuminate\Support\Fluent</type>
+        </argument>
+        <inherited_from>\Illuminate\Database\Schema\Grammars\Grammar</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Database\Schema\Grammars" line="384" package="Default">
+        <name>getDoctrineColumnType</name>
+        <full_name>\Illuminate\Database\Schema\Grammars\Grammar::getDoctrineColumnType()</full_name>
+        <docblock line="384">
+          <description>Get the doctrine column type.</description>
+          <long-description/>
+          <tag name="param" line="384" description="" type="string" variable="$type">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="384" description="" type="\Doctrine\DBAL\Types\Type">
+            <type>\Doctrine\DBAL\Types\Type</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$type</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <inherited_from>\Illuminate\Database\Schema\Grammars\Grammar</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Database\Schema\Grammars" line="413" package="Default">
+        <name>calculateDoctrineTextLength</name>
+        <full_name>\Illuminate\Database\Schema\Grammars\Grammar::calculateDoctrineTextLength()</full_name>
+        <docblock line="413">
+          <description>Calculate the proper column length to force the Doctrine text type.</description>
+          <long-description/>
+          <tag name="param" line="413" description="" type="string" variable="$type">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="413" description="" type="integer">
+            <type>integer</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$type</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <inherited_from>\Illuminate\Database\Schema\Grammars\Grammar</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Database\Schema\Grammars" line="431" package="Default">
+        <name>mapFluentOptionToDoctrine</name>
+        <full_name>\Illuminate\Database\Schema\Grammars\Grammar::mapFluentOptionToDoctrine()</full_name>
+        <docblock line="431">
+          <description>Get the matching Doctrine option for a given Fluent attribute name.</description>
+          <long-description/>
+          <tag name="param" line="431" description="" type="string" variable="$attribute">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="431" description="" type="string|null">
+            <type>string</type>
+            <type>null</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$attribute</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <inherited_from>\Illuminate\Database\Schema\Grammars\Grammar</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Database\Schema\Grammars" line="455" package="Default">
+        <name>mapFluentValueToDoctrine</name>
+        <full_name>\Illuminate\Database\Schema\Grammars\Grammar::mapFluentValueToDoctrine()</full_name>
+        <docblock line="455">
+          <description>Get the matching Doctrine value for a given Fluent attribute.</description>
+          <long-description/>
+          <tag name="param" line="455" description="" type="string" variable="$option">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="455" description="" type="mixed" variable="$value">
+            <type>mixed</type>
+          </tag>
+          <tag name="return" line="455" description="" type="mixed">
+            <type>mixed</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$option</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$value</name>
+          <default/>
+          <type>mixed</type>
+        </argument>
+        <inherited_from>\Illuminate\Database\Schema\Grammars\Grammar</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Schema\Grammars" line="22" package="Default">
+        <name>wrapArray</name>
+        <full_name>\Illuminate\Database\Grammar::wrapArray()</full_name>
+        <docblock line="22">
+          <description>Wrap an array of values.</description>
+          <long-description/>
+          <tag name="param" line="22" description="" type="array" variable="$values">
+            <type>array</type>
+          </tag>
+          <tag name="return" line="22" description="" type="array">
+            <type>array</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$values</name>
+          <default/>
+          <type>array</type>
+        </argument>
+        <inherited_from>\Illuminate\Database\Grammar</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Database\Schema\Grammars" line="92" package="Default">
+        <name>wrapValue</name>
+        <full_name>\Illuminate\Database\Grammar::wrapValue()</full_name>
+        <docblock line="92">
+          <description>Wrap a single string in keyword identifiers.</description>
+          <long-description/>
+          <tag name="param" line="92" description="" type="string" variable="$value">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="92" description="" type="string">
+            <type>string</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$value</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <inherited_from>\Illuminate\Database\Grammar</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Schema\Grammars" line="107" package="Default">
+        <name>columnize</name>
+        <full_name>\Illuminate\Database\Grammar::columnize()</full_name>
+        <docblock line="107">
+          <description>Convert an array of column names into a delimited string.</description>
+          <long-description/>
+          <tag name="param" line="107" description="" type="array" variable="$columns">
+            <type>array</type>
+          </tag>
+          <tag name="return" line="107" description="" type="string">
+            <type>string</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$columns</name>
+          <default/>
+          <type>array</type>
+        </argument>
+        <inherited_from>\Illuminate\Database\Grammar</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Schema\Grammars" line="118" package="Default">
+        <name>parameterize</name>
+        <full_name>\Illuminate\Database\Grammar::parameterize()</full_name>
+        <docblock line="118">
+          <description>Create query parameter place-holders for an array.</description>
+          <long-description/>
+          <tag name="param" line="118" description="" type="array" variable="$values">
+            <type>array</type>
+          </tag>
+          <tag name="return" line="118" description="" type="string">
+            <type>string</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$values</name>
+          <default/>
+          <type>array</type>
+        </argument>
+        <inherited_from>\Illuminate\Database\Grammar</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Schema\Grammars" line="129" package="Default">
+        <name>parameter</name>
+        <full_name>\Illuminate\Database\Grammar::parameter()</full_name>
+        <docblock line="129">
+          <description>Get the appropriate query parameter place-holder for a value.</description>
+          <long-description/>
+          <tag name="param" line="129" description="" type="mixed" variable="$value">
+            <type>mixed</type>
+          </tag>
+          <tag name="return" line="129" description="" type="string">
+            <type>string</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$value</name>
+          <default/>
+          <type>mixed</type>
+        </argument>
+        <inherited_from>\Illuminate\Database\Grammar</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Schema\Grammars" line="140" package="Default">
+        <name>getValue</name>
+        <full_name>\Illuminate\Database\Grammar::getValue()</full_name>
+        <docblock line="140">
+          <description>Get the value of a raw expression.</description>
+          <long-description/>
+          <tag name="param" line="140" description="" type="\Illuminate\Database\Query\Expression" variable="$expression">
+            <type>\Illuminate\Database\Query\Expression</type>
+          </tag>
+          <tag name="return" line="140" description="" type="string">
+            <type>string</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$expression</name>
+          <default/>
+          <type>\Illuminate\Database\Query\Expression</type>
+        </argument>
+        <inherited_from>\Illuminate\Database\Grammar</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Schema\Grammars" line="151" package="Default">
+        <name>isExpression</name>
+        <full_name>\Illuminate\Database\Grammar::isExpression()</full_name>
+        <docblock line="151">
+          <description>Determine if the given value is a raw expression.</description>
+          <long-description/>
+          <tag name="param" line="151" description="" type="mixed" variable="$value">
+            <type>mixed</type>
+          </tag>
+          <tag name="return" line="151" description="" type="boolean">
+            <type>boolean</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$value</name>
+          <default/>
+          <type>mixed</type>
+        </argument>
+        <inherited_from>\Illuminate\Database\Grammar</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Schema\Grammars" line="161" package="Default">
+        <name>getDateFormat</name>
+        <full_name>\Illuminate\Database\Grammar::getDateFormat()</full_name>
+        <docblock line="161">
+          <description>Get the format for database stored dates.</description>
+          <long-description/>
+          <tag name="return" line="161" description="" type="string">
+            <type>string</type>
+          </tag>
+        </docblock>
+        <inherited_from>\Illuminate\Database\Grammar</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Schema\Grammars" line="171" package="Default">
+        <name>getTablePrefix</name>
+        <full_name>\Illuminate\Database\Grammar::getTablePrefix()</full_name>
+        <docblock line="171">
+          <description>Get the grammar's table prefix.</description>
+          <long-description/>
+          <tag name="return" line="171" description="" type="string">
+            <type>string</type>
+          </tag>
+        </docblock>
+        <inherited_from>\Illuminate\Database\Grammar</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Schema\Grammars" line="182" package="Default">
+        <name>setTablePrefix</name>
+        <full_name>\Illuminate\Database\Grammar::setTablePrefix()</full_name>
+        <docblock line="182">
+          <description>Set the grammar's table prefix.</description>
+          <long-description/>
+          <tag name="param" line="182" description="" type="string" variable="$prefix">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="182" description="" type="\Illuminate\Database\Schema\Grammars\MySqlGrammar">
+            <type>\Illuminate\Database\Schema\Grammars\MySqlGrammar</type>
+          </tag>
+          <tag name="fluent" description="This method is part of a fluent interface and will return the same instance"/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$prefix</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <inherited_from>\Illuminate\Database\Grammar</inherited_from>
+      </method>
+    </class>
+    <parse_markers>
+      <error line="0" code="PPC:ERR-50000">No summary was found for this file</error>
+      <error line="9" code="PPC:ERR-50005">No summary for class \Illuminate\Database\Schema\Grammars\MySqlGrammar</error>
+    </parse_markers>
+    <source>eJzdXGlz28gR/a5fMWGpFqCLouPKVRVFdrQS5TBeeR2T3lQqSilDYEjOLi5jBjpW4X9Pz4GLJEgctGHBHywQmOnp93q6p4E5/vImWAZHRx52CQuwRdDYcSKXepiTm0vM8QwzcjOxlsTFN29D7Lo4ZKdHRxHLlZxEQeCH/ObKiYjHT9cfJ4IufM8jFqe+V1xGN/Y9iApCKqQdWQ5mDF0/Tj47WgdEHjjxbIb076OnIwT/Xr54If+iF2i6JCjwGaMzhyDLh3Y85Po2nVMSsqEuFRf+6x2IxGGIH/Wdl/JvEPoc1CU2Ok6qojP0b1UI/hk/0ZBH2DlnxgAZE+6HxFbXnzxGFx6xxfXFEkgjXF76jgNoxeX7CC5BOWOQirskcxw5suTYs0LiApuqmhtfns85CcXFFQ0Z15X/AySVwM9ISLFTA72uKLAbM7oYe5wslBY0vXSJTSM384y52HEyvzn1HuOfWzQGkAEFZTlo/jki4SPiPrIJwIUuom47lHHkzxEXxG3iCAmPQoDJod8s8liimUMtNI882fuAENnWVMgZPYBUZvZlwafEGFqYwYgDLID4eei7iHpzP3SxEHLLZE8dKmXQ/ZKERGmmnwBdbxD2bH1T+Ji4ZZzKNlZNCFAGPQADF1JQOQpUowpHERlasQOygRE4AviMqif0dkHKBvIAQyRA6KZMSEHoeBZf7xKQD2tQSzdeqtE01smK8Y8GppI0mCmKFMQAaRVjDQco03ym9XULH8f2OkPUDRzfJqbw1AE65kvKTl4vCFc9hJlpa/2+dl4pgX12oHb69OQ1Jy7QhqH/vkFGbLz4noH+HN801sUMz5ChzWwMtQb3IQ6km2YVGPaQGave72XEvHyJfvRgFLsnaInvlM9AFVcoM/nHDwPxwMIewrYtnxHPgsDuLZAfSKrA4cRtKIqga2fFittStSESsdVLREHfsn5BdA4dlcEAgBdC6kI47BIzNCMEbAz9yKEQSItljueI+VLmPXWcjH5Skk1gCAzxuooySAw3TKGIy/WakcZpijKDbI8YZEyXtSsAMimDYcvMmlbp0+9nulDeelrhM2HAjXqnSaUVIg4joo3fIMpuPRgLzeOkbkY93QW9OV2Yhipg9Eu2v9Ho0XpkE/WK4s95EBBPWcGCARzDSBjCCMoRC4gFuYAlzcGEPfC+qKScXOl5kODRONrtiD7JsL89AK11pe1xZoC2han16LO9j1kqXdphZFulSWt2yfc4LWVPl9OldvQ5XWJnpyvUZ1OJfQ5myQRRROri5lQZsg44rrkPclxuF+i4zE7YGT22NV7J25LRXsVmnbB+U4N95QH73LbLjdYbo7IaA5NQvnUMzA6e6SiuawQhmdOHc5HTmwYQWmVEj7M+7IienA7HcqAy4HItU4jH4f2JXDwS/0Ien7lpPygkNc2r75+8FkmwKdxyC//5YfwdeTSzTaSJnpFh1ShhhMijkDd0wAafJJB6JqjKsSKtDL2Bg6kHb0Y2eegAx2OB4+tQLCkrwXBMrnyH0Kp+OwyvJ3z8MSCNki7BWMlXPtnYjje8xBTiBv2VmGkgSmN4/UFImSVXPtOCfLolzPWyw8yTanQlc4AniWcFf2XdVe6Nb58b2qEffItfDCp74CUAaeSARoaK3W/VlVg1Ia0k8rNRvwMMj+f6E9ihmE7YOQznnciHBdEq96ydN+1KcwVRaZ4r2FYPNqNckzD35bJjaejupMjC2o3S5CKmd3wWNDZILPF5WVbpTFYsaG+SGbc67EtTKIHxqF92rNdJ4bO3XYOM+7mabu6HhC68jjjflULzXE2YNUYFQ4ZETuh1IeP+KKHUtJ+cF62aTPRy7D1JISsxsdDbMtwlxuX+3qRCTl6o8kIctCIayPubB8xg0OsAk8kjKV87ALy4XqTCC+eWJ6Mpuvrx42j89v3tu9G/bi/+Nrp4Nzl7dVpqmjwDzqbsy6K7VA0cBN5vd8DTE6bLZNmGDUmuR6UqAE7MNi0xOC+8HJfxsC0OIqTW+yghGhXLWczUD4SwAvQ9oaj5pAudvHaIt+DL1Y739/3Y9ZeV1tBPZMmS+O9w+AUo4OSBt0fAFFovB98Qijbp52pFUct4r6USFVArrZtid3zRy1tF/gOoUAG30Lgp6hldIL2krD3c3ycr3EoiB61B6Sa4W8dcDXBDtNqvWwd9nV2xWMm7GxIgVkK2D3+arscsG9ChRkPoclFo+9gnmbWpJcFLzRuinzs+bjGiX4nmy8HVLx6i1qUf6TcPWb4BfFtKag+/RrKbALFeJsnXuM+xg777DiV3AgdbhK2viokzPoUwk/BJAasBeloTkKSAGTKzvU0JatLXbGJR6LItsq0UKJkra3WrUFcvxfB9h2CvxfRCKVAt5Jqv+g36ggev/iKRbgvyCFov2Q2EoqbRS6ZRemIepTdI/Q+CsH9P7P6wZzTqBz8zv8VO8HdovWQPEIo2iQOi/qxdpLOvBNWWBVqLd2J5fjmgtlr+3gjoCaduy2inoEEFxELhjqCe/voVcbcLuYKRnz/Q0nY9BFTGsRu0i1eqUCUhjhi5iMIQihekwEaKLF4Xf/Hp48fR++ntdHw9mkzPrz8YO1PfREBX+N3bqZ4lwzOgTexRbO8znWi/7Cc6x581ARtF1G4P6idovSRQOd/wuz82e1sYfxArMEPCWItfJINzpUJJ4PFcy+//0AQ7uj6/aB/7NbbqgX/1p2LwbwnPbm4ErAvikRCL1u/UPvb1jfJtzeAXs/c/sVtiH4VS/cdkb/7eqfyikJzfNSWD810sdGNfVPwCizBDmY8YSYW1Dz7VbcTk8QKdMlF8YsIhLcS0zLIGisuv+prhOmbyUKQPfOiUfeJTLGrbJ01qtKSilCbhz6jjJPmNl12ygD475JAOUrS/NjHF5jbWfM1aFkp2nXbKOmoH7EGtU7gBOLVPbt9tvlYd23j6JJpOmSY+XqeWbeI5sJjehKE3QL/4IU+xQJ7P1a/yKVeyVbxDVOtTiw7pBZqmYh+IeUw2BCwI13r8hKHFTVG1RnUccf+ExkcxdcpqyQFTte1GvVsc77DRM3bw7pLswNGHRvVzs6eC0KTlQuuKUrcp7Zv7OaoFuN5cnJXV65T55PFfh3Q5yVGxw8nHddgXq83FmWXdol8ew3ZI+iVHxfTLx/ntT+t1a3mGpU6W65Zx9HF5h03LpMhdSZksgHq5rEzeGxq9Eo7zTzCpWB8FUCHR0MucqVzHfu+HNqI2iCo4vnB91/mdGAK307iPQdGz9AgqpWx9q5NP0NnZGTJeGAWUqEI7P0P/1xiCUrchkes6TPg9gJvif932EG7FudXq6P94QCvL</source>
+  <type>class</type></file>

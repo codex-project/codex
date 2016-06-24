@@ -1,0 +1,680 @@
+<file path="sebwite/workbench/sebwite/support/src/Path.php" generated-path="sebwite.workbench.sebwite.support.src.Path.html" hash="fe2ca878b672f8843279d7bc03340d29" package="Default">
+    <docblock line="0">
+      <description>Part of the Sebwite PHP packages.</description>
+      <long-description>MIT License and copyright information bundled with this package in the LICENSE file</long-description>
+      <tag name="package" line="0" description="Default"/>
+    </docblock>
+    <class final="true" abstract="false" namespace="Sebwite\Support" line="16" package="Sebwite\Support">
+      <extends/>
+      <name>Path</name>
+      <full_name>\Sebwite\Support\Path</full_name>
+      <docblock line="16">
+        <description>This is the class Path.</description>
+        <long-description/>
+        <tag name="package" line="16" description="Sebwite\Support"/>
+        <tag name="author" line="16" description="Sebwite"/>
+        <tag name="copyright" line="16" description="Copyright (c) 2015, Sebwite. All rights reserved"/>
+      </docblock>
+      <method final="false" abstract="false" static="true" visibility="public" namespace="Sebwite\Support" line="19" package="Sebwite\Support">
+        <name>isPhar</name>
+        <full_name>\Sebwite\Support\Path::isPhar()</full_name>
+        <docblock line="19">
+          <description/>
+          <long-description/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$path</name>
+          <default>null</default>
+          <type/>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="true" visibility="public" namespace="Sebwite\Support" line="31" package="Sebwite\Support">
+        <name>real</name>
+        <full_name>\Sebwite\Support\Path::real()</full_name>
+        <docblock line="31">
+          <description>Equivalent of realpath() accept for Phar paths</description>
+          <long-description/>
+          <tag name="param" line="31" description="" type="" variable="$path"/>
+          <tag name="return" line="31" description="" type="string">
+            <type>string</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$path</name>
+          <default/>
+          <type/>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="true" visibility="public" namespace="Sebwite\Support" line="43" package="Sebwite\Support">
+        <name>join</name>
+        <full_name>\Sebwite\Support\Path::join()</full_name>
+        <docblock line="43">
+          <description>Joins a split file system path.</description>
+          <long-description/>
+          <tag name="param" line="43" description="" type="array|string" variable="$path">
+            <type>array</type>
+            <type>string</type>
+          </tag>
+          <tag name="return" line="43" description="" type="string">
+            <type>string</type>
+          </tag>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="true" visibility="public" namespace="Sebwite\Support" line="72" package="Sebwite\Support">
+        <name>njoin</name>
+        <full_name>\Sebwite\Support\Path::njoin()</full_name>
+        <docblock line="72">
+          <description>Similar to the join() method, but also normalize()'s the result</description>
+          <long-description/>
+          <tag name="return" line="72" description="" type="string">
+            <type>string</type>
+          </tag>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="true" visibility="public" namespace="Sebwite\Support" line="82" package="Sebwite\Support">
+        <name>getDirectoryName</name>
+        <full_name>\Sebwite\Support\Path::getDirectoryName()</full_name>
+        <docblock line="82">
+          <description>Get the directory path</description>
+          <long-description/>
+          <tag name="param" line="82" description="" type="" variable="$path"/>
+          <tag name="return" line="82" description="" type="mixed|string">
+            <type>mixed</type>
+            <type>string</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$path</name>
+          <default/>
+          <type/>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="true" visibility="public" namespace="Sebwite\Support" line="97" package="Sebwite\Support">
+        <name>normalize</name>
+        <full_name>\Sebwite\Support\Path::normalize()</full_name>
+        <docblock line="97">
+          <description>normalize method</description>
+          <long-description/>
+          <tag name="param" line="97" description="" type="" variable="$path"/>
+          <tag name="return" line="97" description="" type="mixed">
+            <type>mixed</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$path</name>
+          <default/>
+          <type/>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="true" visibility="public" namespace="Sebwite\Support" line="105" package="Sebwite\Support">
+        <name>getHome</name>
+        <full_name>\Sebwite\Support\Path::getHome()</full_name>
+        <docblock line="105">
+          <description>Return the user's home directory.</description>
+          <long-description/>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="true" visibility="public" namespace="Sebwite\Support" line="145" package="Sebwite\Support">
+        <name>canonicalize</name>
+        <full_name>\Sebwite\Support\Path::canonicalize()</full_name>
+        <docblock line="145">
+          <description>Canonicalizes the given path.</description>
+          <long-description>During normalization, all slashes are replaced by forward slashes ("/").
+Furthermore, all "." and ".." segments are removed as far as possible.
+".." segments at the beginning of relative paths are not removed.
+
+```php
+echo Path::canonicalize("\webmozart\puli\..\css\style.css");
+// =&gt; /webmozart/style.css
+
+echo Path::canonicalize("../css/./style.css");
+// =&gt; ../css/style.css
+```
+
+This method is able to deal with both UNIX and Windows paths.</long-description>
+          <tag name="param" line="145" description="&lt;p&gt;A path string&lt;/p&gt;" type="string" variable="$path">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="145" description="The canonical path" type="string">
+            <type>string</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$path</name>
+          <default/>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="true" visibility="public" namespace="Sebwite\Support" line="211" package="Sebwite\Support">
+        <name>getDirectory</name>
+        <full_name>\Sebwite\Support\Path::getDirectory()</full_name>
+        <docblock line="211">
+          <description>Returns the directory part of the path.</description>
+          <long-description>This method is similar to PHP's dirname(), but handles various cases
+where dirname() returns a weird result:
+
+ - dirname() does not accept backslashes on UNIX
+ - dirname("C:/webmozart") returns "C:", not "C:/"
+ - dirname("C:/") returns ".", not "C:/"
+ - dirname("C:") returns ".", not "C:/"
+ - dirname("webmozart") returns ".", not ""
+ - dirname() does not canonicalize the result
+
+This method fixes these shortcomings and behaves like dirname()
+otherwise.
+
+The result is a canonical path.</long-description>
+          <tag name="param" line="211" description="&lt;p&gt;A path string&lt;/p&gt;" type="string" variable="$path">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="211" description="The canonical directory part. Returns the root directory&#10;               if the root directory is passed. Returns an empty string&#10;               if a relative path is passed that contains no slashes.&#10;               Returns an empty string if an empty string is passed" type="string">
+            <type>string</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$path</name>
+          <default/>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="true" visibility="public" namespace="Sebwite\Support" line="246" package="Sebwite\Support">
+        <name>getRoot</name>
+        <full_name>\Sebwite\Support\Path::getRoot()</full_name>
+        <docblock line="246">
+          <description>Returns the root directory of a path.</description>
+          <long-description>The result is a canonical path.</long-description>
+          <tag name="param" line="246" description="&lt;p&gt;A path string&lt;/p&gt;" type="string" variable="$path">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="246" description="The canonical root directory. Returns an empty string if&#10;               the given path is relative or empty" type="string">
+            <type>string</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$path</name>
+          <default/>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="true" visibility="public" namespace="Sebwite\Support" line="284" package="Sebwite\Support">
+        <name>getFilename</name>
+        <full_name>\Sebwite\Support\Path::getFilename()</full_name>
+        <docblock line="284">
+          <description>Returns the filename from a file path.</description>
+          <long-description/>
+          <tag name="param" line="284" description="&lt;p&gt;The path string&lt;/p&gt;" type="string" variable="$path">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="284" description="Filename" type="string">
+            <type>string</type>
+          </tag>
+          <tag name="since" line="284" description="1.1"/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$path</name>
+          <default/>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="true" visibility="public" namespace="Sebwite\Support" line="304" package="Sebwite\Support">
+        <name>getFilenameWithoutExtension</name>
+        <full_name>\Sebwite\Support\Path::getFilenameWithoutExtension()</full_name>
+        <docblock line="304">
+          <description>Returns the filename without the extension from a file path.</description>
+          <long-description/>
+          <tag name="param" line="304" description="&lt;p&gt;The path string&lt;/p&gt;" type="string" variable="$path">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="304" description="&lt;p&gt;If specified, only that extension is cut off&#10;(may contain leading dot)&lt;/p&gt;" type="string|null" variable="$extension">
+            <type>string</type>
+            <type>null</type>
+          </tag>
+          <tag name="return" line="304" description="Filename without extension" type="string">
+            <type>string</type>
+          </tag>
+          <tag name="since" line="304" description="1.1"/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$path</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$extension</name>
+          <default>null</default>
+          <type>string|null</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="true" visibility="public" namespace="Sebwite\Support" line="330" package="Sebwite\Support">
+        <name>getExtension</name>
+        <full_name>\Sebwite\Support\Path::getExtension()</full_name>
+        <docblock line="330">
+          <description>Returns the extension from a file path.</description>
+          <long-description/>
+          <tag name="param" line="330" description="&lt;p&gt;The path string&lt;/p&gt;" type="string" variable="$path">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="330" description="&lt;p&gt;Forces the extension to be lower-case&#10;(Requires mbstring extension for correct&#10;multi-byte character handling in extension)&lt;/p&gt;" type="boolean" variable="$forceLowerCase">
+            <type>boolean</type>
+          </tag>
+          <tag name="return" line="330" description="Extension from a file path (without leading dot)" type="string">
+            <type>string</type>
+          </tag>
+          <tag name="since" line="330" description="1.1"/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$path</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$forceLowerCase</name>
+          <default>false</default>
+          <type>boolean</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="true" visibility="public" namespace="Sebwite\Support" line="361" package="Sebwite\Support">
+        <name>hasExtension</name>
+        <full_name>\Sebwite\Support\Path::hasExtension()</full_name>
+        <docblock line="361">
+          <description>Returns whether the path has an extension.</description>
+          <long-description/>
+          <tag name="param" line="361" description="&lt;p&gt;The path string&lt;/p&gt;" type="string" variable="$path">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="361" description="&lt;p&gt;If null or not provided, checks if an&#10;extension exists, otherwise checks for&#10;the specified extension or array of extensions&#10;(with or without leading dot)&lt;/p&gt;" type="string|array|null" variable="$extensions">
+            <type>string</type>
+            <type>array</type>
+            <type>null</type>
+          </tag>
+          <tag name="param" line="361" description="&lt;p&gt;Whether to ignore case-sensitivity&#10;(Requires mbstring extension for correct&#10;multi-byte character handling in extension)&lt;/p&gt;" type="boolean" variable="$ignoreCase">
+            <type>boolean</type>
+          </tag>
+          <tag name="return" line="361" description="true if the path has an (or the specified) extension, otherwise false" type="boolean">
+            <type>boolean</type>
+          </tag>
+          <tag name="since" line="361" description="1.1"/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$path</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$extensions</name>
+          <default>null</default>
+          <type>string|array|null</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$ignoreCase</name>
+          <default>false</default>
+          <type>boolean</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="true" visibility="public" namespace="Sebwite\Support" line="401" package="Sebwite\Support">
+        <name>changeExtension</name>
+        <full_name>\Sebwite\Support\Path::changeExtension()</full_name>
+        <docblock line="401">
+          <description>Changes the extension of a path string.</description>
+          <long-description/>
+          <tag name="param" line="401" description="&lt;p&gt;The path string with filename.ext to change&lt;/p&gt;" type="string" variable="$path">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="401" description="&lt;p&gt;New extension (with or without leading dot)&lt;/p&gt;" type="string" variable="$extension">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="401" description="The path string with new file extension" type="string">
+            <type>string</type>
+          </tag>
+          <tag name="since" line="401" description="1.1"/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$path</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$extension</name>
+          <default/>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="true" visibility="public" namespace="Sebwite\Support" line="431" package="Sebwite\Support">
+        <name>isAbsolute</name>
+        <full_name>\Sebwite\Support\Path::isAbsolute()</full_name>
+        <docblock line="431">
+          <description>Returns whether a path is absolute.</description>
+          <long-description/>
+          <tag name="param" line="431" description="&lt;p&gt;A path string&lt;/p&gt;" type="string" variable="$path">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="431" description="Returns true if the path is absolute, false if it is&#10;                relative or empty" type="boolean">
+            <type>boolean</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$path</name>
+          <default/>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="true" visibility="public" namespace="Sebwite\Support" line="466" package="Sebwite\Support">
+        <name>isRelative</name>
+        <full_name>\Sebwite\Support\Path::isRelative()</full_name>
+        <docblock line="466">
+          <description>Returns whether a path is relative.</description>
+          <long-description/>
+          <tag name="param" line="466" description="&lt;p&gt;A path string&lt;/p&gt;" type="string" variable="$path">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="466" description="Returns true if the path is relative or empty, false if&#10;                it is absolute" type="boolean">
+            <type>boolean</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$path</name>
+          <default/>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="true" visibility="public" namespace="Sebwite\Support" line="511" package="Sebwite\Support">
+        <name>makeAbsolute</name>
+        <full_name>\Sebwite\Support\Path::makeAbsolute()</full_name>
+        <docblock line="511">
+          <description>Turns a relative path into an absolute path.</description>
+          <long-description>Usually, the relative path is appended to the given base path. Dot
+segments ("." and "..") are removed/collapsed and all slashes turned
+into forward slashes.
+
+```php
+echo Path::makeAbsolute("../style.css", "/webmozart/puli/css");
+// =&gt; /webmozart/puli/style.css
+```
+
+If an absolute path is passed, that path is returned unless its root
+directory is different than the one of the base path. In that case, an
+exception is thrown.
+
+```php
+Path::makeAbsolute("/style.css", "/webmozart/puli/css");
+// =&gt; /style.css
+
+Path::makeAbsolute("C:/style.css", "C:/webmozart/puli/css");
+// =&gt; C:/style.css
+
+Path::makeAbsolute("C:/style.css", "/webmozart/puli/css");
+// InvalidArgumentException
+```
+
+If the base path is not an absolute path, an exception is thrown.
+
+The result is a canonical path.</long-description>
+          <tag name="param" line="511" description="&lt;p&gt;A path to make absolute&lt;/p&gt;" type="string" variable="$path">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="511" description="&lt;p&gt;An absolute base path&lt;/p&gt;" type="string" variable="$basePath">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="511" description="An absolute path in canonical form" type="string">
+            <type>string</type>
+          </tag>
+          <tag name="throws" line="511" description="If the base path is not absolute or if&#10;                                  the given path is an absolute path with&#10;                                  a different root than the base path" type="\InvalidArgumentException">
+            <type>\InvalidArgumentException</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$path</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$basePath</name>
+          <default/>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="true" visibility="public" namespace="Sebwite\Support" line="598" package="Sebwite\Support">
+        <name>makeRelative</name>
+        <full_name>\Sebwite\Support\Path::makeRelative()</full_name>
+        <docblock line="598">
+          <description>Turns a path into a relative path.</description>
+          <long-description>The relative path is created relative to the given base path:
+
+```php
+echo Path::makeRelative("/webmozart/style.css", "/webmozart/puli");
+// =&gt; ../style.css
+```
+
+If a relative path is passed and the base path is absolute, the relative
+path is returned unchanged:
+
+```php
+Path::makeRelative("style.css", "/webmozart/puli/css");
+// =&gt; style.css
+```
+
+If both paths are relative, the relative path is created with the
+assumption that both paths are relative to the same directory:
+
+```php
+Path::makeRelative("style.css", "webmozart/puli/css");
+// =&gt; ../../../style.css
+```
+
+If both paths are absolute, their root directory must be the same,
+otherwise an exception is thrown:
+
+```php
+Path::makeRelative("C:/webmozart/style.css", "/webmozart/puli");
+// InvalidArgumentException
+```
+
+If the passed path is absolute, but the base path is not, an exception
+is thrown as well:
+
+```php
+Path::makeRelative("/webmozart/style.css", "webmozart/puli");
+// InvalidArgumentException
+```
+
+If the base path is not an absolute path, an exception is thrown.
+
+The result is a canonical path.</long-description>
+          <tag name="param" line="598" description="&lt;p&gt;A path to make relative&lt;/p&gt;" type="string" variable="$path">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="598" description="&lt;p&gt;An base path&lt;/p&gt;" type="string" variable="$basePath">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="598" description="A relative path in canonical form" type="string">
+            <type>string</type>
+          </tag>
+          <tag name="throws" line="598" description="If the base path is not absolute or if&#10;                                  the given path has a different root&#10;                                  than the base path" type="\InvalidArgumentException">
+            <type>\InvalidArgumentException</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$path</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$basePath</name>
+          <default/>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="true" visibility="public" namespace="Sebwite\Support" line="671" package="Sebwite\Support">
+        <name>isLocal</name>
+        <full_name>\Sebwite\Support\Path::isLocal()</full_name>
+        <docblock line="671">
+          <description>Returns whether the given path is on the local filesystem.</description>
+          <long-description/>
+          <tag name="param" line="671" description="&lt;p&gt;A path string&lt;/p&gt;" type="string" variable="$path">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="671" description="Returns true if the path is local, false for a URL" type="boolean">
+            <type>boolean</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$path</name>
+          <default/>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="true" visibility="public" namespace="Sebwite\Support" line="716" package="Sebwite\Support">
+        <name>getLongestCommonBasePath</name>
+        <full_name>\Sebwite\Support\Path::getLongestCommonBasePath()</full_name>
+        <docblock line="716">
+          <description>Returns the longest common base path of a set of paths.</description>
+          <long-description>Dot segments ("." and "..") are removed/collapsed and all slashes turned
+into forward slashes.
+
+```php
+$basePath = Path::getLongestCommonBasePath(array(
+    '/webmozart/css/style.css',
+    '/webmozart/css/..'
+));
+// =&gt; /webmozart
+```
+
+The root is returned if no common base path can be found:
+
+```php
+$basePath = Path::getLongestCommonBasePath(array(
+    '/webmozart/css/style.css',
+    '/puli/css/..'
+));
+// =&gt; /
+```
+
+If the paths are located on different Windows partitions, `null` is
+returned.
+
+```php
+$basePath = Path::getLongestCommonBasePath(array(
+    'C:/webmozart/css/style.css',
+    'D:/webmozart/css/..'
+));
+// =&gt; null
+```</long-description>
+          <tag name="param" line="716" description="&lt;p&gt;A list of paths.&lt;/p&gt;" type="array" variable="$paths">
+            <type>array</type>
+          </tag>
+          <tag name="return" line="716" description="The longest common base path in canonical form or `null`&#10;               if the paths are on different Windows partitions." type="string">
+            <type>string</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$paths</name>
+          <default/>
+          <type>array</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="true" visibility="public" namespace="Sebwite\Support" line="778" package="Sebwite\Support">
+        <name>isBasePath</name>
+        <full_name>\Sebwite\Support\Path::isBasePath()</full_name>
+        <docblock line="778">
+          <description>Returns whether a path is a base path of another path.</description>
+          <long-description>Dot segments ("." and "..") are removed/collapsed and all slashes turned
+into forward slashes.
+
+```php
+Path::isBasePath('/webmozart', '/webmozart/css');
+// =&gt; true
+
+Path::isBasePath('/webmozart', '/webmozart');
+// =&gt; true
+
+Path::isBasePath('/webmozart', '/webmozart/..');
+// =&gt; false
+
+Path::isBasePath('/webmozart', '/puli');
+// =&gt; false
+```</long-description>
+          <tag name="param" line="778" description="&lt;p&gt;The base path to test.&lt;/p&gt;" type="string" variable="$basePath">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="778" description="&lt;p&gt;The other path.&lt;/p&gt;" type="string" variable="$ofPath">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="778" description="Whether the base path is a base path of the other path." type="boolean">
+            <type>boolean</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$basePath</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$ofPath</name>
+          <default/>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="true" visibility="private" namespace="Sebwite\Support" line="811" package="Sebwite\Support">
+        <name>split</name>
+        <full_name>\Sebwite\Support\Path::split()</full_name>
+        <docblock line="811">
+          <description>Splits a part into its root directory and the remainder.</description>
+          <long-description>If the path has no root directory, an empty root directory will be
+returned.
+
+If the root directory is a Windows style partition, the resulting root
+will always contain a trailing slash.
+
+list ($root, $path) = Path::split("C:/webmozart")
+// =&gt; array("C:/", "webmozart")
+
+list ($root, $path) = Path::split("C:")
+// =&gt; array("C:/", "")</long-description>
+          <tag name="param" line="811" description="&lt;p&gt;The canonical path to split&lt;/p&gt;" type="string" variable="$path">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="811" description="An array with the root directory and the remaining relative&#10;              path" type="array">
+            <type>array</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$path</name>
+          <default/>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="true" visibility="private" namespace="Sebwite\Support" line="846" package="Sebwite\Support">
+        <name>toLower</name>
+        <full_name>\Sebwite\Support\Path::toLower()</full_name>
+        <docblock line="846">
+          <description>Converts string to lower-case (multi-byte safe if mbstring is installed).</description>
+          <long-description/>
+          <tag name="param" line="846" description="&lt;p&gt;The string&lt;/p&gt;" type="string" variable="$str">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="846" description="Lower case string" type="string">
+            <type>string</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$str</name>
+          <default/>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="private" namespace="Sebwite\Support" line="855" package="Sebwite\Support">
+        <name>__construct</name>
+        <full_name>\Sebwite\Support\Path::__construct()</full_name>
+        <docblock line="855">
+          <description/>
+          <long-description/>
+        </docblock>
+      </method>
+    </class>
+    <parse_markers>
+      <error line="19" code="PPC:ERR-50015">Argument $path is missing from the Docblock of isPhar</error>
+      <error line="19" code="PPC:ERR-50008">No summary for method isPhar()</error>
+      <error line="855" code="PPC:ERR-50008">No summary for method __construct()</error>
+    </parse_markers>
+    <source>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</source>
+  <type>class</type></file>

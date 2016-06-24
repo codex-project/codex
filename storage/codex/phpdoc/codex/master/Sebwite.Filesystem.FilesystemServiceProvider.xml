@@ -1,0 +1,1346 @@
+<file path="sebwite/workbench/sebwite/filesystem/src/FilesystemServiceProvider.php" generated-path="sebwite.workbench.sebwite.filesystem.src.FilesystemServiceProvider.html" hash="ec4d6d25bef9e40684d87daca9a3dfdf" package="Default">
+    <docblock line="0">
+      <description/>
+      <long-description/>
+      <tag name="package" line="0" description="Default"/>
+    </docblock>
+    <namespace-alias name="ServiceProvider">\Sebwite\Support\ServiceProvider</namespace-alias>
+    <class final="false" abstract="false" namespace="Sebwite\Filesystem" line="14" package="Default">
+      <extends>\Sebwite\Support\ServiceProvider</extends>
+      <name>FilesystemServiceProvider</name>
+      <full_name>\Sebwite\Filesystem\FilesystemServiceProvider</full_name>
+      <docblock line="14">
+        <description>The main service provider</description>
+        <long-description/>
+        <tag name="author" line="14" description="Sebwite"/>
+        <tag name="copyright" line="14" description="Copyright (c) 2015, Sebwite"/>
+        <tag name="license" line="14" description="MIT" link="http://mit-license.org"/>
+        <tag name="package" line="14" description="Default"/>
+        <tag name="inherited_from" description="\Sebwite\Support\ServiceProvider" refers="\Sebwite\Support\ServiceProvider" link="/classes/Sebwite.Support.ServiceProvider.html"/>
+      </docblock>
+      <property static="false" visibility="protected" namespace="Sebwite\Filesystem" line="16" package="Default">
+        <name>$dir</name>
+        <full_name>\Sebwite\Filesystem\FilesystemServiceProvider::dir</full_name>
+        <default>__DIR__</default>
+        <docblock line="16">
+          <description>The src directory path</description>
+          <long-description/>
+          <tag name="inherited_from" description="\Sebwite\Support\ServiceProvider::dir" refers="\Sebwite\Support\ServiceProvider::dir" link="/classes/Sebwite.Support.ServiceProvider.html#property_dir"/>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" namespace="Sebwite\Filesystem" line="18" package="Default">
+        <name>$configFiles</name>
+        <full_name>\Sebwite\Filesystem\FilesystemServiceProvider::configFiles</full_name>
+        <default>array('sebwite.filesystem')</default>
+        <docblock line="18">
+          <description>Collection of configuration files.</description>
+          <long-description/>
+          <tag name="inherited_from" description="\Sebwite\Support\ServiceProvider::configFiles" refers="\Sebwite\Support\ServiceProvider::configFiles" link="/classes/Sebwite.Support.ServiceProvider.html#property_configFiles"/>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" namespace="Sebwite\Filesystem" line="20" package="Default">
+        <name>$weaklings</name>
+        <full_name>\Sebwite\Filesystem\FilesystemServiceProvider::weaklings</full_name>
+        <default>array()</default>
+        <docblock line="20">
+          <description>Wealkings are bindings that perform a bound check and will not override other bindings</description>
+          <long-description/>
+          <tag name="inherited_from" description="\Sebwite\Support\ServiceProvider::weaklings" refers="\Sebwite\Support\ServiceProvider::weaklings" link="/classes/Sebwite.Support.ServiceProvider.html#property_weaklings"/>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" namespace="Sebwite\Filesystem" line="24" package="Default">
+        <name>$aliases</name>
+        <full_name>\Sebwite\Filesystem\FilesystemServiceProvider::aliases</full_name>
+        <default>array()</default>
+        <docblock line="24">
+          <description>Collection of aliases.</description>
+          <long-description/>
+          <tag name="inherited_from" description="\Sebwite\Support\ServiceProvider::aliases" refers="\Sebwite\Support\ServiceProvider::aliases" link="/classes/Sebwite.Support.ServiceProvider.html#property_aliases"/>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" namespace="Sebwite\Filesystem" line="28" package="Default">
+        <name>$singletons</name>
+        <full_name>\Sebwite\Filesystem\FilesystemServiceProvider::singletons</full_name>
+        <default>array('fs' =&gt; \Sebwite\Filesystem\Filesystem::class)</default>
+        <docblock line="28">
+          <description>Collection of classes to register as singleton</description>
+          <long-description/>
+          <tag name="inherited_from" description="\Sebwite\Support\ServiceProvider::singletons" refers="\Sebwite\Support\ServiceProvider::singletons" link="/classes/Sebwite.Support.ServiceProvider.html#property_singletons"/>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" namespace="Sebwite\Filesystem" line="32" package="Sebwite\Support">
+        <name>$strict</name>
+        <full_name>\Sebwite\Support\ServiceProvider::strict</full_name>
+        <default>true</default>
+        <docblock line="32">
+          <description>Enables strict checking of provided bindings, aliases and singletons. Checks if the given items are correct. Set to false if</description>
+          <long-description/>
+          <tag name="var" line="32" description="" type="boolean" variable="">
+            <type>boolean</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" namespace="Sebwite\Filesystem" line="15" package="Default">
+        <name>$app</name>
+        <full_name>\Illuminate\Support\ServiceProvider::app</full_name>
+        <default/>
+        <docblock line="15">
+          <description>The application instance.</description>
+          <long-description/>
+          <tag name="var" line="15" description="" type="\Illuminate\Contracts\Foundation\Application" variable="">
+            <type>\Illuminate\Contracts\Foundation\Application</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" namespace="Sebwite\Filesystem" line="46" package="Sebwite\Support">
+        <name>$dir</name>
+        <full_name>\Sebwite\Support\ServiceProvider::dir</full_name>
+        <default/>
+        <docblock line="46">
+          <description>The src directory path</description>
+          <long-description/>
+          <tag name="var" line="46" description="" type="string" variable="">
+            <type>string</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" namespace="Sebwite\Filesystem" line="48" package="Sebwite\Support">
+        <name>$rootDir</name>
+        <full_name>\Sebwite\Support\ServiceProvider::rootDir</full_name>
+        <default/>
+        <docblock line="48">
+          <description/>
+          <long-description/>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" namespace="Sebwite\Filesystem" line="50" package="Sebwite\Support">
+        <name>$maxRootDirScanParents</name>
+        <full_name>\Sebwite\Support\ServiceProvider::maxRootDirScanParents</full_name>
+        <default>4</default>
+        <docblock line="50">
+          <description/>
+          <long-description/>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" namespace="Sebwite\Filesystem" line="52" package="Sebwite\Support">
+        <name>$scanDirs</name>
+        <full_name>\Sebwite\Support\ServiceProvider::scanDirs</full_name>
+        <default>false</default>
+        <docblock line="52">
+          <description/>
+          <long-description/>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" namespace="Sebwite\Filesystem" line="67" package="Sebwite\Support">
+        <name>$resourcesPath</name>
+        <full_name>\Sebwite\Support\ServiceProvider::resourcesPath</full_name>
+        <default>'../resources'</default>
+        <docblock line="67">
+          <description>Path to resources directory, relative to $dir</description>
+          <long-description/>
+          <tag name="var" line="67" description="" type="string" variable="">
+            <type>string</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" namespace="Sebwite\Filesystem" line="74" package="Sebwite\Support">
+        <name>$resourcesDestinationPath</name>
+        <full_name>\Sebwite\Support\ServiceProvider::resourcesDestinationPath</full_name>
+        <default>'resources'</default>
+        <docblock line="74">
+          <description>Resource destination path, relative to base_path</description>
+          <long-description/>
+          <tag name="var" line="74" description="" type="string" variable="">
+            <type>string</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" namespace="Sebwite\Filesystem" line="89" package="Sebwite\Support">
+        <name>$viewsDestinationPath</name>
+        <full_name>\Sebwite\Support\ServiceProvider::viewsDestinationPath</full_name>
+        <default>'resources/views/vendor/{namespace}'</default>
+        <docblock line="89">
+          <description>View destination path, relative to base_path</description>
+          <long-description/>
+          <tag name="var" line="89" description="" type="string" variable="">
+            <type>string</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" namespace="Sebwite\Filesystem" line="96" package="Sebwite\Support">
+        <name>$viewsPath</name>
+        <full_name>\Sebwite\Support\ServiceProvider::viewsPath</full_name>
+        <default>'{resourcesPath}/{dirName}'</default>
+        <docblock line="96">
+          <description>Package views path</description>
+          <long-description/>
+          <tag name="var" line="96" description="" type="string" variable="">
+            <type>string</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" namespace="Sebwite\Filesystem" line="104" package="Sebwite\Support">
+        <name>$viewDirs</name>
+        <full_name>\Sebwite\Support\ServiceProvider::viewDirs</full_name>
+        <default>array()</default>
+        <docblock line="104">
+          <description>A collection of directories in this package containing views.</description>
+          <long-description>['dirName' =&gt; 'namespace']</long-description>
+          <tag name="var" line="104" description="" type="array" variable="">
+            <type>array</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" namespace="Sebwite\Filesystem" line="119" package="Sebwite\Support">
+        <name>$assetsDestinationPath</name>
+        <full_name>\Sebwite\Support\ServiceProvider::assetsDestinationPath</full_name>
+        <default>'vendor/{namespace}'</default>
+        <docblock line="119">
+          <description>Assets destination path, relative to public_path</description>
+          <long-description/>
+          <tag name="var" line="119" description="" type="string" variable="">
+            <type>string</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" namespace="Sebwite\Filesystem" line="126" package="Sebwite\Support">
+        <name>$assetsPath</name>
+        <full_name>\Sebwite\Support\ServiceProvider::assetsPath</full_name>
+        <default>'{resourcesPath}/{dirName}'</default>
+        <docblock line="126">
+          <description>Package views path</description>
+          <long-description/>
+          <tag name="var" line="126" description="" type="string" variable="">
+            <type>string</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" namespace="Sebwite\Filesystem" line="134" package="Sebwite\Support">
+        <name>$assetDirs</name>
+        <full_name>\Sebwite\Support\ServiceProvider::assetDirs</full_name>
+        <default>array()</default>
+        <docblock line="134">
+          <description>A collection of directories in this package containing assets.</description>
+          <long-description>['dirName' =&gt; 'namespace']</long-description>
+          <tag name="var" line="134" description="" type="array" variable="">
+            <type>array</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" namespace="Sebwite\Filesystem" line="149" package="Sebwite\Support">
+        <name>$configFiles</name>
+        <full_name>\Sebwite\Support\ServiceProvider::configFiles</full_name>
+        <default>array()</default>
+        <docblock line="149">
+          <description>Collection of configuration files.</description>
+          <long-description/>
+          <tag name="var" line="149" description="" type="array" variable="">
+            <type>array</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" namespace="Sebwite\Filesystem" line="156" package="Sebwite\Support">
+        <name>$configPath</name>
+        <full_name>\Sebwite\Support\ServiceProvider::configPath</full_name>
+        <default>'../config'</default>
+        <docblock line="156">
+          <description>Path to the config directory, relative to $dir</description>
+          <long-description/>
+          <tag name="var" line="156" description="" type="string" variable="">
+            <type>string</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" namespace="Sebwite\Filesystem" line="158" package="Sebwite\Support">
+        <name>$configStrategy</name>
+        <full_name>\Sebwite\Support\ServiceProvider::configStrategy</full_name>
+        <default>'defaultConfigStrategy'</default>
+        <docblock line="158">
+          <description/>
+          <long-description/>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" namespace="Sebwite\Filesystem" line="172" package="Sebwite\Support">
+        <name>$migrationDestinationPath</name>
+        <full_name>\Sebwite\Support\ServiceProvider::migrationDestinationPath</full_name>
+        <default>'migrations'</default>
+        <docblock line="172">
+          <description>Path to the migration destination directory, relative to database_path</description>
+          <long-description/>
+          <tag name="var" line="172" description="" type="string" variable="">
+            <type>string</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" namespace="Sebwite\Filesystem" line="179" package="Sebwite\Support">
+        <name>$seedsDestinationPath</name>
+        <full_name>\Sebwite\Support\ServiceProvider::seedsDestinationPath</full_name>
+        <default>'seeds'</default>
+        <docblock line="179">
+          <description>Path to the seeds destination directory, relative to database_path</description>
+          <long-description/>
+          <tag name="var" line="179" description="" type="string" variable="">
+            <type>string</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" namespace="Sebwite\Filesystem" line="186" package="Sebwite\Support">
+        <name>$databasePath</name>
+        <full_name>\Sebwite\Support\ServiceProvider::databasePath</full_name>
+        <default>'../database'</default>
+        <docblock line="186">
+          <description>Path to database directory, relative to $dir</description>
+          <long-description/>
+          <tag name="var" line="186" description="" type="string" variable="">
+            <type>string</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" namespace="Sebwite\Filesystem" line="193" package="Sebwite\Support">
+        <name>$seedDirs</name>
+        <full_name>\Sebwite\Support\ServiceProvider::seedDirs</full_name>
+        <default>array()</default>
+        <docblock line="193">
+          <description>Array of directory names/paths relative to $databasePath containing seed files.</description>
+          <long-description/>
+          <tag name="var" line="193" description="" type="array" variable="">
+            <type>array</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" namespace="Sebwite\Filesystem" line="200" package="Sebwite\Support">
+        <name>$migrationDirs</name>
+        <full_name>\Sebwite\Support\ServiceProvider::migrationDirs</full_name>
+        <default>array()</default>
+        <docblock line="200">
+          <description>Array of directory names/paths relative to $databasePath containing migration files.</description>
+          <long-description/>
+          <tag name="var" line="200" description="" type="array" variable="">
+            <type>array</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" namespace="Sebwite\Filesystem" line="215" package="Sebwite\Support">
+        <name>$providers</name>
+        <full_name>\Sebwite\Support\ServiceProvider::providers</full_name>
+        <default>array()</default>
+        <docblock line="215">
+          <description>Collection of service providers.</description>
+          <long-description/>
+          <tag name="var" line="215" description="" type="array" variable="">
+            <type>array</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" namespace="Sebwite\Filesystem" line="222" package="Sebwite\Support">
+        <name>$deferredProviders</name>
+        <full_name>\Sebwite\Support\ServiceProvider::deferredProviders</full_name>
+        <default>array()</default>
+        <docblock line="222">
+          <description>Collection of service providers that are deffered</description>
+          <long-description/>
+          <tag name="var" line="222" description="" type="array" variable="">
+            <type>array</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" namespace="Sebwite\Filesystem" line="229" package="Sebwite\Support">
+        <name>$bindings</name>
+        <full_name>\Sebwite\Support\ServiceProvider::bindings</full_name>
+        <default>array()</default>
+        <docblock line="229">
+          <description>Collection of classes to bind in the IOC container</description>
+          <long-description/>
+          <tag name="var" line="229" description="" type="array" variable="">
+            <type>array</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" namespace="Sebwite\Filesystem" line="236" package="Sebwite\Support">
+        <name>$singletons</name>
+        <full_name>\Sebwite\Support\ServiceProvider::singletons</full_name>
+        <default>array()</default>
+        <docblock line="236">
+          <description>Collection of classes to register as singleton</description>
+          <long-description/>
+          <tag name="var" line="236" description="" type="array" variable="">
+            <type>array</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" namespace="Sebwite\Filesystem" line="243" package="Sebwite\Support">
+        <name>$share</name>
+        <full_name>\Sebwite\Support\ServiceProvider::share</full_name>
+        <default>array()</default>
+        <docblock line="243">
+          <description>Collection of classes to register as share. Does not make an alias if the value is a class, as is the case with $shared.</description>
+          <long-description/>
+          <tag name="var" line="243" description="" type="array" variable="">
+            <type>array</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" namespace="Sebwite\Filesystem" line="250" package="Sebwite\Support">
+        <name>$shared</name>
+        <full_name>\Sebwite\Support\ServiceProvider::shared</full_name>
+        <default>array()</default>
+        <docblock line="250">
+          <description>Collection of classes to register as share. Also registers an alias if the value is a class, as opposite to $share.</description>
+          <long-description/>
+          <tag name="var" line="250" description="" type="array" variable="">
+            <type>array</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" namespace="Sebwite\Filesystem" line="257" package="Sebwite\Support">
+        <name>$weaklings</name>
+        <full_name>\Sebwite\Support\ServiceProvider::weaklings</full_name>
+        <default>array()</default>
+        <docblock line="257">
+          <description>Wealkings are bindings that perform a bound check and will not override other bindings</description>
+          <long-description/>
+          <tag name="var" line="257" description="" type="array" variable="">
+            <type>array</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" namespace="Sebwite\Filesystem" line="264" package="Sebwite\Support">
+        <name>$aliases</name>
+        <full_name>\Sebwite\Support\ServiceProvider::aliases</full_name>
+        <default>array()</default>
+        <docblock line="264">
+          <description>Collection of aliases.</description>
+          <long-description/>
+          <tag name="var" line="264" description="" type="array" variable="">
+            <type>array</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" namespace="Sebwite\Filesystem" line="271" package="Sebwite\Support">
+        <name>$middleware</name>
+        <full_name>\Sebwite\Support\ServiceProvider::middleware</full_name>
+        <default>array()</default>
+        <docblock line="271">
+          <description>Collection of middleware.</description>
+          <long-description/>
+          <tag name="var" line="271" description="" type="array" variable="">
+            <type>array</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" namespace="Sebwite\Filesystem" line="278" package="Sebwite\Support">
+        <name>$prependMiddleware</name>
+        <full_name>\Sebwite\Support\ServiceProvider::prependMiddleware</full_name>
+        <default>array()</default>
+        <docblock line="278">
+          <description>Collection of prepend middleware.</description>
+          <long-description/>
+          <tag name="var" line="278" description="" type="array" variable="">
+            <type>array</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" namespace="Sebwite\Filesystem" line="285" package="Sebwite\Support">
+        <name>$routeMiddleware</name>
+        <full_name>\Sebwite\Support\ServiceProvider::routeMiddleware</full_name>
+        <default>array()</default>
+        <docblock line="285">
+          <description>Collection of route middleware.</description>
+          <long-description/>
+          <tag name="var" line="285" description="" type="array" variable="">
+            <type>array</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" namespace="Sebwite\Filesystem" line="292" package="Sebwite\Support">
+        <name>$provides</name>
+        <full_name>\Sebwite\Support\ServiceProvider::provides</full_name>
+        <default>array()</default>
+        <docblock line="292">
+          <description>Collection of bound instances.</description>
+          <long-description/>
+          <tag name="var" line="292" description="" type="array" variable="">
+            <type>array</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" namespace="Sebwite\Filesystem" line="299" package="Sebwite\Support">
+        <name>$commands</name>
+        <full_name>\Sebwite\Support\ServiceProvider::commands</full_name>
+        <default>array()</default>
+        <docblock line="299">
+          <description>Collection of commands.</description>
+          <long-description/>
+          <tag name="var" line="299" description="" type="array" variable="">
+            <type>array</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" namespace="Sebwite\Filesystem" line="301" package="Sebwite\Support">
+        <name>$commandPrefix</name>
+        <full_name>\Sebwite\Support\ServiceProvider::commandPrefix</full_name>
+        <default>'command.'</default>
+        <docblock line="301">
+          <description/>
+          <long-description/>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" namespace="Sebwite\Filesystem" line="307" package="Sebwite\Support">
+        <name>$findCommands</name>
+        <full_name>\Sebwite\Support\ServiceProvider::findCommands</full_name>
+        <default>array()</default>
+        <docblock line="307">
+          <description>Collection of paths to search for commands</description>
+          <long-description/>
+          <tag name="var" line="307" description="" type="array" variable="">
+            <type>array</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" namespace="Sebwite\Filesystem" line="309" package="Sebwite\Support">
+        <name>$findCommandsRecursive</name>
+        <full_name>\Sebwite\Support\ServiceProvider::findCommandsRecursive</full_name>
+        <default>false</default>
+        <docblock line="309">
+          <description/>
+          <long-description/>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" namespace="Sebwite\Filesystem" line="311" package="Sebwite\Support">
+        <name>$findCommandsExtending</name>
+        <full_name>\Sebwite\Support\ServiceProvider::findCommandsExtending</full_name>
+        <default>'Symfony\Component\Console\Command\Command'</default>
+        <docblock line="311">
+          <description/>
+          <long-description/>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" namespace="Sebwite\Filesystem" line="316" package="Sebwite\Support">
+        <name>$facades</name>
+        <full_name>\Sebwite\Support\ServiceProvider::facades</full_name>
+        <default>array()</default>
+        <docblock line="316">
+          <description/>
+          <long-description/>
+          <tag name="var" line="316" description="" type="array" variable="">
+            <type>array</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" namespace="Sebwite\Filesystem" line="323" package="Sebwite\Support">
+        <name>$helpers</name>
+        <full_name>\Sebwite\Support\ServiceProvider::helpers</full_name>
+        <default>array()</default>
+        <docblock line="323">
+          <description>Collection of helper php files. To be included either on register or boot. Filepath is relative to $dir</description>
+          <long-description/>
+          <tag name="var" line="323" description="" type="array" variable="">
+            <type>array</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" namespace="Sebwite\Filesystem" line="330" package="Sebwite\Support">
+        <name>$bootingMethod</name>
+        <full_name>\Sebwite\Support\ServiceProvider::bootingMethod</full_name>
+        <default>'booting'</default>
+        <docblock line="330">
+          <description>Declaring the method named here will make it so it will be called on application booting</description>
+          <long-description/>
+          <tag name="var" line="330" description="" type="string" variable="">
+            <type>string</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" namespace="Sebwite\Filesystem" line="337" package="Sebwite\Support">
+        <name>$bootedMethod</name>
+        <full_name>\Sebwite\Support\ServiceProvider::bootedMethod</full_name>
+        <default>'booted'</default>
+        <docblock line="337">
+          <description>Declaring the method named here will make it so it will be called when the application has booted</description>
+          <long-description/>
+          <tag name="var" line="337" description="" type="string" variable="">
+            <type>string</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" namespace="Sebwite\Filesystem" line="22" package="Default">
+        <name>$defer</name>
+        <full_name>\Illuminate\Support\ServiceProvider::defer</full_name>
+        <default>false</default>
+        <docblock line="22">
+          <description>Indicates if loading of the provider is deferred.</description>
+          <long-description/>
+          <tag name="var" line="22" description="" type="boolean" variable="">
+            <type>boolean</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="true" visibility="protected" namespace="Sebwite\Filesystem" line="29" package="Default">
+        <name>$publishes</name>
+        <full_name>\Illuminate\Support\ServiceProvider::publishes</full_name>
+        <default>array()</default>
+        <docblock line="29">
+          <description>The paths that should be published.</description>
+          <long-description/>
+          <tag name="var" line="29" description="" type="array" variable="">
+            <type>array</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="true" visibility="protected" namespace="Sebwite\Filesystem" line="36" package="Default">
+        <name>$publishGroups</name>
+        <full_name>\Illuminate\Support\ServiceProvider::publishGroups</full_name>
+        <default>array()</default>
+        <docblock line="36">
+          <description>The paths that should be published by group.</description>
+          <long-description/>
+          <tag name="var" line="36" description="" type="array" variable="">
+            <type>array</type>
+          </tag>
+        </docblock>
+      </property>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Sebwite\Filesystem" line="351" package="Sebwite\Support">
+        <name>boot</name>
+        <full_name>\Sebwite\Support\ServiceProvider::boot()</full_name>
+        <docblock line="351">
+          <description>Perform the booting of the service.</description>
+          <long-description/>
+          <tag name="return" line="351" description="" type="\Illuminate\Foundation\Application">
+            <type>\Illuminate\Foundation\Application</type>
+          </tag>
+        </docblock>
+        <inherited_from>\Sebwite\Support\ServiceProvider</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Sebwite\Filesystem" line="367" package="Sebwite\Support">
+        <name>bootConfigFiles</name>
+        <full_name>\Sebwite\Support\ServiceProvider::bootConfigFiles()</full_name>
+        <docblock line="367">
+          <description>Adds the config files defined in $configFiles to the publish procedure.</description>
+          <long-description>Can be overriden to adjust default functionality</long-description>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$configFiles</name>
+          <default>null</default>
+          <type/>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$path</name>
+          <default>null</default>
+          <type/>
+        </argument>
+        <inherited_from>\Sebwite\Support\ServiceProvider</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Sebwite\Filesystem" line="387" package="Sebwite\Support">
+        <name>bootViews</name>
+        <full_name>\Sebwite\Support\ServiceProvider::bootViews()</full_name>
+        <docblock line="387">
+          <description>Adds the view directories defined in $viewDirs to the publish procedure.</description>
+          <long-description>Can be overriden to adjust default functionality</long-description>
+        </docblock>
+        <inherited_from>\Sebwite\Support\ServiceProvider</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Sebwite\Filesystem" line="403" package="Sebwite\Support">
+        <name>bootAssets</name>
+        <full_name>\Sebwite\Support\ServiceProvider::bootAssets()</full_name>
+        <docblock line="403">
+          <description>Adds the asset directories defined in $assetDirs to the publish procedure.</description>
+          <long-description>Can be overriden to adjust default functionality</long-description>
+        </docblock>
+        <inherited_from>\Sebwite\Support\ServiceProvider</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Sebwite\Filesystem" line="417" package="Sebwite\Support">
+        <name>bootMigrations</name>
+        <full_name>\Sebwite\Support\ServiceProvider::bootMigrations()</full_name>
+        <docblock line="417">
+          <description>Adds the migration directories defined in $migrationDirs to the publish procedure.</description>
+          <long-description>Can be overriden to adjust default functionality</long-description>
+        </docblock>
+        <inherited_from>\Sebwite\Support\ServiceProvider</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Sebwite\Filesystem" line="430" package="Sebwite\Support">
+        <name>bootSeeds</name>
+        <full_name>\Sebwite\Support\ServiceProvider::bootSeeds()</full_name>
+        <docblock line="430">
+          <description>Adds the seed directories defined in $seedDirs to the publish procedure.</description>
+          <long-description>Can be overriden to adjust default functionality</long-description>
+        </docblock>
+        <inherited_from>\Sebwite\Support\ServiceProvider</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Sebwite\Filesystem" line="439" package="Sebwite\Support">
+        <name>requireHelpersFor</name>
+        <full_name>\Sebwite\Support\ServiceProvider::requireHelpersFor()</full_name>
+        <docblock line="439">
+          <description/>
+          <long-description/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$for</name>
+          <default/>
+          <type/>
+        </argument>
+        <inherited_from>\Sebwite\Support\ServiceProvider</inherited_from>
+      </method>
+      <method final="false" abstract="true" static="false" visibility="public" namespace="Sebwite\Filesystem" line="54" package="Default">
+        <name>register</name>
+        <full_name>\Illuminate\Support\ServiceProvider::register()</full_name>
+        <docblock line="54">
+          <description>Register the service provider.</description>
+          <long-description/>
+          <tag name="return" line="54" description="" type="void">
+            <type>void</type>
+          </tag>
+        </docblock>
+        <inherited_from>\Illuminate\Support\ServiceProvider</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Sebwite\Filesystem" line="581" package="Sebwite\Support">
+        <name>defaultConfigStrategy</name>
+        <full_name>\Sebwite\Support\ServiceProvider::defaultConfigStrategy()</full_name>
+        <docblock line="581">
+          <description>The default config merge function, instead of using the laravel mergeConfigRom it</description>
+          <long-description/>
+          <tag name="param" line="581" description="" type="" variable="$path"/>
+          <tag name="param" line="581" description="" type="" variable="$key"/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$path</name>
+          <default/>
+          <type/>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$key</name>
+          <default/>
+          <type/>
+        </argument>
+        <inherited_from>\Sebwite\Support\ServiceProvider</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Sebwite\Filesystem" line="591" package="Sebwite\Support">
+        <name>registerConfigFiles</name>
+        <full_name>\Sebwite\Support\ServiceProvider::registerConfigFiles()</full_name>
+        <docblock line="591">
+          <description>Merges all defined config files defined in $configFiles.</description>
+          <long-description>Can be overriden to adjust default functionality</long-description>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$configFiles</name>
+          <default>null</default>
+          <type/>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$path</name>
+          <default>null</default>
+          <type/>
+        </argument>
+        <inherited_from>\Sebwite\Support\ServiceProvider</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Sebwite\Filesystem" line="607" package="Sebwite\Support">
+        <name>findCommandsIn</name>
+        <full_name>\Sebwite\Support\ServiceProvider::findCommandsIn()</full_name>
+        <docblock line="607">
+          <description/>
+          <long-description/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$path</name>
+          <default/>
+          <type/>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$recursive</name>
+          <default>false</default>
+          <type/>
+        </argument>
+        <inherited_from>\Sebwite\Support\ServiceProvider</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Sebwite\Filesystem" line="628" package="Sebwite\Support">
+        <name>findCommandsFiles</name>
+        <full_name>\Sebwite\Support\ServiceProvider::findCommandsFiles()</full_name>
+        <docblock line="628">
+          <description/>
+          <long-description/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$directory</name>
+          <default/>
+          <type/>
+        </argument>
+        <inherited_from>\Sebwite\Support\ServiceProvider</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Sebwite\Filesystem" line="652" package="Sebwite\Support">
+        <name>pushMiddleware</name>
+        <full_name>\Sebwite\Support\ServiceProvider::pushMiddleware()</full_name>
+        <docblock line="652">
+          <description>Push a Middleware on to the stack</description>
+          <long-description/>
+          <tag name="param" line="652" description="" type="" variable="$middleware"/>
+          <tag name="return" line="652" description="" type="mixed">
+            <type>mixed</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$middleware</name>
+          <default/>
+          <type/>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$force</name>
+          <default>false</default>
+          <type/>
+        </argument>
+        <inherited_from>\Sebwite\Support\ServiceProvider</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Sebwite\Filesystem" line="667" package="Sebwite\Support">
+        <name>prependMiddleware</name>
+        <full_name>\Sebwite\Support\ServiceProvider::prependMiddleware()</full_name>
+        <docblock line="667">
+          <description>Prepend a Middleware in the stack</description>
+          <long-description/>
+          <tag name="param" line="667" description="" type="" variable="$middleware"/>
+          <tag name="return" line="667" description="" type="mixed">
+            <type>mixed</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$middleware</name>
+          <default/>
+          <type/>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$force</name>
+          <default>false</default>
+          <type/>
+        </argument>
+        <inherited_from>\Sebwite\Support\ServiceProvider</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Sebwite\Filesystem" line="685" package="Sebwite\Support">
+        <name>routeMiddleware</name>
+        <full_name>\Sebwite\Support\ServiceProvider::routeMiddleware()</full_name>
+        <docblock line="685">
+          <description>Add a route middleware. Will not be added when running in console.</description>
+          <long-description/>
+          <tag name="param" line="685" description="" type="" variable="$key"/>
+          <tag name="param" line="685" description="" type="null" variable="$middleware">
+            <type>null</type>
+          </tag>
+          <tag name="param" line="685" description="" type="boolean" variable="$force">
+            <type>boolean</type>
+          </tag>
+          <tag name="return" line="685" description="" type="mixed">
+            <type>mixed</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$key</name>
+          <default/>
+          <type/>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$middleware</name>
+          <default>null</default>
+          <type>null</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$force</name>
+          <default>false</default>
+          <type>boolean</type>
+        </argument>
+        <inherited_from>\Sebwite\Support\ServiceProvider</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Sebwite\Filesystem" line="709" package="Sebwite\Support">
+        <name>bindIf</name>
+        <full_name>\Sebwite\Support\ServiceProvider::bindIf()</full_name>
+        <docblock line="709">
+          <description>Registers a binding if it hasn't already been registered.</description>
+          <long-description/>
+          <tag name="param" line="709" description="" type="string" variable="$abstract">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="709" description="" type="\Closure|string|null" variable="$concrete">
+            <type>\Closure</type>
+            <type>string</type>
+            <type>null</type>
+          </tag>
+          <tag name="param" line="709" description="" type="boolean" variable="$shared">
+            <type>boolean</type>
+          </tag>
+          <tag name="param" line="709" description="" type="boolean|string|null" variable="$alias">
+            <type>boolean</type>
+            <type>string</type>
+            <type>null</type>
+          </tag>
+          <tag name="return" line="709" description="" type="void">
+            <type>void</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$abstract</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$concrete</name>
+          <default>null</default>
+          <type>\Closure|string|null</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$shared</name>
+          <default>true</default>
+          <type>boolean</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$alias</name>
+          <default>null</default>
+          <type>boolean|string|null</type>
+        </argument>
+        <inherited_from>\Sebwite\Support\ServiceProvider</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Sebwite\Filesystem" line="726" package="Sebwite\Support">
+        <name>share</name>
+        <full_name>\Sebwite\Support\ServiceProvider::share()</full_name>
+        <docblock line="726">
+          <description>Register a class so it's shared. Optionally create an alias for it.</description>
+          <long-description/>
+          <tag name="param" line="726" description="" type="" variable="$binding"/>
+          <tag name="param" line="726" description="" type="" variable="$class"/>
+          <tag name="param" line="726" description="" type="array" variable="$params">
+            <type>array</type>
+          </tag>
+          <tag name="param" line="726" description="" type="boolean" variable="$alias">
+            <type>boolean</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$binding</name>
+          <default/>
+          <type/>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$class</name>
+          <default/>
+          <type/>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$params</name>
+          <default>array()</default>
+          <type>array</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$alias</name>
+          <default>false</default>
+          <type>boolean</type>
+        </argument>
+        <inherited_from>\Sebwite\Support\ServiceProvider</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Sebwite\Filesystem" line="741" package="Sebwite\Support">
+        <name>resolveDirectories</name>
+        <full_name>\Sebwite\Support\ServiceProvider::resolveDirectories()</full_name>
+        <docblock line="741">
+          <description/>
+          <long-description/>
+        </docblock>
+        <inherited_from>\Sebwite\Support\ServiceProvider</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Sebwite\Filesystem" line="787" package="Sebwite\Support">
+        <name>getPath</name>
+        <full_name>\Sebwite\Support\ServiceProvider::getPath()</full_name>
+        <docblock line="787">
+          <description>getFilePath</description>
+          <long-description/>
+          <tag name="param" line="787" description="" type="" variable="$relativePath"/>
+          <tag name="param" line="787" description="" type="null" variable="$fileName">
+            <type>null</type>
+          </tag>
+          <tag name="param" line="787" description="" type="string" variable="$ext">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="787" description="" type="string">
+            <type>string</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$relativePath</name>
+          <default/>
+          <type/>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$fileName</name>
+          <default>null</default>
+          <type>null</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$ext</name>
+          <default>'.php'</default>
+          <type>string</type>
+        </argument>
+        <inherited_from>\Sebwite\Support\ServiceProvider</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Sebwite\Filesystem" line="801" package="Sebwite\Support">
+        <name>getConfigFilePath</name>
+        <full_name>\Sebwite\Support\ServiceProvider::getConfigFilePath()</full_name>
+        <docblock line="801">
+          <description>getConfigFilePath</description>
+          <long-description/>
+          <tag name="param" line="801" description="" type="null" variable="$fileName">
+            <type>null</type>
+          </tag>
+          <tag name="return" line="801" description="" type="string">
+            <type>string</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$fileName</name>
+          <default>null</default>
+          <type>null</type>
+        </argument>
+        <inherited_from>\Sebwite\Support\ServiceProvider</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Sebwite\Filesystem" line="813" package="Sebwite\Support">
+        <name>getDatabasePath</name>
+        <full_name>\Sebwite\Support\ServiceProvider::getDatabasePath()</full_name>
+        <docblock line="813">
+          <description>getMigrationFilePath</description>
+          <long-description/>
+          <tag name="param" line="813" description="" type="null" variable="$path">
+            <type>null</type>
+          </tag>
+          <tag name="return" line="813" description="" type="string">
+            <type>string</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$path</name>
+          <default>null</default>
+          <type>null</type>
+        </argument>
+        <inherited_from>\Sebwite\Support\ServiceProvider</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Sebwite\Filesystem" line="825" package="Sebwite\Support">
+        <name>getResourcesPath</name>
+        <full_name>\Sebwite\Support\ServiceProvider::getResourcesPath()</full_name>
+        <docblock line="825">
+          <description>getViewFilePath</description>
+          <long-description/>
+          <tag name="param" line="825" description="" type="null" variable="$path">
+            <type>null</type>
+          </tag>
+          <tag name="return" line="825" description="" type="string">
+            <type>string</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$path</name>
+          <default>null</default>
+          <type>null</type>
+        </argument>
+        <inherited_from>\Sebwite\Support\ServiceProvider</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Sebwite\Filesystem" line="837" package="Sebwite\Support">
+        <name>getAssetsPath</name>
+        <full_name>\Sebwite\Support\ServiceProvider::getAssetsPath()</full_name>
+        <docblock line="837">
+          <description>getAssetsPath</description>
+          <long-description/>
+          <tag name="param" line="837" description="" type="null" variable="$dirName">
+            <type>null</type>
+          </tag>
+          <tag name="return" line="837" description="" type="string">
+            <type>string</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$dirName</name>
+          <default/>
+          <type>null</type>
+        </argument>
+        <inherited_from>\Sebwite\Support\ServiceProvider</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Sebwite\Filesystem" line="849" package="Sebwite\Support">
+        <name>getViewsPath</name>
+        <full_name>\Sebwite\Support\ServiceProvider::getViewsPath()</full_name>
+        <docblock line="849">
+          <description>getViewsPath</description>
+          <long-description/>
+          <tag name="param" line="849" description="" type="null" variable="$path">
+            <type>null</type>
+          </tag>
+          <tag name="return" line="849" description="" type="string">
+            <type>string</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$dirName</name>
+          <default/>
+          <type/>
+        </argument>
+        <inherited_from>\Sebwite\Support\ServiceProvider</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Sebwite\Filesystem" line="187" package="Default">
+        <name>provides</name>
+        <full_name>\Illuminate\Support\ServiceProvider::provides()</full_name>
+        <docblock line="187">
+          <description>Get the services provided by the provider.</description>
+          <long-description/>
+          <tag name="return" line="187" description="" type="array">
+            <type>array</type>
+          </tag>
+        </docblock>
+        <inherited_from>\Illuminate\Support\ServiceProvider</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Sebwite\Filesystem" line="44" package="Default">
+        <name>__construct</name>
+        <full_name>\Illuminate\Support\ServiceProvider::__construct()</full_name>
+        <docblock line="44">
+          <description>Create a new service provider instance.</description>
+          <long-description/>
+          <tag name="param" line="44" description="" type="\Illuminate\Contracts\Foundation\Application" variable="$app">
+            <type>\Illuminate\Contracts\Foundation\Application</type>
+          </tag>
+          <tag name="return" line="44" description="" type="void">
+            <type>void</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$app</name>
+          <default/>
+          <type>\Illuminate\Contracts\Foundation\Application</type>
+        </argument>
+        <inherited_from>\Illuminate\Support\ServiceProvider</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Sebwite\Filesystem" line="63" package="Default">
+        <name>mergeConfigFrom</name>
+        <full_name>\Illuminate\Support\ServiceProvider::mergeConfigFrom()</full_name>
+        <docblock line="63">
+          <description>Merge the given configuration with the existing configuration.</description>
+          <long-description/>
+          <tag name="param" line="63" description="" type="string" variable="$path">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="63" description="" type="string" variable="$key">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="63" description="" type="void">
+            <type>void</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$path</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$key</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <inherited_from>\Illuminate\Support\ServiceProvider</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Sebwite\Filesystem" line="77" package="Default">
+        <name>loadViewsFrom</name>
+        <full_name>\Illuminate\Support\ServiceProvider::loadViewsFrom()</full_name>
+        <docblock line="77">
+          <description>Register a view file namespace.</description>
+          <long-description/>
+          <tag name="param" line="77" description="" type="string" variable="$path">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="77" description="" type="string" variable="$namespace">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="77" description="" type="void">
+            <type>void</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$path</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$namespace</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <inherited_from>\Illuminate\Support\ServiceProvider</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Sebwite\Filesystem" line="93" package="Default">
+        <name>loadTranslationsFrom</name>
+        <full_name>\Illuminate\Support\ServiceProvider::loadTranslationsFrom()</full_name>
+        <docblock line="93">
+          <description>Register a translation file namespace.</description>
+          <long-description/>
+          <tag name="param" line="93" description="" type="string" variable="$path">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="93" description="" type="string" variable="$namespace">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="93" description="" type="void">
+            <type>void</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$path</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$namespace</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <inherited_from>\Illuminate\Support\ServiceProvider</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Sebwite\Filesystem" line="105" package="Default">
+        <name>publishes</name>
+        <full_name>\Illuminate\Support\ServiceProvider::publishes()</full_name>
+        <docblock line="105">
+          <description>Register paths to be published by the publish command.</description>
+          <long-description/>
+          <tag name="param" line="105" description="" type="array" variable="$paths">
+            <type>array</type>
+          </tag>
+          <tag name="param" line="105" description="" type="string" variable="$group">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="105" description="" type="void">
+            <type>void</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$paths</name>
+          <default/>
+          <type>array</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$group</name>
+          <default>null</default>
+          <type>string</type>
+        </argument>
+        <inherited_from>\Illuminate\Support\ServiceProvider</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="true" visibility="public" namespace="Sebwite\Filesystem" line="131" package="Default">
+        <name>pathsToPublish</name>
+        <full_name>\Illuminate\Support\ServiceProvider::pathsToPublish()</full_name>
+        <docblock line="131">
+          <description>Get the paths to publish.</description>
+          <long-description/>
+          <tag name="param" line="131" description="" type="string" variable="$provider">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="131" description="" type="string" variable="$group">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="131" description="" type="array">
+            <type>array</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$provider</name>
+          <default>null</default>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$group</name>
+          <default>null</default>
+          <type>string</type>
+        </argument>
+        <inherited_from>\Illuminate\Support\ServiceProvider</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Sebwite\Filesystem" line="168" package="Default">
+        <name>commands</name>
+        <full_name>\Illuminate\Support\ServiceProvider::commands()</full_name>
+        <docblock line="168">
+          <description>Register the package's custom Artisan commands.</description>
+          <long-description/>
+          <tag name="param" line="168" description="" type="array|mixed" variable="$commands">
+            <type>array</type>
+            <type>mixed</type>
+          </tag>
+          <tag name="return" line="168" description="" type="void">
+            <type>void</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$commands</name>
+          <default/>
+          <type>array|mixed</type>
+        </argument>
+        <inherited_from>\Illuminate\Support\ServiceProvider</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Sebwite\Filesystem" line="197" package="Default">
+        <name>when</name>
+        <full_name>\Illuminate\Support\ServiceProvider::when()</full_name>
+        <docblock line="197">
+          <description>Get the events that trigger this service provider to register.</description>
+          <long-description/>
+          <tag name="return" line="197" description="" type="array">
+            <type>array</type>
+          </tag>
+        </docblock>
+        <inherited_from>\Illuminate\Support\ServiceProvider</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Sebwite\Filesystem" line="207" package="Default">
+        <name>isDeferred</name>
+        <full_name>\Illuminate\Support\ServiceProvider::isDeferred()</full_name>
+        <docblock line="207">
+          <description>Determine if the provider is deferred.</description>
+          <long-description/>
+          <tag name="return" line="207" description="" type="boolean">
+            <type>boolean</type>
+          </tag>
+        </docblock>
+        <inherited_from>\Illuminate\Support\ServiceProvider</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="true" visibility="public" namespace="Sebwite\Filesystem" line="217" package="Default">
+        <name>compiles</name>
+        <full_name>\Illuminate\Support\ServiceProvider::compiles()</full_name>
+        <docblock line="217">
+          <description>Get a list of files that should be compiled for the package.</description>
+          <long-description/>
+          <tag name="return" line="217" description="" type="array">
+            <type>array</type>
+          </tag>
+        </docblock>
+        <inherited_from>\Illuminate\Support\ServiceProvider</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Sebwite\Filesystem" line="231" package="Default">
+        <name>__call</name>
+        <full_name>\Illuminate\Support\ServiceProvider::__call()</full_name>
+        <docblock line="231">
+          <description>Dynamically handle missing method calls.</description>
+          <long-description/>
+          <tag name="param" line="231" description="" type="string" variable="$method">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="231" description="" type="array" variable="$parameters">
+            <type>array</type>
+          </tag>
+          <tag name="return" line="231" description="" type="mixed">
+            <type>mixed</type>
+          </tag>
+          <tag name="throws" line="231" description="" type="\BadMethodCallException">
+            <type>\BadMethodCallException</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$method</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$parameters</name>
+          <default/>
+          <type>array</type>
+        </argument>
+        <inherited_from>\Illuminate\Support\ServiceProvider</inherited_from>
+      </method>
+    </class>
+    <parse_markers>
+      <error line="0" code="PPC:ERR-50000">No summary was found for this file</error>
+      <error line="16" code="PPC:ERR-50007">No summary for property $dir</error>
+      <error line="18" code="PPC:ERR-50007">No summary for property $configFiles</error>
+      <error line="20" code="PPC:ERR-50007">No summary for property $weaklings</error>
+      <error line="24" code="PPC:ERR-50007">No summary for property $aliases</error>
+      <error line="28" code="PPC:ERR-50007">No summary for property $singletons</error>
+    </parse_markers>
+    <source>eJx9kE9LxDAQxe/zKeYgVItuVfBSXRUUYQ+C2L25UmI6bYNtEpJ010X87qZ/7C5VnFPI+82bN3N1o0sNIFlNVjNOmNDbRjhaPYiK7NY6qi8BGrsTkkZrZdwqIbMWnJ6MWouMjKeiMIQQlyVhzYRE2wOoBwJa9ZY1rlQGhxpMW4ErvTWiKB3i3fg85Ed4fnp2cbxPVt5V+kRdlc7pOIpq4U6G/5kyBT4ulhBGwCtmLe52mYRG+nAkM4uTf/iE1tsnd8QdZXiQCYNzTNP7xXOa+l0nMlcyF0U3x2MvGNg+7iwfRwf4+rtvQ+y9ErLounr1D4pVgln6n7HepSKnZI/9HDjIbYDz670TxHF3lNEHvuAbBp6jBw==</source>
+  <type>class</type></file>

@@ -1,0 +1,394 @@
+<file path="codex/vendor/laravel/framework/src/Illuminate/Database/Connectors/SqlServerConnector.php" generated-path="codex.vendor.laravel.framework.src.Illuminate.Database.Connectors.SqlServerConnector.html" hash="b6b02aa1f4c3c49c948f56c8279be13b" package="Default">
+    <docblock line="0">
+      <description/>
+      <long-description/>
+      <tag name="package" line="0" description="Default"/>
+    </docblock>
+    <namespace-alias name="PDO">\PDO</namespace-alias>
+    <namespace-alias name="Arr">\Illuminate\Support\Arr</namespace-alias>
+    <class final="false" abstract="false" namespace="Illuminate\Database\Connectors" line="8" package="Default">
+      <extends>\Illuminate\Database\Connectors\Connector</extends>
+      <implements>\Illuminate\Database\Connectors\ConnectorInterface</implements>
+      <name>SqlServerConnector</name>
+      <full_name>\Illuminate\Database\Connectors\SqlServerConnector</full_name>
+      <docblock line="8">
+        <description/>
+        <long-description/>
+        <tag name="package" line="8" description="Default"/>
+        <tag name="inherited_from" description="\Illuminate\Database\Connectors\Connector" refers="\Illuminate\Database\Connectors\Connector" link="/classes/Illuminate.Database.Connectors.Connector.html"/>
+      </docblock>
+      <property static="false" visibility="protected" namespace="Illuminate\Database\Connectors" line="15" package="Default">
+        <name>$options</name>
+        <full_name>\Illuminate\Database\Connectors\SqlServerConnector::options</full_name>
+        <default>array(\PDO::ATTR_CASE =&gt; \PDO::CASE_NATURAL, \PDO::ATTR_ERRMODE =&gt; \PDO::ERRMODE_EXCEPTION, \PDO::ATTR_ORACLE_NULLS =&gt; \PDO::NULL_NATURAL, \PDO::ATTR_STRINGIFY_FETCHES =&gt; false)</default>
+        <docblock line="15">
+          <description>The PDO connection options.</description>
+          <long-description/>
+          <tag name="var" line="15" description="" type="array" variable="">
+            <type>array</type>
+          </tag>
+          <tag name="inherited_from" description="\Illuminate\Database\Connectors\Connector::options" refers="\Illuminate\Database\Connectors\Connector::options" link="/classes/Illuminate.Database.Connectors.Connector.html#property_options"/>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" namespace="Illuminate\Database\Connectors" line="19" package="Default">
+        <name>$options</name>
+        <full_name>\Illuminate\Database\Connectors\Connector::options</full_name>
+        <default>array(\PDO::ATTR_CASE =&gt; \PDO::CASE_NATURAL, \PDO::ATTR_ERRMODE =&gt; \PDO::ERRMODE_EXCEPTION, \PDO::ATTR_ORACLE_NULLS =&gt; \PDO::NULL_NATURAL, \PDO::ATTR_STRINGIFY_FETCHES =&gt; false, \PDO::ATTR_EMULATE_PREPARES =&gt; false)</default>
+        <docblock line="19">
+          <description>The default PDO connection options.</description>
+          <long-description/>
+          <tag name="var" line="19" description="" type="array" variable="">
+            <type>array</type>
+          </tag>
+        </docblock>
+      </property>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Connectors" line="28" package="Default">
+        <name>connect</name>
+        <full_name>\Illuminate\Database\Connectors\SqlServerConnector::connect()</full_name>
+        <docblock line="28">
+          <description>Establish a database connection.</description>
+          <long-description/>
+          <tag name="param" line="28" description="" type="array" variable="$config">
+            <type>array</type>
+          </tag>
+          <tag name="return" line="28" description="" type="\PDO">
+            <type>\PDO</type>
+          </tag>
+          <tag name="inherited_from" description="\Illuminate\Database\Connectors\ConnectorInterface::connect()" refers="\Illuminate\Database\Connectors\ConnectorInterface::connect()" link="/classes/Illuminate.Database.Connectors.ConnectorInterface.html#method_connect"/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$config</name>
+          <default/>
+          <type>array</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Database\Connectors" line="41" package="Default">
+        <name>getDsn</name>
+        <full_name>\Illuminate\Database\Connectors\SqlServerConnector::getDsn()</full_name>
+        <docblock line="41">
+          <description>Create a DSN string from a configuration.</description>
+          <long-description/>
+          <tag name="param" line="41" description="" type="array" variable="$config">
+            <type>array</type>
+          </tag>
+          <tag name="return" line="41" description="" type="string">
+            <type>string</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$config</name>
+          <default/>
+          <type>array</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Database\Connectors" line="61" package="Default">
+        <name>getDblibDsn</name>
+        <full_name>\Illuminate\Database\Connectors\SqlServerConnector::getDblibDsn()</full_name>
+        <docblock line="61">
+          <description>Get the DSN string for a DbLib connection.</description>
+          <long-description/>
+          <tag name="param" line="61" description="" type="array" variable="$config">
+            <type>array</type>
+          </tag>
+          <tag name="return" line="61" description="" type="string">
+            <type>string</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$config</name>
+          <default/>
+          <type>array</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Database\Connectors" line="81" package="Default">
+        <name>prefersOdbc</name>
+        <full_name>\Illuminate\Database\Connectors\SqlServerConnector::prefersOdbc()</full_name>
+        <docblock line="81">
+          <description>Determine if the database configuration prefers ODBC.</description>
+          <long-description/>
+          <tag name="param" line="81" description="" type="array" variable="$config">
+            <type>array</type>
+          </tag>
+          <tag name="return" line="81" description="" type="boolean">
+            <type>boolean</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$config</name>
+          <default/>
+          <type>array</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Database\Connectors" line="93" package="Default">
+        <name>getOdbcDsn</name>
+        <full_name>\Illuminate\Database\Connectors\SqlServerConnector::getOdbcDsn()</full_name>
+        <docblock line="93">
+          <description>Get the DSN string for an ODBC connection.</description>
+          <long-description/>
+          <tag name="param" line="93" description="" type="array" variable="$config">
+            <type>array</type>
+          </tag>
+          <tag name="return" line="93" description="" type="string">
+            <type>string</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$config</name>
+          <default/>
+          <type>array</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Database\Connectors" line="108" package="Default">
+        <name>getSqlSrvDsn</name>
+        <full_name>\Illuminate\Database\Connectors\SqlServerConnector::getSqlSrvDsn()</full_name>
+        <docblock line="108">
+          <description>Get the DSN string for a SqlSrv connection.</description>
+          <long-description/>
+          <tag name="param" line="108" description="" type="array" variable="$config">
+            <type>array</type>
+          </tag>
+          <tag name="return" line="108" description="" type="string">
+            <type>string</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$config</name>
+          <default/>
+          <type>array</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Database\Connectors" line="140" package="Default">
+        <name>buildConnectString</name>
+        <full_name>\Illuminate\Database\Connectors\SqlServerConnector::buildConnectString()</full_name>
+        <docblock line="140">
+          <description>Build a connection string from the given arguments.</description>
+          <long-description/>
+          <tag name="param" line="140" description="" type="string" variable="$driver">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="140" description="" type="array" variable="$arguments">
+            <type>array</type>
+          </tag>
+          <tag name="return" line="140" description="" type="string">
+            <type>string</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$driver</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$arguments</name>
+          <default/>
+          <type>array</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Database\Connectors" line="156" package="Default">
+        <name>buildHostString</name>
+        <full_name>\Illuminate\Database\Connectors\SqlServerConnector::buildHostString()</full_name>
+        <docblock line="156">
+          <description>Build a host string from the given configuration.</description>
+          <long-description/>
+          <tag name="param" line="156" description="" type="array" variable="$config">
+            <type>array</type>
+          </tag>
+          <tag name="param" line="156" description="" type="string" variable="$separator">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="156" description="" type="string">
+            <type>string</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$config</name>
+          <default/>
+          <type>array</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$separator</name>
+          <default/>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Database\Connectors" line="170" package="Default">
+        <name>getAvailableDrivers</name>
+        <full_name>\Illuminate\Database\Connectors\SqlServerConnector::getAvailableDrivers()</full_name>
+        <docblock line="170">
+          <description>Get the available PDO drivers.</description>
+          <long-description/>
+          <tag name="return" line="170" description="" type="array">
+            <type>array</type>
+          </tag>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Connectors" line="33" package="Default">
+        <name>getOptions</name>
+        <full_name>\Illuminate\Database\Connectors\Connector::getOptions()</full_name>
+        <docblock line="33">
+          <description>Get the PDO options based on the configuration.</description>
+          <long-description/>
+          <tag name="param" line="33" description="" type="array" variable="$config">
+            <type>array</type>
+          </tag>
+          <tag name="return" line="33" description="" type="array">
+            <type>array</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$config</name>
+          <default/>
+          <type>array</type>
+        </argument>
+        <inherited_from>\Illuminate\Database\Connectors\Connector</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Connectors" line="48" package="Default">
+        <name>createConnection</name>
+        <full_name>\Illuminate\Database\Connectors\Connector::createConnection()</full_name>
+        <docblock line="48">
+          <description>Create a new PDO connection.</description>
+          <long-description/>
+          <tag name="param" line="48" description="" type="string" variable="$dsn">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="48" description="" type="array" variable="$config">
+            <type>array</type>
+          </tag>
+          <tag name="param" line="48" description="" type="array" variable="$options">
+            <type>array</type>
+          </tag>
+          <tag name="return" line="48" description="" type="\PDO">
+            <type>\PDO</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$dsn</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$config</name>
+          <default/>
+          <type>array</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$options</name>
+          <default/>
+          <type>array</type>
+        </argument>
+        <inherited_from>\Illuminate\Database\Connectors\Connector</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Connectors" line="70" package="Default">
+        <name>getDefaultOptions</name>
+        <full_name>\Illuminate\Database\Connectors\Connector::getDefaultOptions()</full_name>
+        <docblock line="70">
+          <description>Get the default PDO connection options.</description>
+          <long-description/>
+          <tag name="return" line="70" description="" type="array">
+            <type>array</type>
+          </tag>
+        </docblock>
+        <inherited_from>\Illuminate\Database\Connectors\Connector</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Connectors" line="81" package="Default">
+        <name>setDefaultOptions</name>
+        <full_name>\Illuminate\Database\Connectors\Connector::setDefaultOptions()</full_name>
+        <docblock line="81">
+          <description>Set the default PDO connection options.</description>
+          <long-description/>
+          <tag name="param" line="81" description="" type="array" variable="$options">
+            <type>array</type>
+          </tag>
+          <tag name="return" line="81" description="" type="void">
+            <type>void</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$options</name>
+          <default/>
+          <type>array</type>
+        </argument>
+        <inherited_from>\Illuminate\Database\Connectors\Connector</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Database\Connectors" line="98" package="Default">
+        <name>tryAgainIfCausedByLostConnection</name>
+        <full_name>\Illuminate\Database\Connectors\Connector::tryAgainIfCausedByLostConnection()</full_name>
+        <docblock line="98">
+          <description>Handle a exception that occurred during connect execution.</description>
+          <long-description/>
+          <tag name="param" line="98" description="" type="\Exception" variable="$e">
+            <type>\Exception</type>
+          </tag>
+          <tag name="param" line="98" description="" type="string" variable="$dsn">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="98" description="" type="string" variable="$username">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="98" description="" type="string" variable="$password">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="98" description="" type="array" variable="$options">
+            <type>array</type>
+          </tag>
+          <tag name="return" line="98" description="" type="\PDO">
+            <type>\PDO</type>
+          </tag>
+          <tag name="throws" line="98" description="" type="\Exception">
+            <type>\Exception</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$e</name>
+          <default/>
+          <type>\Exception</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$dsn</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$username</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$password</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$options</name>
+          <default/>
+          <type>array</type>
+        </argument>
+        <inherited_from>\Illuminate\Database\Connectors\Connector</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Database\Connectors" line="16" package="Default">
+        <name>causedByLostConnection</name>
+        <full_name>\Illuminate\Database\DetectsLostConnections::causedByLostConnection()</full_name>
+        <docblock line="16">
+          <description>Determine if the given exception was caused by a lost connection.</description>
+          <long-description/>
+          <tag name="param" line="16" description="" type="\Exception" variable="$e">
+            <type>\Exception</type>
+          </tag>
+          <tag name="return" line="16" description="" type="boolean">
+            <type>boolean</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$e</name>
+          <default/>
+          <type>\Exception</type>
+        </argument>
+        <inherited_from>\Illuminate\Database\DetectsLostConnections</inherited_from>
+      </method>
+    </class>
+    <parse_markers>
+      <error line="0" code="PPC:ERR-50000">No summary was found for this file</error>
+      <error line="8" code="PPC:ERR-50005">No summary for class \Illuminate\Database\Connectors\SqlServerConnector</error>
+    </parse_markers>
+    <source>eJy9WN+P2jgQfuevmIdtE1Yce8/s0TsKbLvS3oKASq1YhAwxEDU4qe3QW1X7v9/YcRwDCdCt1DxswMx8M54fn8f719/JJqnVGNlSkZAlhfsoSrchI5I+9YgkCyLoUzdmjC5lzMVtrZYKCsPe4FZ/cKTHaZLEXD51OEepZUSEgPG3aEz5jnKLAPQ/SVkgoFgJt0lEt5RJZ/GeScpX6E/tRw3wubm+1m+4hslG24dlJhvGDOJEvUTTiOSS/+wIB8I5eTYrN/qd8FiiIg3gyihCG6aZCD6I3Wp1JpPRvNsZ96H9LltRX+aPncmnUeehUSLcH43+HfQKefN93v/c7Q8n94PHMqXBqNN9QNhPDw9jq6m+nbI0nozuHz/c332Z3/Un3Y99rbkikaCZ9AzDfxCzvsBMRqHYAIHAZNUJ4FHgEsLJFrLYAVyh5Cpc2185lSln8IQu7Qc2RRtLWKUsS4sx4GcwBqWuRX/YfTk5uJKbUPzxbk3lIFvzcx2zI/UY40Z2ySnWXtfuxC8weoJZ/UZuvWHtIaaCezmKVVdDYqB640cQkodsDSseb3Elw0g5uSBoVVHLECsK0obO+H8ycjc3cBdyIeE7he9hFEEWDJDYIJhgzITeAZpNgAiUQhF8q59Vo0K4ghD/CgiZixkyLbK3V9th2H2ooK2twx2FVByYM764gIzizmQM1BahPGphAYQFeW7x5y1CLr/CCukBaaZp4dBnP2RzHRffCxBu4TWcwunsSBihFdrj6B4Xfr1ed0J2XEAq0ArFrZZbK/8CFNtKGTXiCacrhB0Ei6UVP2tASZ/CP6evWJTvKhAqqvgDlTrMbhFjMLGqFw/h4pd7//IqzoN7mgQIX6fZEeBSsXq8TSykpyjOBGSRhlHwERfH2gffdrbX8uqNfd1goQ62TDsTm3o5/3mzQnjmEMyeL9rr+ZbyNfX3oAupBuCJ12rFLHoufJl6JEm0bfRruSEc29Cb1S1ENaPp7RlCMzss6twarWSvHsWDE09kqlpFFYBL905Dm0KGQe9993UlsIjj6FwBuO1ysgAMZtHaMaqc62x4+3YvJ2BcnqO4UxYaqg7tdhskT2lV5Ko6hukY/b6OydniZLw0DwpR7HOqtzlX2RZxypd0rqtvVsVOWrzlNc+ou0RzmCzP+9lQQsZkvy+WBXO+mn6y+fUyAmq4BORySkm6Cho6SlHhztTrWTE1IB0rlyaoxFxOR6etdYbDfUNW7VI7OIIEigrPGUoSHBU1FalRn0lt1huh9kBpX2ouQRLCHKA1JAM4XtZdr2fjU94U8+OwUATvz3I3zvO1+BYJvruMsN8r/Wy2zK8z7tCp2khNWgwsVFXPGDW4CjRDVrWUxXldV5Xs1xhsGBPOpqtnfXOwksS3yP7VV/pcV/MefiwwyvlLJGharnzvjWi/ESrUqOwGfKoWZu6kZPyb47pwDZSdxdmOmjhSNNX1NA6o7916F9we8nSqqaUikT9zizgkwMNUC6pW8ML8C8l0qGyPJRsO/AXnj7pTVJ83VkyPc7NmAd08QLhwOt7Hu3wgJvkcoW8gWZ6PW8pYOfXPA/ecOR5OyucbfYkvlc/r6aX2PxORFoQ=</source>
+  <type>class</type></file>

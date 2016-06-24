@@ -1,0 +1,1476 @@
+<file path="codex/vendor/laravel/framework/src/Illuminate/Console/Scheduling/CallbackEvent.php" generated-path="codex.vendor.laravel.framework.src.Illuminate.Console.Scheduling.CallbackEvent.html" hash="0aa61a7d99b462e7aa484b6e655a4335" package="Default">
+    <docblock line="0">
+      <description/>
+      <long-description/>
+      <tag name="package" line="0" description="Default"/>
+    </docblock>
+    <namespace-alias name="LogicException">\LogicException</namespace-alias>
+    <namespace-alias name="InvalidArgumentException">\InvalidArgumentException</namespace-alias>
+    <namespace-alias name="Container">\Illuminate\Contracts\Container\Container</namespace-alias>
+    <class final="false" abstract="false" namespace="Illuminate\Console\Scheduling" line="9" package="Default">
+      <extends>\Illuminate\Console\Scheduling\Event</extends>
+      <name>CallbackEvent</name>
+      <full_name>\Illuminate\Console\Scheduling\CallbackEvent</full_name>
+      <docblock line="9">
+        <description/>
+        <long-description/>
+        <tag name="package" line="9" description="Default"/>
+        <tag name="inherited_from" description="\Illuminate\Console\Scheduling\Event" refers="\Illuminate\Console\Scheduling\Event" link="/classes/Illuminate.Console.Scheduling.Event.html"/>
+      </docblock>
+      <property static="false" visibility="protected" namespace="Illuminate\Console\Scheduling" line="16" package="Default">
+        <name>$callback</name>
+        <full_name>\Illuminate\Console\Scheduling\CallbackEvent::callback</full_name>
+        <default/>
+        <docblock line="16">
+          <description>The callback to call.</description>
+          <long-description/>
+          <tag name="var" line="16" description="" type="string" variable="">
+            <type>string</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" namespace="Illuminate\Console\Scheduling" line="23" package="Default">
+        <name>$parameters</name>
+        <full_name>\Illuminate\Console\Scheduling\CallbackEvent::parameters</full_name>
+        <default/>
+        <docblock line="23">
+          <description>The parameters to pass to the method.</description>
+          <long-description/>
+          <tag name="var" line="23" description="" type="array" variable="">
+            <type>array</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="false" visibility="public" namespace="Illuminate\Console\Scheduling" line="22" package="Default">
+        <name>$command</name>
+        <full_name>\Illuminate\Console\Scheduling\Event::command</full_name>
+        <default/>
+        <docblock line="22">
+          <description>The command string.</description>
+          <long-description/>
+          <tag name="var" line="22" description="" type="string" variable="">
+            <type>string</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="false" visibility="public" namespace="Illuminate\Console\Scheduling" line="29" package="Default">
+        <name>$expression</name>
+        <full_name>\Illuminate\Console\Scheduling\Event::expression</full_name>
+        <default>'* * * * * *'</default>
+        <docblock line="29">
+          <description>The cron expression representing the event's frequency.</description>
+          <long-description/>
+          <tag name="var" line="29" description="" type="string" variable="">
+            <type>string</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="false" visibility="public" namespace="Illuminate\Console\Scheduling" line="36" package="Default">
+        <name>$timezone</name>
+        <full_name>\Illuminate\Console\Scheduling\Event::timezone</full_name>
+        <default/>
+        <docblock line="36">
+          <description>The timezone the date should be evaluated on.</description>
+          <long-description/>
+          <tag name="var" line="36" description="" type="\DateTimeZone|string" variable="">
+            <type>\DateTimeZone</type>
+            <type>string</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="false" visibility="public" namespace="Illuminate\Console\Scheduling" line="43" package="Default">
+        <name>$user</name>
+        <full_name>\Illuminate\Console\Scheduling\Event::user</full_name>
+        <default/>
+        <docblock line="43">
+          <description>The user the command should run as.</description>
+          <long-description/>
+          <tag name="var" line="43" description="" type="string" variable="">
+            <type>string</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="false" visibility="public" namespace="Illuminate\Console\Scheduling" line="50" package="Default">
+        <name>$environments</name>
+        <full_name>\Illuminate\Console\Scheduling\Event::environments</full_name>
+        <default>array()</default>
+        <docblock line="50">
+          <description>The list of environments the command should run under.</description>
+          <long-description/>
+          <tag name="var" line="50" description="" type="array" variable="">
+            <type>array</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="false" visibility="public" namespace="Illuminate\Console\Scheduling" line="57" package="Default">
+        <name>$evenInMaintenanceMode</name>
+        <full_name>\Illuminate\Console\Scheduling\Event::evenInMaintenanceMode</full_name>
+        <default>false</default>
+        <docblock line="57">
+          <description>Indicates if the command should run in maintenance mode.</description>
+          <long-description/>
+          <tag name="var" line="57" description="" type="boolean" variable="">
+            <type>boolean</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="false" visibility="public" namespace="Illuminate\Console\Scheduling" line="64" package="Default">
+        <name>$withoutOverlapping</name>
+        <full_name>\Illuminate\Console\Scheduling\Event::withoutOverlapping</full_name>
+        <default>false</default>
+        <docblock line="64">
+          <description>Indicates if the command should not overlap itself.</description>
+          <long-description/>
+          <tag name="var" line="64" description="" type="boolean" variable="">
+            <type>boolean</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="false" visibility="public" namespace="Illuminate\Console\Scheduling" line="71" package="Default">
+        <name>$runInBackground</name>
+        <full_name>\Illuminate\Console\Scheduling\Event::runInBackground</full_name>
+        <default>false</default>
+        <docblock line="71">
+          <description>Indicates if the command should run in background.</description>
+          <long-description/>
+          <tag name="var" line="71" description="" type="boolean" variable="">
+            <type>boolean</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" namespace="Illuminate\Console\Scheduling" line="78" package="Default">
+        <name>$filters</name>
+        <full_name>\Illuminate\Console\Scheduling\Event::filters</full_name>
+        <default>array()</default>
+        <docblock line="78">
+          <description>The array of filter callbacks.</description>
+          <long-description/>
+          <tag name="var" line="78" description="" type="array" variable="">
+            <type>array</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" namespace="Illuminate\Console\Scheduling" line="85" package="Default">
+        <name>$rejects</name>
+        <full_name>\Illuminate\Console\Scheduling\Event::rejects</full_name>
+        <default>array()</default>
+        <docblock line="85">
+          <description>The array of reject callbacks.</description>
+          <long-description/>
+          <tag name="var" line="85" description="" type="array" variable="">
+            <type>array</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="false" visibility="public" namespace="Illuminate\Console\Scheduling" line="92" package="Default">
+        <name>$output</name>
+        <full_name>\Illuminate\Console\Scheduling\Event::output</full_name>
+        <default>'/dev/null'</default>
+        <docblock line="92">
+          <description>The location that output should be sent to.</description>
+          <long-description/>
+          <tag name="var" line="92" description="" type="string" variable="">
+            <type>string</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" namespace="Illuminate\Console\Scheduling" line="99" package="Default">
+        <name>$shouldAppendOutput</name>
+        <full_name>\Illuminate\Console\Scheduling\Event::shouldAppendOutput</full_name>
+        <default>false</default>
+        <docblock line="99">
+          <description>Indicates whether output should be appended.</description>
+          <long-description/>
+          <tag name="var" line="99" description="" type="boolean" variable="">
+            <type>boolean</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" namespace="Illuminate\Console\Scheduling" line="106" package="Default">
+        <name>$beforeCallbacks</name>
+        <full_name>\Illuminate\Console\Scheduling\Event::beforeCallbacks</full_name>
+        <default>array()</default>
+        <docblock line="106">
+          <description>The array of callbacks to be run before the event is started.</description>
+          <long-description/>
+          <tag name="var" line="106" description="" type="array" variable="">
+            <type>array</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" namespace="Illuminate\Console\Scheduling" line="113" package="Default">
+        <name>$afterCallbacks</name>
+        <full_name>\Illuminate\Console\Scheduling\Event::afterCallbacks</full_name>
+        <default>array()</default>
+        <docblock line="113">
+          <description>The array of callbacks to be run after the event is finished.</description>
+          <long-description/>
+          <tag name="var" line="113" description="" type="array" variable="">
+            <type>array</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="false" visibility="public" namespace="Illuminate\Console\Scheduling" line="120" package="Default">
+        <name>$description</name>
+        <full_name>\Illuminate\Console\Scheduling\Event::description</full_name>
+        <default/>
+        <docblock line="120">
+          <description>The human readable description of the event.</description>
+          <long-description/>
+          <tag name="var" line="120" description="" type="string" variable="">
+            <type>string</type>
+          </tag>
+        </docblock>
+      </property>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Console\Scheduling" line="34" package="Default">
+        <name>__construct</name>
+        <full_name>\Illuminate\Console\Scheduling\CallbackEvent::__construct()</full_name>
+        <docblock line="34">
+          <description>Create a new event instance.</description>
+          <long-description/>
+          <tag name="param" line="34" description="" type="string" variable="$callback">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="34" description="" type="array" variable="$parameters">
+            <type>array</type>
+          </tag>
+          <tag name="return" line="34" description="" type="void">
+            <type>void</type>
+          </tag>
+          <tag name="throws" line="34" description="" type="\InvalidArgumentException">
+            <type>\InvalidArgumentException</type>
+          </tag>
+          <tag name="inherited_from" description="\Illuminate\Console\Scheduling\Event::__construct()" refers="\Illuminate\Console\Scheduling\Event::__construct()" link="/classes/Illuminate.Console.Scheduling.Event.html#method___construct"/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$callback</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$parameters</name>
+          <default>array()</default>
+          <type>array</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Console\Scheduling" line="54" package="Default">
+        <name>run</name>
+        <full_name>\Illuminate\Console\Scheduling\CallbackEvent::run()</full_name>
+        <docblock line="54">
+          <description>Run the given event.</description>
+          <long-description/>
+          <tag name="param" line="54" description="" type="\Illuminate\Contracts\Container\Container" variable="$container">
+            <type>\Illuminate\Contracts\Container\Container</type>
+          </tag>
+          <tag name="return" line="54" description="" type="mixed">
+            <type>mixed</type>
+          </tag>
+          <tag name="throws" line="54" description="" type="\Exception">
+            <type>\Exception</type>
+          </tag>
+          <tag name="inherited_from" description="\Illuminate\Console\Scheduling\Event::run()" refers="\Illuminate\Console\Scheduling\Event::run()" link="/classes/Illuminate.Console.Scheduling.Event.html#method_run"/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$container</name>
+          <default/>
+          <type>\Illuminate\Contracts\Container\Container</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Console\Scheduling" line="76" package="Default">
+        <name>removeMutex</name>
+        <full_name>\Illuminate\Console\Scheduling\CallbackEvent::removeMutex()</full_name>
+        <docblock line="76">
+          <description>Remove the mutex file from disk.</description>
+          <long-description/>
+          <tag name="return" line="76" description="" type="void">
+            <type>void</type>
+          </tag>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Console\Scheduling" line="90" package="Default">
+        <name>withoutOverlapping</name>
+        <full_name>\Illuminate\Console\Scheduling\CallbackEvent::withoutOverlapping()</full_name>
+        <docblock line="90">
+          <description>Do not allow the event to overlap each other.</description>
+          <long-description/>
+          <tag name="return" line="90" description="" type="\Illuminate\Console\Scheduling\CallbackEvent">
+            <type>\Illuminate\Console\Scheduling\CallbackEvent</type>
+          </tag>
+          <tag name="throws" line="90" description="" type="\LogicException">
+            <type>\LogicException</type>
+          </tag>
+          <tag name="inherited_from" description="\Illuminate\Console\Scheduling\Event::withoutOverlapping()" refers="\Illuminate\Console\Scheduling\Event::withoutOverlapping()" link="/classes/Illuminate.Console.Scheduling.Event.html#method_withoutOverlapping"/>
+          <tag name="fluent" description="This method is part of a fluent interface and will return the same instance"/>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Console\Scheduling" line="108" package="Default">
+        <name>mutexPath</name>
+        <full_name>\Illuminate\Console\Scheduling\CallbackEvent::mutexPath()</full_name>
+        <docblock line="108">
+          <description>Get the mutex path for the scheduled command.</description>
+          <long-description/>
+          <tag name="return" line="108" description="" type="string">
+            <type>string</type>
+          </tag>
+          <tag name="inherited_from" description="\Illuminate\Console\Scheduling\Event::mutexPath()" refers="\Illuminate\Console\Scheduling\Event::mutexPath()" link="/classes/Illuminate.Console.Scheduling.Event.html#method_mutexPath"/>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Console\Scheduling" line="118" package="Default">
+        <name>getSummaryForDisplay</name>
+        <full_name>\Illuminate\Console\Scheduling\CallbackEvent::getSummaryForDisplay()</full_name>
+        <docblock line="118">
+          <description>Get the summary of the event for display.</description>
+          <long-description/>
+          <tag name="return" line="118" description="" type="string">
+            <type>string</type>
+          </tag>
+          <tag name="inherited_from" description="\Illuminate\Console\Scheduling\Event::getSummaryForDisplay()" refers="\Illuminate\Console\Scheduling\Event::getSummaryForDisplay()" link="/classes/Illuminate.Console.Scheduling.Event.html#method_getSummaryForDisplay"/>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Console\Scheduling" line="128" package="Default">
+        <name>__construct</name>
+        <full_name>\Illuminate\Console\Scheduling\Event::__construct()</full_name>
+        <docblock line="128">
+          <description>Create a new event instance.</description>
+          <long-description/>
+          <tag name="param" line="128" description="" type="string" variable="$command">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="128" description="" type="void">
+            <type>void</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$command</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <inherited_from>\Illuminate\Console\Scheduling\Event</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Console\Scheduling" line="139" package="Default">
+        <name>getDefaultOutput</name>
+        <full_name>\Illuminate\Console\Scheduling\Event::getDefaultOutput()</full_name>
+        <docblock line="139">
+          <description>Get the default output depending on the OS.</description>
+          <long-description/>
+          <tag name="return" line="139" description="" type="string">
+            <type>string</type>
+          </tag>
+        </docblock>
+        <inherited_from>\Illuminate\Console\Scheduling\Event</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Console\Scheduling" line="150" package="Default">
+        <name>run</name>
+        <full_name>\Illuminate\Console\Scheduling\Event::run()</full_name>
+        <docblock line="150">
+          <description>Run the given event.</description>
+          <long-description/>
+          <tag name="param" line="150" description="" type="\Illuminate\Contracts\Container\Container" variable="$container">
+            <type>\Illuminate\Contracts\Container\Container</type>
+          </tag>
+          <tag name="return" line="150" description="" type="void">
+            <type>void</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$container</name>
+          <default/>
+          <type>\Illuminate\Contracts\Container\Container</type>
+        </argument>
+        <inherited_from>\Illuminate\Console\Scheduling\Event</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Console\Scheduling" line="165" package="Default">
+        <name>runCommandInForeground</name>
+        <full_name>\Illuminate\Console\Scheduling\Event::runCommandInForeground()</full_name>
+        <docblock line="165">
+          <description>Run the command in the foreground.</description>
+          <long-description/>
+          <tag name="param" line="165" description="" type="\Illuminate\Contracts\Container\Container" variable="$container">
+            <type>\Illuminate\Contracts\Container\Container</type>
+          </tag>
+          <tag name="return" line="165" description="" type="void">
+            <type>void</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$container</name>
+          <default/>
+          <type>\Illuminate\Contracts\Container\Container</type>
+        </argument>
+        <inherited_from>\Illuminate\Console\Scheduling\Event</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Console\Scheduling" line="181" package="Default">
+        <name>runCommandInBackground</name>
+        <full_name>\Illuminate\Console\Scheduling\Event::runCommandInBackground()</full_name>
+        <docblock line="181">
+          <description>Run the command in the background.</description>
+          <long-description/>
+          <tag name="return" line="181" description="" type="void">
+            <type>void</type>
+          </tag>
+        </docblock>
+        <inherited_from>\Illuminate\Console\Scheduling\Event</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Console\Scheduling" line="194" package="Default">
+        <name>callBeforeCallbacks</name>
+        <full_name>\Illuminate\Console\Scheduling\Event::callBeforeCallbacks()</full_name>
+        <docblock line="194">
+          <description>Call all of the "before" callbacks for the event.</description>
+          <long-description/>
+          <tag name="param" line="194" description="" type="\Illuminate\Contracts\Container\Container" variable="$container">
+            <type>\Illuminate\Contracts\Container\Container</type>
+          </tag>
+          <tag name="return" line="194" description="" type="void">
+            <type>void</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$container</name>
+          <default/>
+          <type>\Illuminate\Contracts\Container\Container</type>
+        </argument>
+        <inherited_from>\Illuminate\Console\Scheduling\Event</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Console\Scheduling" line="207" package="Default">
+        <name>callAfterCallbacks</name>
+        <full_name>\Illuminate\Console\Scheduling\Event::callAfterCallbacks()</full_name>
+        <docblock line="207">
+          <description>Call all of the "after" callbacks for the event.</description>
+          <long-description/>
+          <tag name="param" line="207" description="" type="\Illuminate\Contracts\Container\Container" variable="$container">
+            <type>\Illuminate\Contracts\Container\Container</type>
+          </tag>
+          <tag name="return" line="207" description="" type="void">
+            <type>void</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$container</name>
+          <default/>
+          <type>\Illuminate\Contracts\Container\Container</type>
+        </argument>
+        <inherited_from>\Illuminate\Console\Scheduling\Event</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Console\Scheduling" line="219" package="Default">
+        <name>buildCommand</name>
+        <full_name>\Illuminate\Console\Scheduling\Event::buildCommand()</full_name>
+        <docblock line="219">
+          <description>Build the command string.</description>
+          <long-description/>
+          <tag name="return" line="219" description="" type="string">
+            <type>string</type>
+          </tag>
+        </docblock>
+        <inherited_from>\Illuminate\Console\Scheduling\Event</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Console\Scheduling" line="243" package="Default">
+        <name>mutexPath</name>
+        <full_name>\Illuminate\Console\Scheduling\Event::mutexPath()</full_name>
+        <docblock line="243">
+          <description>Get the mutex path for the scheduled command.</description>
+          <long-description/>
+          <tag name="return" line="243" description="" type="string">
+            <type>string</type>
+          </tag>
+        </docblock>
+        <inherited_from>\Illuminate\Console\Scheduling\Event</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Console\Scheduling" line="254" package="Default">
+        <name>isDue</name>
+        <full_name>\Illuminate\Console\Scheduling\Event::isDue()</full_name>
+        <docblock line="254">
+          <description>Determine if the given event should run based on the Cron expression.</description>
+          <long-description/>
+          <tag name="param" line="254" description="" type="\Illuminate\Contracts\Foundation\Application" variable="$app">
+            <type>\Illuminate\Contracts\Foundation\Application</type>
+          </tag>
+          <tag name="return" line="254" description="" type="boolean">
+            <type>boolean</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$app</name>
+          <default/>
+          <type>\Illuminate\Contracts\Foundation\Application</type>
+        </argument>
+        <inherited_from>\Illuminate\Console\Scheduling\Event</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Console\Scheduling" line="269" package="Default">
+        <name>expressionPasses</name>
+        <full_name>\Illuminate\Console\Scheduling\Event::expressionPasses()</full_name>
+        <docblock line="269">
+          <description>Determine if the Cron expression passes.</description>
+          <long-description/>
+          <tag name="return" line="269" description="" type="boolean">
+            <type>boolean</type>
+          </tag>
+        </docblock>
+        <inherited_from>\Illuminate\Console\Scheduling\Event</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Console\Scheduling" line="286" package="Default">
+        <name>filtersPass</name>
+        <full_name>\Illuminate\Console\Scheduling\Event::filtersPass()</full_name>
+        <docblock line="286">
+          <description>Determine if the filters pass for the event.</description>
+          <long-description/>
+          <tag name="param" line="286" description="" type="\Illuminate\Contracts\Foundation\Application" variable="$app">
+            <type>\Illuminate\Contracts\Foundation\Application</type>
+          </tag>
+          <tag name="return" line="286" description="" type="boolean">
+            <type>boolean</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$app</name>
+          <default/>
+          <type>\Illuminate\Contracts\Foundation\Application</type>
+        </argument>
+        <inherited_from>\Illuminate\Console\Scheduling\Event</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Console\Scheduling" line="309" package="Default">
+        <name>runsInEnvironment</name>
+        <full_name>\Illuminate\Console\Scheduling\Event::runsInEnvironment()</full_name>
+        <docblock line="309">
+          <description>Determine if the event runs in the given environment.</description>
+          <long-description/>
+          <tag name="param" line="309" description="" type="string" variable="$environment">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="309" description="" type="boolean">
+            <type>boolean</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$environment</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <inherited_from>\Illuminate\Console\Scheduling\Event</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Console\Scheduling" line="319" package="Default">
+        <name>runsInMaintenanceMode</name>
+        <full_name>\Illuminate\Console\Scheduling\Event::runsInMaintenanceMode()</full_name>
+        <docblock line="319">
+          <description>Determine if the event runs in maintenance mode.</description>
+          <long-description/>
+          <tag name="return" line="319" description="" type="boolean">
+            <type>boolean</type>
+          </tag>
+        </docblock>
+        <inherited_from>\Illuminate\Console\Scheduling\Event</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Console\Scheduling" line="330" package="Default">
+        <name>cron</name>
+        <full_name>\Illuminate\Console\Scheduling\Event::cron()</full_name>
+        <docblock line="330">
+          <description>The Cron expression representing the event's frequency.</description>
+          <long-description/>
+          <tag name="param" line="330" description="" type="string" variable="$expression">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="330" description="" type="\Illuminate\Console\Scheduling\CallbackEvent">
+            <type>\Illuminate\Console\Scheduling\CallbackEvent</type>
+          </tag>
+          <tag name="fluent" description="This method is part of a fluent interface and will return the same instance"/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$expression</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <inherited_from>\Illuminate\Console\Scheduling\Event</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Console\Scheduling" line="342" package="Default">
+        <name>hourly</name>
+        <full_name>\Illuminate\Console\Scheduling\Event::hourly()</full_name>
+        <docblock line="342">
+          <description>Schedule the event to run hourly.</description>
+          <long-description/>
+          <tag name="return" line="342" description="" type="\Illuminate\Console\Scheduling\CallbackEvent">
+            <type>\Illuminate\Console\Scheduling\CallbackEvent</type>
+          </tag>
+          <tag name="fluent" description="This method is part of a fluent interface and will return the same instance"/>
+        </docblock>
+        <inherited_from>\Illuminate\Console\Scheduling\Event</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Console\Scheduling" line="352" package="Default">
+        <name>daily</name>
+        <full_name>\Illuminate\Console\Scheduling\Event::daily()</full_name>
+        <docblock line="352">
+          <description>Schedule the event to run daily.</description>
+          <long-description/>
+          <tag name="return" line="352" description="" type="\Illuminate\Console\Scheduling\CallbackEvent">
+            <type>\Illuminate\Console\Scheduling\CallbackEvent</type>
+          </tag>
+          <tag name="fluent" description="This method is part of a fluent interface and will return the same instance"/>
+        </docblock>
+        <inherited_from>\Illuminate\Console\Scheduling\Event</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Console\Scheduling" line="363" package="Default">
+        <name>at</name>
+        <full_name>\Illuminate\Console\Scheduling\Event::at()</full_name>
+        <docblock line="363">
+          <description>Schedule the command at a given time.</description>
+          <long-description/>
+          <tag name="param" line="363" description="" type="string" variable="$time">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="363" description="" type="\Illuminate\Console\Scheduling\CallbackEvent">
+            <type>\Illuminate\Console\Scheduling\CallbackEvent</type>
+          </tag>
+          <tag name="fluent" description="This method is part of a fluent interface and will return the same instance"/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$time</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <inherited_from>\Illuminate\Console\Scheduling\Event</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Console\Scheduling" line="374" package="Default">
+        <name>dailyAt</name>
+        <full_name>\Illuminate\Console\Scheduling\Event::dailyAt()</full_name>
+        <docblock line="374">
+          <description>Schedule the event to run daily at a given time (10:00, 19:30, etc).</description>
+          <long-description/>
+          <tag name="param" line="374" description="" type="string" variable="$time">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="374" description="" type="\Illuminate\Console\Scheduling\CallbackEvent">
+            <type>\Illuminate\Console\Scheduling\CallbackEvent</type>
+          </tag>
+          <tag name="fluent" description="This method is part of a fluent interface and will return the same instance"/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$time</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <inherited_from>\Illuminate\Console\Scheduling\Event</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Console\Scheduling" line="389" package="Default">
+        <name>twiceDaily</name>
+        <full_name>\Illuminate\Console\Scheduling\Event::twiceDaily()</full_name>
+        <docblock line="389">
+          <description>Schedule the event to run twice daily.</description>
+          <long-description/>
+          <tag name="param" line="389" description="" type="integer" variable="$first">
+            <type>integer</type>
+          </tag>
+          <tag name="param" line="389" description="" type="integer" variable="$second">
+            <type>integer</type>
+          </tag>
+          <tag name="return" line="389" description="" type="\Illuminate\Console\Scheduling\CallbackEvent">
+            <type>\Illuminate\Console\Scheduling\CallbackEvent</type>
+          </tag>
+          <tag name="fluent" description="This method is part of a fluent interface and will return the same instance"/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$first</name>
+          <default>1</default>
+          <type>integer</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$second</name>
+          <default>13</default>
+          <type>integer</type>
+        </argument>
+        <inherited_from>\Illuminate\Console\Scheduling\Event</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Console\Scheduling" line="402" package="Default">
+        <name>weekdays</name>
+        <full_name>\Illuminate\Console\Scheduling\Event::weekdays()</full_name>
+        <docblock line="402">
+          <description>Schedule the event to run only on weekdays.</description>
+          <long-description/>
+          <tag name="return" line="402" description="" type="\Illuminate\Console\Scheduling\CallbackEvent">
+            <type>\Illuminate\Console\Scheduling\CallbackEvent</type>
+          </tag>
+          <tag name="fluent" description="This method is part of a fluent interface and will return the same instance"/>
+        </docblock>
+        <inherited_from>\Illuminate\Console\Scheduling\Event</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Console\Scheduling" line="412" package="Default">
+        <name>mondays</name>
+        <full_name>\Illuminate\Console\Scheduling\Event::mondays()</full_name>
+        <docblock line="412">
+          <description>Schedule the event to run only on Mondays.</description>
+          <long-description/>
+          <tag name="return" line="412" description="" type="\Illuminate\Console\Scheduling\CallbackEvent">
+            <type>\Illuminate\Console\Scheduling\CallbackEvent</type>
+          </tag>
+          <tag name="fluent" description="This method is part of a fluent interface and will return the same instance"/>
+        </docblock>
+        <inherited_from>\Illuminate\Console\Scheduling\Event</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Console\Scheduling" line="422" package="Default">
+        <name>tuesdays</name>
+        <full_name>\Illuminate\Console\Scheduling\Event::tuesdays()</full_name>
+        <docblock line="422">
+          <description>Schedule the event to run only on Tuesdays.</description>
+          <long-description/>
+          <tag name="return" line="422" description="" type="\Illuminate\Console\Scheduling\CallbackEvent">
+            <type>\Illuminate\Console\Scheduling\CallbackEvent</type>
+          </tag>
+          <tag name="fluent" description="This method is part of a fluent interface and will return the same instance"/>
+        </docblock>
+        <inherited_from>\Illuminate\Console\Scheduling\Event</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Console\Scheduling" line="432" package="Default">
+        <name>wednesdays</name>
+        <full_name>\Illuminate\Console\Scheduling\Event::wednesdays()</full_name>
+        <docblock line="432">
+          <description>Schedule the event to run only on Wednesdays.</description>
+          <long-description/>
+          <tag name="return" line="432" description="" type="\Illuminate\Console\Scheduling\CallbackEvent">
+            <type>\Illuminate\Console\Scheduling\CallbackEvent</type>
+          </tag>
+          <tag name="fluent" description="This method is part of a fluent interface and will return the same instance"/>
+        </docblock>
+        <inherited_from>\Illuminate\Console\Scheduling\Event</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Console\Scheduling" line="442" package="Default">
+        <name>thursdays</name>
+        <full_name>\Illuminate\Console\Scheduling\Event::thursdays()</full_name>
+        <docblock line="442">
+          <description>Schedule the event to run only on Thursdays.</description>
+          <long-description/>
+          <tag name="return" line="442" description="" type="\Illuminate\Console\Scheduling\CallbackEvent">
+            <type>\Illuminate\Console\Scheduling\CallbackEvent</type>
+          </tag>
+          <tag name="fluent" description="This method is part of a fluent interface and will return the same instance"/>
+        </docblock>
+        <inherited_from>\Illuminate\Console\Scheduling\Event</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Console\Scheduling" line="452" package="Default">
+        <name>fridays</name>
+        <full_name>\Illuminate\Console\Scheduling\Event::fridays()</full_name>
+        <docblock line="452">
+          <description>Schedule the event to run only on Fridays.</description>
+          <long-description/>
+          <tag name="return" line="452" description="" type="\Illuminate\Console\Scheduling\CallbackEvent">
+            <type>\Illuminate\Console\Scheduling\CallbackEvent</type>
+          </tag>
+          <tag name="fluent" description="This method is part of a fluent interface and will return the same instance"/>
+        </docblock>
+        <inherited_from>\Illuminate\Console\Scheduling\Event</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Console\Scheduling" line="462" package="Default">
+        <name>saturdays</name>
+        <full_name>\Illuminate\Console\Scheduling\Event::saturdays()</full_name>
+        <docblock line="462">
+          <description>Schedule the event to run only on Saturdays.</description>
+          <long-description/>
+          <tag name="return" line="462" description="" type="\Illuminate\Console\Scheduling\CallbackEvent">
+            <type>\Illuminate\Console\Scheduling\CallbackEvent</type>
+          </tag>
+          <tag name="fluent" description="This method is part of a fluent interface and will return the same instance"/>
+        </docblock>
+        <inherited_from>\Illuminate\Console\Scheduling\Event</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Console\Scheduling" line="472" package="Default">
+        <name>sundays</name>
+        <full_name>\Illuminate\Console\Scheduling\Event::sundays()</full_name>
+        <docblock line="472">
+          <description>Schedule the event to run only on Sundays.</description>
+          <long-description/>
+          <tag name="return" line="472" description="" type="\Illuminate\Console\Scheduling\CallbackEvent">
+            <type>\Illuminate\Console\Scheduling\CallbackEvent</type>
+          </tag>
+          <tag name="fluent" description="This method is part of a fluent interface and will return the same instance"/>
+        </docblock>
+        <inherited_from>\Illuminate\Console\Scheduling\Event</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Console\Scheduling" line="482" package="Default">
+        <name>weekly</name>
+        <full_name>\Illuminate\Console\Scheduling\Event::weekly()</full_name>
+        <docblock line="482">
+          <description>Schedule the event to run weekly.</description>
+          <long-description/>
+          <tag name="return" line="482" description="" type="\Illuminate\Console\Scheduling\CallbackEvent">
+            <type>\Illuminate\Console\Scheduling\CallbackEvent</type>
+          </tag>
+          <tag name="fluent" description="This method is part of a fluent interface and will return the same instance"/>
+        </docblock>
+        <inherited_from>\Illuminate\Console\Scheduling\Event</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Console\Scheduling" line="494" package="Default">
+        <name>weeklyOn</name>
+        <full_name>\Illuminate\Console\Scheduling\Event::weeklyOn()</full_name>
+        <docblock line="494">
+          <description>Schedule the event to run weekly on a given day and time.</description>
+          <long-description/>
+          <tag name="param" line="494" description="" type="integer" variable="$day">
+            <type>integer</type>
+          </tag>
+          <tag name="param" line="494" description="" type="string" variable="$time">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="494" description="" type="\Illuminate\Console\Scheduling\CallbackEvent">
+            <type>\Illuminate\Console\Scheduling\CallbackEvent</type>
+          </tag>
+          <tag name="fluent" description="This method is part of a fluent interface and will return the same instance"/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$day</name>
+          <default/>
+          <type>integer</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$time</name>
+          <default>'0:0'</default>
+          <type>string</type>
+        </argument>
+        <inherited_from>\Illuminate\Console\Scheduling\Event</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Console\Scheduling" line="506" package="Default">
+        <name>monthly</name>
+        <full_name>\Illuminate\Console\Scheduling\Event::monthly()</full_name>
+        <docblock line="506">
+          <description>Schedule the event to run monthly.</description>
+          <long-description/>
+          <tag name="return" line="506" description="" type="\Illuminate\Console\Scheduling\CallbackEvent">
+            <type>\Illuminate\Console\Scheduling\CallbackEvent</type>
+          </tag>
+          <tag name="fluent" description="This method is part of a fluent interface and will return the same instance"/>
+        </docblock>
+        <inherited_from>\Illuminate\Console\Scheduling\Event</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Console\Scheduling" line="518" package="Default">
+        <name>monthlyOn</name>
+        <full_name>\Illuminate\Console\Scheduling\Event::monthlyOn()</full_name>
+        <docblock line="518">
+          <description>Schedule the event to run monthly on a given day and time.</description>
+          <long-description/>
+          <tag name="param" line="518" description="" type="integer" variable="$day">
+            <type>integer</type>
+          </tag>
+          <tag name="param" line="518" description="" type="string" variable="$time">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="518" description="" type="\Illuminate\Console\Scheduling\CallbackEvent">
+            <type>\Illuminate\Console\Scheduling\CallbackEvent</type>
+          </tag>
+          <tag name="fluent" description="This method is part of a fluent interface and will return the same instance"/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$day</name>
+          <default>1</default>
+          <type>integer</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$time</name>
+          <default>'0:0'</default>
+          <type>string</type>
+        </argument>
+        <inherited_from>\Illuminate\Console\Scheduling\Event</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Console\Scheduling" line="530" package="Default">
+        <name>quarterly</name>
+        <full_name>\Illuminate\Console\Scheduling\Event::quarterly()</full_name>
+        <docblock line="530">
+          <description>Schedule the event to run quarterly.</description>
+          <long-description/>
+          <tag name="return" line="530" description="" type="\Illuminate\Console\Scheduling\CallbackEvent">
+            <type>\Illuminate\Console\Scheduling\CallbackEvent</type>
+          </tag>
+          <tag name="fluent" description="This method is part of a fluent interface and will return the same instance"/>
+        </docblock>
+        <inherited_from>\Illuminate\Console\Scheduling\Event</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Console\Scheduling" line="540" package="Default">
+        <name>yearly</name>
+        <full_name>\Illuminate\Console\Scheduling\Event::yearly()</full_name>
+        <docblock line="540">
+          <description>Schedule the event to run yearly.</description>
+          <long-description/>
+          <tag name="return" line="540" description="" type="\Illuminate\Console\Scheduling\CallbackEvent">
+            <type>\Illuminate\Console\Scheduling\CallbackEvent</type>
+          </tag>
+          <tag name="fluent" description="This method is part of a fluent interface and will return the same instance"/>
+        </docblock>
+        <inherited_from>\Illuminate\Console\Scheduling\Event</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Console\Scheduling" line="550" package="Default">
+        <name>everyMinute</name>
+        <full_name>\Illuminate\Console\Scheduling\Event::everyMinute()</full_name>
+        <docblock line="550">
+          <description>Schedule the event to run every minute.</description>
+          <long-description/>
+          <tag name="return" line="550" description="" type="\Illuminate\Console\Scheduling\CallbackEvent">
+            <type>\Illuminate\Console\Scheduling\CallbackEvent</type>
+          </tag>
+          <tag name="fluent" description="This method is part of a fluent interface and will return the same instance"/>
+        </docblock>
+        <inherited_from>\Illuminate\Console\Scheduling\Event</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Console\Scheduling" line="560" package="Default">
+        <name>everyFiveMinutes</name>
+        <full_name>\Illuminate\Console\Scheduling\Event::everyFiveMinutes()</full_name>
+        <docblock line="560">
+          <description>Schedule the event to run every five minutes.</description>
+          <long-description/>
+          <tag name="return" line="560" description="" type="\Illuminate\Console\Scheduling\CallbackEvent">
+            <type>\Illuminate\Console\Scheduling\CallbackEvent</type>
+          </tag>
+          <tag name="fluent" description="This method is part of a fluent interface and will return the same instance"/>
+        </docblock>
+        <inherited_from>\Illuminate\Console\Scheduling\Event</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Console\Scheduling" line="570" package="Default">
+        <name>everyTenMinutes</name>
+        <full_name>\Illuminate\Console\Scheduling\Event::everyTenMinutes()</full_name>
+        <docblock line="570">
+          <description>Schedule the event to run every ten minutes.</description>
+          <long-description/>
+          <tag name="return" line="570" description="" type="\Illuminate\Console\Scheduling\CallbackEvent">
+            <type>\Illuminate\Console\Scheduling\CallbackEvent</type>
+          </tag>
+          <tag name="fluent" description="This method is part of a fluent interface and will return the same instance"/>
+        </docblock>
+        <inherited_from>\Illuminate\Console\Scheduling\Event</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Console\Scheduling" line="580" package="Default">
+        <name>everyThirtyMinutes</name>
+        <full_name>\Illuminate\Console\Scheduling\Event::everyThirtyMinutes()</full_name>
+        <docblock line="580">
+          <description>Schedule the event to run every thirty minutes.</description>
+          <long-description/>
+          <tag name="return" line="580" description="" type="\Illuminate\Console\Scheduling\CallbackEvent">
+            <type>\Illuminate\Console\Scheduling\CallbackEvent</type>
+          </tag>
+          <tag name="fluent" description="This method is part of a fluent interface and will return the same instance"/>
+        </docblock>
+        <inherited_from>\Illuminate\Console\Scheduling\Event</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Console\Scheduling" line="591" package="Default">
+        <name>days</name>
+        <full_name>\Illuminate\Console\Scheduling\Event::days()</full_name>
+        <docblock line="591">
+          <description>Set the days of the week the command should run on.</description>
+          <long-description/>
+          <tag name="param" line="591" description="" type="array|mixed" variable="$days">
+            <type>array</type>
+            <type>mixed</type>
+          </tag>
+          <tag name="return" line="591" description="" type="\Illuminate\Console\Scheduling\CallbackEvent">
+            <type>\Illuminate\Console\Scheduling\CallbackEvent</type>
+          </tag>
+          <tag name="fluent" description="This method is part of a fluent interface and will return the same instance"/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$days</name>
+          <default/>
+          <type>array|mixed</type>
+        </argument>
+        <inherited_from>\Illuminate\Console\Scheduling\Event</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Console\Scheduling" line="603" package="Default">
+        <name>runInBackground</name>
+        <full_name>\Illuminate\Console\Scheduling\Event::runInBackground()</full_name>
+        <docblock line="603">
+          <description>State that the command should run in background.</description>
+          <long-description/>
+          <tag name="return" line="603" description="" type="\Illuminate\Console\Scheduling\CallbackEvent">
+            <type>\Illuminate\Console\Scheduling\CallbackEvent</type>
+          </tag>
+          <tag name="fluent" description="This method is part of a fluent interface and will return the same instance"/>
+        </docblock>
+        <inherited_from>\Illuminate\Console\Scheduling\Event</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Console\Scheduling" line="616" package="Default">
+        <name>timezone</name>
+        <full_name>\Illuminate\Console\Scheduling\Event::timezone()</full_name>
+        <docblock line="616">
+          <description>Set the timezone the date should be evaluated on.</description>
+          <long-description/>
+          <tag name="param" line="616" description="" type="\DateTimeZone|string" variable="$timezone">
+            <type>\DateTimeZone</type>
+            <type>string</type>
+          </tag>
+          <tag name="return" line="616" description="" type="\Illuminate\Console\Scheduling\CallbackEvent">
+            <type>\Illuminate\Console\Scheduling\CallbackEvent</type>
+          </tag>
+          <tag name="fluent" description="This method is part of a fluent interface and will return the same instance"/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$timezone</name>
+          <default/>
+          <type>\DateTimeZone|string</type>
+        </argument>
+        <inherited_from>\Illuminate\Console\Scheduling\Event</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Console\Scheduling" line="629" package="Default">
+        <name>user</name>
+        <full_name>\Illuminate\Console\Scheduling\Event::user()</full_name>
+        <docblock line="629">
+          <description>Set which user the command should run as.</description>
+          <long-description/>
+          <tag name="param" line="629" description="" type="string" variable="$user">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="629" description="" type="\Illuminate\Console\Scheduling\CallbackEvent">
+            <type>\Illuminate\Console\Scheduling\CallbackEvent</type>
+          </tag>
+          <tag name="fluent" description="This method is part of a fluent interface and will return the same instance"/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$user</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <inherited_from>\Illuminate\Console\Scheduling\Event</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Console\Scheduling" line="642" package="Default">
+        <name>environments</name>
+        <full_name>\Illuminate\Console\Scheduling\Event::environments()</full_name>
+        <docblock line="642">
+          <description>Limit the environments the command should run in.</description>
+          <long-description/>
+          <tag name="param" line="642" description="" type="array|mixed" variable="$environments">
+            <type>array</type>
+            <type>mixed</type>
+          </tag>
+          <tag name="return" line="642" description="" type="\Illuminate\Console\Scheduling\CallbackEvent">
+            <type>\Illuminate\Console\Scheduling\CallbackEvent</type>
+          </tag>
+          <tag name="fluent" description="This method is part of a fluent interface and will return the same instance"/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$environments</name>
+          <default/>
+          <type>array|mixed</type>
+        </argument>
+        <inherited_from>\Illuminate\Console\Scheduling\Event</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Console\Scheduling" line="654" package="Default">
+        <name>evenInMaintenanceMode</name>
+        <full_name>\Illuminate\Console\Scheduling\Event::evenInMaintenanceMode()</full_name>
+        <docblock line="654">
+          <description>State that the command should run even in maintenance mode.</description>
+          <long-description/>
+          <tag name="return" line="654" description="" type="\Illuminate\Console\Scheduling\CallbackEvent">
+            <type>\Illuminate\Console\Scheduling\CallbackEvent</type>
+          </tag>
+          <tag name="fluent" description="This method is part of a fluent interface and will return the same instance"/>
+        </docblock>
+        <inherited_from>\Illuminate\Console\Scheduling\Event</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Console\Scheduling" line="666" package="Default">
+        <name>withoutOverlapping</name>
+        <full_name>\Illuminate\Console\Scheduling\Event::withoutOverlapping()</full_name>
+        <docblock line="666">
+          <description>Do not allow the event to overlap each other.</description>
+          <long-description/>
+          <tag name="return" line="666" description="" type="\Illuminate\Console\Scheduling\CallbackEvent">
+            <type>\Illuminate\Console\Scheduling\CallbackEvent</type>
+          </tag>
+          <tag name="fluent" description="This method is part of a fluent interface and will return the same instance"/>
+        </docblock>
+        <inherited_from>\Illuminate\Console\Scheduling\Event</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Console\Scheduling" line="681" package="Default">
+        <name>when</name>
+        <full_name>\Illuminate\Console\Scheduling\Event::when()</full_name>
+        <docblock line="681">
+          <description>Register a callback to further filter the schedule.</description>
+          <long-description/>
+          <tag name="param" line="681" description="" type="\Closure" variable="$callback">
+            <type>\Closure</type>
+          </tag>
+          <tag name="return" line="681" description="" type="\Illuminate\Console\Scheduling\CallbackEvent">
+            <type>\Illuminate\Console\Scheduling\CallbackEvent</type>
+          </tag>
+          <tag name="fluent" description="This method is part of a fluent interface and will return the same instance"/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$callback</name>
+          <default/>
+          <type>\Closure</type>
+        </argument>
+        <inherited_from>\Illuminate\Console\Scheduling\Event</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Console\Scheduling" line="694" package="Default">
+        <name>skip</name>
+        <full_name>\Illuminate\Console\Scheduling\Event::skip()</full_name>
+        <docblock line="694">
+          <description>Register a callback to further filter the schedule.</description>
+          <long-description/>
+          <tag name="param" line="694" description="" type="\Closure" variable="$callback">
+            <type>\Closure</type>
+          </tag>
+          <tag name="return" line="694" description="" type="\Illuminate\Console\Scheduling\CallbackEvent">
+            <type>\Illuminate\Console\Scheduling\CallbackEvent</type>
+          </tag>
+          <tag name="fluent" description="This method is part of a fluent interface and will return the same instance"/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$callback</name>
+          <default/>
+          <type>\Closure</type>
+        </argument>
+        <inherited_from>\Illuminate\Console\Scheduling\Event</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Console\Scheduling" line="708" package="Default">
+        <name>sendOutputTo</name>
+        <full_name>\Illuminate\Console\Scheduling\Event::sendOutputTo()</full_name>
+        <docblock line="708">
+          <description>Send the output of the command to a given location.</description>
+          <long-description/>
+          <tag name="param" line="708" description="" type="string" variable="$location">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="708" description="" type="boolean" variable="$append">
+            <type>boolean</type>
+          </tag>
+          <tag name="return" line="708" description="" type="\Illuminate\Console\Scheduling\CallbackEvent">
+            <type>\Illuminate\Console\Scheduling\CallbackEvent</type>
+          </tag>
+          <tag name="fluent" description="This method is part of a fluent interface and will return the same instance"/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$location</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$append</name>
+          <default>false</default>
+          <type>boolean</type>
+        </argument>
+        <inherited_from>\Illuminate\Console\Scheduling\Event</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Console\Scheduling" line="723" package="Default">
+        <name>appendOutputTo</name>
+        <full_name>\Illuminate\Console\Scheduling\Event::appendOutputTo()</full_name>
+        <docblock line="723">
+          <description>Append the output of the command to a given location.</description>
+          <long-description/>
+          <tag name="param" line="723" description="" type="string" variable="$location">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="723" description="" type="\Illuminate\Console\Scheduling\CallbackEvent">
+            <type>\Illuminate\Console\Scheduling\CallbackEvent</type>
+          </tag>
+          <tag name="fluent" description="This method is part of a fluent interface and will return the same instance"/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$location</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <inherited_from>\Illuminate\Console\Scheduling\Event</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Console\Scheduling" line="737" package="Default">
+        <name>emailOutputTo</name>
+        <full_name>\Illuminate\Console\Scheduling\Event::emailOutputTo()</full_name>
+        <docblock line="737">
+          <description>E-mail the results of the scheduled operation.</description>
+          <long-description/>
+          <tag name="param" line="737" description="" type="array|mixed" variable="$addresses">
+            <type>array</type>
+            <type>mixed</type>
+          </tag>
+          <tag name="param" line="737" description="" type="boolean" variable="$onlyIfOutputExists">
+            <type>boolean</type>
+          </tag>
+          <tag name="return" line="737" description="" type="\Illuminate\Console\Scheduling\CallbackEvent">
+            <type>\Illuminate\Console\Scheduling\CallbackEvent</type>
+          </tag>
+          <tag name="throws" line="737" description="" type="\LogicException">
+            <type>\LogicException</type>
+          </tag>
+          <tag name="fluent" description="This method is part of a fluent interface and will return the same instance"/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$addresses</name>
+          <default/>
+          <type>array|mixed</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$onlyIfOutputExists</name>
+          <default>false</default>
+          <type>boolean</type>
+        </argument>
+        <inherited_from>\Illuminate\Console\Scheduling\Event</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Console\Scheduling" line="758" package="Default">
+        <name>emailWrittenOutputTo</name>
+        <full_name>\Illuminate\Console\Scheduling\Event::emailWrittenOutputTo()</full_name>
+        <docblock line="758">
+          <description>E-mail the results of the scheduled operation if it produces output.</description>
+          <long-description/>
+          <tag name="param" line="758" description="" type="array|mixed" variable="$addresses">
+            <type>array</type>
+            <type>mixed</type>
+          </tag>
+          <tag name="return" line="758" description="" type="\Illuminate\Console\Scheduling\CallbackEvent">
+            <type>\Illuminate\Console\Scheduling\CallbackEvent</type>
+          </tag>
+          <tag name="throws" line="758" description="" type="\LogicException">
+            <type>\LogicException</type>
+          </tag>
+          <tag name="fluent" description="This method is part of a fluent interface and will return the same instance"/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$addresses</name>
+          <default/>
+          <type>array|mixed</type>
+        </argument>
+        <inherited_from>\Illuminate\Console\Scheduling\Event</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Console\Scheduling" line="771" package="Default">
+        <name>emailOutput</name>
+        <full_name>\Illuminate\Console\Scheduling\Event::emailOutput()</full_name>
+        <docblock line="771">
+          <description>E-mail the output of the event to the recipients.</description>
+          <long-description/>
+          <tag name="param" line="771" description="" type="\Illuminate\Contracts\Mail\Mailer" variable="$mailer">
+            <type>\Illuminate\Contracts\Mail\Mailer</type>
+          </tag>
+          <tag name="param" line="771" description="" type="array" variable="$addresses">
+            <type>array</type>
+          </tag>
+          <tag name="param" line="771" description="" type="boolean" variable="$onlyIfOutputExists">
+            <type>boolean</type>
+          </tag>
+          <tag name="return" line="771" description="" type="void">
+            <type>void</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$mailer</name>
+          <default/>
+          <type>\Illuminate\Contracts\Mail\Mailer</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$addresses</name>
+          <default/>
+          <type>array</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$onlyIfOutputExists</name>
+          <default>false</default>
+          <type>boolean</type>
+        </argument>
+        <inherited_from>\Illuminate\Console\Scheduling\Event</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Console\Scheduling" line="793" package="Default">
+        <name>getEmailSubject</name>
+        <full_name>\Illuminate\Console\Scheduling\Event::getEmailSubject()</full_name>
+        <docblock line="793">
+          <description>Get the e-mail subject line for output results.</description>
+          <long-description/>
+          <tag name="return" line="793" description="" type="string">
+            <type>string</type>
+          </tag>
+        </docblock>
+        <inherited_from>\Illuminate\Console\Scheduling\Event</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Console\Scheduling" line="808" package="Default">
+        <name>pingBefore</name>
+        <full_name>\Illuminate\Console\Scheduling\Event::pingBefore()</full_name>
+        <docblock line="808">
+          <description>Register a callback to ping a given URL before the job runs.</description>
+          <long-description/>
+          <tag name="param" line="808" description="" type="string" variable="$url">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="808" description="" type="\Illuminate\Console\Scheduling\CallbackEvent">
+            <type>\Illuminate\Console\Scheduling\CallbackEvent</type>
+          </tag>
+          <tag name="fluent" description="This method is part of a fluent interface and will return the same instance"/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$url</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <inherited_from>\Illuminate\Console\Scheduling\Event</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Console\Scheduling" line="821" package="Default">
+        <name>before</name>
+        <full_name>\Illuminate\Console\Scheduling\Event::before()</full_name>
+        <docblock line="821">
+          <description>Register a callback to be called before the operation.</description>
+          <long-description/>
+          <tag name="param" line="821" description="" type="\Closure" variable="$callback">
+            <type>\Closure</type>
+          </tag>
+          <tag name="return" line="821" description="" type="\Illuminate\Console\Scheduling\CallbackEvent">
+            <type>\Illuminate\Console\Scheduling\CallbackEvent</type>
+          </tag>
+          <tag name="fluent" description="This method is part of a fluent interface and will return the same instance"/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$callback</name>
+          <default/>
+          <type>\Closure</type>
+        </argument>
+        <inherited_from>\Illuminate\Console\Scheduling\Event</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Console\Scheduling" line="834" package="Default">
+        <name>thenPing</name>
+        <full_name>\Illuminate\Console\Scheduling\Event::thenPing()</full_name>
+        <docblock line="834">
+          <description>Register a callback to ping a given URL after the job runs.</description>
+          <long-description/>
+          <tag name="param" line="834" description="" type="string" variable="$url">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="834" description="" type="\Illuminate\Console\Scheduling\CallbackEvent">
+            <type>\Illuminate\Console\Scheduling\CallbackEvent</type>
+          </tag>
+          <tag name="fluent" description="This method is part of a fluent interface and will return the same instance"/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$url</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <inherited_from>\Illuminate\Console\Scheduling\Event</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Console\Scheduling" line="847" package="Default">
+        <name>after</name>
+        <full_name>\Illuminate\Console\Scheduling\Event::after()</full_name>
+        <docblock line="847">
+          <description>Register a callback to be called after the operation.</description>
+          <long-description/>
+          <tag name="param" line="847" description="" type="\Closure" variable="$callback">
+            <type>\Closure</type>
+          </tag>
+          <tag name="return" line="847" description="" type="\Illuminate\Console\Scheduling\CallbackEvent">
+            <type>\Illuminate\Console\Scheduling\CallbackEvent</type>
+          </tag>
+          <tag name="fluent" description="This method is part of a fluent interface and will return the same instance"/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$callback</name>
+          <default/>
+          <type>\Closure</type>
+        </argument>
+        <inherited_from>\Illuminate\Console\Scheduling\Event</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Console\Scheduling" line="858" package="Default">
+        <name>then</name>
+        <full_name>\Illuminate\Console\Scheduling\Event::then()</full_name>
+        <docblock line="858">
+          <description>Register a callback to be called after the operation.</description>
+          <long-description/>
+          <tag name="param" line="858" description="" type="\Closure" variable="$callback">
+            <type>\Closure</type>
+          </tag>
+          <tag name="return" line="858" description="" type="\Illuminate\Console\Scheduling\CallbackEvent">
+            <type>\Illuminate\Console\Scheduling\CallbackEvent</type>
+          </tag>
+          <tag name="fluent" description="This method is part of a fluent interface and will return the same instance"/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$callback</name>
+          <default/>
+          <type>\Closure</type>
+        </argument>
+        <inherited_from>\Illuminate\Console\Scheduling\Event</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Console\Scheduling" line="871" package="Default">
+        <name>name</name>
+        <full_name>\Illuminate\Console\Scheduling\Event::name()</full_name>
+        <docblock line="871">
+          <description>Set the human-friendly description of the event.</description>
+          <long-description/>
+          <tag name="param" line="871" description="" type="string" variable="$description">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="871" description="" type="\Illuminate\Console\Scheduling\CallbackEvent">
+            <type>\Illuminate\Console\Scheduling\CallbackEvent</type>
+          </tag>
+          <tag name="fluent" description="This method is part of a fluent interface and will return the same instance"/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$description</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <inherited_from>\Illuminate\Console\Scheduling\Event</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Console\Scheduling" line="882" package="Default">
+        <name>description</name>
+        <full_name>\Illuminate\Console\Scheduling\Event::description()</full_name>
+        <docblock line="882">
+          <description>Set the human-friendly description of the event.</description>
+          <long-description/>
+          <tag name="param" line="882" description="" type="string" variable="$description">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="882" description="" type="\Illuminate\Console\Scheduling\CallbackEvent">
+            <type>\Illuminate\Console\Scheduling\CallbackEvent</type>
+          </tag>
+          <tag name="fluent" description="This method is part of a fluent interface and will return the same instance"/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$description</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <inherited_from>\Illuminate\Console\Scheduling\Event</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Console\Scheduling" line="896" package="Default">
+        <name>spliceIntoPosition</name>
+        <full_name>\Illuminate\Console\Scheduling\Event::spliceIntoPosition()</full_name>
+        <docblock line="896">
+          <description>Splice the given value into the given position of the expression.</description>
+          <long-description/>
+          <tag name="param" line="896" description="" type="integer" variable="$position">
+            <type>integer</type>
+          </tag>
+          <tag name="param" line="896" description="" type="string" variable="$value">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="896" description="" type="\Illuminate\Console\Scheduling\CallbackEvent">
+            <type>\Illuminate\Console\Scheduling\CallbackEvent</type>
+          </tag>
+          <tag name="fluent" description="This method is part of a fluent interface and will return the same instance"/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$position</name>
+          <default/>
+          <type>integer</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$value</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <inherited_from>\Illuminate\Console\Scheduling\Event</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Console\Scheduling" line="910" package="Default">
+        <name>getSummaryForDisplay</name>
+        <full_name>\Illuminate\Console\Scheduling\Event::getSummaryForDisplay()</full_name>
+        <docblock line="910">
+          <description>Get the summary of the event for display.</description>
+          <long-description/>
+          <tag name="return" line="910" description="" type="string">
+            <type>string</type>
+          </tag>
+        </docblock>
+        <inherited_from>\Illuminate\Console\Scheduling\Event</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Console\Scheduling" line="924" package="Default">
+        <name>getExpression</name>
+        <full_name>\Illuminate\Console\Scheduling\Event::getExpression()</full_name>
+        <docblock line="924">
+          <description>Get the Cron expression for the event.</description>
+          <long-description/>
+          <tag name="return" line="924" description="" type="string">
+            <type>string</type>
+          </tag>
+        </docblock>
+        <inherited_from>\Illuminate\Console\Scheduling\Event</inherited_from>
+      </method>
+    </class>
+    <parse_markers>
+      <error line="0" code="PPC:ERR-50000">No summary was found for this file</error>
+      <error line="9" code="PPC:ERR-50005">No summary for class \Illuminate\Console\Scheduling\CallbackEvent</error>
+    </parse_markers>
+    <source>eJydVttuEzEQfc9XDKhiNxVNxWtLgSoUhAQCcXkiKHKcSdbKrr34kqZC/XfG3kv2kk0Lfsg69njmnJmz4335Ok/y0UiyDE3OOMKHNHWZkMzibKqkUSnOvvEEly4Vcn05GjmD8FGtBb/ZccytUPIyrH2QW5aK5bVeuwyl7e62vFrNuDVhxoREvZ9RAJ4yY2DK0nTB+OZmS84Adxbl0kD4N/ozAhrnp6fhCafwPUHg5QGwKswn5WZl82bLNBiriUW5dB6euVYWucUlnFQuCMSBADnTlCSL2vgQuQdJT0s7tJqo5cGATGt2NxRv77EfcaqRkgUMJN4ChiQIaSyTHHuBgh8oycGeR9cggIFm3NpCo3VawlaJZde7TbS6NTAbKnCbnVukgsPKSe73YD7nJCKrHbdxjet5iaQBBK7g569xcFFU148Tmwhz9qqu7FWzRB2jlqt+Zv0QK4ifgDDzIlFxx/0Ynj2DsO9X2CLFnsW4Ac6PkJpQoaHkxC17P6LSFEzxVpEQaoKhzhP45IyFBVYFVRoqRJOo5W+8T8P9qPjt6uirk0Gja0G+ywAD+pk99iX1EqvmXQVlYoeDEnqcZrST8T7WPlRXHr6eZYWWaLgWwXWvRsrxpLLLnMXdF2aTeNzKXT21+q5z/kRTYyQNY5BfhaUQRVcgz/tqbIaBFSU3TXsRijMaM7XFTx5hfBgceaXyXVz4cNcr8l41SRM3stRQfFmTmsLlkEhC6KKX+fgENEVYaZXBUphNTzD9btHtbftiNln9VwHfOElXz+ahEh5m9laBVBYoT/Sien5FK6XGTah0ynJAxhNQtKWHaIbAQ5JuX4VHdX0r6Jpw9nMROPct6FBGfAsyaA9lZrj/tGH0u87T60a/KXLgr3wKRRX67YSmZX+r6WJP7TFO4IcppBH5E1F521F/WilNi31W0eTpcJfqabNgaTYij+tMxV2ipbGX5Rx3wljzgBzGQ1J/j7ah85wOAvEIS42GrLKMyf6NXsI4+hVRk2gg61S5dqM0W+Pcg4ijle8Yt0pvziscZ9HEJOzFQSE8RM84YkC9TK0aqvdE6X3OU3b3L9Q6Ml6j/VZ4f6f028LdQSH3btpjUm7LoWF5TDxH7vLXva+HC4imqTJOY1Rl7370F5EWNKQ=</source>
+  <type>class</type></file>

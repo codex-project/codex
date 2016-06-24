@@ -1,0 +1,1810 @@
+<file path="codex/vendor/laravel/framework/src/Illuminate/Database/Query/Grammars/SQLiteGrammar.php" generated-path="codex.vendor.laravel.framework.src.Illuminate.Database.Query.Grammars.SQLiteGrammar.html" hash="e338d5e6aa4ecdb7bcc8e02208a6aa1d" package="Default">
+    <docblock line="0">
+      <description/>
+      <long-description/>
+      <tag name="package" line="0" description="Default"/>
+    </docblock>
+    <namespace-alias name="Builder">\Illuminate\Database\Query\Builder</namespace-alias>
+    <class final="false" abstract="false" namespace="Illuminate\Database\Query\Grammars" line="7" package="Default">
+      <extends>\Illuminate\Database\Query\Grammars\Grammar</extends>
+      <name>SQLiteGrammar</name>
+      <full_name>\Illuminate\Database\Query\Grammars\SQLiteGrammar</full_name>
+      <docblock line="7">
+        <description/>
+        <long-description/>
+        <tag name="package" line="7" description="Default"/>
+        <tag name="inherited_from" description="\Illuminate\Database\Query\Grammars\Grammar" refers="\Illuminate\Database\Query\Grammars\Grammar" link="/classes/Illuminate.Database.Query.Grammars.Grammar.html"/>
+      </docblock>
+      <property static="false" visibility="protected" namespace="Illuminate\Database\Query\Grammars" line="14" package="Default">
+        <name>$operators</name>
+        <full_name>\Illuminate\Database\Query\Grammars\SQLiteGrammar::operators</full_name>
+        <default>array('=', '&lt;', '&gt;', '&lt;=', '&gt;=', '&lt;&gt;', '!=', 'like', 'not like', 'between', 'ilike', '&amp;', '|', '&lt;&lt;', '&gt;&gt;')</default>
+        <docblock line="14">
+          <description>All of the available clause operators.</description>
+          <long-description/>
+          <tag name="var" line="14" description="" type="array" variable="">
+            <type>array</type>
+          </tag>
+          <tag name="inherited_from" description="\Illuminate\Database\Query\Grammars\Grammar::operators" refers="\Illuminate\Database\Query\Grammars\Grammar::operators" link="/classes/Illuminate.Database.Query.Grammars.Grammar.html#property_operators"/>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" namespace="Illuminate\Database\Query\Grammars" line="15" package="Default">
+        <name>$operators</name>
+        <full_name>\Illuminate\Database\Query\Grammars\Grammar::operators</full_name>
+        <default>array()</default>
+        <docblock line="15">
+          <description>The grammar specific operators.</description>
+          <long-description/>
+          <tag name="var" line="15" description="" type="array" variable="">
+            <type>array</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" namespace="Illuminate\Database\Query\Grammars" line="22" package="Default">
+        <name>$selectComponents</name>
+        <full_name>\Illuminate\Database\Query\Grammars\Grammar::selectComponents</full_name>
+        <default>array('aggregate', 'columns', 'from', 'joins', 'wheres', 'groups', 'havings', 'orders', 'limit', 'offset', 'unions', 'lock')</default>
+        <docblock line="22">
+          <description>The components that make up a select clause.</description>
+          <long-description/>
+          <tag name="var" line="22" description="" type="array" variable="">
+            <type>array</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" namespace="Illuminate\Database\Query\Grammars" line="14" package="Default">
+        <name>$tablePrefix</name>
+        <full_name>\Illuminate\Database\Grammar::tablePrefix</full_name>
+        <default>''</default>
+        <docblock line="14">
+          <description>The grammar table prefix.</description>
+          <long-description/>
+          <tag name="var" line="14" description="" type="string" variable="">
+            <type>string</type>
+          </tag>
+        </docblock>
+      </property>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Query\Grammars" line="27" package="Default">
+        <name>compileInsert</name>
+        <full_name>\Illuminate\Database\Query\Grammars\SQLiteGrammar::compileInsert()</full_name>
+        <docblock line="27">
+          <description>Compile an insert statement into SQL.</description>
+          <long-description/>
+          <tag name="param" line="27" description="" type="\Illuminate\Database\Query\Builder" variable="$query">
+            <type>\Illuminate\Database\Query\Builder</type>
+          </tag>
+          <tag name="param" line="27" description="" type="array" variable="$values">
+            <type>array</type>
+          </tag>
+          <tag name="return" line="27" description="" type="string">
+            <type>string</type>
+          </tag>
+          <tag name="inherited_from" description="\Illuminate\Database\Query\Grammars\Grammar::compileInsert()" refers="\Illuminate\Database\Query\Grammars\Grammar::compileInsert()" link="/classes/Illuminate.Database.Query.Grammars.Grammar.html#method_compileInsert"/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$query</name>
+          <default/>
+          <type>\Illuminate\Database\Query\Builder</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$values</name>
+          <default/>
+          <type>array</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Query\Grammars" line="67" package="Default">
+        <name>compileTruncate</name>
+        <full_name>\Illuminate\Database\Query\Grammars\SQLiteGrammar::compileTruncate()</full_name>
+        <docblock line="67">
+          <description>Compile a truncate table statement into SQL.</description>
+          <long-description/>
+          <tag name="param" line="67" description="" type="\Illuminate\Database\Query\Builder" variable="$query">
+            <type>\Illuminate\Database\Query\Builder</type>
+          </tag>
+          <tag name="return" line="67" description="" type="array">
+            <type>array</type>
+          </tag>
+          <tag name="inherited_from" description="\Illuminate\Database\Query\Grammars\Grammar::compileTruncate()" refers="\Illuminate\Database\Query\Grammars\Grammar::compileTruncate()" link="/classes/Illuminate.Database.Query.Grammars.Grammar.html#method_compileTruncate"/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$query</name>
+          <default/>
+          <type>\Illuminate\Database\Query\Builder</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Database\Query\Grammars" line="83" package="Default">
+        <name>whereDate</name>
+        <full_name>\Illuminate\Database\Query\Grammars\SQLiteGrammar::whereDate()</full_name>
+        <docblock line="83">
+          <description>Compile a "where date" clause.</description>
+          <long-description/>
+          <tag name="param" line="83" description="" type="\Illuminate\Database\Query\Builder" variable="$query">
+            <type>\Illuminate\Database\Query\Builder</type>
+          </tag>
+          <tag name="param" line="83" description="" type="array" variable="$where">
+            <type>array</type>
+          </tag>
+          <tag name="return" line="83" description="" type="string">
+            <type>string</type>
+          </tag>
+          <tag name="inherited_from" description="\Illuminate\Database\Query\Grammars\Grammar::whereDate()" refers="\Illuminate\Database\Query\Grammars\Grammar::whereDate()" link="/classes/Illuminate.Database.Query.Grammars.Grammar.html#method_whereDate"/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$query</name>
+          <default/>
+          <type>\Illuminate\Database\Query\Builder</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$where</name>
+          <default/>
+          <type>array</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Database\Query\Grammars" line="95" package="Default">
+        <name>whereDay</name>
+        <full_name>\Illuminate\Database\Query\Grammars\SQLiteGrammar::whereDay()</full_name>
+        <docblock line="95">
+          <description>Compile a "where day" clause.</description>
+          <long-description/>
+          <tag name="param" line="95" description="" type="\Illuminate\Database\Query\Builder" variable="$query">
+            <type>\Illuminate\Database\Query\Builder</type>
+          </tag>
+          <tag name="param" line="95" description="" type="array" variable="$where">
+            <type>array</type>
+          </tag>
+          <tag name="return" line="95" description="" type="string">
+            <type>string</type>
+          </tag>
+          <tag name="inherited_from" description="\Illuminate\Database\Query\Grammars\Grammar::whereDay()" refers="\Illuminate\Database\Query\Grammars\Grammar::whereDay()" link="/classes/Illuminate.Database.Query.Grammars.Grammar.html#method_whereDay"/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$query</name>
+          <default/>
+          <type>\Illuminate\Database\Query\Builder</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$where</name>
+          <default/>
+          <type>array</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Database\Query\Grammars" line="107" package="Default">
+        <name>whereMonth</name>
+        <full_name>\Illuminate\Database\Query\Grammars\SQLiteGrammar::whereMonth()</full_name>
+        <docblock line="107">
+          <description>Compile a "where month" clause.</description>
+          <long-description/>
+          <tag name="param" line="107" description="" type="\Illuminate\Database\Query\Builder" variable="$query">
+            <type>\Illuminate\Database\Query\Builder</type>
+          </tag>
+          <tag name="param" line="107" description="" type="array" variable="$where">
+            <type>array</type>
+          </tag>
+          <tag name="return" line="107" description="" type="string">
+            <type>string</type>
+          </tag>
+          <tag name="inherited_from" description="\Illuminate\Database\Query\Grammars\Grammar::whereMonth()" refers="\Illuminate\Database\Query\Grammars\Grammar::whereMonth()" link="/classes/Illuminate.Database.Query.Grammars.Grammar.html#method_whereMonth"/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$query</name>
+          <default/>
+          <type>\Illuminate\Database\Query\Builder</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$where</name>
+          <default/>
+          <type>array</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Database\Query\Grammars" line="119" package="Default">
+        <name>whereYear</name>
+        <full_name>\Illuminate\Database\Query\Grammars\SQLiteGrammar::whereYear()</full_name>
+        <docblock line="119">
+          <description>Compile a "where year" clause.</description>
+          <long-description/>
+          <tag name="param" line="119" description="" type="\Illuminate\Database\Query\Builder" variable="$query">
+            <type>\Illuminate\Database\Query\Builder</type>
+          </tag>
+          <tag name="param" line="119" description="" type="array" variable="$where">
+            <type>array</type>
+          </tag>
+          <tag name="return" line="119" description="" type="string">
+            <type>string</type>
+          </tag>
+          <tag name="inherited_from" description="\Illuminate\Database\Query\Grammars\Grammar::whereYear()" refers="\Illuminate\Database\Query\Grammars\Grammar::whereYear()" link="/classes/Illuminate.Database.Query.Grammars.Grammar.html#method_whereYear"/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$query</name>
+          <default/>
+          <type>\Illuminate\Database\Query\Builder</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$where</name>
+          <default/>
+          <type>array</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Database\Query\Grammars" line="132" package="Default">
+        <name>dateBasedWhere</name>
+        <full_name>\Illuminate\Database\Query\Grammars\SQLiteGrammar::dateBasedWhere()</full_name>
+        <docblock line="132">
+          <description>Compile a date based where clause.</description>
+          <long-description/>
+          <tag name="param" line="132" description="" type="string" variable="$type">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="132" description="" type="\Illuminate\Database\Query\Builder" variable="$query">
+            <type>\Illuminate\Database\Query\Builder</type>
+          </tag>
+          <tag name="param" line="132" description="" type="array" variable="$where">
+            <type>array</type>
+          </tag>
+          <tag name="return" line="132" description="" type="string">
+            <type>string</type>
+          </tag>
+          <tag name="inherited_from" description="\Illuminate\Database\Query\Grammars\Grammar::dateBasedWhere()" refers="\Illuminate\Database\Query\Grammars\Grammar::dateBasedWhere()" link="/classes/Illuminate.Database.Query.Grammars.Grammar.html#method_dateBasedWhere"/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$type</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$query</name>
+          <default/>
+          <type>\Illuminate\Database\Query\Builder</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$where</name>
+          <default/>
+          <type>array</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Query\Grammars" line="43" package="Default">
+        <name>compileSelect</name>
+        <full_name>\Illuminate\Database\Query\Grammars\Grammar::compileSelect()</full_name>
+        <docblock line="43">
+          <description>Compile a select query into SQL.</description>
+          <long-description/>
+          <tag name="param" line="43" description="" type="\Illuminate\Database\Query\Builder" variable="$query">
+            <type>\Illuminate\Database\Query\Builder</type>
+          </tag>
+          <tag name="return" line="43" description="" type="string">
+            <type>string</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$query</name>
+          <default/>
+          <type>\Illuminate\Database\Query\Builder</type>
+        </argument>
+        <inherited_from>\Illuminate\Database\Query\Grammars\Grammar</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Database\Query\Grammars" line="64" package="Default">
+        <name>compileComponents</name>
+        <full_name>\Illuminate\Database\Query\Grammars\Grammar::compileComponents()</full_name>
+        <docblock line="64">
+          <description>Compile the components necessary for a select clause.</description>
+          <long-description/>
+          <tag name="param" line="64" description="" type="\Illuminate\Database\Query\Builder" variable="$query">
+            <type>\Illuminate\Database\Query\Builder</type>
+          </tag>
+          <tag name="return" line="64" description="" type="array">
+            <type>array</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$query</name>
+          <default/>
+          <type>\Illuminate\Database\Query\Builder</type>
+        </argument>
+        <inherited_from>\Illuminate\Database\Query\Grammars\Grammar</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Database\Query\Grammars" line="89" package="Default">
+        <name>compileAggregate</name>
+        <full_name>\Illuminate\Database\Query\Grammars\Grammar::compileAggregate()</full_name>
+        <docblock line="89">
+          <description>Compile an aggregated select clause.</description>
+          <long-description/>
+          <tag name="param" line="89" description="" type="\Illuminate\Database\Query\Builder" variable="$query">
+            <type>\Illuminate\Database\Query\Builder</type>
+          </tag>
+          <tag name="param" line="89" description="" type="array" variable="$aggregate">
+            <type>array</type>
+          </tag>
+          <tag name="return" line="89" description="" type="string">
+            <type>string</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$query</name>
+          <default/>
+          <type>\Illuminate\Database\Query\Builder</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$aggregate</name>
+          <default/>
+          <type>array</type>
+        </argument>
+        <inherited_from>\Illuminate\Database\Query\Grammars\Grammar</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Database\Query\Grammars" line="110" package="Default">
+        <name>compileColumns</name>
+        <full_name>\Illuminate\Database\Query\Grammars\Grammar::compileColumns()</full_name>
+        <docblock line="110">
+          <description>Compile the "select *" portion of the query.</description>
+          <long-description/>
+          <tag name="param" line="110" description="" type="\Illuminate\Database\Query\Builder" variable="$query">
+            <type>\Illuminate\Database\Query\Builder</type>
+          </tag>
+          <tag name="param" line="110" description="" type="array" variable="$columns">
+            <type>array</type>
+          </tag>
+          <tag name="return" line="110" description="" type="string|null">
+            <type>string</type>
+            <type>null</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$query</name>
+          <default/>
+          <type>\Illuminate\Database\Query\Builder</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$columns</name>
+          <default/>
+          <type>array</type>
+        </argument>
+        <inherited_from>\Illuminate\Database\Query\Grammars\Grammar</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Database\Query\Grammars" line="131" package="Default">
+        <name>compileFrom</name>
+        <full_name>\Illuminate\Database\Query\Grammars\Grammar::compileFrom()</full_name>
+        <docblock line="131">
+          <description>Compile the "from" portion of the query.</description>
+          <long-description/>
+          <tag name="param" line="131" description="" type="\Illuminate\Database\Query\Builder" variable="$query">
+            <type>\Illuminate\Database\Query\Builder</type>
+          </tag>
+          <tag name="param" line="131" description="" type="string" variable="$table">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="131" description="" type="string">
+            <type>string</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$query</name>
+          <default/>
+          <type>\Illuminate\Database\Query\Builder</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$table</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <inherited_from>\Illuminate\Database\Query\Grammars\Grammar</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Database\Query\Grammars" line="143" package="Default">
+        <name>compileJoins</name>
+        <full_name>\Illuminate\Database\Query\Grammars\Grammar::compileJoins()</full_name>
+        <docblock line="143">
+          <description>Compile the "join" portions of the query.</description>
+          <long-description/>
+          <tag name="param" line="143" description="" type="\Illuminate\Database\Query\Builder" variable="$query">
+            <type>\Illuminate\Database\Query\Builder</type>
+          </tag>
+          <tag name="param" line="143" description="" type="array" variable="$joins">
+            <type>array</type>
+          </tag>
+          <tag name="return" line="143" description="" type="string">
+            <type>string</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$query</name>
+          <default/>
+          <type>\Illuminate\Database\Query\Builder</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$joins</name>
+          <default/>
+          <type>array</type>
+        </argument>
+        <inherited_from>\Illuminate\Database\Query\Grammars\Grammar</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Database\Query\Grammars" line="192" package="Default">
+        <name>compileJoinConstraint</name>
+        <full_name>\Illuminate\Database\Query\Grammars\Grammar::compileJoinConstraint()</full_name>
+        <docblock line="192">
+          <description>Create a join clause constraint segment.</description>
+          <long-description/>
+          <tag name="param" line="192" description="" type="array" variable="$clause">
+            <type>array</type>
+          </tag>
+          <tag name="return" line="192" description="" type="string">
+            <type>string</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$clause</name>
+          <default/>
+          <type>array</type>
+        </argument>
+        <inherited_from>\Illuminate\Database\Query\Grammars\Grammar</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Database\Query\Grammars" line="219" package="Default">
+        <name>compileNestedJoinConstraint</name>
+        <full_name>\Illuminate\Database\Query\Grammars\Grammar::compileNestedJoinConstraint()</full_name>
+        <docblock line="219">
+          <description>Create a nested join clause constraint segment.</description>
+          <long-description/>
+          <tag name="param" line="219" description="" type="array" variable="$clause">
+            <type>array</type>
+          </tag>
+          <tag name="return" line="219" description="" type="string">
+            <type>string</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$clause</name>
+          <default/>
+          <type>array</type>
+        </argument>
+        <inherited_from>\Illuminate\Database\Query\Grammars\Grammar</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Database\Query\Grammars" line="240" package="Default">
+        <name>compileWheres</name>
+        <full_name>\Illuminate\Database\Query\Grammars\Grammar::compileWheres()</full_name>
+        <docblock line="240">
+          <description>Compile the "where" portions of the query.</description>
+          <long-description/>
+          <tag name="param" line="240" description="" type="\Illuminate\Database\Query\Builder" variable="$query">
+            <type>\Illuminate\Database\Query\Builder</type>
+          </tag>
+          <tag name="return" line="240" description="" type="string">
+            <type>string</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$query</name>
+          <default/>
+          <type>\Illuminate\Database\Query\Builder</type>
+        </argument>
+        <inherited_from>\Illuminate\Database\Query\Grammars\Grammar</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Database\Query\Grammars" line="276" package="Default">
+        <name>whereNested</name>
+        <full_name>\Illuminate\Database\Query\Grammars\Grammar::whereNested()</full_name>
+        <docblock line="276">
+          <description>Compile a nested where clause.</description>
+          <long-description/>
+          <tag name="param" line="276" description="" type="\Illuminate\Database\Query\Builder" variable="$query">
+            <type>\Illuminate\Database\Query\Builder</type>
+          </tag>
+          <tag name="param" line="276" description="" type="array" variable="$where">
+            <type>array</type>
+          </tag>
+          <tag name="return" line="276" description="" type="string">
+            <type>string</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$query</name>
+          <default/>
+          <type>\Illuminate\Database\Query\Builder</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$where</name>
+          <default/>
+          <type>array</type>
+        </argument>
+        <inherited_from>\Illuminate\Database\Query\Grammars\Grammar</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Database\Query\Grammars" line="290" package="Default">
+        <name>whereSub</name>
+        <full_name>\Illuminate\Database\Query\Grammars\Grammar::whereSub()</full_name>
+        <docblock line="290">
+          <description>Compile a where condition with a sub-select.</description>
+          <long-description/>
+          <tag name="param" line="290" description="" type="\Illuminate\Database\Query\Builder" variable="$query">
+            <type>\Illuminate\Database\Query\Builder</type>
+          </tag>
+          <tag name="param" line="290" description="" type="array" variable="$where">
+            <type>array</type>
+          </tag>
+          <tag name="return" line="290" description="" type="string">
+            <type>string</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$query</name>
+          <default/>
+          <type>\Illuminate\Database\Query\Builder</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$where</name>
+          <default/>
+          <type>array</type>
+        </argument>
+        <inherited_from>\Illuminate\Database\Query\Grammars\Grammar</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Database\Query\Grammars" line="304" package="Default">
+        <name>whereBasic</name>
+        <full_name>\Illuminate\Database\Query\Grammars\Grammar::whereBasic()</full_name>
+        <docblock line="304">
+          <description>Compile a basic where clause.</description>
+          <long-description/>
+          <tag name="param" line="304" description="" type="\Illuminate\Database\Query\Builder" variable="$query">
+            <type>\Illuminate\Database\Query\Builder</type>
+          </tag>
+          <tag name="param" line="304" description="" type="array" variable="$where">
+            <type>array</type>
+          </tag>
+          <tag name="return" line="304" description="" type="string">
+            <type>string</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$query</name>
+          <default/>
+          <type>\Illuminate\Database\Query\Builder</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$where</name>
+          <default/>
+          <type>array</type>
+        </argument>
+        <inherited_from>\Illuminate\Database\Query\Grammars\Grammar</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Database\Query\Grammars" line="318" package="Default">
+        <name>whereColumn</name>
+        <full_name>\Illuminate\Database\Query\Grammars\Grammar::whereColumn()</full_name>
+        <docblock line="318">
+          <description>Compile a where clause comparing two columns.</description>
+          <long-description>.</long-description>
+          <tag name="param" line="318" description="" type="\Illuminate\Database\Query\Builder" variable="$query">
+            <type>\Illuminate\Database\Query\Builder</type>
+          </tag>
+          <tag name="param" line="318" description="" type="array" variable="$where">
+            <type>array</type>
+          </tag>
+          <tag name="return" line="318" description="" type="string">
+            <type>string</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$query</name>
+          <default/>
+          <type>\Illuminate\Database\Query\Builder</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$where</name>
+          <default/>
+          <type>array</type>
+        </argument>
+        <inherited_from>\Illuminate\Database\Query\Grammars\Grammar</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Database\Query\Grammars" line="332" package="Default">
+        <name>whereBetween</name>
+        <full_name>\Illuminate\Database\Query\Grammars\Grammar::whereBetween()</full_name>
+        <docblock line="332">
+          <description>Compile a "between" where clause.</description>
+          <long-description/>
+          <tag name="param" line="332" description="" type="\Illuminate\Database\Query\Builder" variable="$query">
+            <type>\Illuminate\Database\Query\Builder</type>
+          </tag>
+          <tag name="param" line="332" description="" type="array" variable="$where">
+            <type>array</type>
+          </tag>
+          <tag name="return" line="332" description="" type="string">
+            <type>string</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$query</name>
+          <default/>
+          <type>\Illuminate\Database\Query\Builder</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$where</name>
+          <default/>
+          <type>array</type>
+        </argument>
+        <inherited_from>\Illuminate\Database\Query\Grammars\Grammar</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Database\Query\Grammars" line="346" package="Default">
+        <name>whereExists</name>
+        <full_name>\Illuminate\Database\Query\Grammars\Grammar::whereExists()</full_name>
+        <docblock line="346">
+          <description>Compile a where exists clause.</description>
+          <long-description/>
+          <tag name="param" line="346" description="" type="\Illuminate\Database\Query\Builder" variable="$query">
+            <type>\Illuminate\Database\Query\Builder</type>
+          </tag>
+          <tag name="param" line="346" description="" type="array" variable="$where">
+            <type>array</type>
+          </tag>
+          <tag name="return" line="346" description="" type="string">
+            <type>string</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$query</name>
+          <default/>
+          <type>\Illuminate\Database\Query\Builder</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$where</name>
+          <default/>
+          <type>array</type>
+        </argument>
+        <inherited_from>\Illuminate\Database\Query\Grammars\Grammar</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Database\Query\Grammars" line="358" package="Default">
+        <name>whereNotExists</name>
+        <full_name>\Illuminate\Database\Query\Grammars\Grammar::whereNotExists()</full_name>
+        <docblock line="358">
+          <description>Compile a where exists clause.</description>
+          <long-description/>
+          <tag name="param" line="358" description="" type="\Illuminate\Database\Query\Builder" variable="$query">
+            <type>\Illuminate\Database\Query\Builder</type>
+          </tag>
+          <tag name="param" line="358" description="" type="array" variable="$where">
+            <type>array</type>
+          </tag>
+          <tag name="return" line="358" description="" type="string">
+            <type>string</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$query</name>
+          <default/>
+          <type>\Illuminate\Database\Query\Builder</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$where</name>
+          <default/>
+          <type>array</type>
+        </argument>
+        <inherited_from>\Illuminate\Database\Query\Grammars\Grammar</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Database\Query\Grammars" line="370" package="Default">
+        <name>whereIn</name>
+        <full_name>\Illuminate\Database\Query\Grammars\Grammar::whereIn()</full_name>
+        <docblock line="370">
+          <description>Compile a "where in" clause.</description>
+          <long-description/>
+          <tag name="param" line="370" description="" type="\Illuminate\Database\Query\Builder" variable="$query">
+            <type>\Illuminate\Database\Query\Builder</type>
+          </tag>
+          <tag name="param" line="370" description="" type="array" variable="$where">
+            <type>array</type>
+          </tag>
+          <tag name="return" line="370" description="" type="string">
+            <type>string</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$query</name>
+          <default/>
+          <type>\Illuminate\Database\Query\Builder</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$where</name>
+          <default/>
+          <type>array</type>
+        </argument>
+        <inherited_from>\Illuminate\Database\Query\Grammars\Grammar</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Database\Query\Grammars" line="388" package="Default">
+        <name>whereNotIn</name>
+        <full_name>\Illuminate\Database\Query\Grammars\Grammar::whereNotIn()</full_name>
+        <docblock line="388">
+          <description>Compile a "where not in" clause.</description>
+          <long-description/>
+          <tag name="param" line="388" description="" type="\Illuminate\Database\Query\Builder" variable="$query">
+            <type>\Illuminate\Database\Query\Builder</type>
+          </tag>
+          <tag name="param" line="388" description="" type="array" variable="$where">
+            <type>array</type>
+          </tag>
+          <tag name="return" line="388" description="" type="string">
+            <type>string</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$query</name>
+          <default/>
+          <type>\Illuminate\Database\Query\Builder</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$where</name>
+          <default/>
+          <type>array</type>
+        </argument>
+        <inherited_from>\Illuminate\Database\Query\Grammars\Grammar</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Database\Query\Grammars" line="406" package="Default">
+        <name>whereInSub</name>
+        <full_name>\Illuminate\Database\Query\Grammars\Grammar::whereInSub()</full_name>
+        <docblock line="406">
+          <description>Compile a where in sub-select clause.</description>
+          <long-description/>
+          <tag name="param" line="406" description="" type="\Illuminate\Database\Query\Builder" variable="$query">
+            <type>\Illuminate\Database\Query\Builder</type>
+          </tag>
+          <tag name="param" line="406" description="" type="array" variable="$where">
+            <type>array</type>
+          </tag>
+          <tag name="return" line="406" description="" type="string">
+            <type>string</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$query</name>
+          <default/>
+          <type>\Illuminate\Database\Query\Builder</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$where</name>
+          <default/>
+          <type>array</type>
+        </argument>
+        <inherited_from>\Illuminate\Database\Query\Grammars\Grammar</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Database\Query\Grammars" line="420" package="Default">
+        <name>whereNotInSub</name>
+        <full_name>\Illuminate\Database\Query\Grammars\Grammar::whereNotInSub()</full_name>
+        <docblock line="420">
+          <description>Compile a where not in sub-select clause.</description>
+          <long-description/>
+          <tag name="param" line="420" description="" type="\Illuminate\Database\Query\Builder" variable="$query">
+            <type>\Illuminate\Database\Query\Builder</type>
+          </tag>
+          <tag name="param" line="420" description="" type="array" variable="$where">
+            <type>array</type>
+          </tag>
+          <tag name="return" line="420" description="" type="string">
+            <type>string</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$query</name>
+          <default/>
+          <type>\Illuminate\Database\Query\Builder</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$where</name>
+          <default/>
+          <type>array</type>
+        </argument>
+        <inherited_from>\Illuminate\Database\Query\Grammars\Grammar</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Database\Query\Grammars" line="434" package="Default">
+        <name>whereNull</name>
+        <full_name>\Illuminate\Database\Query\Grammars\Grammar::whereNull()</full_name>
+        <docblock line="434">
+          <description>Compile a "where null" clause.</description>
+          <long-description/>
+          <tag name="param" line="434" description="" type="\Illuminate\Database\Query\Builder" variable="$query">
+            <type>\Illuminate\Database\Query\Builder</type>
+          </tag>
+          <tag name="param" line="434" description="" type="array" variable="$where">
+            <type>array</type>
+          </tag>
+          <tag name="return" line="434" description="" type="string">
+            <type>string</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$query</name>
+          <default/>
+          <type>\Illuminate\Database\Query\Builder</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$where</name>
+          <default/>
+          <type>array</type>
+        </argument>
+        <inherited_from>\Illuminate\Database\Query\Grammars\Grammar</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Database\Query\Grammars" line="446" package="Default">
+        <name>whereNotNull</name>
+        <full_name>\Illuminate\Database\Query\Grammars\Grammar::whereNotNull()</full_name>
+        <docblock line="446">
+          <description>Compile a "where not null" clause.</description>
+          <long-description/>
+          <tag name="param" line="446" description="" type="\Illuminate\Database\Query\Builder" variable="$query">
+            <type>\Illuminate\Database\Query\Builder</type>
+          </tag>
+          <tag name="param" line="446" description="" type="array" variable="$where">
+            <type>array</type>
+          </tag>
+          <tag name="return" line="446" description="" type="string">
+            <type>string</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$query</name>
+          <default/>
+          <type>\Illuminate\Database\Query\Builder</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$where</name>
+          <default/>
+          <type>array</type>
+        </argument>
+        <inherited_from>\Illuminate\Database\Query\Grammars\Grammar</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Database\Query\Grammars" line="458" package="Default">
+        <name>whereDate</name>
+        <full_name>\Illuminate\Database\Query\Grammars\Grammar::whereDate()</full_name>
+        <docblock line="458">
+          <description>Compile a "where date" clause.</description>
+          <long-description/>
+          <tag name="param" line="458" description="" type="\Illuminate\Database\Query\Builder" variable="$query">
+            <type>\Illuminate\Database\Query\Builder</type>
+          </tag>
+          <tag name="param" line="458" description="" type="array" variable="$where">
+            <type>array</type>
+          </tag>
+          <tag name="return" line="458" description="" type="string">
+            <type>string</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$query</name>
+          <default/>
+          <type>\Illuminate\Database\Query\Builder</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$where</name>
+          <default/>
+          <type>array</type>
+        </argument>
+        <inherited_from>\Illuminate\Database\Query\Grammars\Grammar</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Database\Query\Grammars" line="470" package="Default">
+        <name>whereDay</name>
+        <full_name>\Illuminate\Database\Query\Grammars\Grammar::whereDay()</full_name>
+        <docblock line="470">
+          <description>Compile a "where day" clause.</description>
+          <long-description/>
+          <tag name="param" line="470" description="" type="\Illuminate\Database\Query\Builder" variable="$query">
+            <type>\Illuminate\Database\Query\Builder</type>
+          </tag>
+          <tag name="param" line="470" description="" type="array" variable="$where">
+            <type>array</type>
+          </tag>
+          <tag name="return" line="470" description="" type="string">
+            <type>string</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$query</name>
+          <default/>
+          <type>\Illuminate\Database\Query\Builder</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$where</name>
+          <default/>
+          <type>array</type>
+        </argument>
+        <inherited_from>\Illuminate\Database\Query\Grammars\Grammar</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Database\Query\Grammars" line="482" package="Default">
+        <name>whereMonth</name>
+        <full_name>\Illuminate\Database\Query\Grammars\Grammar::whereMonth()</full_name>
+        <docblock line="482">
+          <description>Compile a "where month" clause.</description>
+          <long-description/>
+          <tag name="param" line="482" description="" type="\Illuminate\Database\Query\Builder" variable="$query">
+            <type>\Illuminate\Database\Query\Builder</type>
+          </tag>
+          <tag name="param" line="482" description="" type="array" variable="$where">
+            <type>array</type>
+          </tag>
+          <tag name="return" line="482" description="" type="string">
+            <type>string</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$query</name>
+          <default/>
+          <type>\Illuminate\Database\Query\Builder</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$where</name>
+          <default/>
+          <type>array</type>
+        </argument>
+        <inherited_from>\Illuminate\Database\Query\Grammars\Grammar</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Database\Query\Grammars" line="494" package="Default">
+        <name>whereYear</name>
+        <full_name>\Illuminate\Database\Query\Grammars\Grammar::whereYear()</full_name>
+        <docblock line="494">
+          <description>Compile a "where year" clause.</description>
+          <long-description/>
+          <tag name="param" line="494" description="" type="\Illuminate\Database\Query\Builder" variable="$query">
+            <type>\Illuminate\Database\Query\Builder</type>
+          </tag>
+          <tag name="param" line="494" description="" type="array" variable="$where">
+            <type>array</type>
+          </tag>
+          <tag name="return" line="494" description="" type="string">
+            <type>string</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$query</name>
+          <default/>
+          <type>\Illuminate\Database\Query\Builder</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$where</name>
+          <default/>
+          <type>array</type>
+        </argument>
+        <inherited_from>\Illuminate\Database\Query\Grammars\Grammar</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Database\Query\Grammars" line="507" package="Default">
+        <name>dateBasedWhere</name>
+        <full_name>\Illuminate\Database\Query\Grammars\Grammar::dateBasedWhere()</full_name>
+        <docblock line="507">
+          <description>Compile a date based where clause.</description>
+          <long-description/>
+          <tag name="param" line="507" description="" type="string" variable="$type">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="507" description="" type="\Illuminate\Database\Query\Builder" variable="$query">
+            <type>\Illuminate\Database\Query\Builder</type>
+          </tag>
+          <tag name="param" line="507" description="" type="array" variable="$where">
+            <type>array</type>
+          </tag>
+          <tag name="return" line="507" description="" type="string">
+            <type>string</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$type</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$query</name>
+          <default/>
+          <type>\Illuminate\Database\Query\Builder</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$where</name>
+          <default/>
+          <type>array</type>
+        </argument>
+        <inherited_from>\Illuminate\Database\Query\Grammars\Grammar</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Database\Query\Grammars" line="521" package="Default">
+        <name>whereRaw</name>
+        <full_name>\Illuminate\Database\Query\Grammars\Grammar::whereRaw()</full_name>
+        <docblock line="521">
+          <description>Compile a raw where clause.</description>
+          <long-description/>
+          <tag name="param" line="521" description="" type="\Illuminate\Database\Query\Builder" variable="$query">
+            <type>\Illuminate\Database\Query\Builder</type>
+          </tag>
+          <tag name="param" line="521" description="" type="array" variable="$where">
+            <type>array</type>
+          </tag>
+          <tag name="return" line="521" description="" type="string">
+            <type>string</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$query</name>
+          <default/>
+          <type>\Illuminate\Database\Query\Builder</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$where</name>
+          <default/>
+          <type>array</type>
+        </argument>
+        <inherited_from>\Illuminate\Database\Query\Grammars\Grammar</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Database\Query\Grammars" line="533" package="Default">
+        <name>compileGroups</name>
+        <full_name>\Illuminate\Database\Query\Grammars\Grammar::compileGroups()</full_name>
+        <docblock line="533">
+          <description>Compile the "group by" portions of the query.</description>
+          <long-description/>
+          <tag name="param" line="533" description="" type="\Illuminate\Database\Query\Builder" variable="$query">
+            <type>\Illuminate\Database\Query\Builder</type>
+          </tag>
+          <tag name="param" line="533" description="" type="array" variable="$groups">
+            <type>array</type>
+          </tag>
+          <tag name="return" line="533" description="" type="string">
+            <type>string</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$query</name>
+          <default/>
+          <type>\Illuminate\Database\Query\Builder</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$groups</name>
+          <default/>
+          <type>array</type>
+        </argument>
+        <inherited_from>\Illuminate\Database\Query\Grammars\Grammar</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Database\Query\Grammars" line="545" package="Default">
+        <name>compileHavings</name>
+        <full_name>\Illuminate\Database\Query\Grammars\Grammar::compileHavings()</full_name>
+        <docblock line="545">
+          <description>Compile the "having" portions of the query.</description>
+          <long-description/>
+          <tag name="param" line="545" description="" type="\Illuminate\Database\Query\Builder" variable="$query">
+            <type>\Illuminate\Database\Query\Builder</type>
+          </tag>
+          <tag name="param" line="545" description="" type="array" variable="$havings">
+            <type>array</type>
+          </tag>
+          <tag name="return" line="545" description="" type="string">
+            <type>string</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$query</name>
+          <default/>
+          <type>\Illuminate\Database\Query\Builder</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$havings</name>
+          <default/>
+          <type>array</type>
+        </argument>
+        <inherited_from>\Illuminate\Database\Query\Grammars\Grammar</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Database\Query\Grammars" line="558" package="Default">
+        <name>compileHaving</name>
+        <full_name>\Illuminate\Database\Query\Grammars\Grammar::compileHaving()</full_name>
+        <docblock line="558">
+          <description>Compile a single having clause.</description>
+          <long-description/>
+          <tag name="param" line="558" description="" type="array" variable="$having">
+            <type>array</type>
+          </tag>
+          <tag name="return" line="558" description="" type="string">
+            <type>string</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$having</name>
+          <default/>
+          <type>array</type>
+        </argument>
+        <inherited_from>\Illuminate\Database\Query\Grammars\Grammar</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Database\Query\Grammars" line="576" package="Default">
+        <name>compileBasicHaving</name>
+        <full_name>\Illuminate\Database\Query\Grammars\Grammar::compileBasicHaving()</full_name>
+        <docblock line="576">
+          <description>Compile a basic having clause.</description>
+          <long-description/>
+          <tag name="param" line="576" description="" type="array" variable="$having">
+            <type>array</type>
+          </tag>
+          <tag name="return" line="576" description="" type="string">
+            <type>string</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$having</name>
+          <default/>
+          <type>array</type>
+        </argument>
+        <inherited_from>\Illuminate\Database\Query\Grammars\Grammar</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Database\Query\Grammars" line="592" package="Default">
+        <name>compileOrders</name>
+        <full_name>\Illuminate\Database\Query\Grammars\Grammar::compileOrders()</full_name>
+        <docblock line="592">
+          <description>Compile the "order by" portions of the query.</description>
+          <long-description/>
+          <tag name="param" line="592" description="" type="\Illuminate\Database\Query\Builder" variable="$query">
+            <type>\Illuminate\Database\Query\Builder</type>
+          </tag>
+          <tag name="param" line="592" description="" type="array" variable="$orders">
+            <type>array</type>
+          </tag>
+          <tag name="return" line="592" description="" type="string">
+            <type>string</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$query</name>
+          <default/>
+          <type>\Illuminate\Database\Query\Builder</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$orders</name>
+          <default/>
+          <type>array</type>
+        </argument>
+        <inherited_from>\Illuminate\Database\Query\Grammars\Grammar</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Query\Grammars" line="609" package="Default">
+        <name>compileRandom</name>
+        <full_name>\Illuminate\Database\Query\Grammars\Grammar::compileRandom()</full_name>
+        <docblock line="609">
+          <description>Compile the random statement into SQL.</description>
+          <long-description/>
+          <tag name="param" line="609" description="" type="string" variable="$seed">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="609" description="" type="string">
+            <type>string</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$seed</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <inherited_from>\Illuminate\Database\Query\Grammars\Grammar</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Database\Query\Grammars" line="621" package="Default">
+        <name>compileLimit</name>
+        <full_name>\Illuminate\Database\Query\Grammars\Grammar::compileLimit()</full_name>
+        <docblock line="621">
+          <description>Compile the "limit" portions of the query.</description>
+          <long-description/>
+          <tag name="param" line="621" description="" type="\Illuminate\Database\Query\Builder" variable="$query">
+            <type>\Illuminate\Database\Query\Builder</type>
+          </tag>
+          <tag name="param" line="621" description="" type="integer" variable="$limit">
+            <type>integer</type>
+          </tag>
+          <tag name="return" line="621" description="" type="string">
+            <type>string</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$query</name>
+          <default/>
+          <type>\Illuminate\Database\Query\Builder</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$limit</name>
+          <default/>
+          <type>integer</type>
+        </argument>
+        <inherited_from>\Illuminate\Database\Query\Grammars\Grammar</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Database\Query\Grammars" line="633" package="Default">
+        <name>compileOffset</name>
+        <full_name>\Illuminate\Database\Query\Grammars\Grammar::compileOffset()</full_name>
+        <docblock line="633">
+          <description>Compile the "offset" portions of the query.</description>
+          <long-description/>
+          <tag name="param" line="633" description="" type="\Illuminate\Database\Query\Builder" variable="$query">
+            <type>\Illuminate\Database\Query\Builder</type>
+          </tag>
+          <tag name="param" line="633" description="" type="integer" variable="$offset">
+            <type>integer</type>
+          </tag>
+          <tag name="return" line="633" description="" type="string">
+            <type>string</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$query</name>
+          <default/>
+          <type>\Illuminate\Database\Query\Builder</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$offset</name>
+          <default/>
+          <type>integer</type>
+        </argument>
+        <inherited_from>\Illuminate\Database\Query\Grammars\Grammar</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Database\Query\Grammars" line="644" package="Default">
+        <name>compileUnions</name>
+        <full_name>\Illuminate\Database\Query\Grammars\Grammar::compileUnions()</full_name>
+        <docblock line="644">
+          <description>Compile the "union" queries attached to the main query.</description>
+          <long-description/>
+          <tag name="param" line="644" description="" type="\Illuminate\Database\Query\Builder" variable="$query">
+            <type>\Illuminate\Database\Query\Builder</type>
+          </tag>
+          <tag name="return" line="644" description="" type="string">
+            <type>string</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$query</name>
+          <default/>
+          <type>\Illuminate\Database\Query\Builder</type>
+        </argument>
+        <inherited_from>\Illuminate\Database\Query\Grammars\Grammar</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Database\Query\Grammars" line="673" package="Default">
+        <name>compileUnion</name>
+        <full_name>\Illuminate\Database\Query\Grammars\Grammar::compileUnion()</full_name>
+        <docblock line="673">
+          <description>Compile a single union statement.</description>
+          <long-description/>
+          <tag name="param" line="673" description="" type="array" variable="$union">
+            <type>array</type>
+          </tag>
+          <tag name="return" line="673" description="" type="string">
+            <type>string</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$union</name>
+          <default/>
+          <type>array</type>
+        </argument>
+        <inherited_from>\Illuminate\Database\Query\Grammars\Grammar</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Query\Grammars" line="686" package="Default">
+        <name>compileExists</name>
+        <full_name>\Illuminate\Database\Query\Grammars\Grammar::compileExists()</full_name>
+        <docblock line="686">
+          <description>Compile an exists statement into SQL.</description>
+          <long-description/>
+          <tag name="param" line="686" description="" type="\Illuminate\Database\Query\Builder" variable="$query">
+            <type>\Illuminate\Database\Query\Builder</type>
+          </tag>
+          <tag name="return" line="686" description="" type="string">
+            <type>string</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$query</name>
+          <default/>
+          <type>\Illuminate\Database\Query\Builder</type>
+        </argument>
+        <inherited_from>\Illuminate\Database\Query\Grammars\Grammar</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Query\Grammars" line="700" package="Default">
+        <name>compileInsert</name>
+        <full_name>\Illuminate\Database\Query\Grammars\Grammar::compileInsert()</full_name>
+        <docblock line="700">
+          <description>Compile an insert statement into SQL.</description>
+          <long-description/>
+          <tag name="param" line="700" description="" type="\Illuminate\Database\Query\Builder" variable="$query">
+            <type>\Illuminate\Database\Query\Builder</type>
+          </tag>
+          <tag name="param" line="700" description="" type="array" variable="$values">
+            <type>array</type>
+          </tag>
+          <tag name="return" line="700" description="" type="string">
+            <type>string</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$query</name>
+          <default/>
+          <type>\Illuminate\Database\Query\Builder</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$values</name>
+          <default/>
+          <type>array</type>
+        </argument>
+        <inherited_from>\Illuminate\Database\Query\Grammars\Grammar</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Query\Grammars" line="735" package="Default">
+        <name>compileInsertGetId</name>
+        <full_name>\Illuminate\Database\Query\Grammars\Grammar::compileInsertGetId()</full_name>
+        <docblock line="735">
+          <description>Compile an insert and get ID statement into SQL.</description>
+          <long-description/>
+          <tag name="param" line="735" description="" type="\Illuminate\Database\Query\Builder" variable="$query">
+            <type>\Illuminate\Database\Query\Builder</type>
+          </tag>
+          <tag name="param" line="735" description="" type="array" variable="$values">
+            <type>array</type>
+          </tag>
+          <tag name="param" line="735" description="" type="string" variable="$sequence">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="735" description="" type="string">
+            <type>string</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$query</name>
+          <default/>
+          <type>\Illuminate\Database\Query\Builder</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$values</name>
+          <default/>
+          <type>array</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$sequence</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <inherited_from>\Illuminate\Database\Query\Grammars\Grammar</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Query\Grammars" line="747" package="Default">
+        <name>compileUpdate</name>
+        <full_name>\Illuminate\Database\Query\Grammars\Grammar::compileUpdate()</full_name>
+        <docblock line="747">
+          <description>Compile an update statement into SQL.</description>
+          <long-description/>
+          <tag name="param" line="747" description="" type="\Illuminate\Database\Query\Builder" variable="$query">
+            <type>\Illuminate\Database\Query\Builder</type>
+          </tag>
+          <tag name="param" line="747" description="" type="array" variable="$values">
+            <type>array</type>
+          </tag>
+          <tag name="return" line="747" description="" type="string">
+            <type>string</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$query</name>
+          <default/>
+          <type>\Illuminate\Database\Query\Builder</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$values</name>
+          <default/>
+          <type>array</type>
+        </argument>
+        <inherited_from>\Illuminate\Database\Query\Grammars\Grammar</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Query\Grammars" line="786" package="Default">
+        <name>prepareBindingsForUpdate</name>
+        <full_name>\Illuminate\Database\Query\Grammars\Grammar::prepareBindingsForUpdate()</full_name>
+        <docblock line="786">
+          <description>Prepare the bindings for an update statement.</description>
+          <long-description/>
+          <tag name="param" line="786" description="" type="array" variable="$bindings">
+            <type>array</type>
+          </tag>
+          <tag name="param" line="786" description="" type="array" variable="$values">
+            <type>array</type>
+          </tag>
+          <tag name="return" line="786" description="" type="array">
+            <type>array</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$bindings</name>
+          <default/>
+          <type>array</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$values</name>
+          <default/>
+          <type>array</type>
+        </argument>
+        <inherited_from>\Illuminate\Database\Query\Grammars\Grammar</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Query\Grammars" line="797" package="Default">
+        <name>compileDelete</name>
+        <full_name>\Illuminate\Database\Query\Grammars\Grammar::compileDelete()</full_name>
+        <docblock line="797">
+          <description>Compile a delete statement into SQL.</description>
+          <long-description/>
+          <tag name="param" line="797" description="" type="\Illuminate\Database\Query\Builder" variable="$query">
+            <type>\Illuminate\Database\Query\Builder</type>
+          </tag>
+          <tag name="return" line="797" description="" type="string">
+            <type>string</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$query</name>
+          <default/>
+          <type>\Illuminate\Database\Query\Builder</type>
+        </argument>
+        <inherited_from>\Illuminate\Database\Query\Grammars\Grammar</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Query\Grammars" line="812" package="Default">
+        <name>compileTruncate</name>
+        <full_name>\Illuminate\Database\Query\Grammars\Grammar::compileTruncate()</full_name>
+        <docblock line="812">
+          <description>Compile a truncate table statement into SQL.</description>
+          <long-description/>
+          <tag name="param" line="812" description="" type="\Illuminate\Database\Query\Builder" variable="$query">
+            <type>\Illuminate\Database\Query\Builder</type>
+          </tag>
+          <tag name="return" line="812" description="" type="array">
+            <type>array</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$query</name>
+          <default/>
+          <type>\Illuminate\Database\Query\Builder</type>
+        </argument>
+        <inherited_from>\Illuminate\Database\Query\Grammars\Grammar</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Database\Query\Grammars" line="824" package="Default">
+        <name>compileLock</name>
+        <full_name>\Illuminate\Database\Query\Grammars\Grammar::compileLock()</full_name>
+        <docblock line="824">
+          <description>Compile the lock into SQL.</description>
+          <long-description/>
+          <tag name="param" line="824" description="" type="\Illuminate\Database\Query\Builder" variable="$query">
+            <type>\Illuminate\Database\Query\Builder</type>
+          </tag>
+          <tag name="param" line="824" description="" type="boolean|string" variable="$value">
+            <type>boolean</type>
+            <type>string</type>
+          </tag>
+          <tag name="return" line="824" description="" type="string">
+            <type>string</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$query</name>
+          <default/>
+          <type>\Illuminate\Database\Query\Builder</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$value</name>
+          <default/>
+          <type>boolean|string</type>
+        </argument>
+        <inherited_from>\Illuminate\Database\Query\Grammars\Grammar</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Query\Grammars" line="834" package="Default">
+        <name>supportsSavepoints</name>
+        <full_name>\Illuminate\Database\Query\Grammars\Grammar::supportsSavepoints()</full_name>
+        <docblock line="834">
+          <description>Determine if the grammar supports savepoints.</description>
+          <long-description/>
+          <tag name="return" line="834" description="" type="boolean">
+            <type>boolean</type>
+          </tag>
+        </docblock>
+        <inherited_from>\Illuminate\Database\Query\Grammars\Grammar</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Query\Grammars" line="845" package="Default">
+        <name>compileSavepoint</name>
+        <full_name>\Illuminate\Database\Query\Grammars\Grammar::compileSavepoint()</full_name>
+        <docblock line="845">
+          <description>Compile the SQL statement to define a savepoint.</description>
+          <long-description/>
+          <tag name="param" line="845" description="" type="string" variable="$name">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="845" description="" type="string">
+            <type>string</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$name</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <inherited_from>\Illuminate\Database\Query\Grammars\Grammar</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Query\Grammars" line="856" package="Default">
+        <name>compileSavepointRollBack</name>
+        <full_name>\Illuminate\Database\Query\Grammars\Grammar::compileSavepointRollBack()</full_name>
+        <docblock line="856">
+          <description>Compile the SQL statement to execute a savepoint rollback.</description>
+          <long-description/>
+          <tag name="param" line="856" description="" type="string" variable="$name">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="856" description="" type="string">
+            <type>string</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$name</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <inherited_from>\Illuminate\Database\Query\Grammars\Grammar</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Database\Query\Grammars" line="867" package="Default">
+        <name>concatenate</name>
+        <full_name>\Illuminate\Database\Query\Grammars\Grammar::concatenate()</full_name>
+        <docblock line="867">
+          <description>Concatenate an array of segments, removing empties.</description>
+          <long-description/>
+          <tag name="param" line="867" description="" type="array" variable="$segments">
+            <type>array</type>
+          </tag>
+          <tag name="return" line="867" description="" type="string">
+            <type>string</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$segments</name>
+          <default/>
+          <type>array</type>
+        </argument>
+        <inherited_from>\Illuminate\Database\Query\Grammars\Grammar</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Database\Query\Grammars" line="880" package="Default">
+        <name>removeLeadingBoolean</name>
+        <full_name>\Illuminate\Database\Query\Grammars\Grammar::removeLeadingBoolean()</full_name>
+        <docblock line="880">
+          <description>Remove the leading boolean from a statement.</description>
+          <long-description/>
+          <tag name="param" line="880" description="" type="string" variable="$value">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="880" description="" type="string">
+            <type>string</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$value</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <inherited_from>\Illuminate\Database\Query\Grammars\Grammar</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Query\Grammars" line="890" package="Default">
+        <name>getOperators</name>
+        <full_name>\Illuminate\Database\Query\Grammars\Grammar::getOperators()</full_name>
+        <docblock line="890">
+          <description>Get the gramar specific operators.</description>
+          <long-description/>
+          <tag name="return" line="890" description="" type="array">
+            <type>array</type>
+          </tag>
+        </docblock>
+        <inherited_from>\Illuminate\Database\Query\Grammars\Grammar</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Query\Grammars" line="22" package="Default">
+        <name>wrapArray</name>
+        <full_name>\Illuminate\Database\Grammar::wrapArray()</full_name>
+        <docblock line="22">
+          <description>Wrap an array of values.</description>
+          <long-description/>
+          <tag name="param" line="22" description="" type="array" variable="$values">
+            <type>array</type>
+          </tag>
+          <tag name="return" line="22" description="" type="array">
+            <type>array</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$values</name>
+          <default/>
+          <type>array</type>
+        </argument>
+        <inherited_from>\Illuminate\Database\Grammar</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Query\Grammars" line="33" package="Default">
+        <name>wrapTable</name>
+        <full_name>\Illuminate\Database\Grammar::wrapTable()</full_name>
+        <docblock line="33">
+          <description>Wrap a table in keyword identifiers.</description>
+          <long-description/>
+          <tag name="param" line="33" description="" type="\Illuminate\Database\Query\Expression|string" variable="$table">
+            <type>\Illuminate\Database\Query\Expression</type>
+            <type>string</type>
+          </tag>
+          <tag name="return" line="33" description="" type="string">
+            <type>string</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$table</name>
+          <default/>
+          <type>\Illuminate\Database\Query\Expression|string</type>
+        </argument>
+        <inherited_from>\Illuminate\Database\Grammar</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Query\Grammars" line="49" package="Default">
+        <name>wrap</name>
+        <full_name>\Illuminate\Database\Grammar::wrap()</full_name>
+        <docblock line="49">
+          <description>Wrap a value in keyword identifiers.</description>
+          <long-description/>
+          <tag name="param" line="49" description="" type="\Illuminate\Database\Query\Expression|string" variable="$value">
+            <type>\Illuminate\Database\Query\Expression</type>
+            <type>string</type>
+          </tag>
+          <tag name="param" line="49" description="" type="boolean" variable="$prefixAlias">
+            <type>boolean</type>
+          </tag>
+          <tag name="return" line="49" description="" type="string">
+            <type>string</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$value</name>
+          <default/>
+          <type>\Illuminate\Database\Query\Expression|string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$prefixAlias</name>
+          <default>false</default>
+          <type>boolean</type>
+        </argument>
+        <inherited_from>\Illuminate\Database\Grammar</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Database\Query\Grammars" line="92" package="Default">
+        <name>wrapValue</name>
+        <full_name>\Illuminate\Database\Grammar::wrapValue()</full_name>
+        <docblock line="92">
+          <description>Wrap a single string in keyword identifiers.</description>
+          <long-description/>
+          <tag name="param" line="92" description="" type="string" variable="$value">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="92" description="" type="string">
+            <type>string</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$value</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <inherited_from>\Illuminate\Database\Grammar</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Query\Grammars" line="107" package="Default">
+        <name>columnize</name>
+        <full_name>\Illuminate\Database\Grammar::columnize()</full_name>
+        <docblock line="107">
+          <description>Convert an array of column names into a delimited string.</description>
+          <long-description/>
+          <tag name="param" line="107" description="" type="array" variable="$columns">
+            <type>array</type>
+          </tag>
+          <tag name="return" line="107" description="" type="string">
+            <type>string</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$columns</name>
+          <default/>
+          <type>array</type>
+        </argument>
+        <inherited_from>\Illuminate\Database\Grammar</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Query\Grammars" line="118" package="Default">
+        <name>parameterize</name>
+        <full_name>\Illuminate\Database\Grammar::parameterize()</full_name>
+        <docblock line="118">
+          <description>Create query parameter place-holders for an array.</description>
+          <long-description/>
+          <tag name="param" line="118" description="" type="array" variable="$values">
+            <type>array</type>
+          </tag>
+          <tag name="return" line="118" description="" type="string">
+            <type>string</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$values</name>
+          <default/>
+          <type>array</type>
+        </argument>
+        <inherited_from>\Illuminate\Database\Grammar</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Query\Grammars" line="129" package="Default">
+        <name>parameter</name>
+        <full_name>\Illuminate\Database\Grammar::parameter()</full_name>
+        <docblock line="129">
+          <description>Get the appropriate query parameter place-holder for a value.</description>
+          <long-description/>
+          <tag name="param" line="129" description="" type="mixed" variable="$value">
+            <type>mixed</type>
+          </tag>
+          <tag name="return" line="129" description="" type="string">
+            <type>string</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$value</name>
+          <default/>
+          <type>mixed</type>
+        </argument>
+        <inherited_from>\Illuminate\Database\Grammar</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Query\Grammars" line="140" package="Default">
+        <name>getValue</name>
+        <full_name>\Illuminate\Database\Grammar::getValue()</full_name>
+        <docblock line="140">
+          <description>Get the value of a raw expression.</description>
+          <long-description/>
+          <tag name="param" line="140" description="" type="\Illuminate\Database\Query\Expression" variable="$expression">
+            <type>\Illuminate\Database\Query\Expression</type>
+          </tag>
+          <tag name="return" line="140" description="" type="string">
+            <type>string</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$expression</name>
+          <default/>
+          <type>\Illuminate\Database\Query\Expression</type>
+        </argument>
+        <inherited_from>\Illuminate\Database\Grammar</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Query\Grammars" line="151" package="Default">
+        <name>isExpression</name>
+        <full_name>\Illuminate\Database\Grammar::isExpression()</full_name>
+        <docblock line="151">
+          <description>Determine if the given value is a raw expression.</description>
+          <long-description/>
+          <tag name="param" line="151" description="" type="mixed" variable="$value">
+            <type>mixed</type>
+          </tag>
+          <tag name="return" line="151" description="" type="boolean">
+            <type>boolean</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$value</name>
+          <default/>
+          <type>mixed</type>
+        </argument>
+        <inherited_from>\Illuminate\Database\Grammar</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Query\Grammars" line="161" package="Default">
+        <name>getDateFormat</name>
+        <full_name>\Illuminate\Database\Grammar::getDateFormat()</full_name>
+        <docblock line="161">
+          <description>Get the format for database stored dates.</description>
+          <long-description/>
+          <tag name="return" line="161" description="" type="string">
+            <type>string</type>
+          </tag>
+        </docblock>
+        <inherited_from>\Illuminate\Database\Grammar</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Query\Grammars" line="171" package="Default">
+        <name>getTablePrefix</name>
+        <full_name>\Illuminate\Database\Grammar::getTablePrefix()</full_name>
+        <docblock line="171">
+          <description>Get the grammar's table prefix.</description>
+          <long-description/>
+          <tag name="return" line="171" description="" type="string">
+            <type>string</type>
+          </tag>
+        </docblock>
+        <inherited_from>\Illuminate\Database\Grammar</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Query\Grammars" line="182" package="Default">
+        <name>setTablePrefix</name>
+        <full_name>\Illuminate\Database\Grammar::setTablePrefix()</full_name>
+        <docblock line="182">
+          <description>Set the grammar's table prefix.</description>
+          <long-description/>
+          <tag name="param" line="182" description="" type="string" variable="$prefix">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="182" description="" type="\Illuminate\Database\Query\Grammars\SQLiteGrammar">
+            <type>\Illuminate\Database\Query\Grammars\SQLiteGrammar</type>
+          </tag>
+          <tag name="fluent" description="This method is part of a fluent interface and will return the same instance"/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$prefix</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <inherited_from>\Illuminate\Database\Grammar</inherited_from>
+      </method>
+    </class>
+    <parse_markers>
+      <error line="0" code="PPC:ERR-50000">No summary was found for this file</error>
+      <error line="7" code="PPC:ERR-50005">No summary for class \Illuminate\Database\Query\Grammars\SQLiteGrammar</error>
+    </parse_markers>
+    <source>eJzVV21v2zYQ/u5fcQ2cSQ4cp9vHtnbWLl0XoAPWJcBQxIZBS+eYjUQpJBXX6/Lfd0dStuR4abemQGYgtsSX5+6e5+7IvDguF2Wno0SOphQJwmmWVblUwuL4RFgxEwbH7yrUq/EbLfJcaPO806nMfQtfVTJLUdO6JBPGwNm7t9Ji2A740aJKDYT3zqcO0Ofo4MD9wgG8zDIo5mAXCOJGyEzMMgRCYqNFiVrYQptBWF1v+vGGoIXWYhVGjtxvqQuLicUUuuutMIQLv4g+0TDqQ/SCv0buyb2P/KgbeULPm+WZvEIeVYWF+nmGdomo+FH6sc3673j0L4fmjYzC7ITo2Qr8pyIvJcUqFEhlUFswlujNUVkasAUTeSfuUhCPAOPPygHQveb37Z2ONJq8EVmFZj2r0VZakQdaqss2p9UskwnMK5VYWShIvNunzuW4tuaN9QN8QO85gE9reo6O4LUxFJ8UWbaCJcJSkvrzQlMm4g0B1ExQ9DMEq1GwmMKAgJmwyaKeXy5ksmjiGpmXBJmLKzSQ8D6KwyUVsQgojCQnyRBUhtYqskfWE6K+siTin+iWGiqLJiixSpHrgtYoBI2XQqcZUopTvtJWkRcVaUUvGpNCU5JfyhtU7DxZoW/v7GAN2bUuuYf0sJDmcLTUojznodjTdzia6yLvhVThj5xD/ASkmTpeY40GbVyz2+s1uHX4foIzPjxS2tWTt51maKeu4jQSNhSKmCtchBwGMc/ceecx7a91+lAZC1yWzFVlKpFBI8U87mUo+6DTLKTHDBNX0KoAU2JC+oNZKSs+sn2FmJLKrI5TgaxnLR10sQyAhn5DgxnAL8WSk6bPLPlgBP3lVWZlSTKx4xG5nRSUcKrCQYvVhLVbUwnDIXy/TWeoCSocStlnz9qJXyf8liQ7+e66frvRPSmoeBVlXexknV7hytzRtpEFXb/BCTt53tLRc0FeXFeSEELiOdodmY6Nww2BvpYyaVx9UOoazKhjksC2VU+Volo38KGQKhRSTsCXyDwP4KwI3HpDVCDAkTlcBq39FSptgtJm5SA9HjWBNaZzoHYmGKdAmPMMrU85Zlyi2ehIGYOCmsI9NHK8gb471RK8vJgQr9Exr4wGjcqM6327Nd1o4q3PqUTip31oJxYlJ0VQpBjzcdBfb2vpGxJtL0jkmn/oFbHPnV5Nzd5gjedpciyGySa+d/r2n08d6q7U0gVz6yx908MnRLjjxN59upwH37bOl+0DpWuuMy6KKEWXJdw+gcaoJKaGSgJdo3etgWmkpccRDEfUHhv9dtIsKUZsw7VyYke3nmxXZYiVkT4vwp73LqVY98Kt59ud+c7Wlxz562vUWhe39eSuIv2Auq1MTYKnjsN7Re6mf/DaONp/f7ifH+6nnLBtmH/B2Or/QNjqYfj6GqZyOv8Wj5+rX9nNh2Er/wq2Vij04yfrPXn5QJX4X7hiFL4dk1+etfv58oHx/XdV4qMic4sO52AfvoxYf8RT9ydT01KksV92EbnxaNKHH+jIf0r8np3/Pv3t5cn07eufz1v3uhohiOPiooNHh+vDjjtCRMbmVuYYjyM+mcjfQTTmu0X76hJc8beBaNIbRD1eEobrf46jySDiYWetlv228zdSE9px</source>
+  <type>class</type></file>

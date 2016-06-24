@@ -1,0 +1,387 @@
+<file path="codex/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php" generated-path="codex.vendor.laravel.framework.src.Illuminate.Foundation.Http.Kernel.html" hash="d2900c0b6c2104c329ac8f08930ad6c8" package="Default">
+    <docblock line="0">
+      <description/>
+      <long-description/>
+      <tag name="package" line="0" description="Default"/>
+    </docblock>
+    <namespace-alias name="Exception">\Exception</namespace-alias>
+    <namespace-alias name="Throwable">\Throwable</namespace-alias>
+    <namespace-alias name="Router">\Illuminate\Routing\Router</namespace-alias>
+    <namespace-alias name="Pipeline">\Illuminate\Routing\Pipeline</namespace-alias>
+    <namespace-alias name="Facade">\Illuminate\Support\Facades\Facade</namespace-alias>
+    <namespace-alias name="Application">\Illuminate\Contracts\Foundation\Application</namespace-alias>
+    <namespace-alias name="ExceptionHandler">\Illuminate\Contracts\Debug\ExceptionHandler</namespace-alias>
+    <namespace-alias name="KernelContract">\Illuminate\Contracts\Http\Kernel</namespace-alias>
+    <namespace-alias name="FatalThrowableError">\Symfony\Component\Debug\Exception\FatalThrowableError</namespace-alias>
+    <class final="false" abstract="false" namespace="Illuminate\Foundation\Http" line="15" package="Default">
+      <extends/>
+      <implements>\Illuminate\Contracts\Http\Kernel</implements>
+      <name>Kernel</name>
+      <full_name>\Illuminate\Foundation\Http\Kernel</full_name>
+      <docblock line="15">
+        <description/>
+        <long-description/>
+        <tag name="package" line="15" description="Default"/>
+      </docblock>
+      <property static="false" visibility="protected" namespace="Illuminate\Foundation\Http" line="22" package="Default">
+        <name>$app</name>
+        <full_name>\Illuminate\Foundation\Http\Kernel::app</full_name>
+        <default/>
+        <docblock line="22">
+          <description>The application implementation.</description>
+          <long-description/>
+          <tag name="var" line="22" description="" type="\Illuminate\Contracts\Foundation\Application" variable="">
+            <type>\Illuminate\Contracts\Foundation\Application</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" namespace="Illuminate\Foundation\Http" line="29" package="Default">
+        <name>$router</name>
+        <full_name>\Illuminate\Foundation\Http\Kernel::router</full_name>
+        <default/>
+        <docblock line="29">
+          <description>The router instance.</description>
+          <long-description/>
+          <tag name="var" line="29" description="" type="\Illuminate\Routing\Router" variable="">
+            <type>\Illuminate\Routing\Router</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" namespace="Illuminate\Foundation\Http" line="36" package="Default">
+        <name>$bootstrappers</name>
+        <full_name>\Illuminate\Foundation\Http\Kernel::bootstrappers</full_name>
+        <default>array('Illuminate\Foundation\Bootstrap\DetectEnvironment', 'Illuminate\Foundation\Bootstrap\LoadConfiguration', 'Illuminate\Foundation\Bootstrap\ConfigureLogging', 'Illuminate\Foundation\Bootstrap\HandleExceptions', 'Illuminate\Foundation\Bootstrap\RegisterFacades', 'Illuminate\Foundation\Bootstrap\RegisterProviders', 'Illuminate\Foundation\Bootstrap\BootProviders')</default>
+        <docblock line="36">
+          <description>The bootstrap classes for the application.</description>
+          <long-description/>
+          <tag name="var" line="36" description="" type="array" variable="">
+            <type>array</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" namespace="Illuminate\Foundation\Http" line="51" package="Default">
+        <name>$middleware</name>
+        <full_name>\Illuminate\Foundation\Http\Kernel::middleware</full_name>
+        <default>array()</default>
+        <docblock line="51">
+          <description>The application's middleware stack.</description>
+          <long-description/>
+          <tag name="var" line="51" description="" type="array" variable="">
+            <type>array</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" namespace="Illuminate\Foundation\Http" line="58" package="Default">
+        <name>$middlewareGroups</name>
+        <full_name>\Illuminate\Foundation\Http\Kernel::middlewareGroups</full_name>
+        <default>array()</default>
+        <docblock line="58">
+          <description>The application's route middleware groups.</description>
+          <long-description/>
+          <tag name="var" line="58" description="" type="array" variable="">
+            <type>array</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" namespace="Illuminate\Foundation\Http" line="65" package="Default">
+        <name>$routeMiddleware</name>
+        <full_name>\Illuminate\Foundation\Http\Kernel::routeMiddleware</full_name>
+        <default>array()</default>
+        <docblock line="65">
+          <description>The application's route middleware.</description>
+          <long-description/>
+          <tag name="var" line="65" description="" type="array" variable="">
+            <type>array</type>
+          </tag>
+        </docblock>
+      </property>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Foundation\Http" line="74" package="Default">
+        <name>__construct</name>
+        <full_name>\Illuminate\Foundation\Http\Kernel::__construct()</full_name>
+        <docblock line="74">
+          <description>Create a new HTTP kernel instance.</description>
+          <long-description/>
+          <tag name="param" line="74" description="" type="\Illuminate\Contracts\Foundation\Application" variable="$app">
+            <type>\Illuminate\Contracts\Foundation\Application</type>
+          </tag>
+          <tag name="param" line="74" description="" type="\Illuminate\Routing\Router" variable="$router">
+            <type>\Illuminate\Routing\Router</type>
+          </tag>
+          <tag name="return" line="74" description="" type="void">
+            <type>void</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$app</name>
+          <default/>
+          <type>\Illuminate\Contracts\Foundation\Application</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$router</name>
+          <default/>
+          <type>\Illuminate\Routing\Router</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Foundation\Http" line="94" package="Default">
+        <name>handle</name>
+        <full_name>\Illuminate\Foundation\Http\Kernel::handle()</full_name>
+        <docblock line="94">
+          <description>Handle an incoming HTTP request.</description>
+          <long-description/>
+          <tag name="param" line="94" description="" type="\Illuminate\Http\Request" variable="$request">
+            <type>\Illuminate\Http\Request</type>
+          </tag>
+          <tag name="return" line="94" description="" type="\Illuminate\Http\Response">
+            <type>\Illuminate\Http\Response</type>
+          </tag>
+          <tag name="inherited_from" description="\Illuminate\Contracts\Http\Kernel::handle()" refers="\Illuminate\Contracts\Http\Kernel::handle()" link="/classes/Illuminate.Contracts.Http.Kernel.html#method_handle"/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$request</name>
+          <default/>
+          <type>\Illuminate\Http\Request</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Foundation\Http" line="121" package="Default">
+        <name>sendRequestThroughRouter</name>
+        <full_name>\Illuminate\Foundation\Http\Kernel::sendRequestThroughRouter()</full_name>
+        <docblock line="121">
+          <description>Send the given request through the middleware / router.</description>
+          <long-description/>
+          <tag name="param" line="121" description="" type="\Illuminate\Http\Request" variable="$request">
+            <type>\Illuminate\Http\Request</type>
+          </tag>
+          <tag name="return" line="121" description="" type="\Illuminate\Http\Response">
+            <type>\Illuminate\Http\Response</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$request</name>
+          <default/>
+          <type>\Illuminate\Http\Request</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Foundation\Http" line="142" package="Default">
+        <name>terminate</name>
+        <full_name>\Illuminate\Foundation\Http\Kernel::terminate()</full_name>
+        <docblock line="142">
+          <description>Call the terminate method on any terminable middleware.</description>
+          <long-description/>
+          <tag name="param" line="142" description="" type="\Illuminate\Http\Request" variable="$request">
+            <type>\Illuminate\Http\Request</type>
+          </tag>
+          <tag name="param" line="142" description="" type="\Illuminate\Http\Response" variable="$response">
+            <type>\Illuminate\Http\Response</type>
+          </tag>
+          <tag name="return" line="142" description="" type="void">
+            <type>void</type>
+          </tag>
+          <tag name="inherited_from" description="\Illuminate\Contracts\Http\Kernel::terminate()" refers="\Illuminate\Contracts\Http\Kernel::terminate()" link="/classes/Illuminate.Contracts.Http.Kernel.html#method_terminate"/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$request</name>
+          <default/>
+          <type>\Illuminate\Http\Request</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$response</name>
+          <default/>
+          <type>\Illuminate\Http\Response</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Foundation\Http" line="168" package="Default">
+        <name>gatherRouteMiddlewares</name>
+        <full_name>\Illuminate\Foundation\Http\Kernel::gatherRouteMiddlewares()</full_name>
+        <docblock line="168">
+          <description>Gather the route middleware for the given request.</description>
+          <long-description/>
+          <tag name="param" line="168" description="" type="\Illuminate\Http\Request" variable="$request">
+            <type>\Illuminate\Http\Request</type>
+          </tag>
+          <tag name="return" line="168" description="" type="array">
+            <type>array</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$request</name>
+          <default/>
+          <type>\Illuminate\Http\Request</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Foundation\Http" line="183" package="Default">
+        <name>parseMiddleware</name>
+        <full_name>\Illuminate\Foundation\Http\Kernel::parseMiddleware()</full_name>
+        <docblock line="183">
+          <description>Parse a middleware string to get the name and parameters.</description>
+          <long-description/>
+          <tag name="param" line="183" description="" type="string" variable="$middleware">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="183" description="" type="array">
+            <type>array</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$middleware</name>
+          <default/>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Foundation\Http" line="200" package="Default">
+        <name>prependMiddleware</name>
+        <full_name>\Illuminate\Foundation\Http\Kernel::prependMiddleware()</full_name>
+        <docblock line="200">
+          <description>Add a new middleware to beginning of the stack if it does not already exist.</description>
+          <long-description/>
+          <tag name="param" line="200" description="" type="string" variable="$middleware">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="200" description="" type="\Illuminate\Foundation\Http\Kernel">
+            <type>\Illuminate\Foundation\Http\Kernel</type>
+          </tag>
+          <tag name="fluent" description="This method is part of a fluent interface and will return the same instance"/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$middleware</name>
+          <default/>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Foundation\Http" line="215" package="Default">
+        <name>pushMiddleware</name>
+        <full_name>\Illuminate\Foundation\Http\Kernel::pushMiddleware()</full_name>
+        <docblock line="215">
+          <description>Add a new middleware to end of the stack if it does not already exist.</description>
+          <long-description/>
+          <tag name="param" line="215" description="" type="string" variable="$middleware">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="215" description="" type="\Illuminate\Foundation\Http\Kernel">
+            <type>\Illuminate\Foundation\Http\Kernel</type>
+          </tag>
+          <tag name="fluent" description="This method is part of a fluent interface and will return the same instance"/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$middleware</name>
+          <default/>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Foundation\Http" line="229" package="Default">
+        <name>bootstrap</name>
+        <full_name>\Illuminate\Foundation\Http\Kernel::bootstrap()</full_name>
+        <docblock line="229">
+          <description>Bootstrap the application for HTTP requests.</description>
+          <long-description/>
+          <tag name="return" line="229" description="" type="void">
+            <type>void</type>
+          </tag>
+          <tag name="inherited_from" description="\Illuminate\Contracts\Http\Kernel::bootstrap()" refers="\Illuminate\Contracts\Http\Kernel::bootstrap()" link="/classes/Illuminate.Contracts.Http.Kernel.html#method_bootstrap"/>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Foundation\Http" line="241" package="Default">
+        <name>dispatchToRouter</name>
+        <full_name>\Illuminate\Foundation\Http\Kernel::dispatchToRouter()</full_name>
+        <docblock line="241">
+          <description>Get the route dispatcher callback.</description>
+          <long-description/>
+          <tag name="return" line="241" description="" type="\Closure">
+            <type>\Closure</type>
+          </tag>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Foundation\Http" line="256" package="Default">
+        <name>hasMiddleware</name>
+        <full_name>\Illuminate\Foundation\Http\Kernel::hasMiddleware()</full_name>
+        <docblock line="256">
+          <description>Determine if the kernel has a given middleware.</description>
+          <long-description/>
+          <tag name="param" line="256" description="" type="string" variable="$middleware">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="256" description="" type="boolean">
+            <type>boolean</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$middleware</name>
+          <default/>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Foundation\Http" line="266" package="Default">
+        <name>bootstrappers</name>
+        <full_name>\Illuminate\Foundation\Http\Kernel::bootstrappers()</full_name>
+        <docblock line="266">
+          <description>Get the bootstrap classes for the application.</description>
+          <long-description/>
+          <tag name="return" line="266" description="" type="array">
+            <type>array</type>
+          </tag>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Foundation\Http" line="277" package="Default">
+        <name>reportException</name>
+        <full_name>\Illuminate\Foundation\Http\Kernel::reportException()</full_name>
+        <docblock line="277">
+          <description>Report the exception to the exception handler.</description>
+          <long-description/>
+          <tag name="param" line="277" description="" type="\Exception" variable="$e">
+            <type>\Exception</type>
+          </tag>
+          <tag name="return" line="277" description="" type="void">
+            <type>void</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$e</name>
+          <default/>
+          <type>\Exception</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Foundation\Http" line="289" package="Default">
+        <name>renderException</name>
+        <full_name>\Illuminate\Foundation\Http\Kernel::renderException()</full_name>
+        <docblock line="289">
+          <description>Render the exception to a response.</description>
+          <long-description/>
+          <tag name="param" line="289" description="" type="\Illuminate\Http\Request" variable="$request">
+            <type>\Illuminate\Http\Request</type>
+          </tag>
+          <tag name="param" line="289" description="" type="\Exception" variable="$e">
+            <type>\Exception</type>
+          </tag>
+          <tag name="return" line="289" description="" type="\Symfony\Component\HttpFoundation\Response">
+            <type>\Symfony\Component\HttpFoundation\Response</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$request</name>
+          <default/>
+          <type>\Illuminate\Http\Request</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$e</name>
+          <default/>
+          <type>\Exception</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Foundation\Http" line="299" package="Default">
+        <name>getApplication</name>
+        <full_name>\Illuminate\Foundation\Http\Kernel::getApplication()</full_name>
+        <docblock line="299">
+          <description>Get the Laravel application instance.</description>
+          <long-description/>
+          <tag name="return" line="299" description="" type="\Illuminate\Contracts\Foundation\Application">
+            <type>\Illuminate\Contracts\Foundation\Application</type>
+          </tag>
+          <tag name="inherited_from" description="\Illuminate\Contracts\Http\Kernel::getApplication()" refers="\Illuminate\Contracts\Http\Kernel::getApplication()" link="/classes/Illuminate.Contracts.Http.Kernel.html#method_getApplication"/>
+        </docblock>
+      </method>
+    </class>
+    <parse_markers>
+      <error line="0" code="PPC:ERR-50000">No summary was found for this file</error>
+      <error line="15" code="PPC:ERR-50005">No summary for class \Illuminate\Foundation\Http\Kernel</error>
+    </parse_markers>
+    <source>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</source>
+  <type>class</type></file>

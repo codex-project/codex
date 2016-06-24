@@ -1,0 +1,405 @@
+<file path="codex/vendor/laravel/framework/src/Illuminate/Encryption/McryptEncrypter.php" generated-path="codex.vendor.laravel.framework.src.Illuminate.Encryption.McryptEncrypter.html" hash="57f395810d335012a8f0ede0a367d16f" package="Default">
+    <docblock line="0">
+      <description/>
+      <long-description/>
+      <tag name="package" line="0" description="Default"/>
+    </docblock>
+    <namespace-alias name="Exception">\Exception</namespace-alias>
+    <namespace-alias name="RuntimeException">\RuntimeException</namespace-alias>
+    <namespace-alias name="DecryptException">\Illuminate\Contracts\Encryption\DecryptException</namespace-alias>
+    <namespace-alias name="EncryptException">\Illuminate\Contracts\Encryption\EncryptException</namespace-alias>
+    <namespace-alias name="EncrypterContract">\Illuminate\Contracts\Encryption\Encrypter</namespace-alias>
+    <class final="false" abstract="false" namespace="Illuminate\Encryption" line="14" package="Default">
+      <extends>\Illuminate\Encryption\BaseEncrypter</extends>
+      <implements>\Illuminate\Contracts\Encryption\Encrypter</implements>
+      <name>McryptEncrypter</name>
+      <full_name>\Illuminate\Encryption\McryptEncrypter</full_name>
+      <docblock line="14">
+        <description/>
+        <long-description/>
+        <tag name="deprecated" line="14" description="since version 5.1. Use Illuminate\Encryption\Encrypter."/>
+        <tag name="package" line="14" description="Default"/>
+        <tag name="inherited_from" description="\Illuminate\Encryption\BaseEncrypter" refers="\Illuminate\Encryption\BaseEncrypter" link="/classes/Illuminate.Encryption.BaseEncrypter.html"/>
+      </docblock>
+      <property static="false" visibility="protected" namespace="Illuminate\Encryption" line="21" package="Default">
+        <name>$cipher</name>
+        <full_name>\Illuminate\Encryption\McryptEncrypter::cipher</full_name>
+        <default/>
+        <docblock line="21">
+          <description>The algorithm used for encryption.</description>
+          <long-description/>
+          <tag name="var" line="21" description="" type="string" variable="">
+            <type>string</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" namespace="Illuminate\Encryption" line="28" package="Default">
+        <name>$block</name>
+        <full_name>\Illuminate\Encryption\McryptEncrypter::block</full_name>
+        <default/>
+        <docblock line="28">
+          <description>The block size of the cipher.</description>
+          <long-description/>
+          <tag name="var" line="28" description="" type="integer" variable="">
+            <type>integer</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" namespace="Illuminate\Encryption" line="14" package="Default">
+        <name>$key</name>
+        <full_name>\Illuminate\Encryption\BaseEncrypter::key</full_name>
+        <default/>
+        <docblock line="14">
+          <description>The encryption key.</description>
+          <long-description/>
+          <tag name="var" line="14" description="" type="string" variable="">
+            <type>string</type>
+          </tag>
+        </docblock>
+      </property>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Encryption" line="39" package="Default">
+        <name>__construct</name>
+        <full_name>\Illuminate\Encryption\McryptEncrypter::__construct()</full_name>
+        <docblock line="39">
+          <description>Create a new encrypter instance.</description>
+          <long-description/>
+          <tag name="param" line="39" description="" type="string" variable="$key">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="39" description="" type="string" variable="$cipher">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="39" description="" type="void">
+            <type>void</type>
+          </tag>
+          <tag name="throws" line="39" description="" type="\RuntimeException">
+            <type>\RuntimeException</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$key</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$cipher</name>
+          <default>MCRYPT_RIJNDAEL_128</default>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="true" visibility="public" namespace="Illuminate\Encryption" line="59" package="Default">
+        <name>supported</name>
+        <full_name>\Illuminate\Encryption\McryptEncrypter::supported()</full_name>
+        <docblock line="59">
+          <description>Determine if the given key and cipher combination is valid.</description>
+          <long-description/>
+          <tag name="param" line="59" description="" type="string" variable="$key">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="59" description="" type="string" variable="$cipher">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="59" description="" type="boolean">
+            <type>boolean</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$key</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$cipher</name>
+          <default/>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Encryption" line="73" package="Default">
+        <name>encrypt</name>
+        <full_name>\Illuminate\Encryption\McryptEncrypter::encrypt()</full_name>
+        <docblock line="73">
+          <description>Encrypt the given value.</description>
+          <long-description/>
+          <tag name="param" line="73" description="" type="string" variable="$value">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="73" description="" type="string">
+            <type>string</type>
+          </tag>
+          <tag name="throws" line="73" description="" type="\Illuminate\Contracts\Encryption\EncryptException">
+            <type>\Illuminate\Contracts\Encryption\EncryptException</type>
+          </tag>
+          <tag name="inherited_from" description="\Illuminate\Contracts\Encryption\Encrypter::encrypt()" refers="\Illuminate\Contracts\Encryption\Encrypter::encrypt()" link="/classes/Illuminate.Contracts.Encryption.Encrypter.html#method_encrypt"/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$value</name>
+          <default/>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Encryption" line="100" package="Default">
+        <name>padAndMcrypt</name>
+        <full_name>\Illuminate\Encryption\McryptEncrypter::padAndMcrypt()</full_name>
+        <docblock line="100">
+          <description>Pad and use mcrypt on the given value and input vector.</description>
+          <long-description/>
+          <tag name="param" line="100" description="" type="string" variable="$value">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="100" description="" type="string" variable="$iv">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="100" description="" type="string">
+            <type>string</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$value</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$iv</name>
+          <default/>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Encryption" line="113" package="Default">
+        <name>decrypt</name>
+        <full_name>\Illuminate\Encryption\McryptEncrypter::decrypt()</full_name>
+        <docblock line="113">
+          <description>Decrypt the given value.</description>
+          <long-description/>
+          <tag name="param" line="113" description="" type="string" variable="$payload">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="113" description="" type="string">
+            <type>string</type>
+          </tag>
+          <tag name="inherited_from" description="\Illuminate\Contracts\Encryption\Encrypter::decrypt()" refers="\Illuminate\Contracts\Encryption\Encrypter::decrypt()" link="/classes/Illuminate.Contracts.Encryption.Encrypter.html#method_decrypt"/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$payload</name>
+          <default/>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Encryption" line="136" package="Default">
+        <name>mcryptDecrypt</name>
+        <full_name>\Illuminate\Encryption\McryptEncrypter::mcryptDecrypt()</full_name>
+        <docblock line="136">
+          <description>Run the mcrypt decryption routine for the value.</description>
+          <long-description/>
+          <tag name="param" line="136" description="" type="string" variable="$value">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="136" description="" type="string" variable="$iv">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="136" description="" type="string">
+            <type>string</type>
+          </tag>
+          <tag name="throws" line="136" description="" type="\Illuminate\Contracts\Encryption\DecryptException">
+            <type>\Illuminate\Contracts\Encryption\DecryptException</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$value</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$iv</name>
+          <default/>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Encryption" line="151" package="Default">
+        <name>addPadding</name>
+        <full_name>\Illuminate\Encryption\McryptEncrypter::addPadding()</full_name>
+        <docblock line="151">
+          <description>Add PKCS7 padding to a given value.</description>
+          <long-description/>
+          <tag name="param" line="151" description="" type="string" variable="$value">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="151" description="" type="string">
+            <type>string</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$value</name>
+          <default/>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Encryption" line="164" package="Default">
+        <name>stripPadding</name>
+        <full_name>\Illuminate\Encryption\McryptEncrypter::stripPadding()</full_name>
+        <docblock line="164">
+          <description>Remove the padding from the given value.</description>
+          <long-description/>
+          <tag name="param" line="164" description="" type="string" variable="$value">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="164" description="" type="string">
+            <type>string</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$value</name>
+          <default/>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Encryption" line="178" package="Default">
+        <name>paddingIsValid</name>
+        <full_name>\Illuminate\Encryption\McryptEncrypter::paddingIsValid()</full_name>
+        <docblock line="178">
+          <description>Determine if the given padding for a value is valid.</description>
+          <long-description/>
+          <tag name="param" line="178" description="" type="string" variable="$pad">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="178" description="" type="string" variable="$value">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="178" description="" type="boolean">
+            <type>boolean</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$pad</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$value</name>
+          <default/>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Encryption" line="190" package="Default">
+        <name>getIvSize</name>
+        <full_name>\Illuminate\Encryption\McryptEncrypter::getIvSize()</full_name>
+        <docblock line="190">
+          <description>Get the IV size for the cipher.</description>
+          <long-description/>
+          <tag name="return" line="190" description="" type="integer">
+            <type>integer</type>
+          </tag>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Encryption" line="200" package="Default">
+        <name>getRandomizer</name>
+        <full_name>\Illuminate\Encryption\McryptEncrypter::getRandomizer()</full_name>
+        <docblock line="200">
+          <description>Get the random data source available for the OS.</description>
+          <long-description/>
+          <tag name="return" line="200" description="" type="integer">
+            <type>integer</type>
+          </tag>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Encryption" line="23" package="Default">
+        <name>hash</name>
+        <full_name>\Illuminate\Encryption\BaseEncrypter::hash()</full_name>
+        <docblock line="23">
+          <description>Create a MAC for the given value.</description>
+          <long-description/>
+          <tag name="param" line="23" description="" type="string" variable="$iv">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="23" description="" type="string" variable="$value">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="23" description="" type="string">
+            <type>string</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$iv</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$value</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <inherited_from>\Illuminate\Encryption\BaseEncrypter</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Encryption" line="36" package="Default">
+        <name>getJsonPayload</name>
+        <full_name>\Illuminate\Encryption\BaseEncrypter::getJsonPayload()</full_name>
+        <docblock line="36">
+          <description>Get the JSON array from the given payload.</description>
+          <long-description/>
+          <tag name="param" line="36" description="" type="string" variable="$payload">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="36" description="" type="array">
+            <type>array</type>
+          </tag>
+          <tag name="throws" line="36" description="" type="\Illuminate\Contracts\Encryption\DecryptException">
+            <type>\Illuminate\Contracts\Encryption\DecryptException</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$payload</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <inherited_from>\Illuminate\Encryption\BaseEncrypter</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Encryption" line="60" package="Default">
+        <name>invalidPayload</name>
+        <full_name>\Illuminate\Encryption\BaseEncrypter::invalidPayload()</full_name>
+        <docblock line="60">
+          <description>Verify that the encryption payload is valid.</description>
+          <long-description/>
+          <tag name="param" line="60" description="" type="array|mixed" variable="$data">
+            <type>array</type>
+            <type>mixed</type>
+          </tag>
+          <tag name="return" line="60" description="" type="boolean">
+            <type>boolean</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$data</name>
+          <default/>
+          <type>array|mixed</type>
+        </argument>
+        <inherited_from>\Illuminate\Encryption\BaseEncrypter</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Encryption" line="73" package="Default">
+        <name>validMac</name>
+        <full_name>\Illuminate\Encryption\BaseEncrypter::validMac()</full_name>
+        <docblock line="73">
+          <description>Determine if the MAC for the given payload is valid.</description>
+          <long-description/>
+          <tag name="param" line="73" description="" type="array" variable="$payload">
+            <type>array</type>
+          </tag>
+          <tag name="return" line="73" description="" type="boolean">
+            <type>boolean</type>
+          </tag>
+          <tag name="throws" line="73" description="" type="\RuntimeException">
+            <type>\RuntimeException</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$payload</name>
+          <default/>
+          <type>array</type>
+        </argument>
+        <inherited_from>\Illuminate\Encryption\BaseEncrypter</inherited_from>
+      </method>
+    </class>
+    <parse_markers>
+      <error line="0" code="PPC:ERR-50000">No summary was found for this file</error>
+      <error line="14" code="PPC:ERR-50005">No summary for class \Illuminate\Encryption\McryptEncrypter</error>
+    </parse_markers>
+    <source>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</source>
+  <type>class</type></file>

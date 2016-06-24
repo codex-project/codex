@@ -1,0 +1,446 @@
+<file path="codex/vendor/laravel/framework/src/Illuminate/Queue/Capsule/Manager.php" generated-path="codex.vendor.laravel.framework.src.Illuminate.Queue.Capsule.Manager.html" hash="3d21fed7325fb0bd2bacf2caddf25985" package="Default">
+    <docblock line="0">
+      <description/>
+      <long-description/>
+      <tag name="package" line="0" description="Default"/>
+    </docblock>
+    <namespace-alias name="QueueManager">\Illuminate\Queue\QueueManager</namespace-alias>
+    <namespace-alias name="Container">\Illuminate\Container\Container</namespace-alias>
+    <namespace-alias name="QueueServiceProvider">\Illuminate\Queue\QueueServiceProvider</namespace-alias>
+    <namespace-alias name="CapsuleManagerTrait">\Illuminate\Support\Traits\CapsuleManagerTrait</namespace-alias>
+    <class final="false" abstract="false" namespace="Illuminate\Queue\Capsule" line="10" package="Default">
+      <extends/>
+      <name>Manager</name>
+      <full_name>\Illuminate\Queue\Capsule\Manager</full_name>
+      <docblock line="10">
+        <description/>
+        <long-description/>
+        <tag name="package" line="10" description="Default"/>
+      </docblock>
+      <property static="false" visibility="protected" namespace="Illuminate\Queue\Capsule" line="19" package="Default">
+        <name>$manager</name>
+        <full_name>\Illuminate\Queue\Capsule\Manager::manager</full_name>
+        <default/>
+        <docblock line="19">
+          <description>The queue manager instance.</description>
+          <long-description/>
+          <tag name="var" line="19" description="" type="\Illuminate\Queue\QueueManager" variable="">
+            <type>\Illuminate\Queue\QueueManager</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="true" visibility="protected" namespace="Illuminate\Queue\Capsule" line="15" package="Default">
+        <name>$instance</name>
+        <full_name>\Illuminate\Support\Traits\CapsuleManagerTrait::instance</full_name>
+        <default/>
+        <docblock line="15">
+          <description>The current globally used instance.</description>
+          <long-description/>
+          <tag name="var" line="15" description="" type="object" variable="">
+            <type>object</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" namespace="Illuminate\Queue\Capsule" line="22" package="Default">
+        <name>$container</name>
+        <full_name>\Illuminate\Support\Traits\CapsuleManagerTrait::container</full_name>
+        <default/>
+        <docblock line="22">
+          <description>The container instance.</description>
+          <long-description/>
+          <tag name="var" line="22" description="" type="\Illuminate\Contracts\Container\Container" variable="">
+            <type>\Illuminate\Contracts\Container\Container</type>
+          </tag>
+        </docblock>
+      </property>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Queue\Capsule" line="27" package="Default">
+        <name>__construct</name>
+        <full_name>\Illuminate\Queue\Capsule\Manager::__construct()</full_name>
+        <docblock line="27">
+          <description>Create a new queue capsule manager.</description>
+          <long-description/>
+          <tag name="param" line="27" description="" type="\Illuminate\Container\Container" variable="$container">
+            <type>\Illuminate\Container\Container</type>
+          </tag>
+          <tag name="return" line="27" description="" type="void">
+            <type>void</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$container</name>
+          <default>null</default>
+          <type>\Illuminate\Container\Container</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Queue\Capsule" line="46" package="Default">
+        <name>setupDefaultConfiguration</name>
+        <full_name>\Illuminate\Queue\Capsule\Manager::setupDefaultConfiguration()</full_name>
+        <docblock line="46">
+          <description>Setup the default queue configuration options.</description>
+          <long-description/>
+          <tag name="return" line="46" description="" type="void">
+            <type>void</type>
+          </tag>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Queue\Capsule" line="56" package="Default">
+        <name>setupManager</name>
+        <full_name>\Illuminate\Queue\Capsule\Manager::setupManager()</full_name>
+        <docblock line="56">
+          <description>Build the queue manager instance.</description>
+          <long-description/>
+          <tag name="return" line="56" description="" type="void">
+            <type>void</type>
+          </tag>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Queue\Capsule" line="66" package="Default">
+        <name>registerConnectors</name>
+        <full_name>\Illuminate\Queue\Capsule\Manager::registerConnectors()</full_name>
+        <docblock line="66">
+          <description>Register the default connectors that the component ships with.</description>
+          <long-description/>
+          <tag name="return" line="66" description="" type="void">
+            <type>void</type>
+          </tag>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="true" visibility="public" namespace="Illuminate\Queue\Capsule" line="79" package="Default">
+        <name>connection</name>
+        <full_name>\Illuminate\Queue\Capsule\Manager::connection()</full_name>
+        <docblock line="79">
+          <description>Get a connection instance from the global manager.</description>
+          <long-description/>
+          <tag name="param" line="79" description="" type="string" variable="$connection">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="79" description="" type="\Illuminate\Contracts\Queue\Queue">
+            <type>\Illuminate\Contracts\Queue\Queue</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$connection</name>
+          <default>null</default>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="true" visibility="public" namespace="Illuminate\Queue\Capsule" line="93" package="Default">
+        <name>push</name>
+        <full_name>\Illuminate\Queue\Capsule\Manager::push()</full_name>
+        <docblock line="93">
+          <description>Push a new job onto the queue.</description>
+          <long-description/>
+          <tag name="param" line="93" description="" type="string" variable="$job">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="93" description="" type="mixed" variable="$data">
+            <type>mixed</type>
+          </tag>
+          <tag name="param" line="93" description="" type="string" variable="$queue">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="93" description="" type="string" variable="$connection">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="93" description="" type="mixed">
+            <type>mixed</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$job</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$data</name>
+          <default>''</default>
+          <type>mixed</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$queue</name>
+          <default>null</default>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$connection</name>
+          <default>null</default>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="true" visibility="public" namespace="Illuminate\Queue\Capsule" line="107" package="Default">
+        <name>bulk</name>
+        <full_name>\Illuminate\Queue\Capsule\Manager::bulk()</full_name>
+        <docblock line="107">
+          <description>Push a new an array of jobs onto the queue.</description>
+          <long-description/>
+          <tag name="param" line="107" description="" type="array" variable="$jobs">
+            <type>array</type>
+          </tag>
+          <tag name="param" line="107" description="" type="mixed" variable="$data">
+            <type>mixed</type>
+          </tag>
+          <tag name="param" line="107" description="" type="string" variable="$queue">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="107" description="" type="string" variable="$connection">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="107" description="" type="mixed">
+            <type>mixed</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$jobs</name>
+          <default/>
+          <type>array</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$data</name>
+          <default>''</default>
+          <type>mixed</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$queue</name>
+          <default>null</default>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$connection</name>
+          <default>null</default>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="true" visibility="public" namespace="Illuminate\Queue\Capsule" line="122" package="Default">
+        <name>later</name>
+        <full_name>\Illuminate\Queue\Capsule\Manager::later()</full_name>
+        <docblock line="122">
+          <description>Push a new job onto the queue after a delay.</description>
+          <long-description/>
+          <tag name="param" line="122" description="" type="\DateTime|integer" variable="$delay">
+            <type>\DateTime</type>
+            <type>integer</type>
+          </tag>
+          <tag name="param" line="122" description="" type="string" variable="$job">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="122" description="" type="mixed" variable="$data">
+            <type>mixed</type>
+          </tag>
+          <tag name="param" line="122" description="" type="string" variable="$queue">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="122" description="" type="string" variable="$connection">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="122" description="" type="mixed">
+            <type>mixed</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$delay</name>
+          <default/>
+          <type>\DateTime|integer</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$job</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$data</name>
+          <default>''</default>
+          <type>mixed</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$queue</name>
+          <default>null</default>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$connection</name>
+          <default>null</default>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Queue\Capsule" line="133" package="Default">
+        <name>getConnection</name>
+        <full_name>\Illuminate\Queue\Capsule\Manager::getConnection()</full_name>
+        <docblock line="133">
+          <description>Get a registered connection instance.</description>
+          <long-description/>
+          <tag name="param" line="133" description="" type="string" variable="$name">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="133" description="" type="\Illuminate\Contracts\Queue\Queue">
+            <type>\Illuminate\Contracts\Queue\Queue</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$name</name>
+          <default>null</default>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Queue\Capsule" line="145" package="Default">
+        <name>addConnection</name>
+        <full_name>\Illuminate\Queue\Capsule\Manager::addConnection()</full_name>
+        <docblock line="145">
+          <description>Register a connection with the manager.</description>
+          <long-description/>
+          <tag name="param" line="145" description="" type="array" variable="$config">
+            <type>array</type>
+          </tag>
+          <tag name="param" line="145" description="" type="string" variable="$name">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="145" description="" type="void">
+            <type>void</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$config</name>
+          <default/>
+          <type>array</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$name</name>
+          <default>'default'</default>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Queue\Capsule" line="155" package="Default">
+        <name>getQueueManager</name>
+        <full_name>\Illuminate\Queue\Capsule\Manager::getQueueManager()</full_name>
+        <docblock line="155">
+          <description>Get the queue manager instance.</description>
+          <long-description/>
+          <tag name="return" line="155" description="" type="\Illuminate\Queue\QueueManager">
+            <type>\Illuminate\Queue\QueueManager</type>
+          </tag>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Queue\Capsule" line="167" package="Default">
+        <name>__call</name>
+        <full_name>\Illuminate\Queue\Capsule\Manager::__call()</full_name>
+        <docblock line="167">
+          <description>Pass dynamic instance methods to the manager.</description>
+          <long-description/>
+          <tag name="param" line="167" description="" type="string" variable="$method">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="167" description="" type="array" variable="$parameters">
+            <type>array</type>
+          </tag>
+          <tag name="return" line="167" description="" type="mixed">
+            <type>mixed</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$method</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$parameters</name>
+          <default/>
+          <type>array</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="true" visibility="public" namespace="Illuminate\Queue\Capsule" line="179" package="Default">
+        <name>__callStatic</name>
+        <full_name>\Illuminate\Queue\Capsule\Manager::__callStatic()</full_name>
+        <docblock line="179">
+          <description>Dynamically pass methods to the default connection.</description>
+          <long-description/>
+          <tag name="param" line="179" description="" type="string" variable="$method">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="179" description="" type="array" variable="$parameters">
+            <type>array</type>
+          </tag>
+          <tag name="return" line="179" description="" type="mixed">
+            <type>mixed</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$method</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$parameters</name>
+          <default/>
+          <type>array</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Queue\Capsule" line="30" package="Default">
+        <name>setupContainer</name>
+        <full_name>\Illuminate\Support\Traits\CapsuleManagerTrait::setupContainer()</full_name>
+        <docblock line="30">
+          <description>Setup the IoC container instance.</description>
+          <long-description/>
+          <tag name="param" line="30" description="" type="\Illuminate\Contracts\Container\Container" variable="$container">
+            <type>\Illuminate\Contracts\Container\Container</type>
+          </tag>
+          <tag name="return" line="30" description="" type="void">
+            <type>void</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$container</name>
+          <default/>
+          <type>\Illuminate\Contracts\Container\Container</type>
+        </argument>
+        <inherited_from>\Illuminate\Support\Traits\CapsuleManagerTrait</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Queue\Capsule" line="44" package="Default">
+        <name>setAsGlobal</name>
+        <full_name>\Illuminate\Support\Traits\CapsuleManagerTrait::setAsGlobal()</full_name>
+        <docblock line="44">
+          <description>Make this capsule instance available globally.</description>
+          <long-description/>
+          <tag name="return" line="44" description="" type="void">
+            <type>void</type>
+          </tag>
+        </docblock>
+        <inherited_from>\Illuminate\Support\Traits\CapsuleManagerTrait</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Queue\Capsule" line="54" package="Default">
+        <name>getContainer</name>
+        <full_name>\Illuminate\Support\Traits\CapsuleManagerTrait::getContainer()</full_name>
+        <docblock line="54">
+          <description>Get the IoC container instance.</description>
+          <long-description/>
+          <tag name="return" line="54" description="" type="\Illuminate\Contracts\Container\Container">
+            <type>\Illuminate\Contracts\Container\Container</type>
+          </tag>
+        </docblock>
+        <inherited_from>\Illuminate\Support\Traits\CapsuleManagerTrait</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Queue\Capsule" line="65" package="Default">
+        <name>setContainer</name>
+        <full_name>\Illuminate\Support\Traits\CapsuleManagerTrait::setContainer()</full_name>
+        <docblock line="65">
+          <description>Set the IoC container instance.</description>
+          <long-description/>
+          <tag name="param" line="65" description="" type="\Illuminate\Contracts\Container\Container" variable="$container">
+            <type>\Illuminate\Contracts\Container\Container</type>
+          </tag>
+          <tag name="return" line="65" description="" type="void">
+            <type>void</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$container</name>
+          <default/>
+          <type>\Illuminate\Contracts\Container\Container</type>
+        </argument>
+        <inherited_from>\Illuminate\Support\Traits\CapsuleManagerTrait</inherited_from>
+      </method>
+    </class>
+    <parse_markers>
+      <error line="0" code="PPC:ERR-50000">No summary was found for this file</error>
+      <error line="10" code="PPC:ERR-50005">No summary for class \Illuminate\Queue\Capsule\Manager</error>
+    </parse_markers>
+    <source>eJzVV1tvGjsQfudXjCIkSESS9/Q0rUqkqg9HvSRvSYTMrgG3XnuP7SVFPfnvHV928d4CNFUvPAC7Hs988834s/3Pq3yVDwaCZFTnJKHwjvMiY4IYevexoAW9m5JcF5y+GAwK3THsvv8lgiypetE0mUphCBNUbf+1bCI311StWUI/KLlmaYfpdZHnUpm7G0WY0SWyENy9RJQJJ1pDeDn4NgD8WD/d1nb0/OTE/cIJ3Kwo/GehQObtgAltiEjoWTApLV+viYK7J+kIpufuN1fS0MTQFIZZyVYz+lRR9AQEBH0IMBKPuoTTQpETRTKoAekgHWCYlP+rqYqaQglYS5bWkRZzzhJYFCIxTAqYzXCuNqpIzHjrcesQXoIoOD92kz3f9jM0K6ZPLzVGyatp42jaqwuXZzV2HAhxpJzDeyQdHiisyJqCwbpsZzqfEzv4wDj3j84kpQtScGNNF2xZKGITiJ3K3L7RWNWGyyM/5QjmTKRMLPUZ9gLT8LnQBsn/QjXYfHxVYo9ln8ypA5pIpbDMfAOa2QQI4vOR3PvSPRBFLYick6q1Gpxd+VymcSrjmKPYOHRc17iiS6YNVehIIAKptLWyBo+tBrxuMRm6MAZRktjqxd6Gqlq/6qknMuxuo6pStyMPZnR/O3LgzgLU0T024qh86MvwTcF46jLcc5kfmlRVie48yngvXe/HajFuZtpbpU+hos2WD+XF18SEpstyKagwoFcs17hazOo5CXa1UjPNPIh3nGFD17sybTvo7Nw6i70MvaUGVTRQYpGX5YWFkpnjZsnlnPBduoqyZ1erU7vgq0lcU3oVSXBvinaDLnFFNCbW2K37cRSqR1lDYO/j4mJYJnd6uaRm2umpl6kPhV6FDeeznAPil9vVsZMVnNIcy9hXbBkcS4khvRMjGT2IbOd9H0JzzGts8U08EqsNo0kIHHidwHO47i7Z8ellM3QZdZ8aEIE7gyIbkAtbD71nQfwcXxD9h1ZkXvAvjhb960vSin1ITdrrAsjCyi9B8eVk03smu0JJuGEZ/Z+hAmNca/wXLiWOaaBmO/gT+D1rqhfDzkL6raDcSpDPjl1hp87Z69FP0f2K1IZS2wBPs1Xf+epU2dm7Twu1DdEeBVxD79gAK2Xxp66DGNp5syBpGpHgQ4VAEyg5qY50B5wMj7xabvPVZ9+cv8cje0oMMZ5qmcNPiIfcBdvNUDsJ7tUCvcplr7/pBrPFENW5J6NmJVM8G8p9ql6V1U/raYqhe6TYW7pJRq+4xLdKvBuNQ4RJ7KwnfWs/w5u8mlknMwdifFsnZVJCvq977CPryvOEnjeQW+IaPDVO1wj8eZT9EGdNQfbUXbu3zyewlOFIUI530fg4+A4Qno4S</source>
+  <type>class</type></file>

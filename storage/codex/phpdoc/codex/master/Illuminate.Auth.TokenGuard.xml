@@ -1,0 +1,250 @@
+<file path="codex/vendor/laravel/framework/src/Illuminate/Auth/TokenGuard.php" generated-path="codex.vendor.laravel.framework.src.Illuminate.Auth.TokenGuard.html" hash="ffce6bbaf86bc7e88b06e7cc7407de88" package="Default">
+    <docblock line="0">
+      <description/>
+      <long-description/>
+      <tag name="package" line="0" description="Default"/>
+    </docblock>
+    <namespace-alias name="Request">\Illuminate\Http\Request</namespace-alias>
+    <namespace-alias name="Guard">\Illuminate\Contracts\Auth\Guard</namespace-alias>
+    <namespace-alias name="UserProvider">\Illuminate\Contracts\Auth\UserProvider</namespace-alias>
+    <class final="false" abstract="false" namespace="Illuminate\Auth" line="9" package="Default">
+      <extends/>
+      <implements>\Illuminate\Contracts\Auth\Guard</implements>
+      <name>TokenGuard</name>
+      <full_name>\Illuminate\Auth\TokenGuard</full_name>
+      <docblock line="9">
+        <description/>
+        <long-description/>
+        <tag name="package" line="9" description="Default"/>
+      </docblock>
+      <property static="false" visibility="protected" namespace="Illuminate\Auth" line="18" package="Default">
+        <name>$request</name>
+        <full_name>\Illuminate\Auth\TokenGuard::request</full_name>
+        <default/>
+        <docblock line="18">
+          <description>The request instance.</description>
+          <long-description/>
+          <tag name="var" line="18" description="" type="\Illuminate\Http\Request" variable="">
+            <type>\Illuminate\Http\Request</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" namespace="Illuminate\Auth" line="25" package="Default">
+        <name>$inputKey</name>
+        <full_name>\Illuminate\Auth\TokenGuard::inputKey</full_name>
+        <default/>
+        <docblock line="25">
+          <description>The name of the field on the request containing the API token.</description>
+          <long-description/>
+          <tag name="var" line="25" description="" type="string" variable="">
+            <type>string</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" namespace="Illuminate\Auth" line="32" package="Default">
+        <name>$storageKey</name>
+        <full_name>\Illuminate\Auth\TokenGuard::storageKey</full_name>
+        <default/>
+        <docblock line="32">
+          <description>The name of the token "column" in persistent storage.</description>
+          <long-description/>
+          <tag name="var" line="32" description="" type="string" variable="">
+            <type>string</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" namespace="Illuminate\Auth" line="17" package="Default">
+        <name>$user</name>
+        <full_name>\Illuminate\Auth\GuardHelpers::user</full_name>
+        <default/>
+        <docblock line="17">
+          <description>The currently authenticated user.</description>
+          <long-description/>
+          <tag name="var" line="17" description="" type="\Illuminate\Contracts\Auth\Authenticatable" variable="">
+            <type>\Illuminate\Contracts\Auth\Authenticatable</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" namespace="Illuminate\Auth" line="24" package="Default">
+        <name>$provider</name>
+        <full_name>\Illuminate\Auth\GuardHelpers::provider</full_name>
+        <default/>
+        <docblock line="24">
+          <description>The user provider implementation.</description>
+          <long-description/>
+          <tag name="var" line="24" description="" type="\Illuminate\Contracts\Auth\UserProvider" variable="">
+            <type>\Illuminate\Contracts\Auth\UserProvider</type>
+          </tag>
+        </docblock>
+      </property>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Auth" line="41" package="Default">
+        <name>__construct</name>
+        <full_name>\Illuminate\Auth\TokenGuard::__construct()</full_name>
+        <docblock line="41">
+          <description>Create a new authentication guard.</description>
+          <long-description/>
+          <tag name="param" line="41" description="" type="\Illuminate\Contracts\Auth\UserProvider" variable="$provider">
+            <type>\Illuminate\Contracts\Auth\UserProvider</type>
+          </tag>
+          <tag name="param" line="41" description="" type="\Illuminate\Http\Request" variable="$request">
+            <type>\Illuminate\Http\Request</type>
+          </tag>
+          <tag name="return" line="41" description="" type="void">
+            <type>void</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$provider</name>
+          <default/>
+          <type>\Illuminate\Contracts\Auth\UserProvider</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$request</name>
+          <default/>
+          <type>\Illuminate\Http\Request</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Auth" line="54" package="Default">
+        <name>user</name>
+        <full_name>\Illuminate\Auth\TokenGuard::user()</full_name>
+        <docblock line="54">
+          <description>Get the currently authenticated user.</description>
+          <long-description/>
+          <tag name="return" line="54" description="" type="\Illuminate\Contracts\Auth\Authenticatable|null">
+            <type>\Illuminate\Contracts\Auth\Authenticatable</type>
+            <type>null</type>
+          </tag>
+          <tag name="inherited_from" description="\Illuminate\Contracts\Auth\Guard::user()" refers="\Illuminate\Contracts\Auth\Guard::user()" link="/classes/Illuminate.Contracts.Auth.Guard.html#method_user"/>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Auth" line="81" package="Default">
+        <name>getTokenForRequest</name>
+        <full_name>\Illuminate\Auth\TokenGuard::getTokenForRequest()</full_name>
+        <docblock line="81">
+          <description>Get the token for the current request.</description>
+          <long-description/>
+          <tag name="return" line="81" description="" type="string">
+            <type>string</type>
+          </tag>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Auth" line="102" package="Default">
+        <name>validate</name>
+        <full_name>\Illuminate\Auth\TokenGuard::validate()</full_name>
+        <docblock line="102">
+          <description>Validate a user's credentials.</description>
+          <long-description/>
+          <tag name="param" line="102" description="" type="array" variable="$credentials">
+            <type>array</type>
+          </tag>
+          <tag name="return" line="102" description="" type="boolean">
+            <type>boolean</type>
+          </tag>
+          <tag name="inherited_from" description="\Illuminate\Contracts\Auth\Guard::validate()" refers="\Illuminate\Contracts\Auth\Guard::validate()" link="/classes/Illuminate.Contracts.Auth.Guard.html#method_validate"/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$credentials</name>
+          <default>array()</default>
+          <type>array</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Auth" line="119" package="Default">
+        <name>setRequest</name>
+        <full_name>\Illuminate\Auth\TokenGuard::setRequest()</full_name>
+        <docblock line="119">
+          <description>Set the current request instance.</description>
+          <long-description/>
+          <tag name="param" line="119" description="" type="\Illuminate\Http\Request" variable="$request">
+            <type>\Illuminate\Http\Request</type>
+          </tag>
+          <tag name="return" line="119" description="" type="\Illuminate\Auth\TokenGuard">
+            <type>\Illuminate\Auth\TokenGuard</type>
+          </tag>
+          <tag name="fluent" description="This method is part of a fluent interface and will return the same instance"/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$request</name>
+          <default/>
+          <type>\Illuminate\Http\Request</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Auth" line="33" package="Default">
+        <name>authenticate</name>
+        <full_name>\Illuminate\Auth\GuardHelpers::authenticate()</full_name>
+        <docblock line="33">
+          <description>Determine if the current user is authenticated.</description>
+          <long-description/>
+          <tag name="return" line="33" description="" type="\Illuminate\Contracts\Auth\Authenticatable">
+            <type>\Illuminate\Contracts\Auth\Authenticatable</type>
+          </tag>
+          <tag name="throws" line="33" description="" type="\Illuminate\Auth\AuthenticationException">
+            <type>\Illuminate\Auth\AuthenticationException</type>
+          </tag>
+        </docblock>
+        <inherited_from>\Illuminate\Auth\GuardHelpers</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Auth" line="47" package="Default">
+        <name>check</name>
+        <full_name>\Illuminate\Auth\GuardHelpers::check()</full_name>
+        <docblock line="47">
+          <description>Determine if the current user is authenticated.</description>
+          <long-description/>
+          <tag name="return" line="47" description="" type="boolean">
+            <type>boolean</type>
+          </tag>
+        </docblock>
+        <inherited_from>\Illuminate\Auth\GuardHelpers</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Auth" line="57" package="Default">
+        <name>guest</name>
+        <full_name>\Illuminate\Auth\GuardHelpers::guest()</full_name>
+        <docblock line="57">
+          <description>Determine if the current user is a guest.</description>
+          <long-description/>
+          <tag name="return" line="57" description="" type="boolean">
+            <type>boolean</type>
+          </tag>
+        </docblock>
+        <inherited_from>\Illuminate\Auth\GuardHelpers</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Auth" line="67" package="Default">
+        <name>id</name>
+        <full_name>\Illuminate\Auth\GuardHelpers::id()</full_name>
+        <docblock line="67">
+          <description>Get the ID for the currently authenticated user.</description>
+          <long-description/>
+          <tag name="return" line="67" description="" type="integer|null">
+            <type>integer</type>
+            <type>null</type>
+          </tag>
+        </docblock>
+        <inherited_from>\Illuminate\Auth\GuardHelpers</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Auth" line="80" package="Default">
+        <name>setUser</name>
+        <full_name>\Illuminate\Auth\GuardHelpers::setUser()</full_name>
+        <docblock line="80">
+          <description>Set the current user.</description>
+          <long-description/>
+          <tag name="param" line="80" description="" type="\Illuminate\Contracts\Auth\Authenticatable" variable="$user">
+            <type>\Illuminate\Contracts\Auth\Authenticatable</type>
+          </tag>
+          <tag name="return" line="80" description="" type="\Illuminate\Auth\TokenGuard">
+            <type>\Illuminate\Auth\TokenGuard</type>
+          </tag>
+          <tag name="fluent" description="This method is part of a fluent interface and will return the same instance"/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$user</name>
+          <default/>
+          <type>\Illuminate\Contracts\Auth\Authenticatable</type>
+        </argument>
+        <inherited_from>\Illuminate\Auth\GuardHelpers</inherited_from>
+      </method>
+    </class>
+    <parse_markers>
+      <error line="0" code="PPC:ERR-50000">No summary was found for this file</error>
+      <error line="9" code="PPC:ERR-50005">No summary for class \Illuminate\Auth\TokenGuard</error>
+    </parse_markers>
+    <source>eJylVttuEzEQfc9XDFWlbipoPqC0UCrRVrxUUOChiSJndzYx9dqL7U0UQf+dsfeSvRfBviTrzOXMnDPjvH2XbtLJRLIETcpChDshsoRLZnF+ldnN+WSSmcbprbXp/DP+zNDY8/aP10pazUJrvPP8JmM6esnoq0F9r9WWR6gpXSiYMfCgnlB6d+BJKjBBaQ34g8mvCdDjgvr3WxQpakOu7nh2euo/4RQeNgg6BwpcGstkiGfFj6XN+y3TMB8orzCa+c9UK4uhxQiOdVl9X0bXSlAxWPoecxQRKOlfSighlc+45HLtj6/u78C6anuhGavJcAgIl2lmP+H+ZSQ+AxyFigqVR9QOcD3jxlJfKYnSbN3fm3EAhWcvhGuN1FBgIHEHjJimVDxkllM/1o64Tr6UaZZAg44RrQAcp8XXsQh1QqHirvLQaDMtYat41CwyWwkeQpzJ0CNeLok3akYW2qCBogLxGsosZZKpj5TL1T3HdsPNm8tSCBc1JbVMypjOJq1mo2VUsk9GJyzlS8/xScfswFGf4XOHtxu0XjJhpjVRJvZ18oh0Gjzdoa5o4wh1V4cgbCXwt8yEGO24yxO0WzibwV0MOzzZkrIEKSza02CRRnFL0Bxs5wax0vUaqtnb0RGT8CMrFZCHLNBzCysWPtHGSTDiVIPYn8F3hEiBVOTMKJJVEKMNN4dcERVEM16PR2D0njIJ4ewdDZCg3agIVhgyt7nshlFAlQl3BFa7BRepzFC3jVC7syoajyF4BdwsXb+CglKXdzqttcU9RRE1k4MUCpa9KjzoC3DxzmvH+Ya4KP3XaP0O/qh0IetgWjPPYWGS2n2Qu3bwlIlaknb6z/n6sKcVETlNMGGChq97Hnv0e1ngXDSsp72FdvvhwBz6Mqz8vBUDGhqS/uiirETd19bOlmgyUeQt5j1oDX+blHFKhkKvkGnUHlnQ381/j00l39OVvlM6GohdMeUiDJHzjQke5ReK4/DEQHhQz9BVwrRme8JWM23ztlJqfA9ti8RBHqwei6p9XHT4axn0y7hm9NiidLFocfqXE1SPObQd6ALDMQ5i8sUhCr40b4aX/1z983XsKx5lxaAtB+g/rt3eZVGW/zz5AxqZTd8=</source>
+  <type>class</type></file>

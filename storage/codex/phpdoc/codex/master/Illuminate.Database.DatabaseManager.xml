@@ -1,0 +1,424 @@
+<file path="codex/vendor/laravel/framework/src/Illuminate/Database/DatabaseManager.php" generated-path="codex.vendor.laravel.framework.src.Illuminate.Database.DatabaseManager.html" hash="99feadffca5fca36bb35987a215779f2" package="Default">
+    <docblock line="0">
+      <description/>
+      <long-description/>
+      <tag name="package" line="0" description="Default"/>
+    </docblock>
+    <namespace-alias name="PDO">\PDO</namespace-alias>
+    <namespace-alias name="Arr">\Illuminate\Support\Arr</namespace-alias>
+    <namespace-alias name="Str">\Illuminate\Support\Str</namespace-alias>
+    <namespace-alias name="InvalidArgumentException">\InvalidArgumentException</namespace-alias>
+    <namespace-alias name="ConnectionFactory">\Illuminate\Database\Connectors\ConnectionFactory</namespace-alias>
+    <class final="false" abstract="false" namespace="Illuminate\Database" line="11" package="Default">
+      <extends/>
+      <implements>\Illuminate\Database\ConnectionResolverInterface</implements>
+      <name>DatabaseManager</name>
+      <full_name>\Illuminate\Database\DatabaseManager</full_name>
+      <docblock line="11">
+        <description/>
+        <long-description/>
+        <tag name="package" line="11" description="Default"/>
+      </docblock>
+      <property static="false" visibility="protected" namespace="Illuminate\Database" line="18" package="Default">
+        <name>$app</name>
+        <full_name>\Illuminate\Database\DatabaseManager::app</full_name>
+        <default/>
+        <docblock line="18">
+          <description>The application instance.</description>
+          <long-description/>
+          <tag name="var" line="18" description="" type="\Illuminate\Foundation\Application" variable="">
+            <type>\Illuminate\Foundation\Application</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" namespace="Illuminate\Database" line="25" package="Default">
+        <name>$factory</name>
+        <full_name>\Illuminate\Database\DatabaseManager::factory</full_name>
+        <default/>
+        <docblock line="25">
+          <description>The database connection factory instance.</description>
+          <long-description/>
+          <tag name="var" line="25" description="" type="\Illuminate\Database\Connectors\ConnectionFactory" variable="">
+            <type>\Illuminate\Database\Connectors\ConnectionFactory</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" namespace="Illuminate\Database" line="32" package="Default">
+        <name>$connections</name>
+        <full_name>\Illuminate\Database\DatabaseManager::connections</full_name>
+        <default>array()</default>
+        <docblock line="32">
+          <description>The active connection instances.</description>
+          <long-description/>
+          <tag name="var" line="32" description="" type="array" variable="">
+            <type>array</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" namespace="Illuminate\Database" line="39" package="Default">
+        <name>$extensions</name>
+        <full_name>\Illuminate\Database\DatabaseManager::extensions</full_name>
+        <default>array()</default>
+        <docblock line="39">
+          <description>The custom connection resolvers.</description>
+          <long-description/>
+          <tag name="var" line="39" description="" type="array" variable="">
+            <type>array</type>
+          </tag>
+        </docblock>
+      </property>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database" line="48" package="Default">
+        <name>__construct</name>
+        <full_name>\Illuminate\Database\DatabaseManager::__construct()</full_name>
+        <docblock line="48">
+          <description>Create a new database manager instance.</description>
+          <long-description/>
+          <tag name="param" line="48" description="" type="\Illuminate\Foundation\Application" variable="$app">
+            <type>\Illuminate\Foundation\Application</type>
+          </tag>
+          <tag name="param" line="48" description="" type="\Illuminate\Database\Connectors\ConnectionFactory" variable="$factory">
+            <type>\Illuminate\Database\Connectors\ConnectionFactory</type>
+          </tag>
+          <tag name="return" line="48" description="" type="void">
+            <type>void</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$app</name>
+          <default/>
+          <type>\Illuminate\Foundation\Application</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$factory</name>
+          <default/>
+          <type>\Illuminate\Database\Connectors\ConnectionFactory</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database" line="60" package="Default">
+        <name>connection</name>
+        <full_name>\Illuminate\Database\DatabaseManager::connection()</full_name>
+        <docblock line="60">
+          <description>Get a database connection instance.</description>
+          <long-description/>
+          <tag name="param" line="60" description="" type="string" variable="$name">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="60" description="" type="\Illuminate\Database\Connection">
+            <type>\Illuminate\Database\Connection</type>
+          </tag>
+          <tag name="inherited_from" description="\Illuminate\Database\ConnectionResolverInterface::connection()" refers="\Illuminate\Database\ConnectionResolverInterface::connection()" link="/classes/Illuminate.Database.ConnectionResolverInterface.html#method_connection"/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$name</name>
+          <default>null</default>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Database" line="84" package="Default">
+        <name>parseConnectionName</name>
+        <full_name>\Illuminate\Database\DatabaseManager::parseConnectionName()</full_name>
+        <docblock line="84">
+          <description>Parse the connection into an array of the name and read / write type.</description>
+          <long-description/>
+          <tag name="param" line="84" description="" type="string" variable="$name">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="84" description="" type="array">
+            <type>array</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$name</name>
+          <default/>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database" line="98" package="Default">
+        <name>purge</name>
+        <full_name>\Illuminate\Database\DatabaseManager::purge()</full_name>
+        <docblock line="98">
+          <description>Disconnect from the given database and remove from local cache.</description>
+          <long-description/>
+          <tag name="param" line="98" description="" type="string" variable="$name">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="98" description="" type="void">
+            <type>void</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$name</name>
+          <default>null</default>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database" line="111" package="Default">
+        <name>disconnect</name>
+        <full_name>\Illuminate\Database\DatabaseManager::disconnect()</full_name>
+        <docblock line="111">
+          <description>Disconnect from the given database.</description>
+          <long-description/>
+          <tag name="param" line="111" description="" type="string" variable="$name">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="111" description="" type="void">
+            <type>void</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$name</name>
+          <default>null</default>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database" line="124" package="Default">
+        <name>reconnect</name>
+        <full_name>\Illuminate\Database\DatabaseManager::reconnect()</full_name>
+        <docblock line="124">
+          <description>Reconnect to the given database.</description>
+          <long-description/>
+          <tag name="param" line="124" description="" type="string" variable="$name">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="124" description="" type="\Illuminate\Database\Connection">
+            <type>\Illuminate\Database\Connection</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$name</name>
+          <default>null</default>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Database" line="141" package="Default">
+        <name>refreshPdoConnections</name>
+        <full_name>\Illuminate\Database\DatabaseManager::refreshPdoConnections()</full_name>
+        <docblock line="141">
+          <description>Refresh the PDO connections on a given connection.</description>
+          <long-description/>
+          <tag name="param" line="141" description="" type="string" variable="$name">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="141" description="" type="\Illuminate\Database\Connection">
+            <type>\Illuminate\Database\Connection</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$name</name>
+          <default/>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Database" line="156" package="Default">
+        <name>makeConnection</name>
+        <full_name>\Illuminate\Database\DatabaseManager::makeConnection()</full_name>
+        <docblock line="156">
+          <description>Make the database connection instance.</description>
+          <long-description/>
+          <tag name="param" line="156" description="" type="string" variable="$name">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="156" description="" type="\Illuminate\Database\Connection">
+            <type>\Illuminate\Database\Connection</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$name</name>
+          <default/>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Database" line="185" package="Default">
+        <name>prepare</name>
+        <full_name>\Illuminate\Database\DatabaseManager::prepare()</full_name>
+        <docblock line="185">
+          <description>Prepare the database connection instance.</description>
+          <long-description/>
+          <tag name="param" line="185" description="" type="\Illuminate\Database\Connection" variable="$connection">
+            <type>\Illuminate\Database\Connection</type>
+          </tag>
+          <tag name="return" line="185" description="" type="\Illuminate\Database\Connection">
+            <type>\Illuminate\Database\Connection</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$connection</name>
+          <default/>
+          <type>\Illuminate\Database\Connection</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Database" line="210" package="Default">
+        <name>setPdoForType</name>
+        <full_name>\Illuminate\Database\DatabaseManager::setPdoForType()</full_name>
+        <docblock line="210">
+          <description>Prepare the read write mode for database connection instance.</description>
+          <long-description/>
+          <tag name="param" line="210" description="" type="\Illuminate\Database\Connection" variable="$connection">
+            <type>\Illuminate\Database\Connection</type>
+          </tag>
+          <tag name="param" line="210" description="" type="string" variable="$type">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="210" description="" type="\Illuminate\Database\Connection">
+            <type>\Illuminate\Database\Connection</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$connection</name>
+          <default/>
+          <type>\Illuminate\Database\Connection</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$type</name>
+          <default>null</default>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Database" line="229" package="Default">
+        <name>getConfig</name>
+        <full_name>\Illuminate\Database\DatabaseManager::getConfig()</full_name>
+        <docblock line="229">
+          <description>Get the configuration for a connection.</description>
+          <long-description/>
+          <tag name="param" line="229" description="" type="string" variable="$name">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="229" description="" type="array">
+            <type>array</type>
+          </tag>
+          <tag name="throws" line="229" description="" type="\InvalidArgumentException">
+            <type>\InvalidArgumentException</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$name</name>
+          <default/>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database" line="250" package="Default">
+        <name>getDefaultConnection</name>
+        <full_name>\Illuminate\Database\DatabaseManager::getDefaultConnection()</full_name>
+        <docblock line="250">
+          <description>Get the default connection name.</description>
+          <long-description/>
+          <tag name="return" line="250" description="" type="string">
+            <type>string</type>
+          </tag>
+          <tag name="inherited_from" description="\Illuminate\Database\ConnectionResolverInterface::getDefaultConnection()" refers="\Illuminate\Database\ConnectionResolverInterface::getDefaultConnection()" link="/classes/Illuminate.Database.ConnectionResolverInterface.html#method_getDefaultConnection"/>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database" line="261" package="Default">
+        <name>setDefaultConnection</name>
+        <full_name>\Illuminate\Database\DatabaseManager::setDefaultConnection()</full_name>
+        <docblock line="261">
+          <description>Set the default connection name.</description>
+          <long-description/>
+          <tag name="param" line="261" description="" type="string" variable="$name">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="261" description="" type="void">
+            <type>void</type>
+          </tag>
+          <tag name="inherited_from" description="\Illuminate\Database\ConnectionResolverInterface::setDefaultConnection()" refers="\Illuminate\Database\ConnectionResolverInterface::setDefaultConnection()" link="/classes/Illuminate.Database.ConnectionResolverInterface.html#method_setDefaultConnection"/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$name</name>
+          <default/>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database" line="271" package="Default">
+        <name>supportedDrivers</name>
+        <full_name>\Illuminate\Database\DatabaseManager::supportedDrivers()</full_name>
+        <docblock line="271">
+          <description>Get all of the support drivers.</description>
+          <long-description/>
+          <tag name="return" line="271" description="" type="array">
+            <type>array</type>
+          </tag>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database" line="281" package="Default">
+        <name>availableDrivers</name>
+        <full_name>\Illuminate\Database\DatabaseManager::availableDrivers()</full_name>
+        <docblock line="281">
+          <description>Get all of the drivers that are actually available.</description>
+          <long-description/>
+          <tag name="return" line="281" description="" type="array">
+            <type>array</type>
+          </tag>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database" line="293" package="Default">
+        <name>extend</name>
+        <full_name>\Illuminate\Database\DatabaseManager::extend()</full_name>
+        <docblock line="293">
+          <description>Register an extension connection resolver.</description>
+          <long-description/>
+          <tag name="param" line="293" description="" type="string" variable="$name">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="293" description="" type="callable" variable="$resolver">
+            <type>callable</type>
+          </tag>
+          <tag name="return" line="293" description="" type="void">
+            <type>void</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$name</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$resolver</name>
+          <default/>
+          <type>callable</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database" line="303" package="Default">
+        <name>getConnections</name>
+        <full_name>\Illuminate\Database\DatabaseManager::getConnections()</full_name>
+        <docblock line="303">
+          <description>Return all of the created connections.</description>
+          <long-description/>
+          <tag name="return" line="303" description="" type="array">
+            <type>array</type>
+          </tag>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database" line="315" package="Default">
+        <name>__call</name>
+        <full_name>\Illuminate\Database\DatabaseManager::__call()</full_name>
+        <docblock line="315">
+          <description>Dynamically pass methods to the default connection.</description>
+          <long-description/>
+          <tag name="param" line="315" description="" type="string" variable="$method">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="315" description="" type="array" variable="$parameters">
+            <type>array</type>
+          </tag>
+          <tag name="return" line="315" description="" type="mixed">
+            <type>mixed</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$method</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$parameters</name>
+          <default/>
+          <type>array</type>
+        </argument>
+      </method>
+    </class>
+    <parse_markers>
+      <error line="0" code="PPC:ERR-50000">No summary was found for this file</error>
+      <error line="11" code="PPC:ERR-50005">No summary for class \Illuminate\Database\DatabaseManager</error>
+    </parse_markers>
+    <source>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</source>
+  <type>class</type></file>

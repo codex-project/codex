@@ -1,0 +1,225 @@
+<file path="codex/vendor/laravel/framework/src/Illuminate/Routing/Middleware/ThrottleRequests.php" generated-path="codex.vendor.laravel.framework.src.Illuminate.Routing.Middleware.ThrottleRequests.html" hash="53979ac1f6f939574ce6267b7caa8b99" package="Default">
+    <docblock line="0">
+      <description/>
+      <long-description/>
+      <tag name="package" line="0" description="Default"/>
+    </docblock>
+    <namespace-alias name="Closure">\Closure</namespace-alias>
+    <namespace-alias name="RateLimiter">\Illuminate\Cache\RateLimiter</namespace-alias>
+    <namespace-alias name="Response">\Symfony\Component\HttpFoundation\Response</namespace-alias>
+    <class final="false" abstract="false" namespace="Illuminate\Routing\Middleware" line="9" package="Default">
+      <extends/>
+      <name>ThrottleRequests</name>
+      <full_name>\Illuminate\Routing\Middleware\ThrottleRequests</full_name>
+      <docblock line="9">
+        <description/>
+        <long-description/>
+        <tag name="package" line="9" description="Default"/>
+      </docblock>
+      <property static="false" visibility="protected" namespace="Illuminate\Routing\Middleware" line="16" package="Default">
+        <name>$limiter</name>
+        <full_name>\Illuminate\Routing\Middleware\ThrottleRequests::limiter</full_name>
+        <default/>
+        <docblock line="16">
+          <description>The rate limiter instance.</description>
+          <long-description/>
+          <tag name="var" line="16" description="" type="\Illuminate\Cache\RateLimiter" variable="">
+            <type>\Illuminate\Cache\RateLimiter</type>
+          </tag>
+        </docblock>
+      </property>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Routing\Middleware" line="24" package="Default">
+        <name>__construct</name>
+        <full_name>\Illuminate\Routing\Middleware\ThrottleRequests::__construct()</full_name>
+        <docblock line="24">
+          <description>Create a new request throttler.</description>
+          <long-description/>
+          <tag name="param" line="24" description="" type="\Illuminate\Cache\RateLimiter" variable="$limiter">
+            <type>\Illuminate\Cache\RateLimiter</type>
+          </tag>
+          <tag name="return" line="24" description="" type="void">
+            <type>void</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$limiter</name>
+          <default/>
+          <type>\Illuminate\Cache\RateLimiter</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Routing\Middleware" line="38" package="Default">
+        <name>handle</name>
+        <full_name>\Illuminate\Routing\Middleware\ThrottleRequests::handle()</full_name>
+        <docblock line="38">
+          <description>Handle an incoming request.</description>
+          <long-description/>
+          <tag name="param" line="38" description="" type="\Illuminate\Http\Request" variable="$request">
+            <type>\Illuminate\Http\Request</type>
+          </tag>
+          <tag name="param" line="38" description="" type="\Closure" variable="$next">
+            <type>\Closure</type>
+          </tag>
+          <tag name="param" line="38" description="" type="integer" variable="$maxAttempts">
+            <type>integer</type>
+          </tag>
+          <tag name="param" line="38" description="" type="integer" variable="$decayMinutes">
+            <type>integer</type>
+          </tag>
+          <tag name="return" line="38" description="" type="mixed">
+            <type>mixed</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$request</name>
+          <default/>
+          <type>\Illuminate\Http\Request</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$next</name>
+          <default/>
+          <type>\Closure</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$maxAttempts</name>
+          <default>60</default>
+          <type>integer</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$decayMinutes</name>
+          <default>1</default>
+          <type>integer</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Routing\Middleware" line="62" package="Default">
+        <name>resolveRequestSignature</name>
+        <full_name>\Illuminate\Routing\Middleware\ThrottleRequests::resolveRequestSignature()</full_name>
+        <docblock line="62">
+          <description>Resolve request signature.</description>
+          <long-description/>
+          <tag name="param" line="62" description="" type="\Illuminate\Http\Request" variable="$request">
+            <type>\Illuminate\Http\Request</type>
+          </tag>
+          <tag name="return" line="62" description="" type="string">
+            <type>string</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$request</name>
+          <default/>
+          <type>\Illuminate\Http\Request</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Routing\Middleware" line="74" package="Default">
+        <name>buildResponse</name>
+        <full_name>\Illuminate\Routing\Middleware\ThrottleRequests::buildResponse()</full_name>
+        <docblock line="74">
+          <description>Create a 'too many attempts' response.</description>
+          <long-description/>
+          <tag name="param" line="74" description="" type="string" variable="$key">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="74" description="" type="integer" variable="$maxAttempts">
+            <type>integer</type>
+          </tag>
+          <tag name="return" line="74" description="" type="\Illuminate\Http\Response">
+            <type>\Illuminate\Http\Response</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$key</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$maxAttempts</name>
+          <default/>
+          <type>integer</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Routing\Middleware" line="96" package="Default">
+        <name>addHeaders</name>
+        <full_name>\Illuminate\Routing\Middleware\ThrottleRequests::addHeaders()</full_name>
+        <docblock line="96">
+          <description>Add the limit header information to the given response.</description>
+          <long-description/>
+          <tag name="param" line="96" description="" type="\Symfony\Component\HttpFoundation\Response" variable="$response">
+            <type>\Symfony\Component\HttpFoundation\Response</type>
+          </tag>
+          <tag name="param" line="96" description="" type="integer" variable="$maxAttempts">
+            <type>integer</type>
+          </tag>
+          <tag name="param" line="96" description="" type="integer" variable="$remainingAttempts">
+            <type>integer</type>
+          </tag>
+          <tag name="param" line="96" description="" type="integer|null" variable="$retryAfter">
+            <type>integer</type>
+            <type>null</type>
+          </tag>
+          <tag name="return" line="96" description="" type="\Illuminate\Http\Response">
+            <type>\Illuminate\Http\Response</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$response</name>
+          <default/>
+          <type>\Symfony\Component\HttpFoundation\Response</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$maxAttempts</name>
+          <default/>
+          <type>integer</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$remainingAttempts</name>
+          <default/>
+          <type>integer</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$retryAfter</name>
+          <default>null</default>
+          <type>integer|null</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Routing\Middleware" line="120" package="Default">
+        <name>calculateRemainingAttempts</name>
+        <full_name>\Illuminate\Routing\Middleware\ThrottleRequests::calculateRemainingAttempts()</full_name>
+        <docblock line="120">
+          <description>Calculate the number of remaining attempts.</description>
+          <long-description/>
+          <tag name="param" line="120" description="" type="string" variable="$key">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="120" description="" type="integer" variable="$maxAttempts">
+            <type>integer</type>
+          </tag>
+          <tag name="param" line="120" description="" type="integer|null" variable="$retryAfter">
+            <type>integer</type>
+            <type>null</type>
+          </tag>
+          <tag name="return" line="120" description="" type="integer">
+            <type>integer</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$key</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$maxAttempts</name>
+          <default/>
+          <type>integer</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$retryAfter</name>
+          <default>null</default>
+          <type>integer|null</type>
+        </argument>
+      </method>
+    </class>
+    <parse_markers>
+      <error line="0" code="PPC:ERR-50000">No summary was found for this file</error>
+      <error line="9" code="PPC:ERR-50005">No summary for class \Illuminate\Routing\Middleware\ThrottleRequests</error>
+    </parse_markers>
+    <source>eJzNVt9r2zAQfvdfoUEhSUnabozB6JqtBEYL60vah0FdimJfEjFZ8mQ5bdjyv+9kS5rt2ElW+jA/NEl1P7777ruTP31Ol2kQCJpAltIIyDXnecIE1RBOZa6ZWIQ3LI45PFEF50GQZ0AmXGa5+WV+VBwmNFqiG379xhKmQZUWt+tkLsU6nMgklQKEDq+0Tr/KXMRUMynCKeaWIjPhI06zjNwtldSawxR+5pDpLPgVEHxOj4+LT3KMFkAUJiK8zESYyDQVEZxYC2f4ZUUVCXeBtJanxWeKiSHSEJMj7mpo5p4oMJkpEfBEVAmRaAtZbQFIqaIJ2Y2B+HTeTYHOlSAryeI6wnzGWUTmuYgMeeTxMULutMoj3a9GdAEHhVdJoHmO9JJlo7Hj7aJSqDnebJV7RQW2n1CBHEcSK1i4og8p1bQ6tH3E5NZzy8NKCi0EPG8dM2F8E/p8qTUkKQqi1SCGiK5vmMg1ZE0eE/YMu4lcFnX2HcShk3kJaVjLj7R9OBvWM+L/3m6R/QPWhuKScwWZ5Cun6lu2QIYwgU85sFozD5uTfr1Vo7GW8oaKtQPRN9HruBqQBoMKFvNYMmzgWc547IavJdrg3Dtvgg4BjcZLpp1vLXelGCywTGK4MGy2llwHR+P4CmgMKuvXSvCxGpXXjcoYEeVRzlGGU0goEyjdHdwNfIRB1yhMywb6oc9cC19hEmz1OMkIs2Mnea3uVVJDh45aezwazzEJqBRz6X5nuX7R9VB5JEHpEWrJ6hHXhq7Sy0LKETh8ni3QFt7KbPuI2Svp5oBWlGnWuXft3WHJZtqIcz3pDcn7dx8butZqfTm3i7QxGHRFGaczDteiQPIfaX1YhT4YNpO6k/0TcRnHePXZa5gsiyKwvXOpkuJuJ1oW5wu2ArFXM+HBrwoVbl54WagmTS1mv0XOeQsjryDUSst9TV3tbgE7bGjPAN3SdtkOczHd1zrc+z7ybwqj4m+PXIx3SKzm4PVVOm1D864PjfvsDWHZo0Har6qveUc52Pe9qTEaFVa9BzNgf73abybHH15KZYxitPouYtsAKv/u2S7wiRurQsYiT2bIt5wTX7Zfia+7CP9FhGi0T24v3w4d4jq8nxbkWWvL6nvQr04TjkH2Dea6+71kE2yCP25P2S0=</source>
+  <type>class</type></file>

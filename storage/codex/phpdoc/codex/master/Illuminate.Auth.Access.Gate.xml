@@ -1,0 +1,768 @@
+<file path="codex/vendor/laravel/framework/src/Illuminate/Auth/Access/Gate.php" generated-path="codex.vendor.laravel.framework.src.Illuminate.Auth.Access.Gate.html" hash="901951529b55ca83adfdff589ee74be3" package="Default">
+    <docblock line="0">
+      <description/>
+      <long-description/>
+      <tag name="package" line="0" description="Default"/>
+    </docblock>
+    <namespace-alias name="Str">\Illuminate\Support\Str</namespace-alias>
+    <namespace-alias name="InvalidArgumentException">\InvalidArgumentException</namespace-alias>
+    <namespace-alias name="Container">\Illuminate\Contracts\Container\Container</namespace-alias>
+    <namespace-alias name="GateContract">\Illuminate\Contracts\Auth\Access\Gate</namespace-alias>
+    <class final="false" abstract="false" namespace="Illuminate\Auth\Access" line="10" package="Default">
+      <extends/>
+      <implements>\Illuminate\Contracts\Auth\Access\Gate</implements>
+      <name>Gate</name>
+      <full_name>\Illuminate\Auth\Access\Gate</full_name>
+      <docblock line="10">
+        <description/>
+        <long-description/>
+        <tag name="package" line="10" description="Default"/>
+      </docblock>
+      <property static="false" visibility="protected" namespace="Illuminate\Auth\Access" line="19" package="Default">
+        <name>$container</name>
+        <full_name>\Illuminate\Auth\Access\Gate::container</full_name>
+        <default/>
+        <docblock line="19">
+          <description>The container instance.</description>
+          <long-description/>
+          <tag name="var" line="19" description="" type="\Illuminate\Contracts\Container\Container" variable="">
+            <type>\Illuminate\Contracts\Container\Container</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" namespace="Illuminate\Auth\Access" line="26" package="Default">
+        <name>$userResolver</name>
+        <full_name>\Illuminate\Auth\Access\Gate::userResolver</full_name>
+        <default/>
+        <docblock line="26">
+          <description>The user resolver callable.</description>
+          <long-description/>
+          <tag name="var" line="26" description="" type="callable" variable="">
+            <type>callable</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" namespace="Illuminate\Auth\Access" line="33" package="Default">
+        <name>$abilities</name>
+        <full_name>\Illuminate\Auth\Access\Gate::abilities</full_name>
+        <default>array()</default>
+        <docblock line="33">
+          <description>All of the defined abilities.</description>
+          <long-description/>
+          <tag name="var" line="33" description="" type="array" variable="">
+            <type>array</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" namespace="Illuminate\Auth\Access" line="40" package="Default">
+        <name>$policies</name>
+        <full_name>\Illuminate\Auth\Access\Gate::policies</full_name>
+        <default>array()</default>
+        <docblock line="40">
+          <description>All of the defined policies.</description>
+          <long-description/>
+          <tag name="var" line="40" description="" type="array" variable="">
+            <type>array</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" namespace="Illuminate\Auth\Access" line="47" package="Default">
+        <name>$beforeCallbacks</name>
+        <full_name>\Illuminate\Auth\Access\Gate::beforeCallbacks</full_name>
+        <default>array()</default>
+        <docblock line="47">
+          <description>All of the registered before callbacks.</description>
+          <long-description/>
+          <tag name="var" line="47" description="" type="array" variable="">
+            <type>array</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" namespace="Illuminate\Auth\Access" line="54" package="Default">
+        <name>$afterCallbacks</name>
+        <full_name>\Illuminate\Auth\Access\Gate::afterCallbacks</full_name>
+        <default>array()</default>
+        <docblock line="54">
+          <description>All of the registered after callbacks.</description>
+          <long-description/>
+          <tag name="var" line="54" description="" type="array" variable="">
+            <type>array</type>
+          </tag>
+        </docblock>
+      </property>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Auth\Access" line="67" package="Default">
+        <name>__construct</name>
+        <full_name>\Illuminate\Auth\Access\Gate::__construct()</full_name>
+        <docblock line="67">
+          <description>Create a new gate instance.</description>
+          <long-description/>
+          <tag name="param" line="67" description="" type="\Illuminate\Contracts\Container\Container" variable="$container">
+            <type>\Illuminate\Contracts\Container\Container</type>
+          </tag>
+          <tag name="param" line="67" description="" type="callable" variable="$userResolver">
+            <type>callable</type>
+          </tag>
+          <tag name="param" line="67" description="" type="array" variable="$abilities">
+            <type>array</type>
+          </tag>
+          <tag name="param" line="67" description="" type="array" variable="$policies">
+            <type>array</type>
+          </tag>
+          <tag name="param" line="67" description="" type="array" variable="$beforeCallbacks">
+            <type>array</type>
+          </tag>
+          <tag name="param" line="67" description="" type="array" variable="$afterCallbacks">
+            <type>array</type>
+          </tag>
+          <tag name="return" line="67" description="" type="void">
+            <type>void</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$container</name>
+          <default/>
+          <type>\Illuminate\Contracts\Container\Container</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$userResolver</name>
+          <default/>
+          <type>callable</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$abilities</name>
+          <default>array()</default>
+          <type>array</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$policies</name>
+          <default>array()</default>
+          <type>array</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$beforeCallbacks</name>
+          <default>array()</default>
+          <type>array</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$afterCallbacks</name>
+          <default>array()</default>
+          <type>array</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Auth\Access" line="83" package="Default">
+        <name>has</name>
+        <full_name>\Illuminate\Auth\Access\Gate::has()</full_name>
+        <docblock line="83">
+          <description>Determine if a given ability has been defined.</description>
+          <long-description/>
+          <tag name="param" line="83" description="" type="string" variable="$ability">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="83" description="" type="boolean">
+            <type>boolean</type>
+          </tag>
+          <tag name="inherited_from" description="\Illuminate\Contracts\Auth\Access\Gate::has()" refers="\Illuminate\Contracts\Auth\Access\Gate::has()" link="/classes/Illuminate.Contracts.Auth.Access.Gate.html#method_has"/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$ability</name>
+          <default/>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Auth\Access" line="97" package="Default">
+        <name>define</name>
+        <full_name>\Illuminate\Auth\Access\Gate::define()</full_name>
+        <docblock line="97">
+          <description>Define a new ability.</description>
+          <long-description/>
+          <tag name="param" line="97" description="" type="string" variable="$ability">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="97" description="" type="callable|string" variable="$callback">
+            <type>callable</type>
+            <type>string</type>
+          </tag>
+          <tag name="return" line="97" description="" type="\Illuminate\Auth\Access\Gate">
+            <type>\Illuminate\Auth\Access\Gate</type>
+          </tag>
+          <tag name="throws" line="97" description="" type="\InvalidArgumentException">
+            <type>\InvalidArgumentException</type>
+          </tag>
+          <tag name="inherited_from" description="\Illuminate\Contracts\Auth\Access\Gate::define()" refers="\Illuminate\Contracts\Auth\Access\Gate::define()" link="/classes/Illuminate.Contracts.Auth.Access.Gate.html#method_define"/>
+          <tag name="fluent" description="This method is part of a fluent interface and will return the same instance"/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$ability</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$callback</name>
+          <default/>
+          <type>callable|string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Auth\Access" line="116" package="Default">
+        <name>buildAbilityCallback</name>
+        <full_name>\Illuminate\Auth\Access\Gate::buildAbilityCallback()</full_name>
+        <docblock line="116">
+          <description>Create the ability callback for a callback string.</description>
+          <long-description/>
+          <tag name="param" line="116" description="" type="string" variable="$callback">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="116" description="" type="\Closure">
+            <type>\Closure</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$callback</name>
+          <default/>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Auth\Access" line="132" package="Default">
+        <name>policy</name>
+        <full_name>\Illuminate\Auth\Access\Gate::policy()</full_name>
+        <docblock line="132">
+          <description>Define a policy class for a given class type.</description>
+          <long-description/>
+          <tag name="param" line="132" description="" type="string" variable="$class">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="132" description="" type="string" variable="$policy">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="132" description="" type="\Illuminate\Auth\Access\Gate">
+            <type>\Illuminate\Auth\Access\Gate</type>
+          </tag>
+          <tag name="inherited_from" description="\Illuminate\Contracts\Auth\Access\Gate::policy()" refers="\Illuminate\Contracts\Auth\Access\Gate::policy()" link="/classes/Illuminate.Contracts.Auth.Access.Gate.html#method_policy"/>
+          <tag name="fluent" description="This method is part of a fluent interface and will return the same instance"/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$class</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$policy</name>
+          <default/>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Auth\Access" line="145" package="Default">
+        <name>before</name>
+        <full_name>\Illuminate\Auth\Access\Gate::before()</full_name>
+        <docblock line="145">
+          <description>Register a callback to run before all Gate checks.</description>
+          <long-description/>
+          <tag name="param" line="145" description="" type="callable" variable="$callback">
+            <type>callable</type>
+          </tag>
+          <tag name="return" line="145" description="" type="\Illuminate\Auth\Access\Gate">
+            <type>\Illuminate\Auth\Access\Gate</type>
+          </tag>
+          <tag name="inherited_from" description="\Illuminate\Contracts\Auth\Access\Gate::before()" refers="\Illuminate\Contracts\Auth\Access\Gate::before()" link="/classes/Illuminate.Contracts.Auth.Access.Gate.html#method_before"/>
+          <tag name="fluent" description="This method is part of a fluent interface and will return the same instance"/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$callback</name>
+          <default/>
+          <type>callable</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Auth\Access" line="158" package="Default">
+        <name>after</name>
+        <full_name>\Illuminate\Auth\Access\Gate::after()</full_name>
+        <docblock line="158">
+          <description>Register a callback to run after all Gate checks.</description>
+          <long-description/>
+          <tag name="param" line="158" description="" type="callable" variable="$callback">
+            <type>callable</type>
+          </tag>
+          <tag name="return" line="158" description="" type="\Illuminate\Auth\Access\Gate">
+            <type>\Illuminate\Auth\Access\Gate</type>
+          </tag>
+          <tag name="fluent" description="This method is part of a fluent interface and will return the same instance"/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$callback</name>
+          <default/>
+          <type>callable</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Auth\Access" line="172" package="Default">
+        <name>allows</name>
+        <full_name>\Illuminate\Auth\Access\Gate::allows()</full_name>
+        <docblock line="172">
+          <description>Determine if the given ability should be granted for the current user.</description>
+          <long-description/>
+          <tag name="param" line="172" description="" type="string" variable="$ability">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="172" description="" type="array|mixed" variable="$arguments">
+            <type>array</type>
+            <type>mixed</type>
+          </tag>
+          <tag name="return" line="172" description="" type="boolean">
+            <type>boolean</type>
+          </tag>
+          <tag name="inherited_from" description="\Illuminate\Contracts\Auth\Access\Gate::allows()" refers="\Illuminate\Contracts\Auth\Access\Gate::allows()" link="/classes/Illuminate.Contracts.Auth.Access.Gate.html#method_allows"/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$ability</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$arguments</name>
+          <default>array()</default>
+          <type>array|mixed</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Auth\Access" line="184" package="Default">
+        <name>denies</name>
+        <full_name>\Illuminate\Auth\Access\Gate::denies()</full_name>
+        <docblock line="184">
+          <description>Determine if the given ability should be denied for the current user.</description>
+          <long-description/>
+          <tag name="param" line="184" description="" type="string" variable="$ability">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="184" description="" type="array|mixed" variable="$arguments">
+            <type>array</type>
+            <type>mixed</type>
+          </tag>
+          <tag name="return" line="184" description="" type="boolean">
+            <type>boolean</type>
+          </tag>
+          <tag name="inherited_from" description="\Illuminate\Contracts\Auth\Access\Gate::denies()" refers="\Illuminate\Contracts\Auth\Access\Gate::denies()" link="/classes/Illuminate.Contracts.Auth.Access.Gate.html#method_denies"/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$ability</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$arguments</name>
+          <default>array()</default>
+          <type>array|mixed</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Auth\Access" line="196" package="Default">
+        <name>check</name>
+        <full_name>\Illuminate\Auth\Access\Gate::check()</full_name>
+        <docblock line="196">
+          <description>Determine if the given ability should be granted for the current user.</description>
+          <long-description/>
+          <tag name="param" line="196" description="" type="string" variable="$ability">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="196" description="" type="array|mixed" variable="$arguments">
+            <type>array</type>
+            <type>mixed</type>
+          </tag>
+          <tag name="return" line="196" description="" type="boolean">
+            <type>boolean</type>
+          </tag>
+          <tag name="inherited_from" description="\Illuminate\Contracts\Auth\Access\Gate::check()" refers="\Illuminate\Contracts\Auth\Access\Gate::check()" link="/classes/Illuminate.Contracts.Auth.Access.Gate.html#method_check"/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$ability</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$arguments</name>
+          <default>array()</default>
+          <type>array|mixed</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Auth\Access" line="216" package="Default">
+        <name>authorize</name>
+        <full_name>\Illuminate\Auth\Access\Gate::authorize()</full_name>
+        <docblock line="216">
+          <description>Determine if the given ability should be granted for the current user.</description>
+          <long-description/>
+          <tag name="param" line="216" description="" type="string" variable="$ability">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="216" description="" type="array|mixed" variable="$arguments">
+            <type>array</type>
+            <type>mixed</type>
+          </tag>
+          <tag name="return" line="216" description="" type="\Illuminate\Auth\Access\Response">
+            <type>\Illuminate\Auth\Access\Response</type>
+          </tag>
+          <tag name="throws" line="216" description="" type="\Illuminate\Auth\Access\AuthorizationException">
+            <type>\Illuminate\Auth\Access\AuthorizationException</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$ability</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$arguments</name>
+          <default>array()</default>
+          <type>array|mixed</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Auth\Access" line="234" package="Default">
+        <name>raw</name>
+        <full_name>\Illuminate\Auth\Access\Gate::raw()</full_name>
+        <docblock line="234">
+          <description>Get the raw result for the given ability for the current user.</description>
+          <long-description/>
+          <tag name="param" line="234" description="" type="string" variable="$ability">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="234" description="" type="array|mixed" variable="$arguments">
+            <type>array</type>
+            <type>mixed</type>
+          </tag>
+          <tag name="return" line="234" description="" type="mixed">
+            <type>mixed</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$ability</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$arguments</name>
+          <default>array()</default>
+          <type>array|mixed</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Auth\Access" line="261" package="Default">
+        <name>callAuthCallback</name>
+        <full_name>\Illuminate\Auth\Access\Gate::callAuthCallback()</full_name>
+        <docblock line="261">
+          <description>Resolve and call the appropriate authorization callback.</description>
+          <long-description/>
+          <tag name="param" line="261" description="" type="\Illuminate\Contracts\Auth\Authenticatable" variable="$user">
+            <type>\Illuminate\Contracts\Auth\Authenticatable</type>
+          </tag>
+          <tag name="param" line="261" description="" type="string" variable="$ability">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="261" description="" type="array" variable="$arguments">
+            <type>array</type>
+          </tag>
+          <tag name="return" line="261" description="" type="boolean">
+            <type>boolean</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$user</name>
+          <default/>
+          <type>\Illuminate\Contracts\Auth\Authenticatable</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$ability</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$arguments</name>
+          <default/>
+          <type>array</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Auth\Access" line="280" package="Default">
+        <name>callBeforeCallbacks</name>
+        <full_name>\Illuminate\Auth\Access\Gate::callBeforeCallbacks()</full_name>
+        <docblock line="280">
+          <description>Call all of the before callbacks and return if a result is given.</description>
+          <long-description/>
+          <tag name="param" line="280" description="" type="\Illuminate\Contracts\Auth\Authenticatable" variable="$user">
+            <type>\Illuminate\Contracts\Auth\Authenticatable</type>
+          </tag>
+          <tag name="param" line="280" description="" type="string" variable="$ability">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="280" description="" type="array" variable="$arguments">
+            <type>array</type>
+          </tag>
+          <tag name="return" line="280" description="" type="boolean|null">
+            <type>boolean</type>
+            <type>null</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$user</name>
+          <default/>
+          <type>\Illuminate\Contracts\Auth\Authenticatable</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$ability</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$arguments</name>
+          <default/>
+          <type>array</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Auth\Access" line="300" package="Default">
+        <name>callAfterCallbacks</name>
+        <full_name>\Illuminate\Auth\Access\Gate::callAfterCallbacks()</full_name>
+        <docblock line="300">
+          <description>Call all of the after callbacks with check result.</description>
+          <long-description/>
+          <tag name="param" line="300" description="" type="\Illuminate\Contracts\Auth\Authenticatable" variable="$user">
+            <type>\Illuminate\Contracts\Auth\Authenticatable</type>
+          </tag>
+          <tag name="param" line="300" description="" type="string" variable="$ability">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="300" description="" type="array" variable="$arguments">
+            <type>array</type>
+          </tag>
+          <tag name="param" line="300" description="" type="boolean" variable="$result">
+            <type>boolean</type>
+          </tag>
+          <tag name="return" line="300" description="" type="void">
+            <type>void</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$user</name>
+          <default/>
+          <type>\Illuminate\Contracts\Auth\Authenticatable</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$ability</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$arguments</name>
+          <default/>
+          <type>array</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$result</name>
+          <default/>
+          <type>boolean</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Auth\Access" line="317" package="Default">
+        <name>resolveAuthCallback</name>
+        <full_name>\Illuminate\Auth\Access\Gate::resolveAuthCallback()</full_name>
+        <docblock line="317">
+          <description>Resolve the callable for the given ability and arguments.</description>
+          <long-description/>
+          <tag name="param" line="317" description="" type="\Illuminate\Contracts\Auth\Authenticatable" variable="$user">
+            <type>\Illuminate\Contracts\Auth\Authenticatable</type>
+          </tag>
+          <tag name="param" line="317" description="" type="string" variable="$ability">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="317" description="" type="array" variable="$arguments">
+            <type>array</type>
+          </tag>
+          <tag name="return" line="317" description="" type="callable">
+            <type>callable</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$user</name>
+          <default/>
+          <type>\Illuminate\Contracts\Auth\Authenticatable</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$ability</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$arguments</name>
+          <default/>
+          <type>array</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Auth\Access" line="336" package="Default">
+        <name>firstArgumentCorrespondsToPolicy</name>
+        <full_name>\Illuminate\Auth\Access\Gate::firstArgumentCorrespondsToPolicy()</full_name>
+        <docblock line="336">
+          <description>Determine if the first argument in the array corresponds to a policy.</description>
+          <long-description/>
+          <tag name="param" line="336" description="" type="array" variable="$arguments">
+            <type>array</type>
+          </tag>
+          <tag name="return" line="336" description="" type="boolean">
+            <type>boolean</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$arguments</name>
+          <default/>
+          <type>array</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Auth\Access" line="357" package="Default">
+        <name>resolvePolicyCallback</name>
+        <full_name>\Illuminate\Auth\Access\Gate::resolvePolicyCallback()</full_name>
+        <docblock line="357">
+          <description>Resolve the callback for a policy check.</description>
+          <long-description/>
+          <tag name="param" line="357" description="" type="\Illuminate\Contracts\Auth\Authenticatable" variable="$user">
+            <type>\Illuminate\Contracts\Auth\Authenticatable</type>
+          </tag>
+          <tag name="param" line="357" description="" type="string" variable="$ability">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="357" description="" type="array" variable="$arguments">
+            <type>array</type>
+          </tag>
+          <tag name="return" line="357" description="" type="callable">
+            <type>callable</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$user</name>
+          <default/>
+          <type>\Illuminate\Contracts\Auth\Authenticatable</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$ability</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$arguments</name>
+          <default/>
+          <type>array</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Auth\Access" line="402" package="Default">
+        <name>getPolicyFor</name>
+        <full_name>\Illuminate\Auth\Access\Gate::getPolicyFor()</full_name>
+        <docblock line="402">
+          <description>Get a policy instance for a given class.</description>
+          <long-description/>
+          <tag name="param" line="402" description="" type="object|string" variable="$class">
+            <type>object</type>
+            <type>string</type>
+          </tag>
+          <tag name="return" line="402" description="" type="mixed">
+            <type>mixed</type>
+          </tag>
+          <tag name="throws" line="402" description="" type="\InvalidArgumentException">
+            <type>\InvalidArgumentException</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$class</name>
+          <default/>
+          <type>object|string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Auth\Access" line="421" package="Default">
+        <name>resolvePolicy</name>
+        <full_name>\Illuminate\Auth\Access\Gate::resolvePolicy()</full_name>
+        <docblock line="421">
+          <description>Build a policy class instance of the given type.</description>
+          <long-description/>
+          <tag name="param" line="421" description="" type="object|string" variable="$class">
+            <type>object</type>
+            <type>string</type>
+          </tag>
+          <tag name="return" line="421" description="" type="mixed">
+            <type>mixed</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$class</name>
+          <default/>
+          <type>object|string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Auth\Access" line="432" package="Default">
+        <name>forUser</name>
+        <full_name>\Illuminate\Auth\Access\Gate::forUser()</full_name>
+        <docblock line="432">
+          <description>Get a guard instance for the given user.</description>
+          <long-description/>
+          <tag name="param" line="432" description="" type="\Illuminate\Contracts\Auth\Authenticatable|mixed" variable="$user">
+            <type>\Illuminate\Contracts\Auth\Authenticatable</type>
+            <type>mixed</type>
+          </tag>
+          <tag name="return" line="432" description="" type="static">
+            <type>static</type>
+          </tag>
+          <tag name="inherited_from" description="\Illuminate\Contracts\Auth\Access\Gate::forUser()" refers="\Illuminate\Contracts\Auth\Access\Gate::forUser()" link="/classes/Illuminate.Contracts.Auth.Access.Gate.html#method_forUser"/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$user</name>
+          <default/>
+          <type>\Illuminate\Contracts\Auth\Authenticatable|mixed</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Auth\Access" line="449" package="Default">
+        <name>resolveUser</name>
+        <full_name>\Illuminate\Auth\Access\Gate::resolveUser()</full_name>
+        <docblock line="449">
+          <description>Resolve the user from the user resolver.</description>
+          <long-description/>
+          <tag name="return" line="449" description="" type="mixed">
+            <type>mixed</type>
+          </tag>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Auth\Access" line="13" package="Default">
+        <name>allow</name>
+        <full_name>\Illuminate\Auth\Access\HandlesAuthorization::allow()</full_name>
+        <docblock line="13">
+          <description>Create a new access response.</description>
+          <long-description/>
+          <tag name="param" line="13" description="" type="string|null" variable="$message">
+            <type>string</type>
+            <type>null</type>
+          </tag>
+          <tag name="return" line="13" description="" type="\Illuminate\Auth\Access\Response">
+            <type>\Illuminate\Auth\Access\Response</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$message</name>
+          <default>null</default>
+          <type>string|null</type>
+        </argument>
+        <inherited_from>\Illuminate\Auth\Access\HandlesAuthorization</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Auth\Access" line="26" package="Default">
+        <name>deny</name>
+        <full_name>\Illuminate\Auth\Access\HandlesAuthorization::deny()</full_name>
+        <docblock line="26">
+          <description>Throws an unauthorized exception.</description>
+          <long-description/>
+          <tag name="param" line="26" description="" type="string" variable="$message">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="26" description="" type="void">
+            <type>void</type>
+          </tag>
+          <tag name="throws" line="26" description="" type="\Illuminate\Auth\Access\AuthorizationException">
+            <type>\Illuminate\Auth\Access\AuthorizationException</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$message</name>
+          <default>'This action is unauthorized.'</default>
+          <type>string</type>
+        </argument>
+        <inherited_from>\Illuminate\Auth\Access\HandlesAuthorization</inherited_from>
+      </method>
+    </class>
+    <parse_markers>
+      <error line="0" code="PPC:ERR-50000">No summary was found for this file</error>
+      <error line="10" code="PPC:ERR-50005">No summary for class \Illuminate\Auth\Access\Gate</error>
+    </parse_markers>
+    <source>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</source>
+  <type>class</type></file>

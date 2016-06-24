@@ -1,0 +1,239 @@
+<file path="codex/vendor/laravel/framework/src/Illuminate/Bus/Dispatcher.php" generated-path="codex.vendor.laravel.framework.src.Illuminate.Bus.Dispatcher.html" hash="1b1b68c8159c966d5f7cbbdc05302564" package="Default">
+    <docblock line="0">
+      <description/>
+      <long-description/>
+      <tag name="package" line="0" description="Default"/>
+    </docblock>
+    <namespace-alias name="Closure">\Closure</namespace-alias>
+    <namespace-alias name="RuntimeException">\RuntimeException</namespace-alias>
+    <namespace-alias name="Pipeline">\Illuminate\Pipeline\Pipeline</namespace-alias>
+    <namespace-alias name="Queue">\Illuminate\Contracts\Queue\Queue</namespace-alias>
+    <namespace-alias name="ShouldQueue">\Illuminate\Contracts\Queue\ShouldQueue</namespace-alias>
+    <namespace-alias name="Container">\Illuminate\Contracts\Container\Container</namespace-alias>
+    <namespace-alias name="QueueingDispatcher">\Illuminate\Contracts\Bus\QueueingDispatcher</namespace-alias>
+    <namespace-alias name="DispatcherContract">\Illuminate\Contracts\Bus\Dispatcher</namespace-alias>
+    <class final="false" abstract="false" namespace="Illuminate\Bus" line="14" package="Default">
+      <extends/>
+      <implements>\Illuminate\Contracts\Bus\Dispatcher</implements>
+      <implements>\Illuminate\Contracts\Bus\QueueingDispatcher</implements>
+      <name>Dispatcher</name>
+      <full_name>\Illuminate\Bus\Dispatcher</full_name>
+      <docblock line="14">
+        <description/>
+        <long-description/>
+        <tag name="package" line="14" description="Default"/>
+      </docblock>
+      <property static="false" visibility="protected" namespace="Illuminate\Bus" line="21" package="Default">
+        <name>$container</name>
+        <full_name>\Illuminate\Bus\Dispatcher::container</full_name>
+        <default/>
+        <docblock line="21">
+          <description>The container implementation.</description>
+          <long-description/>
+          <tag name="var" line="21" description="" type="\Illuminate\Contracts\Container\Container" variable="">
+            <type>\Illuminate\Contracts\Container\Container</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" namespace="Illuminate\Bus" line="28" package="Default">
+        <name>$pipeline</name>
+        <full_name>\Illuminate\Bus\Dispatcher::pipeline</full_name>
+        <default/>
+        <docblock line="28">
+          <description>The pipeline instance for the bus.</description>
+          <long-description/>
+          <tag name="var" line="28" description="" type="\Illuminate\Pipeline\Pipeline" variable="">
+            <type>\Illuminate\Pipeline\Pipeline</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" namespace="Illuminate\Bus" line="35" package="Default">
+        <name>$pipes</name>
+        <full_name>\Illuminate\Bus\Dispatcher::pipes</full_name>
+        <default>array()</default>
+        <docblock line="35">
+          <description>The pipes to send commands through before dispatching.</description>
+          <long-description/>
+          <tag name="var" line="35" description="" type="array" variable="">
+            <type>array</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" namespace="Illuminate\Bus" line="42" package="Default">
+        <name>$queueResolver</name>
+        <full_name>\Illuminate\Bus\Dispatcher::queueResolver</full_name>
+        <default/>
+        <docblock line="42">
+          <description>The queue resolver callback.</description>
+          <long-description/>
+          <tag name="var" line="42" description="" type="\Closure|null" variable="">
+            <type>\Closure</type>
+            <type>null</type>
+          </tag>
+        </docblock>
+      </property>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Bus" line="51" package="Default">
+        <name>__construct</name>
+        <full_name>\Illuminate\Bus\Dispatcher::__construct()</full_name>
+        <docblock line="51">
+          <description>Create a new command dispatcher instance.</description>
+          <long-description/>
+          <tag name="param" line="51" description="" type="\Illuminate\Contracts\Container\Container" variable="$container">
+            <type>\Illuminate\Contracts\Container\Container</type>
+          </tag>
+          <tag name="param" line="51" description="" type="\Closure|null" variable="$queueResolver">
+            <type>\Closure</type>
+            <type>null</type>
+          </tag>
+          <tag name="return" line="51" description="" type="void">
+            <type>void</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$container</name>
+          <default/>
+          <type>\Illuminate\Contracts\Container\Container</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$queueResolver</name>
+          <default>null</default>
+          <type>\Closure|null</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Bus" line="64" package="Default">
+        <name>dispatch</name>
+        <full_name>\Illuminate\Bus\Dispatcher::dispatch()</full_name>
+        <docblock line="64">
+          <description>Dispatch a command to its appropriate handler.</description>
+          <long-description/>
+          <tag name="param" line="64" description="" type="mixed" variable="$command">
+            <type>mixed</type>
+          </tag>
+          <tag name="return" line="64" description="" type="mixed">
+            <type>mixed</type>
+          </tag>
+          <tag name="inherited_from" description="\Illuminate\Contracts\Bus\Dispatcher::dispatch()" refers="\Illuminate\Contracts\Bus\Dispatcher::dispatch()" link="/classes/Illuminate.Contracts.Bus.Dispatcher.html#method_dispatch"/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$command</name>
+          <default/>
+          <type>mixed</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Bus" line="79" package="Default">
+        <name>dispatchNow</name>
+        <full_name>\Illuminate\Bus\Dispatcher::dispatchNow()</full_name>
+        <docblock line="79">
+          <description>Dispatch a command to its appropriate handler in the current process.</description>
+          <long-description/>
+          <tag name="param" line="79" description="" type="mixed" variable="$command">
+            <type>mixed</type>
+          </tag>
+          <tag name="return" line="79" description="" type="mixed">
+            <type>mixed</type>
+          </tag>
+          <tag name="inherited_from" description="\Illuminate\Contracts\Bus\Dispatcher::dispatchNow()" refers="\Illuminate\Contracts\Bus\Dispatcher::dispatchNow()" link="/classes/Illuminate.Contracts.Bus.Dispatcher.html#method_dispatchNow"/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$command</name>
+          <default/>
+          <type>mixed</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Bus" line="92" package="Default">
+        <name>commandShouldBeQueued</name>
+        <full_name>\Illuminate\Bus\Dispatcher::commandShouldBeQueued()</full_name>
+        <docblock line="92">
+          <description>Determine if the given command should be queued.</description>
+          <long-description/>
+          <tag name="param" line="92" description="" type="mixed" variable="$command">
+            <type>mixed</type>
+          </tag>
+          <tag name="return" line="92" description="" type="boolean">
+            <type>boolean</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$command</name>
+          <default/>
+          <type>mixed</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Bus" line="105" package="Default">
+        <name>dispatchToQueue</name>
+        <full_name>\Illuminate\Bus\Dispatcher::dispatchToQueue()</full_name>
+        <docblock line="105">
+          <description>Dispatch a command to its appropriate handler behind a queue.</description>
+          <long-description/>
+          <tag name="param" line="105" description="" type="mixed" variable="$command">
+            <type>mixed</type>
+          </tag>
+          <tag name="return" line="105" description="" type="mixed">
+            <type>mixed</type>
+          </tag>
+          <tag name="throws" line="105" description="" type="\RuntimeException">
+            <type>\RuntimeException</type>
+          </tag>
+          <tag name="inherited_from" description="\Illuminate\Contracts\Bus\QueueingDispatcher::dispatchToQueue()" refers="\Illuminate\Contracts\Bus\QueueingDispatcher::dispatchToQueue()" link="/classes/Illuminate.Contracts.Bus.QueueingDispatcher.html#method_dispatchToQueue"/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$command</name>
+          <default/>
+          <type>mixed</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Bus" line="129" package="Default">
+        <name>pushCommandToQueue</name>
+        <full_name>\Illuminate\Bus\Dispatcher::pushCommandToQueue()</full_name>
+        <docblock line="129">
+          <description>Push the command onto the given queue instance.</description>
+          <long-description/>
+          <tag name="param" line="129" description="" type="\Illuminate\Contracts\Queue\Queue" variable="$queue">
+            <type>\Illuminate\Contracts\Queue\Queue</type>
+          </tag>
+          <tag name="param" line="129" description="" type="mixed" variable="$command">
+            <type>mixed</type>
+          </tag>
+          <tag name="return" line="129" description="" type="mixed">
+            <type>mixed</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$queue</name>
+          <default/>
+          <type>\Illuminate\Contracts\Queue\Queue</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$command</name>
+          <default/>
+          <type>mixed</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Bus" line="152" package="Default">
+        <name>pipeThrough</name>
+        <full_name>\Illuminate\Bus\Dispatcher::pipeThrough()</full_name>
+        <docblock line="152">
+          <description>Set the pipes through which commands should be piped before dispatching.</description>
+          <long-description/>
+          <tag name="param" line="152" description="" type="array" variable="$pipes">
+            <type>array</type>
+          </tag>
+          <tag name="return" line="152" description="" type="\Illuminate\Bus\Dispatcher">
+            <type>\Illuminate\Bus\Dispatcher</type>
+          </tag>
+          <tag name="inherited_from" description="\Illuminate\Contracts\Bus\Dispatcher::pipeThrough()" refers="\Illuminate\Contracts\Bus\Dispatcher::pipeThrough()" link="/classes/Illuminate.Contracts.Bus.Dispatcher.html#method_pipeThrough"/>
+          <tag name="fluent" description="This method is part of a fluent interface and will return the same instance"/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$pipes</name>
+          <default/>
+          <type>array</type>
+        </argument>
+      </method>
+    </class>
+    <parse_markers>
+      <error line="0" code="PPC:ERR-50000">No summary was found for this file</error>
+      <error line="14" code="PPC:ERR-50005">No summary for class \Illuminate\Bus\Dispatcher</error>
+    </parse_markers>
+    <source>eJytV8ty2zYU3esrbmcyEeWRm31dOZ24XXTT5uFdnNFA5JWJKQkwAGg70/rfewECfICkqKbWQqLI+zz34ID4+W2VV6uVYCXqiqUIvxdFXXLBDN69q/XValVrhJtC6lrhlfvzsRaGl/jbU4qV4VI0d3t+73mFBRfdxcjiRgqjWGr03Ycaa2y+F60+5bIusiVbe8UoqequTlhTj010Lu5/5QSBSfNFh84QmIbuX7Ai1NKC6f4j4GVVYInCTDlsYVzD6u8V0OfNxYX7hQu4zRHS0FMXkNkh/OiNgu0vD0zB3bkAea837rdS0mBqMINXaYfgVDGVny9woQ0TxJ6jVGDoyaHWixWNaDJXRdXSaK4IDUaCRpERPmXJREY3ciXr+xwOSDUhZB5XgniyMKYU+3aqAA07+PxluoSvdnigUMvigSaTsqI4sPSvaQT8WvpH1EUxl9AF/OjjjXPeKCQAgYHAx9Bx26Glhh/HqICKKVbC+byAHgVGQfqNQFRza6zQ1ErAg+TZsNn6UPAUjrVILX1hv6dE2qg6NUmXvsu+DRoUJaKp2PwbF7RZMfbzyuRcX153q2U3IHNkFkeM8Y/MW9rv3AACfZMuw6bxeR5NLixvml2YGzGXkyiwiuZfKW4Hm9P9AtXc+Er+RCSxDbkIMdbu8UmwA1WSECKGjx8hmcTm9esOWufZaPI7dPqVdQE3vWj242vzzqGAW+n8OrcO62fAgjT4nCh/yMfJCC8xA1pLTtDSWinSWrtIU9RjcXvp0Qx6iqYzRCGw8fLaCmDndHntJTDpGWp3G0XSJuwcTmLdUpsuSd6Sz8FtC+sGqvWXPvbzKwANqtJtGkeH7D1/QNFOQjs+kWo3opp9J9AHKefEte18gcEzoIdCg8bKIwzeS16CcwekfSojW4fBC3CtfWYp8ajhLn6HO4uTo9Uaiy6RRGDjswOuNZrW1jHIP9zAW5i6Dz85Lff7nYvY7Kw7t6Xu6Z1M7W1Vk9q07eff9IJYMfshhOqNzTUTs94B5GQ9hihZfxhu8xnPQEgTmMGagPF72XqgSIOiSjS5zPb4xLXRSW9BuVLXsxraQve1GYf72cL3iWhV6/ymcWzneyLgDL/fU5RGJz27SS5kb3kPwf9v7yW9I0JgxP+X3bEcnAPExDYZ0zxyoV0KC/ZtdpbO/PK6oJbVn2IxzsxQlitaKsB2fyr/+enO7zd2Wso2UXK874+Z+QmN46E/JvhTwWPOSYzbw0K361iz7JxDg2eeOzeAPyLEvHNL7KS0Wrdbv003oZpIM++z4SDSGF2NobFmAYnn1b+qiNvb</source>
+  <type>class</type></file>

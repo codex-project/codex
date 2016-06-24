@@ -1,0 +1,178 @@
+<file path="codex/workbench/codex/core/src/Processors/TocProcessor.php" generated-path="codex.workbench.codex.core.src.Processors.TocProcessor.html" hash="5b9df4dee8e579382dd138b05b700085" package="Default">
+    <docblock line="0">
+      <description/>
+      <long-description/>
+      <tag name="package" line="0" description="Default"/>
+    </docblock>
+    <namespace-alias name="Processor">\Codex\Addons\Annotations\Processor</namespace-alias>
+    <namespace-alias name="Document">\Codex\Documents\Document</namespace-alias>
+    <namespace-alias name="Header">\Codex\Processors\Toc\Header</namespace-alias>
+    <namespace-alias name="Collection">\Codex\Support\Collection</namespace-alias>
+    <namespace-alias name="Factory">\Illuminate\Contracts\View\Factory</namespace-alias>
+    <class final="false" abstract="false" namespace="Codex\Processors" line="19" package="Codex\Core">
+      <extends/>
+      <name>TocProcessor</name>
+      <full_name>\Codex\Processors\TocProcessor</full_name>
+      <docblock line="19">
+        <description>This is the class TocFilter.</description>
+        <long-description/>
+        <tag name="package" line="19" description="Codex\Core"/>
+        <tag name="author" line="19" description="CLI"/>
+        <tag name="copyright" line="19" description="Copyright (c) 2015, CLI. All rights reserved"/>
+        <tag name="Processor" line="19" description="(&quot;toc&quot;, priority=50, config=&quot;config&quot;, after={&quot;parser&quot;})"/>
+      </docblock>
+      <property static="false" visibility="public" namespace="Codex\Processors" line="22" package="Codex\Core">
+        <name>$codex</name>
+        <full_name>\Codex\Processors\TocProcessor::codex</full_name>
+        <default/>
+        <docblock line="22">
+          <description/>
+          <long-description/>
+          <tag name="var" line="22" description="" type="\Codex\Codex" variable="">
+            <type>\Codex\Codex</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="false" visibility="public" namespace="Codex\Processors" line="25" package="Codex\Core">
+        <name>$config</name>
+        <full_name>\Codex\Processors\TocProcessor::config</full_name>
+        <default>array('disable' =&gt; array(1), 'regex' =&gt; '/&lt;h(\d)&gt;([\w\W]*?)&lt;\/h\d&gt;/', 'list_class' =&gt; 'toc', 'header_link_class' =&gt; 'toc-header-link', 'header_link_show' =&gt; false, 'header_link_text' =&gt; '#', 'minimum_nodes' =&gt; 2, 'view' =&gt; 'processors.toc')</default>
+        <docblock line="25">
+          <description/>
+          <long-description/>
+          <tag name="var" line="25" description="" type="\Codex\Support\Collection|array" variable="">
+            <type>\Codex\Support\Collection</type>
+            <type>array</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" namespace="Codex\Processors" line="37" package="Codex\Core">
+        <name>$view</name>
+        <full_name>\Codex\Processors\TocProcessor::view</full_name>
+        <default/>
+        <docblock line="37">
+          <description/>
+          <long-description/>
+          <tag name="var" line="37" description="" type="\Illuminate\Contracts\View\Factory" variable="">
+            <type>\Illuminate\Contracts\View\Factory</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" namespace="Codex\Processors" line="39" package="Codex\Core">
+        <name>$slugs</name>
+        <full_name>\Codex\Processors\TocProcessor::slugs</full_name>
+        <default>array()</default>
+        <docblock line="39">
+          <description/>
+          <long-description/>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" namespace="Codex\Processors" line="41" package="Codex\Core">
+        <name>$nodes</name>
+        <full_name>\Codex\Processors\TocProcessor::nodes</full_name>
+        <default>array()</default>
+        <docblock line="41">
+          <description/>
+          <long-description/>
+        </docblock>
+      </property>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Codex\Processors" line="48" package="Codex\Core">
+        <name>__construct</name>
+        <full_name>\Codex\Processors\TocProcessor::__construct()</full_name>
+        <docblock line="48">
+          <description>TocFilter constructor.</description>
+          <long-description/>
+          <tag name="param" line="48" description="" type="" variable="$view"/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$view</name>
+          <default/>
+          <type/>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Codex\Processors" line="53" package="Codex\Core">
+        <name>handle</name>
+        <full_name>\Codex\Processors\TocProcessor::handle()</full_name>
+        <docblock line="53">
+          <description/>
+          <long-description/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$document</name>
+          <default/>
+          <type>\Codex\Documents\Document</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Codex\Processors" line="123" package="Codex\Core">
+        <name>createHeaderNode</name>
+        <full_name>\Codex\Processors\TocProcessor::createHeaderNode()</full_name>
+        <docblock line="123">
+          <description/>
+          <long-description/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$size</name>
+          <default/>
+          <type/>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$text</name>
+          <default/>
+          <type/>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Codex\Processors" line="128" package="Codex\Core">
+        <name>isAllowedHeader</name>
+        <full_name>\Codex\Processors\TocProcessor::isAllowedHeader()</full_name>
+        <docblock line="128">
+          <description/>
+          <long-description/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$header</name>
+          <default/>
+          <type/>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Codex\Processors" line="133" package="Codex\Core">
+        <name>makeSlug</name>
+        <full_name>\Codex\Processors\TocProcessor::makeSlug()</full_name>
+        <docblock line="133">
+          <description/>
+          <long-description/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$text</name>
+          <default/>
+          <type/>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Codex\Processors" line="142" package="Codex\Core">
+        <name>addScript</name>
+        <full_name>\Codex\Processors\TocProcessor::addScript()</full_name>
+        <docblock line="142">
+          <description/>
+          <long-description/>
+        </docblock>
+      </method>
+    </class>
+    <parse_markers>
+      <error line="0" code="PPC:ERR-50000">No summary was found for this file</error>
+      <error line="53" code="PPC:ERR-50015">Argument $document is missing from the Docblock of handle</error>
+      <error line="53" code="PPC:ERR-50008">No summary for method handle()</error>
+      <error line="123" code="PPC:ERR-50015">Argument $size is missing from the Docblock of createHeaderNode</error>
+      <error line="123" code="PPC:ERR-50015">Argument $text is missing from the Docblock of createHeaderNode</error>
+      <error line="123" code="PPC:ERR-50008">No summary for method createHeaderNode()</error>
+      <error line="128" code="PPC:ERR-50015">Argument $header is missing from the Docblock of isAllowedHeader</error>
+      <error line="128" code="PPC:ERR-50008">No summary for method isAllowedHeader()</error>
+      <error line="133" code="PPC:ERR-50015">Argument $text is missing from the Docblock of makeSlug</error>
+      <error line="133" code="PPC:ERR-50008">No summary for method makeSlug()</error>
+      <error line="142" code="PPC:ERR-50008">No summary for method addScript()</error>
+      <error line="22" code="PPC:ERR-50007">No summary for property $codex</error>
+      <error line="25" code="PPC:ERR-50007">No summary for property $config</error>
+      <error line="37" code="PPC:ERR-50007">No summary for property $view</error>
+      <error line="39" code="PPC:ERR-50007">No summary for property $slugs</error>
+      <error line="41" code="PPC:ERR-50007">No summary for property $nodes</error>
+    </parse_markers>
+    <source>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</source>
+  <type>class</type></file>

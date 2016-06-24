@@ -1,0 +1,717 @@
+<file path="codex/vendor/laravel/framework/src/Illuminate/Routing/ResponseFactory.php" generated-path="codex.vendor.laravel.framework.src.Illuminate.Routing.ResponseFactory.html" hash="af2ef381129cca95949045e103879cae" package="Default">
+    <docblock line="0">
+      <description/>
+      <long-description/>
+      <tag name="package" line="0" description="Default"/>
+    </docblock>
+    <namespace-alias name="JsonSerializable">\JsonSerializable</namespace-alias>
+    <namespace-alias name="Str">\Illuminate\Support\Str</namespace-alias>
+    <namespace-alias name="Response">\Illuminate\Http\Response</namespace-alias>
+    <namespace-alias name="JsonResponse">\Illuminate\Http\JsonResponse</namespace-alias>
+    <namespace-alias name="Macroable">\Illuminate\Support\Traits\Macroable</namespace-alias>
+    <namespace-alias name="Arrayable">\Illuminate\Contracts\Support\Arrayable</namespace-alias>
+    <namespace-alias name="ViewFactory">\Illuminate\Contracts\View\Factory</namespace-alias>
+    <namespace-alias name="StreamedResponse">\Symfony\Component\HttpFoundation\StreamedResponse</namespace-alias>
+    <namespace-alias name="BinaryFileResponse">\Symfony\Component\HttpFoundation\BinaryFileResponse</namespace-alias>
+    <namespace-alias name="FactoryContract">\Illuminate\Contracts\Routing\ResponseFactory</namespace-alias>
+    <class final="false" abstract="false" namespace="Illuminate\Routing" line="16" package="Default">
+      <extends/>
+      <implements>\Illuminate\Contracts\Routing\ResponseFactory</implements>
+      <name>ResponseFactory</name>
+      <full_name>\Illuminate\Routing\ResponseFactory</full_name>
+      <docblock line="16">
+        <description/>
+        <long-description/>
+        <tag name="package" line="16" description="Default"/>
+      </docblock>
+      <property static="false" visibility="protected" namespace="Illuminate\Routing" line="25" package="Default">
+        <name>$view</name>
+        <full_name>\Illuminate\Routing\ResponseFactory::view</full_name>
+        <default/>
+        <docblock line="25">
+          <description>The view factory instance.</description>
+          <long-description/>
+          <tag name="var" line="25" description="" type="\Illuminate\Contracts\View\Factory" variable="">
+            <type>\Illuminate\Contracts\View\Factory</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" namespace="Illuminate\Routing" line="32" package="Default">
+        <name>$redirector</name>
+        <full_name>\Illuminate\Routing\ResponseFactory::redirector</full_name>
+        <default/>
+        <docblock line="32">
+          <description>The redirector instance.</description>
+          <long-description/>
+          <tag name="var" line="32" description="" type="\Illuminate\Routing\Redirector" variable="">
+            <type>\Illuminate\Routing\Redirector</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="true" visibility="protected" namespace="Illuminate\Routing" line="15" package="Default">
+        <name>$macros</name>
+        <full_name>\Illuminate\Support\Traits\Macroable::macros</full_name>
+        <default>array()</default>
+        <docblock line="15">
+          <description>The registered string macros.</description>
+          <long-description/>
+          <tag name="var" line="15" description="" type="array" variable="">
+            <type>array</type>
+          </tag>
+        </docblock>
+      </property>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Routing" line="41" package="Default">
+        <name>__construct</name>
+        <full_name>\Illuminate\Routing\ResponseFactory::__construct()</full_name>
+        <docblock line="41">
+          <description>Create a new response factory instance.</description>
+          <long-description/>
+          <tag name="param" line="41" description="" type="\Illuminate\Contracts\View\Factory" variable="$view">
+            <type>\Illuminate\Contracts\View\Factory</type>
+          </tag>
+          <tag name="param" line="41" description="" type="\Illuminate\Routing\Redirector" variable="$redirector">
+            <type>\Illuminate\Routing\Redirector</type>
+          </tag>
+          <tag name="return" line="41" description="" type="void">
+            <type>void</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$view</name>
+          <default/>
+          <type>\Illuminate\Contracts\View\Factory</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$redirector</name>
+          <default/>
+          <type>\Illuminate\Routing\Redirector</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Routing" line="55" package="Default">
+        <name>make</name>
+        <full_name>\Illuminate\Routing\ResponseFactory::make()</full_name>
+        <docblock line="55">
+          <description>Return a new response from the application.</description>
+          <long-description/>
+          <tag name="param" line="55" description="" type="string" variable="$content">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="55" description="" type="integer" variable="$status">
+            <type>integer</type>
+          </tag>
+          <tag name="param" line="55" description="" type="array" variable="$headers">
+            <type>array</type>
+          </tag>
+          <tag name="return" line="55" description="" type="\Illuminate\Http\Response">
+            <type>\Illuminate\Http\Response</type>
+          </tag>
+          <tag name="inherited_from" description="\Illuminate\Contracts\Routing\ResponseFactory::make()" refers="\Illuminate\Contracts\Routing\ResponseFactory::make()" link="/classes/Illuminate.Contracts.Routing.ResponseFactory.html#method_make"/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$content</name>
+          <default>''</default>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$status</name>
+          <default>200</default>
+          <type>integer</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$headers</name>
+          <default>array()</default>
+          <type>array</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Routing" line="69" package="Default">
+        <name>view</name>
+        <full_name>\Illuminate\Routing\ResponseFactory::view()</full_name>
+        <docblock line="69">
+          <description>Return a new view response from the application.</description>
+          <long-description/>
+          <tag name="param" line="69" description="" type="string" variable="$view">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="69" description="" type="array" variable="$data">
+            <type>array</type>
+          </tag>
+          <tag name="param" line="69" description="" type="integer" variable="$status">
+            <type>integer</type>
+          </tag>
+          <tag name="param" line="69" description="" type="array" variable="$headers">
+            <type>array</type>
+          </tag>
+          <tag name="return" line="69" description="" type="\Illuminate\Http\Response">
+            <type>\Illuminate\Http\Response</type>
+          </tag>
+          <tag name="inherited_from" description="\Illuminate\Contracts\Routing\ResponseFactory::view()" refers="\Illuminate\Contracts\Routing\ResponseFactory::view()" link="/classes/Illuminate.Contracts.Routing.ResponseFactory.html#method_view"/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$view</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$data</name>
+          <default>array()</default>
+          <type>array</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$status</name>
+          <default>200</default>
+          <type>integer</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$headers</name>
+          <default>array()</default>
+          <type>array</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Routing" line="83" package="Default">
+        <name>json</name>
+        <full_name>\Illuminate\Routing\ResponseFactory::json()</full_name>
+        <docblock line="83">
+          <description>Return a new JSON response from the application.</description>
+          <long-description/>
+          <tag name="param" line="83" description="" type="string|array" variable="$data">
+            <type>string</type>
+            <type>array</type>
+          </tag>
+          <tag name="param" line="83" description="" type="integer" variable="$status">
+            <type>integer</type>
+          </tag>
+          <tag name="param" line="83" description="" type="array" variable="$headers">
+            <type>array</type>
+          </tag>
+          <tag name="param" line="83" description="" type="integer" variable="$options">
+            <type>integer</type>
+          </tag>
+          <tag name="return" line="83" description="" type="\Illuminate\Http\JsonResponse">
+            <type>\Illuminate\Http\JsonResponse</type>
+          </tag>
+          <tag name="inherited_from" description="\Illuminate\Contracts\Routing\ResponseFactory::json()" refers="\Illuminate\Contracts\Routing\ResponseFactory::json()" link="/classes/Illuminate.Contracts.Routing.ResponseFactory.html#method_json"/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$data</name>
+          <default>array()</default>
+          <type>string|array</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$status</name>
+          <default>200</default>
+          <type>integer</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$headers</name>
+          <default>array()</default>
+          <type>array</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$options</name>
+          <default>0</default>
+          <type>integer</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Routing" line="102" package="Default">
+        <name>jsonp</name>
+        <full_name>\Illuminate\Routing\ResponseFactory::jsonp()</full_name>
+        <docblock line="102">
+          <description>Return a new JSONP response from the application.</description>
+          <long-description/>
+          <tag name="param" line="102" description="" type="string" variable="$callback">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="102" description="" type="string|array" variable="$data">
+            <type>string</type>
+            <type>array</type>
+          </tag>
+          <tag name="param" line="102" description="" type="integer" variable="$status">
+            <type>integer</type>
+          </tag>
+          <tag name="param" line="102" description="" type="array" variable="$headers">
+            <type>array</type>
+          </tag>
+          <tag name="param" line="102" description="" type="integer" variable="$options">
+            <type>integer</type>
+          </tag>
+          <tag name="return" line="102" description="" type="\Illuminate\Http\JsonResponse">
+            <type>\Illuminate\Http\JsonResponse</type>
+          </tag>
+          <tag name="inherited_from" description="\Illuminate\Contracts\Routing\ResponseFactory::jsonp()" refers="\Illuminate\Contracts\Routing\ResponseFactory::jsonp()" link="/classes/Illuminate.Contracts.Routing.ResponseFactory.html#method_jsonp"/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$callback</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$data</name>
+          <default>array()</default>
+          <type>string|array</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$status</name>
+          <default>200</default>
+          <type>integer</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$headers</name>
+          <default>array()</default>
+          <type>array</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$options</name>
+          <default>0</default>
+          <type>integer</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Routing" line="115" package="Default">
+        <name>stream</name>
+        <full_name>\Illuminate\Routing\ResponseFactory::stream()</full_name>
+        <docblock line="115">
+          <description>Return a new streamed response from the application.</description>
+          <long-description/>
+          <tag name="param" line="115" description="" type="\Closure" variable="$callback">
+            <type>\Closure</type>
+          </tag>
+          <tag name="param" line="115" description="" type="integer" variable="$status">
+            <type>integer</type>
+          </tag>
+          <tag name="param" line="115" description="" type="array" variable="$headers">
+            <type>array</type>
+          </tag>
+          <tag name="return" line="115" description="" type="\Symfony\Component\HttpFoundation\StreamedResponse">
+            <type>\Symfony\Component\HttpFoundation\StreamedResponse</type>
+          </tag>
+          <tag name="inherited_from" description="\Illuminate\Contracts\Routing\ResponseFactory::stream()" refers="\Illuminate\Contracts\Routing\ResponseFactory::stream()" link="/classes/Illuminate.Contracts.Routing.ResponseFactory.html#method_stream"/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$callback</name>
+          <default/>
+          <type>\Closure</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$status</name>
+          <default>200</default>
+          <type>integer</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$headers</name>
+          <default>array()</default>
+          <type>array</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Routing" line="129" package="Default">
+        <name>download</name>
+        <full_name>\Illuminate\Routing\ResponseFactory::download()</full_name>
+        <docblock line="129">
+          <description>Create a new file download response.</description>
+          <long-description/>
+          <tag name="param" line="129" description="" type="\SplFileInfo|string" variable="$file">
+            <type>\SplFileInfo</type>
+            <type>string</type>
+          </tag>
+          <tag name="param" line="129" description="" type="string" variable="$name">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="129" description="" type="array" variable="$headers">
+            <type>array</type>
+          </tag>
+          <tag name="param" line="129" description="" type="string|null" variable="$disposition">
+            <type>string</type>
+            <type>null</type>
+          </tag>
+          <tag name="return" line="129" description="" type="\Symfony\Component\HttpFoundation\BinaryFileResponse">
+            <type>\Symfony\Component\HttpFoundation\BinaryFileResponse</type>
+          </tag>
+          <tag name="inherited_from" description="\Illuminate\Contracts\Routing\ResponseFactory::download()" refers="\Illuminate\Contracts\Routing\ResponseFactory::download()" link="/classes/Illuminate.Contracts.Routing.ResponseFactory.html#method_download"/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$file</name>
+          <default/>
+          <type>\SplFileInfo|string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$name</name>
+          <default>null</default>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$headers</name>
+          <default>array()</default>
+          <type>array</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$disposition</name>
+          <default>'attachment'</default>
+          <type>string|null</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Routing" line="147" package="Default">
+        <name>file</name>
+        <full_name>\Illuminate\Routing\ResponseFactory::file()</full_name>
+        <docblock line="147">
+          <description>Return the raw contents of a binary file.</description>
+          <long-description/>
+          <tag name="param" line="147" description="" type="\SplFileInfo|string" variable="$file">
+            <type>\SplFileInfo</type>
+            <type>string</type>
+          </tag>
+          <tag name="param" line="147" description="" type="array" variable="$headers">
+            <type>array</type>
+          </tag>
+          <tag name="return" line="147" description="" type="\Symfony\Component\HttpFoundation\BinaryFileResponse">
+            <type>\Symfony\Component\HttpFoundation\BinaryFileResponse</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$file</name>
+          <default/>
+          <type>\SplFileInfo|string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$headers</name>
+          <default>array()</default>
+          <type>array</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Routing" line="161" package="Default">
+        <name>redirectTo</name>
+        <full_name>\Illuminate\Routing\ResponseFactory::redirectTo()</full_name>
+        <docblock line="161">
+          <description>Create a new redirect response to the given path.</description>
+          <long-description/>
+          <tag name="param" line="161" description="" type="string" variable="$path">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="161" description="" type="integer" variable="$status">
+            <type>integer</type>
+          </tag>
+          <tag name="param" line="161" description="" type="array" variable="$headers">
+            <type>array</type>
+          </tag>
+          <tag name="param" line="161" description="" type="boolean|null" variable="$secure">
+            <type>boolean</type>
+            <type>null</type>
+          </tag>
+          <tag name="return" line="161" description="" type="\Illuminate\Http\RedirectResponse">
+            <type>\Illuminate\Http\RedirectResponse</type>
+          </tag>
+          <tag name="inherited_from" description="\Illuminate\Contracts\Routing\ResponseFactory::redirectTo()" refers="\Illuminate\Contracts\Routing\ResponseFactory::redirectTo()" link="/classes/Illuminate.Contracts.Routing.ResponseFactory.html#method_redirectTo"/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$path</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$status</name>
+          <default>302</default>
+          <type>integer</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$headers</name>
+          <default>array()</default>
+          <type>array</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$secure</name>
+          <default>null</default>
+          <type>boolean|null</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Routing" line="175" package="Default">
+        <name>redirectToRoute</name>
+        <full_name>\Illuminate\Routing\ResponseFactory::redirectToRoute()</full_name>
+        <docblock line="175">
+          <description>Create a new redirect response to a named route.</description>
+          <long-description/>
+          <tag name="param" line="175" description="" type="string" variable="$route">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="175" description="" type="array" variable="$parameters">
+            <type>array</type>
+          </tag>
+          <tag name="param" line="175" description="" type="integer" variable="$status">
+            <type>integer</type>
+          </tag>
+          <tag name="param" line="175" description="" type="array" variable="$headers">
+            <type>array</type>
+          </tag>
+          <tag name="return" line="175" description="" type="\Illuminate\Http\RedirectResponse">
+            <type>\Illuminate\Http\RedirectResponse</type>
+          </tag>
+          <tag name="inherited_from" description="\Illuminate\Contracts\Routing\ResponseFactory::redirectToRoute()" refers="\Illuminate\Contracts\Routing\ResponseFactory::redirectToRoute()" link="/classes/Illuminate.Contracts.Routing.ResponseFactory.html#method_redirectToRoute"/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$route</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$parameters</name>
+          <default>array()</default>
+          <type>array</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$status</name>
+          <default>302</default>
+          <type>integer</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$headers</name>
+          <default>array()</default>
+          <type>array</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Routing" line="189" package="Default">
+        <name>redirectToAction</name>
+        <full_name>\Illuminate\Routing\ResponseFactory::redirectToAction()</full_name>
+        <docblock line="189">
+          <description>Create a new redirect response to a controller action.</description>
+          <long-description/>
+          <tag name="param" line="189" description="" type="string" variable="$action">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="189" description="" type="array" variable="$parameters">
+            <type>array</type>
+          </tag>
+          <tag name="param" line="189" description="" type="integer" variable="$status">
+            <type>integer</type>
+          </tag>
+          <tag name="param" line="189" description="" type="array" variable="$headers">
+            <type>array</type>
+          </tag>
+          <tag name="return" line="189" description="" type="\Illuminate\Http\RedirectResponse">
+            <type>\Illuminate\Http\RedirectResponse</type>
+          </tag>
+          <tag name="inherited_from" description="\Illuminate\Contracts\Routing\ResponseFactory::redirectToAction()" refers="\Illuminate\Contracts\Routing\ResponseFactory::redirectToAction()" link="/classes/Illuminate.Contracts.Routing.ResponseFactory.html#method_redirectToAction"/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$action</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$parameters</name>
+          <default>array()</default>
+          <type>array</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$status</name>
+          <default>302</default>
+          <type>integer</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$headers</name>
+          <default>array()</default>
+          <type>array</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Routing" line="203" package="Default">
+        <name>redirectGuest</name>
+        <full_name>\Illuminate\Routing\ResponseFactory::redirectGuest()</full_name>
+        <docblock line="203">
+          <description>Create a new redirect response, while putting the current URL in the session.</description>
+          <long-description/>
+          <tag name="param" line="203" description="" type="string" variable="$path">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="203" description="" type="integer" variable="$status">
+            <type>integer</type>
+          </tag>
+          <tag name="param" line="203" description="" type="array" variable="$headers">
+            <type>array</type>
+          </tag>
+          <tag name="param" line="203" description="" type="boolean|null" variable="$secure">
+            <type>boolean</type>
+            <type>null</type>
+          </tag>
+          <tag name="return" line="203" description="" type="\Illuminate\Http\RedirectResponse">
+            <type>\Illuminate\Http\RedirectResponse</type>
+          </tag>
+          <tag name="inherited_from" description="\Illuminate\Contracts\Routing\ResponseFactory::redirectGuest()" refers="\Illuminate\Contracts\Routing\ResponseFactory::redirectGuest()" link="/classes/Illuminate.Contracts.Routing.ResponseFactory.html#method_redirectGuest"/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$path</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$status</name>
+          <default>302</default>
+          <type>integer</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$headers</name>
+          <default>array()</default>
+          <type>array</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$secure</name>
+          <default>null</default>
+          <type>boolean|null</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Routing" line="217" package="Default">
+        <name>redirectToIntended</name>
+        <full_name>\Illuminate\Routing\ResponseFactory::redirectToIntended()</full_name>
+        <docblock line="217">
+          <description>Create a new redirect response to the previously intended location.</description>
+          <long-description/>
+          <tag name="param" line="217" description="" type="string" variable="$default">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="217" description="" type="integer" variable="$status">
+            <type>integer</type>
+          </tag>
+          <tag name="param" line="217" description="" type="array" variable="$headers">
+            <type>array</type>
+          </tag>
+          <tag name="param" line="217" description="" type="boolean|null" variable="$secure">
+            <type>boolean</type>
+            <type>null</type>
+          </tag>
+          <tag name="return" line="217" description="" type="\Illuminate\Http\RedirectResponse">
+            <type>\Illuminate\Http\RedirectResponse</type>
+          </tag>
+          <tag name="inherited_from" description="\Illuminate\Contracts\Routing\ResponseFactory::redirectToIntended()" refers="\Illuminate\Contracts\Routing\ResponseFactory::redirectToIntended()" link="/classes/Illuminate.Contracts.Routing.ResponseFactory.html#method_redirectToIntended"/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$default</name>
+          <default>'/'</default>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$status</name>
+          <default>302</default>
+          <type>integer</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$headers</name>
+          <default>array()</default>
+          <type>array</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$secure</name>
+          <default>null</default>
+          <type>boolean|null</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="true" visibility="public" namespace="Illuminate\Routing" line="24" package="Default">
+        <name>macro</name>
+        <full_name>\Illuminate\Support\Traits\Macroable::macro()</full_name>
+        <docblock line="24">
+          <description>Register a custom macro.</description>
+          <long-description/>
+          <tag name="param" line="24" description="" type="string" variable="$name">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="24" description="" type="callable" variable="$macro">
+            <type>callable</type>
+          </tag>
+          <tag name="return" line="24" description="" type="void">
+            <type>void</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$name</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$macro</name>
+          <default/>
+          <type>callable</type>
+        </argument>
+        <inherited_from>\Illuminate\Support\Traits\Macroable</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="true" visibility="public" namespace="Illuminate\Routing" line="35" package="Default">
+        <name>hasMacro</name>
+        <full_name>\Illuminate\Support\Traits\Macroable::hasMacro()</full_name>
+        <docblock line="35">
+          <description>Checks if macro is registered.</description>
+          <long-description/>
+          <tag name="param" line="35" description="" type="string" variable="$name">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="35" description="" type="boolean">
+            <type>boolean</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$name</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <inherited_from>\Illuminate\Support\Traits\Macroable</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="true" visibility="public" namespace="Illuminate\Routing" line="49" package="Default">
+        <name>__callStatic</name>
+        <full_name>\Illuminate\Support\Traits\Macroable::__callStatic()</full_name>
+        <docblock line="49">
+          <description>Dynamically handle calls to the class.</description>
+          <long-description/>
+          <tag name="param" line="49" description="" type="string" variable="$method">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="49" description="" type="array" variable="$parameters">
+            <type>array</type>
+          </tag>
+          <tag name="return" line="49" description="" type="mixed">
+            <type>mixed</type>
+          </tag>
+          <tag name="throws" line="49" description="" type="\BadMethodCallException">
+            <type>\BadMethodCallException</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$method</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$parameters</name>
+          <default/>
+          <type>array</type>
+        </argument>
+        <inherited_from>\Illuminate\Support\Traits\Macroable</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Routing" line="71" package="Default">
+        <name>__call</name>
+        <full_name>\Illuminate\Support\Traits\Macroable::__call()</full_name>
+        <docblock line="71">
+          <description>Dynamically handle calls to the class.</description>
+          <long-description/>
+          <tag name="param" line="71" description="" type="string" variable="$method">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="71" description="" type="array" variable="$parameters">
+            <type>array</type>
+          </tag>
+          <tag name="return" line="71" description="" type="mixed">
+            <type>mixed</type>
+          </tag>
+          <tag name="throws" line="71" description="" type="\BadMethodCallException">
+            <type>\BadMethodCallException</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$method</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$parameters</name>
+          <default/>
+          <type>array</type>
+        </argument>
+        <inherited_from>\Illuminate\Support\Traits\Macroable</inherited_from>
+      </method>
+    </class>
+    <parse_markers>
+      <error line="0" code="PPC:ERR-50000">No summary was found for this file</error>
+      <error line="16" code="PPC:ERR-50005">No summary for class \Illuminate\Routing\ResponseFactory</error>
+    </parse_markers>
+    <source>eJzdWNty2zYQfddXIDNpRHno2pO+2bXb1B23zrRNx3L7UnU8EAVZaCCAA4DyqE3+PYsbryJFWXI7qV9kEpc9e87uYsGvv0kX6WDA8ZKoFCcE3TCWLSnHmkxuRaYpfzgfDDJF0Fsl+JhIihn9G08ZObdvS9PHWZoKqSdjLRtjP2qdTm7BhOCqudKOmv1bZ4S97ySmWk1+xokUG0FcCa4lTmBOWPJGSrzeMvd3Sh4n1/CvkGuEFTLP/tGtGq+Xc8HXsGQJAAnXFvO1yPgMayq4cZoAh7OqB1uXfQdI5PqaMtLqeoHS65HzWALs/w1zQbKEYaVQfSpdpowsAUhjyeCfAYI/Y7zErn13cnRkf9ERulsQtAJy0DxsyJXGPCFf+hlh4rcrLNFkK9l++on9TaXQJNFkhl4aG5utSzKjkpjF/W0XxIW1bXaL3ZvWr0BhTRBGHPyXntjtRKRY4iXqwQVybnctbDqCypjzpZLoTHK0EnRW9TSbMpqgecYTE37o/j4BJ7TMEh2VYt4BiVHJTMnKyG7lwsX8vdQLqo4vbVhcBOlqgyXVLqosm0kfG1zfOgfqXEuxRBqCAKcp+GFTqI1v8AqYAgDgoYaAr49TrmEQNNOZqo9hUzJgdEHwjEhVp3XSVtg6uV7i9yQKaICF4TAO9uHp9elp7O0Gs/D2jz/rZHsIhpZgNd803y/O9xj1IthKtx/LmyI30Ai1Dv/n9BuAkY9ri8jSu4cEZh1Nzs6crkUOHF+6NyVToycr83b87pd9lPlwaA0qS0VqEGwXqHy0d4r0F0yMdlMnzmHA42ldKzpHfr9Qn8Uc5R0BevUKvUCN8XqnMyptaGuaB2h/jy+1sBtGo6LqeVVrCVumwaHaEBeFP/0j5Nd9SyRmbIqT9/+bGEqj3Kdds707njw6n+5FuHYLeXypiL7ygApo/QRWvrN8msaTKyZUJkmHyvuU4p374k7pnKsV7fY5IOu2N2zcox5X2r45dOpoJh45E7hQpJX8ccpMb3/D5+JDnm1mj9ZUNBexHfPIZynPGDNJSgGToobP3dVqXkc69QpERNan2KEHVQyUtuQq4TNNENYaJwtzIxk2+so84C8s901wwa6NjSLvoJ8lVUuj86IgmyPhBaLq3qCMLORRvcKHNA8IXAK7Luv7YtuobMO7Hxs97iVJGdymo+EX0OWZTg9i8ewMq4TSYLLzuMgtbykRpgpI/Ih8B6gQHF8YTS1TNlh3Cc2NkVlVsR5Sh48pgyHoulu694yPfokerihF1dXCsv1AV4SjFOvF1mPVTDrgeTkVgoUsVySBot6jM3Ze9GI+uHwnIgu9XH2/On0dN1LZgfD53n1SFjc+0y/V9q+cmW7TPUSCIXdcwl25NfxzjeysNiHsI9Gtvcuhri9PEsl8C4AItw7EZayNVqcpXn+xZJuVJx+hLaKZCiYFY0QinPTqWt20z1K7N4k7PpwLz6cebrdzOP1i9LgwbVGaafNxylZJyGFpPnP8dvsT8G1fKaJUH1k/06r5Q0aUft7C+bDBxGFrp9EplWRFRaaY+aYJTcUMaikTPW+SMzLHGTvIx7Z//dS78d5GwQvTn54Mn0tNWjfXS9OPg08Zhe5N</source>
+  <type>class</type></file>

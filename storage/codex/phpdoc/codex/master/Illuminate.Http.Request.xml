@@ -1,0 +1,1543 @@
+<file path="codex/vendor/laravel/framework/src/Illuminate/Http/Request.php" generated-path="codex.vendor.laravel.framework.src.Illuminate.Http.Request.html" hash="c347df0bde85ac4c38a9037b45f48e0a" package="Default">
+    <docblock line="0">
+      <description/>
+      <long-description/>
+      <tag name="package" line="0" description="Default"/>
+    </docblock>
+    <namespace-alias name="Closure">\Closure</namespace-alias>
+    <namespace-alias name="ArrayAccess">\ArrayAccess</namespace-alias>
+    <namespace-alias name="SplFileInfo">\SplFileInfo</namespace-alias>
+    <namespace-alias name="RuntimeException">\RuntimeException</namespace-alias>
+    <namespace-alias name="Arr">\Illuminate\Support\Arr</namespace-alias>
+    <namespace-alias name="Str">\Illuminate\Support\Str</namespace-alias>
+    <namespace-alias name="Macroable">\Illuminate\Support\Traits\Macroable</namespace-alias>
+    <namespace-alias name="Arrayable">\Illuminate\Contracts\Support\Arrayable</namespace-alias>
+    <namespace-alias name="ParameterBag">\Symfony\Component\HttpFoundation\ParameterBag</namespace-alias>
+    <namespace-alias name="SymfonyRequest">\Symfony\Component\HttpFoundation\Request</namespace-alias>
+    <class final="false" abstract="false" namespace="Illuminate\Http" line="16" package="Default">
+      <extends>\Symfony\Component\HttpFoundation\Request</extends>
+      <implements>\Illuminate\Contracts\Support\Arrayable</implements>
+      <implements>\ArrayAccess</implements>
+      <name>Request</name>
+      <full_name>\Illuminate\Http\Request</full_name>
+      <docblock line="16">
+        <description/>
+        <long-description/>
+        <tag name="package" line="16" description="Default"/>
+      </docblock>
+      <property static="false" visibility="protected" namespace="Illuminate\Http" line="25" package="Default">
+        <name>$json</name>
+        <full_name>\Illuminate\Http\Request::json</full_name>
+        <default/>
+        <docblock line="25">
+          <description>The decoded JSON content for the request.</description>
+          <long-description/>
+          <tag name="var" line="25" description="" type="string" variable="">
+            <type>string</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" namespace="Illuminate\Http" line="32" package="Default">
+        <name>$convertedFiles</name>
+        <full_name>\Illuminate\Http\Request::convertedFiles</full_name>
+        <default/>
+        <docblock line="32">
+          <description>All of the converted files for the request.</description>
+          <long-description/>
+          <tag name="var" line="32" description="" type="array" variable="">
+            <type>array</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" namespace="Illuminate\Http" line="39" package="Default">
+        <name>$userResolver</name>
+        <full_name>\Illuminate\Http\Request::userResolver</full_name>
+        <default/>
+        <docblock line="39">
+          <description>The user resolver callback.</description>
+          <long-description/>
+          <tag name="var" line="39" description="" type="\Closure" variable="">
+            <type>\Closure</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" namespace="Illuminate\Http" line="46" package="Default">
+        <name>$routeResolver</name>
+        <full_name>\Illuminate\Http\Request::routeResolver</full_name>
+        <default/>
+        <docblock line="46">
+          <description>The route resolver callback.</description>
+          <long-description/>
+          <tag name="var" line="46" description="" type="\Closure" variable="">
+            <type>\Closure</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="true" visibility="protected" namespace="Illuminate\Http" line="15" package="Default">
+        <name>$macros</name>
+        <full_name>\Illuminate\Support\Traits\Macroable::macros</full_name>
+        <default>array()</default>
+        <docblock line="15">
+          <description>The registered string macros.</description>
+          <long-description/>
+          <tag name="var" line="15" description="" type="array" variable="">
+            <type>array</type>
+          </tag>
+        </docblock>
+      </property>
+      <method final="false" abstract="false" static="true" visibility="public" namespace="Illuminate\Http" line="53" package="Default">
+        <name>capture</name>
+        <full_name>\Illuminate\Http\Request::capture()</full_name>
+        <docblock line="53">
+          <description>Create a new Illuminate HTTP request from server variables.</description>
+          <long-description/>
+          <tag name="return" line="53" description="" type="static">
+            <type>static</type>
+          </tag>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Http" line="65" package="Default">
+        <name>instance</name>
+        <full_name>\Illuminate\Http\Request::instance()</full_name>
+        <docblock line="65">
+          <description>Return the Request instance.</description>
+          <long-description/>
+          <tag name="return" line="65" description="" type="\Illuminate\Http\Request">
+            <type>\Illuminate\Http\Request</type>
+          </tag>
+          <tag name="fluent" description="This method is part of a fluent interface and will return the same instance"/>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Http" line="75" package="Default">
+        <name>method</name>
+        <full_name>\Illuminate\Http\Request::method()</full_name>
+        <docblock line="75">
+          <description>Get the request method.</description>
+          <long-description/>
+          <tag name="return" line="75" description="" type="string">
+            <type>string</type>
+          </tag>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Http" line="85" package="Default">
+        <name>root</name>
+        <full_name>\Illuminate\Http\Request::root()</full_name>
+        <docblock line="85">
+          <description>Get the root URL for the application.</description>
+          <long-description/>
+          <tag name="return" line="85" description="" type="string">
+            <type>string</type>
+          </tag>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Http" line="95" package="Default">
+        <name>url</name>
+        <full_name>\Illuminate\Http\Request::url()</full_name>
+        <docblock line="95">
+          <description>Get the URL (no query string) for the request.</description>
+          <long-description/>
+          <tag name="return" line="95" description="" type="string">
+            <type>string</type>
+          </tag>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Http" line="105" package="Default">
+        <name>fullUrl</name>
+        <full_name>\Illuminate\Http\Request::fullUrl()</full_name>
+        <docblock line="105">
+          <description>Get the full URL for the request.</description>
+          <long-description/>
+          <tag name="return" line="105" description="" type="string">
+            <type>string</type>
+          </tag>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Http" line="120" package="Default">
+        <name>fullUrlWithQuery</name>
+        <full_name>\Illuminate\Http\Request::fullUrlWithQuery()</full_name>
+        <docblock line="120">
+          <description>Get the full URL for the request with the added query string parameters.</description>
+          <long-description/>
+          <tag name="param" line="120" description="" type="array" variable="$query">
+            <type>array</type>
+          </tag>
+          <tag name="return" line="120" description="" type="string">
+            <type>string</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$query</name>
+          <default/>
+          <type>array</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Http" line="132" package="Default">
+        <name>path</name>
+        <full_name>\Illuminate\Http\Request::path()</full_name>
+        <docblock line="132">
+          <description>Get the current path info for the request.</description>
+          <long-description/>
+          <tag name="return" line="132" description="" type="string">
+            <type>string</type>
+          </tag>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Http" line="144" package="Default">
+        <name>decodedPath</name>
+        <full_name>\Illuminate\Http\Request::decodedPath()</full_name>
+        <docblock line="144">
+          <description>Get the current encoded path info for the request.</description>
+          <long-description/>
+          <tag name="return" line="144" description="" type="string">
+            <type>string</type>
+          </tag>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Http" line="156" package="Default">
+        <name>segment</name>
+        <full_name>\Illuminate\Http\Request::segment()</full_name>
+        <docblock line="156">
+          <description>Get a segment from the URI (1 based index).</description>
+          <long-description/>
+          <tag name="param" line="156" description="" type="integer" variable="$index">
+            <type>integer</type>
+          </tag>
+          <tag name="param" line="156" description="" type="string|null" variable="$default">
+            <type>string</type>
+            <type>null</type>
+          </tag>
+          <tag name="return" line="156" description="" type="string|null">
+            <type>string</type>
+            <type>null</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$index</name>
+          <default/>
+          <type>integer</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$default</name>
+          <default>null</default>
+          <type>string|null</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Http" line="166" package="Default">
+        <name>segments</name>
+        <full_name>\Illuminate\Http\Request::segments()</full_name>
+        <docblock line="166">
+          <description>Get all of the segments for the request path.</description>
+          <long-description/>
+          <tag name="return" line="166" description="" type="array">
+            <type>array</type>
+          </tag>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Http" line="181" package="Default">
+        <name>is</name>
+        <full_name>\Illuminate\Http\Request::is()</full_name>
+        <docblock line="181">
+          <description>Determine if the current request URI matches a pattern.</description>
+          <long-description/>
+          <tag name="param" line="181" description="&lt;p&gt;string&lt;/p&gt;" type="mixed" variable="">
+            <type>mixed</type>
+          </tag>
+          <tag name="return" line="181" description="" type="boolean">
+            <type>boolean</type>
+          </tag>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Http" line="198" package="Default">
+        <name>fullUrlIs</name>
+        <full_name>\Illuminate\Http\Request::fullUrlIs()</full_name>
+        <docblock line="198">
+          <description>Determine if the current request URL and query string matches a pattern.</description>
+          <long-description/>
+          <tag name="param" line="198" description="&lt;p&gt;string&lt;/p&gt;" type="mixed" variable="">
+            <type>mixed</type>
+          </tag>
+          <tag name="return" line="198" description="" type="boolean">
+            <type>boolean</type>
+          </tag>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Http" line="216" package="Default">
+        <name>ajax</name>
+        <full_name>\Illuminate\Http\Request::ajax()</full_name>
+        <docblock line="216">
+          <description>Determine if the request is the result of an AJAX call.</description>
+          <long-description/>
+          <tag name="return" line="216" description="" type="boolean">
+            <type>boolean</type>
+          </tag>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Http" line="226" package="Default">
+        <name>pjax</name>
+        <full_name>\Illuminate\Http\Request::pjax()</full_name>
+        <docblock line="226">
+          <description>Determine if the request is the result of an PJAX call.</description>
+          <long-description/>
+          <tag name="return" line="226" description="" type="boolean">
+            <type>boolean</type>
+          </tag>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Http" line="236" package="Default">
+        <name>secure</name>
+        <full_name>\Illuminate\Http\Request::secure()</full_name>
+        <docblock line="236">
+          <description>Determine if the request is over HTTPS.</description>
+          <long-description/>
+          <tag name="return" line="236" description="" type="boolean">
+            <type>boolean</type>
+          </tag>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Http" line="246" package="Default">
+        <name>ip</name>
+        <full_name>\Illuminate\Http\Request::ip()</full_name>
+        <docblock line="246">
+          <description>Returns the client IP address.</description>
+          <long-description/>
+          <tag name="return" line="246" description="" type="string">
+            <type>string</type>
+          </tag>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Http" line="256" package="Default">
+        <name>ips</name>
+        <full_name>\Illuminate\Http\Request::ips()</full_name>
+        <docblock line="256">
+          <description>Returns the client IP addresses.</description>
+          <long-description/>
+          <tag name="return" line="256" description="" type="array">
+            <type>array</type>
+          </tag>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Http" line="267" package="Default">
+        <name>exists</name>
+        <full_name>\Illuminate\Http\Request::exists()</full_name>
+        <docblock line="267">
+          <description>Determine if the request contains a given input item key.</description>
+          <long-description/>
+          <tag name="param" line="267" description="" type="string|array" variable="$key">
+            <type>string</type>
+            <type>array</type>
+          </tag>
+          <tag name="return" line="267" description="" type="boolean">
+            <type>boolean</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$key</name>
+          <default/>
+          <type>string|array</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Http" line="288" package="Default">
+        <name>has</name>
+        <full_name>\Illuminate\Http\Request::has()</full_name>
+        <docblock line="288">
+          <description>Determine if the request contains a non-empty value for an input item.</description>
+          <long-description/>
+          <tag name="param" line="288" description="" type="string|array" variable="$key">
+            <type>string</type>
+            <type>array</type>
+          </tag>
+          <tag name="return" line="288" description="" type="boolean">
+            <type>boolean</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$key</name>
+          <default/>
+          <type>string|array</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Http" line="307" package="Default">
+        <name>isEmptyString</name>
+        <full_name>\Illuminate\Http\Request::isEmptyString()</full_name>
+        <docblock line="307">
+          <description>Determine if the given input key is an empty string for "has".</description>
+          <long-description/>
+          <tag name="param" line="307" description="" type="string" variable="$key">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="307" description="" type="boolean">
+            <type>boolean</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$key</name>
+          <default/>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Http" line="321" package="Default">
+        <name>all</name>
+        <full_name>\Illuminate\Http\Request::all()</full_name>
+        <docblock line="321">
+          <description>Get all of the input and files for the request.</description>
+          <long-description/>
+          <tag name="return" line="321" description="" type="array">
+            <type>array</type>
+          </tag>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Http" line="333" package="Default">
+        <name>input</name>
+        <full_name>\Illuminate\Http\Request::input()</full_name>
+        <docblock line="333">
+          <description>Retrieve an input item from the request.</description>
+          <long-description/>
+          <tag name="param" line="333" description="" type="string" variable="$key">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="333" description="" type="string|array|null" variable="$default">
+            <type>string</type>
+            <type>array</type>
+            <type>null</type>
+          </tag>
+          <tag name="return" line="333" description="" type="string|array">
+            <type>string</type>
+            <type>array</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$key</name>
+          <default>null</default>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$default</name>
+          <default>null</default>
+          <type>string|array|null</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Http" line="346" package="Default">
+        <name>only</name>
+        <full_name>\Illuminate\Http\Request::only()</full_name>
+        <docblock line="346">
+          <description>Get a subset of the items from the input data.</description>
+          <long-description/>
+          <tag name="param" line="346" description="" type="array|mixed" variable="$keys">
+            <type>array</type>
+            <type>mixed</type>
+          </tag>
+          <tag name="return" line="346" description="" type="array">
+            <type>array</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$keys</name>
+          <default/>
+          <type>array|mixed</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Http" line="367" package="Default">
+        <name>except</name>
+        <full_name>\Illuminate\Http\Request::except()</full_name>
+        <docblock line="367">
+          <description>Get all of the input except for a specified array of items.</description>
+          <long-description/>
+          <tag name="param" line="367" description="" type="array|mixed" variable="$keys">
+            <type>array</type>
+            <type>mixed</type>
+          </tag>
+          <tag name="return" line="367" description="" type="array">
+            <type>array</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$keys</name>
+          <default/>
+          <type>array|mixed</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Http" line="384" package="Default">
+        <name>intersect</name>
+        <full_name>\Illuminate\Http\Request::intersect()</full_name>
+        <docblock line="384">
+          <description>Intersect an array of items with the input data.</description>
+          <long-description/>
+          <tag name="param" line="384" description="" type="array|mixed" variable="$keys">
+            <type>array</type>
+            <type>mixed</type>
+          </tag>
+          <tag name="return" line="384" description="" type="array">
+            <type>array</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$keys</name>
+          <default/>
+          <type>array|mixed</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Http" line="396" package="Default">
+        <name>query</name>
+        <full_name>\Illuminate\Http\Request::query()</full_name>
+        <docblock line="396">
+          <description>Retrieve a query string item from the request.</description>
+          <long-description/>
+          <tag name="param" line="396" description="" type="string" variable="$key">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="396" description="" type="string|array|null" variable="$default">
+            <type>string</type>
+            <type>array</type>
+            <type>null</type>
+          </tag>
+          <tag name="return" line="396" description="" type="string|array">
+            <type>string</type>
+            <type>array</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$key</name>
+          <default>null</default>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$default</name>
+          <default>null</default>
+          <type>string|array|null</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Http" line="407" package="Default">
+        <name>hasCookie</name>
+        <full_name>\Illuminate\Http\Request::hasCookie()</full_name>
+        <docblock line="407">
+          <description>Determine if a cookie is set on the request.</description>
+          <long-description/>
+          <tag name="param" line="407" description="" type="string" variable="$key">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="407" description="" type="boolean">
+            <type>boolean</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$key</name>
+          <default/>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Http" line="419" package="Default">
+        <name>cookie</name>
+        <full_name>\Illuminate\Http\Request::cookie()</full_name>
+        <docblock line="419">
+          <description>Retrieve a cookie from the request.</description>
+          <long-description/>
+          <tag name="param" line="419" description="" type="string" variable="$key">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="419" description="" type="string|array|null" variable="$default">
+            <type>string</type>
+            <type>array</type>
+            <type>null</type>
+          </tag>
+          <tag name="return" line="419" description="" type="string|array">
+            <type>string</type>
+            <type>array</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$key</name>
+          <default>null</default>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$default</name>
+          <default>null</default>
+          <type>string|array|null</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Http" line="429" package="Default">
+        <name>allFiles</name>
+        <full_name>\Illuminate\Http\Request::allFiles()</full_name>
+        <docblock line="429">
+          <description>Get an array of all of the files on the request.</description>
+          <long-description/>
+          <tag name="return" line="429" description="" type="array">
+            <type>array</type>
+          </tag>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Http" line="444" package="Default">
+        <name>convertUploadedFiles</name>
+        <full_name>\Illuminate\Http\Request::convertUploadedFiles()</full_name>
+        <docblock line="444">
+          <description>Convert the given array of Symfony UploadedFiles to custom Laravel UploadedFiles.</description>
+          <long-description/>
+          <tag name="param" line="444" description="" type="array" variable="$files">
+            <type>array</type>
+          </tag>
+          <tag name="return" line="444" description="" type="array">
+            <type>array</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$files</name>
+          <default/>
+          <type>array</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Http" line="464" package="Default">
+        <name>file</name>
+        <full_name>\Illuminate\Http\Request::file()</full_name>
+        <docblock line="464">
+          <description>Retrieve a file from the request.</description>
+          <long-description/>
+          <tag name="param" line="464" description="" type="string" variable="$key">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="464" description="" type="mixed" variable="$default">
+            <type>mixed</type>
+          </tag>
+          <tag name="return" line="464" description="" type="\Symfony\Component\HttpFoundation\File\UploadedFile|array|null">
+            <type>\Symfony\Component\HttpFoundation\File\UploadedFile</type>
+            <type>array</type>
+            <type>null</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$key</name>
+          <default>null</default>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$default</name>
+          <default>null</default>
+          <type>mixed</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Http" line="475" package="Default">
+        <name>hasFile</name>
+        <full_name>\Illuminate\Http\Request::hasFile()</full_name>
+        <docblock line="475">
+          <description>Determine if the uploaded data contains a file.</description>
+          <long-description/>
+          <tag name="param" line="475" description="" type="string" variable="$key">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="475" description="" type="boolean">
+            <type>boolean</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$key</name>
+          <default/>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Http" line="496" package="Default">
+        <name>isValidFile</name>
+        <full_name>\Illuminate\Http\Request::isValidFile()</full_name>
+        <docblock line="496">
+          <description>Check that the given file is a valid file instance.</description>
+          <long-description/>
+          <tag name="param" line="496" description="" type="mixed" variable="$file">
+            <type>mixed</type>
+          </tag>
+          <tag name="return" line="496" description="" type="boolean">
+            <type>boolean</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$file</name>
+          <default/>
+          <type>mixed</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Http" line="507" package="Default">
+        <name>hasHeader</name>
+        <full_name>\Illuminate\Http\Request::hasHeader()</full_name>
+        <docblock line="507">
+          <description>Determine if a header is set on the request.</description>
+          <long-description/>
+          <tag name="param" line="507" description="" type="string" variable="$key">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="507" description="" type="boolean">
+            <type>boolean</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$key</name>
+          <default/>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Http" line="519" package="Default">
+        <name>header</name>
+        <full_name>\Illuminate\Http\Request::header()</full_name>
+        <docblock line="519">
+          <description>Retrieve a header from the request.</description>
+          <long-description/>
+          <tag name="param" line="519" description="" type="string" variable="$key">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="519" description="" type="string|array|null" variable="$default">
+            <type>string</type>
+            <type>array</type>
+            <type>null</type>
+          </tag>
+          <tag name="return" line="519" description="" type="string|array">
+            <type>string</type>
+            <type>array</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$key</name>
+          <default>null</default>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$default</name>
+          <default>null</default>
+          <type>string|array|null</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Http" line="531" package="Default">
+        <name>server</name>
+        <full_name>\Illuminate\Http\Request::server()</full_name>
+        <docblock line="531">
+          <description>Retrieve a server variable from the request.</description>
+          <long-description/>
+          <tag name="param" line="531" description="" type="string" variable="$key">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="531" description="" type="string|array|null" variable="$default">
+            <type>string</type>
+            <type>array</type>
+            <type>null</type>
+          </tag>
+          <tag name="return" line="531" description="" type="string|array">
+            <type>string</type>
+            <type>array</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$key</name>
+          <default>null</default>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$default</name>
+          <default>null</default>
+          <type>string|array|null</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Http" line="543" package="Default">
+        <name>old</name>
+        <full_name>\Illuminate\Http\Request::old()</full_name>
+        <docblock line="543">
+          <description>Retrieve an old input item.</description>
+          <long-description/>
+          <tag name="param" line="543" description="" type="string" variable="$key">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="543" description="" type="string|array|null" variable="$default">
+            <type>string</type>
+            <type>array</type>
+            <type>null</type>
+          </tag>
+          <tag name="return" line="543" description="" type="string|array">
+            <type>string</type>
+            <type>array</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$key</name>
+          <default>null</default>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$default</name>
+          <default>null</default>
+          <type>string|array|null</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Http" line="555" package="Default">
+        <name>flash</name>
+        <full_name>\Illuminate\Http\Request::flash()</full_name>
+        <docblock line="555">
+          <description>Flash the input for the current request to the session.</description>
+          <long-description/>
+          <tag name="param" line="555" description="" type="string" variable="$filter">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="555" description="" type="array" variable="$keys">
+            <type>array</type>
+          </tag>
+          <tag name="return" line="555" description="" type="void">
+            <type>void</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$filter</name>
+          <default>null</default>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$keys</name>
+          <default>array()</default>
+          <type>array</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Http" line="568" package="Default">
+        <name>flashOnly</name>
+        <full_name>\Illuminate\Http\Request::flashOnly()</full_name>
+        <docblock line="568">
+          <description>Flash only some of the input to the session.</description>
+          <long-description/>
+          <tag name="param" line="568" description="" type="array|mixed" variable="$keys">
+            <type>array</type>
+            <type>mixed</type>
+          </tag>
+          <tag name="return" line="568" description="" type="void">
+            <type>void</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$keys</name>
+          <default/>
+          <type>array|mixed</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Http" line="581" package="Default">
+        <name>flashExcept</name>
+        <full_name>\Illuminate\Http\Request::flashExcept()</full_name>
+        <docblock line="581">
+          <description>Flash only some of the input to the session.</description>
+          <long-description/>
+          <tag name="param" line="581" description="" type="array|mixed" variable="$keys">
+            <type>array</type>
+            <type>mixed</type>
+          </tag>
+          <tag name="return" line="581" description="" type="void">
+            <type>void</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$keys</name>
+          <default/>
+          <type>array|mixed</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Http" line="593" package="Default">
+        <name>flush</name>
+        <full_name>\Illuminate\Http\Request::flush()</full_name>
+        <docblock line="593">
+          <description>Flush all of the old input from the session.</description>
+          <long-description/>
+          <tag name="return" line="593" description="" type="void">
+            <type>void</type>
+          </tag>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Http" line="606" package="Default">
+        <name>retrieveItem</name>
+        <full_name>\Illuminate\Http\Request::retrieveItem()</full_name>
+        <docblock line="606">
+          <description>Retrieve a parameter item from a given source.</description>
+          <long-description/>
+          <tag name="param" line="606" description="" type="string" variable="$source">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="606" description="" type="string" variable="$key">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="606" description="" type="string|array|null" variable="$default">
+            <type>string</type>
+            <type>array</type>
+            <type>null</type>
+          </tag>
+          <tag name="return" line="606" description="" type="string|array">
+            <type>string</type>
+            <type>array</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$source</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$key</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$default</name>
+          <default/>
+          <type>string|array|null</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Http" line="621" package="Default">
+        <name>merge</name>
+        <full_name>\Illuminate\Http\Request::merge()</full_name>
+        <docblock line="621">
+          <description>Merge new input into the current request's input array.</description>
+          <long-description/>
+          <tag name="param" line="621" description="" type="array" variable="$input">
+            <type>array</type>
+          </tag>
+          <tag name="return" line="621" description="" type="void">
+            <type>void</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$input</name>
+          <default/>
+          <type>array</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Http" line="632" package="Default">
+        <name>replace</name>
+        <full_name>\Illuminate\Http\Request::replace()</full_name>
+        <docblock line="632">
+          <description>Replace the input for the current request.</description>
+          <long-description/>
+          <tag name="param" line="632" description="" type="array" variable="$input">
+            <type>array</type>
+          </tag>
+          <tag name="return" line="632" description="" type="void">
+            <type>void</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$input</name>
+          <default/>
+          <type>array</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Http" line="644" package="Default">
+        <name>json</name>
+        <full_name>\Illuminate\Http\Request::json()</full_name>
+        <docblock line="644">
+          <description>Get the JSON payload for the request.</description>
+          <long-description/>
+          <tag name="param" line="644" description="" type="string" variable="$key">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="644" description="" type="mixed" variable="$default">
+            <type>mixed</type>
+          </tag>
+          <tag name="return" line="644" description="" type="mixed">
+            <type>mixed</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$key</name>
+          <default>null</default>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$default</name>
+          <default>null</default>
+          <type>mixed</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Http" line="662" package="Default">
+        <name>getInputSource</name>
+        <full_name>\Illuminate\Http\Request::getInputSource()</full_name>
+        <docblock line="662">
+          <description>Get the input source for the request.</description>
+          <long-description/>
+          <tag name="return" line="662" description="" type="\Symfony\Component\HttpFoundation\ParameterBag">
+            <type>\Symfony\Component\HttpFoundation\ParameterBag</type>
+          </tag>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="true" visibility="public" namespace="Illuminate\Http" line="678" package="Default">
+        <name>matchesType</name>
+        <full_name>\Illuminate\Http\Request::matchesType()</full_name>
+        <docblock line="678">
+          <description>Determine if the given content types match.</description>
+          <long-description/>
+          <tag name="param" line="678" description="" type="string" variable="$actual">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="678" description="" type="string" variable="$type">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="678" description="" type="boolean">
+            <type>boolean</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$actual</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$type</name>
+          <default/>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Http" line="694" package="Default">
+        <name>isJson</name>
+        <full_name>\Illuminate\Http\Request::isJson()</full_name>
+        <docblock line="694">
+          <description>Determine if the request is sending JSON.</description>
+          <long-description/>
+          <tag name="return" line="694" description="" type="boolean">
+            <type>boolean</type>
+          </tag>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Http" line="704" package="Default">
+        <name>wantsJson</name>
+        <full_name>\Illuminate\Http\Request::wantsJson()</full_name>
+        <docblock line="704">
+          <description>Determine if the current request is asking for JSON in return.</description>
+          <long-description/>
+          <tag name="return" line="704" description="" type="boolean">
+            <type>boolean</type>
+          </tag>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Http" line="717" package="Default">
+        <name>accepts</name>
+        <full_name>\Illuminate\Http\Request::accepts()</full_name>
+        <docblock line="717">
+          <description>Determines whether the current requests accepts a given content type.</description>
+          <long-description/>
+          <tag name="param" line="717" description="" type="string|array" variable="$contentTypes">
+            <type>string</type>
+            <type>array</type>
+          </tag>
+          <tag name="return" line="717" description="" type="boolean">
+            <type>boolean</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$contentTypes</name>
+          <default/>
+          <type>string|array</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Http" line="748" package="Default">
+        <name>prefers</name>
+        <full_name>\Illuminate\Http\Request::prefers()</full_name>
+        <docblock line="748">
+          <description>Return the most suitable content type from the given array based on content negotiation.</description>
+          <long-description/>
+          <tag name="param" line="748" description="" type="string|array" variable="$contentTypes">
+            <type>string</type>
+            <type>array</type>
+          </tag>
+          <tag name="return" line="748" description="" type="string|null">
+            <type>string</type>
+            <type>null</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$contentTypes</name>
+          <default/>
+          <type>string|array</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Http" line="778" package="Default">
+        <name>acceptsJson</name>
+        <full_name>\Illuminate\Http\Request::acceptsJson()</full_name>
+        <docblock line="778">
+          <description>Determines whether a request accepts JSON.</description>
+          <long-description/>
+          <tag name="return" line="778" description="" type="boolean">
+            <type>boolean</type>
+          </tag>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Http" line="788" package="Default">
+        <name>acceptsHtml</name>
+        <full_name>\Illuminate\Http\Request::acceptsHtml()</full_name>
+        <docblock line="788">
+          <description>Determines whether a request accepts HTML.</description>
+          <long-description/>
+          <tag name="return" line="788" description="" type="boolean">
+            <type>boolean</type>
+          </tag>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Http" line="799" package="Default">
+        <name>format</name>
+        <full_name>\Illuminate\Http\Request::format()</full_name>
+        <docblock line="799">
+          <description>Get the data format expected in the response.</description>
+          <long-description/>
+          <tag name="param" line="799" description="" type="string" variable="$default">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="799" description="" type="string">
+            <type>string</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$default</name>
+          <default>'html'</default>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Http" line="815" package="Default">
+        <name>bearerToken</name>
+        <full_name>\Illuminate\Http\Request::bearerToken()</full_name>
+        <docblock line="815">
+          <description>Get the bearer token from the request headers.</description>
+          <long-description/>
+          <tag name="return" line="815" description="" type="string|null">
+            <type>string</type>
+            <type>null</type>
+          </tag>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="true" visibility="public" namespace="Illuminate\Http" line="830" package="Default">
+        <name>createFromBase</name>
+        <full_name>\Illuminate\Http\Request::createFromBase()</full_name>
+        <docblock line="830">
+          <description>Create an Illuminate request from a Symfony instance.</description>
+          <long-description/>
+          <tag name="param" line="830" description="" type="\Symfony\Component\HttpFoundation\Request" variable="$request">
+            <type>\Symfony\Component\HttpFoundation\Request</type>
+          </tag>
+          <tag name="return" line="830" description="" type="\Illuminate\Http\Request">
+            <type>\Illuminate\Http\Request</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$request</name>
+          <default/>
+          <type>\Symfony\Component\HttpFoundation\Request</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Http" line="855" package="Default">
+        <name>duplicate</name>
+        <full_name>\Illuminate\Http\Request::duplicate()</full_name>
+        <docblock line="855">
+          <description>{@inheritdoc}</description>
+          <long-description/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$query</name>
+          <default>null</default>
+          <type>array</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$request</name>
+          <default>null</default>
+          <type>array</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$attributes</name>
+          <default>null</default>
+          <type>array</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$cookies</name>
+          <default>null</default>
+          <type>array</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$files</name>
+          <default>null</default>
+          <type>array</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$server</name>
+          <default>null</default>
+          <type>array</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Http" line="867" package="Default">
+        <name>session</name>
+        <full_name>\Illuminate\Http\Request::session()</full_name>
+        <docblock line="867">
+          <description>Get the session associated with the request.</description>
+          <long-description/>
+          <tag name="return" line="867" description="" type="\Illuminate\Session\Store">
+            <type>\Illuminate\Session\Store</type>
+          </tag>
+          <tag name="throws" line="867" description="" type="\RuntimeException">
+            <type>\RuntimeException</type>
+          </tag>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Http" line="882" package="Default">
+        <name>user</name>
+        <full_name>\Illuminate\Http\Request::user()</full_name>
+        <docblock line="882">
+          <description>Get the user making the request.</description>
+          <long-description/>
+          <tag name="param" line="882" description="" type="string|null" variable="$guard">
+            <type>string</type>
+            <type>null</type>
+          </tag>
+          <tag name="return" line="882" description="" type="mixed">
+            <type>mixed</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$guard</name>
+          <default>null</default>
+          <type>string|null</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Http" line="894" package="Default">
+        <name>route</name>
+        <full_name>\Illuminate\Http\Request::route()</full_name>
+        <docblock line="894">
+          <description>Get the route handling the request.</description>
+          <long-description/>
+          <tag name="param" line="894" description="" type="string|null" variable="$param">
+            <type>string</type>
+            <type>null</type>
+          </tag>
+          <tag name="return" line="894" description="" type="\Illuminate\Routing\Route|object|string">
+            <type>\Illuminate\Routing\Route</type>
+            <type>object</type>
+            <type>string</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$param</name>
+          <default>null</default>
+          <type>string|null</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Http" line="912" package="Default">
+        <name>fingerprint</name>
+        <full_name>\Illuminate\Http\Request::fingerprint()</full_name>
+        <docblock line="912">
+          <description>Get a unique fingerprint for the request / route / IP address.</description>
+          <long-description/>
+          <tag name="return" line="912" description="" type="string">
+            <type>string</type>
+          </tag>
+          <tag name="throws" line="912" description="" type="\RuntimeException">
+            <type>\RuntimeException</type>
+          </tag>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Http" line="931" package="Default">
+        <name>getUserResolver</name>
+        <full_name>\Illuminate\Http\Request::getUserResolver()</full_name>
+        <docblock line="931">
+          <description>Get the user resolver callback.</description>
+          <long-description/>
+          <tag name="return" line="931" description="" type="\Closure">
+            <type>\Closure</type>
+          </tag>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Http" line="944" package="Default">
+        <name>setUserResolver</name>
+        <full_name>\Illuminate\Http\Request::setUserResolver()</full_name>
+        <docblock line="944">
+          <description>Set the user resolver callback.</description>
+          <long-description/>
+          <tag name="param" line="944" description="" type="\Closure" variable="$callback">
+            <type>\Closure</type>
+          </tag>
+          <tag name="return" line="944" description="" type="\Illuminate\Http\Request">
+            <type>\Illuminate\Http\Request</type>
+          </tag>
+          <tag name="fluent" description="This method is part of a fluent interface and will return the same instance"/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$callback</name>
+          <default/>
+          <type>\Closure</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Http" line="956" package="Default">
+        <name>getRouteResolver</name>
+        <full_name>\Illuminate\Http\Request::getRouteResolver()</full_name>
+        <docblock line="956">
+          <description>Get the route resolver callback.</description>
+          <long-description/>
+          <tag name="return" line="956" description="" type="\Closure">
+            <type>\Closure</type>
+          </tag>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Http" line="969" package="Default">
+        <name>setRouteResolver</name>
+        <full_name>\Illuminate\Http\Request::setRouteResolver()</full_name>
+        <docblock line="969">
+          <description>Set the route resolver callback.</description>
+          <long-description/>
+          <tag name="param" line="969" description="" type="\Closure" variable="$callback">
+            <type>\Closure</type>
+          </tag>
+          <tag name="return" line="969" description="" type="\Illuminate\Http\Request">
+            <type>\Illuminate\Http\Request</type>
+          </tag>
+          <tag name="fluent" description="This method is part of a fluent interface and will return the same instance"/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$callback</name>
+          <default/>
+          <type>\Closure</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Http" line="981" package="Default">
+        <name>toArray</name>
+        <full_name>\Illuminate\Http\Request::toArray()</full_name>
+        <docblock line="981">
+          <description>Get all of the input and files for the request.</description>
+          <long-description/>
+          <tag name="return" line="981" description="" type="array">
+            <type>array</type>
+          </tag>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Http" line="992" package="Default">
+        <name>offsetExists</name>
+        <full_name>\Illuminate\Http\Request::offsetExists()</full_name>
+        <docblock line="992">
+          <description>Determine if the given offset exists.</description>
+          <long-description/>
+          <tag name="param" line="992" description="" type="string" variable="$offset">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="992" description="" type="boolean">
+            <type>boolean</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$offset</name>
+          <default/>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Http" line="1003" package="Default">
+        <name>offsetGet</name>
+        <full_name>\Illuminate\Http\Request::offsetGet()</full_name>
+        <docblock line="1003">
+          <description>Get the value at the given offset.</description>
+          <long-description/>
+          <tag name="param" line="1003" description="" type="string" variable="$offset">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="1003" description="" type="mixed">
+            <type>mixed</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$offset</name>
+          <default/>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Http" line="1015" package="Default">
+        <name>offsetSet</name>
+        <full_name>\Illuminate\Http\Request::offsetSet()</full_name>
+        <docblock line="1015">
+          <description>Set the value at the given offset.</description>
+          <long-description/>
+          <tag name="param" line="1015" description="" type="string" variable="$offset">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="1015" description="" type="mixed" variable="$value">
+            <type>mixed</type>
+          </tag>
+          <tag name="return" line="1015" description="" type="void">
+            <type>void</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$offset</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$value</name>
+          <default/>
+          <type>mixed</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Http" line="1026" package="Default">
+        <name>offsetUnset</name>
+        <full_name>\Illuminate\Http\Request::offsetUnset()</full_name>
+        <docblock line="1026">
+          <description>Remove the value at the given offset.</description>
+          <long-description/>
+          <tag name="param" line="1026" description="" type="string" variable="$offset">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="1026" description="" type="void">
+            <type>void</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$offset</name>
+          <default/>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Http" line="1037" package="Default">
+        <name>__isset</name>
+        <full_name>\Illuminate\Http\Request::__isset()</full_name>
+        <docblock line="1037">
+          <description>Check if an input element is set on the request.</description>
+          <long-description/>
+          <tag name="param" line="1037" description="" type="string" variable="$key">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="1037" description="" type="boolean">
+            <type>boolean</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$key</name>
+          <default/>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Http" line="1048" package="Default">
+        <name>__get</name>
+        <full_name>\Illuminate\Http\Request::__get()</full_name>
+        <docblock line="1048">
+          <description>Get an input element from the request.</description>
+          <long-description/>
+          <tag name="param" line="1048" description="" type="string" variable="$key">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="1048" description="" type="mixed">
+            <type>mixed</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$key</name>
+          <default/>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="true" visibility="public" namespace="Illuminate\Http" line="24" package="Default">
+        <name>macro</name>
+        <full_name>\Illuminate\Support\Traits\Macroable::macro()</full_name>
+        <docblock line="24">
+          <description>Register a custom macro.</description>
+          <long-description/>
+          <tag name="param" line="24" description="" type="string" variable="$name">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="24" description="" type="callable" variable="$macro">
+            <type>callable</type>
+          </tag>
+          <tag name="return" line="24" description="" type="void">
+            <type>void</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$name</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$macro</name>
+          <default/>
+          <type>callable</type>
+        </argument>
+        <inherited_from>\Illuminate\Support\Traits\Macroable</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="true" visibility="public" namespace="Illuminate\Http" line="35" package="Default">
+        <name>hasMacro</name>
+        <full_name>\Illuminate\Support\Traits\Macroable::hasMacro()</full_name>
+        <docblock line="35">
+          <description>Checks if macro is registered.</description>
+          <long-description/>
+          <tag name="param" line="35" description="" type="string" variable="$name">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="35" description="" type="boolean">
+            <type>boolean</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$name</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <inherited_from>\Illuminate\Support\Traits\Macroable</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="true" visibility="public" namespace="Illuminate\Http" line="49" package="Default">
+        <name>__callStatic</name>
+        <full_name>\Illuminate\Support\Traits\Macroable::__callStatic()</full_name>
+        <docblock line="49">
+          <description>Dynamically handle calls to the class.</description>
+          <long-description/>
+          <tag name="param" line="49" description="" type="string" variable="$method">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="49" description="" type="array" variable="$parameters">
+            <type>array</type>
+          </tag>
+          <tag name="return" line="49" description="" type="mixed">
+            <type>mixed</type>
+          </tag>
+          <tag name="throws" line="49" description="" type="\BadMethodCallException">
+            <type>\BadMethodCallException</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$method</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$parameters</name>
+          <default/>
+          <type>array</type>
+        </argument>
+        <inherited_from>\Illuminate\Support\Traits\Macroable</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Http" line="71" package="Default">
+        <name>__call</name>
+        <full_name>\Illuminate\Support\Traits\Macroable::__call()</full_name>
+        <docblock line="71">
+          <description>Dynamically handle calls to the class.</description>
+          <long-description/>
+          <tag name="param" line="71" description="" type="string" variable="$method">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="71" description="" type="array" variable="$parameters">
+            <type>array</type>
+          </tag>
+          <tag name="return" line="71" description="" type="mixed">
+            <type>mixed</type>
+          </tag>
+          <tag name="throws" line="71" description="" type="\BadMethodCallException">
+            <type>\BadMethodCallException</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$method</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$parameters</name>
+          <default/>
+          <type>array</type>
+        </argument>
+        <inherited_from>\Illuminate\Support\Traits\Macroable</inherited_from>
+      </method>
+    </class>
+    <parse_markers>
+      <error line="0" code="PPC:ERR-50000">No summary was found for this file</error>
+      <error line="16" code="PPC:ERR-50005">No summary for class \Illuminate\Http\Request</error>
+      <error line="855" code="PPC:ERR-50015">Argument $query is missing from the Docblock of duplicate</error>
+      <error line="855" code="PPC:ERR-50015">Argument $request is missing from the Docblock of duplicate</error>
+      <error line="855" code="PPC:ERR-50015">Argument $attributes is missing from the Docblock of duplicate</error>
+      <error line="855" code="PPC:ERR-50015">Argument $cookies is missing from the Docblock of duplicate</error>
+      <error line="855" code="PPC:ERR-50015">Argument $files is missing from the Docblock of duplicate</error>
+      <error line="855" code="PPC:ERR-50015">Argument $server is missing from the Docblock of duplicate</error>
+    </parse_markers>
+    <source>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</source>
+  <type>class</type></file>

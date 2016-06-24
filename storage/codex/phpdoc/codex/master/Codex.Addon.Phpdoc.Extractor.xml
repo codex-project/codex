@@ -1,0 +1,292 @@
+<file path="codex/workbench/codex/addon-phpdoc/src/Extractor.php" generated-path="codex.workbench.codex.addon-phpdoc.src.Extractor.html" hash="b8e8c63f5f3838b42f313ddc22a2cca3" package="Default">
+    <docblock line="0">
+      <description/>
+      <long-description/>
+      <tag name="package" line="0" description="Default"/>
+    </docblock>
+    <namespace-alias name="PhpdocXmlElement">\Codex\Addon\Phpdoc\Elements\PhpdocXmlElement</namespace-alias>
+    <class final="false" abstract="false" namespace="Codex\Addon\Phpdoc" line="13" package="App\Phpdoc">
+      <extends/>
+      <name>Extractor</name>
+      <full_name>\Codex\Addon\Phpdoc\Extractor</full_name>
+      <docblock line="13">
+        <description>Extracts/Transforms a PHPDocumentor XML file</description>
+        <long-description/>
+        <tag name="package" line="13" description="App\Phpdoc"/>
+        <tag name="author" line="13" description="CLI"/>
+        <tag name="copyright" line="13" description="Copyright (c) 2015, CLI. All rights reserved"/>
+      </docblock>
+      <property static="false" visibility="protected" namespace="Codex\Addon\Phpdoc" line="16" package="App\Phpdoc">
+        <name>$phpdoc</name>
+        <full_name>\Codex\Addon\Phpdoc\Extractor::phpdoc</full_name>
+        <default/>
+        <docblock line="16">
+          <description/>
+          <long-description/>
+          <tag name="var" line="16" description="" type="\Codex\Addon\Phpdoc\ProjectPhpdoc" variable="">
+            <type>\Codex\Addon\Phpdoc\ProjectPhpdoc</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" namespace="Codex\Addon\Phpdoc" line="19" package="App\Phpdoc">
+        <name>$doc</name>
+        <full_name>\Codex\Addon\Phpdoc\Extractor::doc</full_name>
+        <default/>
+        <docblock line="19">
+          <description/>
+          <long-description/>
+          <tag name="var" line="19" description="" type="\Codex\Addon\Phpdoc\Elements\PhpdocXmlElement" variable="">
+            <type>\Codex\Addon\Phpdoc\Elements\PhpdocXmlElement</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" namespace="Codex\Addon\Phpdoc" line="23" package="App\Phpdoc">
+        <name>$fs</name>
+        <full_name>\Codex\Addon\Phpdoc\Extractor::fs</full_name>
+        <default/>
+        <docblock line="23">
+          <description/>
+          <long-description/>
+          <tag name="var" line="23" description="" type="\Sebwite\Filesystem\Filesystem" variable="">
+            <type>\Sebwite\Filesystem\Filesystem</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" namespace="Codex\Addon\Phpdoc" line="29" package="App\Phpdoc">
+        <name>$raw</name>
+        <full_name>\Codex\Addon\Phpdoc\Extractor::raw</full_name>
+        <default/>
+        <docblock line="29">
+          <description>The raw XML string</description>
+          <long-description/>
+          <tag name="var" line="29" description="" type="string" variable="">
+            <type>string</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" namespace="Codex\Addon\Phpdoc" line="31" package="App\Phpdoc">
+        <name>$manifest</name>
+        <full_name>\Codex\Addon\Phpdoc\Extractor::manifest</full_name>
+        <default>array()</default>
+        <docblock line="31">
+          <description/>
+          <long-description/>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" namespace="Codex\Addon\Phpdoc" line="33" package="App\Phpdoc">
+        <name>$itemHandlers</name>
+        <full_name>\Codex\Addon\Phpdoc\Extractor::itemHandlers</full_name>
+        <default>array('handleCreateItem', 'handleManifestItem')</default>
+        <docblock line="33">
+          <description/>
+          <long-description/>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" namespace="Codex\Addon\Phpdoc" line="35" package="App\Phpdoc">
+        <name>$rawResolver</name>
+        <full_name>\Codex\Addon\Phpdoc\Extractor::rawResolver</full_name>
+        <default/>
+        <docblock line="35">
+          <description/>
+          <long-description/>
+        </docblock>
+      </property>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Codex\Addon\Phpdoc" line="37" package="App\Phpdoc">
+        <name>__construct</name>
+        <full_name>\Codex\Addon\Phpdoc\Extractor::__construct()</full_name>
+        <docblock line="37">
+          <description/>
+          <long-description/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$phpdoc</name>
+          <default/>
+          <type>\Codex\Addon\Phpdoc\PhpdocProject</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Codex\Addon\Phpdoc" line="45" package="App\Phpdoc">
+        <name>run</name>
+        <full_name>\Codex\Addon\Phpdoc\Extractor::run()</full_name>
+        <docblock line="45">
+          <description/>
+          <long-description/>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Codex\Addon\Phpdoc" line="53" package="App\Phpdoc">
+        <name>init</name>
+        <full_name>\Codex\Addon\Phpdoc\Extractor::init()</full_name>
+        <docblock line="53">
+          <description/>
+          <long-description/>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Codex\Addon\Phpdoc" line="61" package="App\Phpdoc">
+        <name>runItemLoop</name>
+        <full_name>\Codex\Addon\Phpdoc\Extractor::runItemLoop()</full_name>
+        <docblock line="61">
+          <description/>
+          <long-description/>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Codex\Addon\Phpdoc" line="74" package="App\Phpdoc">
+        <name>handleCreateItem</name>
+        <full_name>\Codex\Addon\Phpdoc\Extractor::handleCreateItem()</full_name>
+        <docblock line="74">
+          <description/>
+          <long-description/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$file</name>
+          <default/>
+          <type>\Codex\Addon\Phpdoc\Elements\PhpdocXmlElement</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$type</name>
+          <default/>
+          <type/>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Codex\Addon\Phpdoc" line="82" package="App\Phpdoc">
+        <name>handleManifestItem</name>
+        <full_name>\Codex\Addon\Phpdoc\Extractor::handleManifestItem()</full_name>
+        <docblock line="82">
+          <description/>
+          <long-description/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$file</name>
+          <default/>
+          <type>\Codex\Addon\Phpdoc\Elements\PhpdocXmlElement</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$type</name>
+          <default/>
+          <type/>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Codex\Addon\Phpdoc" line="93" package="App\Phpdoc">
+        <name>createInfoFile</name>
+        <full_name>\Codex\Addon\Phpdoc\Extractor::createInfoFile()</full_name>
+        <docblock line="93">
+          <description/>
+          <long-description/>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Codex\Addon\Phpdoc" line="101" package="App\Phpdoc">
+        <name>createManifest</name>
+        <full_name>\Codex\Addon\Phpdoc\Extractor::createManifest()</full_name>
+        <docblock line="101">
+          <description/>
+          <long-description/>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Codex\Addon\Phpdoc" line="106" package="App\Phpdoc">
+        <name>writeCacheFile</name>
+        <full_name>\Codex\Addon\Phpdoc\Extractor::writeCacheFile()</full_name>
+        <docblock line="106">
+          <description/>
+          <long-description/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$fileName</name>
+          <default/>
+          <type/>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$content</name>
+          <default/>
+          <type/>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Codex\Addon\Phpdoc" line="116" package="App\Phpdoc">
+        <name>setRawResolver</name>
+        <full_name>\Codex\Addon\Phpdoc\Extractor::setRawResolver()</full_name>
+        <docblock line="116">
+          <description>Set the rawResolver value</description>
+          <long-description/>
+          <tag name="param" line="116" description="" type="\Closure" variable="$rawResolver">
+            <type>\Closure</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$rawResolver</name>
+          <default/>
+          <type>\Closure</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Codex\Addon\Phpdoc" line="124" package="App\Phpdoc">
+        <name>getPhpdoc</name>
+        <full_name>\Codex\Addon\Phpdoc\Extractor::getPhpdoc()</full_name>
+        <docblock line="124">
+          <description/>
+          <long-description/>
+          <tag name="return" line="124" description="" type="\Codex\Addon\Phpdoc\ProjectPhpdoc">
+            <type>\Codex\Addon\Phpdoc\ProjectPhpdoc</type>
+          </tag>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Codex\Addon\Phpdoc" line="132" package="App\Phpdoc">
+        <name>getFs</name>
+        <full_name>\Codex\Addon\Phpdoc\Extractor::getFs()</full_name>
+        <docblock line="132">
+          <description/>
+          <long-description/>
+          <tag name="return" line="132" description="" type="\Sebwite\Filesystem\Filesystem">
+            <type>\Sebwite\Filesystem\Filesystem</type>
+          </tag>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Codex\Addon\Phpdoc" line="140" package="App\Phpdoc">
+        <name>getRaw</name>
+        <full_name>\Codex\Addon\Phpdoc\Extractor::getRaw()</full_name>
+        <docblock line="140">
+          <description/>
+          <long-description/>
+          <tag name="return" line="140" description="" type="string">
+            <type>string</type>
+          </tag>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Codex\Addon\Phpdoc" line="148" package="App\Phpdoc">
+        <name>getManifest</name>
+        <full_name>\Codex\Addon\Phpdoc\Extractor::getManifest()</full_name>
+        <docblock line="148">
+          <description/>
+          <long-description/>
+          <tag name="return" line="148" description="" type="array">
+            <type>array</type>
+          </tag>
+        </docblock>
+      </method>
+    </class>
+    <parse_markers>
+      <error line="0" code="PPC:ERR-50000">No summary was found for this file</error>
+      <error line="37" code="PPC:ERR-50015">Argument $phpdoc is missing from the Docblock of __construct</error>
+      <error line="37" code="PPC:ERR-50008">No summary for method __construct()</error>
+      <error line="45" code="PPC:ERR-50008">No summary for method run()</error>
+      <error line="53" code="PPC:ERR-50008">No summary for method init()</error>
+      <error line="61" code="PPC:ERR-50008">No summary for method runItemLoop()</error>
+      <error line="74" code="PPC:ERR-50015">Argument $file is missing from the Docblock of handleCreateItem</error>
+      <error line="74" code="PPC:ERR-50015">Argument $type is missing from the Docblock of handleCreateItem</error>
+      <error line="74" code="PPC:ERR-50008">No summary for method handleCreateItem()</error>
+      <error line="82" code="PPC:ERR-50015">Argument $file is missing from the Docblock of handleManifestItem</error>
+      <error line="82" code="PPC:ERR-50015">Argument $type is missing from the Docblock of handleManifestItem</error>
+      <error line="82" code="PPC:ERR-50008">No summary for method handleManifestItem()</error>
+      <error line="93" code="PPC:ERR-50008">No summary for method createInfoFile()</error>
+      <error line="101" code="PPC:ERR-50008">No summary for method createManifest()</error>
+      <error line="106" code="PPC:ERR-50015">Argument $fileName is missing from the Docblock of writeCacheFile</error>
+      <error line="106" code="PPC:ERR-50015">Argument $content is missing from the Docblock of writeCacheFile</error>
+      <error line="106" code="PPC:ERR-50008">No summary for method writeCacheFile()</error>
+      <error line="124" code="PPC:ERR-50008">No summary for method getPhpdoc()</error>
+      <error line="132" code="PPC:ERR-50008">No summary for method getFs()</error>
+      <error line="140" code="PPC:ERR-50008">No summary for method getRaw()</error>
+      <error line="148" code="PPC:ERR-50008">No summary for method getManifest()</error>
+      <error line="16" code="PPC:ERR-50007">No summary for property $phpdoc</error>
+      <error line="19" code="PPC:ERR-50007">No summary for property $doc</error>
+      <error line="23" code="PPC:ERR-50007">No summary for property $fs</error>
+      <error line="31" code="PPC:ERR-50007">No summary for property $manifest</error>
+      <error line="33" code="PPC:ERR-50007">No summary for property $itemHandlers</error>
+      <error line="35" code="PPC:ERR-50007">No summary for property $rawResolver</error>
+    </parse_markers>
+    <source>eJydVltv2zYUfvev4ENRS4GdbAP2ktVeDLdFC6SF0WZAgTgwGOko0iaJAknlgsD/fYekLqQkS0X1YvPw3Pid67u/i7iY5TQDUdAAyJaF8LzfhCHL97u4CFnw12xWiqGL/YcUMsilqM4/srSioMjF2dmMnJEPz5LTQIqLG05zETGeCULJ7tPuPQtKxco4+fHlmkRJCsivRK7Qj//oA5Dq2xRFZUDf0lLGKFR/2+vPmhyw4oUnD7GsyM3RC3zyx2+//7lQrOdkk6ZEXwjCQQB/hBDlL2ZBSoWo3WV89jpTavAV5OqRcrIfeP6Os38hkOakdCiJgjOJRAjJm6KGz9HUxWpA0Eh1HPgO90+JhP1HREq8CAmZ9ZcMaIlEa1r/Ikw3MRBOnzTkQvIkf6hvtBGH1FOIgpVGi5jRPIlASLIit+Suf48uZ59oHqbAheaZx/q05UAlfMbb+aKmfal0aeqQMvTgGwiWPgKvL8v7NAlIVOaBTFhODoeA5fiMMpCeQbqKUh0OX4uZ6KrvjYwTsVybS0NataHrcEWiybuWa7l+APlReH6P3XIX2WsfPf/1aFiPs+FH8BKZhv1M8kQOWAoMmnnEVE4MuVLmCtVrxoqT4jX8NcOxi3/joPFi2MNIeSneJxxUHb14DsAaqy0NYthRGXu+T96+tQVDSEHCzwoPxGe5hlyU/NdVqOpYkYCm6QG7Hj+oNx8o57TRZEV1QW418a6vR2XTqlfsl5cGakvXJNhO6DqYY0MFfA3xLLMIA+YAoQKLj6zW2AjU0bekXMm+j4jRzUsBmNJai8T/PXn1JRGKJ0KA9LSR5fpVMx/9QfZBh53+oKyZVsBParAwrnmN9YXx1AqF/R17VJfSno4T8ej2L6/X0R13elWCRFWoqoE4oFkpZOg0DLdxkobeXN3P++/TfF9xdKOuf2SSXl5KXf+K5DWGMB9KzGY14rHTnj9n6byfrk8cA6ELQzeQRvOicUbgzGgKZgodu5P/HD5dh+q5cnunpoYTKgOH+a/yWx0XLod6bMvhmbnmu3gv1xoSV7CBaj4m2ALaN6vXqFFpLK+NxKv7EhuBJeO32u6mYO42/G6WJSrDut/K6RK2G+70UsI4qEMosImimRCHcUe4vRtQNJFcc6X/HBsyprRJW3guGJcb02XV7XSedUfW8DDqWq6z6rR1N/um/RgpHNxEJKb76MbRLA9IKOWpYaVU64HVqPct/Y6L1rL3HSSRZuFr1pBHmpZQMTSrX0E5zXDFTZkanc6a5e6CnT0FG/+3ltWz5U482t2I3H1u+BFXHGTJc+Is26NeIWiGq5cUlSoH5Cm743v3lCMqsqNOqCV93IGhnbxvCOMwYUlv7+Om9JozZelkybnm6gpqN93Z8X8HzDZu</source>
+  <type>class</type></file>

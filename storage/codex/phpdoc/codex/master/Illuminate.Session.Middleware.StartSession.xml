@@ -1,0 +1,322 @@
+<file path="codex/vendor/laravel/framework/src/Illuminate/Session/Middleware/StartSession.php" generated-path="codex.vendor.laravel.framework.src.Illuminate.Session.Middleware.StartSession.html" hash="767d685c7ff5b1b3a0ba24cd38a925f4" package="Default">
+    <docblock line="0">
+      <description/>
+      <long-description/>
+      <tag name="package" line="0" description="Default"/>
+    </docblock>
+    <namespace-alias name="Closure">\Closure</namespace-alias>
+    <namespace-alias name="Carbon">\Carbon\Carbon</namespace-alias>
+    <namespace-alias name="Arr">\Illuminate\Support\Arr</namespace-alias>
+    <namespace-alias name="Request">\Illuminate\Http\Request</namespace-alias>
+    <namespace-alias name="SessionManager">\Illuminate\Session\SessionManager</namespace-alias>
+    <namespace-alias name="SessionInterface">\Illuminate\Session\SessionInterface</namespace-alias>
+    <namespace-alias name="Cookie">\Symfony\Component\HttpFoundation\Cookie</namespace-alias>
+    <namespace-alias name="CookieSessionHandler">\Illuminate\Session\CookieSessionHandler</namespace-alias>
+    <namespace-alias name="Response">\Symfony\Component\HttpFoundation\Response</namespace-alias>
+    <class final="false" abstract="false" namespace="Illuminate\Session\Middleware" line="15" package="Default">
+      <extends/>
+      <name>StartSession</name>
+      <full_name>\Illuminate\Session\Middleware\StartSession</full_name>
+      <docblock line="15">
+        <description/>
+        <long-description/>
+        <tag name="package" line="15" description="Default"/>
+      </docblock>
+      <property static="false" visibility="protected" namespace="Illuminate\Session\Middleware" line="22" package="Default">
+        <name>$manager</name>
+        <full_name>\Illuminate\Session\Middleware\StartSession::manager</full_name>
+        <default/>
+        <docblock line="22">
+          <description>The session manager.</description>
+          <long-description/>
+          <tag name="var" line="22" description="" type="\Illuminate\Session\SessionManager" variable="">
+            <type>\Illuminate\Session\SessionManager</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" namespace="Illuminate\Session\Middleware" line="29" package="Default">
+        <name>$sessionHandled</name>
+        <full_name>\Illuminate\Session\Middleware\StartSession::sessionHandled</full_name>
+        <default>false</default>
+        <docblock line="29">
+          <description>Indicates if the session was handled for the current request.</description>
+          <long-description/>
+          <tag name="var" line="29" description="" type="boolean" variable="">
+            <type>boolean</type>
+          </tag>
+        </docblock>
+      </property>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Session\Middleware" line="37" package="Default">
+        <name>__construct</name>
+        <full_name>\Illuminate\Session\Middleware\StartSession::__construct()</full_name>
+        <docblock line="37">
+          <description>Create a new session middleware.</description>
+          <long-description/>
+          <tag name="param" line="37" description="" type="\Illuminate\Session\SessionManager" variable="$manager">
+            <type>\Illuminate\Session\SessionManager</type>
+          </tag>
+          <tag name="return" line="37" description="" type="void">
+            <type>void</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$manager</name>
+          <default/>
+          <type>\Illuminate\Session\SessionManager</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Session\Middleware" line="49" package="Default">
+        <name>handle</name>
+        <full_name>\Illuminate\Session\Middleware\StartSession::handle()</full_name>
+        <docblock line="49">
+          <description>Handle an incoming request.</description>
+          <long-description/>
+          <tag name="param" line="49" description="" type="\Illuminate\Http\Request" variable="$request">
+            <type>\Illuminate\Http\Request</type>
+          </tag>
+          <tag name="param" line="49" description="" type="\Closure" variable="$next">
+            <type>\Closure</type>
+          </tag>
+          <tag name="return" line="49" description="" type="mixed">
+            <type>mixed</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$request</name>
+          <default/>
+          <type>\Illuminate\Http\Request</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$next</name>
+          <default/>
+          <type>\Closure</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Session\Middleware" line="85" package="Default">
+        <name>terminate</name>
+        <full_name>\Illuminate\Session\Middleware\StartSession::terminate()</full_name>
+        <docblock line="85">
+          <description>Perform any final actions for the request lifecycle.</description>
+          <long-description/>
+          <tag name="param" line="85" description="" type="\Illuminate\Http\Request" variable="$request">
+            <type>\Illuminate\Http\Request</type>
+          </tag>
+          <tag name="param" line="85" description="" type="\Symfony\Component\HttpFoundation\Response" variable="$response">
+            <type>\Symfony\Component\HttpFoundation\Response</type>
+          </tag>
+          <tag name="return" line="85" description="" type="void">
+            <type>void</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$request</name>
+          <default/>
+          <type>\Illuminate\Http\Request</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$response</name>
+          <default/>
+          <type>\Symfony\Component\HttpFoundation\Response</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Session\Middleware" line="98" package="Default">
+        <name>startSession</name>
+        <full_name>\Illuminate\Session\Middleware\StartSession::startSession()</full_name>
+        <docblock line="98">
+          <description>Start the session for the given request.</description>
+          <long-description/>
+          <tag name="param" line="98" description="" type="\Illuminate\Http\Request" variable="$request">
+            <type>\Illuminate\Http\Request</type>
+          </tag>
+          <tag name="return" line="98" description="" type="\Illuminate\Session\SessionInterface">
+            <type>\Illuminate\Session\SessionInterface</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$request</name>
+          <default/>
+          <type>\Illuminate\Http\Request</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Session\Middleware" line="115" package="Default">
+        <name>getSession</name>
+        <full_name>\Illuminate\Session\Middleware\StartSession::getSession()</full_name>
+        <docblock line="115">
+          <description>Get the session implementation from the manager.</description>
+          <long-description/>
+          <tag name="param" line="115" description="" type="\Illuminate\Http\Request" variable="$request">
+            <type>\Illuminate\Http\Request</type>
+          </tag>
+          <tag name="return" line="115" description="" type="\Illuminate\Session\SessionInterface">
+            <type>\Illuminate\Session\SessionInterface</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$request</name>
+          <default/>
+          <type>\Illuminate\Http\Request</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Session\Middleware" line="131" package="Default">
+        <name>storeCurrentUrl</name>
+        <full_name>\Illuminate\Session\Middleware\StartSession::storeCurrentUrl()</full_name>
+        <docblock line="131">
+          <description>Store the current URL for the request if necessary.</description>
+          <long-description/>
+          <tag name="param" line="131" description="" type="\Illuminate\Http\Request" variable="$request">
+            <type>\Illuminate\Http\Request</type>
+          </tag>
+          <tag name="param" line="131" description="" type="\Illuminate\Session\SessionInterface" variable="$session">
+            <type>\Illuminate\Session\SessionInterface</type>
+          </tag>
+          <tag name="return" line="131" description="" type="void">
+            <type>void</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$request</name>
+          <default/>
+          <type>\Illuminate\Http\Request</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$session</name>
+          <default/>
+          <type>\Illuminate\Session\SessionInterface</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Session\Middleware" line="144" package="Default">
+        <name>collectGarbage</name>
+        <full_name>\Illuminate\Session\Middleware\StartSession::collectGarbage()</full_name>
+        <docblock line="144">
+          <description>Remove the garbage from the session if necessary.</description>
+          <long-description/>
+          <tag name="param" line="144" description="" type="\Illuminate\Session\SessionInterface" variable="$session">
+            <type>\Illuminate\Session\SessionInterface</type>
+          </tag>
+          <tag name="return" line="144" description="" type="void">
+            <type>void</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$session</name>
+          <default/>
+          <type>\Illuminate\Session\SessionInterface</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Session\Middleware" line="162" package="Default">
+        <name>configHitsLottery</name>
+        <full_name>\Illuminate\Session\Middleware\StartSession::configHitsLottery()</full_name>
+        <docblock line="162">
+          <description>Determine if the configuration odds hit the lottery.</description>
+          <long-description/>
+          <tag name="param" line="162" description="" type="array" variable="$config">
+            <type>array</type>
+          </tag>
+          <tag name="return" line="162" description="" type="boolean">
+            <type>boolean</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$config</name>
+          <default/>
+          <type>array</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Session\Middleware" line="174" package="Default">
+        <name>addCookieToResponse</name>
+        <full_name>\Illuminate\Session\Middleware\StartSession::addCookieToResponse()</full_name>
+        <docblock line="174">
+          <description>Add the session cookie to the application response.</description>
+          <long-description/>
+          <tag name="param" line="174" description="" type="\Symfony\Component\HttpFoundation\Response" variable="$response">
+            <type>\Symfony\Component\HttpFoundation\Response</type>
+          </tag>
+          <tag name="param" line="174" description="" type="\Illuminate\Session\SessionInterface" variable="$session">
+            <type>\Illuminate\Session\SessionInterface</type>
+          </tag>
+          <tag name="return" line="174" description="" type="void">
+            <type>void</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$response</name>
+          <default/>
+          <type>\Symfony\Component\HttpFoundation\Response</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$session</name>
+          <default/>
+          <type>\Illuminate\Session\SessionInterface</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Session\Middleware" line="193" package="Default">
+        <name>getSessionLifetimeInSeconds</name>
+        <full_name>\Illuminate\Session\Middleware\StartSession::getSessionLifetimeInSeconds()</full_name>
+        <docblock line="193">
+          <description>Get the session lifetime in seconds.</description>
+          <long-description/>
+          <tag name="return" line="193" description="" type="integer">
+            <type>integer</type>
+          </tag>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Session\Middleware" line="203" package="Default">
+        <name>getCookieExpirationDate</name>
+        <full_name>\Illuminate\Session\Middleware\StartSession::getCookieExpirationDate()</full_name>
+        <docblock line="203">
+          <description>Get the cookie lifetime in seconds.</description>
+          <long-description/>
+          <tag name="return" line="203" description="" type="integer">
+            <type>integer</type>
+          </tag>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Session\Middleware" line="215" package="Default">
+        <name>sessionConfigured</name>
+        <full_name>\Illuminate\Session\Middleware\StartSession::sessionConfigured()</full_name>
+        <docblock line="215">
+          <description>Determine if a session driver has been configured.</description>
+          <long-description/>
+          <tag name="return" line="215" description="" type="boolean">
+            <type>boolean</type>
+          </tag>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Session\Middleware" line="226" package="Default">
+        <name>sessionIsPersistent</name>
+        <full_name>\Illuminate\Session\Middleware\StartSession::sessionIsPersistent()</full_name>
+        <docblock line="226">
+          <description>Determine if the configured session driver is persistent.</description>
+          <long-description/>
+          <tag name="param" line="226" description="" type="array|null" variable="$config">
+            <type>array</type>
+            <type>null</type>
+          </tag>
+          <tag name="return" line="226" description="" type="boolean">
+            <type>boolean</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$config</name>
+          <default>null</default>
+          <type>array|null</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Session\Middleware" line="238" package="Default">
+        <name>usingCookieSessions</name>
+        <full_name>\Illuminate\Session\Middleware\StartSession::usingCookieSessions()</full_name>
+        <docblock line="238">
+          <description>Determine if the session is using cookie sessions.</description>
+          <long-description/>
+          <tag name="return" line="238" description="" type="boolean">
+            <type>boolean</type>
+          </tag>
+        </docblock>
+      </method>
+    </class>
+    <parse_markers>
+      <error line="0" code="PPC:ERR-50000">No summary was found for this file</error>
+      <error line="15" code="PPC:ERR-50005">No summary for class \Illuminate\Session\Middleware\StartSession</error>
+    </parse_markers>
+    <source>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</source>
+  <type>class</type></file>

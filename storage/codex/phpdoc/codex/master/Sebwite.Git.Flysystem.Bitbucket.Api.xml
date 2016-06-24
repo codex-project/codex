@@ -1,0 +1,347 @@
+<file path="sebwite/workbench/sebwite/git/src/Flysystem/Bitbucket/Api.php" generated-path="sebwite.workbench.sebwite.git.src.Flysystem.Bitbucket.Api.html" hash="d8c50618d7dd955ca6cf8bb785c8ee41" package="Default">
+    <docblock line="0">
+      <description/>
+      <long-description/>
+      <tag name="package" line="0" description="Default"/>
+    </docblock>
+    <namespace-alias name="Listener">\Bitbucket\API\Http\Listener</namespace-alias>
+    <namespace-alias name="MessageInterface">\Buzz\Message\MessageInterface</namespace-alias>
+    <namespace-alias name="MimeType">\League\Flysystem\Util\MimeType</namespace-alias>
+    <namespace-alias name="SebwiteGitException">\Sebwite\Git\Exceptions\SebwiteGitException</namespace-alias>
+    <namespace-alias name="ApiInterface">\Sebwite\Git\Flysystem\ApiInterface</namespace-alias>
+    <namespace-alias name="SettingsInterface">\Sebwite\Git\Flysystem\SettingsInterface</namespace-alias>
+    <namespace-alias name="Manager">\Sebwite\Git\Manager</namespace-alias>
+    <namespace-alias name="Arr">\Sebwite\Support\Arr</namespace-alias>
+    <namespace-alias name="Path">\Sebwite\Support\Path</namespace-alias>
+    <namespace-alias name="Str">\Sebwite\Support\Str</namespace-alias>
+    <class final="false" abstract="false" namespace="Sebwite\Git\Flysystem\Bitbucket" line="18" package="Default">
+      <extends/>
+      <implements>\Sebwite\Git\Flysystem\ApiInterface</implements>
+      <name>Api</name>
+      <full_name>\Sebwite\Git\Flysystem\Bitbucket\Api</full_name>
+      <docblock line="18">
+        <description>Facade class for the Github Api Library</description>
+        <long-description/>
+        <tag name="package" line="18" description="Default"/>
+      </docblock>
+      <property static="false" visibility="protected" namespace="Sebwite\Git\Flysystem\Bitbucket" line="23" package="Default">
+        <name>$bbApi</name>
+        <full_name>\Sebwite\Git\Flysystem\Bitbucket\Api::bbApi</full_name>
+        <default/>
+        <docblock line="23">
+          <description/>
+          <long-description/>
+          <tag name="var" line="23" description="" type="\Bitbucket\API\Api" variable="">
+            <type>\Bitbucket\API\Api</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" namespace="Sebwite\Git\Flysystem\Bitbucket" line="26" package="Default">
+        <name>$settings</name>
+        <full_name>\Sebwite\Git\Flysystem\Bitbucket\Api::settings</full_name>
+        <default/>
+        <docblock line="26">
+          <description/>
+          <long-description/>
+          <tag name="var" line="26" description="" type="\Sebwite\Git\Flysystem\SettingsInterface" variable="">
+            <type>\Sebwite\Git\Flysystem\SettingsInterface</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" namespace="Sebwite\Git\Flysystem\Bitbucket" line="29" package="Default">
+        <name>$isAuthenticationAttempted</name>
+        <full_name>\Sebwite\Git\Flysystem\Bitbucket\Api::isAuthenticationAttempted</full_name>
+        <default>false</default>
+        <docblock line="29">
+          <description/>
+          <long-description/>
+          <tag name="var" line="29" description="" type="boolean" variable="">
+            <type>boolean</type>
+          </tag>
+        </docblock>
+      </property>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Sebwite\Git\Flysystem\Bitbucket" line="31" package="Default">
+        <name>getApi</name>
+        <full_name>\Sebwite\Git\Flysystem\Bitbucket\Api::getApi()</full_name>
+        <docblock line="31">
+          <description/>
+          <long-description/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$name</name>
+          <default/>
+          <type/>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Sebwite\Git\Flysystem\Bitbucket" line="38" package="Default">
+        <name>__construct</name>
+        <full_name>\Sebwite\Git\Flysystem\Bitbucket\Api::__construct()</full_name>
+        <docblock line="38">
+          <description/>
+          <long-description/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$bbApi</name>
+          <default/>
+          <type>\Bitbucket\API\Api</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$settings</name>
+          <default/>
+          <type>\Sebwite\Git\Flysystem\SettingsInterface</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Sebwite\Git\Flysystem\Bitbucket" line="48" package="Default">
+        <name>authenticate</name>
+        <full_name>\Sebwite\Git\Flysystem\Bitbucket\Api::authenticate()</full_name>
+        <docblock line="48">
+          <description/>
+          <long-description/>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Sebwite\Git\Flysystem\Bitbucket" line="91" package="Default">
+        <name>getUsername</name>
+        <full_name>\Sebwite\Git\Flysystem\Bitbucket\Api::getUsername()</full_name>
+        <docblock line="91">
+          <description/>
+          <long-description/>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Sebwite\Git\Flysystem\Bitbucket" line="98" package="Default">
+        <name>_content</name>
+        <full_name>\Sebwite\Git\Flysystem\Bitbucket\Api::_content()</full_name>
+        <docblock line="98">
+          <description/>
+          <long-description/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$m</name>
+          <default/>
+          <type>\Buzz\Message\MessageInterface</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$assoc</name>
+          <default>true</default>
+          <type/>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Sebwite\Git\Flysystem\Bitbucket" line="103" package="Default">
+        <name>getSettings</name>
+        <full_name>\Sebwite\Git\Flysystem\Bitbucket\Api::getSettings()</full_name>
+        <docblock line="103">
+          <description/>
+          <long-description/>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Sebwite\Git\Flysystem\Bitbucket" line="114" package="Default">
+        <name>exists</name>
+        <full_name>\Sebwite\Git\Flysystem\Bitbucket\Api::exists()</full_name>
+        <docblock line="114">
+          <description/>
+          <long-description/>
+          <tag name="param" line="114" description="" type="string" variable="$path">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="114" description="" type="boolean">
+            <type>boolean</type>
+          </tag>
+          <tag name="inherited_from" description="\Sebwite\Git\Flysystem\ApiInterface::exists()" refers="\Sebwite\Git\Flysystem\ApiInterface::exists()" link="/classes/Sebwite.Git.Flysystem.ApiInterface.html#method_exists"/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$path</name>
+          <default/>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Sebwite\Git\Flysystem\Bitbucket" line="132" package="Default">
+        <name>getFileContents</name>
+        <full_name>\Sebwite\Git\Flysystem\Bitbucket\Api::getFileContents()</full_name>
+        <docblock line="132">
+          <description/>
+          <long-description/>
+          <tag name="param" line="132" description="" type="" variable="$path"/>
+          <tag name="return" line="132" description="" type="null|string">
+            <type>null</type>
+            <type>string</type>
+          </tag>
+          <tag name="throws" line="132" description="" type="\Github\Exception\ErrorException">
+            <type>\Github\Exception\ErrorException</type>
+          </tag>
+          <tag name="inherited_from" description="\Sebwite\Git\Flysystem\ApiInterface::getFileContents()" refers="\Sebwite\Git\Flysystem\ApiInterface::getFileContents()" link="/classes/Sebwite.Git.Flysystem.ApiInterface.html#method_getFileContents"/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$path</name>
+          <default/>
+          <type/>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Sebwite\Git\Flysystem\Bitbucket" line="144" package="Default">
+        <name>getLastUpdatedTimestamp</name>
+        <full_name>\Sebwite\Git\Flysystem\Bitbucket\Api::getLastUpdatedTimestamp()</full_name>
+        <docblock line="144">
+          <description/>
+          <long-description/>
+          <tag name="param" line="144" description="" type="string" variable="$path">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="144" description="" type="array">
+            <type>array</type>
+          </tag>
+          <tag name="inherited_from" description="\Sebwite\Git\Flysystem\ApiInterface::getLastUpdatedTimestamp()" refers="\Sebwite\Git\Flysystem\ApiInterface::getLastUpdatedTimestamp()" link="/classes/Sebwite.Git.Flysystem.ApiInterface.html#method_getLastUpdatedTimestamp"/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$path</name>
+          <default/>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Sebwite\Git\Flysystem\Bitbucket" line="161" package="Default">
+        <name>getAllDirectories</name>
+        <full_name>\Sebwite\Git\Flysystem\Bitbucket\Api::getAllDirectories()</full_name>
+        <docblock line="161">
+          <description/>
+          <long-description/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$path</name>
+          <default/>
+          <type/>
+        </argument>
+        <argument line="0" by_reference="true">
+          <name>$dirs</name>
+          <default/>
+          <type>array</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Sebwite\Git\Flysystem\Bitbucket" line="182" package="Default">
+        <name>listContents</name>
+        <full_name>\Sebwite\Git\Flysystem\Bitbucket\Api::listContents()</full_name>
+        <docblock line="182">
+          <description/>
+          <long-description/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$path</name>
+          <default>'/'</default>
+          <type/>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$recursive</name>
+          <default>false</default>
+          <type/>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Sebwite\Git\Flysystem\Bitbucket" line="227" package="Default">
+        <name>getMetaData</name>
+        <full_name>\Sebwite\Git\Flysystem\Bitbucket\Api::getMetaData()</full_name>
+        <docblock line="227">
+          <description/>
+          <long-description/>
+          <tag name="param" line="227" description="" type="string" variable="$path">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="227" description="" type="array|boolean">
+            <type>array</type>
+            <type>boolean</type>
+          </tag>
+          <tag name="inherited_from" description="\Sebwite\Git\Flysystem\ApiInterface::getMetaData()" refers="\Sebwite\Git\Flysystem\ApiInterface::getMetaData()" link="/classes/Sebwite.Git.Flysystem.ApiInterface.html#method_getMetaData"/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$path</name>
+          <default/>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Sebwite\Git\Flysystem\Bitbucket" line="261" package="Default">
+        <name>getAllDirs</name>
+        <full_name>\Sebwite\Git\Flysystem\Bitbucket\Api::getAllDirs()</full_name>
+        <docblock line="261">
+          <description/>
+          <long-description/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$path</name>
+          <default/>
+          <type/>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Sebwite\Git\Flysystem\Bitbucket" line="271" package="Default">
+        <name>guessMimeType</name>
+        <full_name>\Sebwite\Git\Flysystem\Bitbucket\Api::guessMimeType()</full_name>
+        <docblock line="271">
+          <description/>
+          <long-description/>
+          <tag name="inherited_from" description="\Sebwite\Git\Flysystem\ApiInterface::guessMimeType()" refers="\Sebwite\Git\Flysystem\ApiInterface::guessMimeType()" link="/classes/Sebwite.Git.Flysystem.ApiInterface.html#method_guessMimeType"/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$path</name>
+          <default/>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Sebwite\Git\Flysystem\Bitbucket" line="294" package="Default">
+        <name>getRecursiveMetadata</name>
+        <full_name>\Sebwite\Git\Flysystem\Bitbucket\Api::getRecursiveMetadata()</full_name>
+        <docblock line="294">
+          <description/>
+          <long-description/>
+          <tag name="param" line="294" description="" type="string" variable="$path">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="294" description="" type="boolean" variable="$recursive">
+            <type>boolean</type>
+          </tag>
+          <tag name="return" line="294" description="" type="array">
+            <type>array</type>
+          </tag>
+          <tag name="inherited_from" description="\Sebwite\Git\Flysystem\ApiInterface::getRecursiveMetadata()" refers="\Sebwite\Git\Flysystem\ApiInterface::getRecursiveMetadata()" link="/classes/Sebwite.Git.Flysystem.ApiInterface.html#method_getRecursiveMetadata"/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$path</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$recursive</name>
+          <default/>
+          <type>boolean</type>
+        </argument>
+      </method>
+    </class>
+    <markers>
+      <todo line="296">Implement getRecursiveMetadata() method.</todo>
+    </markers>
+    <parse_markers>
+      <error line="0" code="PPC:ERR-50000">No summary was found for this file</error>
+      <error line="31" code="PPC:ERR-50015">Argument $name is missing from the Docblock of getApi</error>
+      <error line="31" code="PPC:ERR-50008">No summary for method getApi()</error>
+      <error line="38" code="PPC:ERR-50015">Argument $bbApi is missing from the Docblock of __construct</error>
+      <error line="38" code="PPC:ERR-50015">Argument $settings is missing from the Docblock of __construct</error>
+      <error line="38" code="PPC:ERR-50008">No summary for method __construct()</error>
+      <error line="48" code="PPC:ERR-50008">No summary for method authenticate()</error>
+      <error line="91" code="PPC:ERR-50008">No summary for method getUsername()</error>
+      <error line="98" code="PPC:ERR-50015">Argument $m is missing from the Docblock of _content</error>
+      <error line="98" code="PPC:ERR-50015">Argument $assoc is missing from the Docblock of _content</error>
+      <error line="98" code="PPC:ERR-50008">No summary for method _content()</error>
+      <error line="103" code="PPC:ERR-50008">No summary for method getSettings()</error>
+      <error line="114" code="PPC:ERR-50008">No summary for method exists()</error>
+      <error line="132" code="PPC:ERR-50008">No summary for method getFileContents()</error>
+      <error line="144" code="PPC:ERR-50008">No summary for method getLastUpdatedTimestamp()</error>
+      <error line="161" code="PPC:ERR-50015">Argument $path is missing from the Docblock of getAllDirectories</error>
+      <error line="161" code="PPC:ERR-50015">Argument $dirs is missing from the Docblock of getAllDirectories</error>
+      <error line="161" code="PPC:ERR-50008">No summary for method getAllDirectories()</error>
+      <error line="182" code="PPC:ERR-50015">Argument $path is missing from the Docblock of listContents</error>
+      <error line="182" code="PPC:ERR-50015">Argument $recursive is missing from the Docblock of listContents</error>
+      <error line="182" code="PPC:ERR-50008">No summary for method listContents()</error>
+      <error line="227" code="PPC:ERR-50008">No summary for method getMetaData()</error>
+      <error line="261" code="PPC:ERR-50015">Argument $path is missing from the Docblock of getAllDirs</error>
+      <error line="261" code="PPC:ERR-50008">No summary for method getAllDirs()</error>
+      <error line="271" code="PPC:ERR-50015">Argument $path is missing from the Docblock of guessMimeType</error>
+      <error line="271" code="PPC:ERR-50008">No summary for method guessMimeType()</error>
+      <error line="294" code="PPC:ERR-50008">No summary for method getRecursiveMetadata()</error>
+      <error line="23" code="PPC:ERR-50007">No summary for property $bbApi</error>
+      <error line="26" code="PPC:ERR-50007">No summary for property $settings</error>
+      <error line="29" code="PPC:ERR-50007">No summary for property $isAuthenticationAttempted</error>
+    </parse_markers>
+    <source>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</source>
+  <type>class</type></file>

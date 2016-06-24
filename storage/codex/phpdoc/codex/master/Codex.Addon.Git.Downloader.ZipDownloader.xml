@@ -1,0 +1,299 @@
+<file path="codex/workbench/codex/addon-git/src/Downloader/ZipDownloader.php" generated-path="codex.workbench.codex.addon-git.src.Downloader.ZipDownloader.html" hash="b0e517c42a6b4db5c77a802ea44fea1c" package="Default">
+    <docblock line="0">
+      <description>Created by IntelliJ IDEA.</description>
+      <long-description>User: radic
+Date: 6/11/16
+Time: 5:12 PM</long-description>
+      <tag name="package" line="0" description="Default"/>
+    </docblock>
+    <namespace-alias name="Str">\Sebwite\Support\Str</namespace-alias>
+    <namespace-alias name="ExecutableFinder">\Symfony\Component\Process\ExecutableFinder</namespace-alias>
+    <namespace-alias name="ZipArchive">\ZipArchive</namespace-alias>
+    <class final="false" abstract="false" namespace="Codex\Addon\Git\Downloader" line="16" package="Default">
+      <extends>\Codex\Addon\Git\Downloader\AbstractDownloader</extends>
+      <name>ZipDownloader</name>
+      <full_name>\Codex\Addon\Git\Downloader\ZipDownloader</full_name>
+      <docblock line="16">
+        <description/>
+        <long-description/>
+        <tag name="package" line="16" description="Default"/>
+        <tag name="inherited_from" description="\Codex\Addon\Git\Downloader\AbstractDownloader" refers="\Codex\Addon\Git\Downloader\AbstractDownloader" link="/classes/Codex.Addon.Git.Downloader.AbstractDownloader.html"/>
+      </docblock>
+      <property static="true" visibility="protected" namespace="Codex\Addon\Git\Downloader" line="18" package="Default">
+        <name>$hasSystemUnzip</name>
+        <full_name>\Codex\Addon\Git\Downloader\ZipDownloader::hasSystemUnzip</full_name>
+        <default/>
+        <docblock line="18">
+          <description/>
+          <long-description/>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" namespace="Codex\Addon\Git\Downloader" line="20" package="Default">
+        <name>$path</name>
+        <full_name>\Codex\Addon\Git\Downloader\ZipDownloader::path</full_name>
+        <default/>
+        <docblock line="20">
+          <description/>
+          <long-description/>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" namespace="Codex\Addon\Git\Downloader" line="22" package="Default">
+        <name>$owner</name>
+        <full_name>\Codex\Addon\Git\Downloader\ZipDownloader::owner</full_name>
+        <default/>
+        <docblock line="22">
+          <description/>
+          <long-description/>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" namespace="Codex\Addon\Git\Downloader" line="22" package="Default">
+        <name>$repo</name>
+        <full_name>\Codex\Addon\Git\Downloader\ZipDownloader::repo</full_name>
+        <default/>
+        <docblock line="22">
+          <description/>
+          <long-description/>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" namespace="Codex\Addon\Git\Downloader" line="22" package="Default">
+        <name>$ref</name>
+        <full_name>\Codex\Addon\Git\Downloader\ZipDownloader::ref</full_name>
+        <default/>
+        <docblock line="22">
+          <description/>
+          <long-description/>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" namespace="Codex\Addon\Git\Downloader" line="22" package="Default">
+        <name>$tmpPath</name>
+        <full_name>\Codex\Addon\Git\Downloader\ZipDownloader::tmpPath</full_name>
+        <default/>
+        <docblock line="22">
+          <description/>
+          <long-description/>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" namespace="Codex\Addon\Git\Downloader" line="18" package="Default">
+        <name>$syncer</name>
+        <full_name>\Codex\Addon\Git\Downloader\AbstractDownloader::syncer</full_name>
+        <default/>
+        <docblock line="18">
+          <description/>
+          <long-description/>
+          <tag name="var" line="18" description="" type="\Codex\Addon\Git\Syncer" variable="">
+            <type>\Codex\Addon\Git\Syncer</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" namespace="Codex\Addon\Git\Downloader" line="21" package="Default">
+        <name>$fs</name>
+        <full_name>\Codex\Addon\Git\Downloader\AbstractDownloader::fs</full_name>
+        <default/>
+        <docblock line="21">
+          <description/>
+          <long-description/>
+          <tag name="var" line="21" description="" type="\Sebwite\Filesystem\Filesystem" variable="">
+            <type>\Sebwite\Filesystem\Filesystem</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" namespace="Codex\Addon\Git\Downloader" line="24" package="Default">
+        <name>$remote</name>
+        <full_name>\Codex\Addon\Git\Downloader\AbstractDownloader::remote</full_name>
+        <default/>
+        <docblock line="24">
+          <description/>
+          <long-description/>
+          <tag name="var" line="24" description="" type="\Sebwite\Git\Remotes\Remote" variable="">
+            <type>\Sebwite\Git\Remotes\Remote</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" namespace="Codex\Addon\Git\Downloader" line="27" package="Default">
+        <name>$docPath</name>
+        <full_name>\Codex\Addon\Git\Downloader\AbstractDownloader::docPath</full_name>
+        <default/>
+        <docblock line="27">
+          <description/>
+          <long-description/>
+          <tag name="var" line="27" description="" type="mixed" variable="">
+            <type>mixed</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" namespace="Codex\Addon\Git\Downloader" line="30" package="Default">
+        <name>$menuPath</name>
+        <full_name>\Codex\Addon\Git\Downloader\AbstractDownloader::menuPath</full_name>
+        <default/>
+        <docblock line="30">
+          <description/>
+          <long-description/>
+          <tag name="var" line="30" description="" type="mixed" variable="">
+            <type>mixed</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" namespace="Codex\Addon\Git\Downloader" line="33" package="Default">
+        <name>$indexPath</name>
+        <full_name>\Codex\Addon\Git\Downloader\AbstractDownloader::indexPath</full_name>
+        <default/>
+        <docblock line="33">
+          <description/>
+          <long-description/>
+          <tag name="var" line="33" description="" type="mixed" variable="">
+            <type>mixed</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" namespace="Codex\Addon\Git\Downloader" line="36" package="Default">
+        <name>$project</name>
+        <full_name>\Codex\Addon\Git\Downloader\AbstractDownloader::project</full_name>
+        <default/>
+        <docblock line="36">
+          <description/>
+          <long-description/>
+          <tag name="var" line="36" description="" type="\Codex\Projects\Project" variable="">
+            <type>\Codex\Projects\Project</type>
+          </tag>
+        </docblock>
+      </property>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Codex\Addon\Git\Downloader" line="24" package="Default">
+        <name>download</name>
+        <full_name>\Codex\Addon\Git\Downloader\ZipDownloader::download()</full_name>
+        <docblock line="24">
+          <description/>
+          <long-description/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$owner</name>
+          <default/>
+          <type/>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$repo</name>
+          <default/>
+          <type/>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$ref</name>
+          <default/>
+          <type/>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Codex\Addon\Git\Downloader" line="91" package="Default">
+        <name>moveTo</name>
+        <full_name>\Codex\Addon\Git\Downloader\ZipDownloader::moveTo()</full_name>
+        <docblock line="91">
+          <description>{@inheritdoc}</description>
+          <long-description/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$dirPath</name>
+          <default/>
+          <type/>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Codex\Addon\Git\Downloader" line="95" package="Default">
+        <name>hasUnzipCapabilities</name>
+        <full_name>\Codex\Addon\Git\Downloader\ZipDownloader::hasUnzipCapabilities()</full_name>
+        <docblock line="95">
+          <description/>
+          <long-description/>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Codex\Addon\Git\Downloader" line="43" package="Default">
+        <name>__construct</name>
+        <full_name>\Codex\Addon\Git\Downloader\AbstractDownloader::__construct()</full_name>
+        <docblock line="43">
+          <description>AbstractDownloader constructor.</description>
+          <long-description/>
+          <tag name="param" line="43" description="" type="" variable="$syncer"/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$syncer</name>
+          <default/>
+          <type/>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$fs</name>
+          <default/>
+          <type>\Sebwite\Filesystem\Filesystem</type>
+        </argument>
+        <inherited_from>\Codex\Addon\Git\Downloader\AbstractDownloader</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Codex\Addon\Git\Downloader" line="58" package="Default">
+        <name>getSyncer</name>
+        <full_name>\Codex\Addon\Git\Downloader\AbstractDownloader::getSyncer()</full_name>
+        <docblock line="58">
+          <description/>
+          <long-description/>
+          <tag name="return" line="58" description="" type="\Codex\Addon\Git\Syncer">
+            <type>\Codex\Addon\Git\Syncer</type>
+          </tag>
+        </docblock>
+        <inherited_from>\Codex\Addon\Git\Downloader\AbstractDownloader</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Codex\Addon\Git\Downloader" line="66" package="Default">
+        <name>setSyncer</name>
+        <full_name>\Codex\Addon\Git\Downloader\AbstractDownloader::setSyncer()</full_name>
+        <docblock line="66">
+          <description/>
+          <long-description/>
+          <tag name="param" line="66" description="" type="\Codex\Addon\Git\Syncer" variable="$syncer">
+            <type>\Codex\Addon\Git\Syncer</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$syncer</name>
+          <default/>
+          <type>\Codex\Addon\Git\Syncer</type>
+        </argument>
+        <inherited_from>\Codex\Addon\Git\Downloader\AbstractDownloader</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Codex\Addon\Git\Downloader" line="74" package="Default">
+        <name>getFs</name>
+        <full_name>\Codex\Addon\Git\Downloader\AbstractDownloader::getFs()</full_name>
+        <docblock line="74">
+          <description/>
+          <long-description/>
+          <tag name="return" line="74" description="" type="\Sebwite\Filesystem\Filesystem">
+            <type>\Sebwite\Filesystem\Filesystem</type>
+          </tag>
+        </docblock>
+        <inherited_from>\Codex\Addon\Git\Downloader\AbstractDownloader</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Codex\Addon\Git\Downloader" line="82" package="Default">
+        <name>setFs</name>
+        <full_name>\Codex\Addon\Git\Downloader\AbstractDownloader::setFs()</full_name>
+        <docblock line="82">
+          <description/>
+          <long-description/>
+          <tag name="param" line="82" description="" type="\Sebwite\Filesystem\Filesystem" variable="$fs">
+            <type>\Sebwite\Filesystem\Filesystem</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$fs</name>
+          <default/>
+          <type>\Sebwite\Filesystem\Filesystem</type>
+        </argument>
+        <inherited_from>\Codex\Addon\Git\Downloader\AbstractDownloader</inherited_from>
+      </method>
+    </class>
+    <parse_markers>
+      <error line="16" code="PPC:ERR-50005">No summary for class \Codex\Addon\Git\Downloader\ZipDownloader</error>
+      <error line="24" code="PPC:ERR-50015">Argument $owner is missing from the Docblock of download</error>
+      <error line="24" code="PPC:ERR-50015">Argument $repo is missing from the Docblock of download</error>
+      <error line="24" code="PPC:ERR-50015">Argument $ref is missing from the Docblock of download</error>
+      <error line="24" code="PPC:ERR-50008">No summary for method download()</error>
+      <error line="91" code="PPC:ERR-50015">Argument $dirPath is missing from the Docblock of moveTo</error>
+      <error line="95" code="PPC:ERR-50008">No summary for method hasUnzipCapabilities()</error>
+      <error line="18" code="PPC:ERR-50007">No summary for property $hasSystemUnzip</error>
+      <error line="20" code="PPC:ERR-50007">No summary for property $path</error>
+      <error line="22" code="PPC:ERR-50007">No summary for property $owner</error>
+      <error line="22" code="PPC:ERR-50007">No summary for property $repo</error>
+      <error line="22" code="PPC:ERR-50007">No summary for property $ref</error>
+      <error line="22" code="PPC:ERR-50007">No summary for property $tmpPath</error>
+    </parse_markers>
+    <source>eJytV19T4zYQf8+n2NLM2WZCUtrpPYSGNgNcj06ZMsA9XC83GcVeYx22pJFkQsrku3clO44TAj0654c41u7+9q9Wq19+VZnqDPb3O7APJxqZxQRmCzgXFvOc/wHnp2fjviN+MKiHoFnCY/d5SpxDeDs4PBwcvnULN7yghZ+Hhz/C5QUtDDodwQo0isUIJzLBh8k4SaSY/M7t5FTORS5Zgvqo0+mUBuEaZ3NucXJdKiW1nVxbInnCokilWExOZKGkQGEnl1rGaMzk7AHj0rJZju+48FCO/2+uxjrO+D0SdJwzY9zSWiHgg0WRGBjPjNUstmtS57ED9CgtLcYuEMYyy2PoZsxcL4zF4oP4hyvC3WTrKmazp6uEi7oHXY1K+ldKv7ZQly3ucpaTgrQUseVSQFLbEu4QjrxEZaJ7BgN4jxphjo0YMJE4/5xbYDMEshZSniNwYSUwIBcoukwvIJcxcyrbcDckUUuT/U7OwJznuYMSMEOIpeJEISgHnsi4LCghHicwQDZCwnUbkaWWIj7PeJx5kTW6sWWaVugOOEcmaLVU/U5b/iTD+I5WgWJToM2kV05eNUxdm3FzcEwZ8rk5YYrNeM4tRxNGR51tPh9WGNXJOdomu2g7qnvvIKYVLW3jpgbcasVyi/ad19uQFdEbMhXHFyqOis+F15vYdliRZkZJFThvJYuiSmJSL1omVXVE2IYI7BanrgjDvdjttMEtt4PHysdl/9G7U73T5V7LOp5C6Dw4OObmdKUjXGFHEDWc67KrnT44TjBHizvE1vjLzoYEClPq3RLtGFiZSOCFytFVF2TWKjMcDBK8x1wq1H3yLitn/VgWg/ufBs45M4gldSxhzeB7iu0BqzrAQc7F3doGtxtGPrTtJtEmU4EoFGGT8II2M3lab69aJNzY0XuPKzeWfULY69W1FUXb0HXx38idjru1s9X2qFPro3aby1mZk1b3hxZdnqdfJBcNTA+C/SCKPsEP8LmFuM4uPnBjjec/p075UMNvIm0o761Klq/4oxfKQTklqrRhC9EHJ/Di/SIJol7tDdpNO6Kd9bLT9gsU5StML2r2/2e5k+4vivyJ5RcNbNvwVqX7vtl6RtQ385xqPvQ4LM+rvf81PlCPrXRFG3YfHBOzMKnURdgcHmGXDtBik3HTXfdotKUmZjr8uLiNvMzRBtfyiS451pottvqptCz3vpXCeeZcakWETENGXT9cBYQZ6Mal1m5Lj46rVZ/MZ3OToLF1umkaGA6r9nHFbzP7qtj14PT86uzk5q+rj9Prs8vx1Zj+RkcvK3N7/x7/xLT2rUZesW2LP1tHa4l2Ga0Qo22c5hi5XogYdRgdHKfUL8OA5pC7vhMLevCpiWSvzkNLT+O+8Qj1J3x+plq/1db9Vjvpa4+WFl+43YJbbHW1+xhUq7XzfuR1zz48/sZFhppbKpi6A9H06l7b45krCde+6Tz25rQmsuX2+NcI7R5NtoY53+9ESdPQaERHOubpcLg1dr5wGvvxFzaf6qB7OiO3eXbrGUE4kzKPalxXgSIJg9IRg+e79Xfgp+1p3bCD9RkbRPDmDdFf55abhjLV54L7bg9UxCxJ1uMnai01TYXG0PTjFjPMFdAVQBtwFnumWGpXRH6Y3Qwa4a7OkkxN6WvqLwHJ1LGGW/uyOo5WIv/VYh3jRW3XCAI3Vq88IfP8/WohS03GFQVN7G5KQbh8f0kuDiGAfqNpqy9vfGFu8HV2jBsr/JUgkdSVhbTgE9aHj7Ks5vGM3ft4xv46SKM39oOXLOlWmRjB3k195fBXLOOK311IfOGsnAU33c4kRbHgxtAJ1ANzx5Wif/2J2Kudr63e1GozLee+qidXdObQffPsIUblNllY2fCkOJedZedfpUJeWA==</source>
+  <type>class</type></file>

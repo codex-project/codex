@@ -1,0 +1,650 @@
+<file path="codex/vendor/laravel/framework/src/Illuminate/Filesystem/FilesystemAdapter.php" generated-path="codex.vendor.laravel.framework.src.Illuminate.Filesystem.FilesystemAdapter.html" hash="8d8d87e169a530ca538246ede11e125d" package="Default">
+    <docblock line="0">
+      <description/>
+      <long-description/>
+      <tag name="package" line="0" description="Default"/>
+    </docblock>
+    <namespace-alias name="RuntimeException">\RuntimeException</namespace-alias>
+    <namespace-alias name="InvalidArgumentException">\InvalidArgumentException</namespace-alias>
+    <namespace-alias name="Collection">\Illuminate\Support\Collection</namespace-alias>
+    <namespace-alias name="AdapterInterface">\League\Flysystem\AdapterInterface</namespace-alias>
+    <namespace-alias name="FilesystemInterface">\League\Flysystem\FilesystemInterface</namespace-alias>
+    <namespace-alias name="AwsS3Adapter">\League\Flysystem\AwsS3v3\AwsS3Adapter</namespace-alias>
+    <namespace-alias name="FileNotFoundException">\League\Flysystem\FileNotFoundException</namespace-alias>
+    <namespace-alias name="LocalAdapter">\League\Flysystem\Adapter\Local</namespace-alias>
+    <namespace-alias name="FilesystemContract">\Illuminate\Contracts\Filesystem\Filesystem</namespace-alias>
+    <namespace-alias name="CloudFilesystemContract">\Illuminate\Contracts\Filesystem\Cloud</namespace-alias>
+    <namespace-alias name="ContractFileNotFoundException">\Illuminate\Contracts\Filesystem\FileNotFoundException</namespace-alias>
+    <class final="false" abstract="false" namespace="Illuminate\Filesystem" line="17" package="Default">
+      <extends/>
+      <implements>\Illuminate\Contracts\Filesystem\Filesystem</implements>
+      <implements>\Illuminate\Contracts\Filesystem\Cloud</implements>
+      <name>FilesystemAdapter</name>
+      <full_name>\Illuminate\Filesystem\FilesystemAdapter</full_name>
+      <docblock line="17">
+        <description/>
+        <long-description/>
+        <tag name="package" line="17" description="Default"/>
+      </docblock>
+      <property static="false" visibility="protected" namespace="Illuminate\Filesystem" line="24" package="Default">
+        <name>$driver</name>
+        <full_name>\Illuminate\Filesystem\FilesystemAdapter::driver</full_name>
+        <default/>
+        <docblock line="24">
+          <description>The Flysystem filesystem implementation.</description>
+          <long-description/>
+          <tag name="var" line="24" description="" type="\League\Flysystem\FilesystemInterface" variable="">
+            <type>\League\Flysystem\FilesystemInterface</type>
+          </tag>
+        </docblock>
+      </property>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Filesystem" line="32" package="Default">
+        <name>__construct</name>
+        <full_name>\Illuminate\Filesystem\FilesystemAdapter::__construct()</full_name>
+        <docblock line="32">
+          <description>Create a new filesystem adapter instance.</description>
+          <long-description/>
+          <tag name="param" line="32" description="" type="\League\Flysystem\FilesystemInterface" variable="$driver">
+            <type>\League\Flysystem\FilesystemInterface</type>
+          </tag>
+          <tag name="return" line="32" description="" type="void">
+            <type>void</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$driver</name>
+          <default/>
+          <type>\League\Flysystem\FilesystemInterface</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Filesystem" line="43" package="Default">
+        <name>exists</name>
+        <full_name>\Illuminate\Filesystem\FilesystemAdapter::exists()</full_name>
+        <docblock line="43">
+          <description>Determine if a file exists.</description>
+          <long-description/>
+          <tag name="param" line="43" description="" type="string" variable="$path">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="43" description="" type="boolean">
+            <type>boolean</type>
+          </tag>
+          <tag name="inherited_from" description="\Illuminate\Contracts\Filesystem\Filesystem::exists()" refers="\Illuminate\Contracts\Filesystem\Filesystem::exists()" link="/classes/Illuminate.Contracts.Filesystem.Filesystem.html#method_exists"/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$path</name>
+          <default/>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Filesystem" line="56" package="Default">
+        <name>get</name>
+        <full_name>\Illuminate\Filesystem\FilesystemAdapter::get()</full_name>
+        <docblock line="56">
+          <description>Get the contents of a file.</description>
+          <long-description/>
+          <tag name="param" line="56" description="" type="string" variable="$path">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="56" description="" type="string">
+            <type>string</type>
+          </tag>
+          <tag name="throws" line="56" description="" type="\Illuminate\Contracts\Filesystem\FileNotFoundException">
+            <type>\Illuminate\Contracts\Filesystem\FileNotFoundException</type>
+          </tag>
+          <tag name="inherited_from" description="\Illuminate\Contracts\Filesystem\Filesystem::get()" refers="\Illuminate\Contracts\Filesystem\Filesystem::get()" link="/classes/Illuminate.Contracts.Filesystem.Filesystem.html#method_get"/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$path</name>
+          <default/>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Filesystem" line="73" package="Default">
+        <name>put</name>
+        <full_name>\Illuminate\Filesystem\FilesystemAdapter::put()</full_name>
+        <docblock line="73">
+          <description>Write the contents of a file.</description>
+          <long-description/>
+          <tag name="param" line="73" description="" type="string" variable="$path">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="73" description="" type="string|resource" variable="$contents">
+            <type>string</type>
+            <type>resource</type>
+          </tag>
+          <tag name="param" line="73" description="" type="string" variable="$visibility">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="73" description="" type="boolean">
+            <type>boolean</type>
+          </tag>
+          <tag name="inherited_from" description="\Illuminate\Contracts\Filesystem\Filesystem::put()" refers="\Illuminate\Contracts\Filesystem\Filesystem::put()" link="/classes/Illuminate.Contracts.Filesystem.Filesystem.html#method_put"/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$path</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$contents</name>
+          <default/>
+          <type>string|resource</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$visibility</name>
+          <default>null</default>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Filesystem" line="94" package="Default">
+        <name>getVisibility</name>
+        <full_name>\Illuminate\Filesystem\FilesystemAdapter::getVisibility()</full_name>
+        <docblock line="94">
+          <description>Get the visibility for the given path.</description>
+          <long-description/>
+          <tag name="param" line="94" description="" type="string" variable="$path">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="94" description="" type="string">
+            <type>string</type>
+          </tag>
+          <tag name="inherited_from" description="\Illuminate\Contracts\Filesystem\Filesystem::getVisibility()" refers="\Illuminate\Contracts\Filesystem\Filesystem::getVisibility()" link="/classes/Illuminate.Contracts.Filesystem.Filesystem.html#method_getVisibility"/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$path</name>
+          <default/>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Filesystem" line="110" package="Default">
+        <name>setVisibility</name>
+        <full_name>\Illuminate\Filesystem\FilesystemAdapter::setVisibility()</full_name>
+        <docblock line="110">
+          <description>Set the visibility for the given path.</description>
+          <long-description/>
+          <tag name="param" line="110" description="" type="string" variable="$path">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="110" description="" type="string" variable="$visibility">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="110" description="" type="void">
+            <type>void</type>
+          </tag>
+          <tag name="inherited_from" description="\Illuminate\Contracts\Filesystem\Filesystem::setVisibility()" refers="\Illuminate\Contracts\Filesystem\Filesystem::setVisibility()" link="/classes/Illuminate.Contracts.Filesystem.Filesystem.html#method_setVisibility"/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$path</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$visibility</name>
+          <default/>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Filesystem" line="122" package="Default">
+        <name>prepend</name>
+        <full_name>\Illuminate\Filesystem\FilesystemAdapter::prepend()</full_name>
+        <docblock line="122">
+          <description>Prepend to a file.</description>
+          <long-description/>
+          <tag name="param" line="122" description="" type="string" variable="$path">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="122" description="" type="string" variable="$data">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="122" description="" type="integer">
+            <type>integer</type>
+          </tag>
+          <tag name="inherited_from" description="\Illuminate\Contracts\Filesystem\Filesystem::prepend()" refers="\Illuminate\Contracts\Filesystem\Filesystem::prepend()" link="/classes/Illuminate.Contracts.Filesystem.Filesystem.html#method_prepend"/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$path</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$data</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$separator</name>
+          <default>PHP_EOL</default>
+          <type/>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Filesystem" line="138" package="Default">
+        <name>append</name>
+        <full_name>\Illuminate\Filesystem\FilesystemAdapter::append()</full_name>
+        <docblock line="138">
+          <description>Append to a file.</description>
+          <long-description/>
+          <tag name="param" line="138" description="" type="string" variable="$path">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="138" description="" type="string" variable="$data">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="138" description="" type="integer">
+            <type>integer</type>
+          </tag>
+          <tag name="inherited_from" description="\Illuminate\Contracts\Filesystem\Filesystem::append()" refers="\Illuminate\Contracts\Filesystem\Filesystem::append()" link="/classes/Illuminate.Contracts.Filesystem.Filesystem.html#method_append"/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$path</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$data</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$separator</name>
+          <default>PHP_EOL</default>
+          <type/>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Filesystem" line="153" package="Default">
+        <name>delete</name>
+        <full_name>\Illuminate\Filesystem\FilesystemAdapter::delete()</full_name>
+        <docblock line="153">
+          <description>Delete the file at a given path.</description>
+          <long-description/>
+          <tag name="param" line="153" description="" type="string|array" variable="$paths">
+            <type>string</type>
+            <type>array</type>
+          </tag>
+          <tag name="return" line="153" description="" type="boolean">
+            <type>boolean</type>
+          </tag>
+          <tag name="inherited_from" description="\Illuminate\Contracts\Filesystem\Filesystem::delete()" refers="\Illuminate\Contracts\Filesystem\Filesystem::delete()" link="/classes/Illuminate.Contracts.Filesystem.Filesystem.html#method_delete"/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$paths</name>
+          <default/>
+          <type>string|array</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Filesystem" line="175" package="Default">
+        <name>copy</name>
+        <full_name>\Illuminate\Filesystem\FilesystemAdapter::copy()</full_name>
+        <docblock line="175">
+          <description>Copy a file to a new location.</description>
+          <long-description/>
+          <tag name="param" line="175" description="" type="string" variable="$from">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="175" description="" type="string" variable="$to">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="175" description="" type="boolean">
+            <type>boolean</type>
+          </tag>
+          <tag name="inherited_from" description="\Illuminate\Contracts\Filesystem\Filesystem::copy()" refers="\Illuminate\Contracts\Filesystem\Filesystem::copy()" link="/classes/Illuminate.Contracts.Filesystem.Filesystem.html#method_copy"/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$from</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$to</name>
+          <default/>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Filesystem" line="187" package="Default">
+        <name>move</name>
+        <full_name>\Illuminate\Filesystem\FilesystemAdapter::move()</full_name>
+        <docblock line="187">
+          <description>Move a file to a new location.</description>
+          <long-description/>
+          <tag name="param" line="187" description="" type="string" variable="$from">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="187" description="" type="string" variable="$to">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="187" description="" type="boolean">
+            <type>boolean</type>
+          </tag>
+          <tag name="inherited_from" description="\Illuminate\Contracts\Filesystem\Filesystem::move()" refers="\Illuminate\Contracts\Filesystem\Filesystem::move()" link="/classes/Illuminate.Contracts.Filesystem.Filesystem.html#method_move"/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$from</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$to</name>
+          <default/>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Filesystem" line="198" package="Default">
+        <name>size</name>
+        <full_name>\Illuminate\Filesystem\FilesystemAdapter::size()</full_name>
+        <docblock line="198">
+          <description>Get the file size of a given file.</description>
+          <long-description/>
+          <tag name="param" line="198" description="" type="string" variable="$path">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="198" description="" type="integer">
+            <type>integer</type>
+          </tag>
+          <tag name="inherited_from" description="\Illuminate\Contracts\Filesystem\Filesystem::size()" refers="\Illuminate\Contracts\Filesystem\Filesystem::size()" link="/classes/Illuminate.Contracts.Filesystem.Filesystem.html#method_size"/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$path</name>
+          <default/>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Filesystem" line="209" package="Default">
+        <name>mimeType</name>
+        <full_name>\Illuminate\Filesystem\FilesystemAdapter::mimeType()</full_name>
+        <docblock line="209">
+          <description>Get the mime-type of a given file.</description>
+          <long-description/>
+          <tag name="param" line="209" description="" type="string" variable="$path">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="209" description="" type="string|false">
+            <type>string</type>
+            <type>false</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$path</name>
+          <default/>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Filesystem" line="220" package="Default">
+        <name>lastModified</name>
+        <full_name>\Illuminate\Filesystem\FilesystemAdapter::lastModified()</full_name>
+        <docblock line="220">
+          <description>Get the file's last modification time.</description>
+          <long-description/>
+          <tag name="param" line="220" description="" type="string" variable="$path">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="220" description="" type="integer">
+            <type>integer</type>
+          </tag>
+          <tag name="inherited_from" description="\Illuminate\Contracts\Filesystem\Filesystem::lastModified()" refers="\Illuminate\Contracts\Filesystem\Filesystem::lastModified()" link="/classes/Illuminate.Contracts.Filesystem.Filesystem.html#method_lastModified"/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$path</name>
+          <default/>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Filesystem" line="231" package="Default">
+        <name>url</name>
+        <full_name>\Illuminate\Filesystem\FilesystemAdapter::url()</full_name>
+        <docblock line="231">
+          <description>Get the URL for the file at the given path.</description>
+          <long-description/>
+          <tag name="param" line="231" description="" type="string" variable="$path">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="231" description="" type="string">
+            <type>string</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$path</name>
+          <default/>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Filesystem" line="253" package="Default">
+        <name>files</name>
+        <full_name>\Illuminate\Filesystem\FilesystemAdapter::files()</full_name>
+        <docblock line="253">
+          <description>Get an array of all files in a directory.</description>
+          <long-description/>
+          <tag name="param" line="253" description="" type="string|null" variable="$directory">
+            <type>string</type>
+            <type>null</type>
+          </tag>
+          <tag name="param" line="253" description="" type="boolean" variable="$recursive">
+            <type>boolean</type>
+          </tag>
+          <tag name="return" line="253" description="" type="array">
+            <type>array</type>
+          </tag>
+          <tag name="inherited_from" description="\Illuminate\Contracts\Filesystem\Filesystem::files()" refers="\Illuminate\Contracts\Filesystem\Filesystem::files()" link="/classes/Illuminate.Contracts.Filesystem.Filesystem.html#method_files"/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$directory</name>
+          <default>null</default>
+          <type>string|null</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$recursive</name>
+          <default>false</default>
+          <type>boolean</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Filesystem" line="266" package="Default">
+        <name>allFiles</name>
+        <full_name>\Illuminate\Filesystem\FilesystemAdapter::allFiles()</full_name>
+        <docblock line="266">
+          <description>Get all of the files from the given directory (recursive).</description>
+          <long-description/>
+          <tag name="param" line="266" description="" type="string|null" variable="$directory">
+            <type>string</type>
+            <type>null</type>
+          </tag>
+          <tag name="return" line="266" description="" type="array">
+            <type>array</type>
+          </tag>
+          <tag name="inherited_from" description="\Illuminate\Contracts\Filesystem\Filesystem::allFiles()" refers="\Illuminate\Contracts\Filesystem\Filesystem::allFiles()" link="/classes/Illuminate.Contracts.Filesystem.Filesystem.html#method_allFiles"/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$directory</name>
+          <default>null</default>
+          <type>string|null</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Filesystem" line="278" package="Default">
+        <name>directories</name>
+        <full_name>\Illuminate\Filesystem\FilesystemAdapter::directories()</full_name>
+        <docblock line="278">
+          <description>Get all of the directories within a given directory.</description>
+          <long-description/>
+          <tag name="param" line="278" description="" type="string|null" variable="$directory">
+            <type>string</type>
+            <type>null</type>
+          </tag>
+          <tag name="param" line="278" description="" type="boolean" variable="$recursive">
+            <type>boolean</type>
+          </tag>
+          <tag name="return" line="278" description="" type="array">
+            <type>array</type>
+          </tag>
+          <tag name="inherited_from" description="\Illuminate\Contracts\Filesystem\Filesystem::directories()" refers="\Illuminate\Contracts\Filesystem\Filesystem::directories()" link="/classes/Illuminate.Contracts.Filesystem.Filesystem.html#method_directories"/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$directory</name>
+          <default>null</default>
+          <type>string|null</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$recursive</name>
+          <default>false</default>
+          <type>boolean</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Filesystem" line="291" package="Default">
+        <name>allDirectories</name>
+        <full_name>\Illuminate\Filesystem\FilesystemAdapter::allDirectories()</full_name>
+        <docblock line="291">
+          <description>Get all (recursive) of the directories within a given directory.</description>
+          <long-description/>
+          <tag name="param" line="291" description="" type="string|null" variable="$directory">
+            <type>string</type>
+            <type>null</type>
+          </tag>
+          <tag name="return" line="291" description="" type="array">
+            <type>array</type>
+          </tag>
+          <tag name="inherited_from" description="\Illuminate\Contracts\Filesystem\Filesystem::allDirectories()" refers="\Illuminate\Contracts\Filesystem\Filesystem::allDirectories()" link="/classes/Illuminate.Contracts.Filesystem.Filesystem.html#method_allDirectories"/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$directory</name>
+          <default>null</default>
+          <type>string|null</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Filesystem" line="302" package="Default">
+        <name>makeDirectory</name>
+        <full_name>\Illuminate\Filesystem\FilesystemAdapter::makeDirectory()</full_name>
+        <docblock line="302">
+          <description>Create a directory.</description>
+          <long-description/>
+          <tag name="param" line="302" description="" type="string" variable="$path">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="302" description="" type="boolean">
+            <type>boolean</type>
+          </tag>
+          <tag name="inherited_from" description="\Illuminate\Contracts\Filesystem\Filesystem::makeDirectory()" refers="\Illuminate\Contracts\Filesystem\Filesystem::makeDirectory()" link="/classes/Illuminate.Contracts.Filesystem.Filesystem.html#method_makeDirectory"/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$path</name>
+          <default/>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Filesystem" line="313" package="Default">
+        <name>deleteDirectory</name>
+        <full_name>\Illuminate\Filesystem\FilesystemAdapter::deleteDirectory()</full_name>
+        <docblock line="313">
+          <description>Recursively delete a directory.</description>
+          <long-description/>
+          <tag name="param" line="313" description="" type="string" variable="$directory">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="313" description="" type="boolean">
+            <type>boolean</type>
+          </tag>
+          <tag name="inherited_from" description="\Illuminate\Contracts\Filesystem\Filesystem::deleteDirectory()" refers="\Illuminate\Contracts\Filesystem\Filesystem::deleteDirectory()" link="/classes/Illuminate.Contracts.Filesystem.Filesystem.html#method_deleteDirectory"/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$directory</name>
+          <default/>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Filesystem" line="323" package="Default">
+        <name>getDriver</name>
+        <full_name>\Illuminate\Filesystem\FilesystemAdapter::getDriver()</full_name>
+        <docblock line="323">
+          <description>Get the Flysystem driver.</description>
+          <long-description/>
+          <tag name="return" line="323" description="" type="\League\Flysystem\FilesystemInterface">
+            <type>\League\Flysystem\FilesystemInterface</type>
+          </tag>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Filesystem" line="335" package="Default">
+        <name>filterContentsByType</name>
+        <full_name>\Illuminate\Filesystem\FilesystemAdapter::filterContentsByType()</full_name>
+        <docblock line="335">
+          <description>Filter directory contents by type.</description>
+          <long-description/>
+          <tag name="param" line="335" description="" type="array" variable="$contents">
+            <type>array</type>
+          </tag>
+          <tag name="param" line="335" description="" type="string" variable="$type">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="335" description="" type="array">
+            <type>array</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$contents</name>
+          <default/>
+          <type>array</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$type</name>
+          <default/>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Filesystem" line="352" package="Default">
+        <name>parseVisibility</name>
+        <full_name>\Illuminate\Filesystem\FilesystemAdapter::parseVisibility()</full_name>
+        <docblock line="352">
+          <description>Parse the given visibility value.</description>
+          <long-description/>
+          <tag name="param" line="352" description="" type="string|null" variable="$visibility">
+            <type>string</type>
+            <type>null</type>
+          </tag>
+          <tag name="return" line="352" description="" type="string|null">
+            <type>string</type>
+            <type>null</type>
+          </tag>
+          <tag name="throws" line="352" description="" type="\InvalidArgumentException">
+            <type>\InvalidArgumentException</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$visibility</name>
+          <default/>
+          <type>string|null</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Filesystem" line="377" package="Default">
+        <name>__call</name>
+        <full_name>\Illuminate\Filesystem\FilesystemAdapter::__call()</full_name>
+        <docblock line="377">
+          <description>Pass dynamic methods call onto Flysystem.</description>
+          <long-description/>
+          <tag name="param" line="377" description="" type="string" variable="$method">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="377" description="" type="array" variable="$parameters">
+            <type>array</type>
+          </tag>
+          <tag name="return" line="377" description="" type="mixed">
+            <type>mixed</type>
+          </tag>
+          <tag name="throws" line="377" description="" type="\BadMethodCallException">
+            <type>\BadMethodCallException</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$method</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$parameters</name>
+          <default/>
+          <type>array</type>
+        </argument>
+      </method>
+    </class>
+    <parse_markers>
+      <error line="0" code="PPC:ERR-50000">No summary was found for this file</error>
+      <error line="17" code="PPC:ERR-50005">No summary for class \Illuminate\Filesystem\FilesystemAdapter</error>
+      <error line="122" code="PPC:ERR-50015">Argument $separator is missing from the Docblock of prepend</error>
+      <error line="138" code="PPC:ERR-50015">Argument $separator is missing from the Docblock of append</error>
+    </parse_markers>
+    <source>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</source>
+  <type>class</type></file>

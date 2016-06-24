@@ -1,0 +1,2447 @@
+<file path="codex/vendor/laravel/framework/src/Illuminate/Database/Eloquent/Relations/MorphToMany.php" generated-path="codex.vendor.laravel.framework.src.Illuminate.Database.Eloquent.Relations.MorphToMany.html" hash="c7ca22a0b061b5d37205b6b94628a86e" package="Default">
+    <docblock line="0">
+      <description/>
+      <long-description/>
+      <tag name="package" line="0" description="Default"/>
+    </docblock>
+    <namespace-alias name="Arr">\Illuminate\Support\Arr</namespace-alias>
+    <namespace-alias name="Model">\Illuminate\Database\Eloquent\Model</namespace-alias>
+    <namespace-alias name="Builder">\Illuminate\Database\Eloquent\Builder</namespace-alias>
+    <class final="false" abstract="false" namespace="Illuminate\Database\Eloquent\Relations" line="9" package="Default">
+      <extends>\Illuminate\Database\Eloquent\Relations\BelongsToMany</extends>
+      <name>MorphToMany</name>
+      <full_name>\Illuminate\Database\Eloquent\Relations\MorphToMany</full_name>
+      <docblock line="9">
+        <description/>
+        <long-description/>
+        <tag name="package" line="9" description="Default"/>
+        <tag name="inherited_from" description="\Illuminate\Database\Eloquent\Relations\BelongsToMany" refers="\Illuminate\Database\Eloquent\Relations\BelongsToMany" link="/classes/Illuminate.Database.Eloquent.Relations.BelongsToMany.html"/>
+      </docblock>
+      <property static="false" visibility="protected" namespace="Illuminate\Database\Eloquent\Relations" line="16" package="Default">
+        <name>$morphType</name>
+        <full_name>\Illuminate\Database\Eloquent\Relations\MorphToMany::morphType</full_name>
+        <default/>
+        <docblock line="16">
+          <description>The type of the polymorphic relation.</description>
+          <long-description/>
+          <tag name="var" line="16" description="" type="string" variable="">
+            <type>string</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" namespace="Illuminate\Database\Eloquent\Relations" line="23" package="Default">
+        <name>$morphClass</name>
+        <full_name>\Illuminate\Database\Eloquent\Relations\MorphToMany::morphClass</full_name>
+        <default/>
+        <docblock line="23">
+          <description>The class name of the morph type constraint.</description>
+          <long-description/>
+          <tag name="var" line="23" description="" type="string" variable="">
+            <type>string</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" namespace="Illuminate\Database\Eloquent\Relations" line="32" package="Default">
+        <name>$inverse</name>
+        <full_name>\Illuminate\Database\Eloquent\Relations\MorphToMany::inverse</full_name>
+        <default/>
+        <docblock line="32">
+          <description>Indicates if we are connecting the inverse of the relation.</description>
+          <long-description>This primarily affects the morphClass constraint.</long-description>
+          <tag name="var" line="32" description="" type="boolean" variable="">
+            <type>boolean</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" namespace="Illuminate\Database\Eloquent\Relations" line="19" package="Default">
+        <name>$table</name>
+        <full_name>\Illuminate\Database\Eloquent\Relations\BelongsToMany::table</full_name>
+        <default/>
+        <docblock line="19">
+          <description>The intermediate table for the relation.</description>
+          <long-description/>
+          <tag name="var" line="19" description="" type="string" variable="">
+            <type>string</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" namespace="Illuminate\Database\Eloquent\Relations" line="26" package="Default">
+        <name>$foreignKey</name>
+        <full_name>\Illuminate\Database\Eloquent\Relations\BelongsToMany::foreignKey</full_name>
+        <default/>
+        <docblock line="26">
+          <description>The foreign key of the parent model.</description>
+          <long-description/>
+          <tag name="var" line="26" description="" type="string" variable="">
+            <type>string</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" namespace="Illuminate\Database\Eloquent\Relations" line="33" package="Default">
+        <name>$otherKey</name>
+        <full_name>\Illuminate\Database\Eloquent\Relations\BelongsToMany::otherKey</full_name>
+        <default/>
+        <docblock line="33">
+          <description>The associated key of the relation.</description>
+          <long-description/>
+          <tag name="var" line="33" description="" type="string" variable="">
+            <type>string</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" namespace="Illuminate\Database\Eloquent\Relations" line="40" package="Default">
+        <name>$relationName</name>
+        <full_name>\Illuminate\Database\Eloquent\Relations\BelongsToMany::relationName</full_name>
+        <default/>
+        <docblock line="40">
+          <description>The "name" of the relationship.</description>
+          <long-description/>
+          <tag name="var" line="40" description="" type="string" variable="">
+            <type>string</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" namespace="Illuminate\Database\Eloquent\Relations" line="47" package="Default">
+        <name>$pivotColumns</name>
+        <full_name>\Illuminate\Database\Eloquent\Relations\BelongsToMany::pivotColumns</full_name>
+        <default>array()</default>
+        <docblock line="47">
+          <description>The pivot table columns to retrieve.</description>
+          <long-description/>
+          <tag name="var" line="47" description="" type="array" variable="">
+            <type>array</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" namespace="Illuminate\Database\Eloquent\Relations" line="54" package="Default">
+        <name>$pivotWheres</name>
+        <full_name>\Illuminate\Database\Eloquent\Relations\BelongsToMany::pivotWheres</full_name>
+        <default>array()</default>
+        <docblock line="54">
+          <description>Any pivot table restrictions.</description>
+          <long-description/>
+          <tag name="var" line="54" description="" type="array" variable="">
+            <type>array</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" namespace="Illuminate\Database\Eloquent\Relations" line="61" package="Default">
+        <name>$pivotCreatedAt</name>
+        <full_name>\Illuminate\Database\Eloquent\Relations\BelongsToMany::pivotCreatedAt</full_name>
+        <default/>
+        <docblock line="61">
+          <description>The custom pivot table column for the created_at timestamp.</description>
+          <long-description/>
+          <tag name="var" line="61" description="" type="string" variable="">
+            <type>string</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" namespace="Illuminate\Database\Eloquent\Relations" line="68" package="Default">
+        <name>$pivotUpdatedAt</name>
+        <full_name>\Illuminate\Database\Eloquent\Relations\BelongsToMany::pivotUpdatedAt</full_name>
+        <default/>
+        <docblock line="68">
+          <description>The custom pivot table column for the updated_at timestamp.</description>
+          <long-description/>
+          <tag name="var" line="68" description="" type="string" variable="">
+            <type>string</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="true" visibility="protected" namespace="Illuminate\Database\Eloquent\Relations" line="75" package="Default">
+        <name>$selfJoinCount</name>
+        <full_name>\Illuminate\Database\Eloquent\Relations\BelongsToMany::selfJoinCount</full_name>
+        <default>0</default>
+        <docblock line="75">
+          <description>The count of self joins.</description>
+          <long-description/>
+          <tag name="var" line="75" description="" type="integer" variable="">
+            <type>integer</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" namespace="Illuminate\Database\Eloquent\Relations" line="19" package="Default">
+        <name>$query</name>
+        <full_name>\Illuminate\Database\Eloquent\Relations\Relation::query</full_name>
+        <default/>
+        <docblock line="19">
+          <description>The Eloquent query builder instance.</description>
+          <long-description/>
+          <tag name="var" line="19" description="" type="\Illuminate\Database\Eloquent\Builder" variable="">
+            <type>\Illuminate\Database\Eloquent\Builder</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" namespace="Illuminate\Database\Eloquent\Relations" line="26" package="Default">
+        <name>$parent</name>
+        <full_name>\Illuminate\Database\Eloquent\Relations\Relation::parent</full_name>
+        <default/>
+        <docblock line="26">
+          <description>The parent model instance.</description>
+          <long-description/>
+          <tag name="var" line="26" description="" type="\Illuminate\Database\Eloquent\Model" variable="">
+            <type>\Illuminate\Database\Eloquent\Model</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" namespace="Illuminate\Database\Eloquent\Relations" line="33" package="Default">
+        <name>$related</name>
+        <full_name>\Illuminate\Database\Eloquent\Relations\Relation::related</full_name>
+        <default/>
+        <docblock line="33">
+          <description>The related model instance.</description>
+          <long-description/>
+          <tag name="var" line="33" description="" type="\Illuminate\Database\Eloquent\Model" variable="">
+            <type>\Illuminate\Database\Eloquent\Model</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="true" visibility="protected" namespace="Illuminate\Database\Eloquent\Relations" line="40" package="Default">
+        <name>$constraints</name>
+        <full_name>\Illuminate\Database\Eloquent\Relations\Relation::constraints</full_name>
+        <default>true</default>
+        <docblock line="40">
+          <description>Indicates if the relation is adding constraints.</description>
+          <long-description/>
+          <tag name="var" line="40" description="" type="boolean" variable="">
+            <type>boolean</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="true" visibility="protected" namespace="Illuminate\Database\Eloquent\Relations" line="47" package="Default">
+        <name>$morphMap</name>
+        <full_name>\Illuminate\Database\Eloquent\Relations\Relation::morphMap</full_name>
+        <default>array()</default>
+        <docblock line="47">
+          <description>An array to map class names to their morph names in database.</description>
+          <long-description/>
+          <tag name="var" line="47" description="" type="array" variable="">
+            <type>array</type>
+          </tag>
+        </docblock>
+      </property>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Eloquent\Relations" line="47" package="Default">
+        <name>__construct</name>
+        <full_name>\Illuminate\Database\Eloquent\Relations\MorphToMany::__construct()</full_name>
+        <docblock line="47">
+          <description>Create a new morph to many relationship instance.</description>
+          <long-description/>
+          <tag name="param" line="47" description="" type="\Illuminate\Database\Eloquent\Builder" variable="$query">
+            <type>\Illuminate\Database\Eloquent\Builder</type>
+          </tag>
+          <tag name="param" line="47" description="" type="\Illuminate\Database\Eloquent\Model" variable="$parent">
+            <type>\Illuminate\Database\Eloquent\Model</type>
+          </tag>
+          <tag name="param" line="47" description="" type="string" variable="$name">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="47" description="" type="string" variable="$table">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="47" description="" type="string" variable="$foreignKey">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="47" description="" type="string" variable="$otherKey">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="47" description="" type="string" variable="$relationName">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="47" description="" type="boolean" variable="$inverse">
+            <type>boolean</type>
+          </tag>
+          <tag name="return" line="47" description="" type="void">
+            <type>void</type>
+          </tag>
+          <tag name="inherited_from" description="\Illuminate\Database\Eloquent\Relations\BelongsToMany::__construct()" refers="\Illuminate\Database\Eloquent\Relations\BelongsToMany::__construct()" link="/classes/Illuminate.Database.Eloquent.Relations.BelongsToMany.html#method___construct"/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$query</name>
+          <default/>
+          <type>\Illuminate\Database\Eloquent\Builder</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$parent</name>
+          <default/>
+          <type>\Illuminate\Database\Eloquent\Model</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$name</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$table</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$foreignKey</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$otherKey</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$relationName</name>
+          <default>null</default>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$inverse</name>
+          <default>false</default>
+          <type>boolean</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Database\Eloquent\Relations" line="61" package="Default">
+        <name>setWhere</name>
+        <full_name>\Illuminate\Database\Eloquent\Relations\MorphToMany::setWhere()</full_name>
+        <docblock line="61">
+          <description>Set the where clause for the relation query.</description>
+          <long-description/>
+          <tag name="return" line="61" description="" type="\Illuminate\Database\Eloquent\Relations\MorphToMany">
+            <type>\Illuminate\Database\Eloquent\Relations\MorphToMany</type>
+          </tag>
+          <tag name="inherited_from" description="\Illuminate\Database\Eloquent\Relations\BelongsToMany::setWhere()" refers="\Illuminate\Database\Eloquent\Relations\BelongsToMany::setWhere()" link="/classes/Illuminate.Database.Eloquent.Relations.BelongsToMany.html#method_setWhere"/>
+          <tag name="fluent" description="This method is part of a fluent interface and will return the same instance"/>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Eloquent\Relations" line="78" package="Default">
+        <name>getRelationQuery</name>
+        <full_name>\Illuminate\Database\Eloquent\Relations\MorphToMany::getRelationQuery()</full_name>
+        <docblock line="78">
+          <description>Add the constraints for a relationship count query.</description>
+          <long-description/>
+          <tag name="param" line="78" description="" type="\Illuminate\Database\Eloquent\Builder" variable="$query">
+            <type>\Illuminate\Database\Eloquent\Builder</type>
+          </tag>
+          <tag name="param" line="78" description="" type="\Illuminate\Database\Eloquent\Builder" variable="$parent">
+            <type>\Illuminate\Database\Eloquent\Builder</type>
+          </tag>
+          <tag name="param" line="78" description="" type="array|mixed" variable="$columns">
+            <type>array</type>
+            <type>mixed</type>
+          </tag>
+          <tag name="return" line="78" description="" type="\Illuminate\Database\Eloquent\Builder">
+            <type>\Illuminate\Database\Eloquent\Builder</type>
+          </tag>
+          <tag name="inherited_from" description="\Illuminate\Database\Eloquent\Relations\BelongsToMany::getRelationQuery()" refers="\Illuminate\Database\Eloquent\Relations\BelongsToMany::getRelationQuery()" link="/classes/Illuminate.Database.Eloquent.Relations.BelongsToMany.html#method_getRelationQuery"/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$query</name>
+          <default/>
+          <type>\Illuminate\Database\Eloquent\Builder</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$parent</name>
+          <default/>
+          <type>\Illuminate\Database\Eloquent\Builder</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$columns</name>
+          <default>array('*')</default>
+          <type>array|mixed</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Eloquent\Relations" line="91" package="Default">
+        <name>addEagerConstraints</name>
+        <full_name>\Illuminate\Database\Eloquent\Relations\MorphToMany::addEagerConstraints()</full_name>
+        <docblock line="91">
+          <description>Set the constraints for an eager load of the relation.</description>
+          <long-description/>
+          <tag name="param" line="91" description="" type="array" variable="$models">
+            <type>array</type>
+          </tag>
+          <tag name="return" line="91" description="" type="void">
+            <type>void</type>
+          </tag>
+          <tag name="inherited_from" description="\Illuminate\Database\Eloquent\Relations\BelongsToMany::addEagerConstraints()" refers="\Illuminate\Database\Eloquent\Relations\BelongsToMany::addEagerConstraints()" link="/classes/Illuminate.Database.Eloquent.Relations.BelongsToMany.html#method_addEagerConstraints"/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$models</name>
+          <default/>
+          <type>array</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Database\Eloquent\Relations" line="105" package="Default">
+        <name>createAttachRecord</name>
+        <full_name>\Illuminate\Database\Eloquent\Relations\MorphToMany::createAttachRecord()</full_name>
+        <docblock line="105">
+          <description>Create a new pivot attachment record.</description>
+          <long-description/>
+          <tag name="param" line="105" description="" type="integer" variable="$id">
+            <type>integer</type>
+          </tag>
+          <tag name="param" line="105" description="" type="boolean" variable="$timed">
+            <type>boolean</type>
+          </tag>
+          <tag name="return" line="105" description="" type="array">
+            <type>array</type>
+          </tag>
+          <tag name="inherited_from" description="\Illuminate\Database\Eloquent\Relations\BelongsToMany::createAttachRecord()" refers="\Illuminate\Database\Eloquent\Relations\BelongsToMany::createAttachRecord()" link="/classes/Illuminate.Database.Eloquent.Relations.BelongsToMany.html#method_createAttachRecord"/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$id</name>
+          <default/>
+          <type>integer</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$timed</name>
+          <default/>
+          <type>boolean</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Database\Eloquent\Relations" line="117" package="Default">
+        <name>newPivotQuery</name>
+        <full_name>\Illuminate\Database\Eloquent\Relations\MorphToMany::newPivotQuery()</full_name>
+        <docblock line="117">
+          <description>Create a new query builder for the pivot table.</description>
+          <long-description/>
+          <tag name="return" line="117" description="" type="\Illuminate\Database\Query\Builder">
+            <type>\Illuminate\Database\Query\Builder</type>
+          </tag>
+          <tag name="inherited_from" description="\Illuminate\Database\Eloquent\Relations\BelongsToMany::newPivotQuery()" refers="\Illuminate\Database\Eloquent\Relations\BelongsToMany::newPivotQuery()" link="/classes/Illuminate.Database.Eloquent.Relations.BelongsToMany.html#method_newPivotQuery"/>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Eloquent\Relations" line="131" package="Default">
+        <name>newPivot</name>
+        <full_name>\Illuminate\Database\Eloquent\Relations\MorphToMany::newPivot()</full_name>
+        <docblock line="131">
+          <description>Create a new pivot model instance.</description>
+          <long-description/>
+          <tag name="param" line="131" description="" type="array" variable="$attributes">
+            <type>array</type>
+          </tag>
+          <tag name="param" line="131" description="" type="boolean" variable="$exists">
+            <type>boolean</type>
+          </tag>
+          <tag name="return" line="131" description="" type="\Illuminate\Database\Eloquent\Relations\Pivot">
+            <type>\Illuminate\Database\Eloquent\Relations\Pivot</type>
+          </tag>
+          <tag name="inherited_from" description="\Illuminate\Database\Eloquent\Relations\BelongsToMany::newPivot()" refers="\Illuminate\Database\Eloquent\Relations\BelongsToMany::newPivot()" link="/classes/Illuminate.Database.Eloquent.Relations.BelongsToMany.html#method_newPivot"/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$attributes</name>
+          <default>array()</default>
+          <type>array</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$exists</name>
+          <default>false</default>
+          <type>boolean</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Eloquent\Relations" line="147" package="Default">
+        <name>getMorphType</name>
+        <full_name>\Illuminate\Database\Eloquent\Relations\MorphToMany::getMorphType()</full_name>
+        <docblock line="147">
+          <description>Get the foreign key "type" name.</description>
+          <long-description/>
+          <tag name="return" line="147" description="" type="string">
+            <type>string</type>
+          </tag>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Eloquent\Relations" line="157" package="Default">
+        <name>getMorphClass</name>
+        <full_name>\Illuminate\Database\Eloquent\Relations\MorphToMany::getMorphClass()</full_name>
+        <docblock line="157">
+          <description>Get the class name of the parent model.</description>
+          <long-description/>
+          <tag name="return" line="157" description="" type="string">
+            <type>string</type>
+          </tag>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Eloquent\Relations" line="56" package="Default">
+        <name>__construct</name>
+        <full_name>\Illuminate\Database\Eloquent\Relations\Relation::__construct()</full_name>
+        <docblock line="56">
+          <description>Create a new relation instance.</description>
+          <long-description/>
+          <tag name="param" line="56" description="" type="\Illuminate\Database\Eloquent\Builder" variable="$query">
+            <type>\Illuminate\Database\Eloquent\Builder</type>
+          </tag>
+          <tag name="param" line="56" description="" type="\Illuminate\Database\Eloquent\Model" variable="$parent">
+            <type>\Illuminate\Database\Eloquent\Model</type>
+          </tag>
+          <tag name="return" line="56" description="" type="void">
+            <type>void</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$query</name>
+          <default/>
+          <type>\Illuminate\Database\Eloquent\Builder</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$parent</name>
+          <default/>
+          <type>\Illuminate\Database\Eloquent\Model</type>
+        </argument>
+        <inherited_from>\Illuminate\Database\Eloquent\Relations\Relation</inherited_from>
+      </method>
+      <method final="false" abstract="true" static="false" visibility="public" namespace="Illuminate\Database\Eloquent\Relations" line="104" package="Default">
+        <name>getResults</name>
+        <full_name>\Illuminate\Database\Eloquent\Relations\Relation::getResults()</full_name>
+        <docblock line="104">
+          <description>Get the results of the relationship.</description>
+          <long-description/>
+          <tag name="return" line="104" description="" type="mixed">
+            <type>mixed</type>
+          </tag>
+        </docblock>
+        <inherited_from>\Illuminate\Database\Eloquent\Relations\Relation</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Eloquent\Relations" line="117" package="Default">
+        <name>wherePivot</name>
+        <full_name>\Illuminate\Database\Eloquent\Relations\BelongsToMany::wherePivot()</full_name>
+        <docblock line="117">
+          <description>Set a where clause for a pivot table column.</description>
+          <long-description/>
+          <tag name="param" line="117" description="" type="string" variable="$column">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="117" description="" type="string" variable="$operator">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="117" description="" type="mixed" variable="$value">
+            <type>mixed</type>
+          </tag>
+          <tag name="param" line="117" description="" type="string" variable="$boolean">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="117" description="" type="\Illuminate\Database\Eloquent\Relations\BelongsToMany">
+            <type>\Illuminate\Database\Eloquent\Relations\BelongsToMany</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$column</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$operator</name>
+          <default>null</default>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$value</name>
+          <default>null</default>
+          <type>mixed</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$boolean</name>
+          <default>'and'</default>
+          <type>string</type>
+        </argument>
+        <inherited_from>\Illuminate\Database\Eloquent\Relations\BelongsToMany</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Eloquent\Relations" line="133" package="Default">
+        <name>wherePivotIn</name>
+        <full_name>\Illuminate\Database\Eloquent\Relations\BelongsToMany::wherePivotIn()</full_name>
+        <docblock line="133">
+          <description>Set a "where in" clause for a pivot table column.</description>
+          <long-description/>
+          <tag name="param" line="133" description="" type="string" variable="$column">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="133" description="" type="mixed" variable="$values">
+            <type>mixed</type>
+          </tag>
+          <tag name="param" line="133" description="" type="string" variable="$boolean">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="133" description="" type="boolean" variable="$not">
+            <type>boolean</type>
+          </tag>
+          <tag name="return" line="133" description="" type="\Illuminate\Database\Eloquent\Relations\BelongsToMany">
+            <type>\Illuminate\Database\Eloquent\Relations\BelongsToMany</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$column</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$values</name>
+          <default/>
+          <type>mixed</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$boolean</name>
+          <default>'and'</default>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$not</name>
+          <default>false</default>
+          <type>boolean</type>
+        </argument>
+        <inherited_from>\Illuminate\Database\Eloquent\Relations\BelongsToMany</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Eloquent\Relations" line="148" package="Default">
+        <name>orWherePivot</name>
+        <full_name>\Illuminate\Database\Eloquent\Relations\BelongsToMany::orWherePivot()</full_name>
+        <docblock line="148">
+          <description>Set an "or where" clause for a pivot table column.</description>
+          <long-description/>
+          <tag name="param" line="148" description="" type="string" variable="$column">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="148" description="" type="string" variable="$operator">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="148" description="" type="mixed" variable="$value">
+            <type>mixed</type>
+          </tag>
+          <tag name="return" line="148" description="" type="\Illuminate\Database\Eloquent\Relations\BelongsToMany">
+            <type>\Illuminate\Database\Eloquent\Relations\BelongsToMany</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$column</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$operator</name>
+          <default>null</default>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$value</name>
+          <default>null</default>
+          <type>mixed</type>
+        </argument>
+        <inherited_from>\Illuminate\Database\Eloquent\Relations\BelongsToMany</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Eloquent\Relations" line="160" package="Default">
+        <name>orWherePivotIn</name>
+        <full_name>\Illuminate\Database\Eloquent\Relations\BelongsToMany::orWherePivotIn()</full_name>
+        <docblock line="160">
+          <description>Set an "or where in" clause for a pivot table column.</description>
+          <long-description/>
+          <tag name="param" line="160" description="" type="string" variable="$column">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="160" description="" type="mixed" variable="$values">
+            <type>mixed</type>
+          </tag>
+          <tag name="return" line="160" description="" type="\Illuminate\Database\Eloquent\Relations\BelongsToMany">
+            <type>\Illuminate\Database\Eloquent\Relations\BelongsToMany</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$column</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$values</name>
+          <default/>
+          <type>mixed</type>
+        </argument>
+        <inherited_from>\Illuminate\Database\Eloquent\Relations\BelongsToMany</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Eloquent\Relations" line="171" package="Default">
+        <name>first</name>
+        <full_name>\Illuminate\Database\Eloquent\Relations\BelongsToMany::first()</full_name>
+        <docblock line="171">
+          <description>Execute the query and get the first result.</description>
+          <long-description/>
+          <tag name="param" line="171" description="" type="array" variable="$columns">
+            <type>array</type>
+          </tag>
+          <tag name="return" line="171" description="" type="mixed">
+            <type>mixed</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$columns</name>
+          <default>array('*')</default>
+          <type>array</type>
+        </argument>
+        <inherited_from>\Illuminate\Database\Eloquent\Relations\BelongsToMany</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Eloquent\Relations" line="186" package="Default">
+        <name>firstOrFail</name>
+        <full_name>\Illuminate\Database\Eloquent\Relations\BelongsToMany::firstOrFail()</full_name>
+        <docblock line="186">
+          <description>Execute the query and get the first result or throw an exception.</description>
+          <long-description/>
+          <tag name="param" line="186" description="" type="array" variable="$columns">
+            <type>array</type>
+          </tag>
+          <tag name="return" line="186" description="" type="\Illuminate\Database\Eloquent\Model|static">
+            <type>\Illuminate\Database\Eloquent\Model</type>
+            <type>static</type>
+          </tag>
+          <tag name="throws" line="186" description="" type="\Illuminate\Database\Eloquent\ModelNotFoundException">
+            <type>\Illuminate\Database\Eloquent\ModelNotFoundException</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$columns</name>
+          <default>array('*')</default>
+          <type>array</type>
+        </argument>
+        <inherited_from>\Illuminate\Database\Eloquent\Relations\BelongsToMany</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Eloquent\Relations" line="201" package="Default">
+        <name>get</name>
+        <full_name>\Illuminate\Database\Eloquent\Relations\BelongsToMany::get()</full_name>
+        <docblock line="201">
+          <description>Execute the query as a "select" statement.</description>
+          <long-description/>
+          <tag name="param" line="201" description="" type="array" variable="$columns">
+            <type>array</type>
+          </tag>
+          <tag name="return" line="201" description="" type="\Illuminate\Database\Eloquent\Collection">
+            <type>\Illuminate\Database\Eloquent\Collection</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$columns</name>
+          <default>array('*')</default>
+          <type>array</type>
+        </argument>
+        <inherited_from>\Illuminate\Database\Eloquent\Relations\BelongsToMany</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Eloquent\Relations" line="235" package="Default">
+        <name>paginate</name>
+        <full_name>\Illuminate\Database\Eloquent\Relations\BelongsToMany::paginate()</full_name>
+        <docblock line="235">
+          <description>Get a paginator for the "select" statement.</description>
+          <long-description/>
+          <tag name="param" line="235" description="" type="integer" variable="$perPage">
+            <type>integer</type>
+          </tag>
+          <tag name="param" line="235" description="" type="array" variable="$columns">
+            <type>array</type>
+          </tag>
+          <tag name="param" line="235" description="" type="string" variable="$pageName">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="235" description="" type="integer|null" variable="$page">
+            <type>integer</type>
+            <type>null</type>
+          </tag>
+          <tag name="return" line="235" description="" type="\Illuminate\Contracts\Pagination\LengthAwarePaginator">
+            <type>\Illuminate\Contracts\Pagination\LengthAwarePaginator</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$perPage</name>
+          <default>null</default>
+          <type>integer</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$columns</name>
+          <default>array('*')</default>
+          <type>array</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$pageName</name>
+          <default>'page'</default>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$page</name>
+          <default>null</default>
+          <type>integer|null</type>
+        </argument>
+        <inherited_from>\Illuminate\Database\Eloquent\Relations\BelongsToMany</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Eloquent\Relations" line="254" package="Default">
+        <name>simplePaginate</name>
+        <full_name>\Illuminate\Database\Eloquent\Relations\BelongsToMany::simplePaginate()</full_name>
+        <docblock line="254">
+          <description>Paginate the given query into a simple paginator.</description>
+          <long-description/>
+          <tag name="param" line="254" description="" type="integer" variable="$perPage">
+            <type>integer</type>
+          </tag>
+          <tag name="param" line="254" description="" type="array" variable="$columns">
+            <type>array</type>
+          </tag>
+          <tag name="param" line="254" description="" type="string" variable="$pageName">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="254" description="" type="\Illuminate\Contracts\Pagination\Paginator">
+            <type>\Illuminate\Contracts\Pagination\Paginator</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$perPage</name>
+          <default>null</default>
+          <type>integer</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$columns</name>
+          <default>array('*')</default>
+          <type>array</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$pageName</name>
+          <default>'page'</default>
+          <type>string</type>
+        </argument>
+        <inherited_from>\Illuminate\Database\Eloquent\Relations\BelongsToMany</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Eloquent\Relations" line="272" package="Default">
+        <name>chunk</name>
+        <full_name>\Illuminate\Database\Eloquent\Relations\BelongsToMany::chunk()</full_name>
+        <docblock line="272">
+          <description>Chunk the results of the query.</description>
+          <long-description/>
+          <tag name="param" line="272" description="" type="integer" variable="$count">
+            <type>integer</type>
+          </tag>
+          <tag name="param" line="272" description="" type="callable" variable="$callback">
+            <type>callable</type>
+          </tag>
+          <tag name="return" line="272" description="" type="boolean">
+            <type>boolean</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$count</name>
+          <default/>
+          <type>integer</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$callback</name>
+          <default/>
+          <type>callable</type>
+        </argument>
+        <inherited_from>\Illuminate\Database\Eloquent\Relations\BelongsToMany</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Database\Eloquent\Relations" line="289" package="Default">
+        <name>hydratePivotRelation</name>
+        <full_name>\Illuminate\Database\Eloquent\Relations\BelongsToMany::hydratePivotRelation()</full_name>
+        <docblock line="289">
+          <description>Hydrate the pivot table relationship on the models.</description>
+          <long-description/>
+          <tag name="param" line="289" description="" type="array" variable="$models">
+            <type>array</type>
+          </tag>
+          <tag name="return" line="289" description="" type="void">
+            <type>void</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$models</name>
+          <default/>
+          <type>array</type>
+        </argument>
+        <inherited_from>\Illuminate\Database\Eloquent\Relations\BelongsToMany</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Database\Eloquent\Relations" line="307" package="Default">
+        <name>cleanPivotAttributes</name>
+        <full_name>\Illuminate\Database\Eloquent\Relations\BelongsToMany::cleanPivotAttributes()</full_name>
+        <docblock line="307">
+          <description>Get the pivot attributes from a model.</description>
+          <long-description/>
+          <tag name="param" line="307" description="" type="\Illuminate\Database\Eloquent\Model" variable="$model">
+            <type>\Illuminate\Database\Eloquent\Model</type>
+          </tag>
+          <tag name="return" line="307" description="" type="array">
+            <type>array</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$model</name>
+          <default/>
+          <type>\Illuminate\Database\Eloquent\Model</type>
+        </argument>
+        <inherited_from>\Illuminate\Database\Eloquent\Relations\BelongsToMany</inherited_from>
+      </method>
+      <method final="false" abstract="true" static="false" visibility="public" namespace="Illuminate\Database\Eloquent\Relations" line="70" package="Default">
+        <name>addConstraints</name>
+        <full_name>\Illuminate\Database\Eloquent\Relations\Relation::addConstraints()</full_name>
+        <docblock line="70">
+          <description>Set the base constraints on the relation query.</description>
+          <long-description/>
+          <tag name="return" line="70" description="" type="void">
+            <type>void</type>
+          </tag>
+        </docblock>
+        <inherited_from>\Illuminate\Database\Eloquent\Relations\Relation</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Eloquent\Relations" line="159" package="Default">
+        <name>getRelationQuery</name>
+        <full_name>\Illuminate\Database\Eloquent\Relations\Relation::getRelationQuery()</full_name>
+        <docblock line="159">
+          <description>Add the constraints for a relationship query.</description>
+          <long-description/>
+          <tag name="param" line="159" description="" type="\Illuminate\Database\Eloquent\Builder" variable="$query">
+            <type>\Illuminate\Database\Eloquent\Builder</type>
+          </tag>
+          <tag name="param" line="159" description="" type="\Illuminate\Database\Eloquent\Builder" variable="$parent">
+            <type>\Illuminate\Database\Eloquent\Builder</type>
+          </tag>
+          <tag name="param" line="159" description="" type="array|mixed" variable="$columns">
+            <type>array</type>
+            <type>mixed</type>
+          </tag>
+          <tag name="return" line="159" description="" type="\Illuminate\Database\Eloquent\Builder">
+            <type>\Illuminate\Database\Eloquent\Builder</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$query</name>
+          <default/>
+          <type>\Illuminate\Database\Eloquent\Builder</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$parent</name>
+          <default/>
+          <type>\Illuminate\Database\Eloquent\Builder</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$columns</name>
+          <default>array('*')</default>
+          <type>array|mixed</type>
+        </argument>
+        <inherited_from>\Illuminate\Database\Eloquent\Relations\Relation</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Eloquent\Relations" line="366" package="Default">
+        <name>getRelationQueryForSelfJoin</name>
+        <full_name>\Illuminate\Database\Eloquent\Relations\BelongsToMany::getRelationQueryForSelfJoin()</full_name>
+        <docblock line="366">
+          <description>Add the constraints for a relationship query on the same table.</description>
+          <long-description/>
+          <tag name="param" line="366" description="" type="\Illuminate\Database\Eloquent\Builder" variable="$query">
+            <type>\Illuminate\Database\Eloquent\Builder</type>
+          </tag>
+          <tag name="param" line="366" description="" type="\Illuminate\Database\Eloquent\Builder" variable="$parent">
+            <type>\Illuminate\Database\Eloquent\Builder</type>
+          </tag>
+          <tag name="param" line="366" description="" type="array|mixed" variable="$columns">
+            <type>array</type>
+            <type>mixed</type>
+          </tag>
+          <tag name="return" line="366" description="" type="\Illuminate\Database\Eloquent\Builder">
+            <type>\Illuminate\Database\Eloquent\Builder</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$query</name>
+          <default/>
+          <type>\Illuminate\Database\Eloquent\Builder</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$parent</name>
+          <default/>
+          <type>\Illuminate\Database\Eloquent\Builder</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$columns</name>
+          <default>array('*')</default>
+          <type>array|mixed</type>
+        </argument>
+        <inherited_from>\Illuminate\Database\Eloquent\Relations\BelongsToMany</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Eloquent\Relations" line="384" package="Default">
+        <name>getRelationCountHash</name>
+        <full_name>\Illuminate\Database\Eloquent\Relations\BelongsToMany::getRelationCountHash()</full_name>
+        <docblock line="384">
+          <description>Get a relationship join table hash.</description>
+          <long-description/>
+          <tag name="return" line="384" description="" type="string">
+            <type>string</type>
+          </tag>
+        </docblock>
+        <inherited_from>\Illuminate\Database\Eloquent\Relations\BelongsToMany</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Database\Eloquent\Relations" line="395" package="Default">
+        <name>getSelectColumns</name>
+        <full_name>\Illuminate\Database\Eloquent\Relations\BelongsToMany::getSelectColumns()</full_name>
+        <docblock line="395">
+          <description>Set the select clause for the relation query.</description>
+          <long-description/>
+          <tag name="param" line="395" description="" type="array" variable="$columns">
+            <type>array</type>
+          </tag>
+          <tag name="return" line="395" description="" type="\Illuminate\Database\Eloquent\Relations\BelongsToMany">
+            <type>\Illuminate\Database\Eloquent\Relations\BelongsToMany</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$columns</name>
+          <default>array('*')</default>
+          <type>array</type>
+        </argument>
+        <inherited_from>\Illuminate\Database\Eloquent\Relations\BelongsToMany</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Database\Eloquent\Relations" line="409" package="Default">
+        <name>getAliasedPivotColumns</name>
+        <full_name>\Illuminate\Database\Eloquent\Relations\BelongsToMany::getAliasedPivotColumns()</full_name>
+        <docblock line="409">
+          <description>Get the pivot columns for the relation.</description>
+          <long-description/>
+          <tag name="return" line="409" description="" type="array">
+            <type>array</type>
+          </tag>
+        </docblock>
+        <inherited_from>\Illuminate\Database\Eloquent\Relations\BelongsToMany</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Database\Eloquent\Relations" line="431" package="Default">
+        <name>hasPivotColumn</name>
+        <full_name>\Illuminate\Database\Eloquent\Relations\BelongsToMany::hasPivotColumn()</full_name>
+        <docblock line="431">
+          <description>Determine whether the given column is defined as a pivot column.</description>
+          <long-description/>
+          <tag name="param" line="431" description="" type="string" variable="$column">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="431" description="" type="boolean">
+            <type>boolean</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$column</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <inherited_from>\Illuminate\Database\Eloquent\Relations\BelongsToMany</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Database\Eloquent\Relations" line="442" package="Default">
+        <name>setJoin</name>
+        <full_name>\Illuminate\Database\Eloquent\Relations\BelongsToMany::setJoin()</full_name>
+        <docblock line="442">
+          <description>Set the join clause for the relation query.</description>
+          <long-description/>
+          <tag name="param" line="442" description="" type="\Illuminate\Database\Eloquent\Builder|null" variable="$query">
+            <type>\Illuminate\Database\Eloquent\Builder</type>
+            <type>null</type>
+          </tag>
+          <tag name="return" line="442" description="" type="\Illuminate\Database\Eloquent\Relations\MorphToMany">
+            <type>\Illuminate\Database\Eloquent\Relations\MorphToMany</type>
+          </tag>
+          <tag name="fluent" description="This method is part of a fluent interface and will return the same instance"/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$query</name>
+          <default>null</default>
+          <type>\Illuminate\Database\Eloquent\Builder|null</type>
+        </argument>
+        <inherited_from>\Illuminate\Database\Eloquent\Relations\BelongsToMany</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Database\Eloquent\Relations" line="463" package="Default">
+        <name>setWhere</name>
+        <full_name>\Illuminate\Database\Eloquent\Relations\BelongsToMany::setWhere()</full_name>
+        <docblock line="463">
+          <description>Set the where clause for the relation query.</description>
+          <long-description/>
+          <tag name="return" line="463" description="" type="\Illuminate\Database\Eloquent\Relations\MorphToMany">
+            <type>\Illuminate\Database\Eloquent\Relations\MorphToMany</type>
+          </tag>
+          <tag name="fluent" description="This method is part of a fluent interface and will return the same instance"/>
+        </docblock>
+        <inherited_from>\Illuminate\Database\Eloquent\Relations\BelongsToMany</inherited_from>
+      </method>
+      <method final="false" abstract="true" static="false" visibility="public" namespace="Illuminate\Database\Eloquent\Relations" line="78" package="Default">
+        <name>addEagerConstraints</name>
+        <full_name>\Illuminate\Database\Eloquent\Relations\Relation::addEagerConstraints()</full_name>
+        <docblock line="78">
+          <description>Set the constraints for an eager load of the relation.</description>
+          <long-description/>
+          <tag name="param" line="78" description="" type="array" variable="$models">
+            <type>array</type>
+          </tag>
+          <tag name="return" line="78" description="" type="void">
+            <type>void</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$models</name>
+          <default/>
+          <type>array</type>
+        </argument>
+        <inherited_from>\Illuminate\Database\Eloquent\Relations\Relation</inherited_from>
+      </method>
+      <method final="false" abstract="true" static="false" visibility="public" namespace="Illuminate\Database\Eloquent\Relations" line="87" package="Default">
+        <name>initRelation</name>
+        <full_name>\Illuminate\Database\Eloquent\Relations\Relation::initRelation()</full_name>
+        <docblock line="87">
+          <description>Initialize the relation on a set of models.</description>
+          <long-description/>
+          <tag name="param" line="87" description="" type="array" variable="$models">
+            <type>array</type>
+          </tag>
+          <tag name="param" line="87" description="" type="string" variable="$relation">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="87" description="" type="array">
+            <type>array</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$models</name>
+          <default/>
+          <type>array</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$relation</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <inherited_from>\Illuminate\Database\Eloquent\Relations\Relation</inherited_from>
+      </method>
+      <method final="false" abstract="true" static="false" visibility="public" namespace="Illuminate\Database\Eloquent\Relations" line="97" package="Default">
+        <name>match</name>
+        <full_name>\Illuminate\Database\Eloquent\Relations\Relation::match()</full_name>
+        <docblock line="97">
+          <description>Match the eagerly loaded results to their parents.</description>
+          <long-description/>
+          <tag name="param" line="97" description="" type="array" variable="$models">
+            <type>array</type>
+          </tag>
+          <tag name="param" line="97" description="" type="\Illuminate\Database\Eloquent\Collection" variable="$results">
+            <type>\Illuminate\Database\Eloquent\Collection</type>
+          </tag>
+          <tag name="param" line="97" description="" type="string" variable="$relation">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="97" description="" type="array">
+            <type>array</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$models</name>
+          <default/>
+          <type>array</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$results</name>
+          <default/>
+          <type>\Illuminate\Database\Eloquent\Collection</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$relation</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <inherited_from>\Illuminate\Database\Eloquent\Relations\Relation</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Database\Eloquent\Relations" line="531" package="Default">
+        <name>buildDictionary</name>
+        <full_name>\Illuminate\Database\Eloquent\Relations\BelongsToMany::buildDictionary()</full_name>
+        <docblock line="531">
+          <description>Build model dictionary keyed by the relation's foreign key.</description>
+          <long-description/>
+          <tag name="param" line="531" description="" type="\Illuminate\Database\Eloquent\Collection" variable="$results">
+            <type>\Illuminate\Database\Eloquent\Collection</type>
+          </tag>
+          <tag name="return" line="531" description="" type="array">
+            <type>array</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$results</name>
+          <default/>
+          <type>\Illuminate\Database\Eloquent\Collection</type>
+        </argument>
+        <inherited_from>\Illuminate\Database\Eloquent\Relations\BelongsToMany</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Eloquent\Relations" line="121" package="Default">
+        <name>touch</name>
+        <full_name>\Illuminate\Database\Eloquent\Relations\Relation::touch()</full_name>
+        <docblock line="121">
+          <description>Touch all of the related models for the relationship.</description>
+          <long-description/>
+          <tag name="return" line="121" description="" type="void">
+            <type>void</type>
+          </tag>
+        </docblock>
+        <inherited_from>\Illuminate\Database\Eloquent\Relations\Relation</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Eloquent\Relations" line="575" package="Default">
+        <name>getRelatedIds</name>
+        <full_name>\Illuminate\Database\Eloquent\Relations\BelongsToMany::getRelatedIds()</full_name>
+        <docblock line="575">
+          <description>Get all of the IDs for the related models.</description>
+          <long-description/>
+          <tag name="return" line="575" description="" type="\Illuminate\Support\Collection">
+            <type>\Illuminate\Support\Collection</type>
+          </tag>
+        </docblock>
+        <inherited_from>\Illuminate\Database\Eloquent\Relations\BelongsToMany</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Eloquent\Relations" line="592" package="Default">
+        <name>save</name>
+        <full_name>\Illuminate\Database\Eloquent\Relations\BelongsToMany::save()</full_name>
+        <docblock line="592">
+          <description>Save a new model and attach it to the parent model.</description>
+          <long-description/>
+          <tag name="param" line="592" description="" type="\Illuminate\Database\Eloquent\Model" variable="$model">
+            <type>\Illuminate\Database\Eloquent\Model</type>
+          </tag>
+          <tag name="param" line="592" description="" type="array" variable="$joining">
+            <type>array</type>
+          </tag>
+          <tag name="param" line="592" description="" type="boolean" variable="$touch">
+            <type>boolean</type>
+          </tag>
+          <tag name="return" line="592" description="" type="\Illuminate\Database\Eloquent\Model">
+            <type>\Illuminate\Database\Eloquent\Model</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$model</name>
+          <default/>
+          <type>\Illuminate\Database\Eloquent\Model</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$joining</name>
+          <default>array()</default>
+          <type>array</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$touch</name>
+          <default>true</default>
+          <type>boolean</type>
+        </argument>
+        <inherited_from>\Illuminate\Database\Eloquent\Relations\BelongsToMany</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Eloquent\Relations" line="608" package="Default">
+        <name>saveMany</name>
+        <full_name>\Illuminate\Database\Eloquent\Relations\BelongsToMany::saveMany()</full_name>
+        <docblock line="608">
+          <description>Save an array of new models and attach them to the parent model.</description>
+          <long-description/>
+          <tag name="param" line="608" description="" type="\Illuminate\Support\Collection|array" variable="$models">
+            <type>\Illuminate\Support\Collection</type>
+            <type>array</type>
+          </tag>
+          <tag name="param" line="608" description="" type="array" variable="$joinings">
+            <type>array</type>
+          </tag>
+          <tag name="return" line="608" description="" type="array">
+            <type>array</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$models</name>
+          <default/>
+          <type>\Illuminate\Support\Collection|array</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$joinings</name>
+          <default>array()</default>
+          <type>array</type>
+        </argument>
+        <inherited_from>\Illuminate\Database\Eloquent\Relations\BelongsToMany</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Eloquent\Relations" line="626" package="Default">
+        <name>find</name>
+        <full_name>\Illuminate\Database\Eloquent\Relations\BelongsToMany::find()</full_name>
+        <docblock line="626">
+          <description>Find a related model by its primary key.</description>
+          <long-description/>
+          <tag name="param" line="626" description="" type="mixed" variable="$id">
+            <type>mixed</type>
+          </tag>
+          <tag name="param" line="626" description="" type="array" variable="$columns">
+            <type>array</type>
+          </tag>
+          <tag name="return" line="626" description="" type="\Illuminate\Database\Eloquent\Model|\Illuminate\Database\Eloquent\Collection|null">
+            <type>\Illuminate\Database\Eloquent\Model</type>
+            <type>\Illuminate\Database\Eloquent\Collection</type>
+            <type>null</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$id</name>
+          <default/>
+          <type>mixed</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$columns</name>
+          <default>array('*')</default>
+          <type>array</type>
+        </argument>
+        <inherited_from>\Illuminate\Database\Eloquent\Relations\BelongsToMany</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Eloquent\Relations" line="644" package="Default">
+        <name>findMany</name>
+        <full_name>\Illuminate\Database\Eloquent\Relations\BelongsToMany::findMany()</full_name>
+        <docblock line="644">
+          <description>Find multiple related models by their primary keys.</description>
+          <long-description/>
+          <tag name="param" line="644" description="" type="mixed" variable="$ids">
+            <type>mixed</type>
+          </tag>
+          <tag name="param" line="644" description="" type="array" variable="$columns">
+            <type>array</type>
+          </tag>
+          <tag name="return" line="644" description="" type="\Illuminate\Database\Eloquent\Collection">
+            <type>\Illuminate\Database\Eloquent\Collection</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$ids</name>
+          <default/>
+          <type>mixed</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$columns</name>
+          <default>array('*')</default>
+          <type>array</type>
+        </argument>
+        <inherited_from>\Illuminate\Database\Eloquent\Relations\BelongsToMany</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Eloquent\Relations" line="664" package="Default">
+        <name>findOrFail</name>
+        <full_name>\Illuminate\Database\Eloquent\Relations\BelongsToMany::findOrFail()</full_name>
+        <docblock line="664">
+          <description>Find a related model by its primary key or throw an exception.</description>
+          <long-description/>
+          <tag name="param" line="664" description="" type="mixed" variable="$id">
+            <type>mixed</type>
+          </tag>
+          <tag name="param" line="664" description="" type="array" variable="$columns">
+            <type>array</type>
+          </tag>
+          <tag name="return" line="664" description="" type="\Illuminate\Database\Eloquent\Model|\Illuminate\Database\Eloquent\Collection">
+            <type>\Illuminate\Database\Eloquent\Model</type>
+            <type>\Illuminate\Database\Eloquent\Collection</type>
+          </tag>
+          <tag name="throws" line="664" description="" type="\Illuminate\Database\Eloquent\ModelNotFoundException">
+            <type>\Illuminate\Database\Eloquent\ModelNotFoundException</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$id</name>
+          <default/>
+          <type>mixed</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$columns</name>
+          <default>array('*')</default>
+          <type>array</type>
+        </argument>
+        <inherited_from>\Illuminate\Database\Eloquent\Relations\BelongsToMany</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Eloquent\Relations" line="686" package="Default">
+        <name>findOrNew</name>
+        <full_name>\Illuminate\Database\Eloquent\Relations\BelongsToMany::findOrNew()</full_name>
+        <docblock line="686">
+          <description>Find a related model by its primary key or return new instance of the related model.</description>
+          <long-description/>
+          <tag name="param" line="686" description="" type="mixed" variable="$id">
+            <type>mixed</type>
+          </tag>
+          <tag name="param" line="686" description="" type="array" variable="$columns">
+            <type>array</type>
+          </tag>
+          <tag name="return" line="686" description="" type="\Illuminate\Support\Collection|\Illuminate\Database\Eloquent\Model">
+            <type>\Illuminate\Support\Collection</type>
+            <type>\Illuminate\Database\Eloquent\Model</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$id</name>
+          <default/>
+          <type>mixed</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$columns</name>
+          <default>array('*')</default>
+          <type>array</type>
+        </argument>
+        <inherited_from>\Illuminate\Database\Eloquent\Relations\BelongsToMany</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Eloquent\Relations" line="701" package="Default">
+        <name>firstOrNew</name>
+        <full_name>\Illuminate\Database\Eloquent\Relations\BelongsToMany::firstOrNew()</full_name>
+        <docblock line="701">
+          <description>Get the first related model record matching the attributes or instantiate it.</description>
+          <long-description/>
+          <tag name="param" line="701" description="" type="array" variable="$attributes">
+            <type>array</type>
+          </tag>
+          <tag name="return" line="701" description="" type="\Illuminate\Database\Eloquent\Model">
+            <type>\Illuminate\Database\Eloquent\Model</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$attributes</name>
+          <default/>
+          <type>array</type>
+        </argument>
+        <inherited_from>\Illuminate\Database\Eloquent\Relations\BelongsToMany</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Eloquent\Relations" line="718" package="Default">
+        <name>firstOrCreate</name>
+        <full_name>\Illuminate\Database\Eloquent\Relations\BelongsToMany::firstOrCreate()</full_name>
+        <docblock line="718">
+          <description>Get the first related record matching the attributes or create it.</description>
+          <long-description/>
+          <tag name="param" line="718" description="" type="array" variable="$attributes">
+            <type>array</type>
+          </tag>
+          <tag name="param" line="718" description="" type="array" variable="$joining">
+            <type>array</type>
+          </tag>
+          <tag name="param" line="718" description="" type="boolean" variable="$touch">
+            <type>boolean</type>
+          </tag>
+          <tag name="return" line="718" description="" type="\Illuminate\Database\Eloquent\Model">
+            <type>\Illuminate\Database\Eloquent\Model</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$attributes</name>
+          <default/>
+          <type>array</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$joining</name>
+          <default>array()</default>
+          <type>array</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$touch</name>
+          <default>true</default>
+          <type>boolean</type>
+        </argument>
+        <inherited_from>\Illuminate\Database\Eloquent\Relations\BelongsToMany</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Eloquent\Relations" line="736" package="Default">
+        <name>updateOrCreate</name>
+        <full_name>\Illuminate\Database\Eloquent\Relations\BelongsToMany::updateOrCreate()</full_name>
+        <docblock line="736">
+          <description>Create or update a related record matching the attributes, and fill it with values.</description>
+          <long-description/>
+          <tag name="param" line="736" description="" type="array" variable="$attributes">
+            <type>array</type>
+          </tag>
+          <tag name="param" line="736" description="" type="array" variable="$values">
+            <type>array</type>
+          </tag>
+          <tag name="param" line="736" description="" type="array" variable="$joining">
+            <type>array</type>
+          </tag>
+          <tag name="param" line="736" description="" type="boolean" variable="$touch">
+            <type>boolean</type>
+          </tag>
+          <tag name="return" line="736" description="" type="\Illuminate\Database\Eloquent\Model">
+            <type>\Illuminate\Database\Eloquent\Model</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$attributes</name>
+          <default/>
+          <type>array</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$values</name>
+          <default>array()</default>
+          <type>array</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$joining</name>
+          <default>array()</default>
+          <type>array</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$touch</name>
+          <default>true</default>
+          <type>boolean</type>
+        </argument>
+        <inherited_from>\Illuminate\Database\Eloquent\Relations\BelongsToMany</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Eloquent\Relations" line="757" package="Default">
+        <name>create</name>
+        <full_name>\Illuminate\Database\Eloquent\Relations\BelongsToMany::create()</full_name>
+        <docblock line="757">
+          <description>Create a new instance of the related model.</description>
+          <long-description/>
+          <tag name="param" line="757" description="" type="array" variable="$attributes">
+            <type>array</type>
+          </tag>
+          <tag name="param" line="757" description="" type="array" variable="$joining">
+            <type>array</type>
+          </tag>
+          <tag name="param" line="757" description="" type="boolean" variable="$touch">
+            <type>boolean</type>
+          </tag>
+          <tag name="return" line="757" description="" type="\Illuminate\Database\Eloquent\Model">
+            <type>\Illuminate\Database\Eloquent\Model</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$attributes</name>
+          <default/>
+          <type>array</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$joining</name>
+          <default>array()</default>
+          <type>array</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$touch</name>
+          <default>true</default>
+          <type>boolean</type>
+        </argument>
+        <inherited_from>\Illuminate\Database\Eloquent\Relations\BelongsToMany</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Eloquent\Relations" line="778" package="Default">
+        <name>createMany</name>
+        <full_name>\Illuminate\Database\Eloquent\Relations\BelongsToMany::createMany()</full_name>
+        <docblock line="778">
+          <description>Create an array of new instances of the related models.</description>
+          <long-description/>
+          <tag name="param" line="778" description="" type="array" variable="$records">
+            <type>array</type>
+          </tag>
+          <tag name="param" line="778" description="" type="array" variable="$joinings">
+            <type>array</type>
+          </tag>
+          <tag name="return" line="778" description="" type="array">
+            <type>array</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$records</name>
+          <default/>
+          <type>array</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$joinings</name>
+          <default>array()</default>
+          <type>array</type>
+        </argument>
+        <inherited_from>\Illuminate\Database\Eloquent\Relations\BelongsToMany</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Eloquent\Relations" line="798" package="Default">
+        <name>sync</name>
+        <full_name>\Illuminate\Database\Eloquent\Relations\BelongsToMany::sync()</full_name>
+        <docblock line="798">
+          <description>Sync the intermediate tables with a list of IDs or collection of models.</description>
+          <long-description/>
+          <tag name="param" line="798" description="" type="\Illuminate\Database\Eloquent\Collection|array" variable="$ids">
+            <type>\Illuminate\Database\Eloquent\Collection</type>
+            <type>array</type>
+          </tag>
+          <tag name="param" line="798" description="" type="boolean" variable="$detaching">
+            <type>boolean</type>
+          </tag>
+          <tag name="return" line="798" description="" type="array">
+            <type>array</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$ids</name>
+          <default/>
+          <type>\Illuminate\Database\Eloquent\Collection|array</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$detaching</name>
+          <default>true</default>
+          <type>boolean</type>
+        </argument>
+        <inherited_from>\Illuminate\Database\Eloquent\Relations\BelongsToMany</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Database\Eloquent\Relations" line="848" package="Default">
+        <name>formatSyncList</name>
+        <full_name>\Illuminate\Database\Eloquent\Relations\BelongsToMany::formatSyncList()</full_name>
+        <docblock line="848">
+          <description>Format the sync list so that it is keyed by ID.</description>
+          <long-description/>
+          <tag name="param" line="848" description="" type="array" variable="$records">
+            <type>array</type>
+          </tag>
+          <tag name="return" line="848" description="" type="array">
+            <type>array</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$records</name>
+          <default/>
+          <type>array</type>
+        </argument>
+        <inherited_from>\Illuminate\Database\Eloquent\Relations\BelongsToMany</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Database\Eloquent\Relations" line="871" package="Default">
+        <name>attachNew</name>
+        <full_name>\Illuminate\Database\Eloquent\Relations\BelongsToMany::attachNew()</full_name>
+        <docblock line="871">
+          <description>Attach all of the IDs that aren't in the current array.</description>
+          <long-description/>
+          <tag name="param" line="871" description="" type="array" variable="$records">
+            <type>array</type>
+          </tag>
+          <tag name="param" line="871" description="" type="array" variable="$current">
+            <type>array</type>
+          </tag>
+          <tag name="param" line="871" description="" type="boolean" variable="$touch">
+            <type>boolean</type>
+          </tag>
+          <tag name="return" line="871" description="" type="array">
+            <type>array</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$records</name>
+          <default/>
+          <type>array</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$current</name>
+          <default/>
+          <type>array</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$touch</name>
+          <default>true</default>
+          <type>boolean</type>
+        </argument>
+        <inherited_from>\Illuminate\Database\Eloquent\Relations\BelongsToMany</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Eloquent\Relations" line="905" package="Default">
+        <name>updateExistingPivot</name>
+        <full_name>\Illuminate\Database\Eloquent\Relations\BelongsToMany::updateExistingPivot()</full_name>
+        <docblock line="905">
+          <description>Update an existing pivot record on the table.</description>
+          <long-description/>
+          <tag name="param" line="905" description="" type="mixed" variable="$id">
+            <type>mixed</type>
+          </tag>
+          <tag name="param" line="905" description="" type="array" variable="$attributes">
+            <type>array</type>
+          </tag>
+          <tag name="param" line="905" description="" type="boolean" variable="$touch">
+            <type>boolean</type>
+          </tag>
+          <tag name="return" line="905" description="" type="integer">
+            <type>integer</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$id</name>
+          <default/>
+          <type>mixed</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$attributes</name>
+          <default/>
+          <type>array</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$touch</name>
+          <default>true</default>
+          <type>boolean</type>
+        </argument>
+        <inherited_from>\Illuminate\Database\Eloquent\Relations\BelongsToMany</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Eloquent\Relations" line="928" package="Default">
+        <name>attach</name>
+        <full_name>\Illuminate\Database\Eloquent\Relations\BelongsToMany::attach()</full_name>
+        <docblock line="928">
+          <description>Attach a model to the parent.</description>
+          <long-description/>
+          <tag name="param" line="928" description="" type="mixed" variable="$id">
+            <type>mixed</type>
+          </tag>
+          <tag name="param" line="928" description="" type="array" variable="$attributes">
+            <type>array</type>
+          </tag>
+          <tag name="param" line="928" description="" type="boolean" variable="$touch">
+            <type>boolean</type>
+          </tag>
+          <tag name="return" line="928" description="" type="void">
+            <type>void</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$id</name>
+          <default/>
+          <type>mixed</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$attributes</name>
+          <default>array()</default>
+          <type>array</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$touch</name>
+          <default>true</default>
+          <type>boolean</type>
+        </argument>
+        <inherited_from>\Illuminate\Database\Eloquent\Relations\BelongsToMany</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Database\Eloquent\Relations" line="954" package="Default">
+        <name>createAttachRecords</name>
+        <full_name>\Illuminate\Database\Eloquent\Relations\BelongsToMany::createAttachRecords()</full_name>
+        <docblock line="954">
+          <description>Create an array of records to insert into the pivot table.</description>
+          <long-description/>
+          <tag name="param" line="954" description="" type="array" variable="$ids">
+            <type>array</type>
+          </tag>
+          <tag name="param" line="954" description="" type="array" variable="$attributes">
+            <type>array</type>
+          </tag>
+          <tag name="return" line="954" description="" type="array">
+            <type>array</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$ids</name>
+          <default/>
+          <type>array</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$attributes</name>
+          <default/>
+          <type>array</type>
+        </argument>
+        <inherited_from>\Illuminate\Database\Eloquent\Relations\BelongsToMany</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Database\Eloquent\Relations" line="980" package="Default">
+        <name>attacher</name>
+        <full_name>\Illuminate\Database\Eloquent\Relations\BelongsToMany::attacher()</full_name>
+        <docblock line="980">
+          <description>Create a full attachment record payload.</description>
+          <long-description/>
+          <tag name="param" line="980" description="" type="integer" variable="$key">
+            <type>integer</type>
+          </tag>
+          <tag name="param" line="980" description="" type="mixed" variable="$value">
+            <type>mixed</type>
+          </tag>
+          <tag name="param" line="980" description="" type="array" variable="$attributes">
+            <type>array</type>
+          </tag>
+          <tag name="param" line="980" description="" type="boolean" variable="$timed">
+            <type>boolean</type>
+          </tag>
+          <tag name="return" line="980" description="" type="array">
+            <type>array</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$key</name>
+          <default/>
+          <type>integer</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$value</name>
+          <default/>
+          <type>mixed</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$attributes</name>
+          <default/>
+          <type>array</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$timed</name>
+          <default/>
+          <type>boolean</type>
+        </argument>
+        <inherited_from>\Illuminate\Database\Eloquent\Relations\BelongsToMany</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Database\Eloquent\Relations" line="1000" package="Default">
+        <name>getAttachId</name>
+        <full_name>\Illuminate\Database\Eloquent\Relations\BelongsToMany::getAttachId()</full_name>
+        <docblock line="1000">
+          <description>Get the attach record ID and extra attributes.</description>
+          <long-description/>
+          <tag name="param" line="1000" description="" type="mixed" variable="$key">
+            <type>mixed</type>
+          </tag>
+          <tag name="param" line="1000" description="" type="mixed" variable="$value">
+            <type>mixed</type>
+          </tag>
+          <tag name="param" line="1000" description="" type="array" variable="$attributes">
+            <type>array</type>
+          </tag>
+          <tag name="return" line="1000" description="" type="array">
+            <type>array</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$key</name>
+          <default/>
+          <type>mixed</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$value</name>
+          <default/>
+          <type>mixed</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$attributes</name>
+          <default/>
+          <type>array</type>
+        </argument>
+        <inherited_from>\Illuminate\Database\Eloquent\Relations\BelongsToMany</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Database\Eloquent\Relations" line="1016" package="Default">
+        <name>createAttachRecord</name>
+        <full_name>\Illuminate\Database\Eloquent\Relations\BelongsToMany::createAttachRecord()</full_name>
+        <docblock line="1016">
+          <description>Create a new pivot attachment record.</description>
+          <long-description/>
+          <tag name="param" line="1016" description="" type="integer" variable="$id">
+            <type>integer</type>
+          </tag>
+          <tag name="param" line="1016" description="" type="boolean" variable="$timed">
+            <type>boolean</type>
+          </tag>
+          <tag name="return" line="1016" description="" type="array">
+            <type>array</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$id</name>
+          <default/>
+          <type>integer</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$timed</name>
+          <default/>
+          <type>boolean</type>
+        </argument>
+        <inherited_from>\Illuminate\Database\Eloquent\Relations\BelongsToMany</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Database\Eloquent\Relations" line="1039" package="Default">
+        <name>setTimestampsOnAttach</name>
+        <full_name>\Illuminate\Database\Eloquent\Relations\BelongsToMany::setTimestampsOnAttach()</full_name>
+        <docblock line="1039">
+          <description>Set the creation and update timestamps on an attach record.</description>
+          <long-description/>
+          <tag name="param" line="1039" description="" type="array" variable="$record">
+            <type>array</type>
+          </tag>
+          <tag name="param" line="1039" description="" type="boolean" variable="$exists">
+            <type>boolean</type>
+          </tag>
+          <tag name="return" line="1039" description="" type="array">
+            <type>array</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$record</name>
+          <default/>
+          <type>array</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$exists</name>
+          <default>false</default>
+          <type>boolean</type>
+        </argument>
+        <inherited_from>\Illuminate\Database\Eloquent\Relations\BelongsToMany</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Eloquent\Relations" line="1061" package="Default">
+        <name>detach</name>
+        <full_name>\Illuminate\Database\Eloquent\Relations\BelongsToMany::detach()</full_name>
+        <docblock line="1061">
+          <description>Detach models from the relationship.</description>
+          <long-description/>
+          <tag name="param" line="1061" description="" type="integer|array" variable="$ids">
+            <type>integer</type>
+            <type>array</type>
+          </tag>
+          <tag name="param" line="1061" description="" type="boolean" variable="$touch">
+            <type>boolean</type>
+          </tag>
+          <tag name="return" line="1061" description="" type="integer">
+            <type>integer</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$ids</name>
+          <default>array()</default>
+          <type>integer|array</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$touch</name>
+          <default>true</default>
+          <type>boolean</type>
+        </argument>
+        <inherited_from>\Illuminate\Database\Eloquent\Relations\BelongsToMany</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Eloquent\Relations" line="1095" package="Default">
+        <name>touchIfTouching</name>
+        <full_name>\Illuminate\Database\Eloquent\Relations\BelongsToMany::touchIfTouching()</full_name>
+        <docblock line="1095">
+          <description>If we're touching the parent model, touch.</description>
+          <long-description/>
+          <tag name="return" line="1095" description="" type="void">
+            <type>void</type>
+          </tag>
+        </docblock>
+        <inherited_from>\Illuminate\Database\Eloquent\Relations\BelongsToMany</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Database\Eloquent\Relations" line="1111" package="Default">
+        <name>touchingParent</name>
+        <full_name>\Illuminate\Database\Eloquent\Relations\BelongsToMany::touchingParent()</full_name>
+        <docblock line="1111">
+          <description>Determine if we should touch the parent on sync.</description>
+          <long-description/>
+          <tag name="return" line="1111" description="" type="boolean">
+            <type>boolean</type>
+          </tag>
+        </docblock>
+        <inherited_from>\Illuminate\Database\Eloquent\Relations\BelongsToMany</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Database\Eloquent\Relations" line="1121" package="Default">
+        <name>guessInverseRelation</name>
+        <full_name>\Illuminate\Database\Eloquent\Relations\BelongsToMany::guessInverseRelation()</full_name>
+        <docblock line="1121">
+          <description>Attempt to guess the name of the inverse of the relation.</description>
+          <long-description/>
+          <tag name="return" line="1121" description="" type="string">
+            <type>string</type>
+          </tag>
+        </docblock>
+        <inherited_from>\Illuminate\Database\Eloquent\Relations\BelongsToMany</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Database\Eloquent\Relations" line="1131" package="Default">
+        <name>newPivotQuery</name>
+        <full_name>\Illuminate\Database\Eloquent\Relations\BelongsToMany::newPivotQuery()</full_name>
+        <docblock line="1131">
+          <description>Create a new query builder for the pivot table.</description>
+          <long-description/>
+          <tag name="return" line="1131" description="" type="\Illuminate\Database\Query\Builder">
+            <type>\Illuminate\Database\Query\Builder</type>
+          </tag>
+        </docblock>
+        <inherited_from>\Illuminate\Database\Eloquent\Relations\BelongsToMany</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Eloquent\Relations" line="1147" package="Default">
+        <name>newPivotStatement</name>
+        <full_name>\Illuminate\Database\Eloquent\Relations\BelongsToMany::newPivotStatement()</full_name>
+        <docblock line="1147">
+          <description>Get a new plain query builder for the pivot table.</description>
+          <long-description/>
+          <tag name="return" line="1147" description="" type="\Illuminate\Database\Query\Builder">
+            <type>\Illuminate\Database\Query\Builder</type>
+          </tag>
+        </docblock>
+        <inherited_from>\Illuminate\Database\Eloquent\Relations\BelongsToMany</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Eloquent\Relations" line="1158" package="Default">
+        <name>newPivotStatementForId</name>
+        <full_name>\Illuminate\Database\Eloquent\Relations\BelongsToMany::newPivotStatementForId()</full_name>
+        <docblock line="1158">
+          <description>Get a new pivot statement for a given "other" ID.</description>
+          <long-description/>
+          <tag name="param" line="1158" description="" type="mixed" variable="$id">
+            <type>mixed</type>
+          </tag>
+          <tag name="return" line="1158" description="" type="\Illuminate\Database\Query\Builder">
+            <type>\Illuminate\Database\Query\Builder</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$id</name>
+          <default/>
+          <type>mixed</type>
+        </argument>
+        <inherited_from>\Illuminate\Database\Eloquent\Relations\BelongsToMany</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Eloquent\Relations" line="1170" package="Default">
+        <name>newPivot</name>
+        <full_name>\Illuminate\Database\Eloquent\Relations\BelongsToMany::newPivot()</full_name>
+        <docblock line="1170">
+          <description>Create a new pivot model instance.</description>
+          <long-description/>
+          <tag name="param" line="1170" description="" type="array" variable="$attributes">
+            <type>array</type>
+          </tag>
+          <tag name="param" line="1170" description="" type="boolean" variable="$exists">
+            <type>boolean</type>
+          </tag>
+          <tag name="return" line="1170" description="" type="\Illuminate\Database\Eloquent\Relations\Pivot">
+            <type>\Illuminate\Database\Eloquent\Relations\Pivot</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$attributes</name>
+          <default>array()</default>
+          <type>array</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$exists</name>
+          <default>false</default>
+          <type>boolean</type>
+        </argument>
+        <inherited_from>\Illuminate\Database\Eloquent\Relations\BelongsToMany</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Eloquent\Relations" line="1183" package="Default">
+        <name>newExistingPivot</name>
+        <full_name>\Illuminate\Database\Eloquent\Relations\BelongsToMany::newExistingPivot()</full_name>
+        <docblock line="1183">
+          <description>Create a new existing pivot model instance.</description>
+          <long-description/>
+          <tag name="param" line="1183" description="" type="array" variable="$attributes">
+            <type>array</type>
+          </tag>
+          <tag name="return" line="1183" description="" type="\Illuminate\Database\Eloquent\Relations\Pivot">
+            <type>\Illuminate\Database\Eloquent\Relations\Pivot</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$attributes</name>
+          <default>array()</default>
+          <type>array</type>
+        </argument>
+        <inherited_from>\Illuminate\Database\Eloquent\Relations\BelongsToMany</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Eloquent\Relations" line="1194" package="Default">
+        <name>withPivot</name>
+        <full_name>\Illuminate\Database\Eloquent\Relations\BelongsToMany::withPivot()</full_name>
+        <docblock line="1194">
+          <description>Set the columns on the pivot table to retrieve.</description>
+          <long-description/>
+          <tag name="param" line="1194" description="" type="array|mixed" variable="$columns">
+            <type>array</type>
+            <type>mixed</type>
+          </tag>
+          <tag name="return" line="1194" description="" type="\Illuminate\Database\Eloquent\Relations\MorphToMany">
+            <type>\Illuminate\Database\Eloquent\Relations\MorphToMany</type>
+          </tag>
+          <tag name="fluent" description="This method is part of a fluent interface and will return the same instance"/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$columns</name>
+          <default/>
+          <type>array|mixed</type>
+        </argument>
+        <inherited_from>\Illuminate\Database\Eloquent\Relations\BelongsToMany</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Eloquent\Relations" line="1210" package="Default">
+        <name>withTimestamps</name>
+        <full_name>\Illuminate\Database\Eloquent\Relations\BelongsToMany::withTimestamps()</full_name>
+        <docblock line="1210">
+          <description>Specify that the pivot table has creation and update timestamps.</description>
+          <long-description/>
+          <tag name="param" line="1210" description="" type="mixed" variable="$createdAt">
+            <type>mixed</type>
+          </tag>
+          <tag name="param" line="1210" description="" type="mixed" variable="$updatedAt">
+            <type>mixed</type>
+          </tag>
+          <tag name="return" line="1210" description="" type="\Illuminate\Database\Eloquent\Relations\BelongsToMany">
+            <type>\Illuminate\Database\Eloquent\Relations\BelongsToMany</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$createdAt</name>
+          <default>null</default>
+          <type>mixed</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$updatedAt</name>
+          <default>null</default>
+          <type>mixed</type>
+        </argument>
+        <inherited_from>\Illuminate\Database\Eloquent\Relations\BelongsToMany</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Eloquent\Relations" line="261" package="Default">
+        <name>createdAt</name>
+        <full_name>\Illuminate\Database\Eloquent\Relations\Relation::createdAt()</full_name>
+        <docblock line="261">
+          <description>Get the name of the "created at" column.</description>
+          <long-description/>
+          <tag name="return" line="261" description="" type="string">
+            <type>string</type>
+          </tag>
+        </docblock>
+        <inherited_from>\Illuminate\Database\Eloquent\Relations\Relation</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Eloquent\Relations" line="271" package="Default">
+        <name>updatedAt</name>
+        <full_name>\Illuminate\Database\Eloquent\Relations\Relation::updatedAt()</full_name>
+        <docblock line="271">
+          <description>Get the name of the "updated at" column.</description>
+          <long-description/>
+          <tag name="return" line="271" description="" type="string">
+            <type>string</type>
+          </tag>
+        </docblock>
+        <inherited_from>\Illuminate\Database\Eloquent\Relations\Relation</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Eloquent\Relations" line="1243" package="Default">
+        <name>getRelatedFreshUpdate</name>
+        <full_name>\Illuminate\Database\Eloquent\Relations\BelongsToMany::getRelatedFreshUpdate()</full_name>
+        <docblock line="1243">
+          <description>Get the related model's updated at column name.</description>
+          <long-description/>
+          <tag name="return" line="1243" description="" type="string">
+            <type>string</type>
+          </tag>
+        </docblock>
+        <inherited_from>\Illuminate\Database\Eloquent\Relations\BelongsToMany</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Eloquent\Relations" line="1253" package="Default">
+        <name>getHasCompareKey</name>
+        <full_name>\Illuminate\Database\Eloquent\Relations\BelongsToMany::getHasCompareKey()</full_name>
+        <docblock line="1253">
+          <description>Get the key for comparing against the parent key in "has" query.</description>
+          <long-description/>
+          <tag name="return" line="1253" description="" type="string">
+            <type>string</type>
+          </tag>
+        </docblock>
+        <inherited_from>\Illuminate\Database\Eloquent\Relations\BelongsToMany</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Eloquent\Relations" line="1263" package="Default">
+        <name>getForeignKey</name>
+        <full_name>\Illuminate\Database\Eloquent\Relations\BelongsToMany::getForeignKey()</full_name>
+        <docblock line="1263">
+          <description>Get the fully qualified foreign key for the relation.</description>
+          <long-description/>
+          <tag name="return" line="1263" description="" type="string">
+            <type>string</type>
+          </tag>
+        </docblock>
+        <inherited_from>\Illuminate\Database\Eloquent\Relations\BelongsToMany</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Eloquent\Relations" line="1273" package="Default">
+        <name>getOtherKey</name>
+        <full_name>\Illuminate\Database\Eloquent\Relations\BelongsToMany::getOtherKey()</full_name>
+        <docblock line="1273">
+          <description>Get the fully qualified "other key" for the relation.</description>
+          <long-description/>
+          <tag name="return" line="1273" description="" type="string">
+            <type>string</type>
+          </tag>
+        </docblock>
+        <inherited_from>\Illuminate\Database\Eloquent\Relations\BelongsToMany</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Eloquent\Relations" line="1283" package="Default">
+        <name>getTable</name>
+        <full_name>\Illuminate\Database\Eloquent\Relations\BelongsToMany::getTable()</full_name>
+        <docblock line="1283">
+          <description>Get the intermediate table for the relationship.</description>
+          <long-description/>
+          <tag name="return" line="1283" description="" type="string">
+            <type>string</type>
+          </tag>
+        </docblock>
+        <inherited_from>\Illuminate\Database\Eloquent\Relations\BelongsToMany</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Eloquent\Relations" line="1293" package="Default">
+        <name>getRelationName</name>
+        <full_name>\Illuminate\Database\Eloquent\Relations\BelongsToMany::getRelationName()</full_name>
+        <docblock line="1293">
+          <description>Get the relationship name for the relationship.</description>
+          <long-description/>
+          <tag name="return" line="1293" description="" type="string">
+            <type>string</type>
+          </tag>
+        </docblock>
+        <inherited_from>\Illuminate\Database\Eloquent\Relations\BelongsToMany</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Eloquent\Relations" line="111" package="Default">
+        <name>getEager</name>
+        <full_name>\Illuminate\Database\Eloquent\Relations\Relation::getEager()</full_name>
+        <docblock line="111">
+          <description>Get the relationship for eager loading.</description>
+          <long-description/>
+          <tag name="return" line="111" description="" type="\Illuminate\Database\Eloquent\Collection">
+            <type>\Illuminate\Database\Eloquent\Collection</type>
+          </tag>
+        </docblock>
+        <inherited_from>\Illuminate\Database\Eloquent\Relations\Relation</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Eloquent\Relations" line="134" package="Default">
+        <name>rawUpdate</name>
+        <full_name>\Illuminate\Database\Eloquent\Relations\Relation::rawUpdate()</full_name>
+        <docblock line="134">
+          <description>Run a raw update against the base query.</description>
+          <long-description/>
+          <tag name="param" line="134" description="" type="array" variable="$attributes">
+            <type>array</type>
+          </tag>
+          <tag name="return" line="134" description="" type="integer">
+            <type>integer</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$attributes</name>
+          <default>array()</default>
+          <type>array</type>
+        </argument>
+        <inherited_from>\Illuminate\Database\Eloquent\Relations\Relation</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Eloquent\Relations" line="146" package="Default">
+        <name>getRelationCountQuery</name>
+        <full_name>\Illuminate\Database\Eloquent\Relations\Relation::getRelationCountQuery()</full_name>
+        <docblock line="146">
+          <description>Add the constraints for a relationship count query.</description>
+          <long-description/>
+          <tag name="param" line="146" description="" type="\Illuminate\Database\Eloquent\Builder" variable="$query">
+            <type>\Illuminate\Database\Eloquent\Builder</type>
+          </tag>
+          <tag name="param" line="146" description="" type="\Illuminate\Database\Eloquent\Builder" variable="$parent">
+            <type>\Illuminate\Database\Eloquent\Builder</type>
+          </tag>
+          <tag name="return" line="146" description="" type="\Illuminate\Database\Eloquent\Builder">
+            <type>\Illuminate\Database\Eloquent\Builder</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$query</name>
+          <default/>
+          <type>\Illuminate\Database\Eloquent\Builder</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$parent</name>
+          <default/>
+          <type>\Illuminate\Database\Eloquent\Builder</type>
+        </argument>
+        <inherited_from>\Illuminate\Database\Eloquent\Relations\Relation</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="true" visibility="public" namespace="Illuminate\Database\Eloquent\Relations" line="174" package="Default">
+        <name>noConstraints</name>
+        <full_name>\Illuminate\Database\Eloquent\Relations\Relation::noConstraints()</full_name>
+        <docblock line="174">
+          <description>Run a callback with constraints disabled on the relation.</description>
+          <long-description/>
+          <tag name="param" line="174" description="" type="\Closure" variable="$callback">
+            <type>\Closure</type>
+          </tag>
+          <tag name="return" line="174" description="" type="mixed">
+            <type>mixed</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$callback</name>
+          <default/>
+          <type>\Closure</type>
+        </argument>
+        <inherited_from>\Illuminate\Database\Eloquent\Relations\Relation</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Database\Eloquent\Relations" line="199" package="Default">
+        <name>getKeys</name>
+        <full_name>\Illuminate\Database\Eloquent\Relations\Relation::getKeys()</full_name>
+        <docblock line="199">
+          <description>Get all of the primary keys for an array of models.</description>
+          <long-description/>
+          <tag name="param" line="199" description="" type="array" variable="$models">
+            <type>array</type>
+          </tag>
+          <tag name="param" line="199" description="" type="string" variable="$key">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="199" description="" type="array">
+            <type>array</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$models</name>
+          <default/>
+          <type>array</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$key</name>
+          <default>null</default>
+          <type>string</type>
+        </argument>
+        <inherited_from>\Illuminate\Database\Eloquent\Relations\Relation</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Eloquent\Relations" line="211" package="Default">
+        <name>getQuery</name>
+        <full_name>\Illuminate\Database\Eloquent\Relations\Relation::getQuery()</full_name>
+        <docblock line="211">
+          <description>Get the underlying query for the relation.</description>
+          <long-description/>
+          <tag name="return" line="211" description="" type="\Illuminate\Database\Eloquent\Builder">
+            <type>\Illuminate\Database\Eloquent\Builder</type>
+          </tag>
+        </docblock>
+        <inherited_from>\Illuminate\Database\Eloquent\Relations\Relation</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Eloquent\Relations" line="221" package="Default">
+        <name>getBaseQuery</name>
+        <full_name>\Illuminate\Database\Eloquent\Relations\Relation::getBaseQuery()</full_name>
+        <docblock line="221">
+          <description>Get the base query builder driving the Eloquent builder.</description>
+          <long-description/>
+          <tag name="return" line="221" description="" type="\Illuminate\Database\Query\Builder">
+            <type>\Illuminate\Database\Query\Builder</type>
+          </tag>
+        </docblock>
+        <inherited_from>\Illuminate\Database\Eloquent\Relations\Relation</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Eloquent\Relations" line="231" package="Default">
+        <name>getParent</name>
+        <full_name>\Illuminate\Database\Eloquent\Relations\Relation::getParent()</full_name>
+        <docblock line="231">
+          <description>Get the parent model of the relation.</description>
+          <long-description/>
+          <tag name="return" line="231" description="" type="\Illuminate\Database\Eloquent\Model">
+            <type>\Illuminate\Database\Eloquent\Model</type>
+          </tag>
+        </docblock>
+        <inherited_from>\Illuminate\Database\Eloquent\Relations\Relation</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Eloquent\Relations" line="241" package="Default">
+        <name>getQualifiedParentKeyName</name>
+        <full_name>\Illuminate\Database\Eloquent\Relations\Relation::getQualifiedParentKeyName()</full_name>
+        <docblock line="241">
+          <description>Get the fully qualified parent key name.</description>
+          <long-description/>
+          <tag name="return" line="241" description="" type="string">
+            <type>string</type>
+          </tag>
+        </docblock>
+        <inherited_from>\Illuminate\Database\Eloquent\Relations\Relation</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Eloquent\Relations" line="251" package="Default">
+        <name>getRelated</name>
+        <full_name>\Illuminate\Database\Eloquent\Relations\Relation::getRelated()</full_name>
+        <docblock line="251">
+          <description>Get the related model of the relation.</description>
+          <long-description/>
+          <tag name="return" line="251" description="" type="\Illuminate\Database\Eloquent\Model">
+            <type>\Illuminate\Database\Eloquent\Model</type>
+          </tag>
+        </docblock>
+        <inherited_from>\Illuminate\Database\Eloquent\Relations\Relation</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Eloquent\Relations" line="281" package="Default">
+        <name>relatedUpdatedAt</name>
+        <full_name>\Illuminate\Database\Eloquent\Relations\Relation::relatedUpdatedAt()</full_name>
+        <docblock line="281">
+          <description>Get the name of the related model's "updated at" column.</description>
+          <long-description/>
+          <tag name="return" line="281" description="" type="string">
+            <type>string</type>
+          </tag>
+        </docblock>
+        <inherited_from>\Illuminate\Database\Eloquent\Relations\Relation</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Eloquent\Relations" line="292" package="Default">
+        <name>wrap</name>
+        <full_name>\Illuminate\Database\Eloquent\Relations\Relation::wrap()</full_name>
+        <docblock line="292">
+          <description>Wrap the given value with the parent query's grammar.</description>
+          <long-description/>
+          <tag name="param" line="292" description="" type="string" variable="$value">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="292" description="" type="string">
+            <type>string</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$value</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <inherited_from>\Illuminate\Database\Eloquent\Relations\Relation</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="true" visibility="public" namespace="Illuminate\Database\Eloquent\Relations" line="304" package="Default">
+        <name>morphMap</name>
+        <full_name>\Illuminate\Database\Eloquent\Relations\Relation::morphMap()</full_name>
+        <docblock line="304">
+          <description>Set or get the morph map for polymorphic relations.</description>
+          <long-description/>
+          <tag name="param" line="304" description="" type="array|null" variable="$map">
+            <type>array</type>
+            <type>null</type>
+          </tag>
+          <tag name="param" line="304" description="" type="boolean" variable="$merge">
+            <type>boolean</type>
+          </tag>
+          <tag name="return" line="304" description="" type="array">
+            <type>array</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$map</name>
+          <default>null</default>
+          <type>array|null</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$merge</name>
+          <default>true</default>
+          <type>boolean</type>
+        </argument>
+        <inherited_from>\Illuminate\Database\Eloquent\Relations\Relation</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="true" visibility="protected" namespace="Illuminate\Database\Eloquent\Relations" line="321" package="Default">
+        <name>buildMorphMapFromModels</name>
+        <full_name>\Illuminate\Database\Eloquent\Relations\Relation::buildMorphMapFromModels()</full_name>
+        <docblock line="321">
+          <description>Builds a table-keyed array from model class names.</description>
+          <long-description/>
+          <tag name="param" line="321" description="" type="array&lt;mixed,string&gt;|null" variable="$models">
+            <type>array&lt;mixed,string&gt;</type>
+            <type>null</type>
+          </tag>
+          <tag name="return" line="321" description="" type="array|null">
+            <type>array</type>
+            <type>null</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$models</name>
+          <default>null</default>
+          <type>array&lt;mixed,string&gt;|null</type>
+        </argument>
+        <inherited_from>\Illuminate\Database\Eloquent\Relations\Relation</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Eloquent\Relations" line="341" package="Default">
+        <name>__call</name>
+        <full_name>\Illuminate\Database\Eloquent\Relations\Relation::__call()</full_name>
+        <docblock line="341">
+          <description>Handle dynamic method calls to the relationship.</description>
+          <long-description/>
+          <tag name="param" line="341" description="" type="string" variable="$method">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="341" description="" type="array" variable="$parameters">
+            <type>array</type>
+          </tag>
+          <tag name="return" line="341" description="" type="mixed">
+            <type>mixed</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$method</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$parameters</name>
+          <default/>
+          <type>array</type>
+        </argument>
+        <inherited_from>\Illuminate\Database\Eloquent\Relations\Relation</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Eloquent\Relations" line="357" package="Default">
+        <name>__clone</name>
+        <full_name>\Illuminate\Database\Eloquent\Relations\Relation::__clone()</full_name>
+        <docblock line="357">
+          <description>Force a clone of the underlying query builder when cloning.</description>
+          <long-description/>
+          <tag name="return" line="357" description="" type="void">
+            <type>void</type>
+          </tag>
+        </docblock>
+        <inherited_from>\Illuminate\Database\Eloquent\Relations\Relation</inherited_from>
+      </method>
+    </class>
+    <parse_markers>
+      <error line="0" code="PPC:ERR-50000">No summary was found for this file</error>
+      <error line="9" code="PPC:ERR-50005">No summary for class \Illuminate\Database\Eloquent\Relations\MorphToMany</error>
+    </parse_markers>
+    <source>eJy1V1Fv2zYQfvevOBQGbAdK+p6u6dKsKIohw9YG2MNcBLRE20RlUiOpJEbb/97jkZRsUYqdInUeYovHu+++u+9I/famWlejkWQbbiqWc/hQlvVGSGb5/A9m2YIZPn9Xqv9rLu38Iy+ZFUqaV6NRbfaMP9VVpbSdX2r9qruWOrpWBS+PsHtbi7Lg6HGUl8wYuFa6Wt+oaya3wB8sl4WBt7xUcmX809HXEeDn5ckJ/YcTuFlzsNuKg1qCxe+VKrcb50bkoEM+Z8E47vn9jmkwVgu5Co9e0v9KK8tzywsYk4sb9IvYeiJ6uI7WGJc2eCQ5Mmg1E9L+bOAr5z6N/EEWIkcmDYgl3HNgmoJJ3IoeCYaQd1ybBtUQAzdrYTCq2DAtyi2w5RJ9mDYRAnAokYVS5VAaAUeaw5XmmAEwkPw+kqZg4yoewZq1qDARY5nMeRK5YpptAObHNBbAGH/r7dM2U/fiVjTGn929vny47Ko/uIg+y+HVpdJcrOSfPEHWmCishX7MILL1Vw8MVxloitCsam5rLeFOiWK/bvWiRLksa5k7j3B76ytf53YamfREZuDJCdxknoUs5JvtZpa1OWT7aOE1yLosswYgPliy0vAZofESd5+xxTY9vWit2rbqmDRydUYO0tnk1mlx0m/p27v1B29CfqcXK24pxeksfI/m0xmcx7yTpdDnRCZZnJ/vkhjJa2l7Cl8zn8T3REufuCXJ3uM2mklu4KLHPekDxU5kFHqBWBkQcdMPhtt/XYhpt0Ax19Zgh4hAeOCVME7DM8r+bIJ/3fplaZ12fe6iHmLlsiiIgHZ6GSKF7Q+YXNXSDpDz62dMu7l/yjCt2fbbRjxgHWCcK3QlTbd4R4V4VOnYxvHQ/8clkci9+d10bsCC6vlvcjL5nGiWNuJq7I0kRCqG4LKv0M/RPY+LJ2kTCZytMOVSseLQObpXLnCnN46OpE4HBy4rincu5lWLZepdBo9DwuvbGLf8Gin2k7l3qlfiTllg1rJ8vUGYyF6udDHEHYJ2EBuKuqeYFRtedCkldg7NrZxQXRKQj4RhimGy4DLpXA9zp3UP7E/bFW/HVJNp8JUl59NPk+pltQhyjEPeU+1rODDhe4cEKbF/QqQ0Yvi/XRwv34OC75gfKernajtq/oO3x6hXbFItFjVeqfubD8b8QRj7xMnbvEfNiYhHpR/ZinpvEbkJ+zmLCAbvSD7t10QBXUm8u0BiM2Nbvw3B8Q7iA+zNC3J6eoHnOnnDO4mJHvduLP5RvLfMGgf+Qw6uY2GTSg+b+1vVUTcBQjrUH+/DjA+Y4Qvfwgt3L3xB725Dkul7Q0sPzjaxbk12byk7+R5Cmb5U+ur5nn4GsOGyehhteP/0cL+PfgC+hvcq</source>
+  <type>class</type></file>

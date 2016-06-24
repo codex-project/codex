@@ -1,0 +1,904 @@
+<file path="codex/vendor/laravel/framework/src/Illuminate/Mail/Mailer.php" generated-path="codex.vendor.laravel.framework.src.Illuminate.Mail.Mailer.html" hash="b6799361242e57893dca1da1b8404787" package="Default">
+    <docblock line="0">
+      <description/>
+      <long-description/>
+      <tag name="package" line="0" description="Default"/>
+    </docblock>
+    <namespace-alias name="Closure">\Closure</namespace-alias>
+    <namespace-alias name="Swift_Mailer">\Swift_Mailer</namespace-alias>
+    <namespace-alias name="Swift_Message">\Swift_Message</namespace-alias>
+    <namespace-alias name="Arr">\Illuminate\Support\Arr</namespace-alias>
+    <namespace-alias name="Str">\Illuminate\Support\Str</namespace-alias>
+    <namespace-alias name="Serializer">\SuperClosure\Serializer</namespace-alias>
+    <namespace-alias name="InvalidArgumentException">\InvalidArgumentException</namespace-alias>
+    <namespace-alias name="Factory">\Illuminate\Contracts\View\Factory</namespace-alias>
+    <namespace-alias name="Dispatcher">\Illuminate\Contracts\Events\Dispatcher</namespace-alias>
+    <namespace-alias name="Container">\Illuminate\Contracts\Container\Container</namespace-alias>
+    <namespace-alias name="QueueContract">\Illuminate\Contracts\Queue\Queue</namespace-alias>
+    <namespace-alias name="MailerContract">\Illuminate\Contracts\Mail\Mailer</namespace-alias>
+    <namespace-alias name="MailQueueContract">\Illuminate\Contracts\Mail\MailQueue</namespace-alias>
+    <class final="false" abstract="false" namespace="Illuminate\Mail" line="19" package="Default">
+      <extends/>
+      <implements>\Illuminate\Contracts\Mail\Mailer</implements>
+      <implements>\Illuminate\Contracts\Mail\MailQueue</implements>
+      <name>Mailer</name>
+      <full_name>\Illuminate\Mail\Mailer</full_name>
+      <docblock line="19">
+        <description/>
+        <long-description/>
+        <tag name="package" line="19" description="Default"/>
+      </docblock>
+      <property static="false" visibility="protected" namespace="Illuminate\Mail" line="26" package="Default">
+        <name>$views</name>
+        <full_name>\Illuminate\Mail\Mailer::views</full_name>
+        <default/>
+        <docblock line="26">
+          <description>The view factory instance.</description>
+          <long-description/>
+          <tag name="var" line="26" description="" type="\Illuminate\Contracts\View\Factory" variable="">
+            <type>\Illuminate\Contracts\View\Factory</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" namespace="Illuminate\Mail" line="33" package="Default">
+        <name>$swift</name>
+        <full_name>\Illuminate\Mail\Mailer::swift</full_name>
+        <default/>
+        <docblock line="33">
+          <description>The Swift Mailer instance.</description>
+          <long-description/>
+          <tag name="var" line="33" description="" type="\Swift_Mailer" variable="">
+            <type>\Swift_Mailer</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" namespace="Illuminate\Mail" line="40" package="Default">
+        <name>$events</name>
+        <full_name>\Illuminate\Mail\Mailer::events</full_name>
+        <default/>
+        <docblock line="40">
+          <description>The event dispatcher instance.</description>
+          <long-description/>
+          <tag name="var" line="40" description="" type="\Illuminate\Contracts\Events\Dispatcher|null" variable="">
+            <type>\Illuminate\Contracts\Events\Dispatcher</type>
+            <type>null</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" namespace="Illuminate\Mail" line="47" package="Default">
+        <name>$from</name>
+        <full_name>\Illuminate\Mail\Mailer::from</full_name>
+        <default/>
+        <docblock line="47">
+          <description>The global from address and name.</description>
+          <long-description/>
+          <tag name="var" line="47" description="" type="array" variable="">
+            <type>array</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" namespace="Illuminate\Mail" line="54" package="Default">
+        <name>$to</name>
+        <full_name>\Illuminate\Mail\Mailer::to</full_name>
+        <default/>
+        <docblock line="54">
+          <description>The global to address and name.</description>
+          <long-description/>
+          <tag name="var" line="54" description="" type="array" variable="">
+            <type>array</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" namespace="Illuminate\Mail" line="61" package="Default">
+        <name>$container</name>
+        <full_name>\Illuminate\Mail\Mailer::container</full_name>
+        <default/>
+        <docblock line="61">
+          <description>The IoC container instance.</description>
+          <long-description/>
+          <tag name="var" line="61" description="" type="\Illuminate\Contracts\Container\Container" variable="">
+            <type>\Illuminate\Contracts\Container\Container</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" namespace="Illuminate\Mail" line="68" package="Default">
+        <name>$queue</name>
+        <full_name>\Illuminate\Mail\Mailer::queue</full_name>
+        <default/>
+        <docblock line="68">
+          <description>The queue implementation.</description>
+          <long-description/>
+          <tag name="var" line="68" description="" type="\Illuminate\Contracts\Queue\Queue" variable="">
+            <type>\Illuminate\Contracts\Queue\Queue</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" namespace="Illuminate\Mail" line="75" package="Default">
+        <name>$failedRecipients</name>
+        <full_name>\Illuminate\Mail\Mailer::failedRecipients</full_name>
+        <default>array()</default>
+        <docblock line="75">
+          <description>Array of failed recipients.</description>
+          <long-description/>
+          <tag name="var" line="75" description="" type="array" variable="">
+            <type>array</type>
+          </tag>
+        </docblock>
+      </property>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Mail" line="85" package="Default">
+        <name>__construct</name>
+        <full_name>\Illuminate\Mail\Mailer::__construct()</full_name>
+        <docblock line="85">
+          <description>Create a new Mailer instance.</description>
+          <long-description/>
+          <tag name="param" line="85" description="" type="\Illuminate\Contracts\View\Factory" variable="$views">
+            <type>\Illuminate\Contracts\View\Factory</type>
+          </tag>
+          <tag name="param" line="85" description="" type="\Swift_Mailer" variable="$swift">
+            <type>\Swift_Mailer</type>
+          </tag>
+          <tag name="param" line="85" description="" type="\Illuminate\Contracts\Events\Dispatcher|null" variable="$events">
+            <type>\Illuminate\Contracts\Events\Dispatcher</type>
+            <type>null</type>
+          </tag>
+          <tag name="return" line="85" description="" type="void">
+            <type>void</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$views</name>
+          <default/>
+          <type>\Illuminate\Contracts\View\Factory</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$swift</name>
+          <default/>
+          <type>\Swift_Mailer</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$events</name>
+          <default>null</default>
+          <type>\Illuminate\Contracts\Events\Dispatcher|null</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Mail" line="99" package="Default">
+        <name>alwaysFrom</name>
+        <full_name>\Illuminate\Mail\Mailer::alwaysFrom()</full_name>
+        <docblock line="99">
+          <description>Set the global from address and name.</description>
+          <long-description/>
+          <tag name="param" line="99" description="" type="string" variable="$address">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="99" description="" type="string|null" variable="$name">
+            <type>string</type>
+            <type>null</type>
+          </tag>
+          <tag name="return" line="99" description="" type="void">
+            <type>void</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$address</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$name</name>
+          <default>null</default>
+          <type>string|null</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Mail" line="111" package="Default">
+        <name>alwaysTo</name>
+        <full_name>\Illuminate\Mail\Mailer::alwaysTo()</full_name>
+        <docblock line="111">
+          <description>Set the global to address and name.</description>
+          <long-description/>
+          <tag name="param" line="111" description="" type="string" variable="$address">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="111" description="" type="string|null" variable="$name">
+            <type>string</type>
+            <type>null</type>
+          </tag>
+          <tag name="return" line="111" description="" type="void">
+            <type>void</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$address</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$name</name>
+          <default>null</default>
+          <type>string|null</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Mail" line="123" package="Default">
+        <name>raw</name>
+        <full_name>\Illuminate\Mail\Mailer::raw()</full_name>
+        <docblock line="123">
+          <description>Send a new message when only a raw text part.</description>
+          <long-description/>
+          <tag name="param" line="123" description="" type="string" variable="$text">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="123" description="" type="mixed" variable="$callback">
+            <type>mixed</type>
+          </tag>
+          <tag name="return" line="123" description="" type="void">
+            <type>void</type>
+          </tag>
+          <tag name="inherited_from" description="\Illuminate\Contracts\Mail\Mailer::raw()" refers="\Illuminate\Contracts\Mail\Mailer::raw()" link="/classes/Illuminate.Contracts.Mail.Mailer.html#method_raw"/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$text</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$callback</name>
+          <default/>
+          <type>mixed</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Mail" line="136" package="Default">
+        <name>plain</name>
+        <full_name>\Illuminate\Mail\Mailer::plain()</full_name>
+        <docblock line="136">
+          <description>Send a new message when only a plain part.</description>
+          <long-description/>
+          <tag name="param" line="136" description="" type="string" variable="$view">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="136" description="" type="array" variable="$data">
+            <type>array</type>
+          </tag>
+          <tag name="param" line="136" description="" type="mixed" variable="$callback">
+            <type>mixed</type>
+          </tag>
+          <tag name="return" line="136" description="" type="void">
+            <type>void</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$view</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$data</name>
+          <default/>
+          <type>array</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$callback</name>
+          <default/>
+          <type>mixed</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Mail" line="149" package="Default">
+        <name>send</name>
+        <full_name>\Illuminate\Mail\Mailer::send()</full_name>
+        <docblock line="149">
+          <description>Send a new message using a view.</description>
+          <long-description/>
+          <tag name="param" line="149" description="" type="string|array" variable="$view">
+            <type>string</type>
+            <type>array</type>
+          </tag>
+          <tag name="param" line="149" description="" type="array" variable="$data">
+            <type>array</type>
+          </tag>
+          <tag name="param" line="149" description="" type="\Closure|string" variable="$callback">
+            <type>\Closure</type>
+            <type>string</type>
+          </tag>
+          <tag name="return" line="149" description="" type="void">
+            <type>void</type>
+          </tag>
+          <tag name="inherited_from" description="\Illuminate\Contracts\Mail\Mailer::send()" refers="\Illuminate\Contracts\Mail\Mailer::send()" link="/classes/Illuminate.Contracts.Mail.Mailer.html#method_send"/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$view</name>
+          <default/>
+          <type>string|array</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$data</name>
+          <default/>
+          <type>array</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$callback</name>
+          <default/>
+          <type>\Closure|string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Mail" line="185" package="Default">
+        <name>queue</name>
+        <full_name>\Illuminate\Mail\Mailer::queue()</full_name>
+        <docblock line="185">
+          <description>Queue a new e-mail message for sending.</description>
+          <long-description/>
+          <tag name="param" line="185" description="" type="string|array" variable="$view">
+            <type>string</type>
+            <type>array</type>
+          </tag>
+          <tag name="param" line="185" description="" type="array" variable="$data">
+            <type>array</type>
+          </tag>
+          <tag name="param" line="185" description="" type="\Closure|string" variable="$callback">
+            <type>\Closure</type>
+            <type>string</type>
+          </tag>
+          <tag name="param" line="185" description="" type="string|null" variable="$queue">
+            <type>string</type>
+            <type>null</type>
+          </tag>
+          <tag name="return" line="185" description="" type="mixed">
+            <type>mixed</type>
+          </tag>
+          <tag name="inherited_from" description="\Illuminate\Contracts\Mail\MailQueue::queue()" refers="\Illuminate\Contracts\Mail\MailQueue::queue()" link="/classes/Illuminate.Contracts.Mail.MailQueue.html#method_queue"/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$view</name>
+          <default/>
+          <type>string|array</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$data</name>
+          <default/>
+          <type>array</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$callback</name>
+          <default/>
+          <type>\Closure|string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$queue</name>
+          <default>null</default>
+          <type>string|null</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Mail" line="201" package="Default">
+        <name>onQueue</name>
+        <full_name>\Illuminate\Mail\Mailer::onQueue()</full_name>
+        <docblock line="201">
+          <description>Queue a new e-mail message for sending on the given queue.</description>
+          <long-description/>
+          <tag name="param" line="201" description="" type="string" variable="$queue">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="201" description="" type="string|array" variable="$view">
+            <type>string</type>
+            <type>array</type>
+          </tag>
+          <tag name="param" line="201" description="" type="array" variable="$data">
+            <type>array</type>
+          </tag>
+          <tag name="param" line="201" description="" type="\Closure|string" variable="$callback">
+            <type>\Closure</type>
+            <type>string</type>
+          </tag>
+          <tag name="return" line="201" description="" type="mixed">
+            <type>mixed</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$queue</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$view</name>
+          <default/>
+          <type>string|array</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$data</name>
+          <default/>
+          <type>array</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$callback</name>
+          <default/>
+          <type>\Closure|string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Mail" line="217" package="Default">
+        <name>queueOn</name>
+        <full_name>\Illuminate\Mail\Mailer::queueOn()</full_name>
+        <docblock line="217">
+          <description>Queue a new e-mail message for sending on the given queue.</description>
+          <long-description>This method didn't match rest of framework's "onQueue" phrasing. Added "onQueue".</long-description>
+          <tag name="param" line="217" description="" type="string" variable="$queue">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="217" description="" type="string|array" variable="$view">
+            <type>string</type>
+            <type>array</type>
+          </tag>
+          <tag name="param" line="217" description="" type="array" variable="$data">
+            <type>array</type>
+          </tag>
+          <tag name="param" line="217" description="" type="\Closure|string" variable="$callback">
+            <type>\Closure</type>
+            <type>string</type>
+          </tag>
+          <tag name="return" line="217" description="" type="mixed">
+            <type>mixed</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$queue</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$view</name>
+          <default/>
+          <type>string|array</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$data</name>
+          <default/>
+          <type>array</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$callback</name>
+          <default/>
+          <type>\Closure|string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Mail" line="232" package="Default">
+        <name>later</name>
+        <full_name>\Illuminate\Mail\Mailer::later()</full_name>
+        <docblock line="232">
+          <description>Queue a new e-mail message for sending after (n) seconds.</description>
+          <long-description/>
+          <tag name="param" line="232" description="" type="integer" variable="$delay">
+            <type>integer</type>
+          </tag>
+          <tag name="param" line="232" description="" type="string|array" variable="$view">
+            <type>string</type>
+            <type>array</type>
+          </tag>
+          <tag name="param" line="232" description="" type="array" variable="$data">
+            <type>array</type>
+          </tag>
+          <tag name="param" line="232" description="" type="\Closure|string" variable="$callback">
+            <type>\Closure</type>
+            <type>string</type>
+          </tag>
+          <tag name="param" line="232" description="" type="string|null" variable="$queue">
+            <type>string</type>
+            <type>null</type>
+          </tag>
+          <tag name="return" line="232" description="" type="mixed">
+            <type>mixed</type>
+          </tag>
+          <tag name="inherited_from" description="\Illuminate\Contracts\Mail\MailQueue::later()" refers="\Illuminate\Contracts\Mail\MailQueue::later()" link="/classes/Illuminate.Contracts.Mail.MailQueue.html#method_later"/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$delay</name>
+          <default/>
+          <type>integer</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$view</name>
+          <default/>
+          <type>string|array</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$data</name>
+          <default/>
+          <type>array</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$callback</name>
+          <default/>
+          <type>\Closure|string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$queue</name>
+          <default>null</default>
+          <type>string|null</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Mail" line="249" package="Default">
+        <name>laterOn</name>
+        <full_name>\Illuminate\Mail\Mailer::laterOn()</full_name>
+        <docblock line="249">
+          <description>Queue a new e-mail message for sending after (n) seconds on the given queue.</description>
+          <long-description/>
+          <tag name="param" line="249" description="" type="string" variable="$queue">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="249" description="" type="integer" variable="$delay">
+            <type>integer</type>
+          </tag>
+          <tag name="param" line="249" description="" type="string|array" variable="$view">
+            <type>string</type>
+            <type>array</type>
+          </tag>
+          <tag name="param" line="249" description="" type="array" variable="$data">
+            <type>array</type>
+          </tag>
+          <tag name="param" line="249" description="" type="\Closure|string" variable="$callback">
+            <type>\Closure</type>
+            <type>string</type>
+          </tag>
+          <tag name="return" line="249" description="" type="mixed">
+            <type>mixed</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$queue</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$delay</name>
+          <default/>
+          <type>integer</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$view</name>
+          <default/>
+          <type>string|array</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$data</name>
+          <default/>
+          <type>array</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$callback</name>
+          <default/>
+          <type>\Closure|string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Mail" line="260" package="Default">
+        <name>buildQueueCallable</name>
+        <full_name>\Illuminate\Mail\Mailer::buildQueueCallable()</full_name>
+        <docblock line="260">
+          <description>Build the callable for a queued e-mail job.</description>
+          <long-description/>
+          <tag name="param" line="260" description="" type="\Closure|string" variable="$callback">
+            <type>\Closure</type>
+            <type>string</type>
+          </tag>
+          <tag name="return" line="260" description="" type="string">
+            <type>string</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$callback</name>
+          <default/>
+          <type>\Closure|string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Mail" line="276" package="Default">
+        <name>handleQueuedMessage</name>
+        <full_name>\Illuminate\Mail\Mailer::handleQueuedMessage()</full_name>
+        <docblock line="276">
+          <description>Handle a queued e-mail message job.</description>
+          <long-description/>
+          <tag name="param" line="276" description="" type="\Illuminate\Contracts\Queue\Job" variable="$job">
+            <type>\Illuminate\Contracts\Queue\Job</type>
+          </tag>
+          <tag name="param" line="276" description="" type="array" variable="$data">
+            <type>array</type>
+          </tag>
+          <tag name="return" line="276" description="" type="void">
+            <type>void</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$job</name>
+          <default/>
+          <type>\Illuminate\Contracts\Queue\Job</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$data</name>
+          <default/>
+          <type>array</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Mail" line="289" package="Default">
+        <name>getQueuedCallable</name>
+        <full_name>\Illuminate\Mail\Mailer::getQueuedCallable()</full_name>
+        <docblock line="289">
+          <description>Get the true callable for a queued e-mail message.</description>
+          <long-description/>
+          <tag name="param" line="289" description="" type="array" variable="$data">
+            <type>array</type>
+          </tag>
+          <tag name="return" line="289" description="" type="\Closure|string">
+            <type>\Closure</type>
+            <type>string</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$data</name>
+          <default/>
+          <type>array</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Mail" line="305" package="Default">
+        <name>forceReconnection</name>
+        <full_name>\Illuminate\Mail\Mailer::forceReconnection()</full_name>
+        <docblock line="305">
+          <description>Force the transport to re-connect.</description>
+          <long-description>This will prevent errors in daemon queue situations.</long-description>
+          <tag name="return" line="305" description="" type="void">
+            <type>void</type>
+          </tag>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Mail" line="320" package="Default">
+        <name>addContent</name>
+        <full_name>\Illuminate\Mail\Mailer::addContent()</full_name>
+        <docblock line="320">
+          <description>Add the content to a given message.</description>
+          <long-description/>
+          <tag name="param" line="320" description="" type="\Illuminate\Mail\Message" variable="$message">
+            <type>\Illuminate\Mail\Message</type>
+          </tag>
+          <tag name="param" line="320" description="" type="string" variable="$view">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="320" description="" type="string" variable="$plain">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="320" description="" type="string" variable="$raw">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="320" description="" type="array" variable="$data">
+            <type>array</type>
+          </tag>
+          <tag name="return" line="320" description="" type="void">
+            <type>void</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$message</name>
+          <default/>
+          <type>\Illuminate\Mail\Message</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$view</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$plain</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$raw</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$data</name>
+          <default/>
+          <type>array</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Mail" line="347" package="Default">
+        <name>parseView</name>
+        <full_name>\Illuminate\Mail\Mailer::parseView()</full_name>
+        <docblock line="347">
+          <description>Parse the given view name or array.</description>
+          <long-description/>
+          <tag name="param" line="347" description="" type="string|array" variable="$view">
+            <type>string</type>
+            <type>array</type>
+          </tag>
+          <tag name="return" line="347" description="" type="array">
+            <type>array</type>
+          </tag>
+          <tag name="throws" line="347" description="" type="\InvalidArgumentException">
+            <type>\InvalidArgumentException</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$view</name>
+          <default/>
+          <type>string|array</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Mail" line="380" package="Default">
+        <name>sendSwiftMessage</name>
+        <full_name>\Illuminate\Mail\Mailer::sendSwiftMessage()</full_name>
+        <docblock line="380">
+          <description>Send a Swift Message instance.</description>
+          <long-description/>
+          <tag name="param" line="380" description="" type="\Swift_Message" variable="$message">
+            <type>\Swift_Message</type>
+          </tag>
+          <tag name="return" line="380" description="" type="void">
+            <type>void</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$message</name>
+          <default/>
+          <type>\Swift_Message</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Mail" line="398" package="Default">
+        <name>callMessageBuilder</name>
+        <full_name>\Illuminate\Mail\Mailer::callMessageBuilder()</full_name>
+        <docblock line="398">
+          <description>Call the provided message builder.</description>
+          <long-description/>
+          <tag name="param" line="398" description="" type="\Closure|string" variable="$callback">
+            <type>\Closure</type>
+            <type>string</type>
+          </tag>
+          <tag name="param" line="398" description="" type="\Illuminate\Mail\Message" variable="$message">
+            <type>\Illuminate\Mail\Message</type>
+          </tag>
+          <tag name="return" line="398" description="" type="mixed">
+            <type>mixed</type>
+          </tag>
+          <tag name="throws" line="398" description="" type="\InvalidArgumentException">
+            <type>\InvalidArgumentException</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$callback</name>
+          <default/>
+          <type>\Closure|string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$message</name>
+          <default/>
+          <type>\Illuminate\Mail\Message</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Mail" line="416" package="Default">
+        <name>createMessage</name>
+        <full_name>\Illuminate\Mail\Mailer::createMessage()</full_name>
+        <docblock line="416">
+          <description>Create a new message instance.</description>
+          <long-description/>
+          <tag name="return" line="416" description="" type="\Illuminate\Mail\Message">
+            <type>\Illuminate\Mail\Message</type>
+          </tag>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Mail" line="437" package="Default">
+        <name>getView</name>
+        <full_name>\Illuminate\Mail\Mailer::getView()</full_name>
+        <docblock line="437">
+          <description>Render the given view.</description>
+          <long-description/>
+          <tag name="param" line="437" description="" type="string" variable="$view">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="437" description="" type="array" variable="$data">
+            <type>array</type>
+          </tag>
+          <tag name="return" line="437" description="" type="string">
+            <type>string</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$view</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$data</name>
+          <default/>
+          <type>array</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Mail" line="447" package="Default">
+        <name>getViewFactory</name>
+        <full_name>\Illuminate\Mail\Mailer::getViewFactory()</full_name>
+        <docblock line="447">
+          <description>Get the view factory instance.</description>
+          <long-description/>
+          <tag name="return" line="447" description="" type="\Illuminate\Contracts\View\Factory">
+            <type>\Illuminate\Contracts\View\Factory</type>
+          </tag>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Mail" line="457" package="Default">
+        <name>getSwiftMailer</name>
+        <full_name>\Illuminate\Mail\Mailer::getSwiftMailer()</full_name>
+        <docblock line="457">
+          <description>Get the Swift Mailer instance.</description>
+          <long-description/>
+          <tag name="return" line="457" description="" type="\Swift_Mailer">
+            <type>\Swift_Mailer</type>
+          </tag>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Mail" line="467" package="Default">
+        <name>failures</name>
+        <full_name>\Illuminate\Mail\Mailer::failures()</full_name>
+        <docblock line="467">
+          <description>Get the array of failed recipients.</description>
+          <long-description/>
+          <tag name="return" line="467" description="" type="array">
+            <type>array</type>
+          </tag>
+          <tag name="inherited_from" description="\Illuminate\Contracts\Mail\Mailer::failures()" refers="\Illuminate\Contracts\Mail\Mailer::failures()" link="/classes/Illuminate.Contracts.Mail.Mailer.html#method_failures"/>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Mail" line="478" package="Default">
+        <name>setSwiftMailer</name>
+        <full_name>\Illuminate\Mail\Mailer::setSwiftMailer()</full_name>
+        <docblock line="478">
+          <description>Set the Swift Mailer instance.</description>
+          <long-description/>
+          <tag name="param" line="478" description="" type="\Swift_Mailer" variable="$swift">
+            <type>\Swift_Mailer</type>
+          </tag>
+          <tag name="return" line="478" description="" type="void">
+            <type>void</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$swift</name>
+          <default/>
+          <type>\Swift_Mailer</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Mail" line="489" package="Default">
+        <name>setQueue</name>
+        <full_name>\Illuminate\Mail\Mailer::setQueue()</full_name>
+        <docblock line="489">
+          <description>Set the queue manager instance.</description>
+          <long-description/>
+          <tag name="param" line="489" description="" type="\Illuminate\Contracts\Queue\Queue" variable="$queue">
+            <type>\Illuminate\Contracts\Queue\Queue</type>
+          </tag>
+          <tag name="return" line="489" description="" type="\Illuminate\Mail\Mailer">
+            <type>\Illuminate\Mail\Mailer</type>
+          </tag>
+          <tag name="fluent" description="This method is part of a fluent interface and will return the same instance"/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$queue</name>
+          <default/>
+          <type>\Illuminate\Contracts\Queue\Queue</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Mail" line="502" package="Default">
+        <name>setContainer</name>
+        <full_name>\Illuminate\Mail\Mailer::setContainer()</full_name>
+        <docblock line="502">
+          <description>Set the IoC container instance.</description>
+          <long-description/>
+          <tag name="param" line="502" description="" type="\Illuminate\Contracts\Container\Container" variable="$container">
+            <type>\Illuminate\Contracts\Container\Container</type>
+          </tag>
+          <tag name="return" line="502" description="" type="void">
+            <type>void</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$container</name>
+          <default/>
+          <type>\Illuminate\Contracts\Container\Container</type>
+        </argument>
+      </method>
+    </class>
+    <parse_markers>
+      <error line="0" code="PPC:ERR-50000">No summary was found for this file</error>
+      <error line="19" code="PPC:ERR-50005">No summary for class \Illuminate\Mail\Mailer</error>
+    </parse_markers>
+    <source>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</source>
+  <type>class</type></file>

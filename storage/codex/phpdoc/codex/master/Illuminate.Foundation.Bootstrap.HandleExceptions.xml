@@ -1,0 +1,241 @@
+<file path="codex/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/HandleExceptions.php" generated-path="codex.vendor.laravel.framework.src.Illuminate.Foundation.Bootstrap.HandleExceptions.html" hash="adae572b30fb3e1f747eea39dd2639c1" package="Default">
+    <docblock line="0">
+      <description/>
+      <long-description/>
+      <tag name="package" line="0" description="Default"/>
+    </docblock>
+    <namespace-alias name="Exception">\Exception</namespace-alias>
+    <namespace-alias name="ErrorException">\ErrorException</namespace-alias>
+    <namespace-alias name="Application">\Illuminate\Contracts\Foundation\Application</namespace-alias>
+    <namespace-alias name="ConsoleOutput">\Symfony\Component\Console\Output\ConsoleOutput</namespace-alias>
+    <namespace-alias name="FatalErrorException">\Symfony\Component\Debug\Exception\FatalErrorException</namespace-alias>
+    <namespace-alias name="FatalThrowableError">\Symfony\Component\Debug\Exception\FatalThrowableError</namespace-alias>
+    <class final="false" abstract="false" namespace="Illuminate\Foundation\Bootstrap" line="12" package="Default">
+      <extends/>
+      <name>HandleExceptions</name>
+      <full_name>\Illuminate\Foundation\Bootstrap\HandleExceptions</full_name>
+      <docblock line="12">
+        <description/>
+        <long-description/>
+        <tag name="package" line="12" description="Default"/>
+      </docblock>
+      <property static="false" visibility="protected" namespace="Illuminate\Foundation\Bootstrap" line="19" package="Default">
+        <name>$app</name>
+        <full_name>\Illuminate\Foundation\Bootstrap\HandleExceptions::app</full_name>
+        <default/>
+        <docblock line="19">
+          <description>The application instance.</description>
+          <long-description/>
+          <tag name="var" line="19" description="" type="\Illuminate\Contracts\Foundation\Application" variable="">
+            <type>\Illuminate\Contracts\Foundation\Application</type>
+          </tag>
+        </docblock>
+      </property>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Foundation\Bootstrap" line="27" package="Default">
+        <name>bootstrap</name>
+        <full_name>\Illuminate\Foundation\Bootstrap\HandleExceptions::bootstrap()</full_name>
+        <docblock line="27">
+          <description>Bootstrap the given application.</description>
+          <long-description/>
+          <tag name="param" line="27" description="" type="\Illuminate\Contracts\Foundation\Application" variable="$app">
+            <type>\Illuminate\Contracts\Foundation\Application</type>
+          </tag>
+          <tag name="return" line="27" description="" type="void">
+            <type>void</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$app</name>
+          <default/>
+          <type>\Illuminate\Contracts\Foundation\Application</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Foundation\Bootstrap" line="56" package="Default">
+        <name>handleError</name>
+        <full_name>\Illuminate\Foundation\Bootstrap\HandleExceptions::handleError()</full_name>
+        <docblock line="56">
+          <description>Convert a PHP error to an ErrorException.</description>
+          <long-description/>
+          <tag name="param" line="56" description="" type="integer" variable="$level">
+            <type>integer</type>
+          </tag>
+          <tag name="param" line="56" description="" type="string" variable="$message">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="56" description="" type="string" variable="$file">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="56" description="" type="integer" variable="$line">
+            <type>integer</type>
+          </tag>
+          <tag name="param" line="56" description="" type="array" variable="$context">
+            <type>array</type>
+          </tag>
+          <tag name="return" line="56" description="" type="void">
+            <type>void</type>
+          </tag>
+          <tag name="throws" line="56" description="" type="\ErrorException">
+            <type>\ErrorException</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$level</name>
+          <default/>
+          <type>integer</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$message</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$file</name>
+          <default>''</default>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$line</name>
+          <default>0</default>
+          <type>integer</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$context</name>
+          <default>array()</default>
+          <type>array</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Foundation\Bootstrap" line="73" package="Default">
+        <name>handleException</name>
+        <full_name>\Illuminate\Foundation\Bootstrap\HandleExceptions::handleException()</full_name>
+        <docblock line="73">
+          <description>Handle an uncaught exception from the application.</description>
+          <long-description>Note: Most exceptions can be handled via the try / catch block in
+the HTTP and Console kernels. But, fatal error exceptions must
+be handled differently since they are not normal exceptions.</long-description>
+          <tag name="param" line="73" description="" type="\Throwable" variable="$e">
+            <type>\Throwable</type>
+          </tag>
+          <tag name="return" line="73" description="" type="void">
+            <type>void</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$e</name>
+          <default/>
+          <type>\Throwable</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Foundation\Bootstrap" line="94" package="Default">
+        <name>renderForConsole</name>
+        <full_name>\Illuminate\Foundation\Bootstrap\HandleExceptions::renderForConsole()</full_name>
+        <docblock line="94">
+          <description>Render an exception to the console.</description>
+          <long-description/>
+          <tag name="param" line="94" description="" type="\Exception" variable="$e">
+            <type>\Exception</type>
+          </tag>
+          <tag name="return" line="94" description="" type="void">
+            <type>void</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$e</name>
+          <default/>
+          <type>\Exception</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Foundation\Bootstrap" line="105" package="Default">
+        <name>renderHttpResponse</name>
+        <full_name>\Illuminate\Foundation\Bootstrap\HandleExceptions::renderHttpResponse()</full_name>
+        <docblock line="105">
+          <description>Render an exception as an HTTP response and send it.</description>
+          <long-description/>
+          <tag name="param" line="105" description="" type="\Exception" variable="$e">
+            <type>\Exception</type>
+          </tag>
+          <tag name="return" line="105" description="" type="void">
+            <type>void</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$e</name>
+          <default/>
+          <type>\Exception</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Foundation\Bootstrap" line="115" package="Default">
+        <name>handleShutdown</name>
+        <full_name>\Illuminate\Foundation\Bootstrap\HandleExceptions::handleShutdown()</full_name>
+        <docblock line="115">
+          <description>Handle the PHP shutdown event.</description>
+          <long-description/>
+          <tag name="return" line="115" description="" type="void">
+            <type>void</type>
+          </tag>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Foundation\Bootstrap" line="129" package="Default">
+        <name>fatalExceptionFromError</name>
+        <full_name>\Illuminate\Foundation\Bootstrap\HandleExceptions::fatalExceptionFromError()</full_name>
+        <docblock line="129">
+          <description>Create a new fatal exception instance from an error array.</description>
+          <long-description/>
+          <tag name="param" line="129" description="" type="array" variable="$error">
+            <type>array</type>
+          </tag>
+          <tag name="param" line="129" description="" type="integer|null" variable="$traceOffset">
+            <type>integer</type>
+            <type>null</type>
+          </tag>
+          <tag name="return" line="129" description="" type="\Symfony\Component\Debug\Exception\FatalErrorException">
+            <type>\Symfony\Component\Debug\Exception\FatalErrorException</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$error</name>
+          <default/>
+          <type>array</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$traceOffset</name>
+          <default>null</default>
+          <type>integer|null</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Foundation\Bootstrap" line="142" package="Default">
+        <name>isFatal</name>
+        <full_name>\Illuminate\Foundation\Bootstrap\HandleExceptions::isFatal()</full_name>
+        <docblock line="142">
+          <description>Determine if the error type is fatal.</description>
+          <long-description/>
+          <tag name="param" line="142" description="" type="integer" variable="$type">
+            <type>integer</type>
+          </tag>
+          <tag name="return" line="142" description="" type="boolean">
+            <type>boolean</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$type</name>
+          <default/>
+          <type>integer</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Foundation\Bootstrap" line="152" package="Default">
+        <name>getExceptionHandler</name>
+        <full_name>\Illuminate\Foundation\Bootstrap\HandleExceptions::getExceptionHandler()</full_name>
+        <docblock line="152">
+          <description>Get an instance of the exception handler.</description>
+          <long-description/>
+          <tag name="return" line="152" description="" type="\Illuminate\Contracts\Debug\ExceptionHandler">
+            <type>\Illuminate\Contracts\Debug\ExceptionHandler</type>
+          </tag>
+        </docblock>
+      </method>
+    </class>
+    <parse_markers>
+      <error line="0" code="PPC:ERR-50000">No summary was found for this file</error>
+      <error line="12" code="PPC:ERR-50005">No summary for class \Illuminate\Foundation\Bootstrap\HandleExceptions</error>
+    </parse_markers>
+    <source>eJy1V21v4zYM/p5fwQFF7RTpdfu623W7l3Y94G4t0n5rikBx6ESoLXmSnF6w3X8f9WLFceK03TADrSuLpEg+j0j2l1+rZTUYCFairliG8Lko6pILZnByKWsxZ4ZLMfkgpdFGsertYFBrhItvGVZ2561fKiVV51vL0EcpSDczum3yfVUVPGMbhdt1mUuxJumykgKFsXpaFji5rk1Vx6Vf9el8wlm9mERfJpfMsGKffy9UvVsq+cRmBTobFH5WMK3hiok5fWtk9eCvAdBzdnLi3nACd0sEtokRuNCGiQzfBIFG7rcVUzB5RbaC4pl7V0oazAzO4YgOI/c6XkTgwJA/C75C0fZqx5mKKVbCq/wBd3S0oNDUSsBK8vm2p/WMNCCvRea0Zo1naduWNTV08j6h9jkyS65Pz2kH3rXDtA9aVKYKK6kMF4v09Kdha1ejmXqJpcNLpffO2AgS/8GBmjzs6DS49uo1Atu6ChdcG1RTvazNXD6JaRNu18BtENjW5zmkP7gQT89RrLiSoiRmpolBbcNLhsNWXpyG4FPyOE3mXFcFW/twdUIHXed5QsYbye8D/7vLEIJ3hcoAg5urG59PMBKY6NzqPqpwYQiiAldYdLcIXnKadqm4aLbA3v2cFzubwS4XOztMKbamvYyIid/MAebFLWNvsYbJdkgH+dkiSOrDG8VARt5lomNCmXZO0t8/jqJPtLp/6PLYotvl6xCOQ/K6yDqXQeBTB4d044Q9sPHM+hNceQHovnxZkClcVi+WBiLnIVeydOXiQKH4g8rOz/BV6paihowMzjCkbg4rzpwdo9ZwRpsmW8KskNkjgdsYsvtXd3c35MscQoWHR1QCC/0GPtRmBLmtw4GZrcPKWkfsW4fOeZ6joltTrEFzKrj2iDWRBkFIQz+qtNaind4SGCs/UQ0PkOwgfTao4T460GXH2BlkvumrXTYcWYJZMuxpStZ2G/Ju4VygiXavQj0bnp57EnrlLac29ZaEaiGIp59FgCbdqUBBmjI+R3UpVSO47RQQnHhI88qYakwzCGl3dXs4PHZ6lsMb6lLhsoTKvA+90MZ0vAza2GMjujvRbizuAv0cDB1TFuWtUWcEMR8vywLTdu1ulQopdddLkyxw83+nZQvK/5qYFhvvE4V/1tQJkweXktNzG1Dam5pQ5CwhbGtrejJQxRS7SXjdxW76d7r/VnM9FXVREJFd1XoX5hSKdErjo7G36Pi4iZ9rd6mD8H1i1hXSXNBz0XYKi//simT8ekklvKkN9kW9YviSWUAhTXw0ClgOhrIb8WvKlO8PlnAuNteN+yjVtGonuqfD/22zZEOjARNpYKFRpgvI5F/N+M8xtS9d3uEmaW2/bP0lZ7t4By9jae40604R9wCHBu5p3Mbct/TwyXb0toht7W69kyx6ei/BJ6R5tLQDCjHTXoUw4dF5xFKfh8OjnRXtgkLDe/FciiOtrYGetHExdRn3QiO4v5hejMfX4xFcTD9ej7dWX28+f2l9uHk/vr146I37d0KMtUgrQ/SRzmGy76sD+/8D6jAvVKvnMrG3wO1PSLv3luwR0+QVfiQxG98H/wAkjc5j</source>
+  <type>class</type></file>

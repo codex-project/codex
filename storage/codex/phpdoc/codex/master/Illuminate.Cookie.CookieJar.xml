@@ -1,0 +1,399 @@
+<file path="codex/vendor/laravel/framework/src/Illuminate/Cookie/CookieJar.php" generated-path="codex.vendor.laravel.framework.src.Illuminate.Cookie.CookieJar.html" hash="0bae72c1bf94a168178dc623e6d1b5ca" package="Default">
+    <docblock line="0">
+      <description/>
+      <long-description/>
+      <tag name="package" line="0" description="Default"/>
+    </docblock>
+    <namespace-alias name="Arr">\Illuminate\Support\Arr</namespace-alias>
+    <namespace-alias name="Cookie">\Symfony\Component\HttpFoundation\Cookie</namespace-alias>
+    <namespace-alias name="JarContract">\Illuminate\Contracts\Cookie\QueueingFactory</namespace-alias>
+    <class final="false" abstract="false" namespace="Illuminate\Cookie" line="9" package="Default">
+      <extends/>
+      <implements>\Illuminate\Contracts\Cookie\QueueingFactory</implements>
+      <name>CookieJar</name>
+      <full_name>\Illuminate\Cookie\CookieJar</full_name>
+      <docblock line="9">
+        <description/>
+        <long-description/>
+        <tag name="package" line="9" description="Default"/>
+      </docblock>
+      <property static="false" visibility="protected" namespace="Illuminate\Cookie" line="16" package="Default">
+        <name>$path</name>
+        <full_name>\Illuminate\Cookie\CookieJar::path</full_name>
+        <default>'/'</default>
+        <docblock line="16">
+          <description>The default path (if specified).</description>
+          <long-description/>
+          <tag name="var" line="16" description="" type="string" variable="">
+            <type>string</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" namespace="Illuminate\Cookie" line="23" package="Default">
+        <name>$domain</name>
+        <full_name>\Illuminate\Cookie\CookieJar::domain</full_name>
+        <default>null</default>
+        <docblock line="23">
+          <description>The default domain (if specified).</description>
+          <long-description/>
+          <tag name="var" line="23" description="" type="string" variable="">
+            <type>string</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" namespace="Illuminate\Cookie" line="30" package="Default">
+        <name>$secure</name>
+        <full_name>\Illuminate\Cookie\CookieJar::secure</full_name>
+        <default>false</default>
+        <docblock line="30">
+          <description>The default secure setting (defaults to false).</description>
+          <long-description/>
+          <tag name="var" line="30" description="" type="boolean" variable="">
+            <type>boolean</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" namespace="Illuminate\Cookie" line="37" package="Default">
+        <name>$queued</name>
+        <full_name>\Illuminate\Cookie\CookieJar::queued</full_name>
+        <default>array()</default>
+        <docblock line="37">
+          <description>All of the cookies queued for sending.</description>
+          <long-description/>
+          <tag name="var" line="37" description="" type="array" variable="">
+            <type>array</type>
+          </tag>
+        </docblock>
+      </property>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Cookie" line="51" package="Default">
+        <name>make</name>
+        <full_name>\Illuminate\Cookie\CookieJar::make()</full_name>
+        <docblock line="51">
+          <description>Create a new cookie instance.</description>
+          <long-description/>
+          <tag name="param" line="51" description="" type="string" variable="$name">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="51" description="" type="string" variable="$value">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="51" description="" type="integer" variable="$minutes">
+            <type>integer</type>
+          </tag>
+          <tag name="param" line="51" description="" type="string" variable="$path">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="51" description="" type="string" variable="$domain">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="51" description="" type="boolean" variable="$secure">
+            <type>boolean</type>
+          </tag>
+          <tag name="param" line="51" description="" type="boolean" variable="$httpOnly">
+            <type>boolean</type>
+          </tag>
+          <tag name="return" line="51" description="" type="\Symfony\Component\HttpFoundation\Cookie">
+            <type>\Symfony\Component\HttpFoundation\Cookie</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$name</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$value</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$minutes</name>
+          <default>0</default>
+          <type>integer</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$path</name>
+          <default>null</default>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$domain</name>
+          <default>null</default>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$secure</name>
+          <default>false</default>
+          <type>boolean</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$httpOnly</name>
+          <default>true</default>
+          <type>boolean</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Cookie" line="71" package="Default">
+        <name>forever</name>
+        <full_name>\Illuminate\Cookie\CookieJar::forever()</full_name>
+        <docblock line="71">
+          <description>Create a cookie that lasts "forever" (five years).</description>
+          <long-description/>
+          <tag name="param" line="71" description="" type="string" variable="$name">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="71" description="" type="string" variable="$value">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="71" description="" type="string" variable="$path">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="71" description="" type="string" variable="$domain">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="71" description="" type="boolean" variable="$secure">
+            <type>boolean</type>
+          </tag>
+          <tag name="param" line="71" description="" type="boolean" variable="$httpOnly">
+            <type>boolean</type>
+          </tag>
+          <tag name="return" line="71" description="" type="\Symfony\Component\HttpFoundation\Cookie">
+            <type>\Symfony\Component\HttpFoundation\Cookie</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$name</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$value</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$path</name>
+          <default>null</default>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$domain</name>
+          <default>null</default>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$secure</name>
+          <default>false</default>
+          <type>boolean</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$httpOnly</name>
+          <default>true</default>
+          <type>boolean</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Cookie" line="84" package="Default">
+        <name>forget</name>
+        <full_name>\Illuminate\Cookie\CookieJar::forget()</full_name>
+        <docblock line="84">
+          <description>Expire the given cookie.</description>
+          <long-description/>
+          <tag name="param" line="84" description="" type="string" variable="$name">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="84" description="" type="string" variable="$path">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="84" description="" type="string" variable="$domain">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="84" description="" type="\Symfony\Component\HttpFoundation\Cookie">
+            <type>\Symfony\Component\HttpFoundation\Cookie</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$name</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$path</name>
+          <default>null</default>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$domain</name>
+          <default>null</default>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Cookie" line="95" package="Default">
+        <name>hasQueued</name>
+        <full_name>\Illuminate\Cookie\CookieJar::hasQueued()</full_name>
+        <docblock line="95">
+          <description>Determine if a cookie has been queued.</description>
+          <long-description/>
+          <tag name="param" line="95" description="" type="string" variable="$key">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="95" description="" type="boolean">
+            <type>boolean</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$key</name>
+          <default/>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Cookie" line="107" package="Default">
+        <name>queued</name>
+        <full_name>\Illuminate\Cookie\CookieJar::queued()</full_name>
+        <docblock line="107">
+          <description>Get a queued cookie instance.</description>
+          <long-description/>
+          <tag name="param" line="107" description="" type="string" variable="$key">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="107" description="" type="mixed" variable="$default">
+            <type>mixed</type>
+          </tag>
+          <tag name="return" line="107" description="" type="\Symfony\Component\HttpFoundation\Cookie">
+            <type>\Symfony\Component\HttpFoundation\Cookie</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$key</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$default</name>
+          <default>null</default>
+          <type>mixed</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Cookie" line="118" package="Default">
+        <name>queue</name>
+        <full_name>\Illuminate\Cookie\CookieJar::queue()</full_name>
+        <docblock line="118">
+          <description>Queue a cookie to send with the next response.</description>
+          <long-description/>
+          <tag name="param" line="118" description="" type="mixed" variable="">
+            <type>mixed</type>
+          </tag>
+          <tag name="return" line="118" description="" type="void">
+            <type>void</type>
+          </tag>
+          <tag name="inherited_from" description="\Illuminate\Contracts\Cookie\QueueingFactory::queue()" refers="\Illuminate\Contracts\Cookie\QueueingFactory::queue()" link="/classes/Illuminate.Contracts.Cookie.QueueingFactory.html#method_queue"/>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Cookie" line="135" package="Default">
+        <name>unqueue</name>
+        <full_name>\Illuminate\Cookie\CookieJar::unqueue()</full_name>
+        <docblock line="135">
+          <description>Remove a cookie from the queue.</description>
+          <long-description/>
+          <tag name="param" line="135" description="" type="string" variable="$name">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="135" description="" type="void">
+            <type>void</type>
+          </tag>
+          <tag name="inherited_from" description="\Illuminate\Contracts\Cookie\QueueingFactory::unqueue()" refers="\Illuminate\Contracts\Cookie\QueueingFactory::unqueue()" link="/classes/Illuminate.Contracts.Cookie.QueueingFactory.html#method_unqueue"/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$name</name>
+          <default/>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Cookie" line="148" package="Default">
+        <name>getPathAndDomain</name>
+        <full_name>\Illuminate\Cookie\CookieJar::getPathAndDomain()</full_name>
+        <docblock line="148">
+          <description>Get the path and domain, or the default values.</description>
+          <long-description/>
+          <tag name="param" line="148" description="" type="string" variable="$path">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="148" description="" type="string" variable="$domain">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="148" description="" type="boolean" variable="$secure">
+            <type>boolean</type>
+          </tag>
+          <tag name="return" line="148" description="" type="array">
+            <type>array</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$path</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$domain</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$secure</name>
+          <default>false</default>
+          <type>boolean</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Cookie" line="161" package="Default">
+        <name>setDefaultPathAndDomain</name>
+        <full_name>\Illuminate\Cookie\CookieJar::setDefaultPathAndDomain()</full_name>
+        <docblock line="161">
+          <description>Set the default path and domain for the jar.</description>
+          <long-description/>
+          <tag name="param" line="161" description="" type="string" variable="$path">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="161" description="" type="string" variable="$domain">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="161" description="" type="boolean" variable="$secure">
+            <type>boolean</type>
+          </tag>
+          <tag name="return" line="161" description="" type="\Illuminate\Cookie\CookieJar">
+            <type>\Illuminate\Cookie\CookieJar</type>
+          </tag>
+          <tag name="fluent" description="This method is part of a fluent interface and will return the same instance"/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$path</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$domain</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$secure</name>
+          <default>false</default>
+          <type>boolean</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Cookie" line="173" package="Default">
+        <name>getQueuedCookies</name>
+        <full_name>\Illuminate\Cookie\CookieJar::getQueuedCookies()</full_name>
+        <docblock line="173">
+          <description>Get the cookies which have been queued for the next request.</description>
+          <long-description/>
+          <tag name="return" line="173" description="" type="array">
+            <type>array</type>
+          </tag>
+          <tag name="inherited_from" description="\Illuminate\Contracts\Cookie\QueueingFactory::getQueuedCookies()" refers="\Illuminate\Contracts\Cookie\QueueingFactory::getQueuedCookies()" link="/classes/Illuminate.Contracts.Cookie.QueueingFactory.html#method_getQueuedCookies"/>
+        </docblock>
+      </method>
+    </class>
+    <parse_markers>
+      <error line="0" code="PPC:ERR-50000">No summary was found for this file</error>
+      <error line="9" code="PPC:ERR-50005">No summary for class \Illuminate\Cookie\CookieJar</error>
+    </parse_markers>
+    <source>eJzVV01v4zYQvftXTBcGIqfaxtjDYpHUTYOk23YPbbfpzTYMRhpFbCRSS1JOjEX+e4cULcuS5SRwiqK+GOAM5+PNG87o+/MiLQYDwXLUBYsQfs2yMueCGZxdSnnH8WwwKPXW+XVZFFKZ2YVSZ052vcoTKVZ0IS+kQGFmvxhTfJSliJnhUtSWWoYupTCKRUZ7hdnnEkvk4vYjHUq1AqbhE1NrNYokypjWUGmTBHheZJiTxy3FwdcB0O/k+Nj9wzH8lSLEmLAyM1Awk0LAE9AFRjzhGI++83pr9R+XZFsbRaH4oxP3XyhpMDIYw9BZmcDRyRGFtcdbLHPGxeH+vJ0JiDLL9rvUGJUK6c8YMgiBP9dgJCQs07jb/42UWZ93b3JS3e+6v8gykAkYiiJyxdHwxdYyhkRSZihiimSnV6YUW/W59TYmMJ13fV4qJBIBA4H33itwoQ0TEXZcFUyxHDzGAENL+F7hkmVlR8qFcSdDIm9pUPfetszoFVZlbIst9M52hXOvOKW2+l1kq1pBoSmVgNkzO3Ab5/Im4xEkpYisCuTsDgMHTOghCOtkqQTjsCa9pWDYomTYJkm4CZeOjCpx5NxWvWl/GdcmcDZrY7WVEd0ZmpTrtz/covmDdC5EfOV0eq94ijikDM9tJMEmAcpgBOcwhlOwwmAE3zbEx/B+3DTggbXUqqDrIGONeEi6sTSSJ6vW4GM/fz13TcoM0PtGjfqGugaXqN5AkPAlwgqZ0t2uPZzU/3vSeqA61XldpvqIPSF3Ncq79+8+jMfjgwjx00PBFbpH9JaqLjwxDiv7Swr7yoWhxq1h2lOP54Nd3X7bg3UvrldoUFGj03hINu2W0nJxg4RyNWSeRPkOOwzuTswWCOTDrTRxYK/3JPoNcL2wqQU+5S+NK71J/YyGcvED8qXTr5mLl+X8gQxZTlTbwr9CikZmYe1pPw1oyTw9dUxqghPCto1emBz8jTdWumUE7jnR0TaawAdDrjSlpHtxc9i0AVlKHj+dbNBOiygYpMjiwOotKLEFU7c6GI3q6tEeVUE5alyzv6FPYgI7DZzVyo+A9Kz13o5Yli1oFVcLZ8JtYMHU4RvCkW24o3kIe8w352yjKFPvwo3s35idsXM7xiO//e+u0J+Yy2WjRImSuSuNM/qyx++5pSlFVRx3u12hkpjQotvUKc73NqMN2b1yjPi1fv1p+TWNzdwNC/1kTq84jD0i+7bsGpXnLlrrudnTsdPqsT8/XbNjy0rjvG12I6kO5n1wX3u4t77oNrC7bw4r/5up/wBrl8Ne+hG/rqrQD8K72p+3MG4B20TTbtTTHg/z7ubr7j7F9/W33n3Ko5SmHfVxY6TWdfCPLJ1q0ylIP0NbqBE9q2FavY6687RuLw5VDOsMHgf/AN3960M=</source>
+  <type>class</type></file>

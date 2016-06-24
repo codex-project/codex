@@ -1,0 +1,1153 @@
+<file path="codex/workbench/codex/core/src/Codex.php" generated-path="codex.workbench.codex.core.src.Codex.html" hash="207fdff9feda7c6f4c4ee395edf3391e" package="Default">
+    <docblock line="0">
+      <description>Part of the Codex Project PHP packages.</description>
+      <long-description>License and copyright information bundled with this package in the LICENSE file</long-description>
+      <tag name="package" line="0" description="Default"/>
+    </docblock>
+    <namespace-alias name="Contracts">\Codex\Contracts</namespace-alias>
+    <namespace-alias name="Writer">\Codex\Log\Writer</namespace-alias>
+    <namespace-alias name="Project">\Codex\Projects\Project</namespace-alias>
+    <namespace-alias name="Extendable">\Codex\Support\Extendable</namespace-alias>
+    <namespace-alias name="Traits">\Codex\Traits</namespace-alias>
+    <namespace-alias name="Cache">\Illuminate\Contracts\Cache\Repository</namespace-alias>
+    <namespace-alias name="Container">\Illuminate\Contracts\Container\Container</namespace-alias>
+    <namespace-alias name="Arrayable">\Illuminate\Contracts\Support\Arrayable</namespace-alias>
+    <namespace-alias name="Filesystem">\Illuminate\Filesystem\Filesystem</namespace-alias>
+    <class final="false" abstract="false" namespace="Codex" line="41" package="Codex\Core">
+      <extends>\Codex\Support\Extendable</extends>
+      <implements>\Codex\Contracts\Codex</implements>
+      <implements>\Illuminate\Contracts\Support\Arrayable</implements>
+      <name>Codex</name>
+      <full_name>\Codex\Codex</full_name>
+      <docblock line="41">
+        <description>This is the main Codex factory. It gives access to several sub-components and helper functions.</description>
+        <long-description/>
+        <tag name="package" line="41" description="Codex\Core"/>
+        <tag name="author" line="41" description="Sebwite"/>
+        <tag name="copyright" line="41" description="Copyright (c) 2015, Sebwite. All rights reserved"/>
+        <tag name="hookPoint" line="41" description="constructed"/>
+        <tag name="inherited_from" description="\Codex\Support\Extendable" refers="\Codex\Support\Extendable" link="/classes/Codex.Support.Extendable.html"/>
+      </docblock>
+      <property static="false" visibility="protected" namespace="Codex" line="53" package="Codex\Core">
+        <name>$log</name>
+        <full_name>\Codex\Codex::log</full_name>
+        <default/>
+        <docblock line="53">
+          <description>The codex log writer instance</description>
+          <long-description/>
+          <tag name="var" line="53" description="" type="\Codex\Contracts\Log\Log" variable="">
+            <type>\Codex\Contracts\Log\Log</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" namespace="Codex" line="60" package="Codex\Core">
+        <name>$cache</name>
+        <full_name>\Codex\Codex::cache</full_name>
+        <default/>
+        <docblock line="60">
+          <description>The cache repository instance</description>
+          <long-description/>
+          <tag name="var" line="60" description="" type="\Illuminate\Contracts\Cache\Repository" variable="">
+            <type>\Illuminate\Contracts\Cache\Repository</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" namespace="Codex" line="67" package="Codex\Core">
+        <name>$docsDir</name>
+        <full_name>\Codex\Codex::docsDir</full_name>
+        <default/>
+        <docblock line="67">
+          <description>Path to the directory containing all docs</description>
+          <long-description/>
+          <tag name="var" line="67" description="" type="string" variable="">
+            <type>string</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" namespace="Codex" line="18" package="Codex\Core">
+        <name>$files</name>
+        <full_name>\Codex\Traits\FilesTrait::files</full_name>
+        <default/>
+        <docblock line="18">
+          <description/>
+          <long-description/>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" namespace="Codex" line="26" package="Codex\Core">
+        <name>$config</name>
+        <full_name>\Codex\Traits\ConfigTrait::config</full_name>
+        <default>array()</default>
+        <docblock line="26">
+          <description>The config array</description>
+          <long-description/>
+          <tag name="var" line="26" description="" type="array" variable="">
+            <type>array</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="true" visibility="protected" namespace="Codex" line="27" package="Codex\Traits">
+        <name>$booted</name>
+        <full_name>\Codex\Traits\BootableTrait::booted</full_name>
+        <default>array()</default>
+        <docblock line="27">
+          <description/>
+          <long-description/>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" namespace="Codex" line="20" package="Default">
+        <name>$_macros</name>
+        <full_name>\Codex\Traits\ExtendableTrait::_macros</full_name>
+        <default>array()</default>
+        <docblock line="20">
+          <description/>
+          <long-description/>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" namespace="Codex" line="22" package="Default">
+        <name>$_extensions</name>
+        <full_name>\Codex\Traits\ExtendableTrait::_extensions</full_name>
+        <default>array()</default>
+        <docblock line="22">
+          <description/>
+          <long-description/>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" namespace="Codex" line="24" package="Default">
+        <name>$extensionInstances</name>
+        <full_name>\Codex\Traits\ExtendableTrait::extensionInstances</full_name>
+        <default>array()</default>
+        <docblock line="24">
+          <description/>
+          <long-description/>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" namespace="Codex" line="23" package="Codex\Core">
+        <name>$codex</name>
+        <full_name>\Codex\Traits\CodexTrait::codex</full_name>
+        <default/>
+        <docblock line="23">
+          <description/>
+          <long-description/>
+          <tag name="var" line="23" description="" type="\Codex\Contracts\Codex|\Codex\Codex" variable="">
+            <type>\Codex\Contracts\Codex</type>
+            <type>\Codex\Codex</type>
+          </tag>
+        </docblock>
+      </property>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Codex" line="80" package="Codex\Core">
+        <name>__construct</name>
+        <full_name>\Codex\Codex::__construct()</full_name>
+        <docblock line="80">
+          <description>Codex constructor.</description>
+          <long-description/>
+          <tag name="param" line="80" description="&lt;p&gt;The container instance&lt;/p&gt;" type="\Illuminate\Contracts\Container\Container" variable="$container">
+            <type>\Illuminate\Contracts\Container\Container</type>
+          </tag>
+          <tag name="param" line="80" description="&lt;p&gt;The filesystem instance&lt;/p&gt;" type="\Illuminate\Filesystem\Filesystem" variable="$files">
+            <type>\Illuminate\Filesystem\Filesystem</type>
+          </tag>
+          <tag name="param" line="80" description="&lt;p&gt;The cache instance&lt;/p&gt;" type="\Illuminate\Contracts\Cache\Repository" variable="$cache">
+            <type>\Illuminate\Contracts\Cache\Repository</type>
+          </tag>
+          <tag name="param" line="80" description="&lt;p&gt;The log instance&lt;/p&gt;" type="\Codex\Contracts\Log\Log" variable="$log">
+            <type>\Codex\Contracts\Log\Log</type>
+          </tag>
+          <tag name="hook" line="80" description="constructed After Codex has been constructed"/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$container</name>
+          <default/>
+          <type>\Illuminate\Contracts\Container\Container</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$files</name>
+          <default/>
+          <type>\Illuminate\Filesystem\Filesystem</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$cache</name>
+          <default/>
+          <type>\Illuminate\Contracts\Cache\Repository</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$log</name>
+          <default/>
+          <type>\Codex\Contracts\Log\Log</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Codex" line="110" package="Codex\Core">
+        <name>error</name>
+        <full_name>\Codex\Codex::error()</full_name>
+        <docblock line="110">
+          <description>Creates a error response. To be used in controllers/middleware</description>
+          <long-description/>
+          <tag name="param" line="110" description="&lt;p&gt;The error title&lt;/p&gt;" type="string" variable="$title">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="110" description="&lt;p&gt;The error text&lt;/p&gt;" type="string" variable="$text">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="110" description="&lt;p&gt;The HTTP code. 500 Internal Server Error by default&lt;/p&gt;" type="integer" variable="$code">
+            <type>integer</type>
+          </tag>
+          <tag name="param" line="110" description="&lt;p&gt;If set to false, it will not display the go back link. If set to a integer value, it will use the integer value as history.back parameter.&lt;/p&gt;" type="boolean|integer" variable="$goBack">
+            <type>boolean</type>
+            <type>integer</type>
+          </tag>
+          <tag name="return" line="110" description="" type="\Illuminate\Contracts\Routing\ResponseFactory|\Symfony\Component\HttpFoundation\Response">
+            <type>\Illuminate\Contracts\Routing\ResponseFactory</type>
+            <type>\Symfony\Component\HttpFoundation\Response</type>
+          </tag>
+          <tag name="throws" line="110" description="" type="\Exception">
+            <type>\Exception</type>
+          </tag>
+          <tag name="throws" line="110" description="" type="\Throwable">
+            <type>\Throwable</type>
+          </tag>
+          <tag name="inherited_from" description="\Codex\Contracts\Codex::error()" refers="\Codex\Contracts\Codex::error()" link="/classes/Codex.Contracts.Codex.html#method_error"/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$title</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$text</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$code</name>
+          <default>500</default>
+          <type>integer</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$goBack</name>
+          <default>true</default>
+          <type>boolean|integer</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Codex" line="125" package="Codex\Core">
+        <name>pushToStack</name>
+        <full_name>\Codex\Codex::pushToStack()</full_name>
+        <docblock line="125">
+          <description>Push a view to a stack</description>
+          <long-description/>
+          <tag name="param" line="125" description="&lt;p&gt;The name of the stack&lt;/p&gt;" type="string" variable="$stackName">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="125" description="&lt;p&gt;The namespaced name of the view&lt;/p&gt;" type="string" variable="$viewName">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="125" description="&lt;p&gt;(optional) The view data array&lt;/p&gt;" type="array|null" variable="$data">
+            <type>array</type>
+            <type>null</type>
+          </tag>
+          <tag name="param" line="125" description="&lt;p&gt;(optional) The view to attach this to&lt;/p&gt;" type="string" variable="$appendTo">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="125" description="" type="\Codex\Codex">
+            <type>\Codex\Codex</type>
+          </tag>
+          <tag name="inherited_from" description="\Codex\Contracts\Codex::pushToStack()" refers="\Codex\Contracts\Codex::pushToStack()" link="/classes/Codex.Contracts.Codex.html#method_pushToStack"/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$stackName</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$viewName</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$data</name>
+          <default>null</default>
+          <type>array|null</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$appendTo</name>
+          <default>'codex::layouts.default'</default>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Codex" line="160" package="Codex\Core">
+        <name>url</name>
+        <full_name>\Codex\Codex::url()</full_name>
+        <docblock line="160">
+          <description>Generate a URL to a project's default page and version.</description>
+          <long-description/>
+          <tag name="param" line="160" description="&lt;p&gt;A Project class instance or project name&lt;/p&gt;" type="\Codex\Projects\Project|string" variable="$project">
+            <type>\Codex\Projects\Project</type>
+            <type>string</type>
+          </tag>
+          <tag name="param" line="160" description="&lt;p&gt;The ref to generate the URL for. If not provided it'll use the default ref&lt;/p&gt;" type="null|string" variable="$ref">
+            <type>null</type>
+            <type>string</type>
+          </tag>
+          <tag name="param" line="160" description="&lt;p&gt;The document to generate the URL for.&lt;/p&gt;" type="null|string" variable="$doc">
+            <type>null</type>
+            <type>string</type>
+          </tag>
+          <tag name="return" line="160" description="" type="string">
+            <type>string</type>
+          </tag>
+          <tag name="inherited_from" description="\Codex\Contracts\Codex::url()" refers="\Codex\Contracts\Codex::url()" link="/classes/Codex.Contracts.Codex.html#method_url"/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$project</name>
+          <default>null</default>
+          <type>\Codex\Projects\Project|string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$ref</name>
+          <default>null</default>
+          <type>null|string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$doc</name>
+          <default>null</default>
+          <type>null|string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Codex" line="190" package="Codex\Core">
+        <name>log</name>
+        <full_name>\Codex\Codex::log()</full_name>
+        <docblock line="190">
+          <description>Writes a log message to the codex log file</description>
+          <long-description/>
+          <tag name="param" line="190" description="&lt;p&gt;The log level&lt;/p&gt;" type="string" variable="$level">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="190" description="&lt;p&gt;The message to log&lt;/p&gt;" type="string" variable="$message">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="190" description="&lt;p&gt;(optional) The context to log&lt;/p&gt;" type="array" variable="$context">
+            <type>array</type>
+          </tag>
+          <tag name="inherited_from" description="\Codex\Contracts\Codex::log()" refers="\Codex\Contracts\Codex::log()" link="/classes/Codex.Contracts.Codex.html#method_log"/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$level</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$message</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$context</name>
+          <default>array()</default>
+          <type>array</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Codex" line="203" package="Codex\Core">
+        <name>view</name>
+        <full_name>\Codex\Codex::view()</full_name>
+        <docblock line="203">
+          <description>Returns a Codex view name</description>
+          <long-description/>
+          <tag name="param" line="203" description="&lt;p&gt;The simple name&lt;/p&gt;" type="string" variable="$name">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="203" description="The namespaced view name" type="string">
+            <type>string</type>
+          </tag>
+          <tag name="inherited_from" description="\Codex\Contracts\Codex::view()" refers="\Codex\Contracts\Codex::view()" link="/classes/Codex.Contracts.Codex.html#method_view"/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$name</name>
+          <default/>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Codex" line="213" package="Codex\Core">
+        <name>getDocsPath</name>
+        <full_name>\Codex\Codex::getDocsPath()</full_name>
+        <docblock line="213">
+          <description>The path to the directory where all documentation projects reside</description>
+          <long-description/>
+          <tag name="return" line="213" description="" type="string">
+            <type>string</type>
+          </tag>
+          <tag name="inherited_from" description="\Codex\Contracts\Codex::getDocsPath()" refers="\Codex\Contracts\Codex::getDocsPath()" link="/classes/Codex.Contracts.Codex.html#method_getDocsPath"/>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Codex" line="223" package="Codex\Core">
+        <name>getCache</name>
+        <full_name>\Codex\Codex::getCache()</full_name>
+        <docblock line="223">
+          <description>Get cache.</description>
+          <long-description/>
+          <tag name="return" line="223" description="" type="\Illuminate\Contracts\Cache\Repository">
+            <type>\Illuminate\Contracts\Cache\Repository</type>
+          </tag>
+          <tag name="inherited_from" description="\Codex\Contracts\Codex::getCache()" refers="\Codex\Contracts\Codex::getCache()" link="/classes/Codex.Contracts.Codex.html#method_getCache"/>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Codex" line="235" package="Codex\Core">
+        <name>setCache</name>
+        <full_name>\Codex\Codex::setCache()</full_name>
+        <docblock line="235">
+          <description>Set cache.</description>
+          <long-description/>
+          <tag name="param" line="235" description="" type="\Illuminate\Cache\CacheManager" variable="$cache">
+            <type>\Illuminate\Cache\CacheManager</type>
+          </tag>
+          <tag name="return" line="235" description="" type="\Codex\Codex">
+            <type>\Codex\Codex</type>
+          </tag>
+          <tag name="inherited_from" description="\Codex\Contracts\Codex::setCache()" refers="\Codex\Contracts\Codex::setCache()" link="/classes/Codex.Contracts.Codex.html#method_setCache"/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$cache</name>
+          <default/>
+          <type>\Illuminate\Cache\CacheManager</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Codex" line="247" package="Codex\Core">
+        <name>getLog</name>
+        <full_name>\Codex\Codex::getLog()</full_name>
+        <docblock line="247">
+          <description>Get the log instance</description>
+          <long-description/>
+          <tag name="return" line="247" description="" type="\Codex\Log\Writer">
+            <type>\Codex\Log\Writer</type>
+          </tag>
+          <tag name="inherited_from" description="\Codex\Contracts\Codex::getLog()" refers="\Codex\Contracts\Codex::getLog()" link="/classes/Codex.Contracts.Codex.html#method_getLog"/>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Codex" line="259" package="Codex\Core">
+        <name>setLog</name>
+        <full_name>\Codex\Codex::setLog()</full_name>
+        <docblock line="259">
+          <description>Set the log value</description>
+          <long-description/>
+          <tag name="param" line="259" description="&lt;p&gt;The log instance to replace&lt;/p&gt;" type="\Codex\Log\Writer|mixed" variable="$log">
+            <type>\Codex\Log\Writer</type>
+            <type>mixed</type>
+          </tag>
+          <tag name="return" line="259" description="" type="\Codex\Codex">
+            <type>\Codex\Codex</type>
+          </tag>
+          <tag name="inherited_from" description="\Codex\Contracts\Codex::setLog()" refers="\Codex\Contracts\Codex::setLog()" link="/classes/Codex.Contracts.Codex.html#method_setLog"/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$log</name>
+          <default/>
+          <type>\Codex\Log\Writer|mixed</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Codex" line="266" package="Codex\Core">
+        <name>toArray</name>
+        <full_name>\Codex\Codex::toArray()</full_name>
+        <docblock line="266">
+          <description>toArray method</description>
+          <long-description/>
+          <tag name="inherited_from" description="\Codex\Contracts\Codex::toArray()" refers="\Codex\Contracts\Codex::toArray()" link="/classes/Codex.Contracts.Codex.html#method_toArray"/>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Codex" line="276" package="Codex\Core">
+        <name>__get</name>
+        <full_name>\Codex\Codex::__get()</full_name>
+        <docblock line="276">
+          <description/>
+          <long-description/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$name</name>
+          <default/>
+          <type/>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Codex" line="25" package="Codex\Core">
+        <name>getFiles</name>
+        <full_name>\Codex\Traits\FilesTrait::getFiles()</full_name>
+        <docblock line="25">
+          <description>Get the filesystem instance.</description>
+          <long-description/>
+          <tag name="return" line="25" description="" type="\Illuminate\Contracts\Filesystem\Filesystem">
+            <type>\Illuminate\Contracts\Filesystem\Filesystem</type>
+          </tag>
+        </docblock>
+        <inherited_from>\Codex\Traits\FilesTrait</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Codex" line="37" package="Codex\Core">
+        <name>setFiles</name>
+        <full_name>\Codex\Traits\FilesTrait::setFiles()</full_name>
+        <docblock line="37">
+          <description>Set the filesystem instance</description>
+          <long-description/>
+          <tag name="param" line="37" description="&lt;p&gt;The filesystem instance&lt;/p&gt;" type="mixed|string|\Illuminate\Contracts\Filesystem\Filesystem" variable="$files">
+            <type>mixed</type>
+            <type>string</type>
+            <type>\Illuminate\Contracts\Filesystem\Filesystem</type>
+          </tag>
+          <tag name="return" line="37" description="" type="\Codex\Codex">
+            <type>\Codex\Codex</type>
+          </tag>
+          <tag name="fluent" description="This method is part of a fluent interface and will return the same instance"/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$files</name>
+          <default/>
+          <type>mixed|string|\Illuminate\Contracts\Filesystem\Filesystem</type>
+        </argument>
+        <inherited_from>\Codex\Traits\FilesTrait</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Codex" line="36" package="Codex\Core">
+        <name>config</name>
+        <full_name>\Codex\Traits\ConfigTrait::config()</full_name>
+        <docblock line="36">
+          <description>Get a configuration item of the project using dot notation</description>
+          <long-description/>
+          <tag name="param" line="36" description="" type="null|string" variable="$key">
+            <type>null</type>
+            <type>string</type>
+          </tag>
+          <tag name="param" line="36" description="" type="null|mixed" variable="$default">
+            <type>null</type>
+            <type>mixed</type>
+          </tag>
+          <tag name="return" line="36" description="" type="array|mixed|\Codex\Support\Collection">
+            <type>array</type>
+            <type>mixed</type>
+            <type>\Codex\Support\Collection</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$key</name>
+          <default>null</default>
+          <type>null|string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$default</name>
+          <default>null</default>
+          <type>null|mixed</type>
+        </argument>
+        <inherited_from>\Codex\Traits\ConfigTrait</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Codex" line="50" package="Codex\Core">
+        <name>setConfig</name>
+        <full_name>\Codex\Traits\ConfigTrait::setConfig()</full_name>
+        <docblock line="50">
+          <description>Set the config.</description>
+          <long-description/>
+          <tag name="param" line="50" description="&lt;p&gt;The string key to set the value to. Or to set the whole config, you can pass a array or Arrayable without value&lt;/p&gt;" type="array|\Illuminate\Contracts\Support\Arrayable|string" variable="$key">
+            <type>array</type>
+            <type>\Illuminate\Contracts\Support\Arrayable</type>
+            <type>string</type>
+          </tag>
+          <tag name="param" line="50" description="" type="null|mixed" variable="$value">
+            <type>null</type>
+            <type>mixed</type>
+          </tag>
+          <tag name="return" line="50" description="" type="\Codex\Codex">
+            <type>\Codex\Codex</type>
+          </tag>
+          <tag name="fluent" description="This method is part of a fluent interface and will return the same instance"/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$key</name>
+          <default/>
+          <type>array|\Illuminate\Contracts\Support\Arrayable|string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$value</name>
+          <default>null</default>
+          <type>null|mixed</type>
+        </argument>
+        <inherited_from>\Codex\Traits\ConfigTrait</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Codex" line="76" package="Codex\Core">
+        <name>getConfig</name>
+        <full_name>\Codex\Traits\ConfigTrait::getConfig()</full_name>
+        <docblock line="76">
+          <description>get config value</description>
+          <long-description/>
+          <tag name="return" line="76" description="" type="array">
+            <type>array</type>
+          </tag>
+        </docblock>
+        <inherited_from>\Codex\Traits\ConfigTrait</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="true" visibility="public" namespace="Codex" line="23" package="Default">
+        <name>getEventName</name>
+        <full_name>\Codex\Traits\HookableTrait::getEventName()</full_name>
+        <docblock line="23">
+          <description>Returns the transformed (namespaced) event name for a hook</description>
+          <long-description/>
+          <tag name="param" line="23" description="&lt;p&gt;The hook name&lt;/p&gt;" type="string" variable="$event">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="23" description="The transformed event name" type="string">
+            <type>string</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$event</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <inherited_from>\Codex\Traits\HookableTrait</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="true" visibility="public" namespace="Codex" line="37" package="Default">
+        <name>hook</name>
+        <full_name>\Codex\Traits\HookableTrait::hook()</full_name>
+        <docblock line="37">
+          <description>Create a Codex Hook</description>
+          <long-description/>
+          <tag name="param" line="37" description="&lt;p&gt;The hook name&lt;/p&gt;" type="string" variable="$event">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="37" description="&lt;p&gt;The callback to execute&lt;/p&gt;" type="string|\Closure" variable="$callback">
+            <type>string</type>
+            <type>\Closure</type>
+          </tag>
+          <tag name="param" line="37" description="&lt;p&gt;(optional) The priority&lt;/p&gt;" type="integer" variable="$priority">
+            <type>integer</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$event</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$callback</name>
+          <default/>
+          <type>string|\Closure</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$priority</name>
+          <default>1</default>
+          <type>integer</type>
+        </argument>
+        <inherited_from>\Codex\Traits\HookableTrait</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Codex" line="51" package="Default">
+        <name>hookPoint</name>
+        <full_name>\Codex\Traits\HookableTrait::hookPoint()</full_name>
+        <docblock line="51">
+          <description>Defines a point where hooks can hook</description>
+          <long-description/>
+          <tag name="param" line="51" description="&lt;p&gt;The hook name&lt;/p&gt;" type="string" variable="$event">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="51" description="&lt;p&gt;(optional) The arguments to pass along&lt;/p&gt;" type="array" variable="$args">
+            <type>array</type>
+          </tag>
+          <tag name="param" line="51" description="&lt;p&gt;(optional) If this hook can halt&lt;/p&gt;" type="boolean" variable="$halt">
+            <type>boolean</type>
+          </tag>
+          <tag name="return" line="51" description="" type="array|null">
+            <type>array</type>
+            <type>null</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$event</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$args</name>
+          <default>array()</default>
+          <type>array</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$halt</name>
+          <default>true</default>
+          <type>boolean</type>
+        </argument>
+        <inherited_from>\Codex\Traits\HookableTrait</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Codex" line="65" package="Default">
+        <name>fireEvent</name>
+        <full_name>\Codex\Traits\HookableTrait::fireEvent()</full_name>
+        <docblock line="65">
+          <description>Fires an event for hooks</description>
+          <long-description/>
+          <tag name="param" line="65" description="&lt;p&gt;The hook name&lt;/p&gt;" type="string" variable="$event">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="65" description="&lt;p&gt;(optional) The arguments to pass along&lt;/p&gt;" type="array" variable="$args">
+            <type>array</type>
+          </tag>
+          <tag name="param" line="65" description="&lt;p&gt;(optional) If this hook can halt&lt;/p&gt;" type="boolean" variable="$halt">
+            <type>boolean</type>
+          </tag>
+          <tag name="return" line="65" description="" type="array|null">
+            <type>array</type>
+            <type>null</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$event</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$args</name>
+          <default>array()</default>
+          <type>array</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$halt</name>
+          <default>true</default>
+          <type>boolean</type>
+        </argument>
+        <inherited_from>\Codex\Traits\HookableTrait</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="true" visibility="public" namespace="Codex" line="31" package="Codex\Core">
+        <name>observe</name>
+        <full_name>\Codex\Traits\ObservableTrait::observe()</full_name>
+        <docblock line="31">
+          <description>Register an observer with the Model.</description>
+          <long-description/>
+          <tag name="param" line="31" description="" type="object|string" variable="$class">
+            <type>object</type>
+            <type>string</type>
+          </tag>
+          <tag name="param" line="31" description="" type="integer" variable="$priority">
+            <type>integer</type>
+          </tag>
+          <tag name="return" line="31" description="" type="void">
+            <type>void</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$class</name>
+          <default/>
+          <type>object|string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$priority</name>
+          <default>0</default>
+          <type>integer</type>
+        </argument>
+        <inherited_from>\Codex\Traits\ObservableTrait</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Codex" line="49" package="Codex\Core">
+        <name>getObservableEvents</name>
+        <full_name>\Codex\Traits\ObservableTrait::getObservableEvents()</full_name>
+        <docblock line="49">
+          <description>Get the observable event names.</description>
+          <long-description/>
+          <tag name="return" line="49" description="The event names that can be observed" type="array">
+            <type>array</type>
+          </tag>
+        </docblock>
+        <inherited_from>\Codex\Traits\ObservableTrait</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Codex" line="57" package="Codex\Core">
+        <name>flushEventListeners</name>
+        <full_name>\Codex\Traits\ObservableTrait::flushEventListeners()</full_name>
+        <docblock line="57">
+          <description>Remove all of the event listeners for the model.</description>
+          <long-description/>
+        </docblock>
+        <inherited_from>\Codex\Traits\ObservableTrait</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Codex" line="72" package="Codex\Core">
+        <name>addObservableEvents</name>
+        <full_name>\Codex\Traits\ObservableTrait::addObservableEvents()</full_name>
+        <docblock line="72">
+          <description>Adds one or more observable event names</description>
+          <long-description/>
+          <tag name="param" line="72" description="&lt;p&gt;The observable event names&lt;/p&gt;" type="array|string" variable="$observables">
+            <type>array</type>
+            <type>string</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$observables</name>
+          <default/>
+          <type>array|string</type>
+        </argument>
+        <inherited_from>\Codex\Traits\ObservableTrait</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Codex" line="86" package="Codex\Core">
+        <name>setObservableEvents</name>
+        <full_name>\Codex\Traits\ObservableTrait::setObservableEvents()</full_name>
+        <docblock line="86">
+          <description>Set the observable event names.</description>
+          <long-description/>
+          <tag name="param" line="86" description="" type="array" variable="$observables">
+            <type>array</type>
+          </tag>
+          <tag name="return" line="86" description="" type="\Codex\Codex">
+            <type>\Codex\Codex</type>
+          </tag>
+          <tag name="fluent" description="This method is part of a fluent interface and will return the same instance"/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$observables</name>
+          <default/>
+          <type>array</type>
+        </argument>
+        <inherited_from>\Codex\Traits\ObservableTrait</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Codex" line="105" package="Codex\Core">
+        <name>removeObservableEvents</name>
+        <full_name>\Codex\Traits\ObservableTrait::removeObservableEvents()</full_name>
+        <docblock line="105">
+          <description>Remove an observable event name.</description>
+          <long-description/>
+          <tag name="param" line="105" description="" type="array|mixed" variable="$observables">
+            <type>array</type>
+            <type>mixed</type>
+          </tag>
+          <tag name="return" line="105" description="" type="void">
+            <type>void</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$observables</name>
+          <default/>
+          <type>array|mixed</type>
+        </argument>
+        <inherited_from>\Codex\Traits\ObservableTrait</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Codex" line="34" package="Codex\Traits">
+        <name>bootIfNotBooted</name>
+        <full_name>\Codex\Traits\BootableTrait::bootIfNotBooted()</full_name>
+        <docblock line="34">
+          <description>Check if the model needs to be booted and if so, do it.</description>
+          <long-description/>
+          <tag name="throws" line="34" description="" type="\Codex\Exception\ContractMissingException">
+            <type>\Codex\Exception\ContractMissingException</type>
+          </tag>
+        </docblock>
+        <inherited_from>\Codex\Traits\BootableTrait</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="true" visibility="protected" namespace="Codex" line="61" package="Codex\Traits">
+        <name>boot</name>
+        <full_name>\Codex\Traits\BootableTrait::boot()</full_name>
+        <docblock line="61">
+          <description>The "boot" method of the model.</description>
+          <long-description/>
+          <tag name="return" line="61" description="" type="void">
+            <type>void</type>
+          </tag>
+        </docblock>
+        <inherited_from>\Codex\Traits\BootableTrait</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="true" visibility="protected" namespace="Codex" line="71" package="Codex\Traits">
+        <name>bootTraits</name>
+        <full_name>\Codex\Traits\BootableTrait::bootTraits()</full_name>
+        <docblock line="71">
+          <description>Boot all of the bootable traits on the model.</description>
+          <long-description/>
+          <tag name="return" line="71" description="" type="void">
+            <type>void</type>
+          </tag>
+        </docblock>
+        <inherited_from>\Codex\Traits\BootableTrait</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="true" visibility="public" namespace="Codex" line="85" package="Codex\Traits">
+        <name>clearBooted</name>
+        <full_name>\Codex\Traits\BootableTrait::clearBooted()</full_name>
+        <docblock line="85">
+          <description>Clear the list of booted models so they will be re-booted.</description>
+          <long-description/>
+          <tag name="return" line="85" description="" type="void">
+            <type>void</type>
+          </tag>
+        </docblock>
+        <inherited_from>\Codex\Traits\BootableTrait</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Codex" line="94" package="Codex\Traits">
+        <name>__wakeup</name>
+        <full_name>\Codex\Traits\BootableTrait::__wakeup()</full_name>
+        <docblock line="94">
+          <description>The wakeup magic method is used to boot the bootable stuff</description>
+          <long-description/>
+          <tag name="throws" line="94" description="" type="\Codex\Exception\ContractMissingException">
+            <type>\Codex\Exception\ContractMissingException</type>
+          </tag>
+        </docblock>
+        <inherited_from>\Codex\Traits\BootableTrait</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="true" visibility="public" namespace="Codex" line="106" package="Codex\Traits">
+        <name>booting</name>
+        <full_name>\Codex\Traits\BootableTrait::booting()</full_name>
+        <docblock line="106">
+          <description>Register a listener for the "booting" event of this class</description>
+          <long-description/>
+          <tag name="param" line="106" description="" type="string|\Closure" variable="$callback">
+            <type>string</type>
+            <type>\Closure</type>
+          </tag>
+          <tag name="return" line="106" description="The class name" type="string">
+            <type>string</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$callback</name>
+          <default/>
+          <type>string|\Closure</type>
+        </argument>
+        <inherited_from>\Codex\Traits\BootableTrait</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="true" visibility="public" namespace="Codex" line="120" package="Codex\Traits">
+        <name>booted</name>
+        <full_name>\Codex\Traits\BootableTrait::booted()</full_name>
+        <docblock line="120">
+          <description>Register a listener for the "booted" event of this class</description>
+          <long-description/>
+          <tag name="param" line="120" description="" type="string|\Closure" variable="$callback">
+            <type>string</type>
+            <type>\Closure</type>
+          </tag>
+          <tag name="return" line="120" description="The class name" type="string">
+            <type>string</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$callback</name>
+          <default/>
+          <type>string|\Closure</type>
+        </argument>
+        <inherited_from>\Codex\Traits\BootableTrait</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Codex" line="30" package="Default">
+        <name>extensions</name>
+        <full_name>\Codex\Traits\ExtendableTrait::extensions()</full_name>
+        <docblock line="30">
+          <description>Returns all registered extensions for this class</description>
+          <long-description/>
+          <tag name="return" line="30" description="The registered extensions for this class" type="array">
+            <type>array</type>
+          </tag>
+        </docblock>
+        <inherited_from>\Codex\Traits\ExtendableTrait</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Codex" line="42" package="Default">
+        <name>getExtenableProperty</name>
+        <full_name>\Codex\Traits\ExtendableTrait::getExtenableProperty()</full_name>
+        <docblock line="42">
+          <description>This will return the property. It checks if the property name exists and will return it. If it doesn't exist, it will return the property prefixed with _ (underscore)</description>
+          <long-description/>
+          <tag name="param" line="42" description="&lt;p&gt;The property name&lt;/p&gt;" type="string" variable="$type">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="42" description="" type="mixed">
+            <type>mixed</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$type</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <inherited_from>\Codex\Traits\ExtendableTrait</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Codex" line="54" package="Default">
+        <name>extend</name>
+        <full_name>\Codex\Traits\ExtendableTrait::extend()</full_name>
+        <docblock line="54">
+          <description>Extend the class with a class or method.</description>
+          <long-description/>
+          <tag name="param" line="54" description="&lt;p&gt;The name to register the extension under&lt;/p&gt;" type="string" variable="$name">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="54" description="&lt;p&gt;The extension that should be used&lt;/p&gt;" type="string|\Closure" variable="$extension">
+            <type>string</type>
+            <type>\Closure</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$name</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$extension</name>
+          <default/>
+          <type>string|\Closure</type>
+        </argument>
+        <inherited_from>\Codex\Traits\ExtendableTrait</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Codex" line="143" package="Default">
+        <name>__call</name>
+        <full_name>\Codex\Traits\ExtendableTrait::__call()</full_name>
+        <docblock line="143">
+          <description>Allows macro extensions to be called</description>
+          <long-description/>
+          <tag name="param" line="143" description="&lt;p&gt;The name of the extension&lt;/p&gt;" type="string" variable="$name">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="143" description="&lt;p&gt;The optional parameters&lt;/p&gt;" type="array" variable="$params">
+            <type>array</type>
+          </tag>
+          <tag name="return" line="143" description="" type="mixed">
+            <type>mixed</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$name</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$params</name>
+          <default>array()</default>
+          <type>array</type>
+        </argument>
+        <inherited_from>\Codex\Traits\ExtendableTrait</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Codex" line="158" package="Default">
+        <name>__get</name>
+        <full_name>\Codex\Traits\ExtendableTrait::__get()</full_name>
+        <docblock line="158">
+          <description>Allows class extensions to return it's value.</description>
+          <long-description/>
+          <tag name="param" line="158" description="&lt;p&gt;The name of the extension&lt;/p&gt;" type="string" variable="$name">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="158" description="" type="mixed">
+            <type>mixed</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$name</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <inherited_from>\Codex\Traits\ExtendableTrait</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Codex" line="29" package="Codex\Core">
+        <name>getCodex</name>
+        <full_name>\Codex\Traits\CodexTrait::getCodex()</full_name>
+        <docblock line="29">
+          <description>getCodex method</description>
+          <long-description/>
+          <tag name="return" line="29" description="" type="\Codex\Codex|\Codex\Contracts\Codex">
+            <type>\Codex\Codex</type>
+            <type>\Codex\Contracts\Codex</type>
+          </tag>
+        </docblock>
+        <inherited_from>\Codex\Traits\CodexTrait</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Codex" line="41" package="Codex\Core">
+        <name>setCodex</name>
+        <full_name>\Codex\Traits\CodexTrait::setCodex()</full_name>
+        <docblock line="41">
+          <description>Set the codex value</description>
+          <long-description/>
+          <tag name="param" line="41" description="" type="\Codex\Contracts\Codex" variable="$codex">
+            <type>\Codex\Contracts\Codex</type>
+          </tag>
+          <tag name="return" line="41" description="" type="\Codex\Traits\CodexTrait">
+            <type>\Codex\Traits\CodexTrait</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$codex</name>
+          <default/>
+          <type>\Codex\Contracts\Codex</type>
+        </argument>
+        <inherited_from>\Codex\Traits\CodexTrait</inherited_from>
+      </method>
+      <property final="false" static="false" visibility="public" line="41">
+        <name>$addons</name>
+        <default/>
+        <docblock>
+          <description>The addons instance</description>
+          <long-description/>
+          <tag name="var" description="&lt;p&gt;The addons instance&lt;/p&gt;" type="\Codex\Addons\Addons" line="41">
+            <type by_reference="false">\Codex\Addons\Addons</type>
+          </tag>
+          <tag name="magic" line="41"/>
+          <tag name="property-read" line="41" description="The addons instance" type="\Codex\Addons\Addons" variable="$addons">
+            <type>\Codex\Addons\Addons</type>
+          </tag>
+        </docblock>
+      </property>
+      <property final="false" static="false" visibility="public" line="41">
+        <name>$projects</name>
+        <default/>
+        <docblock>
+          <description>The projects instance</description>
+          <long-description/>
+          <tag name="var" description="&lt;p&gt;The projects instance&lt;/p&gt;" type="\Codex\Projects\Projects" line="41">
+            <type by_reference="false">\Codex\Projects\Projects</type>
+          </tag>
+          <tag name="magic" line="41"/>
+          <tag name="property-read" line="41" description="The projects instance" type="\Codex\Projects\Projects" variable="$projects">
+            <type>\Codex\Projects\Projects</type>
+          </tag>
+        </docblock>
+      </property>
+      <property final="false" static="false" visibility="public" line="41">
+        <name>$menus</name>
+        <default/>
+        <docblock>
+          <description>The menus instance</description>
+          <long-description/>
+          <tag name="var" description="&lt;p&gt;The menus instance&lt;/p&gt;" type="\Codex\Menus\Menus" line="41">
+            <type by_reference="false">\Codex\Menus\Menus</type>
+          </tag>
+          <tag name="magic" line="41"/>
+          <tag name="property-read" line="41" description="The menus instance" type="\Codex\Menus\Menus" variable="$menus">
+            <type>\Codex\Menus\Menus</type>
+          </tag>
+        </docblock>
+      </property>
+      <property final="false" static="false" visibility="public" line="41">
+        <name>$auth</name>
+        <default/>
+        <docblock>
+          <description>The auth addon instance</description>
+          <long-description/>
+          <tag name="var" description="&lt;p&gt;The auth addon instance&lt;/p&gt;" type="\Codex\Addon\Auth\CodexAuth" line="41">
+            <type by_reference="false">\Codex\Addon\Auth\CodexAuth</type>
+          </tag>
+          <tag name="magic" line="41"/>
+          <tag name="property-read" line="41" description="The auth addon instance" type="\Codex\Addon\Auth\CodexAuth" variable="$auth">
+            <type>\Codex\Addon\Auth\CodexAuth</type>
+          </tag>
+        </docblock>
+      </property>
+      <property final="false" static="false" visibility="public" line="41">
+        <name>$git</name>
+        <default/>
+        <docblock>
+          <description>The theme instance</description>
+          <long-description/>
+          <tag name="var" description="&lt;p&gt;The theme instance&lt;/p&gt;" type="\Codex\Addon\Git\CodexGit" line="41">
+            <type by_reference="false">\Codex\Addon\Git\CodexGit</type>
+          </tag>
+          <tag name="magic" line="41"/>
+          <tag name="property-read" line="41" description="The theme instance" type="\Codex\Addon\Git\CodexGit" variable="$git">
+            <type>\Codex\Addon\Git\CodexGit</type>
+          </tag>
+        </docblock>
+      </property>
+      <property final="false" static="false" visibility="public" line="41">
+        <name>$theme</name>
+        <default/>
+        <docblock>
+          <description>The theme instance</description>
+          <long-description/>
+          <tag name="var" description="&lt;p&gt;The theme instance&lt;/p&gt;" type="\Codex\Theme" line="41">
+            <type by_reference="false">\Codex\Theme</type>
+          </tag>
+          <tag name="magic" line="41"/>
+          <tag name="property-read" line="41" description="The theme instance" type="\Codex\Theme" variable="$theme">
+            <type>\Codex\Theme</type>
+          </tag>
+        </docblock>
+      </property>
+    </class>
+    <parse_markers>
+      <error line="266" code="PPC:ERR-50008">No summary for method toArray()</error>
+      <error line="276" code="PPC:ERR-50015">Argument $name is missing from the Docblock of __get</error>
+      <error line="276" code="PPC:ERR-50008">No summary for method __get()</error>
+    </parse_markers>
+    <source>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</source>
+  <type>class</type></file>

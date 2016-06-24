@@ -1,0 +1,492 @@
+<file path="codex/vendor/laravel/framework/src/Illuminate/Database/Eloquent/Factory.php" generated-path="codex.vendor.laravel.framework.src.Illuminate.Database.Eloquent.Factory.html" hash="f810f908ce6f5b3847780b0af293a4ee" package="Default">
+    <docblock line="0">
+      <description/>
+      <long-description/>
+      <tag name="package" line="0" description="Default"/>
+    </docblock>
+    <namespace-alias name="ArrayAccess">\ArrayAccess</namespace-alias>
+    <namespace-alias name="Faker">\Faker\Generator</namespace-alias>
+    <namespace-alias name="Finder">\Symfony\Component\Finder\Finder</namespace-alias>
+    <class final="false" abstract="false" namespace="Illuminate\Database\Eloquent" line="9" package="Default">
+      <extends/>
+      <implements>\ArrayAccess</implements>
+      <name>Factory</name>
+      <full_name>\Illuminate\Database\Eloquent\Factory</full_name>
+      <docblock line="9">
+        <description/>
+        <long-description/>
+        <tag name="package" line="9" description="Default"/>
+      </docblock>
+      <property static="false" visibility="protected" namespace="Illuminate\Database\Eloquent" line="16" package="Default">
+        <name>$faker</name>
+        <full_name>\Illuminate\Database\Eloquent\Factory::faker</full_name>
+        <default/>
+        <docblock line="16">
+          <description>The Faker instance for the builder.</description>
+          <long-description/>
+          <tag name="var" line="16" description="" type="\Faker\Generator" variable="">
+            <type>\Faker\Generator</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" namespace="Illuminate\Database\Eloquent" line="34" package="Default">
+        <name>$definitions</name>
+        <full_name>\Illuminate\Database\Eloquent\Factory::definitions</full_name>
+        <default>array()</default>
+        <docblock line="34">
+          <description>The model definitions in the container.</description>
+          <long-description/>
+          <tag name="var" line="34" description="" type="array" variable="">
+            <type>array</type>
+          </tag>
+        </docblock>
+      </property>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Eloquent" line="24" package="Default">
+        <name>__construct</name>
+        <full_name>\Illuminate\Database\Eloquent\Factory::__construct()</full_name>
+        <docblock line="24">
+          <description>Create a new factory instance.</description>
+          <long-description/>
+          <tag name="param" line="24" description="" type="\Faker\Generator" variable="$faker">
+            <type>\Faker\Generator</type>
+          </tag>
+          <tag name="return" line="24" description="" type="void">
+            <type>void</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$faker</name>
+          <default/>
+          <type>\Faker\Generator</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="true" visibility="public" namespace="Illuminate\Database\Eloquent" line="43" package="Default">
+        <name>construct</name>
+        <full_name>\Illuminate\Database\Eloquent\Factory::construct()</full_name>
+        <docblock line="43">
+          <description>Create a new factory container.</description>
+          <long-description/>
+          <tag name="param" line="43" description="" type="\Faker\Generator" variable="$faker">
+            <type>\Faker\Generator</type>
+          </tag>
+          <tag name="param" line="43" description="" type="string|null" variable="$pathToFactories">
+            <type>string</type>
+            <type>null</type>
+          </tag>
+          <tag name="return" line="43" description="" type="static">
+            <type>static</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$faker</name>
+          <default/>
+          <type>\Faker\Generator</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$pathToFactories</name>
+          <default>null</default>
+          <type>string|null</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Eloquent" line="58" package="Default">
+        <name>defineAs</name>
+        <full_name>\Illuminate\Database\Eloquent\Factory::defineAs()</full_name>
+        <docblock line="58">
+          <description>Define a class with a given short-name.</description>
+          <long-description/>
+          <tag name="param" line="58" description="" type="string" variable="$class">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="58" description="" type="string" variable="$name">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="58" description="" type="callable" variable="$attributes">
+            <type>callable</type>
+          </tag>
+          <tag name="return" line="58" description="" type="void">
+            <type>void</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$class</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$name</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$attributes</name>
+          <default/>
+          <type>callable</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Eloquent" line="71" package="Default">
+        <name>define</name>
+        <full_name>\Illuminate\Database\Eloquent\Factory::define()</full_name>
+        <docblock line="71">
+          <description>Define a class with a given set of attributes.</description>
+          <long-description/>
+          <tag name="param" line="71" description="" type="string" variable="$class">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="71" description="" type="callable" variable="$attributes">
+            <type>callable</type>
+          </tag>
+          <tag name="param" line="71" description="" type="string" variable="$name">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="71" description="" type="void">
+            <type>void</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$class</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$attributes</name>
+          <default/>
+          <type>callable</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$name</name>
+          <default>'default'</default>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Eloquent" line="83" package="Default">
+        <name>create</name>
+        <full_name>\Illuminate\Database\Eloquent\Factory::create()</full_name>
+        <docblock line="83">
+          <description>Create an instance of the given model and persist it to the database.</description>
+          <long-description/>
+          <tag name="param" line="83" description="" type="string" variable="$class">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="83" description="" type="array" variable="$attributes">
+            <type>array</type>
+          </tag>
+          <tag name="return" line="83" description="" type="mixed">
+            <type>mixed</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$class</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$attributes</name>
+          <default>array()</default>
+          <type>array</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Eloquent" line="96" package="Default">
+        <name>createAs</name>
+        <full_name>\Illuminate\Database\Eloquent\Factory::createAs()</full_name>
+        <docblock line="96">
+          <description>Create an instance of the given model and type and persist it to the database.</description>
+          <long-description/>
+          <tag name="param" line="96" description="" type="string" variable="$class">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="96" description="" type="string" variable="$name">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="96" description="" type="array" variable="$attributes">
+            <type>array</type>
+          </tag>
+          <tag name="return" line="96" description="" type="mixed">
+            <type>mixed</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$class</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$name</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$attributes</name>
+          <default>array()</default>
+          <type>array</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Eloquent" line="107" package="Default">
+        <name>load</name>
+        <full_name>\Illuminate\Database\Eloquent\Factory::load()</full_name>
+        <docblock line="107">
+          <description>Load factories from path.</description>
+          <long-description/>
+          <tag name="param" line="107" description="" type="string" variable="$path">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="107" description="" type="\Illuminate\Database\Eloquent\Factory">
+            <type>\Illuminate\Database\Eloquent\Factory</type>
+          </tag>
+          <tag name="fluent" description="This method is part of a fluent interface and will return the same instance"/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$path</name>
+          <default/>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Eloquent" line="127" package="Default">
+        <name>make</name>
+        <full_name>\Illuminate\Database\Eloquent\Factory::make()</full_name>
+        <docblock line="127">
+          <description>Create an instance of the given model.</description>
+          <long-description/>
+          <tag name="param" line="127" description="" type="string" variable="$class">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="127" description="" type="array" variable="$attributes">
+            <type>array</type>
+          </tag>
+          <tag name="return" line="127" description="" type="mixed">
+            <type>mixed</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$class</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$attributes</name>
+          <default>array()</default>
+          <type>array</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Eloquent" line="140" package="Default">
+        <name>makeAs</name>
+        <full_name>\Illuminate\Database\Eloquent\Factory::makeAs()</full_name>
+        <docblock line="140">
+          <description>Create an instance of the given model and type.</description>
+          <long-description/>
+          <tag name="param" line="140" description="" type="string" variable="$class">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="140" description="" type="string" variable="$name">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="140" description="" type="array" variable="$attributes">
+            <type>array</type>
+          </tag>
+          <tag name="return" line="140" description="" type="mixed">
+            <type>mixed</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$class</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$name</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$attributes</name>
+          <default>array()</default>
+          <type>array</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Eloquent" line="153" package="Default">
+        <name>rawOf</name>
+        <full_name>\Illuminate\Database\Eloquent\Factory::rawOf()</full_name>
+        <docblock line="153">
+          <description>Get the raw attribute array for a given named model.</description>
+          <long-description/>
+          <tag name="param" line="153" description="" type="string" variable="$class">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="153" description="" type="string" variable="$name">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="153" description="" type="array" variable="$attributes">
+            <type>array</type>
+          </tag>
+          <tag name="return" line="153" description="" type="array">
+            <type>array</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$class</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$name</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$attributes</name>
+          <default>array()</default>
+          <type>array</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Eloquent" line="166" package="Default">
+        <name>raw</name>
+        <full_name>\Illuminate\Database\Eloquent\Factory::raw()</full_name>
+        <docblock line="166">
+          <description>Get the raw attribute array for a given model.</description>
+          <long-description/>
+          <tag name="param" line="166" description="" type="string" variable="$class">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="166" description="" type="array" variable="$attributes">
+            <type>array</type>
+          </tag>
+          <tag name="param" line="166" description="" type="string" variable="$name">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="166" description="" type="array">
+            <type>array</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$class</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$attributes</name>
+          <default>array()</default>
+          <type>array</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$name</name>
+          <default>'default'</default>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Eloquent" line="180" package="Default">
+        <name>of</name>
+        <full_name>\Illuminate\Database\Eloquent\Factory::of()</full_name>
+        <docblock line="180">
+          <description>Create a builder for the given model.</description>
+          <long-description/>
+          <tag name="param" line="180" description="" type="string" variable="$class">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="180" description="" type="string" variable="$name">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="180" description="" type="\Illuminate\Database\Eloquent\FactoryBuilder">
+            <type>\Illuminate\Database\Eloquent\FactoryBuilder</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$class</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$name</name>
+          <default>'default'</default>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Eloquent" line="191" package="Default">
+        <name>offsetExists</name>
+        <full_name>\Illuminate\Database\Eloquent\Factory::offsetExists()</full_name>
+        <docblock line="191">
+          <description>Determine if the given offset exists.</description>
+          <long-description/>
+          <tag name="param" line="191" description="" type="string" variable="$offset">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="191" description="" type="boolean">
+            <type>boolean</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$offset</name>
+          <default/>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Eloquent" line="202" package="Default">
+        <name>offsetGet</name>
+        <full_name>\Illuminate\Database\Eloquent\Factory::offsetGet()</full_name>
+        <docblock line="202">
+          <description>Get the value of the given offset.</description>
+          <long-description/>
+          <tag name="param" line="202" description="" type="string" variable="$offset">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="202" description="" type="mixed">
+            <type>mixed</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$offset</name>
+          <default/>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Eloquent" line="214" package="Default">
+        <name>offsetSet</name>
+        <full_name>\Illuminate\Database\Eloquent\Factory::offsetSet()</full_name>
+        <docblock line="214">
+          <description>Set the given offset to the given value.</description>
+          <long-description/>
+          <tag name="param" line="214" description="" type="string" variable="$offset">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="214" description="" type="callable" variable="$value">
+            <type>callable</type>
+          </tag>
+          <tag name="return" line="214" description="" type="void">
+            <type>void</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$offset</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$value</name>
+          <default/>
+          <type>callable</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Eloquent" line="225" package="Default">
+        <name>offsetUnset</name>
+        <full_name>\Illuminate\Database\Eloquent\Factory::offsetUnset()</full_name>
+        <docblock line="225">
+          <description>Unset the value at the given offset.</description>
+          <long-description/>
+          <tag name="param" line="225" description="" type="string" variable="$offset">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="225" description="" type="void">
+            <type>void</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$offset</name>
+          <default/>
+          <type>string</type>
+        </argument>
+      </method>
+    </class>
+    <parse_markers>
+      <error line="0" code="PPC:ERR-50000">No summary was found for this file</error>
+      <error line="9" code="PPC:ERR-50005">No summary for class \Illuminate\Database\Eloquent\Factory</error>
+    </parse_markers>
+    <source>eJzNWEtv2zgQvvtX8BAgcuC093STbrZpgwIFWmy6pzgwaGkUE0uRKkklNXbz33f4kCVL1iN2gq4utkXONzPfPDj0b+/zVT6ZCJqBzmkM5DPnRcYENTC/ooYuqYb5Ry5/FCDMu8mk0EAulaLryzgGrd+5F5/o36Dm1yBAUSMVodq/8qs36yyVYj3/ILNcCoSZf2IiQQH/gaAxp9qKxCi8JizLOWS4T9c1Tf6ZEHzenpy4T3JCvq+CZsKENlSg8SkqN/h6WTCO0G/C1lLi9weqyLxhbVh86z5zJQ3EBhJylHoPmlo/KEBuCCUCHklamhwMaCnMqaIZaekkAX6zT4EplCAPkiXb9hRLzmKSFiI2TAqyWMQSdakiNpH33QNN3W5PkX2OzIrp0wu3Rs43ztilp5ZLlshMJsBJAikTzGrS6JOjEvUZykQHmdQGqIvBOto5ub0bSWa3xrFshn3IExP3/4qCc9ySU7P6Ln2SMdBN6jGAhsW7yPcrVQx2R2DW0oA+W9Wt0LS3tV69PyNJKL6FXYuO03LteBpotE+wPbL0eTOjkA/T0wsuaRI1oaddSXBlg2VD4YvxkZkV/rhnD4DcrKQyp7ZHdIXEU43OOenOVQvRXIwp53TJAZepwY3LwrSjM1gYLtfgUkfegpnXNavQa+DNiAQdoWY8UoVTyQXQ/SgEQ2RKKrD9mOwnq5fu5zG58X8XgYEIzNxj3E0Lbo47GlCtBdx6xLtbJ3tn075C7KK0bBCi6vHIou1LnlbftqhISA5KM20IM8RIt6OsoP2Ydp2tNycz9hP6qYyd9RsqPWQN0XXF/myUaRDHgi7hapl8OG9mncOrENhb9C/HbrvkD6K5rPFnsf0FOy3ZdGiSKpkR23cHibObmo47i3odrxp7q+rKM/Tcw9SOCpaSiOlFwlQQndbk7IOzE9B4RSI/lp2dBQKQipRx0PYLE0HYjnhH9nUTxVP7o2AK/IbTi3swfwLl3+w5Figsn6dJ9a0VmeDLQSn+62o/w2P4xSrfg7143f9PC9t6+2plPZrKazyxLXGKPlbHdrDC3jPKk93iJodk24F87hjBG3yiB1/Tl6ATgfaZi8Yy+ToVO2YoGsXhQDWPGYosA+dupFrgzVgtLHw0OCrNtq5zO+Z/Z9AiA3WPqY06tqIz2CvK2/Lm9nxwNHq5nvf9wzAPfwL84U3qDUmzuPuYD7rtPWlbQ7Ms2sFosb+bzSswoDI7/7N6w5Vpakd/+Imj1fDM73c3GVtKyQeYsGIfnY4ogHQwwDSu7Uw5L3Y3WMUPlBeNU8WL7und8Hng5a6t3b2+Ba98hw87u7y5Cd5sRSnMvf6d8/O5PrWvaQ6m6fPgJczD3lQuzwLSuLtrQ6aLhL+E3goqbXOyZ1BHOugM6IpqIcam6tPkPxnmE8s=</source>
+  <type>class</type></file>

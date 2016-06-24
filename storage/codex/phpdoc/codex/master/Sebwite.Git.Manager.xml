@@ -1,0 +1,291 @@
+<file path="sebwite/workbench/sebwite/git/src/Manager.php" generated-path="sebwite.workbench.sebwite.git.src.Manager.html" hash="d780e3c1e0f311894f9c2aa6a7d1bb9c" package="Default">
+    <docblock line="0">
+      <description/>
+      <long-description/>
+      <tag name="package" line="0" description="Default"/>
+    </docblock>
+    <namespace-alias name="Closure">\Closure</namespace-alias>
+    <namespace-alias name="Container">\Illuminate\Contracts\Container\Container</namespace-alias>
+    <namespace-alias name="InvalidArgumentException">\InvalidArgumentException</namespace-alias>
+    <namespace-alias name="ManagerContract">\Sebwite\Git\Contracts\Manager</namespace-alias>
+    <class final="false" abstract="false" namespace="Sebwite\Git" line="10" package="Default">
+      <extends/>
+      <implements>\Sebwite\Git\Contracts\Manager</implements>
+      <name>Manager</name>
+      <full_name>\Sebwite\Git\Manager</full_name>
+      <docblock line="10">
+        <description/>
+        <long-description/>
+        <tag name="package" line="10" description="Default"/>
+      </docblock>
+      <constant namespace="Sebwite\Git" line="12" package="Default">
+        <name>AUTH_BASIC</name>
+        <full_name>\Sebwite\Git\Manager::AUTH_BASIC</full_name>
+        <value>'basic'</value>
+        <docblock line="12">
+          <description/>
+          <long-description/>
+        </docblock>
+      </constant>
+      <constant namespace="Sebwite\Git" line="13" package="Default">
+        <name>AUTH_TOKEN</name>
+        <full_name>\Sebwite\Git\Manager::AUTH_TOKEN</full_name>
+        <value>'token'</value>
+        <docblock line="13">
+          <description/>
+          <long-description/>
+        </docblock>
+      </constant>
+      <constant namespace="Sebwite\Git" line="14" package="Default">
+        <name>AUTH_OAUTH</name>
+        <full_name>\Sebwite\Git\Manager::AUTH_OAUTH</full_name>
+        <value>'oauth'</value>
+        <docblock line="14">
+          <description/>
+          <long-description/>
+        </docblock>
+      </constant>
+      <constant namespace="Sebwite\Git" line="15" package="Default">
+        <name>AUTH_OAUTH2</name>
+        <full_name>\Sebwite\Git\Manager::AUTH_OAUTH2</full_name>
+        <value>'oauth2'</value>
+        <docblock line="15">
+          <description/>
+          <long-description/>
+        </docblock>
+      </constant>
+      <property static="false" visibility="protected" namespace="Sebwite\Git" line="28" package="Default">
+        <name>$app</name>
+        <full_name>\Sebwite\Git\Manager::app</full_name>
+        <default/>
+        <docblock line="28">
+          <description/>
+          <long-description/>
+          <tag name="var" line="28" description="" type="\Illuminate\Contracts\Container\Container" variable="">
+            <type>\Illuminate\Contracts\Container\Container</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" namespace="Sebwite\Git" line="31" package="Default">
+        <name>$connections</name>
+        <full_name>\Sebwite\Git\Manager::connections</full_name>
+        <default>array()</default>
+        <docblock line="31">
+          <description/>
+          <long-description/>
+          <tag name="var" line="31" description="" type="array" variable="">
+            <type>array</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" namespace="Sebwite\Git" line="34" package="Default">
+        <name>$connectors</name>
+        <full_name>\Sebwite\Git\Manager::connectors</full_name>
+        <default>array()</default>
+        <docblock line="34">
+          <description/>
+          <long-description/>
+          <tag name="var" line="34" description="" type="array" variable="">
+            <type>array</type>
+          </tag>
+        </docblock>
+      </property>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Sebwite\Git" line="17" package="Default">
+        <name>getCredentialTypes</name>
+        <full_name>\Sebwite\Git\Manager::getCredentialTypes()</full_name>
+        <docblock line="17">
+          <description/>
+          <long-description/>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Sebwite\Git" line="41" package="Default">
+        <name>__construct</name>
+        <full_name>\Sebwite\Git\Manager::__construct()</full_name>
+        <docblock line="41">
+          <description>Manager constructor.</description>
+          <long-description/>
+          <tag name="param" line="41" description="" type="\Illuminate\Contracts\Container\Container" variable="$app">
+            <type>\Illuminate\Contracts\Container\Container</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$app</name>
+          <default/>
+          <type>\Illuminate\Contracts\Container\Container</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Sebwite\Git" line="54" package="Default">
+        <name>connected</name>
+        <full_name>\Sebwite\Git\Manager::connected()</full_name>
+        <docblock line="54">
+          <description>connected method</description>
+          <long-description/>
+          <tag name="param" line="54" description="" type="null" variable="$name">
+            <type>null</type>
+          </tag>
+          <tag name="return" line="54" description="" type="boolean">
+            <type>boolean</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$name</name>
+          <default/>
+          <type>null</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Sebwite\Git" line="66" package="Default">
+        <name>connection</name>
+        <full_name>\Sebwite\Git\Manager::connection()</full_name>
+        <docblock line="66">
+          <description>connection method</description>
+          <long-description/>
+          <tag name="param" line="66" description="" type="string" variable="$name">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="66" description="" type="\Sebwite\Git\Remotes\Remote">
+            <type>\Sebwite\Git\Remotes\Remote</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$name</name>
+          <default/>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Sebwite\Git" line="75" package="Default">
+        <name>disconnect</name>
+        <full_name>\Sebwite\Git\Manager::disconnect()</full_name>
+        <docblock line="75">
+          <description/>
+          <long-description/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$name</name>
+          <default/>
+          <type/>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Sebwite\Git" line="89" package="Default">
+        <name>resolve</name>
+        <full_name>\Sebwite\Git\Manager::resolve()</full_name>
+        <docblock line="89">
+          <description>Resolves given the connection</description>
+          <long-description/>
+          <tag name="param" line="89" description="" type="" variable="$name"/>
+          <tag name="return" line="89" description="" type="mixed">
+            <type>mixed</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$name</name>
+          <default/>
+          <type/>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Sebwite\Git" line="107" package="Default">
+        <name>getConnector</name>
+        <full_name>\Sebwite\Git\Manager::getConnector()</full_name>
+        <docblock line="107">
+          <description>getConnector method</description>
+          <long-description/>
+          <tag name="param" line="107" description="" type="" variable="$driver"/>
+          <tag name="return" line="107" description="" type="\Sebwite\Git\Remotes\Remote">
+            <type>\Sebwite\Git\Remotes\Remote</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$driver</name>
+          <default/>
+          <type/>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Sebwite\Git" line="123" package="Default">
+        <name>extend</name>
+        <full_name>\Sebwite\Git\Manager::extend()</full_name>
+        <docblock line="123">
+          <description>extend method</description>
+          <long-description/>
+          <tag name="param" line="123" description="" type="" variable="$driver"/>
+          <tag name="param" line="123" description="" type="\Closure" variable="$resolver">
+            <type>\Closure</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$driver</name>
+          <default/>
+          <type/>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$resolver</name>
+          <default/>
+          <type>\Closure</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Sebwite\Git" line="135" package="Default">
+        <name>getConfig</name>
+        <full_name>\Sebwite\Git\Manager::getConfig()</full_name>
+        <docblock line="135">
+          <description>getConfig method</description>
+          <long-description/>
+          <tag name="param" line="135" description="" type="" variable="$name"/>
+          <tag name="return" line="135" description="" type="mixed">
+            <type>mixed</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$name</name>
+          <default/>
+          <type/>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Sebwite\Git" line="145" package="Default">
+        <name>getTransformer</name>
+        <full_name>\Sebwite\Git\Manager::getTransformer()</full_name>
+        <docblock line="145">
+          <description>getDefaultDriver method</description>
+          <long-description/>
+          <tag name="return" line="145" description="" type="mixed">
+            <type>mixed</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$driver</name>
+          <default/>
+          <type/>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Sebwite\Git" line="150" package="Default">
+        <name>__call</name>
+        <full_name>\Sebwite\Git\Manager::__call()</full_name>
+        <docblock line="150">
+          <description/>
+          <long-description/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$method</name>
+          <default/>
+          <type/>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$parameters</name>
+          <default/>
+          <type/>
+        </argument>
+      </method>
+    </class>
+    <parse_markers>
+      <error line="0" code="PPC:ERR-50000">No summary was found for this file</error>
+      <error line="10" code="PPC:ERR-50005">No summary for class \Sebwite\Git\Manager</error>
+      <error line="17" code="PPC:ERR-50008">No summary for method getCredentialTypes()</error>
+      <error line="75" code="PPC:ERR-50015">Argument $name is missing from the Docblock of disconnect</error>
+      <error line="75" code="PPC:ERR-50008">No summary for method disconnect()</error>
+      <error line="145" code="PPC:ERR-50015">Argument $driver is missing from the Docblock of getTransformer</error>
+      <error line="150" code="PPC:ERR-50015">Argument $method is missing from the Docblock of __call</error>
+      <error line="150" code="PPC:ERR-50015">Argument $parameters is missing from the Docblock of __call</error>
+      <error line="150" code="PPC:ERR-50008">No summary for method __call()</error>
+      <error line="28" code="PPC:ERR-50007">No summary for property $app</error>
+      <error line="31" code="PPC:ERR-50007">No summary for property $connections</error>
+      <error line="34" code="PPC:ERR-50007">No summary for property $connectors</error>
+    </parse_markers>
+    <source>eJytVltP2zAUfu+v8KpITSsoEo/rxmAFbWgaSNA9FVS5yWlrzXEi2ykgxH+fHbtuLk6g0vIAac71O+c7x/7yLdtkvR7DCYgMR4DuYflEJDz8IHLS6+UC0JSmIucwKX5cU5onhGGlMU2Z5DiSonjDhAHfv1lttsWUxBd8nSfA5NVzBJkkKTPSUqiSs9+Y4TVwhAWyrzuZyieiWLjviCQZBe24odp77SH1RCkTEl38mf1cfL+4v56ir2iwxIJEg0ldPrv9dXWj5TL9C6wpv9V/tTzFudy0yE+dwqnSKFSyfElJhFY5izRytAY55RCrpAmms5cMRDgsFE3G+uEgc87Q3H3Qj5BYkujz5z2Yo3Z5AaZDXiT7nvx0r/Bo4L4ZSCejETrfYo4ePsoGNDoxxeCphEhCjAKcZZOaO8w5fvGoqiozKKonVH3nOpuDDFPesDPIRo5JRSN5rnXHVrZTOc8wx8kBWDU0a3zipcBi4cKFVbM6EwK5IeL4TEkUAFMy24c6EAtVoU5AbtLYD4LllKJAD3tdbjm3TFPambuLExZuWqhLhAAZ2uxL7Zub4OhxWCdUDYcO1QVEVY+wdSeUh/J6uYNEsULY/x9BqF79EMkKhejT+wjRsGRUaqZPWXfXSDmIlG7Bhp44B7ZSpRp3uKsUt44vJsLadOD77/A088po/N2/M+gFWpMtMCQ3UGqHnwldFEjIM8TVZrvl4OpRrXh9AFX4FVmbH65JeocX3xttCtReYGKV8kRNdFl/tv8eWqdzNIi5wskHxTy09NfEMmvMa1lpwvGZqMUqJVRXdTQwXoety6WcQ+dYBiatlnZ0DWGzL1XgxvGHuapW/nyXjY+sNqMIU7pQVxG+0GG7fXhnUW54+oQYPLVedcL+TYqcR6Q6gebW6WO/veTwLIF1L3P3VKvuDix7b0OBZTivVry2FkzAXaGPUMO65WzyFktTf2fXtundEHUz6rDx9ly2yoPqP632p6waLDMLarDmqK+IsSURiPFrYf7Wb16ESmguYYVzKi9NDfygDsm8MsZ+/r8PoDgCx2six6VFoAEZhw1InruKmpEwMHCOUFC0BaRy0tyVShMvKRSXrQ3g2HOADJUL48tdx1rncVHc60Lntxp9l/Zb7x/nD7TV</source>
+  <type>class</type></file>

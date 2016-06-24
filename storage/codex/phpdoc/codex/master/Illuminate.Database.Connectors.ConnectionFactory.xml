@@ -1,0 +1,341 @@
+<file path="codex/vendor/laravel/framework/src/Illuminate/Database/Connectors/ConnectionFactory.php" generated-path="codex.vendor.laravel.framework.src.Illuminate.Database.Connectors.ConnectionFactory.html" hash="b8d68fef1b3babfccec31e966ce45710" package="Default">
+    <docblock line="0">
+      <description/>
+      <long-description/>
+      <tag name="package" line="0" description="Default"/>
+    </docblock>
+    <namespace-alias name="PDO">\PDO</namespace-alias>
+    <namespace-alias name="Arr">\Illuminate\Support\Arr</namespace-alias>
+    <namespace-alias name="InvalidArgumentException">\InvalidArgumentException</namespace-alias>
+    <namespace-alias name="MySqlConnection">\Illuminate\Database\MySqlConnection</namespace-alias>
+    <namespace-alias name="SQLiteConnection">\Illuminate\Database\SQLiteConnection</namespace-alias>
+    <namespace-alias name="PostgresConnection">\Illuminate\Database\PostgresConnection</namespace-alias>
+    <namespace-alias name="SqlServerConnection">\Illuminate\Database\SqlServerConnection</namespace-alias>
+    <namespace-alias name="Container">\Illuminate\Contracts\Container\Container</namespace-alias>
+    <class final="false" abstract="false" namespace="Illuminate\Database\Connectors" line="14" package="Default">
+      <extends/>
+      <name>ConnectionFactory</name>
+      <full_name>\Illuminate\Database\Connectors\ConnectionFactory</full_name>
+      <docblock line="14">
+        <description/>
+        <long-description/>
+        <tag name="package" line="14" description="Default"/>
+      </docblock>
+      <property static="false" visibility="protected" namespace="Illuminate\Database\Connectors" line="21" package="Default">
+        <name>$container</name>
+        <full_name>\Illuminate\Database\Connectors\ConnectionFactory::container</full_name>
+        <default/>
+        <docblock line="21">
+          <description>The IoC container instance.</description>
+          <long-description/>
+          <tag name="var" line="21" description="" type="\Illuminate\Contracts\Container\Container" variable="">
+            <type>\Illuminate\Contracts\Container\Container</type>
+          </tag>
+        </docblock>
+      </property>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Connectors" line="29" package="Default">
+        <name>__construct</name>
+        <full_name>\Illuminate\Database\Connectors\ConnectionFactory::__construct()</full_name>
+        <docblock line="29">
+          <description>Create a new connection factory instance.</description>
+          <long-description/>
+          <tag name="param" line="29" description="" type="\Illuminate\Contracts\Container\Container" variable="$container">
+            <type>\Illuminate\Contracts\Container\Container</type>
+          </tag>
+          <tag name="return" line="29" description="" type="void">
+            <type>void</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$container</name>
+          <default/>
+          <type>\Illuminate\Contracts\Container\Container</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Connectors" line="41" package="Default">
+        <name>make</name>
+        <full_name>\Illuminate\Database\Connectors\ConnectionFactory::make()</full_name>
+        <docblock line="41">
+          <description>Establish a PDO connection based on the configuration.</description>
+          <long-description/>
+          <tag name="param" line="41" description="" type="array" variable="$config">
+            <type>array</type>
+          </tag>
+          <tag name="param" line="41" description="" type="string" variable="$name">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="41" description="" type="\Illuminate\Database\Connection">
+            <type>\Illuminate\Database\Connection</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$config</name>
+          <default/>
+          <type>array</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$name</name>
+          <default>null</default>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Database\Connectors" line="58" package="Default">
+        <name>createSingleConnection</name>
+        <full_name>\Illuminate\Database\Connectors\ConnectionFactory::createSingleConnection()</full_name>
+        <docblock line="58">
+          <description>Create a single database connection instance.</description>
+          <long-description/>
+          <tag name="param" line="58" description="" type="array" variable="$config">
+            <type>array</type>
+          </tag>
+          <tag name="return" line="58" description="" type="\Illuminate\Database\Connection">
+            <type>\Illuminate\Database\Connection</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$config</name>
+          <default/>
+          <type>array</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Database\Connectors" line="73" package="Default">
+        <name>createReadWriteConnection</name>
+        <full_name>\Illuminate\Database\Connectors\ConnectionFactory::createReadWriteConnection()</full_name>
+        <docblock line="73">
+          <description>Create a single database connection instance.</description>
+          <long-description/>
+          <tag name="param" line="73" description="" type="array" variable="$config">
+            <type>array</type>
+          </tag>
+          <tag name="return" line="73" description="" type="\Illuminate\Database\Connection">
+            <type>\Illuminate\Database\Connection</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$config</name>
+          <default/>
+          <type>array</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Database\Connectors" line="86" package="Default">
+        <name>createReadPdo</name>
+        <full_name>\Illuminate\Database\Connectors\ConnectionFactory::createReadPdo()</full_name>
+        <docblock line="86">
+          <description>Create a new PDO instance for reading.</description>
+          <long-description/>
+          <tag name="param" line="86" description="" type="array" variable="$config">
+            <type>array</type>
+          </tag>
+          <tag name="return" line="86" description="" type="\PDO">
+            <type>\PDO</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$config</name>
+          <default/>
+          <type>array</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Database\Connectors" line="99" package="Default">
+        <name>getReadConfig</name>
+        <full_name>\Illuminate\Database\Connectors\ConnectionFactory::getReadConfig()</full_name>
+        <docblock line="99">
+          <description>Get the read configuration for a read / write connection.</description>
+          <long-description/>
+          <tag name="param" line="99" description="" type="array" variable="$config">
+            <type>array</type>
+          </tag>
+          <tag name="return" line="99" description="" type="array">
+            <type>array</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$config</name>
+          <default/>
+          <type>array</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Database\Connectors" line="118" package="Default">
+        <name>getWriteConfig</name>
+        <full_name>\Illuminate\Database\Connectors\ConnectionFactory::getWriteConfig()</full_name>
+        <docblock line="118">
+          <description>Get the read configuration for a read / write connection.</description>
+          <long-description/>
+          <tag name="param" line="118" description="" type="array" variable="$config">
+            <type>array</type>
+          </tag>
+          <tag name="return" line="118" description="" type="array">
+            <type>array</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$config</name>
+          <default/>
+          <type>array</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Database\Connectors" line="132" package="Default">
+        <name>getReadWriteConfig</name>
+        <full_name>\Illuminate\Database\Connectors\ConnectionFactory::getReadWriteConfig()</full_name>
+        <docblock line="132">
+          <description>Get a read / write level configuration.</description>
+          <long-description/>
+          <tag name="param" line="132" description="" type="array" variable="$config">
+            <type>array</type>
+          </tag>
+          <tag name="param" line="132" description="" type="string" variable="$type">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="132" description="" type="array">
+            <type>array</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$config</name>
+          <default/>
+          <type>array</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$type</name>
+          <default/>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Database\Connectors" line="148" package="Default">
+        <name>mergeReadWriteConfig</name>
+        <full_name>\Illuminate\Database\Connectors\ConnectionFactory::mergeReadWriteConfig()</full_name>
+        <docblock line="148">
+          <description>Merge a configuration for a read / write connection.</description>
+          <long-description/>
+          <tag name="param" line="148" description="" type="array" variable="$config">
+            <type>array</type>
+          </tag>
+          <tag name="param" line="148" description="" type="array" variable="$merge">
+            <type>array</type>
+          </tag>
+          <tag name="return" line="148" description="" type="array">
+            <type>array</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$config</name>
+          <default/>
+          <type>array</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$merge</name>
+          <default/>
+          <type>array</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Database\Connectors" line="160" package="Default">
+        <name>parseConfig</name>
+        <full_name>\Illuminate\Database\Connectors\ConnectionFactory::parseConfig()</full_name>
+        <docblock line="160">
+          <description>Parse and prepare the database configuration.</description>
+          <long-description/>
+          <tag name="param" line="160" description="" type="array" variable="$config">
+            <type>array</type>
+          </tag>
+          <tag name="param" line="160" description="" type="string" variable="$name">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="160" description="" type="array">
+            <type>array</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$config</name>
+          <default/>
+          <type>array</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$name</name>
+          <default/>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Connectors" line="173" package="Default">
+        <name>createConnector</name>
+        <full_name>\Illuminate\Database\Connectors\ConnectionFactory::createConnector()</full_name>
+        <docblock line="173">
+          <description>Create a connector instance based on the configuration.</description>
+          <long-description/>
+          <tag name="param" line="173" description="" type="array" variable="$config">
+            <type>array</type>
+          </tag>
+          <tag name="return" line="173" description="" type="\Illuminate\Database\Connectors\ConnectorInterface">
+            <type>\Illuminate\Database\Connectors\ConnectorInterface</type>
+          </tag>
+          <tag name="throws" line="173" description="" type="\InvalidArgumentException">
+            <type>\InvalidArgumentException</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$config</name>
+          <default/>
+          <type>array</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Database\Connectors" line="209" package="Default">
+        <name>createConnection</name>
+        <full_name>\Illuminate\Database\Connectors\ConnectionFactory::createConnection()</full_name>
+        <docblock line="209">
+          <description>Create a new connection instance.</description>
+          <long-description/>
+          <tag name="param" line="209" description="" type="string" variable="$driver">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="209" description="" type="\PDO|\Closure" variable="$connection">
+            <type>\PDO</type>
+            <type>\Closure</type>
+          </tag>
+          <tag name="param" line="209" description="" type="string" variable="$database">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="209" description="" type="string" variable="$prefix">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="209" description="" type="array" variable="$config">
+            <type>array</type>
+          </tag>
+          <tag name="return" line="209" description="" type="\Illuminate\Database\Connection">
+            <type>\Illuminate\Database\Connection</type>
+          </tag>
+          <tag name="throws" line="209" description="" type="\InvalidArgumentException">
+            <type>\InvalidArgumentException</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$driver</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$connection</name>
+          <default/>
+          <type>\PDO|\Closure</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$database</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$prefix</name>
+          <default>''</default>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$config</name>
+          <default>array()</default>
+          <type>array</type>
+        </argument>
+      </method>
+    </class>
+    <parse_markers>
+      <error line="0" code="PPC:ERR-50000">No summary was found for this file</error>
+      <error line="14" code="PPC:ERR-50005">No summary for class \Illuminate\Database\Connectors\ConnectionFactory</error>
+    </parse_markers>
+    <source>eJzVWFtv2zYUfvev4IKgsgIn2V7jNV3gdkOBFcvmDXuwDYOWaFuoLCkkZdfI8t93eJFEURcrqvtQvVgWD79z+J0Lefjzu2SbDAYR3hGWYI+gj2GY7oIIczJ/jzleYUbmkziKiMdjysaDQcoIenz/x1i+GNLTNEliyucPlOqxaI/DwH+gm3RHIv7hi0cSHsRRZWau59Nx+hRqZa2C0z9/DzjpIvkYM76hhHVCfQqnhO4JbRGGIU6xx5l8w0FEaPEG7HghZgwVAL9iwdtx8DxA8NxeXclfdIX+3gJuPEFeNhkFEeM48siNFskkf9ljiuZdbdCzbuVvQmMOdhAfXXqGkZYpE0oAFmEUkYOwR5uO1sr2ZsMSTPEOdbcNGWbkIJTwlEZoHwd+2fZ0FQYeWqeRsma5hLmM09TjwwKxAHTlLMWzeC75NmDX9wW/b0skCJGXChUfYKWglm2BDQhykw0RIj6CFw6eg+/rYJNSLIaaeMGU4iNSiwZpexjWEkQbGBbJZ9Mxb8lDUNnK1A5/JkOlXKseKSVAQZSGYYUpJSQIUpyBgUxkF3wclhFcHT3iCdZoGDBGeCYzcyCQfGfhuga4ePSaMo/IcPsLRP+lpSzOcNxxPvulUFcHMgUCw2aEqn/zUGdyJvI1taajT4W7dqvt1T6Oy9Mz913DukrerPgv8WNwXo4xdJGoWjkZHbyRV/h8kswc8a3OK+N2t1QdMnN8GkBldRYjae4IFQOaJDmUfUwoWQdfjE/fu0frwr3dqYb9b09FvRrdEJ6pMDLXdWu8VYBf30MGC+se/XhYyVD5scA54QKxf4iqmfGN1jFFoiaAwT25B7juBAtr20kVxkysardR67dY6xbiImEKTDNpjK9NvP1GuNxMhGh5R5HEYTVwiw7CqUY896NSjp7issxFby5rwnCE1O7QsIMUYDNnC2c22EXQmzcoYEtpRK2AXdhqZMAyL06jBgX36KcSgHje1cHMpBFLiiO/FmlRgbmrhflx0WFr2xG6IY0sfr+BZS6nPbIOhWTH0JIznOakPcGpobCVVIu5kOxJeN6zID8mlbPgazK3keSRwra5rh7ipJgI1cZjXFnQTI3SiNse7CXZJtI/Cb8B7d8uiK1RGSi9HFAbYpYL9F8pantC64L2+e6OyF5ZzV5KaSNY1ewR0sftPPoXjaH7KM7zCDwEdhNYMJHVwTwpfdtmphN/ZtNR17y08YV9f5i/FFVBnyLhzQG+HIHiFI1MPVf5YcbLdvjiONO7BexxsowpK14/RpxQaMeJrYZvaXxgANRw19LaJ9onmdaiLArFD8jq97JDfaVUSLvkebDJsqHzgNR0tEsZRyuCWEK8YB0Q/8apbwGFDXZbf32/gg0evP6ZHGGzuPBXN7nnbp4rlr5cnOpOC2DZRwvcemvYIeDeFtWwYSnwRJI5uyN7Cp27yklBqxdcmfdfMR3XgCSbkyDWjVc9DqCIktEKVLpka4RhdH8CxrpVM5EMNjtEzMU/EVOXjJCFOnZmNS5eXHRrVV7RIWblDV0qLfa46FP+m0/CmKVQXcVjtFgtYDrpmyVUCWsqxl/XsvasIk0dmNmQKpZGJgujYrmjbF2QsI6Tb4v5NdRsUVd9ume+KMjP2oZeCQ+b6wnL84uJxYnioKw4S0nI7lO6mOWep3p8tcpXF5pzaHx1Teqp9AzlS8eHUbJeBv8D8J+9Zw==</source>
+  <type>class</type></file>

@@ -1,0 +1,267 @@
+<file path="codex/vendor/laravel/framework/src/Illuminate/Redis/Database.php" generated-path="codex.vendor.laravel.framework.src.Illuminate.Redis.Database.html" hash="b1cd760ad798f1d765862f2bb9118dd4" package="Default">
+    <docblock line="0">
+      <description/>
+      <long-description/>
+      <tag name="package" line="0" description="Default"/>
+    </docblock>
+    <namespace-alias name="Closure">\Closure</namespace-alias>
+    <namespace-alias name="Client">\Predis\Client</namespace-alias>
+    <namespace-alias name="Arr">\Illuminate\Support\Arr</namespace-alias>
+    <namespace-alias name="DatabaseContract">\Illuminate\Contracts\Redis\Database</namespace-alias>
+    <class final="false" abstract="false" namespace="Illuminate\Redis" line="10" package="Default">
+      <extends/>
+      <implements>\Illuminate\Contracts\Redis\Database</implements>
+      <name>Database</name>
+      <full_name>\Illuminate\Redis\Database</full_name>
+      <docblock line="10">
+        <description/>
+        <long-description/>
+        <tag name="package" line="10" description="Default"/>
+      </docblock>
+      <property static="false" visibility="protected" namespace="Illuminate\Redis" line="17" package="Default">
+        <name>$clients</name>
+        <full_name>\Illuminate\Redis\Database::clients</full_name>
+        <default/>
+        <docblock line="17">
+          <description>The host address of the database.</description>
+          <long-description/>
+          <tag name="var" line="17" description="" type="array" variable="">
+            <type>array</type>
+          </tag>
+        </docblock>
+      </property>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Redis" line="25" package="Default">
+        <name>__construct</name>
+        <full_name>\Illuminate\Redis\Database::__construct()</full_name>
+        <docblock line="25">
+          <description>Create a new Redis connection instance.</description>
+          <long-description/>
+          <tag name="param" line="25" description="" type="array" variable="$servers">
+            <type>array</type>
+          </tag>
+          <tag name="return" line="25" description="" type="void">
+            <type>void</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$servers</name>
+          <default>array()</default>
+          <type>array</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Redis" line="45" package="Default">
+        <name>createAggregateClient</name>
+        <full_name>\Illuminate\Redis\Database::createAggregateClient()</full_name>
+        <docblock line="45">
+          <description>Create a new aggregate client supporting sharding.</description>
+          <long-description/>
+          <tag name="param" line="45" description="" type="array" variable="$servers">
+            <type>array</type>
+          </tag>
+          <tag name="param" line="45" description="" type="array" variable="$options">
+            <type>array</type>
+          </tag>
+          <tag name="return" line="45" description="" type="array">
+            <type>array</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$servers</name>
+          <default/>
+          <type>array</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$options</name>
+          <default>array()</default>
+          <type>array</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Redis" line="57" package="Default">
+        <name>createSingleClients</name>
+        <full_name>\Illuminate\Redis\Database::createSingleClients()</full_name>
+        <docblock line="57">
+          <description>Create an array of single connection clients.</description>
+          <long-description/>
+          <tag name="param" line="57" description="" type="array" variable="$servers">
+            <type>array</type>
+          </tag>
+          <tag name="param" line="57" description="" type="array" variable="$options">
+            <type>array</type>
+          </tag>
+          <tag name="return" line="57" description="" type="array">
+            <type>array</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$servers</name>
+          <default/>
+          <type>array</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$options</name>
+          <default>array()</default>
+          <type>array</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Redis" line="74" package="Default">
+        <name>connection</name>
+        <full_name>\Illuminate\Redis\Database::connection()</full_name>
+        <docblock line="74">
+          <description>Get a specific Redis connection instance.</description>
+          <long-description/>
+          <tag name="param" line="74" description="" type="string" variable="$name">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="74" description="" type="\Predis\ClientInterface|null">
+            <type>\Predis\ClientInterface</type>
+            <type>null</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$name</name>
+          <default>'default'</default>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Redis" line="86" package="Default">
+        <name>command</name>
+        <full_name>\Illuminate\Redis\Database::command()</full_name>
+        <docblock line="86">
+          <description>Run a command against the Redis database.</description>
+          <long-description/>
+          <tag name="param" line="86" description="" type="string" variable="$method">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="86" description="" type="array" variable="$parameters">
+            <type>array</type>
+          </tag>
+          <tag name="return" line="86" description="" type="mixed">
+            <type>mixed</type>
+          </tag>
+          <tag name="inherited_from" description="\Illuminate\Contracts\Redis\Database::command()" refers="\Illuminate\Contracts\Redis\Database::command()" link="/classes/Illuminate.Contracts.Redis.Database.html#method_command"/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$method</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$parameters</name>
+          <default>array()</default>
+          <type>array</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Redis" line="100" package="Default">
+        <name>subscribe</name>
+        <full_name>\Illuminate\Redis\Database::subscribe()</full_name>
+        <docblock line="100">
+          <description>Subscribe to a set of given channels for messages.</description>
+          <long-description/>
+          <tag name="param" line="100" description="" type="array|string" variable="$channels">
+            <type>array</type>
+            <type>string</type>
+          </tag>
+          <tag name="param" line="100" description="" type="\Closure" variable="$callback">
+            <type>\Closure</type>
+          </tag>
+          <tag name="param" line="100" description="" type="string" variable="$connection">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="100" description="" type="string" variable="$method">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="100" description="" type="void">
+            <type>void</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$channels</name>
+          <default/>
+          <type>array|string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$callback</name>
+          <default/>
+          <type>\Closure</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$connection</name>
+          <default>null</default>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$method</name>
+          <default>'subscribe'</default>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Redis" line="123" package="Default">
+        <name>psubscribe</name>
+        <full_name>\Illuminate\Redis\Database::psubscribe()</full_name>
+        <docblock line="123">
+          <description>Subscribe to a set of given channels with wildcards.</description>
+          <long-description/>
+          <tag name="param" line="123" description="" type="array|string" variable="$channels">
+            <type>array</type>
+            <type>string</type>
+          </tag>
+          <tag name="param" line="123" description="" type="\Closure" variable="$callback">
+            <type>\Closure</type>
+          </tag>
+          <tag name="param" line="123" description="" type="string" variable="$connection">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="123" description="" type="void">
+            <type>void</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$channels</name>
+          <default/>
+          <type>array|string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$callback</name>
+          <default/>
+          <type>\Closure</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$connection</name>
+          <default>null</default>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Redis" line="135" package="Default">
+        <name>__call</name>
+        <full_name>\Illuminate\Redis\Database::__call()</full_name>
+        <docblock line="135">
+          <description>Dynamically make a Redis command.</description>
+          <long-description/>
+          <tag name="param" line="135" description="" type="string" variable="$method">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="135" description="" type="array" variable="$parameters">
+            <type>array</type>
+          </tag>
+          <tag name="return" line="135" description="" type="mixed">
+            <type>mixed</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$method</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$parameters</name>
+          <default/>
+          <type>array</type>
+        </argument>
+      </method>
+    </class>
+    <parse_markers>
+      <error line="0" code="PPC:ERR-50000">No summary was found for this file</error>
+      <error line="10" code="PPC:ERR-50005">No summary for class \Illuminate\Redis\Database</error>
+    </parse_markers>
+    <source>eJzFVltv2jAUfudXnAckQkW393ZtVzFtqjRtU7s9AUImMcSq40S2w4bW/vcdO3ZiQkIveygPYHz5zu07n/3hqkiLwUCQjKqCxBRuOC8zJoim81uaMHU+GJSKwpTnqpT03P75Ic3KfMoZFbqaCo7dlUWRSz2/lvJgbZoLLUmsVQU+/0Q0WRHcQxT4sd+DlmNOVLMALCs4zdDm4ebB3wHg5/3Jif2FE/iZUkhzpYEkiaQIk69B41ziTr5zG/3+j1sigUhJdm7mvf0tZK5prGkCw9jGazLSMjWVFIMDAoL+BhsYxLkQeIzlAphQmoj40GBBJMmgsgkwVFRuqVT1sqS6lAK2OUv2PSpXnMWwLkWFv1yiMaVlGeuowvJQcAGzxdgeqtJjPhhGqTSVuIgVOjsrSs4jf2ICI7c8Grs47Zm8MKYMYGVi3H3Wbds7y9YQeZvjwA+Lq1OmTi9dYhHdT9iEXm82km5wUBEtMOT9QTse6hEoR4q8BP+OiQ134OoJ9EH1fbTyxPsLlUFQVSegGVApkQkOXkqC1rLzrM2RY7StedKd1H3GTJyloOCHDHJGZ6OErknJ9QguLm0CQsjllvCSNmkdB3ldnD+RTheRaVllixT2k6vmm2dynz6vyOOw4eVsEXTMOkf8OIU6d0Ydh/d0Z/Ls5g46yWHNzL4FIgb1cEd6iN0uayNz3TX6QlFSQRU0ZmuUoRfLHSqVaQgYmjunnf753tVyI1Az1ngrPQgUmqMi2DgQWWDMQE3PHv5aBdtQzM+eSkwqz+DqLEDoS8ZtiZRB41lGRIICQEz09pqp8tJ72bSTkVGd5kkPWWFo/1PdcT1k7A89fj847yJno6Zmg3msy2PC+RJvcbk0gEt7Nprtp6xRgsXEh2JGjYXeBN6VKxVLtqKgc0MrJBc2/YZtKZpOCRaVK9MQgO8TRTb0eNs/1Pn0Z9vb5u4hY7ZgZCsS3/fWpOHUc8v23Ctb+aij2tGJf2I1jk1CF0xLYxPU+TUEr2EOKD7keV4E913QHc14fHqJjmEFvuLmKLyze4puQMMC+7dAHcS4U8WsL0bCXA3b2mVfCG7t9PKeYSddXGB4bmoEDw/QtV74DW3AwxCiMKk1VEF2PCdJOOUiCRSy4m0zqoelUEY8THT/R+/fTKf4xZMY3whvTPDnMrh4PYV7hMZRtRO3G2+CT9/Pv75Nf958/7Zc9tbg0w71nBmEHWTk3rzW/KVlhfEttRnf7sQ8ob00h5J5NE0Hot4lto+Df9kVJwk=</source>
+  <type>class</type></file>

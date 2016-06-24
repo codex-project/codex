@@ -1,0 +1,346 @@
+<file path="codex/vendor/laravel/framework/src/Illuminate/Broadcasting/BroadcastManager.php" generated-path="codex.vendor.laravel.framework.src.Illuminate.Broadcasting.BroadcastManager.html" hash="70fb2dcf4c86062b6a8fa6e3919bbb1c" package="Default">
+    <docblock line="0">
+      <description/>
+      <long-description/>
+      <tag name="package" line="0" description="Default"/>
+    </docblock>
+    <namespace-alias name="Pusher">\Pusher</namespace-alias>
+    <namespace-alias name="Closure">\Closure</namespace-alias>
+    <namespace-alias name="Arr">\Illuminate\Support\Arr</namespace-alias>
+    <namespace-alias name="InvalidArgumentException">\InvalidArgumentException</namespace-alias>
+    <namespace-alias name="LogBroadcaster">\Illuminate\Broadcasting\Broadcasters\LogBroadcaster</namespace-alias>
+    <namespace-alias name="RedisBroadcaster">\Illuminate\Broadcasting\Broadcasters\RedisBroadcaster</namespace-alias>
+    <namespace-alias name="PusherBroadcaster">\Illuminate\Broadcasting\Broadcasters\PusherBroadcaster</namespace-alias>
+    <namespace-alias name="FactoryContract">\Illuminate\Contracts\Broadcasting\Factory</namespace-alias>
+    <class final="false" abstract="false" namespace="Illuminate\Broadcasting" line="14" package="Default">
+      <extends/>
+      <implements>\Illuminate\Contracts\Broadcasting\Factory</implements>
+      <name>BroadcastManager</name>
+      <full_name>\Illuminate\Broadcasting\BroadcastManager</full_name>
+      <docblock line="14">
+        <description/>
+        <long-description/>
+        <tag name="package" line="14" description="Default"/>
+      </docblock>
+      <property static="false" visibility="protected" namespace="Illuminate\Broadcasting" line="21" package="Default">
+        <name>$app</name>
+        <full_name>\Illuminate\Broadcasting\BroadcastManager::app</full_name>
+        <default/>
+        <docblock line="21">
+          <description>The application instance.</description>
+          <long-description/>
+          <tag name="var" line="21" description="" type="\Illuminate\Foundation\Application" variable="">
+            <type>\Illuminate\Foundation\Application</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" namespace="Illuminate\Broadcasting" line="28" package="Default">
+        <name>$drivers</name>
+        <full_name>\Illuminate\Broadcasting\BroadcastManager::drivers</full_name>
+        <default>array()</default>
+        <docblock line="28">
+          <description>The array of resolved broadcast drivers.</description>
+          <long-description/>
+          <tag name="var" line="28" description="" type="array" variable="">
+            <type>array</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" namespace="Illuminate\Broadcasting" line="35" package="Default">
+        <name>$customCreators</name>
+        <full_name>\Illuminate\Broadcasting\BroadcastManager::customCreators</full_name>
+        <default>array()</default>
+        <docblock line="35">
+          <description>The registered custom driver creators.</description>
+          <long-description/>
+          <tag name="var" line="35" description="" type="array" variable="">
+            <type>array</type>
+          </tag>
+        </docblock>
+      </property>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Broadcasting" line="43" package="Default">
+        <name>__construct</name>
+        <full_name>\Illuminate\Broadcasting\BroadcastManager::__construct()</full_name>
+        <docblock line="43">
+          <description>Create a new manager instance.</description>
+          <long-description/>
+          <tag name="param" line="43" description="" type="\Illuminate\Foundation\Application" variable="$app">
+            <type>\Illuminate\Foundation\Application</type>
+          </tag>
+          <tag name="return" line="43" description="" type="void">
+            <type>void</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$app</name>
+          <default/>
+          <type>\Illuminate\Foundation\Application</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Broadcasting" line="54" package="Default">
+        <name>connection</name>
+        <full_name>\Illuminate\Broadcasting\BroadcastManager::connection()</full_name>
+        <docblock line="54">
+          <description>Get a driver instance.</description>
+          <long-description/>
+          <tag name="param" line="54" description="" type="string" variable="$driver">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="54" description="" type="mixed">
+            <type>mixed</type>
+          </tag>
+          <tag name="inherited_from" description="\Illuminate\Contracts\Broadcasting\Factory::connection()" refers="\Illuminate\Contracts\Broadcasting\Factory::connection()" link="/classes/Illuminate.Contracts.Broadcasting.Factory.html#method_connection"/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$driver</name>
+          <default>null</default>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Broadcasting" line="65" package="Default">
+        <name>driver</name>
+        <full_name>\Illuminate\Broadcasting\BroadcastManager::driver()</full_name>
+        <docblock line="65">
+          <description>Get a driver instance.</description>
+          <long-description/>
+          <tag name="param" line="65" description="" type="string" variable="$name">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="65" description="" type="mixed">
+            <type>mixed</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$name</name>
+          <default>null</default>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Broadcasting" line="78" package="Default">
+        <name>get</name>
+        <full_name>\Illuminate\Broadcasting\BroadcastManager::get()</full_name>
+        <docblock line="78">
+          <description>Attempt to get the connection from the local cache.</description>
+          <long-description/>
+          <tag name="param" line="78" description="" type="string" variable="$name">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="78" description="" type="\Illuminate\Contracts\Broadcasting\Broadcaster">
+            <type>\Illuminate\Contracts\Broadcasting\Broadcaster</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$name</name>
+          <default/>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Broadcasting" line="91" package="Default">
+        <name>resolve</name>
+        <full_name>\Illuminate\Broadcasting\BroadcastManager::resolve()</full_name>
+        <docblock line="91">
+          <description>Resolve the given store.</description>
+          <long-description/>
+          <tag name="param" line="91" description="" type="string" variable="$name">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="91" description="" type="\Illuminate\Contracts\Broadcasting\Broadcaster">
+            <type>\Illuminate\Contracts\Broadcasting\Broadcaster</type>
+          </tag>
+          <tag name="throws" line="91" description="" type="\InvalidArgumentException">
+            <type>\InvalidArgumentException</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$name</name>
+          <default/>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Broadcasting" line="118" package="Default">
+        <name>callCustomCreator</name>
+        <full_name>\Illuminate\Broadcasting\BroadcastManager::callCustomCreator()</full_name>
+        <docblock line="118">
+          <description>Call a custom driver creator.</description>
+          <long-description/>
+          <tag name="param" line="118" description="" type="array" variable="$config">
+            <type>array</type>
+          </tag>
+          <tag name="return" line="118" description="" type="mixed">
+            <type>mixed</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$config</name>
+          <default/>
+          <type>array</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Broadcasting" line="129" package="Default">
+        <name>createPusherDriver</name>
+        <full_name>\Illuminate\Broadcasting\BroadcastManager::createPusherDriver()</full_name>
+        <docblock line="129">
+          <description>Create an instance of the driver.</description>
+          <long-description/>
+          <tag name="param" line="129" description="" type="array" variable="$config">
+            <type>array</type>
+          </tag>
+          <tag name="return" line="129" description="" type="\Illuminate\Contracts\Broadcasting\Broadcaster">
+            <type>\Illuminate\Contracts\Broadcasting\Broadcaster</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$config</name>
+          <default/>
+          <type>array</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Broadcasting" line="142" package="Default">
+        <name>createRedisDriver</name>
+        <full_name>\Illuminate\Broadcasting\BroadcastManager::createRedisDriver()</full_name>
+        <docblock line="142">
+          <description>Create an instance of the driver.</description>
+          <long-description/>
+          <tag name="param" line="142" description="" type="array" variable="$config">
+            <type>array</type>
+          </tag>
+          <tag name="return" line="142" description="" type="\Illuminate\Contracts\Broadcasting\Broadcaster">
+            <type>\Illuminate\Contracts\Broadcasting\Broadcaster</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$config</name>
+          <default/>
+          <type>array</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Broadcasting" line="155" package="Default">
+        <name>createLogDriver</name>
+        <full_name>\Illuminate\Broadcasting\BroadcastManager::createLogDriver()</full_name>
+        <docblock line="155">
+          <description>Create an instance of the driver.</description>
+          <long-description/>
+          <tag name="param" line="155" description="" type="array" variable="$config">
+            <type>array</type>
+          </tag>
+          <tag name="return" line="155" description="" type="\Illuminate\Contracts\Broadcasting\Broadcaster">
+            <type>\Illuminate\Contracts\Broadcasting\Broadcaster</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$config</name>
+          <default/>
+          <type>array</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Broadcasting" line="168" package="Default">
+        <name>getConfig</name>
+        <full_name>\Illuminate\Broadcasting\BroadcastManager::getConfig()</full_name>
+        <docblock line="168">
+          <description>Get the connection configuration.</description>
+          <long-description/>
+          <tag name="param" line="168" description="" type="string" variable="$name">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="168" description="" type="array">
+            <type>array</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$name</name>
+          <default/>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Broadcasting" line="178" package="Default">
+        <name>getDefaultDriver</name>
+        <full_name>\Illuminate\Broadcasting\BroadcastManager::getDefaultDriver()</full_name>
+        <docblock line="178">
+          <description>Get the default driver name.</description>
+          <long-description/>
+          <tag name="return" line="178" description="" type="string">
+            <type>string</type>
+          </tag>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Broadcasting" line="189" package="Default">
+        <name>setDefaultDriver</name>
+        <full_name>\Illuminate\Broadcasting\BroadcastManager::setDefaultDriver()</full_name>
+        <docblock line="189">
+          <description>Set the default driver name.</description>
+          <long-description/>
+          <tag name="param" line="189" description="" type="string" variable="$name">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="189" description="" type="void">
+            <type>void</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$name</name>
+          <default/>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Broadcasting" line="201" package="Default">
+        <name>extend</name>
+        <full_name>\Illuminate\Broadcasting\BroadcastManager::extend()</full_name>
+        <docblock line="201">
+          <description>Register a custom driver creator Closure.</description>
+          <long-description/>
+          <tag name="param" line="201" description="" type="string" variable="$driver">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="201" description="" type="\Closure" variable="$callback">
+            <type>\Closure</type>
+          </tag>
+          <tag name="return" line="201" description="" type="\Illuminate\Broadcasting\BroadcastManager">
+            <type>\Illuminate\Broadcasting\BroadcastManager</type>
+          </tag>
+          <tag name="fluent" description="This method is part of a fluent interface and will return the same instance"/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$driver</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$callback</name>
+          <default/>
+          <type>\Closure</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Broadcasting" line="215" package="Default">
+        <name>__call</name>
+        <full_name>\Illuminate\Broadcasting\BroadcastManager::__call()</full_name>
+        <docblock line="215">
+          <description>Dynamically call the default driver instance.</description>
+          <long-description/>
+          <tag name="param" line="215" description="" type="string" variable="$method">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="215" description="" type="array" variable="$parameters">
+            <type>array</type>
+          </tag>
+          <tag name="return" line="215" description="" type="mixed">
+            <type>mixed</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$method</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$parameters</name>
+          <default/>
+          <type>array</type>
+        </argument>
+      </method>
+    </class>
+    <parse_markers>
+      <error line="0" code="PPC:ERR-50000">No summary was found for this file</error>
+      <error line="14" code="PPC:ERR-50005">No summary for class \Illuminate\Broadcasting\BroadcastManager</error>
+    </parse_markers>
+    <source>eJzdWFlv2zgQfvevIIIAkgLXfU93m8062yLAFijavtmGwUi0TUQiBZJyYwT57zu8dFiiLxT7UAOGdcz1fTMkZ/zHXbkpRyOGCyJLnBL0mOdVQRlWZP634DhLsVSUrT+MRpUk6GslN0R8MNfTnMtKEHvTUvtelSUXan4vnOAj2+KcZvdiXRWEqX9eUlIqyllPs+2wuSFCzv/l69b9GYrfSEblZaoW6yHdKWdK4FTJrpVP8IiLHcISuUsvCCymOZYS1fJfMMNrIhAtypxodno6o9cRgs/7mxvzi27Qjw1BuCxzmmJNI6JMKsxSMnECXu6vLRZo3or3E69YZnTm942+E39vfkvBFUkVydA1uIB4h3wLgXeIr5AgkudbkH3ycFAm6BbIGwzF6IW8OUX0J5otht0KsqY6DSCdVlLxwjlDqSAYGLvAqbUzdfoB3+Y1oEaM/ESFz1eI8xILXKATaEeG4VpPEFUJhracZt1oqyfQQKuKpUZruUw5+BZVqmJtIDFStkb051ptqHz3Ed4AHJtD/fitB+szUYDJUXgMDjiEykY+TftRF/SFHA4bgmbEXMbOBoTHqjzfj99ZdDCsqFdJfi0Wvemdj8SHpLUDGPw7+3t369GsiXogK1zl6sEaSVy1hYDLmTGx0LZqE9Z1kIt7pUhRKqQ4AmGkYOU05KOVgHWjn+U8xTlKcbq5jKj58X2wtXUGFmBNagNruByolFpiiJsE3QVIq3l3+9QR4r5ZKcPOGgwxIICL/5Gd2ojaCP5TgpHAwXmMzS7e/eKEaljRdaekpuZRzU8tS1copnKpazx2eknSsqU/JlizN4bCja9aWNHs1bh5W0BSEeNwZJAVZSSbXLnMtLLTxNBKf3fTnrm4ZpHNfrRY9ELsLi2o+3zatlFDa/lHJIezvmvG7UJfiNrwDPiLzMFDokmVrqiQKu6Fkkwiu9KjFqkeVGHsLMkLnGrSght3ffSA9MG8dhTeBqAE4ZyaPItA520fXpNDaXu+vSzaTHav+utuCvmA3XvwTA8tPtuC+Fo+YRPvL5J+GVijnsGD59LRGoybc3iMukkZYMB1GE0rp7srvQ9Ze5ex8Gt3aFvrtid2p9cpfOnS6jXScadCGpFmAT2TXbSoiZtFkoB/1XkEzC5pph/BoHF7a04Q+26MIm5qV0Zj6OiSpHb3G2TADDRnJmB/COry31Tqu48FfiZxJLR8lAwy2/QS0W/FK0yYZ7LanUmPcfpVCj3F6i/MD48MVFYwb59C4ud+G2eDq4SZJC7qUA7NRe22rNMaHNwTAewssoFFi9nVUysdkyZ0OXHn/9XiGN7M9sr+SNBaPaguBAv1YN/eb77PQBN10LjAoiCC72cgOCVZR6dCuQ9uuPU7A5ofX8Ldsp3GQye3/3voGN7+TOknaGdA7wJwVD/h9HmfFoPnIC/kRRGW+flx7INqTAYo2j/frb4hxWsGRrcQXw87YJNq5Z1pPYbq4+TJ1baOgU0TXZt7ov/EOqEz6v+/gHW3b12M28YCC0bLLytJxFIbWZoo4ll3gIezxFlcdE16ut5G/wF7ZixA</source>
+  <type>class</type></file>

@@ -1,0 +1,1663 @@
+<file path="codex/workbench/codex/core/src/CodexServiceProvider.php" generated-path="codex.workbench.codex.core.src.CodexServiceProvider.html" hash="790869e954275e0b8414e98ac3bc0cf9" package="Default">
+    <docblock line="0">
+      <description>Part of the Codex Project packages.</description>
+      <long-description>License and copyright information bundled with this package in the LICENSE file</long-description>
+      <tag name="package" line="0" description="Default"/>
+    </docblock>
+    <namespace-alias name="CodexController">\Codex\Http\Controllers\CodexController</namespace-alias>
+    <namespace-alias name="Writer">\Codex\Log\Writer</namespace-alias>
+    <namespace-alias name="Project">\Codex\Projects\Project</namespace-alias>
+    <namespace-alias name="CodexProviderTrait">\Codex\Traits\CodexProviderTrait</namespace-alias>
+    <namespace-alias name="LaravelApplication">\Illuminate\Contracts\Foundation\Application</namespace-alias>
+    <namespace-alias name="FilesystemAdapter">\Illuminate\Filesystem\FilesystemAdapter</namespace-alias>
+    <namespace-alias name="Flysystem">\League\Flysystem\Filesystem</namespace-alias>
+    <namespace-alias name="Monolog">\Monolog\Logger</namespace-alias>
+    <namespace-alias name="ServiceProvider">\Sebwite\Support\ServiceProvider</namespace-alias>
+    <class final="false" abstract="false" namespace="Codex" line="29" package="Codex\Core">
+      <extends>\Sebwite\Support\ServiceProvider</extends>
+      <name>CodexServiceProvider</name>
+      <full_name>\Codex\CodexServiceProvider</full_name>
+      <docblock line="29">
+        <description>This is the class CodexServiceProvider.</description>
+        <long-description/>
+        <tag name="package" line="29" description="Codex\Core"/>
+        <tag name="author" line="29" description="Sebwite"/>
+        <tag name="copyright" line="29" description="Copyright (c) 2015, Sebwite. All rights reserved"/>
+        <tag name="inherited_from" description="\Sebwite\Support\ServiceProvider" refers="\Sebwite\Support\ServiceProvider" link="/classes/Sebwite.Support.ServiceProvider.html"/>
+      </docblock>
+      <property static="false" visibility="protected" namespace="Codex" line="33" package="Codex\Core">
+        <name>$dir</name>
+        <full_name>\Codex\CodexServiceProvider::dir</full_name>
+        <default>__DIR__</default>
+        <docblock line="33">
+          <description>The src directory path</description>
+          <long-description/>
+          <tag name="inherited_from" description="\Sebwite\Support\ServiceProvider::dir" refers="\Sebwite\Support\ServiceProvider::dir" link="/classes/Sebwite.Support.ServiceProvider.html#property_dir"/>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" namespace="Codex" line="35" package="Codex\Core">
+        <name>$configFiles</name>
+        <full_name>\Codex\CodexServiceProvider::configFiles</full_name>
+        <default>array('codex', 'codex-jira')</default>
+        <docblock line="35">
+          <description>Collection of configuration files.</description>
+          <long-description/>
+          <tag name="inherited_from" description="\Sebwite\Support\ServiceProvider::configFiles" refers="\Sebwite\Support\ServiceProvider::configFiles" link="/classes/Sebwite.Support.ServiceProvider.html#property_configFiles"/>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" namespace="Codex" line="37" package="Codex\Core">
+        <name>$viewDirs</name>
+        <full_name>\Codex\CodexServiceProvider::viewDirs</full_name>
+        <default>array('views' =&gt; 'codex', 'stubs' =&gt; 'codex-stubs')</default>
+        <docblock line="37">
+          <description>A collection of directories in this package containing views.</description>
+          <long-description>['dirName' =&gt; 'namespace']</long-description>
+          <tag name="inherited_from" description="\Sebwite\Support\ServiceProvider::viewDirs" refers="\Sebwite\Support\ServiceProvider::viewDirs" link="/classes/Sebwite.Support.ServiceProvider.html#property_viewDirs"/>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" namespace="Codex" line="42" package="Codex\Core">
+        <name>$assetDirs</name>
+        <full_name>\Codex\CodexServiceProvider::assetDirs</full_name>
+        <default>array('assets' =&gt; 'codex', 'dev/assets' =&gt; 'codex-dev')</default>
+        <docblock line="42">
+          <description>A collection of directories in this package containing assets.</description>
+          <long-description>['dirName' =&gt; 'namespace']</long-description>
+          <tag name="inherited_from" description="\Sebwite\Support\ServiceProvider::assetDirs" refers="\Sebwite\Support\ServiceProvider::assetDirs" link="/classes/Sebwite.Support.ServiceProvider.html#property_assetDirs"/>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" namespace="Codex" line="47" package="Codex\Core">
+        <name>$providers</name>
+        <full_name>\Codex\CodexServiceProvider::providers</full_name>
+        <default>array(\Radic\BladeExtensions\BladeExtensionsServiceProvider::class)</default>
+        <docblock line="47">
+          <description>Collection of service providers.</description>
+          <long-description/>
+          <tag name="inherited_from" description="\Sebwite\Support\ServiceProvider::providers" refers="\Sebwite\Support\ServiceProvider::providers" link="/classes/Sebwite.Support.ServiceProvider.html#property_providers"/>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" namespace="Codex" line="51" package="Codex\Core">
+        <name>$commands</name>
+        <full_name>\Codex\CodexServiceProvider::commands</full_name>
+        <default>array(\Codex\Console\ListCommand::class, \Codex\Console\CreateCommand::class)</default>
+        <docblock line="51">
+          <description>Collection of commands.</description>
+          <long-description/>
+          <tag name="inherited_from" description="\Sebwite\Support\ServiceProvider::commands" refers="\Sebwite\Support\ServiceProvider::commands" link="/classes/Sebwite.Support.ServiceProvider.html#property_commands"/>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" namespace="Codex" line="56" package="Codex\Core">
+        <name>$bindings</name>
+        <full_name>\Codex\CodexServiceProvider::bindings</full_name>
+        <default>array('codex.document' =&gt; \Codex\Documents\Document::class, 'codex.project' =&gt; \Codex\Projects\Project::class, 'codex.menu' =&gt; \Codex\Menus\Menu::class)</default>
+        <docblock line="56">
+          <description>Collection of classes to bind in the IOC container</description>
+          <long-description/>
+          <tag name="inherited_from" description="\Sebwite\Support\ServiceProvider::bindings" refers="\Sebwite\Support\ServiceProvider::bindings" link="/classes/Sebwite.Support.ServiceProvider.html#property_bindings"/>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" namespace="Codex" line="62" package="Codex\Core">
+        <name>$singletons</name>
+        <full_name>\Codex\CodexServiceProvider::singletons</full_name>
+        <default>array('codex' =&gt; \Codex\Codex::class, 'codex.addons' =&gt; \Codex\Addons\Addons::class)</default>
+        <docblock line="62">
+          <description>Collection of classes to register as singleton</description>
+          <long-description/>
+          <tag name="inherited_from" description="\Sebwite\Support\ServiceProvider::singletons" refers="\Sebwite\Support\ServiceProvider::singletons" link="/classes/Sebwite.Support.ServiceProvider.html#property_singletons"/>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" namespace="Codex" line="68" package="Codex\Core">
+        <name>$aliases</name>
+        <full_name>\Codex\CodexServiceProvider::aliases</full_name>
+        <default>array('codex.log' =&gt; \Codex\Contracts\Log\Log::class, 'codex' =&gt; \Codex\Contracts\Codex::class)</default>
+        <docblock line="68">
+          <description>Collection of aliases.</description>
+          <long-description/>
+          <tag name="inherited_from" description="\Sebwite\Support\ServiceProvider::aliases" refers="\Sebwite\Support\ServiceProvider::aliases" link="/classes/Sebwite.Support.ServiceProvider.html#property_aliases"/>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" namespace="Codex" line="73" package="Codex\Core">
+        <name>$weaklings</name>
+        <full_name>\Codex\CodexServiceProvider::weaklings</full_name>
+        <default>array('fs' =&gt; \Sebwite\Filesystem\Filesystem::class, 'codex.generator' =&gt; \Codex\Projects\ProjectGenerator::class)</default>
+        <docblock line="73">
+          <description>Wealkings are bindings that perform a bound check and will not override other bindings</description>
+          <long-description/>
+          <tag name="inherited_from" description="\Sebwite\Support\ServiceProvider::weaklings" refers="\Sebwite\Support\ServiceProvider::weaklings" link="/classes/Sebwite.Support.ServiceProvider.html#property_weaklings"/>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" namespace="Codex" line="78" package="Codex\Core">
+        <name>$middleware</name>
+        <full_name>\Codex\CodexServiceProvider::middleware</full_name>
+        <default>array()</default>
+        <docblock line="78">
+          <description>Collection of middleware.</description>
+          <long-description/>
+          <tag name="inherited_from" description="\Sebwite\Support\ServiceProvider::middleware" refers="\Sebwite\Support\ServiceProvider::middleware" link="/classes/Sebwite.Support.ServiceProvider.html#property_middleware"/>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" namespace="Codex" line="83" package="Codex\Core">
+        <name>$addons</name>
+        <full_name>\Codex\CodexServiceProvider::addons</full_name>
+        <default/>
+        <docblock line="83">
+          <description/>
+          <long-description/>
+          <tag name="var" line="83" description="" type="\Codex\Addons\Addons" variable="">
+            <type>\Codex\Addons\Addons</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" namespace="Codex" line="32" package="Sebwite\Support">
+        <name>$strict</name>
+        <full_name>\Sebwite\Support\ServiceProvider::strict</full_name>
+        <default>true</default>
+        <docblock line="32">
+          <description>Enables strict checking of provided bindings, aliases and singletons. Checks if the given items are correct. Set to false if</description>
+          <long-description/>
+          <tag name="var" line="32" description="" type="boolean" variable="">
+            <type>boolean</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" namespace="Codex" line="15" package="Default">
+        <name>$app</name>
+        <full_name>\Illuminate\Support\ServiceProvider::app</full_name>
+        <default/>
+        <docblock line="15">
+          <description>The application instance.</description>
+          <long-description/>
+          <tag name="var" line="15" description="" type="\Illuminate\Contracts\Foundation\Application" variable="">
+            <type>\Illuminate\Contracts\Foundation\Application</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" namespace="Codex" line="46" package="Sebwite\Support">
+        <name>$dir</name>
+        <full_name>\Sebwite\Support\ServiceProvider::dir</full_name>
+        <default/>
+        <docblock line="46">
+          <description>The src directory path</description>
+          <long-description/>
+          <tag name="var" line="46" description="" type="string" variable="">
+            <type>string</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" namespace="Codex" line="48" package="Sebwite\Support">
+        <name>$rootDir</name>
+        <full_name>\Sebwite\Support\ServiceProvider::rootDir</full_name>
+        <default/>
+        <docblock line="48">
+          <description/>
+          <long-description/>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" namespace="Codex" line="50" package="Sebwite\Support">
+        <name>$maxRootDirScanParents</name>
+        <full_name>\Sebwite\Support\ServiceProvider::maxRootDirScanParents</full_name>
+        <default>4</default>
+        <docblock line="50">
+          <description/>
+          <long-description/>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" namespace="Codex" line="52" package="Sebwite\Support">
+        <name>$scanDirs</name>
+        <full_name>\Sebwite\Support\ServiceProvider::scanDirs</full_name>
+        <default>false</default>
+        <docblock line="52">
+          <description/>
+          <long-description/>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" namespace="Codex" line="67" package="Sebwite\Support">
+        <name>$resourcesPath</name>
+        <full_name>\Sebwite\Support\ServiceProvider::resourcesPath</full_name>
+        <default>'../resources'</default>
+        <docblock line="67">
+          <description>Path to resources directory, relative to $dir</description>
+          <long-description/>
+          <tag name="var" line="67" description="" type="string" variable="">
+            <type>string</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" namespace="Codex" line="74" package="Sebwite\Support">
+        <name>$resourcesDestinationPath</name>
+        <full_name>\Sebwite\Support\ServiceProvider::resourcesDestinationPath</full_name>
+        <default>'resources'</default>
+        <docblock line="74">
+          <description>Resource destination path, relative to base_path</description>
+          <long-description/>
+          <tag name="var" line="74" description="" type="string" variable="">
+            <type>string</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" namespace="Codex" line="89" package="Sebwite\Support">
+        <name>$viewsDestinationPath</name>
+        <full_name>\Sebwite\Support\ServiceProvider::viewsDestinationPath</full_name>
+        <default>'resources/views/vendor/{namespace}'</default>
+        <docblock line="89">
+          <description>View destination path, relative to base_path</description>
+          <long-description/>
+          <tag name="var" line="89" description="" type="string" variable="">
+            <type>string</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" namespace="Codex" line="96" package="Sebwite\Support">
+        <name>$viewsPath</name>
+        <full_name>\Sebwite\Support\ServiceProvider::viewsPath</full_name>
+        <default>'{resourcesPath}/{dirName}'</default>
+        <docblock line="96">
+          <description>Package views path</description>
+          <long-description/>
+          <tag name="var" line="96" description="" type="string" variable="">
+            <type>string</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" namespace="Codex" line="104" package="Sebwite\Support">
+        <name>$viewDirs</name>
+        <full_name>\Sebwite\Support\ServiceProvider::viewDirs</full_name>
+        <default>array()</default>
+        <docblock line="104">
+          <description>A collection of directories in this package containing views.</description>
+          <long-description>['dirName' =&gt; 'namespace']</long-description>
+          <tag name="var" line="104" description="" type="array" variable="">
+            <type>array</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" namespace="Codex" line="119" package="Sebwite\Support">
+        <name>$assetsDestinationPath</name>
+        <full_name>\Sebwite\Support\ServiceProvider::assetsDestinationPath</full_name>
+        <default>'vendor/{namespace}'</default>
+        <docblock line="119">
+          <description>Assets destination path, relative to public_path</description>
+          <long-description/>
+          <tag name="var" line="119" description="" type="string" variable="">
+            <type>string</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" namespace="Codex" line="126" package="Sebwite\Support">
+        <name>$assetsPath</name>
+        <full_name>\Sebwite\Support\ServiceProvider::assetsPath</full_name>
+        <default>'{resourcesPath}/{dirName}'</default>
+        <docblock line="126">
+          <description>Package views path</description>
+          <long-description/>
+          <tag name="var" line="126" description="" type="string" variable="">
+            <type>string</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" namespace="Codex" line="134" package="Sebwite\Support">
+        <name>$assetDirs</name>
+        <full_name>\Sebwite\Support\ServiceProvider::assetDirs</full_name>
+        <default>array()</default>
+        <docblock line="134">
+          <description>A collection of directories in this package containing assets.</description>
+          <long-description>['dirName' =&gt; 'namespace']</long-description>
+          <tag name="var" line="134" description="" type="array" variable="">
+            <type>array</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" namespace="Codex" line="149" package="Sebwite\Support">
+        <name>$configFiles</name>
+        <full_name>\Sebwite\Support\ServiceProvider::configFiles</full_name>
+        <default>array()</default>
+        <docblock line="149">
+          <description>Collection of configuration files.</description>
+          <long-description/>
+          <tag name="var" line="149" description="" type="array" variable="">
+            <type>array</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" namespace="Codex" line="156" package="Sebwite\Support">
+        <name>$configPath</name>
+        <full_name>\Sebwite\Support\ServiceProvider::configPath</full_name>
+        <default>'../config'</default>
+        <docblock line="156">
+          <description>Path to the config directory, relative to $dir</description>
+          <long-description/>
+          <tag name="var" line="156" description="" type="string" variable="">
+            <type>string</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" namespace="Codex" line="158" package="Sebwite\Support">
+        <name>$configStrategy</name>
+        <full_name>\Sebwite\Support\ServiceProvider::configStrategy</full_name>
+        <default>'defaultConfigStrategy'</default>
+        <docblock line="158">
+          <description/>
+          <long-description/>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" namespace="Codex" line="172" package="Sebwite\Support">
+        <name>$migrationDestinationPath</name>
+        <full_name>\Sebwite\Support\ServiceProvider::migrationDestinationPath</full_name>
+        <default>'migrations'</default>
+        <docblock line="172">
+          <description>Path to the migration destination directory, relative to database_path</description>
+          <long-description/>
+          <tag name="var" line="172" description="" type="string" variable="">
+            <type>string</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" namespace="Codex" line="179" package="Sebwite\Support">
+        <name>$seedsDestinationPath</name>
+        <full_name>\Sebwite\Support\ServiceProvider::seedsDestinationPath</full_name>
+        <default>'seeds'</default>
+        <docblock line="179">
+          <description>Path to the seeds destination directory, relative to database_path</description>
+          <long-description/>
+          <tag name="var" line="179" description="" type="string" variable="">
+            <type>string</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" namespace="Codex" line="186" package="Sebwite\Support">
+        <name>$databasePath</name>
+        <full_name>\Sebwite\Support\ServiceProvider::databasePath</full_name>
+        <default>'../database'</default>
+        <docblock line="186">
+          <description>Path to database directory, relative to $dir</description>
+          <long-description/>
+          <tag name="var" line="186" description="" type="string" variable="">
+            <type>string</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" namespace="Codex" line="193" package="Sebwite\Support">
+        <name>$seedDirs</name>
+        <full_name>\Sebwite\Support\ServiceProvider::seedDirs</full_name>
+        <default>array()</default>
+        <docblock line="193">
+          <description>Array of directory names/paths relative to $databasePath containing seed files.</description>
+          <long-description/>
+          <tag name="var" line="193" description="" type="array" variable="">
+            <type>array</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" namespace="Codex" line="200" package="Sebwite\Support">
+        <name>$migrationDirs</name>
+        <full_name>\Sebwite\Support\ServiceProvider::migrationDirs</full_name>
+        <default>array()</default>
+        <docblock line="200">
+          <description>Array of directory names/paths relative to $databasePath containing migration files.</description>
+          <long-description/>
+          <tag name="var" line="200" description="" type="array" variable="">
+            <type>array</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" namespace="Codex" line="215" package="Sebwite\Support">
+        <name>$providers</name>
+        <full_name>\Sebwite\Support\ServiceProvider::providers</full_name>
+        <default>array()</default>
+        <docblock line="215">
+          <description>Collection of service providers.</description>
+          <long-description/>
+          <tag name="var" line="215" description="" type="array" variable="">
+            <type>array</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" namespace="Codex" line="222" package="Sebwite\Support">
+        <name>$deferredProviders</name>
+        <full_name>\Sebwite\Support\ServiceProvider::deferredProviders</full_name>
+        <default>array()</default>
+        <docblock line="222">
+          <description>Collection of service providers that are deffered</description>
+          <long-description/>
+          <tag name="var" line="222" description="" type="array" variable="">
+            <type>array</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" namespace="Codex" line="229" package="Sebwite\Support">
+        <name>$bindings</name>
+        <full_name>\Sebwite\Support\ServiceProvider::bindings</full_name>
+        <default>array()</default>
+        <docblock line="229">
+          <description>Collection of classes to bind in the IOC container</description>
+          <long-description/>
+          <tag name="var" line="229" description="" type="array" variable="">
+            <type>array</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" namespace="Codex" line="236" package="Sebwite\Support">
+        <name>$singletons</name>
+        <full_name>\Sebwite\Support\ServiceProvider::singletons</full_name>
+        <default>array()</default>
+        <docblock line="236">
+          <description>Collection of classes to register as singleton</description>
+          <long-description/>
+          <tag name="var" line="236" description="" type="array" variable="">
+            <type>array</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" namespace="Codex" line="243" package="Sebwite\Support">
+        <name>$share</name>
+        <full_name>\Sebwite\Support\ServiceProvider::share</full_name>
+        <default>array()</default>
+        <docblock line="243">
+          <description>Collection of classes to register as share. Does not make an alias if the value is a class, as is the case with $shared.</description>
+          <long-description/>
+          <tag name="var" line="243" description="" type="array" variable="">
+            <type>array</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" namespace="Codex" line="250" package="Sebwite\Support">
+        <name>$shared</name>
+        <full_name>\Sebwite\Support\ServiceProvider::shared</full_name>
+        <default>array()</default>
+        <docblock line="250">
+          <description>Collection of classes to register as share. Also registers an alias if the value is a class, as opposite to $share.</description>
+          <long-description/>
+          <tag name="var" line="250" description="" type="array" variable="">
+            <type>array</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" namespace="Codex" line="257" package="Sebwite\Support">
+        <name>$weaklings</name>
+        <full_name>\Sebwite\Support\ServiceProvider::weaklings</full_name>
+        <default>array()</default>
+        <docblock line="257">
+          <description>Wealkings are bindings that perform a bound check and will not override other bindings</description>
+          <long-description/>
+          <tag name="var" line="257" description="" type="array" variable="">
+            <type>array</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" namespace="Codex" line="264" package="Sebwite\Support">
+        <name>$aliases</name>
+        <full_name>\Sebwite\Support\ServiceProvider::aliases</full_name>
+        <default>array()</default>
+        <docblock line="264">
+          <description>Collection of aliases.</description>
+          <long-description/>
+          <tag name="var" line="264" description="" type="array" variable="">
+            <type>array</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" namespace="Codex" line="271" package="Sebwite\Support">
+        <name>$middleware</name>
+        <full_name>\Sebwite\Support\ServiceProvider::middleware</full_name>
+        <default>array()</default>
+        <docblock line="271">
+          <description>Collection of middleware.</description>
+          <long-description/>
+          <tag name="var" line="271" description="" type="array" variable="">
+            <type>array</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" namespace="Codex" line="278" package="Sebwite\Support">
+        <name>$prependMiddleware</name>
+        <full_name>\Sebwite\Support\ServiceProvider::prependMiddleware</full_name>
+        <default>array()</default>
+        <docblock line="278">
+          <description>Collection of prepend middleware.</description>
+          <long-description/>
+          <tag name="var" line="278" description="" type="array" variable="">
+            <type>array</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" namespace="Codex" line="285" package="Sebwite\Support">
+        <name>$routeMiddleware</name>
+        <full_name>\Sebwite\Support\ServiceProvider::routeMiddleware</full_name>
+        <default>array()</default>
+        <docblock line="285">
+          <description>Collection of route middleware.</description>
+          <long-description/>
+          <tag name="var" line="285" description="" type="array" variable="">
+            <type>array</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" namespace="Codex" line="292" package="Sebwite\Support">
+        <name>$provides</name>
+        <full_name>\Sebwite\Support\ServiceProvider::provides</full_name>
+        <default>array()</default>
+        <docblock line="292">
+          <description>Collection of bound instances.</description>
+          <long-description/>
+          <tag name="var" line="292" description="" type="array" variable="">
+            <type>array</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" namespace="Codex" line="299" package="Sebwite\Support">
+        <name>$commands</name>
+        <full_name>\Sebwite\Support\ServiceProvider::commands</full_name>
+        <default>array()</default>
+        <docblock line="299">
+          <description>Collection of commands.</description>
+          <long-description/>
+          <tag name="var" line="299" description="" type="array" variable="">
+            <type>array</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" namespace="Codex" line="301" package="Sebwite\Support">
+        <name>$commandPrefix</name>
+        <full_name>\Sebwite\Support\ServiceProvider::commandPrefix</full_name>
+        <default>'command.'</default>
+        <docblock line="301">
+          <description/>
+          <long-description/>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" namespace="Codex" line="307" package="Sebwite\Support">
+        <name>$findCommands</name>
+        <full_name>\Sebwite\Support\ServiceProvider::findCommands</full_name>
+        <default>array()</default>
+        <docblock line="307">
+          <description>Collection of paths to search for commands</description>
+          <long-description/>
+          <tag name="var" line="307" description="" type="array" variable="">
+            <type>array</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" namespace="Codex" line="309" package="Sebwite\Support">
+        <name>$findCommandsRecursive</name>
+        <full_name>\Sebwite\Support\ServiceProvider::findCommandsRecursive</full_name>
+        <default>false</default>
+        <docblock line="309">
+          <description/>
+          <long-description/>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" namespace="Codex" line="311" package="Sebwite\Support">
+        <name>$findCommandsExtending</name>
+        <full_name>\Sebwite\Support\ServiceProvider::findCommandsExtending</full_name>
+        <default>'Symfony\Component\Console\Command\Command'</default>
+        <docblock line="311">
+          <description/>
+          <long-description/>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" namespace="Codex" line="316" package="Sebwite\Support">
+        <name>$facades</name>
+        <full_name>\Sebwite\Support\ServiceProvider::facades</full_name>
+        <default>array()</default>
+        <docblock line="316">
+          <description/>
+          <long-description/>
+          <tag name="var" line="316" description="" type="array" variable="">
+            <type>array</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" namespace="Codex" line="323" package="Sebwite\Support">
+        <name>$helpers</name>
+        <full_name>\Sebwite\Support\ServiceProvider::helpers</full_name>
+        <default>array()</default>
+        <docblock line="323">
+          <description>Collection of helper php files. To be included either on register or boot. Filepath is relative to $dir</description>
+          <long-description/>
+          <tag name="var" line="323" description="" type="array" variable="">
+            <type>array</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" namespace="Codex" line="330" package="Sebwite\Support">
+        <name>$bootingMethod</name>
+        <full_name>\Sebwite\Support\ServiceProvider::bootingMethod</full_name>
+        <default>'booting'</default>
+        <docblock line="330">
+          <description>Declaring the method named here will make it so it will be called on application booting</description>
+          <long-description/>
+          <tag name="var" line="330" description="" type="string" variable="">
+            <type>string</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" namespace="Codex" line="337" package="Sebwite\Support">
+        <name>$bootedMethod</name>
+        <full_name>\Sebwite\Support\ServiceProvider::bootedMethod</full_name>
+        <default>'booted'</default>
+        <docblock line="337">
+          <description>Declaring the method named here will make it so it will be called when the application has booted</description>
+          <long-description/>
+          <tag name="var" line="337" description="" type="string" variable="">
+            <type>string</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" namespace="Codex" line="22" package="Default">
+        <name>$defer</name>
+        <full_name>\Illuminate\Support\ServiceProvider::defer</full_name>
+        <default>false</default>
+        <docblock line="22">
+          <description>Indicates if loading of the provider is deferred.</description>
+          <long-description/>
+          <tag name="var" line="22" description="" type="boolean" variable="">
+            <type>boolean</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="true" visibility="protected" namespace="Codex" line="29" package="Default">
+        <name>$publishes</name>
+        <full_name>\Illuminate\Support\ServiceProvider::publishes</full_name>
+        <default>array()</default>
+        <docblock line="29">
+          <description>The paths that should be published.</description>
+          <long-description/>
+          <tag name="var" line="29" description="" type="array" variable="">
+            <type>array</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="true" visibility="protected" namespace="Codex" line="36" package="Default">
+        <name>$publishGroups</name>
+        <full_name>\Illuminate\Support\ServiceProvider::publishGroups</full_name>
+        <default>array()</default>
+        <docblock line="36">
+          <description>The paths that should be published by group.</description>
+          <long-description/>
+          <tag name="var" line="36" description="" type="array" variable="">
+            <type>array</type>
+          </tag>
+        </docblock>
+      </property>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Codex" line="85" package="Codex\Core">
+        <name>boot</name>
+        <full_name>\Codex\CodexServiceProvider::boot()</full_name>
+        <docblock line="85">
+          <description>Perform the booting of the service.</description>
+          <long-description/>
+          <tag name="inherited_from" description="\Sebwite\Support\ServiceProvider::boot()" refers="\Sebwite\Support\ServiceProvider::boot()" link="/classes/Sebwite.Support.ServiceProvider.html#method_boot"/>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Codex" line="94" package="Codex\Core">
+        <name>register</name>
+        <full_name>\Codex\CodexServiceProvider::register()</full_name>
+        <docblock line="94">
+          <description>Registers the server in the container.</description>
+          <long-description/>
+          <tag name="inherited_from" description="\Sebwite\Support\ServiceProvider::register()" refers="\Sebwite\Support\ServiceProvider::register()" link="/classes/Sebwite.Support.ServiceProvider.html#method_register"/>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Codex" line="130" package="Codex\Core">
+        <name>registerLogger</name>
+        <full_name>\Codex\CodexServiceProvider::registerLogger()</full_name>
+        <docblock line="130">
+          <description>registerLogger method</description>
+          <long-description/>
+          <tag name="param" line="130" description="" type="\Illuminate\Contracts\Foundation\Application" variable="$app">
+            <type>\Illuminate\Contracts\Foundation\Application</type>
+          </tag>
+          <tag name="return" line="130" description="" type="\Codex\Log\Writer">
+            <type>\Codex\Log\Writer</type>
+          </tag>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Codex" line="141" package="Codex\Core">
+        <name>registerCodex</name>
+        <full_name>\Codex\CodexServiceProvider::registerCodex()</full_name>
+        <docblock line="141">
+          <description/>
+          <long-description/>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Codex" line="160" package="Codex\Core">
+        <name>registerDefaultFilesystem</name>
+        <full_name>\Codex\CodexServiceProvider::registerDefaultFilesystem()</full_name>
+        <docblock line="160">
+          <description/>
+          <long-description/>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Codex" line="170" package="Codex\Core">
+        <name>registerDev</name>
+        <full_name>\Codex\CodexServiceProvider::registerDev()</full_name>
+        <docblock line="170">
+          <description/>
+          <long-description/>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Codex" line="175" package="Codex\Core">
+        <name>registerRouting</name>
+        <full_name>\Codex\CodexServiceProvider::registerRouting()</full_name>
+        <docblock line="175">
+          <description/>
+          <long-description/>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Codex" line="180" package="Codex\Core">
+        <name>registerTheme</name>
+        <full_name>\Codex\CodexServiceProvider::registerTheme()</full_name>
+        <docblock line="180">
+          <description/>
+          <long-description/>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Codex" line="197" package="Codex\Core">
+        <name>bootBladeDirectives</name>
+        <full_name>\Codex\CodexServiceProvider::bootBladeDirectives()</full_name>
+        <docblock line="197">
+          <description/>
+          <long-description/>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Codex" line="213" package="Codex\Core">
+        <name>registerJavascriptData</name>
+        <full_name>\Codex\CodexServiceProvider::registerJavascriptData()</full_name>
+        <docblock line="213">
+          <description/>
+          <long-description/>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Codex" line="229" package="Codex\Core">
+        <name>registerAddons</name>
+        <full_name>\Codex\CodexServiceProvider::registerAddons()</full_name>
+        <docblock line="229">
+          <description/>
+          <long-description/>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Codex" line="16" package="Codex\Core">
+        <name>codexProjectConfig</name>
+        <full_name>\Codex\Traits\CodexProviderTrait::codexProjectConfig()</full_name>
+        <docblock line="16">
+          <description/>
+          <long-description/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$config</name>
+          <default/>
+          <type/>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$method</name>
+          <default>'array_replace_recursive'</default>
+          <type/>
+        </argument>
+        <inherited_from>\Codex\Traits\CodexProviderTrait</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Codex" line="25" package="Codex\Core">
+        <name>codexAddons</name>
+        <full_name>\Codex\Traits\CodexProviderTrait::codexAddons()</full_name>
+        <docblock line="25">
+          <description>addons method</description>
+          <long-description/>
+          <tag name="return" line="25" description="" type="\Codex\Addons\Addons">
+            <type>\Codex\Addons\Addons</type>
+          </tag>
+        </docblock>
+        <inherited_from>\Codex\Traits\CodexProviderTrait</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Codex" line="30" package="Codex\Core">
+        <name>codexDocumentAttributes</name>
+        <full_name>\Codex\Traits\CodexProviderTrait::codexDocumentAttributes()</full_name>
+        <docblock line="30">
+          <description/>
+          <long-description/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$config</name>
+          <default/>
+          <type/>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$method</name>
+          <default>'array_replace_recursive'</default>
+          <type/>
+        </argument>
+        <inherited_from>\Codex\Traits\CodexProviderTrait</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Codex" line="35" package="Codex\Core">
+        <name>codexIgnoreRoute</name>
+        <full_name>\Codex\Traits\CodexProviderTrait::codexIgnoreRoute()</full_name>
+        <docblock line="35">
+          <description/>
+          <long-description/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$route</name>
+          <default/>
+          <type/>
+        </argument>
+        <inherited_from>\Codex\Traits\CodexProviderTrait</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Codex" line="40" package="Codex\Core">
+        <name>codexHook</name>
+        <full_name>\Codex\Traits\CodexProviderTrait::codexHook()</full_name>
+        <docblock line="40">
+          <description/>
+          <long-description/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$point</name>
+          <default/>
+          <type/>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$listener</name>
+          <default/>
+          <type/>
+        </argument>
+        <inherited_from>\Codex\Traits\CodexProviderTrait</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Codex" line="49" package="Codex\Core">
+        <name>codex</name>
+        <full_name>\Codex\Traits\CodexProviderTrait::codex()</full_name>
+        <docblock line="49">
+          <description>codex method</description>
+          <long-description/>
+          <tag name="return" line="49" description="" type="\Codex\Codex">
+            <type>\Codex\Codex</type>
+          </tag>
+        </docblock>
+        <inherited_from>\Codex\Traits\CodexProviderTrait</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Codex" line="62" package="Codex\Core">
+        <name>codexView</name>
+        <full_name>\Codex\Traits\CodexProviderTrait::codexView()</full_name>
+        <docblock line="62">
+          <description>Register or gets a view name</description>
+          <long-description/>
+          <tag name="param" line="62" description="" type="string" variable="$key">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="62" description="" type="null|string|array" variable="$value">
+            <type>null</type>
+            <type>string</type>
+            <type>array</type>
+          </tag>
+          <tag name="return" line="62" description="" type="string|null">
+            <type>string</type>
+            <type>null</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$key</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$value</name>
+          <default>null</default>
+          <type>null|string|array</type>
+        </argument>
+        <inherited_from>\Codex\Traits\CodexProviderTrait</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Codex" line="351" package="Sebwite\Support">
+        <name>boot</name>
+        <full_name>\Sebwite\Support\ServiceProvider::boot()</full_name>
+        <docblock line="351">
+          <description>Perform the booting of the service.</description>
+          <long-description/>
+          <tag name="return" line="351" description="" type="\Illuminate\Foundation\Application">
+            <type>\Illuminate\Foundation\Application</type>
+          </tag>
+        </docblock>
+        <inherited_from>\Sebwite\Support\ServiceProvider</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Codex" line="367" package="Sebwite\Support">
+        <name>bootConfigFiles</name>
+        <full_name>\Sebwite\Support\ServiceProvider::bootConfigFiles()</full_name>
+        <docblock line="367">
+          <description>Adds the config files defined in $configFiles to the publish procedure.</description>
+          <long-description>Can be overriden to adjust default functionality</long-description>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$configFiles</name>
+          <default>null</default>
+          <type/>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$path</name>
+          <default>null</default>
+          <type/>
+        </argument>
+        <inherited_from>\Sebwite\Support\ServiceProvider</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Codex" line="387" package="Sebwite\Support">
+        <name>bootViews</name>
+        <full_name>\Sebwite\Support\ServiceProvider::bootViews()</full_name>
+        <docblock line="387">
+          <description>Adds the view directories defined in $viewDirs to the publish procedure.</description>
+          <long-description>Can be overriden to adjust default functionality</long-description>
+        </docblock>
+        <inherited_from>\Sebwite\Support\ServiceProvider</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Codex" line="403" package="Sebwite\Support">
+        <name>bootAssets</name>
+        <full_name>\Sebwite\Support\ServiceProvider::bootAssets()</full_name>
+        <docblock line="403">
+          <description>Adds the asset directories defined in $assetDirs to the publish procedure.</description>
+          <long-description>Can be overriden to adjust default functionality</long-description>
+        </docblock>
+        <inherited_from>\Sebwite\Support\ServiceProvider</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Codex" line="417" package="Sebwite\Support">
+        <name>bootMigrations</name>
+        <full_name>\Sebwite\Support\ServiceProvider::bootMigrations()</full_name>
+        <docblock line="417">
+          <description>Adds the migration directories defined in $migrationDirs to the publish procedure.</description>
+          <long-description>Can be overriden to adjust default functionality</long-description>
+        </docblock>
+        <inherited_from>\Sebwite\Support\ServiceProvider</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Codex" line="430" package="Sebwite\Support">
+        <name>bootSeeds</name>
+        <full_name>\Sebwite\Support\ServiceProvider::bootSeeds()</full_name>
+        <docblock line="430">
+          <description>Adds the seed directories defined in $seedDirs to the publish procedure.</description>
+          <long-description>Can be overriden to adjust default functionality</long-description>
+        </docblock>
+        <inherited_from>\Sebwite\Support\ServiceProvider</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Codex" line="439" package="Sebwite\Support">
+        <name>requireHelpersFor</name>
+        <full_name>\Sebwite\Support\ServiceProvider::requireHelpersFor()</full_name>
+        <docblock line="439">
+          <description/>
+          <long-description/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$for</name>
+          <default/>
+          <type/>
+        </argument>
+        <inherited_from>\Sebwite\Support\ServiceProvider</inherited_from>
+      </method>
+      <method final="false" abstract="true" static="false" visibility="public" namespace="Codex" line="54" package="Default">
+        <name>register</name>
+        <full_name>\Illuminate\Support\ServiceProvider::register()</full_name>
+        <docblock line="54">
+          <description>Register the service provider.</description>
+          <long-description/>
+          <tag name="return" line="54" description="" type="void">
+            <type>void</type>
+          </tag>
+        </docblock>
+        <inherited_from>\Illuminate\Support\ServiceProvider</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Codex" line="581" package="Sebwite\Support">
+        <name>defaultConfigStrategy</name>
+        <full_name>\Sebwite\Support\ServiceProvider::defaultConfigStrategy()</full_name>
+        <docblock line="581">
+          <description>The default config merge function, instead of using the laravel mergeConfigRom it</description>
+          <long-description/>
+          <tag name="param" line="581" description="" type="" variable="$path"/>
+          <tag name="param" line="581" description="" type="" variable="$key"/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$path</name>
+          <default/>
+          <type/>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$key</name>
+          <default/>
+          <type/>
+        </argument>
+        <inherited_from>\Sebwite\Support\ServiceProvider</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Codex" line="591" package="Sebwite\Support">
+        <name>registerConfigFiles</name>
+        <full_name>\Sebwite\Support\ServiceProvider::registerConfigFiles()</full_name>
+        <docblock line="591">
+          <description>Merges all defined config files defined in $configFiles.</description>
+          <long-description>Can be overriden to adjust default functionality</long-description>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$configFiles</name>
+          <default>null</default>
+          <type/>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$path</name>
+          <default>null</default>
+          <type/>
+        </argument>
+        <inherited_from>\Sebwite\Support\ServiceProvider</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Codex" line="607" package="Sebwite\Support">
+        <name>findCommandsIn</name>
+        <full_name>\Sebwite\Support\ServiceProvider::findCommandsIn()</full_name>
+        <docblock line="607">
+          <description/>
+          <long-description/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$path</name>
+          <default/>
+          <type/>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$recursive</name>
+          <default>false</default>
+          <type/>
+        </argument>
+        <inherited_from>\Sebwite\Support\ServiceProvider</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Codex" line="628" package="Sebwite\Support">
+        <name>findCommandsFiles</name>
+        <full_name>\Sebwite\Support\ServiceProvider::findCommandsFiles()</full_name>
+        <docblock line="628">
+          <description/>
+          <long-description/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$directory</name>
+          <default/>
+          <type/>
+        </argument>
+        <inherited_from>\Sebwite\Support\ServiceProvider</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Codex" line="652" package="Sebwite\Support">
+        <name>pushMiddleware</name>
+        <full_name>\Sebwite\Support\ServiceProvider::pushMiddleware()</full_name>
+        <docblock line="652">
+          <description>Push a Middleware on to the stack</description>
+          <long-description/>
+          <tag name="param" line="652" description="" type="" variable="$middleware"/>
+          <tag name="return" line="652" description="" type="mixed">
+            <type>mixed</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$middleware</name>
+          <default/>
+          <type/>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$force</name>
+          <default>false</default>
+          <type/>
+        </argument>
+        <inherited_from>\Sebwite\Support\ServiceProvider</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Codex" line="667" package="Sebwite\Support">
+        <name>prependMiddleware</name>
+        <full_name>\Sebwite\Support\ServiceProvider::prependMiddleware()</full_name>
+        <docblock line="667">
+          <description>Prepend a Middleware in the stack</description>
+          <long-description/>
+          <tag name="param" line="667" description="" type="" variable="$middleware"/>
+          <tag name="return" line="667" description="" type="mixed">
+            <type>mixed</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$middleware</name>
+          <default/>
+          <type/>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$force</name>
+          <default>false</default>
+          <type/>
+        </argument>
+        <inherited_from>\Sebwite\Support\ServiceProvider</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Codex" line="685" package="Sebwite\Support">
+        <name>routeMiddleware</name>
+        <full_name>\Sebwite\Support\ServiceProvider::routeMiddleware()</full_name>
+        <docblock line="685">
+          <description>Add a route middleware. Will not be added when running in console.</description>
+          <long-description/>
+          <tag name="param" line="685" description="" type="" variable="$key"/>
+          <tag name="param" line="685" description="" type="null" variable="$middleware">
+            <type>null</type>
+          </tag>
+          <tag name="param" line="685" description="" type="boolean" variable="$force">
+            <type>boolean</type>
+          </tag>
+          <tag name="return" line="685" description="" type="mixed">
+            <type>mixed</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$key</name>
+          <default/>
+          <type/>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$middleware</name>
+          <default>null</default>
+          <type>null</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$force</name>
+          <default>false</default>
+          <type>boolean</type>
+        </argument>
+        <inherited_from>\Sebwite\Support\ServiceProvider</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Codex" line="709" package="Sebwite\Support">
+        <name>bindIf</name>
+        <full_name>\Sebwite\Support\ServiceProvider::bindIf()</full_name>
+        <docblock line="709">
+          <description>Registers a binding if it hasn't already been registered.</description>
+          <long-description/>
+          <tag name="param" line="709" description="" type="string" variable="$abstract">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="709" description="" type="\Closure|string|null" variable="$concrete">
+            <type>\Closure</type>
+            <type>string</type>
+            <type>null</type>
+          </tag>
+          <tag name="param" line="709" description="" type="boolean" variable="$shared">
+            <type>boolean</type>
+          </tag>
+          <tag name="param" line="709" description="" type="boolean|string|null" variable="$alias">
+            <type>boolean</type>
+            <type>string</type>
+            <type>null</type>
+          </tag>
+          <tag name="return" line="709" description="" type="void">
+            <type>void</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$abstract</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$concrete</name>
+          <default>null</default>
+          <type>\Closure|string|null</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$shared</name>
+          <default>true</default>
+          <type>boolean</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$alias</name>
+          <default>null</default>
+          <type>boolean|string|null</type>
+        </argument>
+        <inherited_from>\Sebwite\Support\ServiceProvider</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Codex" line="726" package="Sebwite\Support">
+        <name>share</name>
+        <full_name>\Sebwite\Support\ServiceProvider::share()</full_name>
+        <docblock line="726">
+          <description>Register a class so it's shared. Optionally create an alias for it.</description>
+          <long-description/>
+          <tag name="param" line="726" description="" type="" variable="$binding"/>
+          <tag name="param" line="726" description="" type="" variable="$class"/>
+          <tag name="param" line="726" description="" type="array" variable="$params">
+            <type>array</type>
+          </tag>
+          <tag name="param" line="726" description="" type="boolean" variable="$alias">
+            <type>boolean</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$binding</name>
+          <default/>
+          <type/>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$class</name>
+          <default/>
+          <type/>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$params</name>
+          <default>array()</default>
+          <type>array</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$alias</name>
+          <default>false</default>
+          <type>boolean</type>
+        </argument>
+        <inherited_from>\Sebwite\Support\ServiceProvider</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Codex" line="741" package="Sebwite\Support">
+        <name>resolveDirectories</name>
+        <full_name>\Sebwite\Support\ServiceProvider::resolveDirectories()</full_name>
+        <docblock line="741">
+          <description/>
+          <long-description/>
+        </docblock>
+        <inherited_from>\Sebwite\Support\ServiceProvider</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Codex" line="787" package="Sebwite\Support">
+        <name>getPath</name>
+        <full_name>\Sebwite\Support\ServiceProvider::getPath()</full_name>
+        <docblock line="787">
+          <description>getFilePath</description>
+          <long-description/>
+          <tag name="param" line="787" description="" type="" variable="$relativePath"/>
+          <tag name="param" line="787" description="" type="null" variable="$fileName">
+            <type>null</type>
+          </tag>
+          <tag name="param" line="787" description="" type="string" variable="$ext">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="787" description="" type="string">
+            <type>string</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$relativePath</name>
+          <default/>
+          <type/>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$fileName</name>
+          <default>null</default>
+          <type>null</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$ext</name>
+          <default>'.php'</default>
+          <type>string</type>
+        </argument>
+        <inherited_from>\Sebwite\Support\ServiceProvider</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Codex" line="801" package="Sebwite\Support">
+        <name>getConfigFilePath</name>
+        <full_name>\Sebwite\Support\ServiceProvider::getConfigFilePath()</full_name>
+        <docblock line="801">
+          <description>getConfigFilePath</description>
+          <long-description/>
+          <tag name="param" line="801" description="" type="null" variable="$fileName">
+            <type>null</type>
+          </tag>
+          <tag name="return" line="801" description="" type="string">
+            <type>string</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$fileName</name>
+          <default>null</default>
+          <type>null</type>
+        </argument>
+        <inherited_from>\Sebwite\Support\ServiceProvider</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Codex" line="813" package="Sebwite\Support">
+        <name>getDatabasePath</name>
+        <full_name>\Sebwite\Support\ServiceProvider::getDatabasePath()</full_name>
+        <docblock line="813">
+          <description>getMigrationFilePath</description>
+          <long-description/>
+          <tag name="param" line="813" description="" type="null" variable="$path">
+            <type>null</type>
+          </tag>
+          <tag name="return" line="813" description="" type="string">
+            <type>string</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$path</name>
+          <default>null</default>
+          <type>null</type>
+        </argument>
+        <inherited_from>\Sebwite\Support\ServiceProvider</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Codex" line="825" package="Sebwite\Support">
+        <name>getResourcesPath</name>
+        <full_name>\Sebwite\Support\ServiceProvider::getResourcesPath()</full_name>
+        <docblock line="825">
+          <description>getViewFilePath</description>
+          <long-description/>
+          <tag name="param" line="825" description="" type="null" variable="$path">
+            <type>null</type>
+          </tag>
+          <tag name="return" line="825" description="" type="string">
+            <type>string</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$path</name>
+          <default>null</default>
+          <type>null</type>
+        </argument>
+        <inherited_from>\Sebwite\Support\ServiceProvider</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Codex" line="837" package="Sebwite\Support">
+        <name>getAssetsPath</name>
+        <full_name>\Sebwite\Support\ServiceProvider::getAssetsPath()</full_name>
+        <docblock line="837">
+          <description>getAssetsPath</description>
+          <long-description/>
+          <tag name="param" line="837" description="" type="null" variable="$dirName">
+            <type>null</type>
+          </tag>
+          <tag name="return" line="837" description="" type="string">
+            <type>string</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$dirName</name>
+          <default/>
+          <type>null</type>
+        </argument>
+        <inherited_from>\Sebwite\Support\ServiceProvider</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Codex" line="849" package="Sebwite\Support">
+        <name>getViewsPath</name>
+        <full_name>\Sebwite\Support\ServiceProvider::getViewsPath()</full_name>
+        <docblock line="849">
+          <description>getViewsPath</description>
+          <long-description/>
+          <tag name="param" line="849" description="" type="null" variable="$path">
+            <type>null</type>
+          </tag>
+          <tag name="return" line="849" description="" type="string">
+            <type>string</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$dirName</name>
+          <default/>
+          <type/>
+        </argument>
+        <inherited_from>\Sebwite\Support\ServiceProvider</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Codex" line="187" package="Default">
+        <name>provides</name>
+        <full_name>\Illuminate\Support\ServiceProvider::provides()</full_name>
+        <docblock line="187">
+          <description>Get the services provided by the provider.</description>
+          <long-description/>
+          <tag name="return" line="187" description="" type="array">
+            <type>array</type>
+          </tag>
+        </docblock>
+        <inherited_from>\Illuminate\Support\ServiceProvider</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Codex" line="44" package="Default">
+        <name>__construct</name>
+        <full_name>\Illuminate\Support\ServiceProvider::__construct()</full_name>
+        <docblock line="44">
+          <description>Create a new service provider instance.</description>
+          <long-description/>
+          <tag name="param" line="44" description="" type="\Illuminate\Contracts\Foundation\Application" variable="$app">
+            <type>\Illuminate\Contracts\Foundation\Application</type>
+          </tag>
+          <tag name="return" line="44" description="" type="void">
+            <type>void</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$app</name>
+          <default/>
+          <type>\Illuminate\Contracts\Foundation\Application</type>
+        </argument>
+        <inherited_from>\Illuminate\Support\ServiceProvider</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Codex" line="63" package="Default">
+        <name>mergeConfigFrom</name>
+        <full_name>\Illuminate\Support\ServiceProvider::mergeConfigFrom()</full_name>
+        <docblock line="63">
+          <description>Merge the given configuration with the existing configuration.</description>
+          <long-description/>
+          <tag name="param" line="63" description="" type="string" variable="$path">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="63" description="" type="string" variable="$key">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="63" description="" type="void">
+            <type>void</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$path</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$key</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <inherited_from>\Illuminate\Support\ServiceProvider</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Codex" line="77" package="Default">
+        <name>loadViewsFrom</name>
+        <full_name>\Illuminate\Support\ServiceProvider::loadViewsFrom()</full_name>
+        <docblock line="77">
+          <description>Register a view file namespace.</description>
+          <long-description/>
+          <tag name="param" line="77" description="" type="string" variable="$path">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="77" description="" type="string" variable="$namespace">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="77" description="" type="void">
+            <type>void</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$path</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$namespace</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <inherited_from>\Illuminate\Support\ServiceProvider</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Codex" line="93" package="Default">
+        <name>loadTranslationsFrom</name>
+        <full_name>\Illuminate\Support\ServiceProvider::loadTranslationsFrom()</full_name>
+        <docblock line="93">
+          <description>Register a translation file namespace.</description>
+          <long-description/>
+          <tag name="param" line="93" description="" type="string" variable="$path">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="93" description="" type="string" variable="$namespace">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="93" description="" type="void">
+            <type>void</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$path</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$namespace</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <inherited_from>\Illuminate\Support\ServiceProvider</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Codex" line="105" package="Default">
+        <name>publishes</name>
+        <full_name>\Illuminate\Support\ServiceProvider::publishes()</full_name>
+        <docblock line="105">
+          <description>Register paths to be published by the publish command.</description>
+          <long-description/>
+          <tag name="param" line="105" description="" type="array" variable="$paths">
+            <type>array</type>
+          </tag>
+          <tag name="param" line="105" description="" type="string" variable="$group">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="105" description="" type="void">
+            <type>void</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$paths</name>
+          <default/>
+          <type>array</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$group</name>
+          <default>null</default>
+          <type>string</type>
+        </argument>
+        <inherited_from>\Illuminate\Support\ServiceProvider</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="true" visibility="public" namespace="Codex" line="131" package="Default">
+        <name>pathsToPublish</name>
+        <full_name>\Illuminate\Support\ServiceProvider::pathsToPublish()</full_name>
+        <docblock line="131">
+          <description>Get the paths to publish.</description>
+          <long-description/>
+          <tag name="param" line="131" description="" type="string" variable="$provider">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="131" description="" type="string" variable="$group">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="131" description="" type="array">
+            <type>array</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$provider</name>
+          <default>null</default>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$group</name>
+          <default>null</default>
+          <type>string</type>
+        </argument>
+        <inherited_from>\Illuminate\Support\ServiceProvider</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Codex" line="168" package="Default">
+        <name>commands</name>
+        <full_name>\Illuminate\Support\ServiceProvider::commands()</full_name>
+        <docblock line="168">
+          <description>Register the package's custom Artisan commands.</description>
+          <long-description/>
+          <tag name="param" line="168" description="" type="array|mixed" variable="$commands">
+            <type>array</type>
+            <type>mixed</type>
+          </tag>
+          <tag name="return" line="168" description="" type="void">
+            <type>void</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$commands</name>
+          <default/>
+          <type>array|mixed</type>
+        </argument>
+        <inherited_from>\Illuminate\Support\ServiceProvider</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Codex" line="197" package="Default">
+        <name>when</name>
+        <full_name>\Illuminate\Support\ServiceProvider::when()</full_name>
+        <docblock line="197">
+          <description>Get the events that trigger this service provider to register.</description>
+          <long-description/>
+          <tag name="return" line="197" description="" type="array">
+            <type>array</type>
+          </tag>
+        </docblock>
+        <inherited_from>\Illuminate\Support\ServiceProvider</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Codex" line="207" package="Default">
+        <name>isDeferred</name>
+        <full_name>\Illuminate\Support\ServiceProvider::isDeferred()</full_name>
+        <docblock line="207">
+          <description>Determine if the provider is deferred.</description>
+          <long-description/>
+          <tag name="return" line="207" description="" type="boolean">
+            <type>boolean</type>
+          </tag>
+        </docblock>
+        <inherited_from>\Illuminate\Support\ServiceProvider</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="true" visibility="public" namespace="Codex" line="217" package="Default">
+        <name>compiles</name>
+        <full_name>\Illuminate\Support\ServiceProvider::compiles()</full_name>
+        <docblock line="217">
+          <description>Get a list of files that should be compiled for the package.</description>
+          <long-description/>
+          <tag name="return" line="217" description="" type="array">
+            <type>array</type>
+          </tag>
+        </docblock>
+        <inherited_from>\Illuminate\Support\ServiceProvider</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Codex" line="231" package="Default">
+        <name>__call</name>
+        <full_name>\Illuminate\Support\ServiceProvider::__call()</full_name>
+        <docblock line="231">
+          <description>Dynamically handle missing method calls.</description>
+          <long-description/>
+          <tag name="param" line="231" description="" type="string" variable="$method">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="231" description="" type="array" variable="$parameters">
+            <type>array</type>
+          </tag>
+          <tag name="return" line="231" description="" type="mixed">
+            <type>mixed</type>
+          </tag>
+          <tag name="throws" line="231" description="" type="\BadMethodCallException">
+            <type>\BadMethodCallException</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$method</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$parameters</name>
+          <default/>
+          <type>array</type>
+        </argument>
+        <inherited_from>\Illuminate\Support\ServiceProvider</inherited_from>
+      </method>
+    </class>
+    <parse_markers>
+      <error line="85" code="PPC:ERR-50008">No summary for method boot()</error>
+      <error line="94" code="PPC:ERR-50008">No summary for method register()</error>
+      <error line="141" code="PPC:ERR-50008">No summary for method registerCodex()</error>
+      <error line="160" code="PPC:ERR-50008">No summary for method registerDefaultFilesystem()</error>
+      <error line="170" code="PPC:ERR-50008">No summary for method registerDev()</error>
+      <error line="175" code="PPC:ERR-50008">No summary for method registerRouting()</error>
+      <error line="180" code="PPC:ERR-50008">No summary for method registerTheme()</error>
+      <error line="197" code="PPC:ERR-50008">No summary for method bootBladeDirectives()</error>
+      <error line="213" code="PPC:ERR-50008">No summary for method registerJavascriptData()</error>
+      <error line="229" code="PPC:ERR-50008">No summary for method registerAddons()</error>
+      <error line="33" code="PPC:ERR-50007">No summary for property $dir</error>
+      <error line="35" code="PPC:ERR-50007">No summary for property $configFiles</error>
+      <error line="37" code="PPC:ERR-50007">No summary for property $viewDirs</error>
+      <error line="42" code="PPC:ERR-50007">No summary for property $assetDirs</error>
+      <error line="47" code="PPC:ERR-50007">No summary for property $providers</error>
+      <error line="51" code="PPC:ERR-50007">No summary for property $commands</error>
+      <error line="56" code="PPC:ERR-50007">No summary for property $bindings</error>
+      <error line="62" code="PPC:ERR-50007">No summary for property $singletons</error>
+      <error line="68" code="PPC:ERR-50007">No summary for property $aliases</error>
+      <error line="73" code="PPC:ERR-50007">No summary for property $weaklings</error>
+      <error line="78" code="PPC:ERR-50007">No summary for property $middleware</error>
+      <error line="83" code="PPC:ERR-50007">No summary for property $addons</error>
+    </parse_markers>
+    <source>eJytWW1z2zYS/q5fgWk8Qyonideb3n2wY7Wu7ba+cToZO20/lBkNRK4kNBTBAUA5ntb//RZvFF8lJT1NIpHYB7uLXewL4DffFptiFL1+PSKvyTsqFOErojZArnkKn8g7wf+ARJGCJh/pGuQMYRp5zxLIJRCapyThxbNg640iLF9xsaWK8ZwsyzzNICVPTG2QIZOeB6KMgPu769ufH2/JimWALKPRaJTTLUiEOekXo1Ep3XP8k1JFfM1zJXiWgZCxGd4PXNSw93wd/yaYao66tUj/UKe9F5QpxxPJO5aCMGMWdJdl5ZblVIFVgWo2P3BcollsfFUUGUvswqkk91TQHWS10Q6bH3DV8lkq2NYer1JaVErfA12XCMyeOzgtoxq36Lc85xkuG5e+BqEBbsSSH2GJjoD4sSwKLlT8CGKHLvRLRUu7LfBeewr/aQ8lGZXSGqiF99vgO+9T97HGvOYCDJWWasOFJ3olDGm/adxE/xomY/Kvf37974mHz8hVlhFDlESARE0gtfKj0bCKBD4pyFNJWuOjP0daYOX6lrcNsRBc4QbB3XuWMkEuyWJxc/ewWHTJCc9XbG08g7DfSZBonsHEPUz/YIIG5EN34o7B0w0TZtbIGyjQozIgl/OK0Z4mVbms06Z2wCJ6JKBhQHVFmGHkoz+9clLYRR60F4ajw6IKZ8OmqPiBpiyJv89oCrfaGRIDQbbfW+45PzcuHRSV8O2WarfWJWFMSp5BfM+kuraABp865loAxl8fqkfakuUpy9ctExqLzFKelFvIlbHSjXuRsX/qKOCmFTb5BMb67ZQ0NAkZlpXL3uKLjPX3MfUl6p6BwpX3LCDwr8jSRMKQcJqmyMEs88o8xvanwg/uwIxRCb3Gw8QUWME+m97b5DWgRLDX1E/o6tyjwhPQj1nXgytZrb6yQexzZG9qHjLOGnIQVHER9PnzR089pueWpVgtn6iAhqKviCt7KOptBellhvmbfLejoukjnSPbXjEEr0K5xBJFVmWe2KrNuQrHhvRnpcUZLQpUq0DRel9bjGNg6Lq8T+d63AQ3Jh2UxXYgGzABqhS54XZhBl/6dRCwxjgGcUyPPa6ri6fZcngIcQMrWmZq7+lDYOOIQwBr9UOI9xvYwiHAf+mOykSwQt1QRRtItiKhh6MtTLnR9QcrjC89M8FLhRt+BjldYv+FJHJ5eUmUKIGMK057o/Zo8GBZaNEe8fJ5SmC1+DsK3MBuQPjQHjLdi/68Jk3Xky1gD5I6osdg3yLolsSf09dpmW02Tp243XY6QDv2Olvcb8/2Rq+sO52zXCqaJxDWMueEnOEPhkIOT8RKDBv21OOu/wvrzCDfMcFzXZ/C8XjS5wPrUtjpYoa+qyDjmkO09OkcWygTNeGRzYDgWUHVBsf60oHpUWuuPGAuF37OWm1zGWk/cf5RmwqtJkrNBY1V8Qlb1UO3E/gzuCtt6zO3nWQYuNKNPVcn0ftiWDNSHwddx/X0fQk/caLSWQMnmuzRnfJSN+wrZw+5wUQZVh1po15iq/phYmKyxuVVfauY4l2f3Vd3e9JYzQvOXueVNxq+8EfLMwcb9IKj743hOy9tyW7j1WPRl/GpO6ynGhyIzS39iAZeVeBgvFfSOjDjCc0ay+6eDU1mmRAqBH32JwpzmPgwaJKVP/y5E6MetNmg1rzca9mhY4jRKLA+2xjs51U7XzpenhJ2BLaYuFhuKuCgYZ+EL3TO7qA7qoYAgTH+7z9anCyuKoOniDR9mv76m0Jde9Av8v+e4aqmMfYnd/z+q3rpY+WrWqWay1QmQ6FV0vRRPaObNwAqDLCMpNgb43l4g7aR51G0pZ+SNJ/pZhEXQAv9goe6aIXSpvQJJN9C9M3sP7Ovo0TKxvAMS/UMB4P+9HVcG59FnVqRAUfSINyPBhr+XvVuwNRFNCj6Y2TuW7i6BZpCDVlGjjw+zqi6Wejl46kNxY8zHbCIY+qp1b3GYWMY7t/z9Plab3mTpyXJaL4u6RqmxaYIjnurvVjbQrCc6SPH6fOrddn55rXiMrSg45mo94jTitV9TNW6y18ZPGEYbQtm7i4ND/9Kzpb6tR5YbuSy2ZTp2yHUeDpfg7rN1yyHB4yLbKc7SJ2KzHMYmLm6FCHMy6i301H04JKNueV7VFToPEfe03VLgek89esMA3MxixEiG/lmKLO4ihC80ffLhC8XUosJx+TbedC1eI9at+bm5ZhS+obvS/T6yuoFyYajn2G9EFBkVHfZ0TyO5T/eRHrzzN/gN+qOhlwkGdAcm+YLXMFXX1K92ue6U1K8u9s+N55vpvnG5bdpG9zzxF4udlo2Fy1V71o1Vn1NFDnzTdbR0nGwOJjA0/u4HqkXPRhsV6EW92dJbZLtYPQe53n2jHmFSXTW80L/uUC7CVVVdK39H0B1r2gItptb+Ds35KD4le6zwnE7ldS18PhJrfnEPfAz1aX50MSWZo3ZN5Z2AhN/sTjZe+FE+T7t+cGTVksL9ovQTWopMvMWHFYPlqU+gjqv4IRi5sdWNJMw/qLmzt+cfMZR2F1MTiqQvfK6bF9Tounu/NTGMbY+zazuLc3ZCqR6h8fVY8dafaSVs62b0awkLc5+jXe5Yez+mkBmJIgwGBPMXVzIYHj+iuXpVZ76/HiVZeHeri+j/wGCGmXt</source>
+  <type>class</type></file>

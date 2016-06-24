@@ -1,0 +1,449 @@
+<file path="codex/workbench/codex/addon-git/src/CodexGit.php" generated-path="codex.workbench.codex.addon-git.src.CodexGit.html" hash="ce83a74af620dd7d3390764309576852" package="Default">
+    <docblock line="0">
+      <description>Part of the Codex PHP packages.</description>
+      <long-description>License and copyright information bundled with this package in the LICENSE file</long-description>
+      <tag name="package" line="0" description="Default"/>
+    </docblock>
+    <namespace-alias name="SyncJob">\Codex\Addon\Git\Jobs\SyncJob</namespace-alias>
+    <namespace-alias name="Codex">\Codex\Contracts\Codex</namespace-alias>
+    <namespace-alias name="Project">\Codex\Projects\Project</namespace-alias>
+    <namespace-alias name="HookableTrait">\Codex\Traits\HookableTrait</namespace-alias>
+    <namespace-alias name="Cache">\Illuminate\Contracts\Cache\Repository</namespace-alias>
+    <namespace-alias name="Filesystem">\Illuminate\Contracts\Filesystem\Filesystem</namespace-alias>
+    <namespace-alias name="Queue">\Illuminate\Contracts\Queue\Queue</namespace-alias>
+    <namespace-alias name="DispatchesJobs">\Illuminate\Foundation\Bus\DispatchesJobs</namespace-alias>
+    <namespace-alias name="Manager">\Sebwite\Git\Contracts\Manager</namespace-alias>
+    <class final="false" abstract="false" namespace="Codex\Addon\Git" line="26" package="Codex\Hooks">
+      <extends/>
+      <name>CodexGit</name>
+      <full_name>\Codex\Addon\Git\CodexGit</full_name>
+      <docblock line="26">
+        <description>This is the class Factory.</description>
+        <long-description/>
+        <tag name="package" line="26" description="Codex\Hooks"/>
+        <tag name="author" line="26" description="Codex"/>
+        <tag name="copyright" line="26" description="Copyright (c) 2015, Codex. All rights reserved"/>
+      </docblock>
+      <property static="false" visibility="protected" namespace="Codex\Addon\Git" line="34" package="Codex\Hooks">
+        <name>$files</name>
+        <full_name>\Codex\Addon\Git\CodexGit::files</full_name>
+        <default/>
+        <docblock line="34">
+          <description/>
+          <long-description/>
+          <tag name="var" line="34" description="" type="\Illuminate\Contracts\Filesystem\Filesystem" variable="">
+            <type>\Illuminate\Contracts\Filesystem\Filesystem</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" namespace="Codex\Addon\Git" line="39" package="Codex\Hooks">
+        <name>$codex</name>
+        <full_name>\Codex\Addon\Git\CodexGit::codex</full_name>
+        <default/>
+        <docblock line="39">
+          <description/>
+          <long-description/>
+          <tag name="var" line="39" description="" type="\Codex\Contracts\Codex|\Codex\Codex" variable="">
+            <type>\Codex\Contracts\Codex</type>
+            <type>\Codex\Codex</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" namespace="Codex\Addon\Git" line="44" package="Codex\Hooks">
+        <name>$queue</name>
+        <full_name>\Codex\Addon\Git\CodexGit::queue</full_name>
+        <default/>
+        <docblock line="44">
+          <description/>
+          <long-description/>
+          <tag name="var" line="44" description="" type="\Illuminate\Contracts\Queue\Queue" variable="">
+            <type>\Illuminate\Contracts\Queue\Queue</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" namespace="Codex\Addon\Git" line="49" package="Codex\Hooks">
+        <name>$git</name>
+        <full_name>\Codex\Addon\Git\CodexGit::git</full_name>
+        <default/>
+        <docblock line="49">
+          <description/>
+          <long-description/>
+          <tag name="var" line="49" description="" type="\Sebwite\Git\Contracts\Manager|\Sebwite\Git\Manager" variable="">
+            <type>\Sebwite\Git\Contracts\Manager</type>
+            <type>\Sebwite\Git\Manager</type>
+          </tag>
+        </docblock>
+      </property>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Codex\Addon\Git" line="59" package="Codex\Hooks">
+        <name>__construct</name>
+        <full_name>\Codex\Addon\Git\CodexGit::__construct()</full_name>
+        <docblock line="59">
+          <description>Factory constructor.</description>
+          <long-description/>
+          <tag name="param" line="59" description="" type="\Codex\Contracts\Codex|\Codex\Codex" variable="$parent">
+            <type>\Codex\Contracts\Codex</type>
+            <type>\Codex\Codex</type>
+          </tag>
+          <tag name="param" line="59" description="" type="\Illuminate\Contracts\Filesystem\Filesystem" variable="$files">
+            <type>\Illuminate\Contracts\Filesystem\Filesystem</type>
+          </tag>
+          <tag name="param" line="59" description="" type="\Illuminate\Contracts\Queue\Queue" variable="$queue">
+            <type>\Illuminate\Contracts\Queue\Queue</type>
+          </tag>
+          <tag name="param" line="59" description="" type="\Sebwite\Git\Contracts\Manager|\Sebwite\Git\Manager" variable="$git">
+            <type>\Sebwite\Git\Contracts\Manager</type>
+            <type>\Sebwite\Git\Manager</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$parent</name>
+          <default/>
+          <type>\Codex\Contracts\Codex|\Codex\Codex</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$files</name>
+          <default/>
+          <type>\Illuminate\Contracts\Filesystem\Filesystem</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$queue</name>
+          <default/>
+          <type>\Illuminate\Contracts\Queue\Queue</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$git</name>
+          <default/>
+          <type>\Sebwite\Git\Contracts\Manager|\Sebwite\Git\Manager</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Codex\Addon\Git" line="75" package="Codex\Hooks">
+        <name>getProjectSyncer</name>
+        <full_name>\Codex\Addon\Git\CodexGit::getProjectSyncer()</full_name>
+        <docblock line="75">
+          <description/>
+          <long-description/>
+          <tag name="param" line="75" description="" type="" variable="$project"/>
+          <tag name="return" line="75" description="" type="\Codex\Addon\Git\Syncer">
+            <type>\Codex\Addon\Git\Syncer</type>
+          </tag>
+          <tag name="throws" line="75" description="" type="\Codex\Exception\CodexException">
+            <type>\Codex\Exception\CodexException</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$project</name>
+          <default/>
+          <type/>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Codex\Addon\Git" line="93" package="Codex\Hooks">
+        <name>getEnabledProjects</name>
+        <full_name>\Codex\Addon\Git\CodexGit::getEnabledProjects()</full_name>
+        <docblock line="93">
+          <description>Get all projects that have the git addon enabled.</description>
+          <long-description/>
+          <tag name="return" line="93" description="" type="array&lt;mixed,\Codex\Projects\Project&gt;">
+            <type>array&lt;mixed,\Codex\Projects\Project&gt;</type>
+          </tag>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Codex\Addon\Git" line="110" package="Codex\Hooks">
+        <name>getFiles</name>
+        <full_name>\Codex\Addon\Git\CodexGit::getFiles()</full_name>
+        <docblock line="110">
+          <description>get fsm value</description>
+          <long-description/>
+          <tag name="return" line="110" description="" type="\Illuminate\Contracts\Filesystem\Filesystem">
+            <type>\Illuminate\Contracts\Filesystem\Filesystem</type>
+          </tag>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Codex\Addon\Git" line="122" package="Codex\Hooks">
+        <name>setFiles</name>
+        <full_name>\Codex\Addon\Git\CodexGit::setFiles()</full_name>
+        <docblock line="122">
+          <description>Set the fsm value</description>
+          <long-description/>
+          <tag name="param" line="122" description="" type="\Illuminate\Contracts\Filesystem\Filesystem" variable="$files">
+            <type>\Illuminate\Contracts\Filesystem\Filesystem</type>
+          </tag>
+          <tag name="return" line="122" description="" type="\Codex\Addon\Git\Factory">
+            <type>\Codex\Addon\Git\Factory</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$files</name>
+          <default/>
+          <type>\Illuminate\Contracts\Filesystem\Filesystem</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Codex\Addon\Git" line="134" package="Codex\Hooks">
+        <name>getCodex</name>
+        <full_name>\Codex\Addon\Git\CodexGit::getCodex()</full_name>
+        <docblock line="134">
+          <description>get codex value</description>
+          <long-description/>
+          <tag name="return" line="134" description="" type="\Codex\Contracts\Codex">
+            <type>\Codex\Contracts\Codex</type>
+          </tag>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Codex\Addon\Git" line="146" package="Codex\Hooks">
+        <name>setCodex</name>
+        <full_name>\Codex\Addon\Git\CodexGit::setCodex()</full_name>
+        <docblock line="146">
+          <description>Set the codex value</description>
+          <long-description/>
+          <tag name="param" line="146" description="" type="\Codex\Contracts\Codex" variable="$codex">
+            <type>\Codex\Contracts\Codex</type>
+          </tag>
+          <tag name="return" line="146" description="" type="\Codex\Addon\Git\Factory">
+            <type>\Codex\Addon\Git\Factory</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$codex</name>
+          <default/>
+          <type>\Codex\Contracts\Codex</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Codex\Addon\Git" line="158" package="Codex\Hooks">
+        <name>getQueue</name>
+        <full_name>\Codex\Addon\Git\CodexGit::getQueue()</full_name>
+        <docblock line="158">
+          <description>get queue value</description>
+          <long-description/>
+          <tag name="return" line="158" description="" type="\Illuminate\Contracts\Queue\Queue">
+            <type>\Illuminate\Contracts\Queue\Queue</type>
+          </tag>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Codex\Addon\Git" line="170" package="Codex\Hooks">
+        <name>setQueue</name>
+        <full_name>\Codex\Addon\Git\CodexGit::setQueue()</full_name>
+        <docblock line="170">
+          <description>Set the queue value</description>
+          <long-description/>
+          <tag name="param" line="170" description="" type="\Illuminate\Contracts\Queue\Queue" variable="$queue">
+            <type>\Illuminate\Contracts\Queue\Queue</type>
+          </tag>
+          <tag name="return" line="170" description="" type="\Codex\Addon\Git\Factory">
+            <type>\Codex\Addon\Git\Factory</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$queue</name>
+          <default/>
+          <type>\Illuminate\Contracts\Queue\Queue</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Codex\Addon\Git" line="182" package="Codex\Hooks">
+        <name>getGit</name>
+        <full_name>\Codex\Addon\Git\CodexGit::getGit()</full_name>
+        <docblock line="182">
+          <description>get git value</description>
+          <long-description/>
+          <tag name="return" line="182" description="" type="\Sebwite\Git\Contracts\Manager|\Sebwite\Git\Remotes\Manager">
+            <type>\Sebwite\Git\Contracts\Manager</type>
+            <type>\Sebwite\Git\Remotes\Manager</type>
+          </tag>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Codex\Addon\Git" line="194" package="Codex\Hooks">
+        <name>setGit</name>
+        <full_name>\Codex\Addon\Git\CodexGit::setGit()</full_name>
+        <docblock line="194">
+          <description>Set the git value</description>
+          <long-description/>
+          <tag name="param" line="194" description="" type="\Sebwite\Git\Contracts\Manager|\Sebwite\Git\Remotes\Manager" variable="$git">
+            <type>\Sebwite\Git\Contracts\Manager</type>
+            <type>\Sebwite\Git\Remotes\Manager</type>
+          </tag>
+          <tag name="return" line="194" description="" type="\Codex\Addon\Git\Factory">
+            <type>\Codex\Addon\Git\Factory</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$git</name>
+          <default/>
+          <type>\Sebwite\Git\Contracts\Manager|\Sebwite\Git\Remotes\Manager</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="true" visibility="public" namespace="Codex\Addon\Git" line="23" package="Default">
+        <name>getEventName</name>
+        <full_name>\Codex\Traits\HookableTrait::getEventName()</full_name>
+        <docblock line="23">
+          <description>Returns the transformed (namespaced) event name for a hook</description>
+          <long-description/>
+          <tag name="param" line="23" description="&lt;p&gt;The hook name&lt;/p&gt;" type="string" variable="$event">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="23" description="The transformed event name" type="string">
+            <type>string</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$event</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <inherited_from>\Codex\Traits\HookableTrait</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="true" visibility="public" namespace="Codex\Addon\Git" line="37" package="Default">
+        <name>hook</name>
+        <full_name>\Codex\Traits\HookableTrait::hook()</full_name>
+        <docblock line="37">
+          <description>Create a Codex Hook</description>
+          <long-description/>
+          <tag name="param" line="37" description="&lt;p&gt;The hook name&lt;/p&gt;" type="string" variable="$event">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="37" description="&lt;p&gt;The callback to execute&lt;/p&gt;" type="string|\Closure" variable="$callback">
+            <type>string</type>
+            <type>\Closure</type>
+          </tag>
+          <tag name="param" line="37" description="&lt;p&gt;(optional) The priority&lt;/p&gt;" type="integer" variable="$priority">
+            <type>integer</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$event</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$callback</name>
+          <default/>
+          <type>string|\Closure</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$priority</name>
+          <default>1</default>
+          <type>integer</type>
+        </argument>
+        <inherited_from>\Codex\Traits\HookableTrait</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Codex\Addon\Git" line="51" package="Default">
+        <name>hookPoint</name>
+        <full_name>\Codex\Traits\HookableTrait::hookPoint()</full_name>
+        <docblock line="51">
+          <description>Defines a point where hooks can hook</description>
+          <long-description/>
+          <tag name="param" line="51" description="&lt;p&gt;The hook name&lt;/p&gt;" type="string" variable="$event">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="51" description="&lt;p&gt;(optional) The arguments to pass along&lt;/p&gt;" type="array" variable="$args">
+            <type>array</type>
+          </tag>
+          <tag name="param" line="51" description="&lt;p&gt;(optional) If this hook can halt&lt;/p&gt;" type="boolean" variable="$halt">
+            <type>boolean</type>
+          </tag>
+          <tag name="return" line="51" description="" type="array|null">
+            <type>array</type>
+            <type>null</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$event</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$args</name>
+          <default>array()</default>
+          <type>array</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$halt</name>
+          <default>true</default>
+          <type>boolean</type>
+        </argument>
+        <inherited_from>\Codex\Traits\HookableTrait</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Codex\Addon\Git" line="65" package="Default">
+        <name>fireEvent</name>
+        <full_name>\Codex\Traits\HookableTrait::fireEvent()</full_name>
+        <docblock line="65">
+          <description>Fires an event for hooks</description>
+          <long-description/>
+          <tag name="param" line="65" description="&lt;p&gt;The hook name&lt;/p&gt;" type="string" variable="$event">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="65" description="&lt;p&gt;(optional) The arguments to pass along&lt;/p&gt;" type="array" variable="$args">
+            <type>array</type>
+          </tag>
+          <tag name="param" line="65" description="&lt;p&gt;(optional) If this hook can halt&lt;/p&gt;" type="boolean" variable="$halt">
+            <type>boolean</type>
+          </tag>
+          <tag name="return" line="65" description="" type="array|null">
+            <type>array</type>
+            <type>null</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$event</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$args</name>
+          <default>array()</default>
+          <type>array</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$halt</name>
+          <default>true</default>
+          <type>boolean</type>
+        </argument>
+        <inherited_from>\Codex\Traits\HookableTrait</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Codex\Addon\Git" line="15" package="Default">
+        <name>dispatch</name>
+        <full_name>\Illuminate\Foundation\Bus\DispatchesJobs::dispatch()</full_name>
+        <docblock line="15">
+          <description>Dispatch a job to its appropriate handler.</description>
+          <long-description/>
+          <tag name="param" line="15" description="" type="mixed" variable="$job">
+            <type>mixed</type>
+          </tag>
+          <tag name="return" line="15" description="" type="mixed">
+            <type>mixed</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$job</name>
+          <default/>
+          <type>mixed</type>
+        </argument>
+        <inherited_from>\Illuminate\Foundation\Bus\DispatchesJobs</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Codex\Addon\Git" line="26" package="Default">
+        <name>dispatchNow</name>
+        <full_name>\Illuminate\Foundation\Bus\DispatchesJobs::dispatchNow()</full_name>
+        <docblock line="26">
+          <description>Dispatch a command to its appropriate handler in the current process.</description>
+          <long-description/>
+          <tag name="param" line="26" description="" type="mixed" variable="$job">
+            <type>mixed</type>
+          </tag>
+          <tag name="return" line="26" description="" type="mixed">
+            <type>mixed</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$job</name>
+          <default/>
+          <type>mixed</type>
+        </argument>
+        <inherited_from>\Illuminate\Foundation\Bus\DispatchesJobs</inherited_from>
+      </method>
+    </class>
+    <parse_markers>
+      <error line="75" code="PPC:ERR-50008">No summary for method getProjectSyncer()</error>
+      <error line="34" code="PPC:ERR-50007">No summary for property $files</error>
+      <error line="39" code="PPC:ERR-50007">No summary for property $codex</error>
+      <error line="44" code="PPC:ERR-50007">No summary for property $queue</error>
+      <error line="49" code="PPC:ERR-50007">No summary for property $git</error>
+    </parse_markers>
+    <source>eJyllm1v2zYQx9/rU9yAAJYDx9kG7E1TZ+2ypA/oBrfpu6oIaJmytMikRlJpjTbffccHSbSe7HRG4Fi645/H3x2PfP57kRbB+elpAKewJEIBT0ClFK74mn6F5eslFCS+Jxsq5+iivd5lMWWSAmFriHmxE9kmVZCxhIstURlnsCrZOqdr+JKpFMUyWWmglxF/9+bq+u/ba0iynKLkecDIlkp0cvNGL9drzqJXmboIglJ23kZv+UpGtzsW448Lz+OKMyVIrGRknn3TUvB/qLa4H77toyAZWl5zfk9WOTWP1v4mz8ttxoiivjaJUxp9oAWXmeJiB0SCeTcy5gaXKndS0a33c8T/fUlLar87XjccARvU0R+ljP7MEJ3C6aXGYr1v6QrpUwOrEf2LMMyCQKgu4x91cvBPJyXOiZRwg464pCrZL6rMuY/lpUFJYyalSrmAPbMxNJXhDNVjGE/h159/+W1mnefwMs/BmCQIKql4oGtTEzYe44SrCL4FWkevbS9Ns6Cau43BGMw69QdDeiACouOT48adm/+F4AqLBov6RBftoHxvGX6vXxs6/bKxLdgnRO2VyJDov7Z++kVHa+T7ntm9HJpmYzZqaxJXSdgjmFSi1A9zZ6vjKIgg22OoQftzgkMpU22l49PbKJmEHiXkEe8EBI52W+jplA3PfdTlKs9iSEoWmwZ7d1dDDS0eh2MG3gLtwmZg47XRzcCfZGrUv9Vb6EQ367NLU4qwqEQv2najq+1uK7TMZiJtdtXXMuO82tjUjGdLcWsvecZUOEH7s8SW0DNs+3QytUqP3Wq2pE8K29jbNSaoKgWriqw5Q/TxUZc0vFCp4F9k5Xb9NaaF6bDmuX4cTcuGKne4WO2wCqnNOUsghJ8qK56KUhEcgEevGw/T2rcZZcveOSz2knV26d5rvlQ1Ezf0HxvW0kSHEqQowunZ5Zbc03BihOaIfW7tkxl82pt74kQnsLisA2n67+epl08H3U01lLlXVAHB9l8Fj+cQUZCSB2pOJF0pROcLKNMNf131D2gn12H79PlQfq6tUHUZCNuZcXpECLK7w/JWOosDoDHycDqr5cMqdzX8/dRVSJxVC7Ik25hKn7sFIvOE5JJOYbFYAG5wb/s81htAf/d+tfnigiGRW3gged2Y2uiGDrwuO+M5RMxvDUPpvsVwdF4HQ7IbudPChiK33WE0bFmFbZUGGl67ofUubmhVGrLtmGOYe87+LmHjdICwuyeMEx6JxzJ2p0bsRfWDeG3MVunQeeLfcZ6C154oY3h7bkFdvMbpAF7vzBrGOxKPxesfuf8Pr43ZKg3gbZ+3T8ar++wY3N7Lyge6xfuf7L8adtnjkAPkzYVgnPtgoJb6MXH6l6sfTIleysjtqfd+05eKx+A/I26C4g==</source>
+  <type>class</type></file>

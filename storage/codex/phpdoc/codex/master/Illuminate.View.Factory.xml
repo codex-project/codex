@@ -1,0 +1,1472 @@
+<file path="codex/vendor/laravel/framework/src/Illuminate/View/Factory.php" generated-path="codex.vendor.laravel.framework.src.Illuminate.View.Factory.html" hash="375bb0243e60f322c1e56eaf60f60ddd" package="Default">
+    <docblock line="0">
+      <description/>
+      <long-description/>
+      <tag name="package" line="0" description="Default"/>
+    </docblock>
+    <namespace-alias name="Closure">\Closure</namespace-alias>
+    <namespace-alias name="Arr">\Illuminate\Support\Arr</namespace-alias>
+    <namespace-alias name="Str">\Illuminate\Support\Str</namespace-alias>
+    <namespace-alias name="InvalidArgumentException">\InvalidArgumentException</namespace-alias>
+    <namespace-alias name="Arrayable">\Illuminate\Contracts\Support\Arrayable</namespace-alias>
+    <namespace-alias name="EngineResolver">\Illuminate\View\Engines\EngineResolver</namespace-alias>
+    <namespace-alias name="Dispatcher">\Illuminate\Contracts\Events\Dispatcher</namespace-alias>
+    <namespace-alias name="Container">\Illuminate\Contracts\Container\Container</namespace-alias>
+    <namespace-alias name="FactoryContract">\Illuminate\Contracts\View\Factory</namespace-alias>
+    <class final="false" abstract="false" namespace="Illuminate\View" line="15" package="Default">
+      <extends/>
+      <implements>\Illuminate\Contracts\View\Factory</implements>
+      <name>Factory</name>
+      <full_name>\Illuminate\View\Factory</full_name>
+      <docblock line="15">
+        <description/>
+        <long-description/>
+        <tag name="package" line="15" description="Default"/>
+      </docblock>
+      <property static="false" visibility="protected" namespace="Illuminate\View" line="22" package="Default">
+        <name>$engines</name>
+        <full_name>\Illuminate\View\Factory::engines</full_name>
+        <default/>
+        <docblock line="22">
+          <description>The engine implementation.</description>
+          <long-description/>
+          <tag name="var" line="22" description="" type="\Illuminate\View\Engines\EngineResolver" variable="">
+            <type>\Illuminate\View\Engines\EngineResolver</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" namespace="Illuminate\View" line="29" package="Default">
+        <name>$finder</name>
+        <full_name>\Illuminate\View\Factory::finder</full_name>
+        <default/>
+        <docblock line="29">
+          <description>The view finder implementation.</description>
+          <long-description/>
+          <tag name="var" line="29" description="" type="\Illuminate\View\ViewFinderInterface" variable="">
+            <type>\Illuminate\View\ViewFinderInterface</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" namespace="Illuminate\View" line="36" package="Default">
+        <name>$events</name>
+        <full_name>\Illuminate\View\Factory::events</full_name>
+        <default/>
+        <docblock line="36">
+          <description>The event dispatcher instance.</description>
+          <long-description/>
+          <tag name="var" line="36" description="" type="\Illuminate\Contracts\Events\Dispatcher" variable="">
+            <type>\Illuminate\Contracts\Events\Dispatcher</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" namespace="Illuminate\View" line="43" package="Default">
+        <name>$container</name>
+        <full_name>\Illuminate\View\Factory::container</full_name>
+        <default/>
+        <docblock line="43">
+          <description>The IoC container instance.</description>
+          <long-description/>
+          <tag name="var" line="43" description="" type="\Illuminate\Contracts\Container\Container" variable="">
+            <type>\Illuminate\Contracts\Container\Container</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" namespace="Illuminate\View" line="50" package="Default">
+        <name>$shared</name>
+        <full_name>\Illuminate\View\Factory::shared</full_name>
+        <default>array()</default>
+        <docblock line="50">
+          <description>Data that should be available to all templates.</description>
+          <long-description/>
+          <tag name="var" line="50" description="" type="array" variable="">
+            <type>array</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" namespace="Illuminate\View" line="57" package="Default">
+        <name>$aliases</name>
+        <full_name>\Illuminate\View\Factory::aliases</full_name>
+        <default>array()</default>
+        <docblock line="57">
+          <description>Array of registered view name aliases.</description>
+          <long-description/>
+          <tag name="var" line="57" description="" type="array" variable="">
+            <type>array</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" namespace="Illuminate\View" line="64" package="Default">
+        <name>$names</name>
+        <full_name>\Illuminate\View\Factory::names</full_name>
+        <default>array()</default>
+        <docblock line="64">
+          <description>All of the registered view names.</description>
+          <long-description/>
+          <tag name="var" line="64" description="" type="array" variable="">
+            <type>array</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" namespace="Illuminate\View" line="71" package="Default">
+        <name>$extensions</name>
+        <full_name>\Illuminate\View\Factory::extensions</full_name>
+        <default>array('blade.php' =&gt; 'blade', 'php' =&gt; 'php')</default>
+        <docblock line="71">
+          <description>The extension to engine bindings.</description>
+          <long-description/>
+          <tag name="var" line="71" description="" type="array" variable="">
+            <type>array</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" namespace="Illuminate\View" line="78" package="Default">
+        <name>$composers</name>
+        <full_name>\Illuminate\View\Factory::composers</full_name>
+        <default>array()</default>
+        <docblock line="78">
+          <description>The view composer events.</description>
+          <long-description/>
+          <tag name="var" line="78" description="" type="array" variable="">
+            <type>array</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" namespace="Illuminate\View" line="85" package="Default">
+        <name>$sections</name>
+        <full_name>\Illuminate\View\Factory::sections</full_name>
+        <default>array()</default>
+        <docblock line="85">
+          <description>All of the finished, captured sections.</description>
+          <long-description/>
+          <tag name="var" line="85" description="" type="array" variable="">
+            <type>array</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" namespace="Illuminate\View" line="92" package="Default">
+        <name>$sectionStack</name>
+        <full_name>\Illuminate\View\Factory::sectionStack</full_name>
+        <default>array()</default>
+        <docblock line="92">
+          <description>The stack of in-progress sections.</description>
+          <long-description/>
+          <tag name="var" line="92" description="" type="array" variable="">
+            <type>array</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" namespace="Illuminate\View" line="99" package="Default">
+        <name>$pushes</name>
+        <full_name>\Illuminate\View\Factory::pushes</full_name>
+        <default>array()</default>
+        <docblock line="99">
+          <description>All of the finished, captured push sections.</description>
+          <long-description/>
+          <tag name="var" line="99" description="" type="array" variable="">
+            <type>array</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" namespace="Illuminate\View" line="106" package="Default">
+        <name>$pushStack</name>
+        <full_name>\Illuminate\View\Factory::pushStack</full_name>
+        <default>array()</default>
+        <docblock line="106">
+          <description>The stack of in-progress push sections.</description>
+          <long-description/>
+          <tag name="var" line="106" description="" type="array" variable="">
+            <type>array</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" namespace="Illuminate\View" line="113" package="Default">
+        <name>$renderCount</name>
+        <full_name>\Illuminate\View\Factory::renderCount</full_name>
+        <default>0</default>
+        <docblock line="113">
+          <description>The number of active rendering operations.</description>
+          <long-description/>
+          <tag name="var" line="113" description="" type="integer" variable="">
+            <type>integer</type>
+          </tag>
+        </docblock>
+      </property>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\View" line="123" package="Default">
+        <name>__construct</name>
+        <full_name>\Illuminate\View\Factory::__construct()</full_name>
+        <docblock line="123">
+          <description>Create a new view factory instance.</description>
+          <long-description/>
+          <tag name="param" line="123" description="" type="\Illuminate\View\Engines\EngineResolver" variable="$engines">
+            <type>\Illuminate\View\Engines\EngineResolver</type>
+          </tag>
+          <tag name="param" line="123" description="" type="\Illuminate\View\ViewFinderInterface" variable="$finder">
+            <type>\Illuminate\View\ViewFinderInterface</type>
+          </tag>
+          <tag name="param" line="123" description="" type="\Illuminate\Contracts\Events\Dispatcher" variable="$events">
+            <type>\Illuminate\Contracts\Events\Dispatcher</type>
+          </tag>
+          <tag name="return" line="123" description="" type="void">
+            <type>void</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$engines</name>
+          <default/>
+          <type>\Illuminate\View\Engines\EngineResolver</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$finder</name>
+          <default/>
+          <type>\Illuminate\View\ViewFinderInterface</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$events</name>
+          <default/>
+          <type>\Illuminate\Contracts\Events\Dispatcher</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\View" line="140" package="Default">
+        <name>file</name>
+        <full_name>\Illuminate\View\Factory::file()</full_name>
+        <docblock line="140">
+          <description>Get the evaluated view contents for the given view.</description>
+          <long-description/>
+          <tag name="param" line="140" description="" type="string" variable="$path">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="140" description="" type="array" variable="$data">
+            <type>array</type>
+          </tag>
+          <tag name="param" line="140" description="" type="array" variable="$mergeData">
+            <type>array</type>
+          </tag>
+          <tag name="return" line="140" description="" type="\Illuminate\Contracts\View\View">
+            <type>\Illuminate\Contracts\View\View</type>
+          </tag>
+          <tag name="inherited_from" description="\Illuminate\Contracts\View\Factory::file()" refers="\Illuminate\Contracts\View\Factory::file()" link="/classes/Illuminate.Contracts.View.Factory.html#method_file"/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$path</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$data</name>
+          <default>array()</default>
+          <type>array</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$mergeData</name>
+          <default>array()</default>
+          <type>array</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\View" line="157" package="Default">
+        <name>make</name>
+        <full_name>\Illuminate\View\Factory::make()</full_name>
+        <docblock line="157">
+          <description>Get the evaluated view contents for the given view.</description>
+          <long-description/>
+          <tag name="param" line="157" description="" type="string" variable="$view">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="157" description="" type="array" variable="$data">
+            <type>array</type>
+          </tag>
+          <tag name="param" line="157" description="" type="array" variable="$mergeData">
+            <type>array</type>
+          </tag>
+          <tag name="return" line="157" description="" type="\Illuminate\Contracts\View\View">
+            <type>\Illuminate\Contracts\View\View</type>
+          </tag>
+          <tag name="inherited_from" description="\Illuminate\Contracts\View\Factory::make()" refers="\Illuminate\Contracts\View\Factory::make()" link="/classes/Illuminate.Contracts.View.Factory.html#method_make"/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$view</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$data</name>
+          <default>array()</default>
+          <type>array</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$mergeData</name>
+          <default>array()</default>
+          <type>array</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\View" line="180" package="Default">
+        <name>normalizeName</name>
+        <full_name>\Illuminate\View\Factory::normalizeName()</full_name>
+        <docblock line="180">
+          <description>Normalize a view name.</description>
+          <long-description/>
+          <tag name="param" line="180" description="" type="string" variable="$name">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="180" description="" type="string">
+            <type>string</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$name</name>
+          <default/>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\View" line="199" package="Default">
+        <name>parseData</name>
+        <full_name>\Illuminate\View\Factory::parseData()</full_name>
+        <docblock line="199">
+          <description>Parse the given data into a raw array.</description>
+          <long-description/>
+          <tag name="param" line="199" description="" type="mixed" variable="$data">
+            <type>mixed</type>
+          </tag>
+          <tag name="return" line="199" description="" type="array">
+            <type>array</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$data</name>
+          <default/>
+          <type>mixed</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\View" line="211" package="Default">
+        <name>of</name>
+        <full_name>\Illuminate\View\Factory::of()</full_name>
+        <docblock line="211">
+          <description>Get the evaluated view contents for a named view.</description>
+          <long-description/>
+          <tag name="param" line="211" description="" type="string" variable="$view">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="211" description="" type="mixed" variable="$data">
+            <type>mixed</type>
+          </tag>
+          <tag name="return" line="211" description="" type="\Illuminate\Contracts\View\View">
+            <type>\Illuminate\Contracts\View\View</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$view</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$data</name>
+          <default>array()</default>
+          <type>mixed</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\View" line="223" package="Default">
+        <name>name</name>
+        <full_name>\Illuminate\View\Factory::name()</full_name>
+        <docblock line="223">
+          <description>Register a named view.</description>
+          <long-description/>
+          <tag name="param" line="223" description="" type="string" variable="$view">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="223" description="" type="string" variable="$name">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="223" description="" type="void">
+            <type>void</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$view</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$name</name>
+          <default/>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\View" line="235" package="Default">
+        <name>alias</name>
+        <full_name>\Illuminate\View\Factory::alias()</full_name>
+        <docblock line="235">
+          <description>Add an alias for a view.</description>
+          <long-description/>
+          <tag name="param" line="235" description="" type="string" variable="$view">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="235" description="" type="string" variable="$alias">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="235" description="" type="void">
+            <type>void</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$view</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$alias</name>
+          <default/>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\View" line="246" package="Default">
+        <name>exists</name>
+        <full_name>\Illuminate\View\Factory::exists()</full_name>
+        <docblock line="246">
+          <description>Determine if a given view exists.</description>
+          <long-description/>
+          <tag name="param" line="246" description="" type="string" variable="$view">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="246" description="" type="boolean">
+            <type>boolean</type>
+          </tag>
+          <tag name="inherited_from" description="\Illuminate\Contracts\View\Factory::exists()" refers="\Illuminate\Contracts\View\Factory::exists()" link="/classes/Illuminate.Contracts.View.Factory.html#method_exists"/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$view</name>
+          <default/>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\View" line="266" package="Default">
+        <name>renderEach</name>
+        <full_name>\Illuminate\View\Factory::renderEach()</full_name>
+        <docblock line="266">
+          <description>Get the rendered contents of a partial from a loop.</description>
+          <long-description/>
+          <tag name="param" line="266" description="" type="string" variable="$view">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="266" description="" type="array" variable="$data">
+            <type>array</type>
+          </tag>
+          <tag name="param" line="266" description="" type="string" variable="$iterator">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="266" description="" type="string" variable="$empty">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="266" description="" type="string">
+            <type>string</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$view</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$data</name>
+          <default/>
+          <type>array</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$iterator</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$empty</name>
+          <default>'raw|'</default>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\View" line="303" package="Default">
+        <name>getEngineFromPath</name>
+        <full_name>\Illuminate\View\Factory::getEngineFromPath()</full_name>
+        <docblock line="303">
+          <description>Get the appropriate view engine for the given path.</description>
+          <long-description/>
+          <tag name="param" line="303" description="" type="string" variable="$path">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="303" description="" type="\Illuminate\View\Engines\EngineInterface">
+            <type>\Illuminate\View\Engines\EngineInterface</type>
+          </tag>
+          <tag name="throws" line="303" description="" type="\InvalidArgumentException">
+            <type>\InvalidArgumentException</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$path</name>
+          <default/>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\View" line="320" package="Default">
+        <name>getExtension</name>
+        <full_name>\Illuminate\View\Factory::getExtension()</full_name>
+        <docblock line="320">
+          <description>Get the extension used by the view file.</description>
+          <long-description/>
+          <tag name="param" line="320" description="" type="string" variable="$path">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="320" description="" type="string">
+            <type>string</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$path</name>
+          <default/>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\View" line="336" package="Default">
+        <name>share</name>
+        <full_name>\Illuminate\View\Factory::share()</full_name>
+        <docblock line="336">
+          <description>Add a piece of shared data to the environment.</description>
+          <long-description/>
+          <tag name="param" line="336" description="" type="array|string" variable="$key">
+            <type>array</type>
+            <type>string</type>
+          </tag>
+          <tag name="param" line="336" description="" type="mixed" variable="$value">
+            <type>mixed</type>
+          </tag>
+          <tag name="return" line="336" description="" type="mixed">
+            <type>mixed</type>
+          </tag>
+          <tag name="inherited_from" description="\Illuminate\Contracts\View\Factory::share()" refers="\Illuminate\Contracts\View\Factory::share()" link="/classes/Illuminate.Contracts.View.Factory.html#method_share"/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$key</name>
+          <default/>
+          <type>array|string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$value</name>
+          <default>null</default>
+          <type>mixed</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\View" line="354" package="Default">
+        <name>creator</name>
+        <full_name>\Illuminate\View\Factory::creator()</full_name>
+        <docblock line="354">
+          <description>Register a view creator event.</description>
+          <long-description/>
+          <tag name="param" line="354" description="" type="array|string" variable="$views">
+            <type>array</type>
+            <type>string</type>
+          </tag>
+          <tag name="param" line="354" description="" type="\Closure|string" variable="$callback">
+            <type>\Closure</type>
+            <type>string</type>
+          </tag>
+          <tag name="return" line="354" description="" type="array">
+            <type>array</type>
+          </tag>
+          <tag name="inherited_from" description="\Illuminate\Contracts\View\Factory::creator()" refers="\Illuminate\Contracts\View\Factory::creator()" link="/classes/Illuminate.Contracts.View.Factory.html#method_creator"/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$views</name>
+          <default/>
+          <type>array|string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$callback</name>
+          <default/>
+          <type>\Closure|string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\View" line="371" package="Default">
+        <name>composers</name>
+        <full_name>\Illuminate\View\Factory::composers()</full_name>
+        <docblock line="371">
+          <description>Register multiple view composers via an array.</description>
+          <long-description/>
+          <tag name="param" line="371" description="" type="array" variable="$composers">
+            <type>array</type>
+          </tag>
+          <tag name="return" line="371" description="" type="array">
+            <type>array</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$composers</name>
+          <default/>
+          <type>array</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\View" line="390" package="Default">
+        <name>composer</name>
+        <full_name>\Illuminate\View\Factory::composer()</full_name>
+        <docblock line="390">
+          <description>Register a view composer event.</description>
+          <long-description/>
+          <tag name="param" line="390" description="" type="array|string" variable="$views">
+            <type>array</type>
+            <type>string</type>
+          </tag>
+          <tag name="param" line="390" description="" type="\Closure|string" variable="$callback">
+            <type>\Closure</type>
+            <type>string</type>
+          </tag>
+          <tag name="param" line="390" description="" type="integer|null" variable="$priority">
+            <type>integer</type>
+            <type>null</type>
+          </tag>
+          <tag name="return" line="390" description="" type="array">
+            <type>array</type>
+          </tag>
+          <tag name="inherited_from" description="\Illuminate\Contracts\View\Factory::composer()" refers="\Illuminate\Contracts\View\Factory::composer()" link="/classes/Illuminate.Contracts.View.Factory.html#method_composer"/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$views</name>
+          <default/>
+          <type>array|string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$callback</name>
+          <default/>
+          <type>\Closure|string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$priority</name>
+          <default>null</default>
+          <type>integer|null</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\View" line="410" package="Default">
+        <name>addViewEvent</name>
+        <full_name>\Illuminate\View\Factory::addViewEvent()</full_name>
+        <docblock line="410">
+          <description>Add an event for a given view.</description>
+          <long-description/>
+          <tag name="param" line="410" description="" type="string" variable="$view">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="410" description="" type="\Closure|string" variable="$callback">
+            <type>\Closure</type>
+            <type>string</type>
+          </tag>
+          <tag name="param" line="410" description="" type="string" variable="$prefix">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="410" description="" type="integer|null" variable="$priority">
+            <type>integer</type>
+            <type>null</type>
+          </tag>
+          <tag name="return" line="410" description="" type="\Closure|null">
+            <type>\Closure</type>
+            <type>null</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$view</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$callback</name>
+          <default/>
+          <type>\Closure|string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$prefix</name>
+          <default>'composing: '</default>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$priority</name>
+          <default>null</default>
+          <type>integer|null</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\View" line="432" package="Default">
+        <name>addClassEvent</name>
+        <full_name>\Illuminate\View\Factory::addClassEvent()</full_name>
+        <docblock line="432">
+          <description>Register a class based view composer.</description>
+          <long-description/>
+          <tag name="param" line="432" description="" type="string" variable="$view">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="432" description="" type="string" variable="$class">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="432" description="" type="string" variable="$prefix">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="432" description="" type="integer|null" variable="$priority">
+            <type>integer</type>
+            <type>null</type>
+          </tag>
+          <tag name="return" line="432" description="" type="\Closure">
+            <type>\Closure</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$view</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$class</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$prefix</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$priority</name>
+          <default>null</default>
+          <type>integer|null</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\View" line="454" package="Default">
+        <name>addEventListener</name>
+        <full_name>\Illuminate\View\Factory::addEventListener()</full_name>
+        <docblock line="454">
+          <description>Add a listener to the event dispatcher.</description>
+          <long-description/>
+          <tag name="param" line="454" description="" type="string" variable="$name">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="454" description="" type="\Closure" variable="$callback">
+            <type>\Closure</type>
+          </tag>
+          <tag name="param" line="454" description="" type="integer|null" variable="$priority">
+            <type>integer</type>
+            <type>null</type>
+          </tag>
+          <tag name="return" line="454" description="" type="void">
+            <type>void</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$name</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$callback</name>
+          <default/>
+          <type>\Closure</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$priority</name>
+          <default>null</default>
+          <type>integer|null</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\View" line="470" package="Default">
+        <name>buildClassEventCallback</name>
+        <full_name>\Illuminate\View\Factory::buildClassEventCallback()</full_name>
+        <docblock line="470">
+          <description>Build a class based container callback Closure.</description>
+          <long-description/>
+          <tag name="param" line="470" description="" type="string" variable="$class">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="470" description="" type="string" variable="$prefix">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="470" description="" type="\Closure">
+            <type>\Closure</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$class</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$prefix</name>
+          <default/>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\View" line="491" package="Default">
+        <name>parseClassEvent</name>
+        <full_name>\Illuminate\View\Factory::parseClassEvent()</full_name>
+        <docblock line="491">
+          <description>Parse a class based composer name.</description>
+          <long-description/>
+          <tag name="param" line="491" description="" type="string" variable="$class">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="491" description="" type="string" variable="$prefix">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="491" description="" type="array">
+            <type>array</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$class</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$prefix</name>
+          <default/>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\View" line="508" package="Default">
+        <name>callComposer</name>
+        <full_name>\Illuminate\View\Factory::callComposer()</full_name>
+        <docblock line="508">
+          <description>Call the composer for a given view.</description>
+          <long-description/>
+          <tag name="param" line="508" description="" type="\Illuminate\Contracts\View\View" variable="$view">
+            <type>\Illuminate\Contracts\View\View</type>
+          </tag>
+          <tag name="return" line="508" description="" type="void">
+            <type>void</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$view</name>
+          <default/>
+          <type>\Illuminate\Contracts\View\View</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\View" line="519" package="Default">
+        <name>callCreator</name>
+        <full_name>\Illuminate\View\Factory::callCreator()</full_name>
+        <docblock line="519">
+          <description>Call the creator for a given view.</description>
+          <long-description/>
+          <tag name="param" line="519" description="" type="\Illuminate\Contracts\View\View" variable="$view">
+            <type>\Illuminate\Contracts\View\View</type>
+          </tag>
+          <tag name="return" line="519" description="" type="void">
+            <type>void</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$view</name>
+          <default/>
+          <type>\Illuminate\Contracts\View\View</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\View" line="531" package="Default">
+        <name>startSection</name>
+        <full_name>\Illuminate\View\Factory::startSection()</full_name>
+        <docblock line="531">
+          <description>Start injecting content into a section.</description>
+          <long-description/>
+          <tag name="param" line="531" description="" type="string" variable="$section">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="531" description="" type="string" variable="$content">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="531" description="" type="void">
+            <type>void</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$section</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$content</name>
+          <default>''</default>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\View" line="549" package="Default">
+        <name>inject</name>
+        <full_name>\Illuminate\View\Factory::inject()</full_name>
+        <docblock line="549">
+          <description>Inject inline content into a section.</description>
+          <long-description/>
+          <tag name="param" line="549" description="" type="string" variable="$section">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="549" description="" type="string" variable="$content">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="549" description="" type="void">
+            <type>void</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$section</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$content</name>
+          <default/>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\View" line="559" package="Default">
+        <name>yieldSection</name>
+        <full_name>\Illuminate\View\Factory::yieldSection()</full_name>
+        <docblock line="559">
+          <description>Stop injecting content into a section and return its contents.</description>
+          <long-description/>
+          <tag name="return" line="559" description="" type="string">
+            <type>string</type>
+          </tag>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\View" line="575" package="Default">
+        <name>stopSection</name>
+        <full_name>\Illuminate\View\Factory::stopSection()</full_name>
+        <docblock line="575">
+          <description>Stop injecting content into a section.</description>
+          <long-description/>
+          <tag name="param" line="575" description="" type="boolean" variable="$overwrite">
+            <type>boolean</type>
+          </tag>
+          <tag name="return" line="575" description="" type="string">
+            <type>string</type>
+          </tag>
+          <tag name="throws" line="575" description="" type="\InvalidArgumentException">
+            <type>\InvalidArgumentException</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$overwrite</name>
+          <default>false</default>
+          <type>boolean</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\View" line="598" package="Default">
+        <name>appendSection</name>
+        <full_name>\Illuminate\View\Factory::appendSection()</full_name>
+        <docblock line="598">
+          <description>Stop injecting content into a section and append it.</description>
+          <long-description/>
+          <tag name="return" line="598" description="" type="string">
+            <type>string</type>
+          </tag>
+          <tag name="throws" line="598" description="" type="\InvalidArgumentException">
+            <type>\InvalidArgumentException</type>
+          </tag>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\View" line="622" package="Default">
+        <name>extendSection</name>
+        <full_name>\Illuminate\View\Factory::extendSection()</full_name>
+        <docblock line="622">
+          <description>Append content to a given section.</description>
+          <long-description/>
+          <tag name="param" line="622" description="" type="string" variable="$section">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="622" description="" type="string" variable="$content">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="622" description="" type="void">
+            <type>void</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$section</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$content</name>
+          <default/>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\View" line="638" package="Default">
+        <name>yieldContent</name>
+        <full_name>\Illuminate\View\Factory::yieldContent()</full_name>
+        <docblock line="638">
+          <description>Get the string contents of a section.</description>
+          <long-description/>
+          <tag name="param" line="638" description="" type="string" variable="$section">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="638" description="" type="string" variable="$default">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="638" description="" type="string">
+            <type>string</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$section</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$default</name>
+          <default>''</default>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\View" line="660" package="Default">
+        <name>startPush</name>
+        <full_name>\Illuminate\View\Factory::startPush()</full_name>
+        <docblock line="660">
+          <description>Start injecting content into a push section.</description>
+          <long-description/>
+          <tag name="param" line="660" description="" type="string" variable="$section">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="660" description="" type="string" variable="$content">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="660" description="" type="void">
+            <type>void</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$section</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$content</name>
+          <default>''</default>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\View" line="677" package="Default">
+        <name>stopPush</name>
+        <full_name>\Illuminate\View\Factory::stopPush()</full_name>
+        <docblock line="677">
+          <description>Stop injecting content into a push section.</description>
+          <long-description/>
+          <tag name="return" line="677" description="" type="string">
+            <type>string</type>
+          </tag>
+          <tag name="throws" line="677" description="" type="\InvalidArgumentException">
+            <type>\InvalidArgumentException</type>
+          </tag>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\View" line="697" package="Default">
+        <name>extendPush</name>
+        <full_name>\Illuminate\View\Factory::extendPush()</full_name>
+        <docblock line="697">
+          <description>Append content to a given push section.</description>
+          <long-description/>
+          <tag name="param" line="697" description="" type="string" variable="$section">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="697" description="" type="string" variable="$content">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="697" description="" type="void">
+            <type>void</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$section</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$content</name>
+          <default/>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\View" line="716" package="Default">
+        <name>yieldPushContent</name>
+        <full_name>\Illuminate\View\Factory::yieldPushContent()</full_name>
+        <docblock line="716">
+          <description>Get the string contents of a push section.</description>
+          <long-description/>
+          <tag name="param" line="716" description="" type="string" variable="$section">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="716" description="" type="string" variable="$default">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="716" description="" type="string">
+            <type>string</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$section</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$default</name>
+          <default>''</default>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\View" line="730" package="Default">
+        <name>flushSections</name>
+        <full_name>\Illuminate\View\Factory::flushSections()</full_name>
+        <docblock line="730">
+          <description>Flush all of the section contents.</description>
+          <long-description/>
+          <tag name="return" line="730" description="" type="void">
+            <type>void</type>
+          </tag>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\View" line="746" package="Default">
+        <name>flushSectionsIfDoneRendering</name>
+        <full_name>\Illuminate\View\Factory::flushSectionsIfDoneRendering()</full_name>
+        <docblock line="746">
+          <description>Flush all of the section contents if done rendering.</description>
+          <long-description/>
+          <tag name="return" line="746" description="" type="void">
+            <type>void</type>
+          </tag>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\View" line="758" package="Default">
+        <name>incrementRender</name>
+        <full_name>\Illuminate\View\Factory::incrementRender()</full_name>
+        <docblock line="758">
+          <description>Increment the rendering counter.</description>
+          <long-description/>
+          <tag name="return" line="758" description="" type="void">
+            <type>void</type>
+          </tag>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\View" line="768" package="Default">
+        <name>decrementRender</name>
+        <full_name>\Illuminate\View\Factory::decrementRender()</full_name>
+        <docblock line="768">
+          <description>Decrement the rendering counter.</description>
+          <long-description/>
+          <tag name="return" line="768" description="" type="void">
+            <type>void</type>
+          </tag>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\View" line="778" package="Default">
+        <name>doneRendering</name>
+        <full_name>\Illuminate\View\Factory::doneRendering()</full_name>
+        <docblock line="778">
+          <description>Check if there are no active render operations.</description>
+          <long-description/>
+          <tag name="return" line="778" description="" type="boolean">
+            <type>boolean</type>
+          </tag>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\View" line="789" package="Default">
+        <name>addLocation</name>
+        <full_name>\Illuminate\View\Factory::addLocation()</full_name>
+        <docblock line="789">
+          <description>Add a location to the array of view locations.</description>
+          <long-description/>
+          <tag name="param" line="789" description="" type="string" variable="$location">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="789" description="" type="void">
+            <type>void</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$location</name>
+          <default/>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\View" line="801" package="Default">
+        <name>addNamespace</name>
+        <full_name>\Illuminate\View\Factory::addNamespace()</full_name>
+        <docblock line="801">
+          <description>Add a new namespace to the loader.</description>
+          <long-description/>
+          <tag name="param" line="801" description="" type="string" variable="$namespace">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="801" description="" type="string|array" variable="$hints">
+            <type>string</type>
+            <type>array</type>
+          </tag>
+          <tag name="return" line="801" description="" type="void">
+            <type>void</type>
+          </tag>
+          <tag name="inherited_from" description="\Illuminate\Contracts\View\Factory::addNamespace()" refers="\Illuminate\Contracts\View\Factory::addNamespace()" link="/classes/Illuminate.Contracts.View.Factory.html#method_addNamespace"/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$namespace</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$hints</name>
+          <default/>
+          <type>string|array</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\View" line="813" package="Default">
+        <name>prependNamespace</name>
+        <full_name>\Illuminate\View\Factory::prependNamespace()</full_name>
+        <docblock line="813">
+          <description>Prepend a new namespace to the loader.</description>
+          <long-description/>
+          <tag name="param" line="813" description="" type="string" variable="$namespace">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="813" description="" type="string|array" variable="$hints">
+            <type>string</type>
+            <type>array</type>
+          </tag>
+          <tag name="return" line="813" description="" type="void">
+            <type>void</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$namespace</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$hints</name>
+          <default/>
+          <type>string|array</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\View" line="826" package="Default">
+        <name>addExtension</name>
+        <full_name>\Illuminate\View\Factory::addExtension()</full_name>
+        <docblock line="826">
+          <description>Register a valid view extension and its engine.</description>
+          <long-description/>
+          <tag name="param" line="826" description="" type="string" variable="$extension">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="826" description="" type="string" variable="$engine">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="826" description="" type="\Closure" variable="$resolver">
+            <type>\Closure</type>
+          </tag>
+          <tag name="return" line="826" description="" type="void">
+            <type>void</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$extension</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$engine</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$resolver</name>
+          <default>null</default>
+          <type>\Closure</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\View" line="844" package="Default">
+        <name>getExtensions</name>
+        <full_name>\Illuminate\View\Factory::getExtensions()</full_name>
+        <docblock line="844">
+          <description>Get the extension to engine bindings.</description>
+          <long-description/>
+          <tag name="return" line="844" description="" type="array">
+            <type>array</type>
+          </tag>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\View" line="854" package="Default">
+        <name>getEngineResolver</name>
+        <full_name>\Illuminate\View\Factory::getEngineResolver()</full_name>
+        <docblock line="854">
+          <description>Get the engine resolver instance.</description>
+          <long-description/>
+          <tag name="return" line="854" description="" type="\Illuminate\View\Engines\EngineResolver">
+            <type>\Illuminate\View\Engines\EngineResolver</type>
+          </tag>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\View" line="864" package="Default">
+        <name>getFinder</name>
+        <full_name>\Illuminate\View\Factory::getFinder()</full_name>
+        <docblock line="864">
+          <description>Get the view finder instance.</description>
+          <long-description/>
+          <tag name="return" line="864" description="" type="\Illuminate\View\ViewFinderInterface">
+            <type>\Illuminate\View\ViewFinderInterface</type>
+          </tag>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\View" line="875" package="Default">
+        <name>setFinder</name>
+        <full_name>\Illuminate\View\Factory::setFinder()</full_name>
+        <docblock line="875">
+          <description>Set the view finder instance.</description>
+          <long-description/>
+          <tag name="param" line="875" description="" type="\Illuminate\View\ViewFinderInterface" variable="$finder">
+            <type>\Illuminate\View\ViewFinderInterface</type>
+          </tag>
+          <tag name="return" line="875" description="" type="void">
+            <type>void</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$finder</name>
+          <default/>
+          <type>\Illuminate\View\ViewFinderInterface</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\View" line="885" package="Default">
+        <name>getDispatcher</name>
+        <full_name>\Illuminate\View\Factory::getDispatcher()</full_name>
+        <docblock line="885">
+          <description>Get the event dispatcher instance.</description>
+          <long-description/>
+          <tag name="return" line="885" description="" type="\Illuminate\Contracts\Events\Dispatcher">
+            <type>\Illuminate\Contracts\Events\Dispatcher</type>
+          </tag>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\View" line="896" package="Default">
+        <name>setDispatcher</name>
+        <full_name>\Illuminate\View\Factory::setDispatcher()</full_name>
+        <docblock line="896">
+          <description>Set the event dispatcher instance.</description>
+          <long-description/>
+          <tag name="param" line="896" description="" type="\Illuminate\Contracts\Events\Dispatcher" variable="$events">
+            <type>\Illuminate\Contracts\Events\Dispatcher</type>
+          </tag>
+          <tag name="return" line="896" description="" type="void">
+            <type>void</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$events</name>
+          <default/>
+          <type>\Illuminate\Contracts\Events\Dispatcher</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\View" line="906" package="Default">
+        <name>getContainer</name>
+        <full_name>\Illuminate\View\Factory::getContainer()</full_name>
+        <docblock line="906">
+          <description>Get the IoC container instance.</description>
+          <long-description/>
+          <tag name="return" line="906" description="" type="\Illuminate\Contracts\Container\Container">
+            <type>\Illuminate\Contracts\Container\Container</type>
+          </tag>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\View" line="917" package="Default">
+        <name>setContainer</name>
+        <full_name>\Illuminate\View\Factory::setContainer()</full_name>
+        <docblock line="917">
+          <description>Set the IoC container instance.</description>
+          <long-description/>
+          <tag name="param" line="917" description="" type="\Illuminate\Contracts\Container\Container" variable="$container">
+            <type>\Illuminate\Contracts\Container\Container</type>
+          </tag>
+          <tag name="return" line="917" description="" type="void">
+            <type>void</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$container</name>
+          <default/>
+          <type>\Illuminate\Contracts\Container\Container</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\View" line="929" package="Default">
+        <name>shared</name>
+        <full_name>\Illuminate\View\Factory::shared()</full_name>
+        <docblock line="929">
+          <description>Get an item from the shared data.</description>
+          <long-description/>
+          <tag name="param" line="929" description="" type="string" variable="$key">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="929" description="" type="mixed" variable="$default">
+            <type>mixed</type>
+          </tag>
+          <tag name="return" line="929" description="" type="mixed">
+            <type>mixed</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$key</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$default</name>
+          <default>null</default>
+          <type>mixed</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\View" line="939" package="Default">
+        <name>getShared</name>
+        <full_name>\Illuminate\View\Factory::getShared()</full_name>
+        <docblock line="939">
+          <description>Get all of the shared data for the environment.</description>
+          <long-description/>
+          <tag name="return" line="939" description="" type="array">
+            <type>array</type>
+          </tag>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\View" line="950" package="Default">
+        <name>hasSection</name>
+        <full_name>\Illuminate\View\Factory::hasSection()</full_name>
+        <docblock line="950">
+          <description>Check if section exists.</description>
+          <long-description/>
+          <tag name="param" line="950" description="" type="string" variable="$name">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="950" description="" type="boolean">
+            <type>boolean</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$name</name>
+          <default/>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\View" line="960" package="Default">
+        <name>getSections</name>
+        <full_name>\Illuminate\View\Factory::getSections()</full_name>
+        <docblock line="960">
+          <description>Get the entire array of sections.</description>
+          <long-description/>
+          <tag name="return" line="960" description="" type="array">
+            <type>array</type>
+          </tag>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\View" line="970" package="Default">
+        <name>getNames</name>
+        <full_name>\Illuminate\View\Factory::getNames()</full_name>
+        <docblock line="970">
+          <description>Get all of the registered named views in environment.</description>
+          <long-description/>
+          <tag name="return" line="970" description="" type="array">
+            <type>array</type>
+          </tag>
+        </docblock>
+      </method>
+    </class>
+    <parse_markers>
+      <error line="0" code="PPC:ERR-50000">No summary was found for this file</error>
+      <error line="15" code="PPC:ERR-50005">No summary for class \Illuminate\View\Factory</error>
+    </parse_markers>
+    <source>eJzNHMty28jxrq+YqFxF0EvJe8hJG8nrSHZWFa/jspzdg6xigcRQRAwCLACUrMT+93T3PDGYAUBS65UPlkTO9PT7NY+/vVwv1wcHebzi1Tqec3aZZZtVmsc1//Rbyu9/OjjYVJydZ0W1KflP9Ic15GqzXhdl/elVWQa/u6rVd/ldnKXJq/J2s+J5/frLnK/rtMhbM8+LvC7jeV3Z8OOHeJa1MUAkP73Ob9OcV/LnB14V2R1vY2Tgvr4DBKpPFykQXc+XnWPxtxjAlua3jtGEzxv4tSgfWFwx+asaAPycZ3GlP2fpap1xZEdr6MH/Dhj8e/H8Of1kz9nHJWecSDTTYuTgsRyhBv58F5fs0zAuyTkv6Oe6LGo+r3nCnomFKkDYg8UdwGOLNE94uRMq+N8bmn6Z17xcgOaF8BCr+NHgKEaWaCmyNK/qOJ/zXiw6VCHIEBroR+SyOGdzpR27YOFRshAec6OFLioXcR2zehnXrFoWmyxhM87iuzjN0HRYXbA4y1jNQWCweuVFL0ZLCy1dLeMSfp6y65v24mSjrFiwkt+mFUgVRpKeoHOBldO42mVNOTG0KBAES9YgA9+yO6xH0wKrkc59qXlegaYjP6U1zkBH0/x2h9U0NFpyNMvihB+DSx6x0zMm/hxN2Eh/gr8EECOi58VqXVSgg0Jbt0dIARjAcLDMtFryZMLm8breIOMrgILE7KBacmYH58Go5p9x8TQ/gpm3JQc/uveKVwR1F2LXm2q5x/o4vVPTvPQ+wqJdFOO6+WY1Aw2ChcE1pXdoWeiCQcFZseZlHF46zevQwgLGebEBh33KfmyvfF5ycEosZjmosYgvKkSG3Ok6LuMVGxromI5pvQA84YmpSNQ1uSOqMBVA9PySgxrl7K5IkybTNrMsnbPFJichs+kUPH5Vl5t5HTkUKYImzIexRHjCLCwkEmNaSSQY+O9ZvUyrozMZ0U9N1HUGiNk4QEVDd4BAiEY0EghrDEWRaDSd8vwOnBt9OhaQvrXU4h+8JvvjkDtu4lo5dwyChMqiKOn7W1DUnL4LqQmwEFUYbCCul+6XZDSIYgIhNPjlipe3/MIeIYXoVwKtS53yXaQZjwipiVieTHNirUYftEQmhxJyUxobmSkTxWwgoaJPIpowHrflMYesgKyvKKNnxN1TMkLEPKIxGtotr4UKvimL1XtAWSA+njBFgEVHYy3JKIL/HWV9Z7j/FGS9ij9zweOtZJ0uWJRWFa8jKQeZFF0TqJvx2BpLgpVS9I42NvvNUoXmjLwoVzDrv/wdZEMC4YbioJTNaOEsxE/P4CemqJL7+yjqO8UeCFc61+zRRUosXV0S3wViptYaRxoIqO0NeJau0pq8tycYnJz8cvnu4/T9q4+/TC9ev7389fLj6w8W1ahhgAykfgL+xII4ZqenpxCNs4q7imbImJYcqoo5+PUXmLAeo2MnRL3qlkGmLhairoMaC7jzL+usSIBKvbwB1JKRBnBshh/3I9MW6HtUPsu3kMpCNgMVEyvje6G7IQGv0i8gLcedSBS7kjEtX1f1HdkqaiVSIhmC7Ew3RdhL8eXRWV3Qh9GYnYiP9nG1Mal1srujlYzxc2YfN1os2k40xDXhD4Tjlc4NtUY6Q+UBQnz6IIvK/Zmhv/T5gd4kMNd+WKmyP4OTtOGPG3TQXV7sVZKwOBeVuRT4/tQRtK3Jo1maPvorQKCOZfRLL40XHIS3oo4ZlDNW5gCOBgTbLmM6iZXkzIoi6yRHwJah0KGjhorGidYdUVSN+QZlJ2TwLAo1USHfDjhnctxeLywHQGnB+/yEKN9A/7WHwPIQPVedxhlbQJSFP7OiWD9+SqZnonvH4B8cwFfr+sGVli/GOvIS1L2O58uGX5mYJScSOOjbCALC11FLPaE632RY245GVqR68YJdQgFfYSm9gfTlQYUW4iqRPWH3nN2nWUbsg8/LYnO7pO9pbJyDma7XgKINFQxXhQLVolDCIPWG0CXbFvCJxO2Xj7++hVFVhdwSKNggBa3o4yAmSKiAuUBCYAoUFPc4u5YNp4q6ivM5tibgs9VxI6OYY7kvgxo7Yz+6GgpOh8eo1cKNgxt69pk/YKPrGeHgjmfMpJPXIxhKTTGcY4nKTL+xBOHK6fi0GRossY+PzoRCRJYBCvPwGJGQMNBecpRzXnRJWMClb2xDokhsdFdAJV/MXmVAFgRJcFwZAMKRh0IT8ftDAKP6vJSoSFOgHvAMYlde2SDvU0jbD1F/D8nhAw7gD1OOSoRqBrLMyOCBkM95cS/gpDUpsIRtJMzBrzgCQqFf1eXJCWhmWVe/p5h4E7oTZTdemWrjqTYzWEbP+asrAd+iTQgNqRKY7eSp8gYBsM8vgmGWxbpMsXUlworoCDdLVaw1tmtLeJIkT2vL3TzR09GJgG1+CkWLTm8Yqp08RelfrA624T0CUJ/Kua7UCUEq3kIoRof/zks+L25zKHwSq+2eipbJieDYob/AkN0ng5NptF8blG88NUWjj4WaQ722SALs71NpPDcVoD170K6SsN5JC4ZViR6uuzGqsdsg6nHwnVXU4pGn2ILC4uRkkZZYuJmBE7N+JP2w9Ny4QyrR8Ocl5CfALqWXEPU41GrHEoIl1yDXKYVl65SLKCj3p8gBywDI87u0LHJUrRDviRFftQSAilCFR4i50qEvOw1KNDxt9mDjYpNlfpNKqymhRDNaltPUU0HxNY4UuTBC91qEibUYYjHUpnnOy3/KeEt//OYLuo2urZ40aUyxV/RLyiqkRKUp+jhin2qYZJhMHtv9e3k8wcgQO0WzeP7ZlZWnHHdkNbf7S9hPUqBaxiRHNnZwGoyOaLWxRJpYTlm9y18F6PrGatklCfp72kbQyYlCBcyE5gCtJ2zkd4BKTRTw3gJ3BdEuXWfOPmIFf8ZUJXZ1QGT6bjYPd+C7miq4ZsHyZNp6ozfEemsbE9muGCdSQ5RGSwgNoI1WpflGdxcVdI+WdEvDwBrQcPBs6A50YbtaiRyZ5vVXdE8Yjsq0KNN2UTVcoG0eTQzYgB/070LvZlwK0lbWRZOEeVnY9liaWqmn3yIOrYh+y547GcNFavKLki/SLztIXK+F4/pykR4GSyywWA6wOqQYW21TYDg1tm91TiUpgUgHyBPib9EQc9Rgge6xlxCtGt4orYbanRwsYcSOzlSIJbLcR2e0B8zO8fRYD19DKutXS8vjiKNps7gy/WCh033a2dMVRMVE0B3f762XA1TSxzv8yMe4kALSYaZT1lCJZr/n9yXP9WEkJM/D10PF2EPTG6jwIN0DkwWH25whELwSnTZZeYK/pcMYzvGzGhGY01Ev6jPQSmzF62XRaCEVokWhj1ewj1j3U4unarYH6gmrOYyatdID0w2wgqxS19kmzSymn8sBkcN1z05f2wTlplSP6fnNLlQ3ZBK6rhWc44QDtL7RzHe88n4Rtt0z9+r0YDZ1lBzgiPCryLA04BnFoY+jM8G41mpj18vtBGU77/V31DHHxIwpaJ2UIumNsp1uynVSW3qgoebgSEjslaoxwozHxsho89D2bGHjApv/F7b6wOMsY+FiJN+w+ScgMyENGDKPJco0Tuk0mIr0UDZY24+wYlOrpmbTMeEq2i/J5bChU4vGpOPxRG4Uy75QJXqRUINSB5snymgVYnFlu7tyJBrXx65rMO0K1aJwOesmkIAwOT7IRHX6LylSbUYCMdYw3L6zXBohTWHNcopIqBpfwRedlOktr+Gb2ypqVBLd+9au9suKYcChhN0UfvimdodeevwQdYQkcys9YfRzu2ksEVGHBWCIiuWBdqDUtlPmrKHivslDR2P2Uv3JR+xE1tp81A4z147u3ITEdO4E43Jw+t+zSx7YoOzdb6WTNKpAI0DevUrHYS9SPLdnZ+wi/6GOL6XgYAPqTFI/L2QH6CmwQjZ9tuWEacLswIgr3CIBr/kfPMwL1iY3hNSxE3nGt9eA5biwgQuwW/OFdnCuBPBIrTLR8Gij02fEZsApDfHsEBWzKUGP/JtBst9oHc8Wtbv8JLiH05VyYMM6CVMzING4JEGBdDLcV3hiwhJa5CPMkZDTPe6WcYfqFutezaVwL9dLIX6rDc8Wk4bv0z+kPNNS9Ckf7fdFHg0KRRDcrDeSD7CJlj0X6GvgwAKNyX6MCmkNHjMBnSjueHkP2XD34cE99/xscsyKTB3724vVA/b6Rudxnhc143jWQSsQZoWYTNKuk3BIdAkh58eBrvcziMe1buCui7UXQbdFpOkNbX3I6xbXBB59EXgwTNTmGY/zaGjZ0/RBCGriAOpuMOKM/S1SHCUBixxkh3uqlVjscSz2qatR44C2ozKhgtrVrOPdVGsLBd1OrV4JZVHqRMokMrXvHvHaFUZvUPeoW0BI8jePnEy60zhXjHTAxyOz2qQtDA3Vr2Sh4ZjrSKB9pw0kG5uH8h5LNAlfxJusJZqhcVoHTCMYCdGbO6ph55rhavgwOwuLsA04NNcvp9b8piYYVRgdHYnfj46WRYaHOY9QQZrzPe1KG14DdT9AS/kCOjnyLKsB71qQ2DcP/9yq5D1g8meUJPry5CPVIwE6BhQj3eG+U1J/UPJItPQGeM3BJxndDXbtHQlbYoHU7ZEi659jZ6HwGtJRj6Tx5JLlmsX95i7H7B8nt/ybJjBwDdWhtW4bD17XN7cVigmjDsMeBPTYC3WXUP+ourJnvEdN2TLm76I1+jaUSg4MA10DxA1VbA8LQy85lHkVDy8UMtU3GXI5Nm8BKNfT19HojWYLhCwT2KrlPduqY92ctwY4Tyf4v21d+m8prX+6+2DAjixCUSfgk81bAo/DtMvFRYEX4iVQbwSSlCTNgQGv4IhkSF9wXtLzN9Y9GWGoGzydvTOZqYL7QZ5d79WOH34IieeC/zE4JnxbHI+OgvsCS46HdNRVCtzoy4vmCxRdz08MvZqVdKpLs+/XsDwyPT/q8jRBIU9jyI3JWL2HQycm1Lf9N87UyK2lESfJWzk30lA6X3qggxaeOd2E5upxHXowTFKbFXHSf2LC3Nj1j/iqTpIu012eygBq3qkFmteLCV4/LzpnBzdhoQITOenT5cxa4LgHd4ZAGHKoFXN7dQNTXZWIqSFZycszA47d6KldYwiYO8A6nFM2X0DbSs2smxYal4lac2Jgh46RtTTPBzDQYVSwg6d0zN0VwfaojZe/MtrkVibmvzETKo2at0rE0elr+3LQmeLOzaQ9cYtrNQNe3Rp8Rtm+MtPOv5wbQXpgL64CPa0CwfeLhl3y8j/UF7qzpUb3UaMe5+kmpfHO37Zk9D7y16ZBDO/B3X6byNMa2Qb1vR6AGtyz0nR1vNK01YtMXe85DH0RsfMZhp5HEduCMyP7FM96NyosvOFkfK9XuKoGjYNf1PI/mBWW38CHJDuF1/uWZFt8emCP9Ky3J7sFOJCOTul56GDW85e7iNDQaUAaiAEZGjpOG69vhiWJl/NrvjKHta2Lib2JYPj+YbBFM/AKYqLuIJqejC85sS983lpbLQRiwpowOiO33RCwrmaqy9FddzO3ieFXgriesy40qLf6VI2Lgc+D+B5z6a1Bl3Gldy19b7nYtOMF3al6T0SelG62ffpzp7xOS6seDb4euRXPQ10rh+ty2EAtsW7hmed2Krzy/Vi6QvVLD9JU2CiMvx38H0k4klQ=</source>
+  <type>class</type></file>

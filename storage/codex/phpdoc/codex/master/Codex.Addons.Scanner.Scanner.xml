@@ -1,0 +1,155 @@
+<file path="codex/workbench/codex/core/src/Addons/Scanner/Scanner.php" generated-path="codex.workbench.codex.core.src.Addons.Scanner.Scanner.html" hash="1015da5b3203f3d6f742077f2cb4a1af" package="Default">
+    <docblock line="0">
+      <description>Copyright (c) 2012-2013 Maximilian Reichel &lt;info@phramz.com&gt;</description>
+      <long-description>Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is furnished
+to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+THE SOFTWARE.</long-description>
+      <tag name="package" line="0" description="Default"/>
+    </docblock>
+    <namespace-alias name="AnnotationScannerException">\Codex\Addons\Exception\AnnotationScannerException</namespace-alias>
+    <namespace-alias name="Reader">\Doctrine\Common\Annotations\Reader</namespace-alias>
+    <namespace-alias name="SymfonyFinder">\Symfony\Component\Finder\Finder</namespace-alias>
+    <namespace-alias name="SplFileInfo">\Symfony\Component\Finder\SplFileInfo</namespace-alias>
+    <class final="false" abstract="false" namespace="Codex\Addons\Scanner" line="34" package="Codex\Core\Addons\Scanner">
+      <extends/>
+      <implements>\IteratorAggregate</implements>
+      <name>Scanner</name>
+      <full_name>\Codex\Addons\Scanner\Scanner</full_name>
+      <docblock line="34">
+        <description>Class Scanner</description>
+        <long-description/>
+        <tag name="package" line="34" description="Codex\Core\Addons\Scanner"/>
+      </docblock>
+      <property static="false" visibility="private" namespace="Codex\Addons\Scanner" line="39" package="Codex\Core\Addons\Scanner">
+        <name>$reader</name>
+        <full_name>\Codex\Addons\Scanner\Scanner::reader</full_name>
+        <default>null</default>
+        <docblock line="39">
+          <description/>
+          <long-description/>
+          <tag name="var" line="39" description="" type="\Doctrine\Common\Annotations\Reader" variable="">
+            <type>\Doctrine\Common\Annotations\Reader</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="false" visibility="private" namespace="Codex\Addons\Scanner" line="41" package="Codex\Core\Addons\Scanner">
+        <name>$path</name>
+        <full_name>\Codex\Addons\Scanner\Scanner::path</full_name>
+        <default>array()</default>
+        <docblock line="41">
+          <description/>
+          <long-description/>
+        </docblock>
+      </property>
+      <property static="false" visibility="private" namespace="Codex\Addons\Scanner" line="42" package="Codex\Core\Addons\Scanner">
+        <name>$exclude</name>
+        <full_name>\Codex\Addons\Scanner\Scanner::exclude</full_name>
+        <default>array()</default>
+        <docblock line="42">
+          <description/>
+          <long-description/>
+        </docblock>
+      </property>
+      <property static="false" visibility="private" namespace="Codex\Addons\Scanner" line="43" package="Codex\Core\Addons\Scanner">
+        <name>$annotations</name>
+        <full_name>\Codex\Addons\Scanner\Scanner::annotations</full_name>
+        <default>array()</default>
+        <docblock line="43">
+          <description/>
+          <long-description/>
+        </docblock>
+      </property>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Codex\Addons\Scanner" line="48" package="Codex\Core\Addons\Scanner">
+        <name>__construct</name>
+        <full_name>\Codex\Addons\Scanner\Scanner::__construct()</full_name>
+        <docblock line="48">
+          <description/>
+          <long-description/>
+          <tag name="param" line="48" description="" type="\Doctrine\Common\Annotations\Reader" variable="$reader">
+            <type>\Doctrine\Common\Annotations\Reader</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$reader</name>
+          <default/>
+          <type>\Doctrine\Common\Annotations\Reader</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Codex\Addons\Scanner" line="53" package="Codex\Core\Addons\Scanner">
+        <name>in</name>
+        <full_name>\Codex\Addons\Scanner\Scanner::in()</full_name>
+        <docblock line="53">
+          <description/>
+          <long-description/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$path</name>
+          <default/>
+          <type/>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Codex\Addons\Scanner" line="60" package="Codex\Core\Addons\Scanner">
+        <name>exclude</name>
+        <full_name>\Codex\Addons\Scanner\Scanner::exclude()</full_name>
+        <docblock line="60">
+          <description/>
+          <long-description/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$path</name>
+          <default/>
+          <type/>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Codex\Addons\Scanner" line="67" package="Codex\Core\Addons\Scanner">
+        <name>scan</name>
+        <full_name>\Codex\Addons\Scanner\Scanner::scan()</full_name>
+        <docblock line="67">
+          <description/>
+          <long-description/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$annotations</name>
+          <default/>
+          <type>array</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Codex\Addons\Scanner" line="74" package="Codex\Core\Addons\Scanner">
+        <name>getIterator</name>
+        <full_name>\Codex\Addons\Scanner\Scanner::getIterator()</full_name>
+        <docblock line="74">
+          <description/>
+          <long-description/>
+        </docblock>
+      </method>
+    </class>
+    <parse_markers>
+      <error line="48" code="PPC:ERR-50008">No summary for method __construct()</error>
+      <error line="53" code="PPC:ERR-50015">Argument $path is missing from the Docblock of in</error>
+      <error line="53" code="PPC:ERR-50008">No summary for method in()</error>
+      <error line="60" code="PPC:ERR-50015">Argument $path is missing from the Docblock of exclude</error>
+      <error line="60" code="PPC:ERR-50008">No summary for method exclude()</error>
+      <error line="67" code="PPC:ERR-50015">Argument $annotations is missing from the Docblock of scan</error>
+      <error line="67" code="PPC:ERR-50008">No summary for method scan()</error>
+      <error line="74" code="PPC:ERR-50008">No summary for method getIterator()</error>
+      <error line="39" code="PPC:ERR-50007">No summary for property $reader</error>
+      <error line="41" code="PPC:ERR-50007">No summary for property $path</error>
+      <error line="42" code="PPC:ERR-50007">No summary for property $exclude</error>
+      <error line="43" code="PPC:ERR-50007">No summary for property $annotations</error>
+    </parse_markers>
+    <source>eJytVm1v2zYQ/u5fcQgK1A6cZOu+LV1WxZZrobZkSEqzYB4KRqItbjIpUHQSb81/3x0l2ZaddMA2oqije3nunrvjSe9/LrKic3F62oFTGKhio8UyM9BNevDuu+/fneF/P8CUPYmVyAWTEHKRZDyH90Iu1Ici02z153miVlfoTxAzrleiLIWSIErIuOb3G1hqJg1P+7DQnINaQJIxveR9MAqY3EDBdYkO6t4wIYVcAoMEUyE8NDYZIpVqYR6Z5mifAitLlQiGkJCqZL3i0jBDIRci5yV0TcbhJKo9Tno2TspZToBCAqkbLTwKk6m1Ac1Lo0VCMH00SvJ1Spk06hwLUAchd1ulkvAQel0iFUq4DyuVigX9csuvWN/nosz6kApCv18bFJYkTLgkL2RzoTSUPLfJIYhAApb0LkdrRoEKKq6py1WS5DFTqzYfrNVirSVG5WmdX6qwfDbu7zwxJCGPhcpz9UgcEyVTQdTKH+suxqhn9+qBW1rVSEhlMOsqFepIset0rSozludwz+vyYXew2KzNTFMapcF5ECyHQmkb95DxeZPH2IUoGMW3TuiCF8EsDD57Q3cIJ06Ezyd9uPXicXATA1qEjh/fQTACx7+DT54/7IP7yyx0owiCkNC86WziuSj2/MHkZuj5H+EaXf0ghok39WLEjQMbs0bz3Ijwpm44GOOjc+1NvPiuT1gjL/YJeRSE4MDMCWNvcDNxQpjdhLMgcjGJISL7nj8KMZA7df34HAOjDNzP+ADR2JlMKBrBOTdII6REYRDM7kLv4ziGcTAZuii8djE/53riVtGQ3WDieNM+DJ2p89G1XgECWZJkWaUJt2OXpBTVwX+D2At84jMI/DjExz7SDeOt960XuX1wQi+iyozCYGqZUnXRKbA46Oq7FRBVvt0gNKHnm8jdYsLQdSYIh93yDxtKTb7oSLbiZcFwfAYq5U9zJ01xIOZRwqTk+rLTwdvVVrlPCS9obOaOxMmzl7I236ourdtQJXjrJJ8P1GrVsi/nIWcp4ZNdtFktlNyQWaEkbpP5SEjU1j+4bxqTSvAPXlGRj3ARebghMf9mt+a4taDOkwQfkPQfbNmQGyjND8jb+iT7fiBWRc5p35Uw9wzXzCjtLJeaL3Ebdv7qAB4bkA7GeGAaKqa16ML+Flo8oAO80VYHP4Fc5zkm21IWzGSoYlqzTbd32VbyJ3vHX9WzXa33bY4yLBi+Quocm3zaudp1iUtN2uUMX77gvsJtuk5Mt+3Ws/ZVEei8oT11drXlWJtViT53XkQXsmt5v4JFql9/Iyz6q6ZDR3ODW7cy+2aAum7fjFLb/LdAJY5M19a91YxXQrbbte/wb2IvuWmms3sUEN+069wcDYXVLaoLh/PIH9t3rhmwPbOzK/u+ryM05+yKVkr37ek5ftm8PdRRf3etPNRum9Pqw36GOLrVrdq75JRPzpt5pbPAy8ySDLoNIdwg1qi3Vwg6Rm8OJDU/Qi4LfF2rphqjfVnXmpxdYaFnyMMy7u1VaItk18c+VBvbIgxaNt3WtdnnfszueHaI6O75kG5zxAKd26mdXeG1pu+/0qazW9XdfbwX0eh8/XrIdQc45fgNl/6fiDOt8PPHbF7BJNqv4tbzby839dXSbUap6mv/MPILnW0OpSTkmr9s8XwkfW5n9gwJM9TL19+ltOtfauTLkXcRn48WB9GdO3Trt9uhrkavWSfPnb8BE7a/YA==</source>
+  <type>class</type></file>

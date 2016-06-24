@@ -1,0 +1,330 @@
+<file path="codex/workbench/codex/addon-git/src/Http/Middleware/VerifyCsrfToken.php" generated-path="codex.workbench.codex.addon-git.src.Http.Middleware.VerifyCsrfToken.html" hash="cf8e569ef6cfa812464cc472917789ef" package="Default">
+    <docblock line="0">
+      <description/>
+      <long-description/>
+      <tag name="package" line="0" description="Default"/>
+    </docblock>
+    <namespace-alias name="Closure">\Closure</namespace-alias>
+    <namespace-alias name="Encrypter">\Illuminate\Contracts\Encryption\Encrypter</namespace-alias>
+    <namespace-alias name="BaseVerifier">\Illuminate\Foundation\Http\Middleware\VerifyCsrfToken</namespace-alias>
+    <namespace-alias name="Router">\Illuminate\Routing\Router</namespace-alias>
+    <namespace-alias name="TokenMismatchException">\Illuminate\Session\TokenMismatchException</namespace-alias>
+    <class final="false" abstract="false" namespace="Codex\Addon\Git\Http\Middleware" line="11" package="Default">
+      <extends>\Illuminate\Foundation\Http\Middleware\VerifyCsrfToken</extends>
+      <name>VerifyCsrfToken</name>
+      <full_name>\Codex\Addon\Git\Http\Middleware\VerifyCsrfToken</full_name>
+      <docblock line="11">
+        <description/>
+        <long-description/>
+        <tag name="package" line="11" description="Default"/>
+        <tag name="inherited_from" description="\Illuminate\Foundation\Http\Middleware\VerifyCsrfToken" refers="\Illuminate\Foundation\Http\Middleware\VerifyCsrfToken" link="/classes/Illuminate.Foundation.Http.Middleware.VerifyCsrfToken.html"/>
+      </docblock>
+      <property static="false" visibility="protected" namespace="Codex\Addon\Git\Http\Middleware" line="16" package="Default">
+        <name>$router</name>
+        <full_name>\Codex\Addon\Git\Http\Middleware\VerifyCsrfToken::router</full_name>
+        <default/>
+        <docblock line="16">
+          <description/>
+          <long-description/>
+          <tag name="var" line="16" description="" type="\Illuminate\Routing\Router" variable="">
+            <type>\Illuminate\Routing\Router</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" namespace="Codex\Addon\Git\Http\Middleware" line="23" package="Default">
+        <name>$except</name>
+        <full_name>\Codex\Addon\Git\Http\Middleware\VerifyCsrfToken::except</full_name>
+        <default>array()</default>
+        <docblock line="23">
+          <description>The URIs that should be excluded from CSRF verification.</description>
+          <long-description/>
+          <tag name="var" line="23" description="" type="array" variable="">
+            <type>array</type>
+          </tag>
+          <tag name="inherited_from" description="\Illuminate\Foundation\Http\Middleware\VerifyCsrfToken::except" refers="\Illuminate\Foundation\Http\Middleware\VerifyCsrfToken::except" link="/classes/Illuminate.Foundation.Http.Middleware.VerifyCsrfToken.html#property_except"/>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" namespace="Codex\Addon\Git\Http\Middleware" line="27" package="Default">
+        <name>$excludedRouteNames</name>
+        <full_name>\Codex\Addon\Git\Http\Middleware\VerifyCsrfToken::excludedRouteNames</full_name>
+        <default>array('codex.hooks.git.webhook.github', 'codex.hooks.git.webhook.bitbucket')</default>
+        <docblock line="27">
+          <description/>
+          <long-description/>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" namespace="Codex\Addon\Git\Http\Middleware" line="18" package="Default">
+        <name>$app</name>
+        <full_name>\Illuminate\Foundation\Http\Middleware\VerifyCsrfToken::app</full_name>
+        <default/>
+        <docblock line="18">
+          <description>The application instance.</description>
+          <long-description/>
+          <tag name="var" line="18" description="" type="\Illuminate\Foundation\Application" variable="">
+            <type>\Illuminate\Foundation\Application</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" namespace="Codex\Addon\Git\Http\Middleware" line="25" package="Default">
+        <name>$encrypter</name>
+        <full_name>\Illuminate\Foundation\Http\Middleware\VerifyCsrfToken::encrypter</full_name>
+        <default/>
+        <docblock line="25">
+          <description>The encrypter implementation.</description>
+          <long-description/>
+          <tag name="var" line="25" description="" type="\Illuminate\Contracts\Encryption\Encrypter" variable="">
+            <type>\Illuminate\Contracts\Encryption\Encrypter</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" namespace="Codex\Addon\Git\Http\Middleware" line="32" package="Default">
+        <name>$except</name>
+        <full_name>\Illuminate\Foundation\Http\Middleware\VerifyCsrfToken::except</full_name>
+        <default>array()</default>
+        <docblock line="32">
+          <description>The URIs that should be excluded from CSRF verification.</description>
+          <long-description/>
+          <tag name="var" line="32" description="" type="array" variable="">
+            <type>array</type>
+          </tag>
+        </docblock>
+      </property>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Codex\Addon\Git\Http\Middleware" line="39" package="Default">
+        <name>__construct</name>
+        <full_name>\Codex\Addon\Git\Http\Middleware\VerifyCsrfToken::__construct()</full_name>
+        <docblock line="39">
+          <description>VerifyCsrfToken constructor.</description>
+          <long-description/>
+          <tag name="param" line="39" description="" type="\Illuminate\Contracts\Encryption\Encrypter" variable="$encrypter">
+            <type>\Illuminate\Contracts\Encryption\Encrypter</type>
+          </tag>
+          <tag name="param" line="39" description="" type="\Illuminate\Routing\Router" variable="$router">
+            <type>\Illuminate\Routing\Router</type>
+          </tag>
+          <tag name="inherited_from" description="\Illuminate\Foundation\Http\Middleware\VerifyCsrfToken::__construct()" refers="\Illuminate\Foundation\Http\Middleware\VerifyCsrfToken::__construct()" link="/classes/Illuminate.Foundation.Http.Middleware.VerifyCsrfToken.html#method___construct"/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$encrypter</name>
+          <default/>
+          <type>\Illuminate\Contracts\Encryption\Encrypter</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$router</name>
+          <default/>
+          <type>\Illuminate\Routing\Router</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Codex\Addon\Git\Http\Middleware" line="55" package="Default">
+        <name>handle</name>
+        <full_name>\Codex\Addon\Git\Http\Middleware\VerifyCsrfToken::handle()</full_name>
+        <docblock line="55">
+          <description>Handle an incoming request.</description>
+          <long-description/>
+          <tag name="param" line="55" description="" type="\Illuminate\Http\Request" variable="$request">
+            <type>\Illuminate\Http\Request</type>
+          </tag>
+          <tag name="param" line="55" description="" type="\Closure" variable="$next">
+            <type>\Closure</type>
+          </tag>
+          <tag name="return" line="55" description="" type="mixed">
+            <type>mixed</type>
+          </tag>
+          <tag name="throws" line="55" description="" type="\Illuminate\Session\TokenMismatchException">
+            <type>\Illuminate\Session\TokenMismatchException</type>
+          </tag>
+          <tag name="inherited_from" description="\Illuminate\Foundation\Http\Middleware\VerifyCsrfToken::handle()" refers="\Illuminate\Foundation\Http\Middleware\VerifyCsrfToken::handle()" link="/classes/Illuminate.Foundation.Http.Middleware.VerifyCsrfToken.html#method_handle"/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$request</name>
+          <default/>
+          <type>\Illuminate\Http\Request</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$next</name>
+          <default/>
+          <type>\Closure</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Codex\Addon\Git\Http\Middleware" line="69" package="Default">
+        <name>excludedRouteNames</name>
+        <full_name>\Codex\Addon\Git\Http\Middleware\VerifyCsrfToken::excludedRouteNames()</full_name>
+        <docblock line="69">
+          <description/>
+          <long-description/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$request</name>
+          <default/>
+          <type/>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Codex\Addon\Git\Http\Middleware" line="41" package="Default">
+        <name>__construct</name>
+        <full_name>\Illuminate\Foundation\Http\Middleware\VerifyCsrfToken::__construct()</full_name>
+        <docblock line="41">
+          <description>Create a new middleware instance.</description>
+          <long-description/>
+          <tag name="param" line="41" description="" type="\Illuminate\Foundation\Application" variable="$app">
+            <type>\Illuminate\Foundation\Application</type>
+          </tag>
+          <tag name="param" line="41" description="" type="\Illuminate\Contracts\Encryption\Encrypter" variable="$encrypter">
+            <type>\Illuminate\Contracts\Encryption\Encrypter</type>
+          </tag>
+          <tag name="return" line="41" description="" type="void">
+            <type>void</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$app</name>
+          <default/>
+          <type>\Illuminate\Foundation\Application</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$encrypter</name>
+          <default/>
+          <type>\Illuminate\Contracts\Encryption\Encrypter</type>
+        </argument>
+        <inherited_from>\Illuminate\Foundation\Http\Middleware\VerifyCsrfToken</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Codex\Addon\Git\Http\Middleware" line="56" package="Default">
+        <name>handle</name>
+        <full_name>\Illuminate\Foundation\Http\Middleware\VerifyCsrfToken::handle()</full_name>
+        <docblock line="56">
+          <description>Handle an incoming request.</description>
+          <long-description/>
+          <tag name="param" line="56" description="" type="\Illuminate\Http\Request" variable="$request">
+            <type>\Illuminate\Http\Request</type>
+          </tag>
+          <tag name="param" line="56" description="" type="\Closure" variable="$next">
+            <type>\Closure</type>
+          </tag>
+          <tag name="return" line="56" description="" type="mixed">
+            <type>mixed</type>
+          </tag>
+          <tag name="throws" line="56" description="" type="\Illuminate\Session\TokenMismatchException">
+            <type>\Illuminate\Session\TokenMismatchException</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$request</name>
+          <default/>
+          <type>\Illuminate\Http\Request</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$next</name>
+          <default/>
+          <type>\Closure</type>
+        </argument>
+        <inherited_from>\Illuminate\Foundation\Http\Middleware\VerifyCsrfToken</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Codex\Addon\Git\Http\Middleware" line="76" package="Default">
+        <name>shouldPassThrough</name>
+        <full_name>\Illuminate\Foundation\Http\Middleware\VerifyCsrfToken::shouldPassThrough()</full_name>
+        <docblock line="76">
+          <description>Determine if the request has a URI that should pass through CSRF verification.</description>
+          <long-description/>
+          <tag name="param" line="76" description="" type="\Illuminate\Http\Request" variable="$request">
+            <type>\Illuminate\Http\Request</type>
+          </tag>
+          <tag name="return" line="76" description="" type="boolean">
+            <type>boolean</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$request</name>
+          <default/>
+          <type>\Illuminate\Http\Request</type>
+        </argument>
+        <inherited_from>\Illuminate\Foundation\Http\Middleware\VerifyCsrfToken</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Codex\Addon\Git\Http\Middleware" line="96" package="Default">
+        <name>runningUnitTests</name>
+        <full_name>\Illuminate\Foundation\Http\Middleware\VerifyCsrfToken::runningUnitTests()</full_name>
+        <docblock line="96">
+          <description>Determine if the application is running unit tests.</description>
+          <long-description/>
+          <tag name="return" line="96" description="" type="boolean">
+            <type>boolean</type>
+          </tag>
+        </docblock>
+        <inherited_from>\Illuminate\Foundation\Http\Middleware\VerifyCsrfToken</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Codex\Addon\Git\Http\Middleware" line="107" package="Default">
+        <name>tokensMatch</name>
+        <full_name>\Illuminate\Foundation\Http\Middleware\VerifyCsrfToken::tokensMatch()</full_name>
+        <docblock line="107">
+          <description>Determine if the session and input CSRF tokens match.</description>
+          <long-description/>
+          <tag name="param" line="107" description="" type="\Illuminate\Http\Request" variable="$request">
+            <type>\Illuminate\Http\Request</type>
+          </tag>
+          <tag name="return" line="107" description="" type="boolean">
+            <type>boolean</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$request</name>
+          <default/>
+          <type>\Illuminate\Http\Request</type>
+        </argument>
+        <inherited_from>\Illuminate\Foundation\Http\Middleware\VerifyCsrfToken</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Codex\Addon\Git\Http\Middleware" line="131" package="Default">
+        <name>addCookieToResponse</name>
+        <full_name>\Illuminate\Foundation\Http\Middleware\VerifyCsrfToken::addCookieToResponse()</full_name>
+        <docblock line="131">
+          <description>Add the CSRF token to the response cookies.</description>
+          <long-description/>
+          <tag name="param" line="131" description="" type="\Illuminate\Http\Request" variable="$request">
+            <type>\Illuminate\Http\Request</type>
+          </tag>
+          <tag name="param" line="131" description="" type="\Illuminate\Http\Response" variable="$response">
+            <type>\Illuminate\Http\Response</type>
+          </tag>
+          <tag name="return" line="131" description="" type="\Illuminate\Http\Response">
+            <type>\Illuminate\Http\Response</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$request</name>
+          <default/>
+          <type>\Illuminate\Http\Request</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$response</name>
+          <default/>
+          <type>\Illuminate\Http\Response</type>
+        </argument>
+        <inherited_from>\Illuminate\Foundation\Http\Middleware\VerifyCsrfToken</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Codex\Addon\Git\Http\Middleware" line="151" package="Default">
+        <name>isReading</name>
+        <full_name>\Illuminate\Foundation\Http\Middleware\VerifyCsrfToken::isReading()</full_name>
+        <docblock line="151">
+          <description>Determine if the HTTP request uses a ‘read’ verb.</description>
+          <long-description/>
+          <tag name="param" line="151" description="" type="\Illuminate\Http\Request" variable="$request">
+            <type>\Illuminate\Http\Request</type>
+          </tag>
+          <tag name="return" line="151" description="" type="boolean">
+            <type>boolean</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$request</name>
+          <default/>
+          <type>\Illuminate\Http\Request</type>
+        </argument>
+        <inherited_from>\Illuminate\Foundation\Http\Middleware\VerifyCsrfToken</inherited_from>
+      </method>
+    </class>
+    <parse_markers>
+      <error line="0" code="PPC:ERR-50000">No summary was found for this file</error>
+      <error line="11" code="PPC:ERR-50005">No summary for class \Codex\Addon\Git\Http\Middleware\VerifyCsrfToken</error>
+      <error line="69" code="PPC:ERR-50015">Argument $request is missing from the Docblock of excludedRouteNames</error>
+      <error line="69" code="PPC:ERR-50008">No summary for method excludedRouteNames()</error>
+      <error line="16" code="PPC:ERR-50007">No summary for property $router</error>
+      <error line="27" code="PPC:ERR-50007">No summary for property $excludedRouteNames</error>
+    </parse_markers>
+    <source>eJyFVUtz2jAQvvtX7CEzgQyQe2hpGyZpckinQ2gvdScj5AVrYiSqR4BJ+O+VZOEnD11swX6733778Kcvq3QVRZwsUa0IRRiLBDfxtyQRPP7OdPyg9Sp+YkmS4ZpIHEaRUdYqE8q4m7s8ZplZMk40xmPBtSRUq/iOU7ldaWbdhFeULfN7YXhCvFEjTvwbJZtvx0rOp+IVORAFt0Sh/5kdcDURRjO+8M8Dfz+jUi6Md/bE1JJomt5tKHqKNiuaEaWgGRU3GnlSDx29R2DP9dWVf8IVfH0jEuKjZILZtX+upNBINSZwIQPVprtpivBr8qhAp0SDSoXJEpihJUMzk1jkXIoljJ8n9/DmOVEv4SDga6yIlGR7jAD6/OEz/MktHI3c6G9gVTf20X1OP1y/1ICX1DXOIBXiVQ0WTA/WOHMX956a2WUvOm86Y3pm6CvqyxqJijTN+lDBlZaGaiFb6a+IJMtaWU53p01x/3rCR7200DyhqHXFzSxjFOaGUxcRXl4K2p1D0XsQnAdnXe/lvdDPkkKub26qfkp0d1gYXuiUqf4o92KrVXSc+3MXtdR9INyOHxAOjFNhE16AxH8GlT4ibk0ZP8GT3N6Gyl9agLA52sJxO2uFtURtJIcl22DSDK1TKdaqFvr0dJ8sRupz7uz59varLSfUlJ7NoRNUZWqCJLEaFdgufHxEtZxyy3yCf9r9MrXUzSI9i9AuD/Xksjhr257LElLYdys5uBP0DS5Ikozt/DGcion9DNimqgrihSh9Vvpr30Lu+KoAxzUcW7EB4YtQrJWiDmfTKBPI29itn1qD90cL1B6uOt1hyWwuJBKaFoU7sMjsx+XCfQKbMvly59H6o5QoZ53jOrl9E1DSK8ZNeV63W4cNqGELUwbqj7xu1fQPBakU0S4AbHvcRYdvu1KYgJ+TTOG+PLvoPzGVcmE=</source>
+  <type>class</type></file>

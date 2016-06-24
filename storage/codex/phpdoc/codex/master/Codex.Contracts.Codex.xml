@@ -1,0 +1,670 @@
+<file path="codex/workbench/codex/core/src/Contracts/Codex.php" generated-path="codex.workbench.codex.core.src.Contracts.Codex.html" hash="174fa24bc2a041053edc8e594f53f2bf" package="Default">
+    <docblock line="0">
+      <description>Part of the CLI PHP packages.</description>
+      <long-description>License and copyright information bundled with this package in the LICENSE file</long-description>
+      <tag name="package" line="0" description="Default"/>
+    </docblock>
+    <namespace-alias name="Writer">\Codex\Log\Writer</namespace-alias>
+    <namespace-alias name="Project">\Codex\Projects\Project</namespace-alias>
+    <namespace-alias name="Collection">\Codex\Support\Collection</namespace-alias>
+    <namespace-alias name="Cache">\Illuminate\Contracts\Cache\Repository</namespace-alias>
+    <namespace-alias name="Container">\Illuminate\Contracts\Container\Container</namespace-alias>
+    <namespace-alias name="Arrayable">\Illuminate\Contracts\Support\Arrayable</namespace-alias>
+    <interface namespace="Codex\Contracts" line="35" package="Codex\Core">
+      <name>Codex</name>
+      <full_name>\Codex\Contracts\Codex</full_name>
+      <docblock line="35">
+        <description>This is the main Codex factory. It gives access to several sub-components and helper functions.</description>
+        <long-description/>
+        <tag name="package" line="35" description="Codex\Core"/>
+        <tag name="author" line="35" description="Sebwite"/>
+        <tag name="property-read" line="35" description="The addons instance" type="\Codex\Addons\Addons" variable="$addons">
+          <type>\Codex\Addons\Addons</type>
+        </tag>
+        <tag name="property-read" line="35" description="The projects instance" type="\Codex\Projects\Projects" variable="$projects">
+          <type>\Codex\Projects\Projects</type>
+        </tag>
+        <tag name="property-read" line="35" description="The menus instance" type="\Codex\Menus\Menus" variable="$menus">
+          <type>\Codex\Menus\Menus</type>
+        </tag>
+        <tag name="property-read" line="35" description="The auth addon instance" type="\Codex\Addon\Auth\CodexAuth" variable="$auth">
+          <type>\Codex\Addon\Auth\CodexAuth</type>
+        </tag>
+        <tag name="property-read" line="35" description="The theme instance" type="\Codex\Addon\Git\CodexGit" variable="$git">
+          <type>\Codex\Addon\Git\CodexGit</type>
+        </tag>
+        <tag name="property-read" line="35" description="The theme instance" type="\Codex\Theme" variable="$theme">
+          <type>\Codex\Theme</type>
+        </tag>
+        <tag name="copyright" line="35" description="Copyright (c) 2015, Sebwite. All rights reserved"/>
+        <tag name="hookPoint" line="35" description="constructed"/>
+      </docblock>
+      <method final="false" abstract="false" static="true" visibility="public" namespace="Codex\Contracts" line="42" package="Codex\Core">
+        <name>clearBooted</name>
+        <full_name>\Codex\Contracts\Codex::clearBooted()</full_name>
+        <docblock line="42">
+          <description>Clear the list of booted models so they will be re-booted.</description>
+          <long-description/>
+          <tag name="return" line="42" description="" type="void">
+            <type>void</type>
+          </tag>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="true" visibility="public" namespace="Codex\Contracts" line="51" package="Codex\Core">
+        <name>booting</name>
+        <full_name>\Codex\Contracts\Codex::booting()</full_name>
+        <docblock line="51">
+          <description>Register a listener for the "booting" event of this class</description>
+          <long-description/>
+          <tag name="param" line="51" description="" type="string|\Closure" variable="$callback">
+            <type>string</type>
+            <type>\Closure</type>
+          </tag>
+          <tag name="return" line="51" description="The class name" type="string">
+            <type>string</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$callback</name>
+          <default/>
+          <type>string|\Closure</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="true" visibility="public" namespace="Codex\Contracts" line="60" package="Codex\Core">
+        <name>booted</name>
+        <full_name>\Codex\Contracts\Codex::booted()</full_name>
+        <docblock line="60">
+          <description>Register a listener for the "booted" event of this class</description>
+          <long-description/>
+          <tag name="param" line="60" description="" type="string|\Closure" variable="$callback">
+            <type>string</type>
+            <type>\Closure</type>
+          </tag>
+          <tag name="return" line="60" description="The class name" type="string">
+            <type>string</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$callback</name>
+          <default/>
+          <type>string|\Closure</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Codex\Contracts" line="74" package="Codex\Core">
+        <name>error</name>
+        <full_name>\Codex\Contracts\Codex::error()</full_name>
+        <docblock line="74">
+          <description>Creates a error response. To be used in controllers/middleware</description>
+          <long-description/>
+          <tag name="param" line="74" description="&lt;p&gt;The error title&lt;/p&gt;" type="string" variable="$title">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="74" description="&lt;p&gt;The error text&lt;/p&gt;" type="string" variable="$text">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="74" description="&lt;p&gt;The HTTP code. 500 Internal Server Error by default&lt;/p&gt;" type="integer" variable="$code">
+            <type>integer</type>
+          </tag>
+          <tag name="param" line="74" description="&lt;p&gt;If set to false, it will not display the go back link. If set to a integer value, it will use the integer value as history.back parameter.&lt;/p&gt;" type="boolean|integer" variable="$goBack">
+            <type>boolean</type>
+            <type>integer</type>
+          </tag>
+          <tag name="return" line="74" description="" type="\Illuminate\Contracts\Routing\ResponseFactory|\Symfony\Component\HttpFoundation\Response">
+            <type>\Illuminate\Contracts\Routing\ResponseFactory</type>
+            <type>\Symfony\Component\HttpFoundation\Response</type>
+          </tag>
+          <tag name="throws" line="74" description="" type="\Exception">
+            <type>\Exception</type>
+          </tag>
+          <tag name="throws" line="74" description="" type="\Throwable">
+            <type>\Throwable</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$title</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$text</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$code</name>
+          <default>500</default>
+          <type>integer</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$goBack</name>
+          <default>true</default>
+          <type>boolean|integer</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Codex\Contracts" line="86" package="Codex\Core">
+        <name>pushToStack</name>
+        <full_name>\Codex\Contracts\Codex::pushToStack()</full_name>
+        <docblock line="86">
+          <description>Push a view to a stack</description>
+          <long-description/>
+          <tag name="param" line="86" description="&lt;p&gt;The name of the stack&lt;/p&gt;" type="string" variable="$stackName">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="86" description="&lt;p&gt;The namespaced name of the view&lt;/p&gt;" type="string" variable="$viewName">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="86" description="&lt;p&gt;(optional) The view data array&lt;/p&gt;" type="array|null" variable="$data">
+            <type>array</type>
+            <type>null</type>
+          </tag>
+          <tag name="param" line="86" description="&lt;p&gt;(optional) The view to attach this to&lt;/p&gt;" type="string" variable="$appendTo">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="86" description="" type="\Codex\Codex">
+            <type>\Codex\Codex</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$stackName</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$viewName</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$data</name>
+          <default>null</default>
+          <type>array|null</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$appendTo</name>
+          <default>'codex::layouts.default'</default>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Codex\Contracts" line="97" package="Codex\Core">
+        <name>url</name>
+        <full_name>\Codex\Contracts\Codex::url()</full_name>
+        <docblock line="97">
+          <description>Generate a URL to a project's default page and version.</description>
+          <long-description/>
+          <tag name="param" line="97" description="&lt;p&gt;A Project class instance or project name&lt;/p&gt;" type="\Codex\Projects\Project|string" variable="$project">
+            <type>\Codex\Projects\Project</type>
+            <type>string</type>
+          </tag>
+          <tag name="param" line="97" description="&lt;p&gt;The ref to generate the URL for. If not provided it'll use the default ref&lt;/p&gt;" type="null|string" variable="$ref">
+            <type>null</type>
+            <type>string</type>
+          </tag>
+          <tag name="param" line="97" description="&lt;p&gt;The document to generate the URL for.&lt;/p&gt;" type="null|string" variable="$doc">
+            <type>null</type>
+            <type>string</type>
+          </tag>
+          <tag name="return" line="97" description="" type="string">
+            <type>string</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$project</name>
+          <default>null</default>
+          <type>\Codex\Projects\Project|string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$ref</name>
+          <default>null</default>
+          <type>null|string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$doc</name>
+          <default>null</default>
+          <type>null|string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Codex\Contracts" line="106" package="Codex\Core">
+        <name>log</name>
+        <full_name>\Codex\Contracts\Codex::log()</full_name>
+        <docblock line="106">
+          <description>Writes a log message to the codex log file</description>
+          <long-description/>
+          <tag name="param" line="106" description="&lt;p&gt;The log level&lt;/p&gt;" type="string" variable="$level">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="106" description="&lt;p&gt;The message to log&lt;/p&gt;" type="string" variable="$message">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="106" description="&lt;p&gt;(optional) The context to log&lt;/p&gt;" type="array" variable="$context">
+            <type>array</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$level</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$message</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$context</name>
+          <default>array()</default>
+          <type>array</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Codex\Contracts" line="115" package="Codex\Core">
+        <name>view</name>
+        <full_name>\Codex\Contracts\Codex::view()</full_name>
+        <docblock line="115">
+          <description>Returns a Codex view name</description>
+          <long-description/>
+          <tag name="param" line="115" description="&lt;p&gt;The simple name&lt;/p&gt;" type="string" variable="$name">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="115" description="The namespaced view name" type="string">
+            <type>string</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$name</name>
+          <default/>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Codex\Contracts" line="122" package="Codex\Core">
+        <name>getDocsPath</name>
+        <full_name>\Codex\Contracts\Codex::getDocsPath()</full_name>
+        <docblock line="122">
+          <description>The path to the directory where all documentation projects reside</description>
+          <long-description/>
+          <tag name="return" line="122" description="" type="string">
+            <type>string</type>
+          </tag>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Codex\Contracts" line="129" package="Codex\Core">
+        <name>getCache</name>
+        <full_name>\Codex\Contracts\Codex::getCache()</full_name>
+        <docblock line="129">
+          <description>Get cache.</description>
+          <long-description/>
+          <tag name="return" line="129" description="" type="\Illuminate\Contracts\Cache\Repository">
+            <type>\Illuminate\Contracts\Cache\Repository</type>
+          </tag>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Codex\Contracts" line="138" package="Codex\Core">
+        <name>setCache</name>
+        <full_name>\Codex\Contracts\Codex::setCache()</full_name>
+        <docblock line="138">
+          <description>Set cache.</description>
+          <long-description/>
+          <tag name="param" line="138" description="" type="\Illuminate\Cache\CacheManager" variable="$cache">
+            <type>\Illuminate\Cache\CacheManager</type>
+          </tag>
+          <tag name="return" line="138" description="" type="\Codex\Codex">
+            <type>\Codex\Codex</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$cache</name>
+          <default/>
+          <type>\Illuminate\Cache\CacheManager</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Codex\Contracts" line="145" package="Codex\Core">
+        <name>getLog</name>
+        <full_name>\Codex\Contracts\Codex::getLog()</full_name>
+        <docblock line="145">
+          <description>Get the log instance</description>
+          <long-description/>
+          <tag name="return" line="145" description="" type="\Codex\Log\Writer">
+            <type>\Codex\Log\Writer</type>
+          </tag>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Codex\Contracts" line="154" package="Codex\Core">
+        <name>setLog</name>
+        <full_name>\Codex\Contracts\Codex::setLog()</full_name>
+        <docblock line="154">
+          <description>Set the log value</description>
+          <long-description/>
+          <tag name="param" line="154" description="&lt;p&gt;The log instance to replace&lt;/p&gt;" type="\Codex\Log\Writer|mixed" variable="$log">
+            <type>\Codex\Log\Writer</type>
+            <type>mixed</type>
+          </tag>
+          <tag name="return" line="154" description="" type="\Codex\Codex">
+            <type>\Codex\Codex</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$log</name>
+          <default/>
+          <type>\Codex\Log\Writer|mixed</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Codex\Contracts" line="160" package="Codex\Core">
+        <name>toArray</name>
+        <full_name>\Codex\Contracts\Codex::toArray()</full_name>
+        <docblock line="160">
+          <description>toArray method</description>
+          <long-description/>
+          <tag name="return" line="160" description="" type="array">
+            <type>array</type>
+          </tag>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Codex\Contracts" line="170" package="Codex\Core">
+        <name>config</name>
+        <full_name>\Codex\Contracts\Codex::config()</full_name>
+        <docblock line="170">
+          <description>Get a configuration item of the project using dot notation</description>
+          <long-description/>
+          <tag name="param" line="170" description="" type="null|string" variable="$key">
+            <type>null</type>
+            <type>string</type>
+          </tag>
+          <tag name="param" line="170" description="" type="null|mixed" variable="$default">
+            <type>null</type>
+            <type>mixed</type>
+          </tag>
+          <tag name="return" line="170" description="" type="array|mixed|\Codex\Support\Collection">
+            <type>array</type>
+            <type>mixed</type>
+            <type>\Codex\Support\Collection</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$key</name>
+          <default>null</default>
+          <type>null|string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$default</name>
+          <default>null</default>
+          <type>null|mixed</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Codex\Contracts" line="181" package="Codex\Core">
+        <name>setConfig</name>
+        <full_name>\Codex\Contracts\Codex::setConfig()</full_name>
+        <docblock line="181">
+          <description>Set the config.</description>
+          <long-description/>
+          <tag name="param" line="181" description="&lt;p&gt;The string key to set the value to. Or to set the whole config, you can pass a array or Arrayable without value&lt;/p&gt;" type="array|\Illuminate\Contracts\Support\Arrayable|string" variable="$key">
+            <type>array</type>
+            <type>\Illuminate\Contracts\Support\Arrayable</type>
+            <type>string</type>
+          </tag>
+          <tag name="param" line="181" description="" type="null|mixed" variable="$value">
+            <type>null</type>
+            <type>mixed</type>
+          </tag>
+          <tag name="return" line="181" description="" type="\Codex\Codex">
+            <type>\Codex\Codex</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$key</name>
+          <default/>
+          <type>array|\Illuminate\Contracts\Support\Arrayable|string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$value</name>
+          <default>null</default>
+          <type>null|mixed</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Codex\Contracts" line="188" package="Codex\Core">
+        <name>getConfig</name>
+        <full_name>\Codex\Contracts\Codex::getConfig()</full_name>
+        <docblock line="188">
+          <description>get config value</description>
+          <long-description/>
+          <tag name="return" line="188" description="" type="array">
+            <type>array</type>
+          </tag>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Codex\Contracts" line="195" package="Codex\Core">
+        <name>getContainer</name>
+        <full_name>\Codex\Contracts\Codex::getContainer()</full_name>
+        <docblock line="195">
+          <description>Returns the IoC container.</description>
+          <long-description/>
+          <tag name="return" line="195" description="" type="\Illuminate\Container\Container">
+            <type>\Illuminate\Container\Container</type>
+          </tag>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Codex\Contracts" line="204" package="Codex\Core">
+        <name>setContainer</name>
+        <full_name>\Codex\Contracts\Codex::setContainer()</full_name>
+        <docblock line="204">
+          <description>Sets the IoC container instance.</description>
+          <long-description/>
+          <tag name="param" line="204" description="" type="\Illuminate\Container\Container" variable="$container">
+            <type>\Illuminate\Container\Container</type>
+          </tag>
+          <tag name="return" line="204" description="" type="\Codex\Codex">
+            <type>\Codex\Codex</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$container</name>
+          <default/>
+          <type>\Illuminate\Container\Container</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Codex\Contracts" line="210" package="Codex\Core">
+        <name>extensions</name>
+        <full_name>\Codex\Contracts\Codex::extensions()</full_name>
+        <docblock line="210">
+          <description>Returns all registered extensions for this class</description>
+          <long-description/>
+          <tag name="return" line="210" description="The registered extensions for this class" type="array">
+            <type>array</type>
+          </tag>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Codex\Contracts" line="219" package="Codex\Core">
+        <name>getExtenableProperty</name>
+        <full_name>\Codex\Contracts\Codex::getExtenableProperty()</full_name>
+        <docblock line="219">
+          <description>This will return the property. It checks if the property name exists and will return it. If it doesn't exist, it will return the property prefixed with _ (underscore)</description>
+          <long-description/>
+          <tag name="param" line="219" description="&lt;p&gt;The property name&lt;/p&gt;" type="string" variable="$type">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="219" description="" type="mixed">
+            <type>mixed</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$type</name>
+          <default/>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Codex\Contracts" line="227" package="Codex\Core">
+        <name>extend</name>
+        <full_name>\Codex\Contracts\Codex::extend()</full_name>
+        <docblock line="227">
+          <description>Extend the class with a class or method.</description>
+          <long-description/>
+          <tag name="param" line="227" description="&lt;p&gt;The name to register the extension under&lt;/p&gt;" type="string" variable="$name">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="227" description="&lt;p&gt;The extension that should be used&lt;/p&gt;" type="string|\Closure" variable="$extension">
+            <type>string</type>
+            <type>\Closure</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$name</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$extension</name>
+          <default/>
+          <type>string|\Closure</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Codex\Contracts" line="234" package="Codex\Core">
+        <name>getFiles</name>
+        <full_name>\Codex\Contracts\Codex::getFiles()</full_name>
+        <docblock line="234">
+          <description>Get the filesystem instance.</description>
+          <long-description/>
+          <tag name="return" line="234" description="" type="\Illuminate\Contracts\Filesystem\Filesystem">
+            <type>\Illuminate\Contracts\Filesystem\Filesystem</type>
+          </tag>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Codex\Contracts" line="243" package="Codex\Core">
+        <name>setFiles</name>
+        <full_name>\Codex\Contracts\Codex::setFiles()</full_name>
+        <docblock line="243">
+          <description>Set the filesystem instance</description>
+          <long-description/>
+          <tag name="param" line="243" description="&lt;p&gt;The filesystem instance&lt;/p&gt;" type="mixed|string|\Illuminate\Contracts\Filesystem\Filesystem" variable="$files">
+            <type>mixed</type>
+            <type>string</type>
+            <type>\Illuminate\Contracts\Filesystem\Filesystem</type>
+          </tag>
+          <tag name="return" line="243" description="" type="\Codex\Codex">
+            <type>\Codex\Codex</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$files</name>
+          <default/>
+          <type>mixed|string|\Illuminate\Contracts\Filesystem\Filesystem</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="true" visibility="public" namespace="Codex\Contracts" line="252" package="Codex\Core">
+        <name>hook</name>
+        <full_name>\Codex\Contracts\Codex::hook()</full_name>
+        <docblock line="252">
+          <description>Create a Codex Hook</description>
+          <long-description/>
+          <tag name="param" line="252" description="&lt;p&gt;The hook name&lt;/p&gt;" type="string" variable="$event">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="252" description="&lt;p&gt;The callback to execute&lt;/p&gt;" type="string|\Closure" variable="$callback">
+            <type>string</type>
+            <type>\Closure</type>
+          </tag>
+          <tag name="param" line="252" description="&lt;p&gt;(optional) The priority&lt;/p&gt;" type="integer" variable="$priority">
+            <type>integer</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$event</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$callback</name>
+          <default/>
+          <type>string|\Closure</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$priority</name>
+          <default>1</default>
+          <type>integer</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="true" visibility="public" namespace="Codex\Contracts" line="262" package="Codex\Core">
+        <name>observe</name>
+        <full_name>\Codex\Contracts\Codex::observe()</full_name>
+        <docblock line="262">
+          <description>Register an observer with the Model.</description>
+          <long-description/>
+          <tag name="param" line="262" description="" type="object|string" variable="$class">
+            <type>object</type>
+            <type>string</type>
+          </tag>
+          <tag name="param" line="262" description="" type="integer" variable="$priority">
+            <type>integer</type>
+          </tag>
+          <tag name="return" line="262" description="" type="void">
+            <type>void</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$class</name>
+          <default/>
+          <type>object|string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$priority</name>
+          <default>0</default>
+          <type>integer</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Codex\Contracts" line="269" package="Codex\Core">
+        <name>getObservableEvents</name>
+        <full_name>\Codex\Contracts\Codex::getObservableEvents()</full_name>
+        <docblock line="269">
+          <description>Get the observable event names.</description>
+          <long-description/>
+          <tag name="return" line="269" description="The event names that can be observed" type="array">
+            <type>array</type>
+          </tag>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Codex\Contracts" line="274" package="Codex\Core">
+        <name>flushEventListeners</name>
+        <full_name>\Codex\Contracts\Codex::flushEventListeners()</full_name>
+        <docblock line="274">
+          <description>Remove all of the event listeners for the model.</description>
+          <long-description/>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Codex\Contracts" line="283" package="Codex\Core">
+        <name>setObservableEvents</name>
+        <full_name>\Codex\Contracts\Codex::setObservableEvents()</full_name>
+        <docblock line="283">
+          <description>Set the observable event names.</description>
+          <long-description/>
+          <tag name="param" line="283" description="" type="array" variable="$observables">
+            <type>array</type>
+          </tag>
+          <tag name="return" line="283" description="" type="\Codex\Codex">
+            <type>\Codex\Codex</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$observables</name>
+          <default/>
+          <type>array</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Codex\Contracts" line="292" package="Codex\Core">
+        <name>removeObservableEvents</name>
+        <full_name>\Codex\Contracts\Codex::removeObservableEvents()</full_name>
+        <docblock line="292">
+          <description>Remove an observable event name.</description>
+          <long-description/>
+          <tag name="param" line="292" description="" type="array|mixed" variable="$observables">
+            <type>array</type>
+            <type>mixed</type>
+          </tag>
+          <tag name="return" line="292" description="" type="void">
+            <type>void</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$observables</name>
+          <default/>
+          <type>array|mixed</type>
+        </argument>
+      </method>
+    </interface>
+    <source>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</source>
+  <type>interface</type></file>

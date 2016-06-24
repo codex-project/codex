@@ -1,0 +1,614 @@
+<file path="codex/vendor/laravel/framework/src/Illuminate/Queue/QueueServiceProvider.php" generated-path="codex.vendor.laravel.framework.src.Illuminate.Queue.QueueServiceProvider.html" hash="afe1e1928b4bdb5230b7ae79cbd2047b" package="Default">
+    <docblock line="0">
+      <description/>
+      <long-description/>
+      <tag name="package" line="0" description="Default"/>
+    </docblock>
+    <namespace-alias name="IlluminateQueueClosure">\IlluminateQueueClosure</namespace-alias>
+    <namespace-alias name="ServiceProvider">\Illuminate\Support\ServiceProvider</namespace-alias>
+    <namespace-alias name="WorkCommand">\Illuminate\Queue\Console\WorkCommand</namespace-alias>
+    <namespace-alias name="ListenCommand">\Illuminate\Queue\Console\ListenCommand</namespace-alias>
+    <namespace-alias name="RestartCommand">\Illuminate\Queue\Console\RestartCommand</namespace-alias>
+    <namespace-alias name="SqsConnector">\Illuminate\Queue\Connectors\SqsConnector</namespace-alias>
+    <namespace-alias name="NullConnector">\Illuminate\Queue\Connectors\NullConnector</namespace-alias>
+    <namespace-alias name="SyncConnector">\Illuminate\Queue\Connectors\SyncConnector</namespace-alias>
+    <namespace-alias name="RedisConnector">\Illuminate\Queue\Connectors\RedisConnector</namespace-alias>
+    <namespace-alias name="NullFailedJobProvider">\Illuminate\Queue\Failed\NullFailedJobProvider</namespace-alias>
+    <namespace-alias name="DatabaseConnector">\Illuminate\Queue\Connectors\DatabaseConnector</namespace-alias>
+    <namespace-alias name="BeanstalkdConnector">\Illuminate\Queue\Connectors\BeanstalkdConnector</namespace-alias>
+    <namespace-alias name="DatabaseFailedJobProvider">\Illuminate\Queue\Failed\DatabaseFailedJobProvider</namespace-alias>
+    <class final="false" abstract="false" namespace="Illuminate\Queue" line="19" package="Default">
+      <extends>\Illuminate\Support\ServiceProvider</extends>
+      <name>QueueServiceProvider</name>
+      <full_name>\Illuminate\Queue\QueueServiceProvider</full_name>
+      <docblock line="19">
+        <description/>
+        <long-description/>
+        <tag name="package" line="19" description="Default"/>
+        <tag name="inherited_from" description="\Illuminate\Support\ServiceProvider" refers="\Illuminate\Support\ServiceProvider" link="/classes/Illuminate.Support.ServiceProvider.html"/>
+      </docblock>
+      <property static="false" visibility="protected" namespace="Illuminate\Queue" line="26" package="Default">
+        <name>$defer</name>
+        <full_name>\Illuminate\Queue\QueueServiceProvider::defer</full_name>
+        <default>true</default>
+        <docblock line="26">
+          <description>Indicates if loading of the provider is deferred.</description>
+          <long-description/>
+          <tag name="var" line="26" description="" type="boolean" variable="">
+            <type>boolean</type>
+          </tag>
+          <tag name="inherited_from" description="\Illuminate\Support\ServiceProvider::defer" refers="\Illuminate\Support\ServiceProvider::defer" link="/classes/Illuminate.Support.ServiceProvider.html#property_defer"/>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" namespace="Illuminate\Queue" line="15" package="Default">
+        <name>$app</name>
+        <full_name>\Illuminate\Support\ServiceProvider::app</full_name>
+        <default/>
+        <docblock line="15">
+          <description>The application instance.</description>
+          <long-description/>
+          <tag name="var" line="15" description="" type="\Illuminate\Contracts\Foundation\Application" variable="">
+            <type>\Illuminate\Contracts\Foundation\Application</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" namespace="Illuminate\Queue" line="22" package="Default">
+        <name>$defer</name>
+        <full_name>\Illuminate\Support\ServiceProvider::defer</full_name>
+        <default>false</default>
+        <docblock line="22">
+          <description>Indicates if loading of the provider is deferred.</description>
+          <long-description/>
+          <tag name="var" line="22" description="" type="boolean" variable="">
+            <type>boolean</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="true" visibility="protected" namespace="Illuminate\Queue" line="29" package="Default">
+        <name>$publishes</name>
+        <full_name>\Illuminate\Support\ServiceProvider::publishes</full_name>
+        <default>array()</default>
+        <docblock line="29">
+          <description>The paths that should be published.</description>
+          <long-description/>
+          <tag name="var" line="29" description="" type="array" variable="">
+            <type>array</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="true" visibility="protected" namespace="Illuminate\Queue" line="36" package="Default">
+        <name>$publishGroups</name>
+        <full_name>\Illuminate\Support\ServiceProvider::publishGroups</full_name>
+        <default>array()</default>
+        <docblock line="36">
+          <description>The paths that should be published by group.</description>
+          <long-description/>
+          <tag name="var" line="36" description="" type="array" variable="">
+            <type>array</type>
+          </tag>
+        </docblock>
+      </property>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Queue" line="33" package="Default">
+        <name>register</name>
+        <full_name>\Illuminate\Queue\QueueServiceProvider::register()</full_name>
+        <docblock line="33">
+          <description>Register the service provider.</description>
+          <long-description/>
+          <tag name="return" line="33" description="" type="void">
+            <type>void</type>
+          </tag>
+          <tag name="inherited_from" description="\Illuminate\Support\ServiceProvider::register()" refers="\Illuminate\Support\ServiceProvider::register()" link="/classes/Illuminate.Support.ServiceProvider.html#method_register"/>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Queue" line="51" package="Default">
+        <name>registerManager</name>
+        <full_name>\Illuminate\Queue\QueueServiceProvider::registerManager()</full_name>
+        <docblock line="51">
+          <description>Register the queue manager.</description>
+          <long-description/>
+          <tag name="return" line="51" description="" type="void">
+            <type>void</type>
+          </tag>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Queue" line="74" package="Default">
+        <name>registerWorker</name>
+        <full_name>\Illuminate\Queue\QueueServiceProvider::registerWorker()</full_name>
+        <docblock line="74">
+          <description>Register the queue worker.</description>
+          <long-description/>
+          <tag name="return" line="74" description="" type="void">
+            <type>void</type>
+          </tag>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Queue" line="90" package="Default">
+        <name>registerWorkCommand</name>
+        <full_name>\Illuminate\Queue\QueueServiceProvider::registerWorkCommand()</full_name>
+        <docblock line="90">
+          <description>Register the queue worker console command.</description>
+          <long-description/>
+          <tag name="return" line="90" description="" type="void">
+            <type>void</type>
+          </tag>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Queue" line="104" package="Default">
+        <name>registerListener</name>
+        <full_name>\Illuminate\Queue\QueueServiceProvider::registerListener()</full_name>
+        <docblock line="104">
+          <description>Register the queue listener.</description>
+          <long-description/>
+          <tag name="return" line="104" description="" type="void">
+            <type>void</type>
+          </tag>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Queue" line="118" package="Default">
+        <name>registerListenCommand</name>
+        <full_name>\Illuminate\Queue\QueueServiceProvider::registerListenCommand()</full_name>
+        <docblock line="118">
+          <description>Register the queue listener console command.</description>
+          <long-description/>
+          <tag name="return" line="118" description="" type="void">
+            <type>void</type>
+          </tag>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Queue" line="132" package="Default">
+        <name>registerRestartCommand</name>
+        <full_name>\Illuminate\Queue\QueueServiceProvider::registerRestartCommand()</full_name>
+        <docblock line="132">
+          <description>Register the queue restart console command.</description>
+          <long-description/>
+          <tag name="return" line="132" description="" type="void">
+            <type>void</type>
+          </tag>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Queue" line="147" package="Default">
+        <name>registerConnectors</name>
+        <full_name>\Illuminate\Queue\QueueServiceProvider::registerConnectors()</full_name>
+        <docblock line="147">
+          <description>Register the connectors on the queue manager.</description>
+          <long-description/>
+          <tag name="param" line="147" description="" type="\Illuminate\Queue\QueueManager" variable="$manager">
+            <type>\Illuminate\Queue\QueueManager</type>
+          </tag>
+          <tag name="return" line="147" description="" type="void">
+            <type>void</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$manager</name>
+          <default/>
+          <type>\Illuminate\Queue\QueueManager</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Queue" line="160" package="Default">
+        <name>registerNullConnector</name>
+        <full_name>\Illuminate\Queue\QueueServiceProvider::registerNullConnector()</full_name>
+        <docblock line="160">
+          <description>Register the Null queue connector.</description>
+          <long-description/>
+          <tag name="param" line="160" description="" type="\Illuminate\Queue\QueueManager" variable="$manager">
+            <type>\Illuminate\Queue\QueueManager</type>
+          </tag>
+          <tag name="return" line="160" description="" type="void">
+            <type>void</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$manager</name>
+          <default/>
+          <type>\Illuminate\Queue\QueueManager</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Queue" line="173" package="Default">
+        <name>registerSyncConnector</name>
+        <full_name>\Illuminate\Queue\QueueServiceProvider::registerSyncConnector()</full_name>
+        <docblock line="173">
+          <description>Register the Sync queue connector.</description>
+          <long-description/>
+          <tag name="param" line="173" description="" type="\Illuminate\Queue\QueueManager" variable="$manager">
+            <type>\Illuminate\Queue\QueueManager</type>
+          </tag>
+          <tag name="return" line="173" description="" type="void">
+            <type>void</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$manager</name>
+          <default/>
+          <type>\Illuminate\Queue\QueueManager</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Queue" line="186" package="Default">
+        <name>registerBeanstalkdConnector</name>
+        <full_name>\Illuminate\Queue\QueueServiceProvider::registerBeanstalkdConnector()</full_name>
+        <docblock line="186">
+          <description>Register the Beanstalkd queue connector.</description>
+          <long-description/>
+          <tag name="param" line="186" description="" type="\Illuminate\Queue\QueueManager" variable="$manager">
+            <type>\Illuminate\Queue\QueueManager</type>
+          </tag>
+          <tag name="return" line="186" description="" type="void">
+            <type>void</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$manager</name>
+          <default/>
+          <type>\Illuminate\Queue\QueueManager</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Queue" line="199" package="Default">
+        <name>registerDatabaseConnector</name>
+        <full_name>\Illuminate\Queue\QueueServiceProvider::registerDatabaseConnector()</full_name>
+        <docblock line="199">
+          <description>Register the database queue connector.</description>
+          <long-description/>
+          <tag name="param" line="199" description="" type="\Illuminate\Queue\QueueManager" variable="$manager">
+            <type>\Illuminate\Queue\QueueManager</type>
+          </tag>
+          <tag name="return" line="199" description="" type="void">
+            <type>void</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$manager</name>
+          <default/>
+          <type>\Illuminate\Queue\QueueManager</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Queue" line="212" package="Default">
+        <name>registerRedisConnector</name>
+        <full_name>\Illuminate\Queue\QueueServiceProvider::registerRedisConnector()</full_name>
+        <docblock line="212">
+          <description>Register the Redis queue connector.</description>
+          <long-description/>
+          <tag name="param" line="212" description="" type="\Illuminate\Queue\QueueManager" variable="$manager">
+            <type>\Illuminate\Queue\QueueManager</type>
+          </tag>
+          <tag name="return" line="212" description="" type="void">
+            <type>void</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$manager</name>
+          <default/>
+          <type>\Illuminate\Queue\QueueManager</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Queue" line="227" package="Default">
+        <name>registerSqsConnector</name>
+        <full_name>\Illuminate\Queue\QueueServiceProvider::registerSqsConnector()</full_name>
+        <docblock line="227">
+          <description>Register the Amazon SQS queue connector.</description>
+          <long-description/>
+          <tag name="param" line="227" description="" type="\Illuminate\Queue\QueueManager" variable="$manager">
+            <type>\Illuminate\Queue\QueueManager</type>
+          </tag>
+          <tag name="return" line="227" description="" type="void">
+            <type>void</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$manager</name>
+          <default/>
+          <type>\Illuminate\Queue\QueueManager</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Queue" line="239" package="Default">
+        <name>registerFailedJobServices</name>
+        <full_name>\Illuminate\Queue\QueueServiceProvider::registerFailedJobServices()</full_name>
+        <docblock line="239">
+          <description>Register the failed job services.</description>
+          <long-description/>
+          <tag name="return" line="239" description="" type="void">
+            <type>void</type>
+          </tag>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Queue" line="257" package="Default">
+        <name>registerQueueClosure</name>
+        <full_name>\Illuminate\Queue\QueueServiceProvider::registerQueueClosure()</full_name>
+        <docblock line="257">
+          <description>Register the Illuminate queued closure job.</description>
+          <long-description/>
+          <tag name="return" line="257" description="" type="void">
+            <type>void</type>
+          </tag>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Queue" line="269" package="Default">
+        <name>provides</name>
+        <full_name>\Illuminate\Queue\QueueServiceProvider::provides()</full_name>
+        <docblock line="269">
+          <description>Get the services provided by the provider.</description>
+          <long-description/>
+          <tag name="return" line="269" description="" type="array">
+            <type>array</type>
+          </tag>
+          <tag name="inherited_from" description="\Illuminate\Support\ServiceProvider::provides()" refers="\Illuminate\Support\ServiceProvider::provides()" link="/classes/Illuminate.Support.ServiceProvider.html#method_provides"/>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Queue" line="44" package="Default">
+        <name>__construct</name>
+        <full_name>\Illuminate\Support\ServiceProvider::__construct()</full_name>
+        <docblock line="44">
+          <description>Create a new service provider instance.</description>
+          <long-description/>
+          <tag name="param" line="44" description="" type="\Illuminate\Contracts\Foundation\Application" variable="$app">
+            <type>\Illuminate\Contracts\Foundation\Application</type>
+          </tag>
+          <tag name="return" line="44" description="" type="void">
+            <type>void</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$app</name>
+          <default/>
+          <type>\Illuminate\Contracts\Foundation\Application</type>
+        </argument>
+        <inherited_from>\Illuminate\Support\ServiceProvider</inherited_from>
+      </method>
+      <method final="false" abstract="true" static="false" visibility="public" namespace="Illuminate\Queue" line="54" package="Default">
+        <name>register</name>
+        <full_name>\Illuminate\Support\ServiceProvider::register()</full_name>
+        <docblock line="54">
+          <description>Register the service provider.</description>
+          <long-description/>
+          <tag name="return" line="54" description="" type="void">
+            <type>void</type>
+          </tag>
+        </docblock>
+        <inherited_from>\Illuminate\Support\ServiceProvider</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Queue" line="63" package="Default">
+        <name>mergeConfigFrom</name>
+        <full_name>\Illuminate\Support\ServiceProvider::mergeConfigFrom()</full_name>
+        <docblock line="63">
+          <description>Merge the given configuration with the existing configuration.</description>
+          <long-description/>
+          <tag name="param" line="63" description="" type="string" variable="$path">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="63" description="" type="string" variable="$key">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="63" description="" type="void">
+            <type>void</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$path</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$key</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <inherited_from>\Illuminate\Support\ServiceProvider</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Queue" line="77" package="Default">
+        <name>loadViewsFrom</name>
+        <full_name>\Illuminate\Support\ServiceProvider::loadViewsFrom()</full_name>
+        <docblock line="77">
+          <description>Register a view file namespace.</description>
+          <long-description/>
+          <tag name="param" line="77" description="" type="string" variable="$path">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="77" description="" type="string" variable="$namespace">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="77" description="" type="void">
+            <type>void</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$path</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$namespace</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <inherited_from>\Illuminate\Support\ServiceProvider</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Queue" line="93" package="Default">
+        <name>loadTranslationsFrom</name>
+        <full_name>\Illuminate\Support\ServiceProvider::loadTranslationsFrom()</full_name>
+        <docblock line="93">
+          <description>Register a translation file namespace.</description>
+          <long-description/>
+          <tag name="param" line="93" description="" type="string" variable="$path">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="93" description="" type="string" variable="$namespace">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="93" description="" type="void">
+            <type>void</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$path</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$namespace</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <inherited_from>\Illuminate\Support\ServiceProvider</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Queue" line="105" package="Default">
+        <name>publishes</name>
+        <full_name>\Illuminate\Support\ServiceProvider::publishes()</full_name>
+        <docblock line="105">
+          <description>Register paths to be published by the publish command.</description>
+          <long-description/>
+          <tag name="param" line="105" description="" type="array" variable="$paths">
+            <type>array</type>
+          </tag>
+          <tag name="param" line="105" description="" type="string" variable="$group">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="105" description="" type="void">
+            <type>void</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$paths</name>
+          <default/>
+          <type>array</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$group</name>
+          <default>null</default>
+          <type>string</type>
+        </argument>
+        <inherited_from>\Illuminate\Support\ServiceProvider</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="true" visibility="public" namespace="Illuminate\Queue" line="131" package="Default">
+        <name>pathsToPublish</name>
+        <full_name>\Illuminate\Support\ServiceProvider::pathsToPublish()</full_name>
+        <docblock line="131">
+          <description>Get the paths to publish.</description>
+          <long-description/>
+          <tag name="param" line="131" description="" type="string" variable="$provider">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="131" description="" type="string" variable="$group">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="131" description="" type="array">
+            <type>array</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$provider</name>
+          <default>null</default>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$group</name>
+          <default>null</default>
+          <type>string</type>
+        </argument>
+        <inherited_from>\Illuminate\Support\ServiceProvider</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Queue" line="168" package="Default">
+        <name>commands</name>
+        <full_name>\Illuminate\Support\ServiceProvider::commands()</full_name>
+        <docblock line="168">
+          <description>Register the package's custom Artisan commands.</description>
+          <long-description/>
+          <tag name="param" line="168" description="" type="array|mixed" variable="$commands">
+            <type>array</type>
+            <type>mixed</type>
+          </tag>
+          <tag name="return" line="168" description="" type="void">
+            <type>void</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$commands</name>
+          <default/>
+          <type>array|mixed</type>
+        </argument>
+        <inherited_from>\Illuminate\Support\ServiceProvider</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Queue" line="187" package="Default">
+        <name>provides</name>
+        <full_name>\Illuminate\Support\ServiceProvider::provides()</full_name>
+        <docblock line="187">
+          <description>Get the services provided by the provider.</description>
+          <long-description/>
+          <tag name="return" line="187" description="" type="array">
+            <type>array</type>
+          </tag>
+        </docblock>
+        <inherited_from>\Illuminate\Support\ServiceProvider</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Queue" line="197" package="Default">
+        <name>when</name>
+        <full_name>\Illuminate\Support\ServiceProvider::when()</full_name>
+        <docblock line="197">
+          <description>Get the events that trigger this service provider to register.</description>
+          <long-description/>
+          <tag name="return" line="197" description="" type="array">
+            <type>array</type>
+          </tag>
+        </docblock>
+        <inherited_from>\Illuminate\Support\ServiceProvider</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Queue" line="207" package="Default">
+        <name>isDeferred</name>
+        <full_name>\Illuminate\Support\ServiceProvider::isDeferred()</full_name>
+        <docblock line="207">
+          <description>Determine if the provider is deferred.</description>
+          <long-description/>
+          <tag name="return" line="207" description="" type="boolean">
+            <type>boolean</type>
+          </tag>
+        </docblock>
+        <inherited_from>\Illuminate\Support\ServiceProvider</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="true" visibility="public" namespace="Illuminate\Queue" line="217" package="Default">
+        <name>compiles</name>
+        <full_name>\Illuminate\Support\ServiceProvider::compiles()</full_name>
+        <docblock line="217">
+          <description>Get a list of files that should be compiled for the package.</description>
+          <long-description/>
+          <tag name="return" line="217" description="" type="array">
+            <type>array</type>
+          </tag>
+        </docblock>
+        <inherited_from>\Illuminate\Support\ServiceProvider</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Queue" line="231" package="Default">
+        <name>__call</name>
+        <full_name>\Illuminate\Support\ServiceProvider::__call()</full_name>
+        <docblock line="231">
+          <description>Dynamically handle missing method calls.</description>
+          <long-description/>
+          <tag name="param" line="231" description="" type="string" variable="$method">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="231" description="" type="array" variable="$parameters">
+            <type>array</type>
+          </tag>
+          <tag name="return" line="231" description="" type="mixed">
+            <type>mixed</type>
+          </tag>
+          <tag name="throws" line="231" description="" type="\BadMethodCallException">
+            <type>\BadMethodCallException</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$method</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$parameters</name>
+          <default/>
+          <type>array</type>
+        </argument>
+        <inherited_from>\Illuminate\Support\ServiceProvider</inherited_from>
+      </method>
+    </class>
+    <parse_markers>
+      <error line="0" code="PPC:ERR-50000">No summary was found for this file</error>
+      <error line="19" code="PPC:ERR-50005">No summary for class \Illuminate\Queue\QueueServiceProvider</error>
+    </parse_markers>
+    <source>eJzNWdtu4zYQffdXEAsDcoJcPiBttm2KFlv0shsX2AfbD7Q4jtmVKYWknGYD/3tJitSFpmTJ9QL2i2NyODM8c+HM5Lv32TobjRjegMhwDOhDkuQbyrCE+acccrgbjXJRXzarD0kqcq42m3vzaZ5lKZfzKfAtjeEjT7eUAN+jM0zmDykTaQLzzyn/8pBuNpiRA5S/UyGB9aN9BCExlweJGcQy5WI+fRblr8PUf+ZJMoB8+sriAeSPQOhBbX7BNAFiNCn+/C1dHkbcifgZS7zEAgZo9RNgpjBNvpCeqjkZAfVGcYKFQIbc8xYE/yojE4G89dHbCKnP7eWl+UaX6AMjNFZSBaIrlKSYUPaE0hWSa0CZ40YFIrACzoHc2IPu/A9bzNEyTRO7cGu+1UmpLgcEjc1B9D2S3ESCJ/4RnrQ/ciNPFMqWcvdkcZA5Z2ibUtIUly8TGqNVzmJJU4a45Tq5MNvFpfVnLNdUXN+7/T8ww0+azCoWINGB1U1RBFQ3TWk9aw/RRVxPD5pOk+y6kXvWR9CmuE5/2Eor7SFXIhMGEGfZ9b1QrpKATNkkMvKjq4rPZKxILmoHjfa36C+m7PsCaI23gDBDVEeDXrMu17jIlaZ8oUlSqmVolMfRNBc+aw4qZ22BC7RK66jEZfTdoL/XIOorCHPQBzOV8OgyAX3U5xtzwFJHhWZpQk4Fi1xjiXAcQyYrMSv6pDgyYm8lqYqrYlfcNLiO7QVVWDB4KSLYIW6AqzlHwEGqfDJxnPwT1uRu+67c3AUcL2jNG4uSsuZBwzppamtmfWFxfV8xcF7sFOjt0S8m+k7h0C6OuxNC7RntitDmuxiiDENaXKcvnNo1rNoNZK/qQN+sdGrh1SpsgUkRLf4f5NqddQmgvs0dT2WCErJ+ecVJr+AbCp4TWIfMmsGHyFfGChdBNYZAmtgX4hQgVq9Ntyc3yrz+HupUHQJzqdLY8NTVykcs15OLY13QKfEtnNDD5Rg3LNQbjlDIFUu8j3VGq8wQeHmRvY5Ht6Xa8rPiMdha3RrgdgDrNyjHIOhE9oOwVjso3Q7XXhnmeIPQfK++rz/6VUVwNPihmsAzgKptAMdrNJlFuuFRGEe6p9LfrsvQf1ctiv5l2ihD+qweFYQFGpcQ+IaxQL+9c0q9VbS7UsF3u3rVUlqsD/habb+q+/aItyeTRgfbirtbV75PqrZvErHCCL0c3euV637eAzdt5nPCrdHKD8ZNFE7bCzdvaDAQtyoUzgm9wAxhMIbLepD3QjI4uRiIJ7Fp5pzQ3BviDMaSVMmzF5IBieXTOIvI8pja3aTpc4K1OX5rx1TdWXXBFQD1d7sFb26fpDrYeoR2qArzVTJwF8yOQPzHDf6qZE8/Tc8J9voEdnhiffZhbc+rjUnvQOhMy0rQP+nSjfzEKUr7wJCtXwnaaKQPlfXjYtCjndY4UPEzWjT6cRItvIEMXaEJFQLkxDKYRSoLJKqdv/AleFC3ToCtB+uEcYVKrmU2qi86UXcNQTsEiYqbTukto/EGm6H2r+KgCB2C4mLaqV3iFJ7QnKD2c4Lwv2eGdHlhDtZKwGL+mslApxcG7FeQ9Zm4cENxgpavjeF8G16Yc/za2TpYDvthYjnMGhctZ7z+LGt/cuAFVJNNcKTT0mF3naw6xcC8sjy4cPjuRv8B9ZVi1g==</source>
+  <type>class</type></file>

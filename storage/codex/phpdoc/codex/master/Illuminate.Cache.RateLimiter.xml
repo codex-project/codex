@@ -1,0 +1,219 @@
+<file path="codex/vendor/laravel/framework/src/Illuminate/Cache/RateLimiter.php" generated-path="codex.vendor.laravel.framework.src.Illuminate.Cache.RateLimiter.html" hash="c89a0cbdf87c0b29a49fd162c73ef4f7" package="Default">
+    <docblock line="0">
+      <description/>
+      <long-description/>
+      <tag name="package" line="0" description="Default"/>
+    </docblock>
+    <namespace-alias name="Cache">\Illuminate\Contracts\Cache\Repository</namespace-alias>
+    <class final="false" abstract="false" namespace="Illuminate\Cache" line="7" package="Default">
+      <extends/>
+      <name>RateLimiter</name>
+      <full_name>\Illuminate\Cache\RateLimiter</full_name>
+      <docblock line="7">
+        <description/>
+        <long-description/>
+        <tag name="package" line="7" description="Default"/>
+      </docblock>
+      <property static="false" visibility="protected" namespace="Illuminate\Cache" line="14" package="Default">
+        <name>$cache</name>
+        <full_name>\Illuminate\Cache\RateLimiter::cache</full_name>
+        <default/>
+        <docblock line="14">
+          <description>The cache store implementation.</description>
+          <long-description/>
+          <tag name="var" line="14" description="" type="\Illuminate\Contracts\Cache\Repository" variable="">
+            <type>\Illuminate\Contracts\Cache\Repository</type>
+          </tag>
+        </docblock>
+      </property>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Cache" line="22" package="Default">
+        <name>__construct</name>
+        <full_name>\Illuminate\Cache\RateLimiter::__construct()</full_name>
+        <docblock line="22">
+          <description>Create a new rate limiter instance.</description>
+          <long-description/>
+          <tag name="param" line="22" description="" type="\Illuminate\Contracts\Cache\Repository" variable="$cache">
+            <type>\Illuminate\Contracts\Cache\Repository</type>
+          </tag>
+          <tag name="return" line="22" description="" type="void">
+            <type>void</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$cache</name>
+          <default/>
+          <type>\Illuminate\Contracts\Cache\Repository</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Cache" line="35" package="Default">
+        <name>tooManyAttempts</name>
+        <full_name>\Illuminate\Cache\RateLimiter::tooManyAttempts()</full_name>
+        <docblock line="35">
+          <description>Determine if the given key has been "accessed" too many times.</description>
+          <long-description/>
+          <tag name="param" line="35" description="" type="string" variable="$key">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="35" description="" type="integer" variable="$maxAttempts">
+            <type>integer</type>
+          </tag>
+          <tag name="param" line="35" description="" type="integer" variable="$decayMinutes">
+            <type>integer</type>
+          </tag>
+          <tag name="return" line="35" description="" type="boolean">
+            <type>boolean</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$key</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$maxAttempts</name>
+          <default/>
+          <type>integer</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$decayMinutes</name>
+          <default>1</default>
+          <type>integer</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Cache" line="59" package="Default">
+        <name>hit</name>
+        <full_name>\Illuminate\Cache\RateLimiter::hit()</full_name>
+        <docblock line="59">
+          <description>Increment the counter for a given key for a given decay time.</description>
+          <long-description/>
+          <tag name="param" line="59" description="" type="string" variable="$key">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="59" description="" type="integer" variable="$decayMinutes">
+            <type>integer</type>
+          </tag>
+          <tag name="return" line="59" description="" type="integer">
+            <type>integer</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$key</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$decayMinutes</name>
+          <default>1</default>
+          <type>integer</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Cache" line="72" package="Default">
+        <name>attempts</name>
+        <full_name>\Illuminate\Cache\RateLimiter::attempts()</full_name>
+        <docblock line="72">
+          <description>Get the number of attempts for the given key.</description>
+          <long-description/>
+          <tag name="param" line="72" description="" type="string" variable="$key">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="72" description="" type="mixed">
+            <type>mixed</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$key</name>
+          <default/>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Cache" line="83" package="Default">
+        <name>resetAttempts</name>
+        <full_name>\Illuminate\Cache\RateLimiter::resetAttempts()</full_name>
+        <docblock line="83">
+          <description>Reset the number of attempts for the given key.</description>
+          <long-description/>
+          <tag name="param" line="83" description="" type="string" variable="$key">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="83" description="" type="mixed">
+            <type>mixed</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$key</name>
+          <default/>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Cache" line="95" package="Default">
+        <name>retriesLeft</name>
+        <full_name>\Illuminate\Cache\RateLimiter::retriesLeft()</full_name>
+        <docblock line="95">
+          <description>Get the number of retries left for the given key.</description>
+          <long-description/>
+          <tag name="param" line="95" description="" type="string" variable="$key">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="95" description="" type="integer" variable="$maxAttempts">
+            <type>integer</type>
+          </tag>
+          <tag name="return" line="95" description="" type="integer">
+            <type>integer</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$key</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$maxAttempts</name>
+          <default/>
+          <type>integer</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Cache" line="108" package="Default">
+        <name>clear</name>
+        <full_name>\Illuminate\Cache\RateLimiter::clear()</full_name>
+        <docblock line="108">
+          <description>Clear the hits and lockout for the given key.</description>
+          <long-description/>
+          <tag name="param" line="108" description="" type="string" variable="$key">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="108" description="" type="void">
+            <type>void</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$key</name>
+          <default/>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Cache" line="121" package="Default">
+        <name>availableIn</name>
+        <full_name>\Illuminate\Cache\RateLimiter::availableIn()</full_name>
+        <docblock line="121">
+          <description>Get the number of seconds until the "key" is accessible again.</description>
+          <long-description/>
+          <tag name="param" line="121" description="" type="string" variable="$key">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="121" description="" type="integer">
+            <type>integer</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$key</name>
+          <default/>
+          <type>string</type>
+        </argument>
+      </method>
+    </class>
+    <parse_markers>
+      <error line="0" code="PPC:ERR-50000">No summary was found for this file</error>
+      <error line="7" code="PPC:ERR-50005">No summary for class \Illuminate\Cache\RateLimiter</error>
+    </parse_markers>
+    <source>eJzFVk1v2zAMvftXEEGBxmnSj8sO7dJuyIChQHspeixQKDKTCJUlQ5KzBkP/+2jZ7izHSdxtwHxxHJHUe49PtD/fZKssihRL0WaMI9xKmadCMYdPM8ZXeBVFuQ3/1soZxp0tA54eMNNWOG02wCzUSVwya+GBEu5EKhya6GcEdJ2NRv4OI3hcIfAiHCxlI4g0k5iicswJrU6rsDr6y5oZeOqFo0o58/fMaIfcYQJHvMLWwjEzSPWAgcIfYIqfsoQMQlnHFMctLBkzLIWecKDa+T3boMuNgrUWSQg1n0vBYZErXigAz89cEwKTczf0RatCsY8u9SyuI7cSdnJdajl951ksvW2x/YbEjDCT3gtwlLAUa1TwghtYUf/mSA8Dxjlai8kAnNaQMrUBJ8giu4QgkEItCQmVaa8J5WghZa9fncM0c7Y7IEHONvdC5Q5tW6m51nKvUoTynkDWOwwLHONg03G4A8l00ZaR9Bg2pZxckyC+1OnxpdT8RefuOI4bGcVVQaQuVZI3ZG9VZU14MVwHANt1QyQsSdpIxr4lwxhOaIOA2wg+ncctwvFV1FXeoEUXyNYOPMSvWl8waXd67lZx40+2NxzXuSpO10IbOnS/7dd89tA9wT+33D5HUcReQ62Eq010yDbdjRrDxZ4OVCiGBCNuFRC1VnU3uiX9jqWYKk/npKVeQO0ur2NwsD8kYQUtFa+4fzqFbm6JUlUJqS2xFvV8J6+HwpD/mVnHoehDj9DVDD/QNiplBDlL4sL9JcGDA7en+StId4SoY5Ju+f+9PVPoHHTbvm+kTKdwDjfBBnAZPk4a8SdwsUvamURWqkeH1wJTCVSj8t/45uDrmhcAOu3Sa9juNFPz7dPfVxbp4yGxQLNWSL82oFoDECSNf7uLuaSPniUT259aPdQ45CG2ZkIy2uJWfXxANBlT+8v3XE39LfoFkiAWsg==</source>
+  <type>class</type></file>

@@ -1,0 +1,1665 @@
+<file path="codex/vendor/laravel/framework/src/Illuminate/Container/Container.php" generated-path="codex.vendor.laravel.framework.src.Illuminate.Container.Container.html" hash="e9b5e2ebf5895489320e90a9f772a686" package="Default">
+    <docblock line="0">
+      <description/>
+      <long-description/>
+      <tag name="package" line="0" description="Default"/>
+    </docblock>
+    <namespace-alias name="Closure">\Closure</namespace-alias>
+    <namespace-alias name="ArrayAccess">\ArrayAccess</namespace-alias>
+    <namespace-alias name="ReflectionClass">\ReflectionClass</namespace-alias>
+    <namespace-alias name="ReflectionMethod">\ReflectionMethod</namespace-alias>
+    <namespace-alias name="ReflectionFunction">\ReflectionFunction</namespace-alias>
+    <namespace-alias name="ReflectionParameter">\ReflectionParameter</namespace-alias>
+    <namespace-alias name="InvalidArgumentException">\InvalidArgumentException</namespace-alias>
+    <namespace-alias name="BindingResolutionException">\Illuminate\Contracts\Container\BindingResolutionException</namespace-alias>
+    <namespace-alias name="ContainerContract">\Illuminate\Contracts\Container\Container</namespace-alias>
+    <class final="false" abstract="false" namespace="Illuminate\Container" line="15" package="Default">
+      <extends/>
+      <implements>\ArrayAccess</implements>
+      <implements>\Illuminate\Contracts\Container\Container</implements>
+      <name>Container</name>
+      <full_name>\Illuminate\Container\Container</full_name>
+      <docblock line="15">
+        <description/>
+        <long-description/>
+        <tag name="package" line="15" description="Default"/>
+      </docblock>
+      <property static="true" visibility="protected" namespace="Illuminate\Container" line="22" package="Default">
+        <name>$instance</name>
+        <full_name>\Illuminate\Container\Container::instance</full_name>
+        <default/>
+        <docblock line="22">
+          <description>The current globally available container (if any).</description>
+          <long-description/>
+          <tag name="var" line="22" description="" type="static" variable="">
+            <type>static</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" namespace="Illuminate\Container" line="29" package="Default">
+        <name>$resolved</name>
+        <full_name>\Illuminate\Container\Container::resolved</full_name>
+        <default>array()</default>
+        <docblock line="29">
+          <description>An array of the types that have been resolved.</description>
+          <long-description/>
+          <tag name="var" line="29" description="" type="array" variable="">
+            <type>array</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" namespace="Illuminate\Container" line="36" package="Default">
+        <name>$bindings</name>
+        <full_name>\Illuminate\Container\Container::bindings</full_name>
+        <default>array()</default>
+        <docblock line="36">
+          <description>The container's bindings.</description>
+          <long-description/>
+          <tag name="var" line="36" description="" type="array" variable="">
+            <type>array</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" namespace="Illuminate\Container" line="43" package="Default">
+        <name>$instances</name>
+        <full_name>\Illuminate\Container\Container::instances</full_name>
+        <default>array()</default>
+        <docblock line="43">
+          <description>The container's shared instances.</description>
+          <long-description/>
+          <tag name="var" line="43" description="" type="array" variable="">
+            <type>array</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" namespace="Illuminate\Container" line="50" package="Default">
+        <name>$aliases</name>
+        <full_name>\Illuminate\Container\Container::aliases</full_name>
+        <default>array()</default>
+        <docblock line="50">
+          <description>The registered type aliases.</description>
+          <long-description/>
+          <tag name="var" line="50" description="" type="array" variable="">
+            <type>array</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" namespace="Illuminate\Container" line="57" package="Default">
+        <name>$extenders</name>
+        <full_name>\Illuminate\Container\Container::extenders</full_name>
+        <default>array()</default>
+        <docblock line="57">
+          <description>The extension closures for services.</description>
+          <long-description/>
+          <tag name="var" line="57" description="" type="array" variable="">
+            <type>array</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" namespace="Illuminate\Container" line="64" package="Default">
+        <name>$tags</name>
+        <full_name>\Illuminate\Container\Container::tags</full_name>
+        <default>array()</default>
+        <docblock line="64">
+          <description>All of the registered tags.</description>
+          <long-description/>
+          <tag name="var" line="64" description="" type="array" variable="">
+            <type>array</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" namespace="Illuminate\Container" line="71" package="Default">
+        <name>$buildStack</name>
+        <full_name>\Illuminate\Container\Container::buildStack</full_name>
+        <default>array()</default>
+        <docblock line="71">
+          <description>The stack of concretions currently being built.</description>
+          <long-description/>
+          <tag name="var" line="71" description="" type="array" variable="">
+            <type>array</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="false" visibility="public" namespace="Illuminate\Container" line="78" package="Default">
+        <name>$contextual</name>
+        <full_name>\Illuminate\Container\Container::contextual</full_name>
+        <default>array()</default>
+        <docblock line="78">
+          <description>The contextual binding map.</description>
+          <long-description/>
+          <tag name="var" line="78" description="" type="array" variable="">
+            <type>array</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" namespace="Illuminate\Container" line="85" package="Default">
+        <name>$reboundCallbacks</name>
+        <full_name>\Illuminate\Container\Container::reboundCallbacks</full_name>
+        <default>array()</default>
+        <docblock line="85">
+          <description>All of the registered rebound callbacks.</description>
+          <long-description/>
+          <tag name="var" line="85" description="" type="array" variable="">
+            <type>array</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" namespace="Illuminate\Container" line="92" package="Default">
+        <name>$globalResolvingCallbacks</name>
+        <full_name>\Illuminate\Container\Container::globalResolvingCallbacks</full_name>
+        <default>array()</default>
+        <docblock line="92">
+          <description>All of the global resolving callbacks.</description>
+          <long-description/>
+          <tag name="var" line="92" description="" type="array" variable="">
+            <type>array</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" namespace="Illuminate\Container" line="99" package="Default">
+        <name>$globalAfterResolvingCallbacks</name>
+        <full_name>\Illuminate\Container\Container::globalAfterResolvingCallbacks</full_name>
+        <default>array()</default>
+        <docblock line="99">
+          <description>All of the global after resolving callbacks.</description>
+          <long-description/>
+          <tag name="var" line="99" description="" type="array" variable="">
+            <type>array</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" namespace="Illuminate\Container" line="106" package="Default">
+        <name>$resolvingCallbacks</name>
+        <full_name>\Illuminate\Container\Container::resolvingCallbacks</full_name>
+        <default>array()</default>
+        <docblock line="106">
+          <description>All of the resolving callbacks by class type.</description>
+          <long-description/>
+          <tag name="var" line="106" description="" type="array" variable="">
+            <type>array</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" namespace="Illuminate\Container" line="113" package="Default">
+        <name>$afterResolvingCallbacks</name>
+        <full_name>\Illuminate\Container\Container::afterResolvingCallbacks</full_name>
+        <default>array()</default>
+        <docblock line="113">
+          <description>All of the after resolving callbacks by class type.</description>
+          <long-description/>
+          <tag name="var" line="113" description="" type="array" variable="">
+            <type>array</type>
+          </tag>
+        </docblock>
+      </property>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Container" line="121" package="Default">
+        <name>when</name>
+        <full_name>\Illuminate\Container\Container::when()</full_name>
+        <docblock line="121">
+          <description>Define a contextual binding.</description>
+          <long-description/>
+          <tag name="param" line="121" description="" type="string" variable="$concrete">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="121" description="" type="\Illuminate\Contracts\Container\ContextualBindingBuilder">
+            <type>\Illuminate\Contracts\Container\ContextualBindingBuilder</type>
+          </tag>
+          <tag name="inherited_from" description="\Illuminate\Contracts\Container\Container::when()" refers="\Illuminate\Contracts\Container\Container::when()" link="/classes/Illuminate.Contracts.Container.Container.html#method_when"/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$concrete</name>
+          <default/>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Container" line="134" package="Default">
+        <name>bound</name>
+        <full_name>\Illuminate\Container\Container::bound()</full_name>
+        <docblock line="134">
+          <description>Determine if the given abstract type has been bound.</description>
+          <long-description/>
+          <tag name="param" line="134" description="" type="string" variable="$abstract">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="134" description="" type="boolean">
+            <type>boolean</type>
+          </tag>
+          <tag name="inherited_from" description="\Illuminate\Contracts\Container\Container::bound()" refers="\Illuminate\Contracts\Container\Container::bound()" link="/classes/Illuminate.Contracts.Container.Container.html#method_bound"/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$abstract</name>
+          <default/>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Container" line="147" package="Default">
+        <name>resolved</name>
+        <full_name>\Illuminate\Container\Container::resolved()</full_name>
+        <docblock line="147">
+          <description>Determine if the given abstract type has been resolved.</description>
+          <long-description/>
+          <tag name="param" line="147" description="" type="string" variable="$abstract">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="147" description="" type="boolean">
+            <type>boolean</type>
+          </tag>
+          <tag name="inherited_from" description="\Illuminate\Contracts\Container\Container::resolved()" refers="\Illuminate\Contracts\Container\Container::resolved()" link="/classes/Illuminate.Contracts.Container.Container.html#method_resolved"/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$abstract</name>
+          <default/>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Container" line="164" package="Default">
+        <name>isAlias</name>
+        <full_name>\Illuminate\Container\Container::isAlias()</full_name>
+        <docblock line="164">
+          <description>Determine if a given string is an alias.</description>
+          <long-description/>
+          <tag name="param" line="164" description="" type="string" variable="$name">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="164" description="" type="boolean">
+            <type>boolean</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$name</name>
+          <default/>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Container" line="177" package="Default">
+        <name>bind</name>
+        <full_name>\Illuminate\Container\Container::bind()</full_name>
+        <docblock line="177">
+          <description>Register a binding with the container.</description>
+          <long-description/>
+          <tag name="param" line="177" description="" type="string|array" variable="$abstract">
+            <type>string</type>
+            <type>array</type>
+          </tag>
+          <tag name="param" line="177" description="" type="\Closure|string|null" variable="$concrete">
+            <type>\Closure</type>
+            <type>string</type>
+            <type>null</type>
+          </tag>
+          <tag name="param" line="177" description="" type="boolean" variable="$shared">
+            <type>boolean</type>
+          </tag>
+          <tag name="return" line="177" description="" type="void">
+            <type>void</type>
+          </tag>
+          <tag name="inherited_from" description="\Illuminate\Contracts\Container\Container::bind()" refers="\Illuminate\Contracts\Container\Container::bind()" link="/classes/Illuminate.Contracts.Container.Container.html#method_bind"/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$abstract</name>
+          <default/>
+          <type>string|array</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$concrete</name>
+          <default>null</default>
+          <type>\Closure|string|null</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$shared</name>
+          <default>false</default>
+          <type>boolean</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Container" line="225" package="Default">
+        <name>getClosure</name>
+        <full_name>\Illuminate\Container\Container::getClosure()</full_name>
+        <docblock line="225">
+          <description>Get the Closure to be used when building a type.</description>
+          <long-description/>
+          <tag name="param" line="225" description="" type="string" variable="$abstract">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="225" description="" type="string" variable="$concrete">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="225" description="" type="\Closure">
+            <type>\Closure</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$abstract</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$concrete</name>
+          <default/>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Container" line="242" package="Default">
+        <name>addContextualBinding</name>
+        <full_name>\Illuminate\Container\Container::addContextualBinding()</full_name>
+        <docblock line="242">
+          <description>Add a contextual binding to the container.</description>
+          <long-description/>
+          <tag name="param" line="242" description="" type="string" variable="$concrete">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="242" description="" type="string" variable="$abstract">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="242" description="" type="\Closure|string" variable="$implementation">
+            <type>\Closure</type>
+            <type>string</type>
+          </tag>
+          <tag name="return" line="242" description="" type="void">
+            <type>void</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$concrete</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$abstract</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$implementation</name>
+          <default/>
+          <type>\Closure|string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Container" line="255" package="Default">
+        <name>bindIf</name>
+        <full_name>\Illuminate\Container\Container::bindIf()</full_name>
+        <docblock line="255">
+          <description>Register a binding if it hasn't already been registered.</description>
+          <long-description/>
+          <tag name="param" line="255" description="" type="string" variable="$abstract">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="255" description="" type="\Closure|string|null" variable="$concrete">
+            <type>\Closure</type>
+            <type>string</type>
+            <type>null</type>
+          </tag>
+          <tag name="param" line="255" description="" type="boolean" variable="$shared">
+            <type>boolean</type>
+          </tag>
+          <tag name="return" line="255" description="" type="void">
+            <type>void</type>
+          </tag>
+          <tag name="inherited_from" description="\Illuminate\Contracts\Container\Container::bindIf()" refers="\Illuminate\Contracts\Container\Container::bindIf()" link="/classes/Illuminate.Contracts.Container.Container.html#method_bindIf"/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$abstract</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$concrete</name>
+          <default>null</default>
+          <type>\Closure|string|null</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$shared</name>
+          <default>false</default>
+          <type>boolean</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Container" line="269" package="Default">
+        <name>singleton</name>
+        <full_name>\Illuminate\Container\Container::singleton()</full_name>
+        <docblock line="269">
+          <description>Register a shared binding in the container.</description>
+          <long-description/>
+          <tag name="param" line="269" description="" type="string|array" variable="$abstract">
+            <type>string</type>
+            <type>array</type>
+          </tag>
+          <tag name="param" line="269" description="" type="\Closure|string|null" variable="$concrete">
+            <type>\Closure</type>
+            <type>string</type>
+            <type>null</type>
+          </tag>
+          <tag name="return" line="269" description="" type="void">
+            <type>void</type>
+          </tag>
+          <tag name="inherited_from" description="\Illuminate\Contracts\Container\Container::singleton()" refers="\Illuminate\Contracts\Container\Container::singleton()" link="/classes/Illuminate.Contracts.Container.Container.html#method_singleton"/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$abstract</name>
+          <default/>
+          <type>string|array</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$concrete</name>
+          <default>null</default>
+          <type>\Closure|string|null</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Container" line="280" package="Default">
+        <name>share</name>
+        <full_name>\Illuminate\Container\Container::share()</full_name>
+        <docblock line="280">
+          <description>Wrap a Closure such that it is shared.</description>
+          <long-description/>
+          <tag name="param" line="280" description="" type="\Closure" variable="$closure">
+            <type>\Closure</type>
+          </tag>
+          <tag name="return" line="280" description="" type="\Closure">
+            <type>\Closure</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$closure</name>
+          <default/>
+          <type>\Closure</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Container" line="305" package="Default">
+        <name>extend</name>
+        <full_name>\Illuminate\Container\Container::extend()</full_name>
+        <docblock line="305">
+          <description>"Extend" an abstract type in the container.</description>
+          <long-description/>
+          <tag name="param" line="305" description="" type="string" variable="$abstract">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="305" description="" type="\Closure" variable="$closure">
+            <type>\Closure</type>
+          </tag>
+          <tag name="return" line="305" description="" type="void">
+            <type>void</type>
+          </tag>
+          <tag name="throws" line="305" description="" type="\InvalidArgumentException">
+            <type>\InvalidArgumentException</type>
+          </tag>
+          <tag name="inherited_from" description="\Illuminate\Contracts\Container\Container::extend()" refers="\Illuminate\Contracts\Container\Container::extend()" link="/classes/Illuminate.Contracts.Container.Container.html#method_extend"/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$abstract</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$closure</name>
+          <default/>
+          <type>\Closure</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Container" line="325" package="Default">
+        <name>instance</name>
+        <full_name>\Illuminate\Container\Container::instance()</full_name>
+        <docblock line="325">
+          <description>Register an existing instance as shared in the container.</description>
+          <long-description/>
+          <tag name="param" line="325" description="" type="string" variable="$abstract">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="325" description="" type="mixed" variable="$instance">
+            <type>mixed</type>
+          </tag>
+          <tag name="return" line="325" description="" type="void">
+            <type>void</type>
+          </tag>
+          <tag name="inherited_from" description="\Illuminate\Contracts\Container\Container::instance()" refers="\Illuminate\Contracts\Container\Container::instance()" link="/classes/Illuminate.Contracts.Container.Container.html#method_instance"/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$abstract</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$instance</name>
+          <default/>
+          <type>mixed</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Container" line="359" package="Default">
+        <name>tag</name>
+        <full_name>\Illuminate\Container\Container::tag()</full_name>
+        <docblock line="359">
+          <description>Assign a set of tags to a given binding.</description>
+          <long-description/>
+          <tag name="param" line="359" description="" type="array|string" variable="$abstracts">
+            <type>array</type>
+            <type>string</type>
+          </tag>
+          <tag name="param" line="359" description="" type="array|mixed" variable="$tags">
+            <type>array</type>
+            <type>mixed</type>
+          </tag>
+          <tag name="return" line="359" description="" type="void">
+            <type>void</type>
+          </tag>
+          <tag name="inherited_from" description="\Illuminate\Contracts\Container\Container::tag()" refers="\Illuminate\Contracts\Container\Container::tag()" link="/classes/Illuminate.Contracts.Container.Container.html#method_tag"/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$abstracts</name>
+          <default/>
+          <type>array|string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$tags</name>
+          <default/>
+          <type>array|mixed</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Container" line="380" package="Default">
+        <name>tagged</name>
+        <full_name>\Illuminate\Container\Container::tagged()</full_name>
+        <docblock line="380">
+          <description>Resolve all of the bindings for a given tag.</description>
+          <long-description/>
+          <tag name="param" line="380" description="" type="string" variable="$tag">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="380" description="" type="array">
+            <type>array</type>
+          </tag>
+          <tag name="inherited_from" description="\Illuminate\Contracts\Container\Container::tagged()" refers="\Illuminate\Contracts\Container\Container::tagged()" link="/classes/Illuminate.Contracts.Container.Container.html#method_tagged"/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$tag</name>
+          <default/>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Container" line="400" package="Default">
+        <name>alias</name>
+        <full_name>\Illuminate\Container\Container::alias()</full_name>
+        <docblock line="400">
+          <description>Alias a type to a different name.</description>
+          <long-description/>
+          <tag name="param" line="400" description="" type="string" variable="$abstract">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="400" description="" type="string" variable="$alias">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="400" description="" type="void">
+            <type>void</type>
+          </tag>
+          <tag name="inherited_from" description="\Illuminate\Contracts\Container\Container::alias()" refers="\Illuminate\Contracts\Container\Container::alias()" link="/classes/Illuminate.Contracts.Container.Container.html#method_alias"/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$abstract</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$alias</name>
+          <default/>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Container" line="411" package="Default">
+        <name>extractAlias</name>
+        <full_name>\Illuminate\Container\Container::extractAlias()</full_name>
+        <docblock line="411">
+          <description>Extract the type and alias from a given definition.</description>
+          <long-description/>
+          <tag name="param" line="411" description="" type="array" variable="$definition">
+            <type>array</type>
+          </tag>
+          <tag name="return" line="411" description="" type="array">
+            <type>array</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$definition</name>
+          <default/>
+          <type>array</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Container" line="423" package="Default">
+        <name>rebinding</name>
+        <full_name>\Illuminate\Container\Container::rebinding()</full_name>
+        <docblock line="423">
+          <description>Bind a new callback to an abstract's rebind event.</description>
+          <long-description/>
+          <tag name="param" line="423" description="" type="string" variable="$abstract">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="423" description="" type="\Closure" variable="$callback">
+            <type>\Closure</type>
+          </tag>
+          <tag name="return" line="423" description="" type="mixed">
+            <type>mixed</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$abstract</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$callback</name>
+          <default/>
+          <type>\Closure</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Container" line="440" package="Default">
+        <name>refresh</name>
+        <full_name>\Illuminate\Container\Container::refresh()</full_name>
+        <docblock line="440">
+          <description>Refresh an instance on the given target and method.</description>
+          <long-description/>
+          <tag name="param" line="440" description="" type="string" variable="$abstract">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="440" description="" type="mixed" variable="$target">
+            <type>mixed</type>
+          </tag>
+          <tag name="param" line="440" description="" type="string" variable="$method">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="440" description="" type="mixed">
+            <type>mixed</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$abstract</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$target</name>
+          <default/>
+          <type>mixed</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$method</name>
+          <default/>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Container" line="453" package="Default">
+        <name>rebound</name>
+        <full_name>\Illuminate\Container\Container::rebound()</full_name>
+        <docblock line="453">
+          <description>Fire the "rebound" callbacks for the given abstract type.</description>
+          <long-description/>
+          <tag name="param" line="453" description="" type="string" variable="$abstract">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="453" description="" type="void">
+            <type>void</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$abstract</name>
+          <default/>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Container" line="468" package="Default">
+        <name>getReboundCallbacks</name>
+        <full_name>\Illuminate\Container\Container::getReboundCallbacks()</full_name>
+        <docblock line="468">
+          <description>Get the rebound callbacks for a given type.</description>
+          <long-description/>
+          <tag name="param" line="468" description="" type="string" variable="$abstract">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="468" description="" type="array">
+            <type>array</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$abstract</name>
+          <default/>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Container" line="484" package="Default">
+        <name>wrap</name>
+        <full_name>\Illuminate\Container\Container::wrap()</full_name>
+        <docblock line="484">
+          <description>Wrap the given closure such that its dependencies will be injected when executed.</description>
+          <long-description/>
+          <tag name="param" line="484" description="" type="\Closure" variable="$callback">
+            <type>\Closure</type>
+          </tag>
+          <tag name="param" line="484" description="" type="array" variable="$parameters">
+            <type>array</type>
+          </tag>
+          <tag name="return" line="484" description="" type="\Closure">
+            <type>\Closure</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$callback</name>
+          <default/>
+          <type>\Closure</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$parameters</name>
+          <default>array()</default>
+          <type>array</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Container" line="499" package="Default">
+        <name>call</name>
+        <full_name>\Illuminate\Container\Container::call()</full_name>
+        <docblock line="499">
+          <description>Call the given Closure / class@method and inject its dependencies.</description>
+          <long-description/>
+          <tag name="param" line="499" description="" type="callable|string" variable="$callback">
+            <type>callable</type>
+            <type>string</type>
+          </tag>
+          <tag name="param" line="499" description="" type="array" variable="$parameters">
+            <type>array</type>
+          </tag>
+          <tag name="param" line="499" description="" type="string|null" variable="$defaultMethod">
+            <type>string</type>
+            <type>null</type>
+          </tag>
+          <tag name="return" line="499" description="" type="mixed">
+            <type>mixed</type>
+          </tag>
+          <tag name="inherited_from" description="\Illuminate\Contracts\Container\Container::call()" refers="\Illuminate\Contracts\Container\Container::call()" link="/classes/Illuminate.Contracts.Container.Container.html#method_call"/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$callback</name>
+          <default/>
+          <type>callable|string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$parameters</name>
+          <default>array()</default>
+          <type>array</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$defaultMethod</name>
+          <default>null</default>
+          <type>string|null</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Container" line="516" package="Default">
+        <name>isCallableWithAtSign</name>
+        <full_name>\Illuminate\Container\Container::isCallableWithAtSign()</full_name>
+        <docblock line="516">
+          <description>Determine if the given string is in Class@method syntax.</description>
+          <long-description/>
+          <tag name="param" line="516" description="" type="mixed" variable="$callback">
+            <type>mixed</type>
+          </tag>
+          <tag name="return" line="516" description="" type="boolean">
+            <type>boolean</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$callback</name>
+          <default/>
+          <type>mixed</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Container" line="528" package="Default">
+        <name>getMethodDependencies</name>
+        <full_name>\Illuminate\Container\Container::getMethodDependencies()</full_name>
+        <docblock line="528">
+          <description>Get all dependencies for a given method.</description>
+          <long-description/>
+          <tag name="param" line="528" description="" type="callable|string" variable="$callback">
+            <type>callable</type>
+            <type>string</type>
+          </tag>
+          <tag name="param" line="528" description="" type="array" variable="$parameters">
+            <type>array</type>
+          </tag>
+          <tag name="return" line="528" description="" type="array">
+            <type>array</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$callback</name>
+          <default/>
+          <type>callable|string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$parameters</name>
+          <default>array()</default>
+          <type>array</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Container" line="545" package="Default">
+        <name>getCallReflector</name>
+        <full_name>\Illuminate\Container\Container::getCallReflector()</full_name>
+        <docblock line="545">
+          <description>Get the proper reflection instance for the given callback.</description>
+          <long-description/>
+          <tag name="param" line="545" description="" type="callable|string" variable="$callback">
+            <type>callable</type>
+            <type>string</type>
+          </tag>
+          <tag name="return" line="545" description="" type="\ReflectionFunctionAbstract">
+            <type>\ReflectionFunctionAbstract</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$callback</name>
+          <default/>
+          <type>callable|string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Container" line="566" package="Default">
+        <name>addDependencyForCallParameter</name>
+        <full_name>\Illuminate\Container\Container::addDependencyForCallParameter()</full_name>
+        <docblock line="566">
+          <description>Get the dependency for the given call parameter.</description>
+          <long-description/>
+          <tag name="param" line="566" description="" type="\ReflectionParameter" variable="$parameter">
+            <type>\ReflectionParameter</type>
+          </tag>
+          <tag name="param" line="566" description="" type="array" variable="$parameters">
+            <type>array</type>
+          </tag>
+          <tag name="param" line="566" description="" type="array" variable="$dependencies">
+            <type>array</type>
+          </tag>
+          <tag name="return" line="566" description="" type="mixed">
+            <type>mixed</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$parameter</name>
+          <default/>
+          <type>\ReflectionParameter</type>
+        </argument>
+        <argument line="0" by_reference="true">
+          <name>$parameters</name>
+          <default/>
+          <type>array</type>
+        </argument>
+        <argument line="0" by_reference="true">
+          <name>$dependencies</name>
+          <default/>
+          <type>array</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Container" line="589" package="Default">
+        <name>callClass</name>
+        <full_name>\Illuminate\Container\Container::callClass()</full_name>
+        <docblock line="589">
+          <description>Call a string reference to a class using Class@method syntax.</description>
+          <long-description/>
+          <tag name="param" line="589" description="" type="string" variable="$target">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="589" description="" type="array" variable="$parameters">
+            <type>array</type>
+          </tag>
+          <tag name="param" line="589" description="" type="string|null" variable="$defaultMethod">
+            <type>string</type>
+            <type>null</type>
+          </tag>
+          <tag name="return" line="589" description="" type="mixed">
+            <type>mixed</type>
+          </tag>
+          <tag name="throws" line="589" description="" type="\InvalidArgumentException">
+            <type>\InvalidArgumentException</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$target</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$parameters</name>
+          <default>array()</default>
+          <type>array</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$defaultMethod</name>
+          <default>null</default>
+          <type>string|null</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Container" line="612" package="Default">
+        <name>make</name>
+        <full_name>\Illuminate\Container\Container::make()</full_name>
+        <docblock line="612">
+          <description>Resolve the given type from the container.</description>
+          <long-description/>
+          <tag name="param" line="612" description="" type="string" variable="$abstract">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="612" description="" type="array" variable="$parameters">
+            <type>array</type>
+          </tag>
+          <tag name="return" line="612" description="" type="mixed">
+            <type>mixed</type>
+          </tag>
+          <tag name="inherited_from" description="\Illuminate\Contracts\Container\Container::make()" refers="\Illuminate\Contracts\Container\Container::make()" link="/classes/Illuminate.Contracts.Container.Container.html#method_make"/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$abstract</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$parameters</name>
+          <default>array()</default>
+          <type>array</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Container" line="661" package="Default">
+        <name>getConcrete</name>
+        <full_name>\Illuminate\Container\Container::getConcrete()</full_name>
+        <docblock line="661">
+          <description>Get the concrete type for a given abstract.</description>
+          <long-description/>
+          <tag name="param" line="661" description="" type="string" variable="$abstract">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="661" description="$concrete" type="mixed">
+            <type>mixed</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$abstract</name>
+          <default/>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Container" line="683" package="Default">
+        <name>getContextualConcrete</name>
+        <full_name>\Illuminate\Container\Container::getContextualConcrete()</full_name>
+        <docblock line="683">
+          <description>Get the contextual concrete binding for the given abstract.</description>
+          <long-description/>
+          <tag name="param" line="683" description="" type="string" variable="$abstract">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="683" description="" type="string|null">
+            <type>string</type>
+            <type>null</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$abstract</name>
+          <default/>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Container" line="696" package="Default">
+        <name>normalize</name>
+        <full_name>\Illuminate\Container\Container::normalize()</full_name>
+        <docblock line="696">
+          <description>Normalize the given class name by removing leading slashes.</description>
+          <long-description/>
+          <tag name="param" line="696" description="" type="mixed" variable="$service">
+            <type>mixed</type>
+          </tag>
+          <tag name="return" line="696" description="" type="mixed">
+            <type>mixed</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$service</name>
+          <default/>
+          <type>mixed</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Container" line="707" package="Default">
+        <name>getExtenders</name>
+        <full_name>\Illuminate\Container\Container::getExtenders()</full_name>
+        <docblock line="707">
+          <description>Get the extender callbacks for a given type.</description>
+          <long-description/>
+          <tag name="param" line="707" description="" type="string" variable="$abstract">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="707" description="" type="array">
+            <type>array</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$abstract</name>
+          <default/>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Container" line="725" package="Default">
+        <name>build</name>
+        <full_name>\Illuminate\Container\Container::build()</full_name>
+        <docblock line="725">
+          <description>Instantiate a concrete instance of the given type.</description>
+          <long-description/>
+          <tag name="param" line="725" description="" type="string" variable="$concrete">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="725" description="" type="array" variable="$parameters">
+            <type>array</type>
+          </tag>
+          <tag name="return" line="725" description="" type="mixed">
+            <type>mixed</type>
+          </tag>
+          <tag name="throws" line="725" description="" type="\Illuminate\Contracts\Container\BindingResolutionException">
+            <type>\Illuminate\Contracts\Container\BindingResolutionException</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$concrete</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$parameters</name>
+          <default>array()</default>
+          <type>array</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Container" line="789" package="Default">
+        <name>getDependencies</name>
+        <full_name>\Illuminate\Container\Container::getDependencies()</full_name>
+        <docblock line="789">
+          <description>Resolve all of the dependencies from the ReflectionParameters.</description>
+          <long-description/>
+          <tag name="param" line="789" description="" type="array" variable="$parameters">
+            <type>array</type>
+          </tag>
+          <tag name="param" line="789" description="" type="array" variable="$primitives">
+            <type>array</type>
+          </tag>
+          <tag name="return" line="789" description="" type="array">
+            <type>array</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$parameters</name>
+          <default/>
+          <type>array</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$primitives</name>
+          <default>array()</default>
+          <type>array</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Container" line="819" package="Default">
+        <name>resolveNonClass</name>
+        <full_name>\Illuminate\Container\Container::resolveNonClass()</full_name>
+        <docblock line="819">
+          <description>Resolve a non-class hinted dependency.</description>
+          <long-description/>
+          <tag name="param" line="819" description="" type="\ReflectionParameter" variable="$parameter">
+            <type>\ReflectionParameter</type>
+          </tag>
+          <tag name="return" line="819" description="" type="mixed">
+            <type>mixed</type>
+          </tag>
+          <tag name="throws" line="819" description="" type="\Illuminate\Contracts\Container\BindingResolutionException">
+            <type>\Illuminate\Contracts\Container\BindingResolutionException</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$parameter</name>
+          <default/>
+          <type>\ReflectionParameter</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Container" line="846" package="Default">
+        <name>resolveClass</name>
+        <full_name>\Illuminate\Container\Container::resolveClass()</full_name>
+        <docblock line="846">
+          <description>Resolve a class based dependency from the container.</description>
+          <long-description/>
+          <tag name="param" line="846" description="" type="\ReflectionParameter" variable="$parameter">
+            <type>\ReflectionParameter</type>
+          </tag>
+          <tag name="return" line="846" description="" type="mixed">
+            <type>mixed</type>
+          </tag>
+          <tag name="throws" line="846" description="" type="\Illuminate\Contracts\Container\BindingResolutionException">
+            <type>\Illuminate\Contracts\Container\BindingResolutionException</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$parameter</name>
+          <default/>
+          <type>\ReflectionParameter</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Container" line="871" package="Default">
+        <name>keyParametersByArgument</name>
+        <full_name>\Illuminate\Container\Container::keyParametersByArgument()</full_name>
+        <docblock line="871">
+          <description>If extra parameters are passed by numeric ID, rekey them by argument name.</description>
+          <long-description/>
+          <tag name="param" line="871" description="" type="array" variable="$dependencies">
+            <type>array</type>
+          </tag>
+          <tag name="param" line="871" description="" type="array" variable="$parameters">
+            <type>array</type>
+          </tag>
+          <tag name="return" line="871" description="" type="array">
+            <type>array</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$dependencies</name>
+          <default/>
+          <type>array</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$parameters</name>
+          <default/>
+          <type>array</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Container" line="891" package="Default">
+        <name>resolving</name>
+        <full_name>\Illuminate\Container\Container::resolving()</full_name>
+        <docblock line="891">
+          <description>Register a new resolving callback.</description>
+          <long-description/>
+          <tag name="param" line="891" description="" type="string" variable="$abstract">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="891" description="" type="\Closure|null" variable="$callback">
+            <type>\Closure</type>
+            <type>null</type>
+          </tag>
+          <tag name="return" line="891" description="" type="void">
+            <type>void</type>
+          </tag>
+          <tag name="inherited_from" description="\Illuminate\Contracts\Container\Container::resolving()" refers="\Illuminate\Contracts\Container\Container::resolving()" link="/classes/Illuminate.Contracts.Container.Container.html#method_resolving"/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$abstract</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$callback</name>
+          <default>null</default>
+          <type>\Closure|null</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Container" line="907" package="Default">
+        <name>afterResolving</name>
+        <full_name>\Illuminate\Container\Container::afterResolving()</full_name>
+        <docblock line="907">
+          <description>Register a new after resolving callback for all types.</description>
+          <long-description/>
+          <tag name="param" line="907" description="" type="string" variable="$abstract">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="907" description="" type="\Closure|null" variable="$callback">
+            <type>\Closure</type>
+            <type>null</type>
+          </tag>
+          <tag name="return" line="907" description="" type="void">
+            <type>void</type>
+          </tag>
+          <tag name="inherited_from" description="\Illuminate\Contracts\Container\Container::afterResolving()" refers="\Illuminate\Contracts\Container\Container::afterResolving()" link="/classes/Illuminate.Contracts.Container.Container.html#method_afterResolving"/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$abstract</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$callback</name>
+          <default>null</default>
+          <type>\Closure|null</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Container" line="922" package="Default">
+        <name>resolvingCallback</name>
+        <full_name>\Illuminate\Container\Container::resolvingCallback()</full_name>
+        <docblock line="922">
+          <description>Register a new resolving callback by type of its first argument.</description>
+          <long-description/>
+          <tag name="param" line="922" description="" type="\Closure" variable="$callback">
+            <type>\Closure</type>
+          </tag>
+          <tag name="return" line="922" description="" type="void">
+            <type>void</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$callback</name>
+          <default/>
+          <type>\Closure</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Container" line="939" package="Default">
+        <name>afterResolvingCallback</name>
+        <full_name>\Illuminate\Container\Container::afterResolvingCallback()</full_name>
+        <docblock line="939">
+          <description>Register a new after resolving callback by type of its first argument.</description>
+          <long-description/>
+          <tag name="param" line="939" description="" type="\Closure" variable="$callback">
+            <type>\Closure</type>
+          </tag>
+          <tag name="return" line="939" description="" type="void">
+            <type>void</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$callback</name>
+          <default/>
+          <type>\Closure</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Container" line="956" package="Default">
+        <name>getFunctionHint</name>
+        <full_name>\Illuminate\Container\Container::getFunctionHint()</full_name>
+        <docblock line="956">
+          <description>Get the type hint for this closure's first argument.</description>
+          <long-description/>
+          <tag name="param" line="956" description="" type="\Closure" variable="$callback">
+            <type>\Closure</type>
+          </tag>
+          <tag name="return" line="956" description="" type="mixed">
+            <type>mixed</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$callback</name>
+          <default/>
+          <type>\Closure</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Container" line="980" package="Default">
+        <name>fireResolvingCallbacks</name>
+        <full_name>\Illuminate\Container\Container::fireResolvingCallbacks()</full_name>
+        <docblock line="980">
+          <description>Fire all of the resolving callbacks.</description>
+          <long-description/>
+          <tag name="param" line="980" description="" type="string" variable="$abstract">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="980" description="" type="mixed" variable="$object">
+            <type>mixed</type>
+          </tag>
+          <tag name="return" line="980" description="" type="void">
+            <type>void</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$abstract</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$object</name>
+          <default/>
+          <type>mixed</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Container" line="1008" package="Default">
+        <name>getCallbacksForType</name>
+        <full_name>\Illuminate\Container\Container::getCallbacksForType()</full_name>
+        <docblock line="1008">
+          <description>Get all callbacks for a given type.</description>
+          <long-description/>
+          <tag name="param" line="1008" description="" type="string" variable="$abstract">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="1008" description="" type="object" variable="$object">
+            <type>object</type>
+          </tag>
+          <tag name="param" line="1008" description="" type="array" variable="$callbacksPerType">
+            <type>array</type>
+          </tag>
+          <tag name="return" line="1008" description="" type="array">
+            <type>array</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$abstract</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$object</name>
+          <default/>
+          <type>object</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$callbacksPerType</name>
+          <default/>
+          <type>array</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Container" line="1028" package="Default">
+        <name>fireCallbackArray</name>
+        <full_name>\Illuminate\Container\Container::fireCallbackArray()</full_name>
+        <docblock line="1028">
+          <description>Fire an array of callbacks with an object.</description>
+          <long-description/>
+          <tag name="param" line="1028" description="" type="mixed" variable="$object">
+            <type>mixed</type>
+          </tag>
+          <tag name="param" line="1028" description="" type="array" variable="$callbacks">
+            <type>array</type>
+          </tag>
+          <tag name="return" line="1028" description="" type="void">
+            <type>void</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$object</name>
+          <default/>
+          <type>mixed</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$callbacks</name>
+          <default/>
+          <type>array</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Container" line="1041" package="Default">
+        <name>isShared</name>
+        <full_name>\Illuminate\Container\Container::isShared()</full_name>
+        <docblock line="1041">
+          <description>Determine if a given type is shared.</description>
+          <long-description/>
+          <tag name="param" line="1041" description="" type="string" variable="$abstract">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="1041" description="" type="boolean">
+            <type>boolean</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$abstract</name>
+          <default/>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Container" line="1063" package="Default">
+        <name>isBuildable</name>
+        <full_name>\Illuminate\Container\Container::isBuildable()</full_name>
+        <docblock line="1063">
+          <description>Determine if the given concrete is buildable.</description>
+          <long-description/>
+          <tag name="param" line="1063" description="" type="mixed" variable="$concrete">
+            <type>mixed</type>
+          </tag>
+          <tag name="param" line="1063" description="" type="string" variable="$abstract">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="1063" description="" type="boolean">
+            <type>boolean</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$concrete</name>
+          <default/>
+          <type>mixed</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$abstract</name>
+          <default/>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Container" line="1074" package="Default">
+        <name>getAlias</name>
+        <full_name>\Illuminate\Container\Container::getAlias()</full_name>
+        <docblock line="1074">
+          <description>Get the alias for an abstract if available.</description>
+          <long-description/>
+          <tag name="param" line="1074" description="" type="string" variable="$abstract">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="1074" description="" type="string">
+            <type>string</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$abstract</name>
+          <default/>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Container" line="1084" package="Default">
+        <name>getBindings</name>
+        <full_name>\Illuminate\Container\Container::getBindings()</full_name>
+        <docblock line="1084">
+          <description>Get the container's bindings.</description>
+          <long-description/>
+          <tag name="return" line="1084" description="" type="array">
+            <type>array</type>
+          </tag>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Container" line="1095" package="Default">
+        <name>dropStaleInstances</name>
+        <full_name>\Illuminate\Container\Container::dropStaleInstances()</full_name>
+        <docblock line="1095">
+          <description>Drop all of the stale instances and aliases.</description>
+          <long-description/>
+          <tag name="param" line="1095" description="" type="string" variable="$abstract">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="1095" description="" type="void">
+            <type>void</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$abstract</name>
+          <default/>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Container" line="1106" package="Default">
+        <name>forgetInstance</name>
+        <full_name>\Illuminate\Container\Container::forgetInstance()</full_name>
+        <docblock line="1106">
+          <description>Remove a resolved instance from the instance cache.</description>
+          <long-description/>
+          <tag name="param" line="1106" description="" type="string" variable="$abstract">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="1106" description="" type="void">
+            <type>void</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$abstract</name>
+          <default/>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Container" line="1116" package="Default">
+        <name>forgetInstances</name>
+        <full_name>\Illuminate\Container\Container::forgetInstances()</full_name>
+        <docblock line="1116">
+          <description>Clear all of the instances from the container.</description>
+          <long-description/>
+          <tag name="return" line="1116" description="" type="void">
+            <type>void</type>
+          </tag>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Container" line="1126" package="Default">
+        <name>flush</name>
+        <full_name>\Illuminate\Container\Container::flush()</full_name>
+        <docblock line="1126">
+          <description>Flush the container of all bindings and resolved instances.</description>
+          <long-description/>
+          <tag name="return" line="1126" description="" type="void">
+            <type>void</type>
+          </tag>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="true" visibility="public" namespace="Illuminate\Container" line="1139" package="Default">
+        <name>getInstance</name>
+        <full_name>\Illuminate\Container\Container::getInstance()</full_name>
+        <docblock line="1139">
+          <description>Set the globally available instance of the container.</description>
+          <long-description/>
+          <tag name="return" line="1139" description="" type="static">
+            <type>static</type>
+          </tag>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="true" visibility="public" namespace="Illuminate\Container" line="1150" package="Default">
+        <name>setInstance</name>
+        <full_name>\Illuminate\Container\Container::setInstance()</full_name>
+        <docblock line="1150">
+          <description>Set the shared instance of the container.</description>
+          <long-description/>
+          <tag name="param" line="1150" description="" type="\Illuminate\Contracts\Container\Container" variable="$container">
+            <type>\Illuminate\Contracts\Container\Container</type>
+          </tag>
+          <tag name="return" line="1150" description="" type="void">
+            <type>void</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$container</name>
+          <default/>
+          <type>\Illuminate\Contracts\Container\Container</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Container" line="1161" package="Default">
+        <name>offsetExists</name>
+        <full_name>\Illuminate\Container\Container::offsetExists()</full_name>
+        <docblock line="1161">
+          <description>Determine if a given offset exists.</description>
+          <long-description/>
+          <tag name="param" line="1161" description="" type="string" variable="$key">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="1161" description="" type="boolean">
+            <type>boolean</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$key</name>
+          <default/>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Container" line="1172" package="Default">
+        <name>offsetGet</name>
+        <full_name>\Illuminate\Container\Container::offsetGet()</full_name>
+        <docblock line="1172">
+          <description>Get the value at a given offset.</description>
+          <long-description/>
+          <tag name="param" line="1172" description="" type="string" variable="$key">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="1172" description="" type="mixed">
+            <type>mixed</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$key</name>
+          <default/>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Container" line="1184" package="Default">
+        <name>offsetSet</name>
+        <full_name>\Illuminate\Container\Container::offsetSet()</full_name>
+        <docblock line="1184">
+          <description>Set the value at a given offset.</description>
+          <long-description/>
+          <tag name="param" line="1184" description="" type="string" variable="$key">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="1184" description="" type="mixed" variable="$value">
+            <type>mixed</type>
+          </tag>
+          <tag name="return" line="1184" description="" type="void">
+            <type>void</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$key</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$value</name>
+          <default/>
+          <type>mixed</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Container" line="1204" package="Default">
+        <name>offsetUnset</name>
+        <full_name>\Illuminate\Container\Container::offsetUnset()</full_name>
+        <docblock line="1204">
+          <description>Unset the value at a given offset.</description>
+          <long-description/>
+          <tag name="param" line="1204" description="" type="string" variable="$key">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="1204" description="" type="void">
+            <type>void</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$key</name>
+          <default/>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Container" line="1217" package="Default">
+        <name>__get</name>
+        <full_name>\Illuminate\Container\Container::__get()</full_name>
+        <docblock line="1217">
+          <description>Dynamically access container services.</description>
+          <long-description/>
+          <tag name="param" line="1217" description="" type="string" variable="$key">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="1217" description="" type="mixed">
+            <type>mixed</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$key</name>
+          <default/>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Container" line="1229" package="Default">
+        <name>__set</name>
+        <full_name>\Illuminate\Container\Container::__set()</full_name>
+        <docblock line="1229">
+          <description>Dynamically set container services.</description>
+          <long-description/>
+          <tag name="param" line="1229" description="" type="string" variable="$key">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="1229" description="" type="mixed" variable="$value">
+            <type>mixed</type>
+          </tag>
+          <tag name="return" line="1229" description="" type="void">
+            <type>void</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$key</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$value</name>
+          <default/>
+          <type>mixed</type>
+        </argument>
+      </method>
+    </class>
+    <parse_markers>
+      <error line="0" code="PPC:ERR-50000">No summary was found for this file</error>
+      <error line="15" code="PPC:ERR-50005">No summary for class \Illuminate\Container\Container</error>
+    </parse_markers>
+    <source>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</source>
+  <type>class</type></file>

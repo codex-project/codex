@@ -1,0 +1,278 @@
+<file path="codex/vendor/laravel/framework/src/Illuminate/Auth/EloquentUserProvider.php" generated-path="codex.vendor.laravel.framework.src.Illuminate.Auth.EloquentUserProvider.html" hash="48d3345d3db42b98a0ad8fabfb2664c6" package="Default">
+    <docblock line="0">
+      <description/>
+      <long-description/>
+      <tag name="package" line="0" description="Default"/>
+    </docblock>
+    <namespace-alias name="Str">\Illuminate\Support\Str</namespace-alias>
+    <namespace-alias name="UserProvider">\Illuminate\Contracts\Auth\UserProvider</namespace-alias>
+    <namespace-alias name="HasherContract">\Illuminate\Contracts\Hashing\Hasher</namespace-alias>
+    <namespace-alias name="UserContract">\Illuminate\Contracts\Auth\Authenticatable</namespace-alias>
+    <class final="false" abstract="false" namespace="Illuminate\Auth" line="10" package="Default">
+      <extends/>
+      <implements>\Illuminate\Contracts\Auth\UserProvider</implements>
+      <name>EloquentUserProvider</name>
+      <full_name>\Illuminate\Auth\EloquentUserProvider</full_name>
+      <docblock line="10">
+        <description/>
+        <long-description/>
+        <tag name="package" line="10" description="Default"/>
+      </docblock>
+      <property static="false" visibility="protected" namespace="Illuminate\Auth" line="17" package="Default">
+        <name>$hasher</name>
+        <full_name>\Illuminate\Auth\EloquentUserProvider::hasher</full_name>
+        <default/>
+        <docblock line="17">
+          <description>The hasher implementation.</description>
+          <long-description/>
+          <tag name="var" line="17" description="" type="\Illuminate\Contracts\Hashing\Hasher" variable="">
+            <type>\Illuminate\Contracts\Hashing\Hasher</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" namespace="Illuminate\Auth" line="24" package="Default">
+        <name>$model</name>
+        <full_name>\Illuminate\Auth\EloquentUserProvider::model</full_name>
+        <default/>
+        <docblock line="24">
+          <description>The Eloquent user model.</description>
+          <long-description/>
+          <tag name="var" line="24" description="" type="string" variable="">
+            <type>string</type>
+          </tag>
+        </docblock>
+      </property>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Auth" line="33" package="Default">
+        <name>__construct</name>
+        <full_name>\Illuminate\Auth\EloquentUserProvider::__construct()</full_name>
+        <docblock line="33">
+          <description>Create a new database user provider.</description>
+          <long-description/>
+          <tag name="param" line="33" description="" type="\Illuminate\Contracts\Hashing\Hasher" variable="$hasher">
+            <type>\Illuminate\Contracts\Hashing\Hasher</type>
+          </tag>
+          <tag name="param" line="33" description="" type="string" variable="$model">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="33" description="" type="void">
+            <type>void</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$hasher</name>
+          <default/>
+          <type>\Illuminate\Contracts\Hashing\Hasher</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$model</name>
+          <default/>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Auth" line="45" package="Default">
+        <name>retrieveById</name>
+        <full_name>\Illuminate\Auth\EloquentUserProvider::retrieveById()</full_name>
+        <docblock line="45">
+          <description>Retrieve a user by their unique identifier.</description>
+          <long-description/>
+          <tag name="param" line="45" description="" type="mixed" variable="$identifier">
+            <type>mixed</type>
+          </tag>
+          <tag name="return" line="45" description="" type="\Illuminate\Contracts\Auth\Authenticatable|null">
+            <type>\Illuminate\Contracts\Auth\Authenticatable</type>
+            <type>null</type>
+          </tag>
+          <tag name="inherited_from" description="\Illuminate\Contracts\Auth\UserProvider::retrieveById()" refers="\Illuminate\Contracts\Auth\UserProvider::retrieveById()" link="/classes/Illuminate.Contracts.Auth.UserProvider.html#method_retrieveById"/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$identifier</name>
+          <default/>
+          <type>mixed</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Auth" line="57" package="Default">
+        <name>retrieveByToken</name>
+        <full_name>\Illuminate\Auth\EloquentUserProvider::retrieveByToken()</full_name>
+        <docblock line="57">
+          <description>Retrieve a user by their unique identifier and "remember me" token.</description>
+          <long-description/>
+          <tag name="param" line="57" description="" type="mixed" variable="$identifier">
+            <type>mixed</type>
+          </tag>
+          <tag name="param" line="57" description="" type="string" variable="$token">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="57" description="" type="\Illuminate\Contracts\Auth\Authenticatable|null">
+            <type>\Illuminate\Contracts\Auth\Authenticatable</type>
+            <type>null</type>
+          </tag>
+          <tag name="inherited_from" description="\Illuminate\Contracts\Auth\UserProvider::retrieveByToken()" refers="\Illuminate\Contracts\Auth\UserProvider::retrieveByToken()" link="/classes/Illuminate.Contracts.Auth.UserProvider.html#method_retrieveByToken"/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$identifier</name>
+          <default/>
+          <type>mixed</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$token</name>
+          <default/>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Auth" line="74" package="Default">
+        <name>updateRememberToken</name>
+        <full_name>\Illuminate\Auth\EloquentUserProvider::updateRememberToken()</full_name>
+        <docblock line="74">
+          <description>Update the "remember me" token for the given user in storage.</description>
+          <long-description/>
+          <tag name="param" line="74" description="" type="\Illuminate\Contracts\Auth\Authenticatable" variable="$user">
+            <type>\Illuminate\Contracts\Auth\Authenticatable</type>
+          </tag>
+          <tag name="param" line="74" description="" type="string" variable="$token">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="74" description="" type="void">
+            <type>void</type>
+          </tag>
+          <tag name="inherited_from" description="\Illuminate\Contracts\Auth\UserProvider::updateRememberToken()" refers="\Illuminate\Contracts\Auth\UserProvider::updateRememberToken()" link="/classes/Illuminate.Contracts.Auth.UserProvider.html#method_updateRememberToken"/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$user</name>
+          <default/>
+          <type>\Illuminate\Contracts\Auth\Authenticatable</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$token</name>
+          <default/>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Auth" line="87" package="Default">
+        <name>retrieveByCredentials</name>
+        <full_name>\Illuminate\Auth\EloquentUserProvider::retrieveByCredentials()</full_name>
+        <docblock line="87">
+          <description>Retrieve a user by the given credentials.</description>
+          <long-description/>
+          <tag name="param" line="87" description="" type="array" variable="$credentials">
+            <type>array</type>
+          </tag>
+          <tag name="return" line="87" description="" type="\Illuminate\Contracts\Auth\Authenticatable|null">
+            <type>\Illuminate\Contracts\Auth\Authenticatable</type>
+            <type>null</type>
+          </tag>
+          <tag name="inherited_from" description="\Illuminate\Contracts\Auth\UserProvider::retrieveByCredentials()" refers="\Illuminate\Contracts\Auth\UserProvider::retrieveByCredentials()" link="/classes/Illuminate.Contracts.Auth.UserProvider.html#method_retrieveByCredentials"/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$credentials</name>
+          <default/>
+          <type>array</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Auth" line="114" package="Default">
+        <name>validateCredentials</name>
+        <full_name>\Illuminate\Auth\EloquentUserProvider::validateCredentials()</full_name>
+        <docblock line="114">
+          <description>Validate a user against the given credentials.</description>
+          <long-description/>
+          <tag name="param" line="114" description="" type="\Illuminate\Contracts\Auth\Authenticatable" variable="$user">
+            <type>\Illuminate\Contracts\Auth\Authenticatable</type>
+          </tag>
+          <tag name="param" line="114" description="" type="array" variable="$credentials">
+            <type>array</type>
+          </tag>
+          <tag name="return" line="114" description="" type="boolean">
+            <type>boolean</type>
+          </tag>
+          <tag name="inherited_from" description="\Illuminate\Contracts\Auth\UserProvider::validateCredentials()" refers="\Illuminate\Contracts\Auth\UserProvider::validateCredentials()" link="/classes/Illuminate.Contracts.Auth.UserProvider.html#method_validateCredentials"/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$user</name>
+          <default/>
+          <type>\Illuminate\Contracts\Auth\Authenticatable</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$credentials</name>
+          <default/>
+          <type>array</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Auth" line="126" package="Default">
+        <name>createModel</name>
+        <full_name>\Illuminate\Auth\EloquentUserProvider::createModel()</full_name>
+        <docblock line="126">
+          <description>Create a new instance of the model.</description>
+          <long-description/>
+          <tag name="return" line="126" description="" type="\Illuminate\Database\Eloquent\Model">
+            <type>\Illuminate\Database\Eloquent\Model</type>
+          </tag>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Auth" line="138" package="Default">
+        <name>getHasher</name>
+        <full_name>\Illuminate\Auth\EloquentUserProvider::getHasher()</full_name>
+        <docblock line="138">
+          <description>Gets the hasher implementation.</description>
+          <long-description/>
+          <tag name="return" line="138" description="" type="\Illuminate\Contracts\Hashing\Hasher">
+            <type>\Illuminate\Contracts\Hashing\Hasher</type>
+          </tag>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Auth" line="149" package="Default">
+        <name>setHasher</name>
+        <full_name>\Illuminate\Auth\EloquentUserProvider::setHasher()</full_name>
+        <docblock line="149">
+          <description>Sets the hasher implementation.</description>
+          <long-description/>
+          <tag name="param" line="149" description="" type="\Illuminate\Contracts\Hashing\Hasher" variable="$hasher">
+            <type>\Illuminate\Contracts\Hashing\Hasher</type>
+          </tag>
+          <tag name="return" line="149" description="" type="\Illuminate\Auth\EloquentUserProvider">
+            <type>\Illuminate\Auth\EloquentUserProvider</type>
+          </tag>
+          <tag name="fluent" description="This method is part of a fluent interface and will return the same instance"/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$hasher</name>
+          <default/>
+          <type>\Illuminate\Contracts\Hashing\Hasher</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Auth" line="161" package="Default">
+        <name>getModel</name>
+        <full_name>\Illuminate\Auth\EloquentUserProvider::getModel()</full_name>
+        <docblock line="161">
+          <description>Gets the name of the Eloquent user model.</description>
+          <long-description/>
+          <tag name="return" line="161" description="" type="string">
+            <type>string</type>
+          </tag>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Auth" line="172" package="Default">
+        <name>setModel</name>
+        <full_name>\Illuminate\Auth\EloquentUserProvider::setModel()</full_name>
+        <docblock line="172">
+          <description>Sets the name of the Eloquent user model.</description>
+          <long-description/>
+          <tag name="param" line="172" description="" type="string" variable="$model">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="172" description="" type="\Illuminate\Auth\EloquentUserProvider">
+            <type>\Illuminate\Auth\EloquentUserProvider</type>
+          </tag>
+          <tag name="fluent" description="This method is part of a fluent interface and will return the same instance"/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$model</name>
+          <default/>
+          <type>string</type>
+        </argument>
+      </method>
+    </class>
+    <parse_markers>
+      <error line="0" code="PPC:ERR-50000">No summary was found for this file</error>
+      <error line="10" code="PPC:ERR-50005">No summary for class \Illuminate\Auth\EloquentUserProvider</error>
+    </parse_markers>
+    <source>eJy9V0tv2zgQvvtXTAMDkQMnuTcb7yO7bXNo0W3aXtaLgpZoiwhFqRRl193Nf++QoiRKomQbAapD5IjDeXzfzJDzy69ZnE0mgiQ0z0hI4Z7zImGCKLr8vVDxzWRS5K2vD0WWpVItH5S86a7dpUJJEqrc7F1+yql8L9Mti+iY7BuSx0xszJtKIDmUvyqJQ2b0HyoUC4kiK061Am252T4JOclz+IunXwsUdN0ClmScJvi13FR9n/w3AXyuLy7MGy7gY0whLj2s9xDFUnFlJSrB37ZEwvKISO2Ga/POZKpoqGgE09IKuu3xoIoBEBIJSRpR7rWfK4mGhiyYfX0Dd5Kiv0BA0B1EGk2CwBtLmcWlZywjkiRwVLxQhdbdXDoL1q96VVJVSAHblEXtQIoVZyGsCxFq/OHLlzAVqKMIVdDOnMrg3Kqemf0ltfqZqpjllwuzBrc1Lp1ly/ptw4xefOrB94FiHHSrATSYrfaAickkFIIhaYD4YZau2TCKCfuG9MC0keyC4cfZVwb/i4LzUdyk9feP/X0UODa7KFnTFo3QJMlbjVQwu1xgqvxdULnXv9dMtBU9HykgIoIzidWWrHTC0zNQ6SPtF91hBLvJZvT8HHw/alMuMnNrvpeQdSp6wLYF61JixF0Sagn9XC52mK40qMQ2VOkg7ms33mHbD2Zz6JE/ouGD5cLEVCtwomn2rpnMVTCYBZ+ySLcbRNXHMKxTadY2bIv/mTxhAulLJdnQ0/qQ95iAqdZ5Wnoc7EWFiamFUeAeRqXRQfr14uUi76AcWGknASpJsqXDAPvLzAKKqWVIJzwfApNISfZoyxH9OfVy1xgMSidcH7qosTUENMnUPmhJzRyRpmaa7v7UoHl9Da90rsKOwo5xDiSKgJIwdlACWp75mJ0Gxa+64PRdg4CpEcBLBqJ85SrFE1tonSERQL/RsLDpbveKaK6dR4F1WmCfK2maV9XNlE544iqsj3+dU3BmqhLrJSaq9HuFx7VinH3HJmjZfl0QGaGiXBER0rzxb1p64e81bk9x0g5r0sDSQlqDMH2kqGoB0y3hBe1Crxl6AXhjfPkSj2pF0JtA75jDeYY3s10qo/MeX42PdRcyW6yJm5bwk4/WqktaJQfa0WfCWVTef0y1kI32U51WMs/uP0fU3CpNxwtpayNxy8jXhA6X1jTjCILOEUfon4a0fz1nkntpwqyKafgYlHrmVduyB9F7qyaYDZLSupJWSQzp2rDiv/56OtOf9i67rOpn+da5afpBbJVDF5ZyoLiF8+Xy/Ipj20oC9y45NwueA1tHUW4eCvg1xUlEHT1rjLbhsXGjEy0yUkr1YvXROuT8w2nOP2t2cP0aDS2vQ/MPBwNDQf/W74XkII96tK4S9pjpzSr3DXB9zvzp2abMGWpGGDvVzaNGt6PIKWM4aUAbZeJp8gOZEhEt</source>
+  <type>class</type></file>

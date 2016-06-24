@@ -1,0 +1,684 @@
+<file path="sebwite/workbench/sebwite/git/src/Remotes/Adapters/Bitbucket.php" generated-path="sebwite.workbench.sebwite.git.src.Remotes.Adapters.Bitbucket.html" hash="7d40aea7eae3ccb894ad4773bbb4871c" package="Default">
+    <docblock line="0">
+      <description>Part of the Sebwite PHP packages.</description>
+      <long-description>License and copyright information bundled with this package in the LICENSE file</long-description>
+      <tag name="package" line="0" description="Default"/>
+    </docblock>
+    <namespace-alias name="Api">\Bitbucket\API\Api</namespace-alias>
+    <namespace-alias name="Listener">\Bitbucket\API\Http\Listener</namespace-alias>
+    <namespace-alias name="MessageInterface">\Buzz\Message\MessageInterface</namespace-alias>
+    <namespace-alias name="SebwiteGitException">\Sebwite\Git\Exceptions\SebwiteGitException</namespace-alias>
+    <namespace-alias name="Manager">\Sebwite\Git\Manager</namespace-alias>
+    <namespace-alias name="AdapterInterface">\Sebwite\Git\Remotes\AdapterInterface</namespace-alias>
+    <class final="false" abstract="false" namespace="Sebwite\Git\Remotes\Adapters" line="22" package="Default">
+      <extends>\Sebwite\Git\Remotes\Adapters\AbstractAdapter</extends>
+      <implements>\Sebwite\Git\Remotes\AdapterInterface</implements>
+      <name>Bitbucket</name>
+      <full_name>\Sebwite\Git\Remotes\Adapters\Bitbucket</full_name>
+      <docblock line="22">
+        <description>This is the class BitbucketRemote.</description>
+        <long-description/>
+        <tag name="author" line="22" description="Sebwite"/>
+        <tag name="copyright" line="22" description="Copyright (c) 2015, Sebwite. All rights reserved"/>
+        <tag name="package" line="22" description="Default"/>
+        <tag name="inherited_from" description="\Sebwite\Git\Remotes\Adapters\AbstractAdapter" refers="\Sebwite\Git\Remotes\Adapters\AbstractAdapter" link="/classes/Sebwite.Git.Remotes.Adapters.AbstractAdapter.html"/>
+      </docblock>
+      <constant namespace="Sebwite\Git\Remotes\Adapters" line="24" package="Default">
+        <name>DRIVER</name>
+        <full_name>\Sebwite\Git\Remotes\Adapters\Bitbucket::DRIVER</full_name>
+        <value>'bitbucket'</value>
+        <docblock line="24">
+          <description/>
+          <long-description/>
+          <tag name="inherited_from" description="\Sebwite\Git\Remotes\Adapters\AbstractAdapter::DRIVER" refers="\Sebwite\Git\Remotes\Adapters\AbstractAdapter::DRIVER" link="/classes/Sebwite.Git.Remotes.Adapters.AbstractAdapter.html#constant_DRIVER"/>
+        </docblock>
+      </constant>
+      <constant namespace="Sebwite\Git\Remotes\Adapters" line="17" package="Default">
+        <name>DRIVER</name>
+        <full_name>\Sebwite\Git\Remotes\Adapters\AbstractAdapter::DRIVER</full_name>
+        <value>''</value>
+        <docblock line="17">
+          <description/>
+          <long-description/>
+        </docblock>
+      </constant>
+      <property static="false" visibility="protected" namespace="Sebwite\Git\Remotes\Adapters" line="26" package="Default">
+        <name>$username</name>
+        <full_name>\Sebwite\Git\Remotes\Adapters\Bitbucket::username</full_name>
+        <default/>
+        <docblock line="26">
+          <description/>
+          <long-description/>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" namespace="Sebwite\Git\Remotes\Adapters" line="31" package="Default">
+        <name>$api</name>
+        <full_name>\Sebwite\Git\Remotes\Adapters\Bitbucket::api</full_name>
+        <default/>
+        <docblock line="31">
+          <description/>
+          <long-description/>
+          <tag name="var" line="31" description="" type="\Bitbucket\API\Api" variable="">
+            <type>\Bitbucket\API\Api</type>
+          </tag>
+        </docblock>
+      </property>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Sebwite\Git\Remotes\Adapters" line="34" package="Default">
+        <name>connect</name>
+        <full_name>\Sebwite\Git\Remotes\Adapters\Bitbucket::connect()</full_name>
+        <docblock line="34">
+          <description/>
+          <long-description/>
+          <tag name="inherited_from" description="\Sebwite\Git\Remotes\AdapterInterface::connect()" refers="\Sebwite\Git\Remotes\AdapterInterface::connect()" link="/classes/Sebwite.Git.Remotes.AdapterInterface.html#method_connect"/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$config</name>
+          <default/>
+          <type/>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Sebwite\Git\Remotes\Adapters" line="72" package="Default">
+        <name>getUser</name>
+        <full_name>\Sebwite\Git\Remotes\Adapters\Bitbucket::getUser()</full_name>
+        <docblock line="72">
+          <description>getUser method</description>
+          <long-description/>
+          <tag name="return" line="72" description="" type="array">
+            <type>array</type>
+          </tag>
+          <tag name="inherited_from" description="\Sebwite\Git\Remotes\AdapterInterface::getUser()" refers="\Sebwite\Git\Remotes\AdapterInterface::getUser()" link="/classes/Sebwite.Git.Remotes.AdapterInterface.html#method_getUser"/>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Sebwite\Git\Remotes\Adapters" line="77" package="Default">
+        <name>_content</name>
+        <full_name>\Sebwite\Git\Remotes\Adapters\Bitbucket::_content()</full_name>
+        <docblock line="77">
+          <description/>
+          <long-description/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$m</name>
+          <default/>
+          <type>\Buzz\Message\MessageInterface</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$assoc</name>
+          <default>true</default>
+          <type/>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Sebwite\Git\Remotes\Adapters" line="87" package="Default">
+        <name>getUsername</name>
+        <full_name>\Sebwite\Git\Remotes\Adapters\Bitbucket::getUsername()</full_name>
+        <docblock line="87">
+          <description>getUsername method</description>
+          <long-description/>
+          <tag name="return" line="87" description="" type="string">
+            <type>string</type>
+          </tag>
+          <tag name="inherited_from" description="\Sebwite\Git\Remotes\Adapters\AbstractAdapter::getUsername()" refers="\Sebwite\Git\Remotes\Adapters\AbstractAdapter::getUsername()" link="/classes/Sebwite.Git.Remotes.Adapters.AbstractAdapter.html#method_getUsername"/>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Sebwite\Git\Remotes\Adapters" line="93" package="Default">
+        <name>listWebhooks</name>
+        <full_name>\Sebwite\Git\Remotes\Adapters\Bitbucket::listWebhooks()</full_name>
+        <docblock line="93">
+          <description/>
+          <long-description/>
+          <tag name="inherited_from" description="\Sebwite\Git\Remotes\AdapterInterface::listWebhooks()" refers="\Sebwite\Git\Remotes\AdapterInterface::listWebhooks()" link="/classes/Sebwite.Git.Remotes.AdapterInterface.html#method_listWebhooks"/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$repo</name>
+          <default/>
+          <type/>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$owner</name>
+          <default>null</default>
+          <type/>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Sebwite\Git\Remotes\Adapters" line="100" package="Default">
+        <name>getWebhook</name>
+        <full_name>\Sebwite\Git\Remotes\Adapters\Bitbucket::getWebhook()</full_name>
+        <docblock line="100">
+          <description/>
+          <long-description/>
+          <tag name="inherited_from" description="\Sebwite\Git\Remotes\AdapterInterface::getWebhook()" refers="\Sebwite\Git\Remotes\AdapterInterface::getWebhook()" link="/classes/Sebwite.Git.Remotes.AdapterInterface.html#method_getWebhook"/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$repo</name>
+          <default/>
+          <type/>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$uuid</name>
+          <default/>
+          <type/>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$owner</name>
+          <default>null</default>
+          <type/>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Sebwite\Git\Remotes\Adapters" line="107" package="Default">
+        <name>createWebhook</name>
+        <full_name>\Sebwite\Git\Remotes\Adapters\Bitbucket::createWebhook()</full_name>
+        <docblock line="107">
+          <description/>
+          <long-description/>
+          <tag name="inherited_from" description="\Sebwite\Git\Remotes\AdapterInterface::createWebhook()" refers="\Sebwite\Git\Remotes\AdapterInterface::createWebhook()" link="/classes/Sebwite.Git.Remotes.AdapterInterface.html#method_createWebhook"/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$repo</name>
+          <default/>
+          <type/>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$data</name>
+          <default/>
+          <type>array</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$owner</name>
+          <default>null</default>
+          <type/>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Sebwite\Git\Remotes\Adapters" line="114" package="Default">
+        <name>removeWebhook</name>
+        <full_name>\Sebwite\Git\Remotes\Adapters\Bitbucket::removeWebhook()</full_name>
+        <docblock line="114">
+          <description/>
+          <long-description/>
+          <tag name="inherited_from" description="\Sebwite\Git\Remotes\AdapterInterface::removeWebhook()" refers="\Sebwite\Git\Remotes\AdapterInterface::removeWebhook()" link="/classes/Sebwite.Git.Remotes.AdapterInterface.html#method_removeWebhook"/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$repo</name>
+          <default/>
+          <type/>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$uuid</name>
+          <default/>
+          <type/>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$owner</name>
+          <default>null</default>
+          <type/>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Sebwite\Git\Remotes\Adapters" line="121" package="Default">
+        <name>listOrganisations</name>
+        <full_name>\Sebwite\Git\Remotes\Adapters\Bitbucket::listOrganisations()</full_name>
+        <docblock line="121">
+          <description/>
+          <long-description/>
+          <tag name="inherited_from" description="\Sebwite\Git\Remotes\AdapterInterface::listOrganisations()" refers="\Sebwite\Git\Remotes\AdapterInterface::listOrganisations()" link="/classes/Sebwite.Git.Remotes.AdapterInterface.html#method_listOrganisations"/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$owner</name>
+          <default>null</default>
+          <type/>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Sebwite\Git\Remotes\Adapters" line="134" package="Default">
+        <name>listRepositories</name>
+        <full_name>\Sebwite\Git\Remotes\Adapters\Bitbucket::listRepositories()</full_name>
+        <docblock line="134">
+          <description/>
+          <long-description/>
+          <tag name="inherited_from" description="\Sebwite\Git\Remotes\AdapterInterface::listRepositories()" refers="\Sebwite\Git\Remotes\AdapterInterface::listRepositories()" link="/classes/Sebwite.Git.Remotes.AdapterInterface.html#method_listRepositories"/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$owner</name>
+          <default>null</default>
+          <type/>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Sebwite\Git\Remotes\Adapters" line="144" package="Default">
+        <name>createRepository</name>
+        <full_name>\Sebwite\Git\Remotes\Adapters\Bitbucket::createRepository()</full_name>
+        <docblock line="144">
+          <description/>
+          <long-description/>
+          <tag name="inherited_from" description="\Sebwite\Git\Remotes\AdapterInterface::createRepository()" refers="\Sebwite\Git\Remotes\AdapterInterface::createRepository()" link="/classes/Sebwite.Git.Remotes.AdapterInterface.html#method_createRepository"/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$repo</name>
+          <default/>
+          <type/>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$data</name>
+          <default>array()</default>
+          <type>array</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$owner</name>
+          <default>null</default>
+          <type/>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Sebwite\Git\Remotes\Adapters" line="151" package="Default">
+        <name>deleteRepository</name>
+        <full_name>\Sebwite\Git\Remotes\Adapters\Bitbucket::deleteRepository()</full_name>
+        <docblock line="151">
+          <description/>
+          <long-description/>
+          <tag name="inherited_from" description="\Sebwite\Git\Remotes\AdapterInterface::deleteRepository()" refers="\Sebwite\Git\Remotes\AdapterInterface::deleteRepository()" link="/classes/Sebwite.Git.Remotes.AdapterInterface.html#method_deleteRepository"/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$repo</name>
+          <default/>
+          <type/>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$owner</name>
+          <default>null</default>
+          <type/>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Sebwite\Git\Remotes\Adapters" line="169" package="Default">
+        <name>getBranch</name>
+        <full_name>\Sebwite\Git\Remotes\Adapters\Bitbucket::getBranch()</full_name>
+        <docblock line="169">
+          <description>getBranch method</description>
+          <long-description/>
+          <tag name="todo" line="169" description="get the correct branch"/>
+          <tag name="param" line="169" description="" type="" variable="$repo"/>
+          <tag name="param" line="169" description="" type="" variable="$ref"/>
+          <tag name="param" line="169" description="" type="null" variable="$owner">
+            <type>null</type>
+          </tag>
+          <tag name="return" line="169" description="" type="mixed">
+            <type>mixed</type>
+          </tag>
+          <tag name="inherited_from" description="\Sebwite\Git\Remotes\AdapterInterface::getBranch()" refers="\Sebwite\Git\Remotes\AdapterInterface::getBranch()" link="/classes/Sebwite.Git.Remotes.AdapterInterface.html#method_getBranch"/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$repo</name>
+          <default/>
+          <type/>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$ref</name>
+          <default/>
+          <type/>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$owner</name>
+          <default>null</default>
+          <type>null</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Sebwite\Git\Remotes\Adapters" line="176" package="Default">
+        <name>getBranches</name>
+        <full_name>\Sebwite\Git\Remotes\Adapters\Bitbucket::getBranches()</full_name>
+        <docblock line="176">
+          <description/>
+          <long-description/>
+          <tag name="inherited_from" description="\Sebwite\Git\Remotes\AdapterInterface::getBranches()" refers="\Sebwite\Git\Remotes\AdapterInterface::getBranches()" link="/classes/Sebwite.Git.Remotes.AdapterInterface.html#method_getBranches"/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$repo</name>
+          <default/>
+          <type/>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$owner</name>
+          <default>null</default>
+          <type/>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Sebwite\Git\Remotes\Adapters" line="183" package="Default">
+        <name>getMainBranch</name>
+        <full_name>\Sebwite\Git\Remotes\Adapters\Bitbucket::getMainBranch()</full_name>
+        <docblock line="183">
+          <description/>
+          <long-description/>
+          <tag name="inherited_from" description="\Sebwite\Git\Remotes\AdapterInterface::getMainBranch()" refers="\Sebwite\Git\Remotes\AdapterInterface::getMainBranch()" link="/classes/Sebwite.Git.Remotes.AdapterInterface.html#method_getMainBranch"/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$repo</name>
+          <default/>
+          <type/>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$owner</name>
+          <default>null</default>
+          <type/>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Sebwite\Git\Remotes\Adapters" line="190" package="Default">
+        <name>getRepositoryManifest</name>
+        <full_name>\Sebwite\Git\Remotes\Adapters\Bitbucket::getRepositoryManifest()</full_name>
+        <docblock line="190">
+          <description/>
+          <long-description/>
+          <tag name="inherited_from" description="\Sebwite\Git\Remotes\AdapterInterface::getRepositoryManifest()" refers="\Sebwite\Git\Remotes\AdapterInterface::getRepositoryManifest()" link="/classes/Sebwite.Git.Remotes.AdapterInterface.html#method_getRepositoryManifest"/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$repo</name>
+          <default/>
+          <type/>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$ref</name>
+          <default/>
+          <type/>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$owner</name>
+          <default>null</default>
+          <type/>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Sebwite\Git\Remotes\Adapters" line="197" package="Default">
+        <name>getTags</name>
+        <full_name>\Sebwite\Git\Remotes\Adapters\Bitbucket::getTags()</full_name>
+        <docblock line="197">
+          <description/>
+          <long-description/>
+          <tag name="inherited_from" description="\Sebwite\Git\Remotes\AdapterInterface::getTags()" refers="\Sebwite\Git\Remotes\AdapterInterface::getTags()" link="/classes/Sebwite.Git.Remotes.AdapterInterface.html#method_getTags"/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$repo</name>
+          <default/>
+          <type/>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$owner</name>
+          <default>null</default>
+          <type/>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Sebwite\Git\Remotes\Adapters" line="204" package="Default">
+        <name>getRaw</name>
+        <full_name>\Sebwite\Git\Remotes\Adapters\Bitbucket::getRaw()</full_name>
+        <docblock line="204">
+          <description/>
+          <long-description/>
+          <tag name="inherited_from" description="\Sebwite\Git\Remotes\AdapterInterface::getRaw()" refers="\Sebwite\Git\Remotes\AdapterInterface::getRaw()" link="/classes/Sebwite.Git.Remotes.AdapterInterface.html#method_getRaw"/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$repo</name>
+          <default/>
+          <type/>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$ref</name>
+          <default/>
+          <type/>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$path</name>
+          <default/>
+          <type/>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$owner</name>
+          <default>null</default>
+          <type/>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Sebwite\Git\Remotes\Adapters" line="211" package="Default">
+        <name>getChangeset</name>
+        <full_name>\Sebwite\Git\Remotes\Adapters\Bitbucket::getChangeset()</full_name>
+        <docblock line="211">
+          <description/>
+          <long-description/>
+          <tag name="inherited_from" description="\Sebwite\Git\Remotes\AdapterInterface::getChangeset()" refers="\Sebwite\Git\Remotes\AdapterInterface::getChangeset()" link="/classes/Sebwite.Git.Remotes.AdapterInterface.html#method_getChangeset"/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$repo</name>
+          <default/>
+          <type/>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$ref</name>
+          <default/>
+          <type/>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$path</name>
+          <default/>
+          <type/>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$owner</name>
+          <default>null</default>
+          <type/>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Sebwite\Git\Remotes\Adapters" line="218" package="Default">
+        <name>getRepositoryCommits</name>
+        <full_name>\Sebwite\Git\Remotes\Adapters\Bitbucket::getRepositoryCommits()</full_name>
+        <docblock line="218">
+          <description/>
+          <long-description/>
+          <tag name="inherited_from" description="\Sebwite\Git\Remotes\AdapterInterface::getRepositoryCommits()" refers="\Sebwite\Git\Remotes\AdapterInterface::getRepositoryCommits()" link="/classes/Sebwite.Git.Remotes.AdapterInterface.html#method_getRepositoryCommits"/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$repo</name>
+          <default/>
+          <type/>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$owner</name>
+          <default>null</default>
+          <type/>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Sebwite\Git\Remotes\Adapters" line="225" package="Default">
+        <name>getBranchCommits</name>
+        <full_name>\Sebwite\Git\Remotes\Adapters\Bitbucket::getBranchCommits()</full_name>
+        <docblock line="225">
+          <description/>
+          <long-description/>
+          <tag name="inherited_from" description="\Sebwite\Git\Remotes\AdapterInterface::getBranchCommits()" refers="\Sebwite\Git\Remotes\AdapterInterface::getBranchCommits()" link="/classes/Sebwite.Git.Remotes.AdapterInterface.html#method_getBranchCommits"/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$repo</name>
+          <default/>
+          <type/>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$branch</name>
+          <default/>
+          <type/>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$owner</name>
+          <default>null</default>
+          <type/>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Sebwite\Git\Remotes\Adapters" line="232" package="Default">
+        <name>getContentList</name>
+        <full_name>\Sebwite\Git\Remotes\Adapters\Bitbucket::getContentList()</full_name>
+        <docblock line="232">
+          <description/>
+          <long-description/>
+          <tag name="inherited_from" description="\Sebwite\Git\Remotes\AdapterInterface::getContentList()" refers="\Sebwite\Git\Remotes\AdapterInterface::getContentList()" link="/classes/Sebwite.Git.Remotes.AdapterInterface.html#method_getContentList"/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$path</name>
+          <default/>
+          <type/>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$repo</name>
+          <default/>
+          <type/>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$ref</name>
+          <default/>
+          <type/>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$owner</name>
+          <default>null</default>
+          <type/>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Sebwite\Git\Remotes\Adapters" line="238" package="Default">
+        <name>downloadArchive</name>
+        <full_name>\Sebwite\Git\Remotes\Adapters\Bitbucket::downloadArchive()</full_name>
+        <docblock line="238">
+          <description/>
+          <long-description/>
+          <tag name="inherited_from" description="\Sebwite\Git\Remotes\AdapterInterface::downloadArchive()" refers="\Sebwite\Git\Remotes\AdapterInterface::downloadArchive()" link="/classes/Sebwite.Git.Remotes.AdapterInterface.html#method_downloadArchive"/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$repo</name>
+          <default/>
+          <type/>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$ref</name>
+          <default/>
+          <type/>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$localPath</name>
+          <default/>
+          <type/>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$owner</name>
+          <default>null</default>
+          <type/>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Sebwite\Git\Remotes\Adapters" line="24" package="Default">
+        <name>__construct</name>
+        <full_name>\Sebwite\Git\Remotes\Adapters\AbstractAdapter::__construct()</full_name>
+        <docblock line="24">
+          <description>Instantiates the class</description>
+          <long-description/>
+          <tag name="param" line="24" description="" type="\Sebwite\Git\Remotes\TransformerInterface" variable="$transformer">
+            <type>\Sebwite\Git\Remotes\TransformerInterface</type>
+          </tag>
+          <tag name="param" line="24" description="" type="array" variable="$credentials">
+            <type>array</type>
+          </tag>
+        </docblock>
+        <inherited_from>\Sebwite\Git\Remotes\Adapters\AbstractAdapter</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Sebwite\Git\Remotes\Adapters" line="27" package="Default">
+        <name>name</name>
+        <full_name>\Sebwite\Git\Remotes\Adapters\AbstractAdapter::name()</full_name>
+        <docblock line="27">
+          <description/>
+          <long-description/>
+        </docblock>
+        <inherited_from>\Sebwite\Git\Remotes\Adapters\AbstractAdapter</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Sebwite\Git\Remotes\Adapters" line="32" package="Default">
+        <name>owner</name>
+        <full_name>\Sebwite\Git\Remotes\Adapters\AbstractAdapter::owner()</full_name>
+        <docblock line="32">
+          <description/>
+          <long-description/>
+        </docblock>
+        <argument line="0" by_reference="true">
+          <name>$owner</name>
+          <default/>
+          <type/>
+        </argument>
+        <inherited_from>\Sebwite\Git\Remotes\Adapters\AbstractAdapter</inherited_from>
+      </method>
+      <method final="false" abstract="true" static="false" visibility="public" namespace="Sebwite\Git\Remotes\Adapters" line="37" package="Default">
+        <name>getUsername</name>
+        <full_name>\Sebwite\Git\Remotes\Adapters\AbstractAdapter::getUsername()</full_name>
+        <docblock line="37">
+          <description/>
+          <long-description/>
+        </docblock>
+        <inherited_from>\Sebwite\Git\Remotes\Adapters\AbstractAdapter</inherited_from>
+      </method>
+    </class>
+    <markers>
+      <todo line="169">get the correct branch</todo>
+    </markers>
+    <parse_markers>
+      <error line="34" code="PPC:ERR-50015">Argument $config is missing from the Docblock of connect</error>
+      <error line="34" code="PPC:ERR-50008">No summary for method connect()</error>
+      <error line="77" code="PPC:ERR-50015">Argument $m is missing from the Docblock of _content</error>
+      <error line="77" code="PPC:ERR-50015">Argument $assoc is missing from the Docblock of _content</error>
+      <error line="77" code="PPC:ERR-50008">No summary for method _content()</error>
+      <error line="93" code="PPC:ERR-50015">Argument $repo is missing from the Docblock of listWebhooks</error>
+      <error line="93" code="PPC:ERR-50015">Argument $owner is missing from the Docblock of listWebhooks</error>
+      <error line="93" code="PPC:ERR-50008">No summary for method listWebhooks()</error>
+      <error line="100" code="PPC:ERR-50015">Argument $repo is missing from the Docblock of getWebhook</error>
+      <error line="100" code="PPC:ERR-50015">Argument $uuid is missing from the Docblock of getWebhook</error>
+      <error line="100" code="PPC:ERR-50015">Argument $owner is missing from the Docblock of getWebhook</error>
+      <error line="100" code="PPC:ERR-50008">No summary for method getWebhook()</error>
+      <error line="107" code="PPC:ERR-50015">Argument $repo is missing from the Docblock of createWebhook</error>
+      <error line="107" code="PPC:ERR-50015">Argument $data is missing from the Docblock of createWebhook</error>
+      <error line="107" code="PPC:ERR-50015">Argument $owner is missing from the Docblock of createWebhook</error>
+      <error line="107" code="PPC:ERR-50008">No summary for method createWebhook()</error>
+      <error line="114" code="PPC:ERR-50015">Argument $repo is missing from the Docblock of removeWebhook</error>
+      <error line="114" code="PPC:ERR-50015">Argument $uuid is missing from the Docblock of removeWebhook</error>
+      <error line="114" code="PPC:ERR-50015">Argument $owner is missing from the Docblock of removeWebhook</error>
+      <error line="114" code="PPC:ERR-50008">No summary for method removeWebhook()</error>
+      <error line="121" code="PPC:ERR-50015">Argument $owner is missing from the Docblock of listOrganisations</error>
+      <error line="121" code="PPC:ERR-50008">No summary for method listOrganisations()</error>
+      <error line="134" code="PPC:ERR-50015">Argument $owner is missing from the Docblock of listRepositories</error>
+      <error line="134" code="PPC:ERR-50008">No summary for method listRepositories()</error>
+      <error line="144" code="PPC:ERR-50015">Argument $repo is missing from the Docblock of createRepository</error>
+      <error line="144" code="PPC:ERR-50015">Argument $data is missing from the Docblock of createRepository</error>
+      <error line="144" code="PPC:ERR-50015">Argument $owner is missing from the Docblock of createRepository</error>
+      <error line="144" code="PPC:ERR-50008">No summary for method createRepository()</error>
+      <error line="151" code="PPC:ERR-50015">Argument $repo is missing from the Docblock of deleteRepository</error>
+      <error line="151" code="PPC:ERR-50015">Argument $owner is missing from the Docblock of deleteRepository</error>
+      <error line="151" code="PPC:ERR-50008">No summary for method deleteRepository()</error>
+      <error line="176" code="PPC:ERR-50015">Argument $repo is missing from the Docblock of getBranches</error>
+      <error line="176" code="PPC:ERR-50015">Argument $owner is missing from the Docblock of getBranches</error>
+      <error line="176" code="PPC:ERR-50008">No summary for method getBranches()</error>
+      <error line="183" code="PPC:ERR-50015">Argument $repo is missing from the Docblock of getMainBranch</error>
+      <error line="183" code="PPC:ERR-50015">Argument $owner is missing from the Docblock of getMainBranch</error>
+      <error line="183" code="PPC:ERR-50008">No summary for method getMainBranch()</error>
+      <error line="190" code="PPC:ERR-50015">Argument $repo is missing from the Docblock of getRepositoryManifest</error>
+      <error line="190" code="PPC:ERR-50015">Argument $ref is missing from the Docblock of getRepositoryManifest</error>
+      <error line="190" code="PPC:ERR-50015">Argument $owner is missing from the Docblock of getRepositoryManifest</error>
+      <error line="190" code="PPC:ERR-50008">No summary for method getRepositoryManifest()</error>
+      <error line="197" code="PPC:ERR-50015">Argument $repo is missing from the Docblock of getTags</error>
+      <error line="197" code="PPC:ERR-50015">Argument $owner is missing from the Docblock of getTags</error>
+      <error line="197" code="PPC:ERR-50008">No summary for method getTags()</error>
+      <error line="204" code="PPC:ERR-50015">Argument $repo is missing from the Docblock of getRaw</error>
+      <error line="204" code="PPC:ERR-50015">Argument $ref is missing from the Docblock of getRaw</error>
+      <error line="204" code="PPC:ERR-50015">Argument $path is missing from the Docblock of getRaw</error>
+      <error line="204" code="PPC:ERR-50015">Argument $owner is missing from the Docblock of getRaw</error>
+      <error line="204" code="PPC:ERR-50008">No summary for method getRaw()</error>
+      <error line="211" code="PPC:ERR-50015">Argument $repo is missing from the Docblock of getChangeset</error>
+      <error line="211" code="PPC:ERR-50015">Argument $ref is missing from the Docblock of getChangeset</error>
+      <error line="211" code="PPC:ERR-50015">Argument $path is missing from the Docblock of getChangeset</error>
+      <error line="211" code="PPC:ERR-50015">Argument $owner is missing from the Docblock of getChangeset</error>
+      <error line="211" code="PPC:ERR-50008">No summary for method getChangeset()</error>
+      <error line="218" code="PPC:ERR-50015">Argument $repo is missing from the Docblock of getRepositoryCommits</error>
+      <error line="218" code="PPC:ERR-50015">Argument $owner is missing from the Docblock of getRepositoryCommits</error>
+      <error line="218" code="PPC:ERR-50008">No summary for method getRepositoryCommits()</error>
+      <error line="225" code="PPC:ERR-50015">Argument $repo is missing from the Docblock of getBranchCommits</error>
+      <error line="225" code="PPC:ERR-50015">Argument $branch is missing from the Docblock of getBranchCommits</error>
+      <error line="225" code="PPC:ERR-50015">Argument $owner is missing from the Docblock of getBranchCommits</error>
+      <error line="225" code="PPC:ERR-50008">No summary for method getBranchCommits()</error>
+      <error line="232" code="PPC:ERR-50015">Argument $path is missing from the Docblock of getContentList</error>
+      <error line="232" code="PPC:ERR-50015">Argument $repo is missing from the Docblock of getContentList</error>
+      <error line="232" code="PPC:ERR-50015">Argument $ref is missing from the Docblock of getContentList</error>
+      <error line="232" code="PPC:ERR-50015">Argument $owner is missing from the Docblock of getContentList</error>
+      <error line="232" code="PPC:ERR-50008">No summary for method getContentList()</error>
+      <error line="238" code="PPC:ERR-50015">Argument $repo is missing from the Docblock of downloadArchive</error>
+      <error line="238" code="PPC:ERR-50015">Argument $ref is missing from the Docblock of downloadArchive</error>
+      <error line="238" code="PPC:ERR-50015">Argument $localPath is missing from the Docblock of downloadArchive</error>
+      <error line="238" code="PPC:ERR-50015">Argument $owner is missing from the Docblock of downloadArchive</error>
+      <error line="238" code="PPC:ERR-50008">No summary for method downloadArchive()</error>
+      <error line="26" code="PPC:ERR-50007">No summary for property $username</error>
+      <error line="31" code="PPC:ERR-50007">No summary for property $api</error>
+    </parse_markers>
+    <source>eJzdWW1P6zYU/t5f4d1VSoK4dEPaFxhshSFA403A3T5QhNzEbTySONd2KC/qf9+x46SJ09IWmIoWIUic8/I85xwf2+HX39IwbXXW1lpoDV1gLhEbIBkSdEX6IyoJuji6QCn27/GQiA0QUnIn1CeJIAgnAfJZ+sTpMJSIJgPGYywpS1A/S4KIBAhMhGCOisIGSGnzJ8f7B2dXB2hAIwImO60Ex0SAUOm5d0hl75LETBLR6wY4lYSL7VYrA8d7VPYz/57IXvfiuNdN6faU4SMp094JFZIkhBuB7Pm5d0qEACTF3+MEDA/AcS5S9X7w6JNU8RE9Mwyj5WBT/hQnYJA3X1g0Ki6L0F+rGMGPio0fYSEmZHLlIva/40yGjCO4jAc9OknDfnnn+h7a/OnnX9YLyQ3UjSKkXwrEiSD8gQQ6+pZLRB4haoFA3b6QHPvSAEc0TiMSkwT0bS6tl5YC5UO0JPrj8vivg0u0g5x+YdMBskog5cDGl1AcbQgTV3k3b3Qo1AV8HjBHkFfz3LE1sUq5sZf1I+qjQZb4uvQAQAJSbhtuBnToaaEcm7rMcP6wA9JRVJXengiqsv26C560oBH4ujsk0nVg1FlHCRkpkK5XU3tKSfHQUIPcgZ6pk62t7rfro7u97tXxvmdioC46QK6xs7OzY0mfq9/IqzDSXiNT5+BSoSrKvnfeBZfFk3tTU1KXwxSmO5W1LCb87p48ORr5rgVdvfDW5+oL4nPIdVPfvLBM3FYiN0YkEuRV8jpUi5Pfw4L6tQA08NdBFgUJOZrCfgr9ulQKk2jEeNBQL8h7NQPLcdeJ31wy85tLpJ4GOvOfNPXX538enDXYy5CzEZrSnLe2wGcAjYri6BosnjF5laUp49A+XO2j4f7/OKVaU9qZ1t6PKATH9WAkCEoyJWdjY9xozKD6DSYJigmsQoEZLbs2wMl4gjDn+Kneuq0mbcy4dnc2BgxYFQOpYFbBwy/XUcqOl8fBq4OdrBKlt9KOveSjdgxTFWYt8yHLkmdkBqB/BEvuAuKzgLjtOI+gsekVFubFTDWW1+MGay1NhosETtkqg/fO6N0g3fccdGvudAdEt/WoWjhUofxN+iFj98Jtc5IyCAMbmemSRVFj3c1BaBE3l6yueYtCvwRPgkrGKWynjpR3RQRHkbEJKBQYuyaaUTTgS+xZRoNVUlC5qFEwmOYwgQ6AJbHI6PmH2gGWeJWUcmwNVgrWHFYctrwPNquVpyggEZnCZ4Esqdlyzoc4oUKfj4T7HhbtVG0sF53kKacPcMiC45vulPVd5g9UCFV4KUx9SXAsYN57jVXWhO2m6AkVppXXuurUaicse3NDUw33WyJTvuXLBIZXvVbWEptXeUTgIDQKCSeuoz07RTHCuGRdRd/1tlGnU9OAEy6sNrbKOhpg2HPUNCeefywKlStzdQRwHkuEOmm7RQzdNmx+Yu+lLG/1eOOIKBs6t9tobBrkIo2kzMTTlF4CwYUSWMEMnKB6X1vJJ3CT44oJTesr3mu7iT0oAT+csZeQLGBKKP+UwDiHykF9rWGLppjjuJg64HTGi4E1rqJkYjZjIxPTR1IAm7mPyVmUOQA/H5mJ0gGx9iew31G+5uxvZqqvrEr6JZzlNjqnmCZWqD8DkWVpTGzAuZAOiJD/VeW8iVRcgrLaEoCbT+4aDz9LmUkNZcnc4JGVjBTL8COpLASdKxjN8Bs4Xv3UNo/TfogT2DMRu8w+mtmbkqS+moN0vobNZrzEpNpncUzl6orQ+H/jYS7vbzaHvNF8MjLrsCbHKYbdnJPjc7z5/EzVqu80blGB72x+7yJ4xf1ZZ9aFyy8AxYjhoMv9kD4Qa5pFzMfRxQJzzdcfssw3ut5h9vwcEf2fH/OF66b6PcxIq73/90x1a+fw4Br25F9C0BBbnU7534oNxoedl9z1GG4UuHEHCOv7wXjjmaZf1lH9658jaHKff6gr8ZcCt1OCXkoVkRq3/gW3Bk1h</source>
+  <type>class</type></file>

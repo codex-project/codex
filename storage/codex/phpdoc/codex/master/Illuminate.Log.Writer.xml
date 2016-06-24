@@ -1,0 +1,698 @@
+<file path="codex/vendor/laravel/framework/src/Illuminate/Log/Writer.php" generated-path="codex.vendor.laravel.framework.src.Illuminate.Log.Writer.html" hash="1900efe986118607e9127eb46411eb54" package="Default">
+    <docblock line="0">
+      <description/>
+      <long-description/>
+      <tag name="package" line="0" description="Default"/>
+    </docblock>
+    <namespace-alias name="Closure">\Closure</namespace-alias>
+    <namespace-alias name="RuntimeException">\RuntimeException</namespace-alias>
+    <namespace-alias name="InvalidArgumentException">\InvalidArgumentException</namespace-alias>
+    <namespace-alias name="SyslogHandler">\Monolog\Handler\SyslogHandler</namespace-alias>
+    <namespace-alias name="StreamHandler">\Monolog\Handler\StreamHandler</namespace-alias>
+    <namespace-alias name="MonologLogger">\Monolog\Logger</namespace-alias>
+    <namespace-alias name="LineFormatter">\Monolog\Formatter\LineFormatter</namespace-alias>
+    <namespace-alias name="ErrorLogHandler">\Monolog\Handler\ErrorLogHandler</namespace-alias>
+    <namespace-alias name="RotatingFileHandler">\Monolog\Handler\RotatingFileHandler</namespace-alias>
+    <namespace-alias name="Jsonable">\Illuminate\Contracts\Support\Jsonable</namespace-alias>
+    <namespace-alias name="Dispatcher">\Illuminate\Contracts\Events\Dispatcher</namespace-alias>
+    <namespace-alias name="Arrayable">\Illuminate\Contracts\Support\Arrayable</namespace-alias>
+    <namespace-alias name="PsrLoggerInterface">\Psr\Log\LoggerInterface</namespace-alias>
+    <namespace-alias name="LogContract">\Illuminate\Contracts\Logging\Log</namespace-alias>
+    <class final="false" abstract="false" namespace="Illuminate\Log" line="20" package="Default">
+      <extends/>
+      <implements>\Illuminate\Contracts\Logging\Log</implements>
+      <implements>\Psr\Log\LoggerInterface</implements>
+      <name>Writer</name>
+      <full_name>\Illuminate\Log\Writer</full_name>
+      <docblock line="20">
+        <description/>
+        <long-description/>
+        <tag name="package" line="20" description="Default"/>
+      </docblock>
+      <property static="false" visibility="protected" namespace="Illuminate\Log" line="27" package="Default">
+        <name>$monolog</name>
+        <full_name>\Illuminate\Log\Writer::monolog</full_name>
+        <default/>
+        <docblock line="27">
+          <description>The Monolog logger instance.</description>
+          <long-description/>
+          <tag name="var" line="27" description="" type="\Monolog\Logger" variable="">
+            <type>\Monolog\Logger</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" namespace="Illuminate\Log" line="34" package="Default">
+        <name>$dispatcher</name>
+        <full_name>\Illuminate\Log\Writer::dispatcher</full_name>
+        <default/>
+        <docblock line="34">
+          <description>The event dispatcher instance.</description>
+          <long-description/>
+          <tag name="var" line="34" description="" type="\Illuminate\Contracts\Events\Dispatcher" variable="">
+            <type>\Illuminate\Contracts\Events\Dispatcher</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" namespace="Illuminate\Log" line="41" package="Default">
+        <name>$levels</name>
+        <full_name>\Illuminate\Log\Writer::levels</full_name>
+        <default>array('debug' =&gt; \Monolog\Logger::DEBUG, 'info' =&gt; \Monolog\Logger::INFO, 'notice' =&gt; \Monolog\Logger::NOTICE, 'warning' =&gt; \Monolog\Logger::WARNING, 'error' =&gt; \Monolog\Logger::ERROR, 'critical' =&gt; \Monolog\Logger::CRITICAL, 'alert' =&gt; \Monolog\Logger::ALERT, 'emergency' =&gt; \Monolog\Logger::EMERGENCY)</default>
+        <docblock line="41">
+          <description>The Log levels.</description>
+          <long-description/>
+          <tag name="var" line="41" description="" type="array" variable="">
+            <type>array</type>
+          </tag>
+        </docblock>
+      </property>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Log" line="59" package="Default">
+        <name>__construct</name>
+        <full_name>\Illuminate\Log\Writer::__construct()</full_name>
+        <docblock line="59">
+          <description>Create a new log writer instance.</description>
+          <long-description/>
+          <tag name="param" line="59" description="" type="\Monolog\Logger" variable="$monolog">
+            <type>\Monolog\Logger</type>
+          </tag>
+          <tag name="param" line="59" description="" type="\Illuminate\Contracts\Events\Dispatcher" variable="$dispatcher">
+            <type>\Illuminate\Contracts\Events\Dispatcher</type>
+          </tag>
+          <tag name="return" line="59" description="" type="void">
+            <type>void</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$monolog</name>
+          <default/>
+          <type>\Monolog\Logger</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$dispatcher</name>
+          <default>null</default>
+          <type>\Illuminate\Contracts\Events\Dispatcher</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Log" line="75" package="Default">
+        <name>emergency</name>
+        <full_name>\Illuminate\Log\Writer::emergency()</full_name>
+        <docblock line="75">
+          <description>Log an emergency message to the logs.</description>
+          <long-description/>
+          <tag name="param" line="75" description="" type="string" variable="$message">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="75" description="" type="array" variable="$context">
+            <type>array</type>
+          </tag>
+          <tag name="return" line="75" description="" type="void">
+            <type>void</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$message</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$context</name>
+          <default>array()</default>
+          <type>array</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Log" line="87" package="Default">
+        <name>alert</name>
+        <full_name>\Illuminate\Log\Writer::alert()</full_name>
+        <docblock line="87">
+          <description>Log an alert message to the logs.</description>
+          <long-description/>
+          <tag name="param" line="87" description="" type="string" variable="$message">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="87" description="" type="array" variable="$context">
+            <type>array</type>
+          </tag>
+          <tag name="return" line="87" description="" type="void">
+            <type>void</type>
+          </tag>
+          <tag name="inherited_from" description="\Illuminate\Contracts\Logging\Log::alert()" refers="\Illuminate\Contracts\Logging\Log::alert()" link="/classes/Illuminate.Contracts.Logging.Log.html#method_alert"/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$message</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$context</name>
+          <default>array()</default>
+          <type>array</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Log" line="99" package="Default">
+        <name>critical</name>
+        <full_name>\Illuminate\Log\Writer::critical()</full_name>
+        <docblock line="99">
+          <description>Log a critical message to the logs.</description>
+          <long-description/>
+          <tag name="param" line="99" description="" type="string" variable="$message">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="99" description="" type="array" variable="$context">
+            <type>array</type>
+          </tag>
+          <tag name="return" line="99" description="" type="void">
+            <type>void</type>
+          </tag>
+          <tag name="inherited_from" description="\Illuminate\Contracts\Logging\Log::critical()" refers="\Illuminate\Contracts\Logging\Log::critical()" link="/classes/Illuminate.Contracts.Logging.Log.html#method_critical"/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$message</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$context</name>
+          <default>array()</default>
+          <type>array</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Log" line="111" package="Default">
+        <name>error</name>
+        <full_name>\Illuminate\Log\Writer::error()</full_name>
+        <docblock line="111">
+          <description>Log an error message to the logs.</description>
+          <long-description/>
+          <tag name="param" line="111" description="" type="string" variable="$message">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="111" description="" type="array" variable="$context">
+            <type>array</type>
+          </tag>
+          <tag name="return" line="111" description="" type="void">
+            <type>void</type>
+          </tag>
+          <tag name="inherited_from" description="\Illuminate\Contracts\Logging\Log::error()" refers="\Illuminate\Contracts\Logging\Log::error()" link="/classes/Illuminate.Contracts.Logging.Log.html#method_error"/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$message</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$context</name>
+          <default>array()</default>
+          <type>array</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Log" line="123" package="Default">
+        <name>warning</name>
+        <full_name>\Illuminate\Log\Writer::warning()</full_name>
+        <docblock line="123">
+          <description>Log a warning message to the logs.</description>
+          <long-description/>
+          <tag name="param" line="123" description="" type="string" variable="$message">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="123" description="" type="array" variable="$context">
+            <type>array</type>
+          </tag>
+          <tag name="return" line="123" description="" type="void">
+            <type>void</type>
+          </tag>
+          <tag name="inherited_from" description="\Illuminate\Contracts\Logging\Log::warning()" refers="\Illuminate\Contracts\Logging\Log::warning()" link="/classes/Illuminate.Contracts.Logging.Log.html#method_warning"/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$message</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$context</name>
+          <default>array()</default>
+          <type>array</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Log" line="135" package="Default">
+        <name>notice</name>
+        <full_name>\Illuminate\Log\Writer::notice()</full_name>
+        <docblock line="135">
+          <description>Log a notice to the logs.</description>
+          <long-description/>
+          <tag name="param" line="135" description="" type="string" variable="$message">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="135" description="" type="array" variable="$context">
+            <type>array</type>
+          </tag>
+          <tag name="return" line="135" description="" type="void">
+            <type>void</type>
+          </tag>
+          <tag name="inherited_from" description="\Illuminate\Contracts\Logging\Log::notice()" refers="\Illuminate\Contracts\Logging\Log::notice()" link="/classes/Illuminate.Contracts.Logging.Log.html#method_notice"/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$message</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$context</name>
+          <default>array()</default>
+          <type>array</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Log" line="147" package="Default">
+        <name>info</name>
+        <full_name>\Illuminate\Log\Writer::info()</full_name>
+        <docblock line="147">
+          <description>Log an informational message to the logs.</description>
+          <long-description/>
+          <tag name="param" line="147" description="" type="string" variable="$message">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="147" description="" type="array" variable="$context">
+            <type>array</type>
+          </tag>
+          <tag name="return" line="147" description="" type="void">
+            <type>void</type>
+          </tag>
+          <tag name="inherited_from" description="\Illuminate\Contracts\Logging\Log::info()" refers="\Illuminate\Contracts\Logging\Log::info()" link="/classes/Illuminate.Contracts.Logging.Log.html#method_info"/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$message</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$context</name>
+          <default>array()</default>
+          <type>array</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Log" line="159" package="Default">
+        <name>debug</name>
+        <full_name>\Illuminate\Log\Writer::debug()</full_name>
+        <docblock line="159">
+          <description>Log a debug message to the logs.</description>
+          <long-description/>
+          <tag name="param" line="159" description="" type="string" variable="$message">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="159" description="" type="array" variable="$context">
+            <type>array</type>
+          </tag>
+          <tag name="return" line="159" description="" type="void">
+            <type>void</type>
+          </tag>
+          <tag name="inherited_from" description="\Illuminate\Contracts\Logging\Log::debug()" refers="\Illuminate\Contracts\Logging\Log::debug()" link="/classes/Illuminate.Contracts.Logging.Log.html#method_debug"/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$message</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$context</name>
+          <default>array()</default>
+          <type>array</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Log" line="172" package="Default">
+        <name>log</name>
+        <full_name>\Illuminate\Log\Writer::log()</full_name>
+        <docblock line="172">
+          <description>Log a message to the logs.</description>
+          <long-description/>
+          <tag name="param" line="172" description="" type="string" variable="$level">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="172" description="" type="string" variable="$message">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="172" description="" type="array" variable="$context">
+            <type>array</type>
+          </tag>
+          <tag name="return" line="172" description="" type="void">
+            <type>void</type>
+          </tag>
+          <tag name="inherited_from" description="\Illuminate\Contracts\Logging\Log::log()" refers="\Illuminate\Contracts\Logging\Log::log()" link="/classes/Illuminate.Contracts.Logging.Log.html#method_log"/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$level</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$message</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$context</name>
+          <default>array()</default>
+          <type>array</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Log" line="185" package="Default">
+        <name>write</name>
+        <full_name>\Illuminate\Log\Writer::write()</full_name>
+        <docblock line="185">
+          <description>Dynamically pass log calls into the writer.</description>
+          <long-description/>
+          <tag name="param" line="185" description="" type="string" variable="$level">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="185" description="" type="string" variable="$message">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="185" description="" type="array" variable="$context">
+            <type>array</type>
+          </tag>
+          <tag name="return" line="185" description="" type="void">
+            <type>void</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$level</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$message</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$context</name>
+          <default>array()</default>
+          <type>array</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Log" line="198" package="Default">
+        <name>writeLog</name>
+        <full_name>\Illuminate\Log\Writer::writeLog()</full_name>
+        <docblock line="198">
+          <description>Write a message to Monolog.</description>
+          <long-description/>
+          <tag name="param" line="198" description="" type="string" variable="$level">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="198" description="" type="string" variable="$message">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="198" description="" type="array" variable="$context">
+            <type>array</type>
+          </tag>
+          <tag name="return" line="198" description="" type="void">
+            <type>void</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$level</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$message</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$context</name>
+          <default/>
+          <type>array</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Log" line="212" package="Default">
+        <name>useFiles</name>
+        <full_name>\Illuminate\Log\Writer::useFiles()</full_name>
+        <docblock line="212">
+          <description>Register a file log handler.</description>
+          <long-description/>
+          <tag name="param" line="212" description="" type="string" variable="$path">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="212" description="" type="string" variable="$level">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="212" description="" type="void">
+            <type>void</type>
+          </tag>
+          <tag name="inherited_from" description="\Illuminate\Contracts\Logging\Log::useFiles()" refers="\Illuminate\Contracts\Logging\Log::useFiles()" link="/classes/Illuminate.Contracts.Logging.Log.html#method_useFiles"/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$path</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$level</name>
+          <default>'debug'</default>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Log" line="227" package="Default">
+        <name>useDailyFiles</name>
+        <full_name>\Illuminate\Log\Writer::useDailyFiles()</full_name>
+        <docblock line="227">
+          <description>Register a daily file log handler.</description>
+          <long-description/>
+          <tag name="param" line="227" description="" type="string" variable="$path">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="227" description="" type="integer" variable="$days">
+            <type>integer</type>
+          </tag>
+          <tag name="param" line="227" description="" type="string" variable="$level">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="227" description="" type="void">
+            <type>void</type>
+          </tag>
+          <tag name="inherited_from" description="\Illuminate\Contracts\Logging\Log::useDailyFiles()" refers="\Illuminate\Contracts\Logging\Log::useDailyFiles()" link="/classes/Illuminate.Contracts.Logging.Log.html#method_useDailyFiles"/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$path</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$days</name>
+          <default>0</default>
+          <type>integer</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$level</name>
+          <default>'debug'</default>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Log" line="243" package="Default">
+        <name>useSyslog</name>
+        <full_name>\Illuminate\Log\Writer::useSyslog()</full_name>
+        <docblock line="243">
+          <description>Register a Syslog handler.</description>
+          <long-description/>
+          <tag name="param" line="243" description="" type="string" variable="$name">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="243" description="" type="string" variable="$level">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="243" description="" type="\Psr\Log\LoggerInterface">
+            <type>\Psr\Log\LoggerInterface</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$name</name>
+          <default>'laravel'</default>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$level</name>
+          <default>'debug'</default>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Log" line="255" package="Default">
+        <name>useErrorLog</name>
+        <full_name>\Illuminate\Log\Writer::useErrorLog()</full_name>
+        <docblock line="255">
+          <description>Register an error_log handler.</description>
+          <long-description/>
+          <tag name="param" line="255" description="" type="string" variable="$level">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="255" description="" type="integer" variable="$messageType">
+            <type>integer</type>
+          </tag>
+          <tag name="return" line="255" description="" type="void">
+            <type>void</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$level</name>
+          <default>'debug'</default>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$messageType</name>
+          <default>\Monolog\Handler\ErrorLogHandler::OPERATING_SYSTEM</default>
+          <type>integer</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Log" line="272" package="Default">
+        <name>listen</name>
+        <full_name>\Illuminate\Log\Writer::listen()</full_name>
+        <docblock line="272">
+          <description>Register a new callback handler for when a log event is triggered.</description>
+          <long-description/>
+          <tag name="param" line="272" description="" type="\Closure" variable="$callback">
+            <type>\Closure</type>
+          </tag>
+          <tag name="return" line="272" description="" type="void">
+            <type>void</type>
+          </tag>
+          <tag name="throws" line="272" description="" type="\RuntimeException">
+            <type>\RuntimeException</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$callback</name>
+          <default/>
+          <type>\Closure</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Log" line="289" package="Default">
+        <name>fireLogEvent</name>
+        <full_name>\Illuminate\Log\Writer::fireLogEvent()</full_name>
+        <docblock line="289">
+          <description>Fires a log event.</description>
+          <long-description/>
+          <tag name="param" line="289" description="" type="string" variable="$level">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="289" description="" type="string" variable="$message">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="289" description="" type="array" variable="$context">
+            <type>array</type>
+          </tag>
+          <tag name="return" line="289" description="" type="void">
+            <type>void</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$level</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$message</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$context</name>
+          <default>array()</default>
+          <type>array</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Log" line="305" package="Default">
+        <name>formatMessage</name>
+        <full_name>\Illuminate\Log\Writer::formatMessage()</full_name>
+        <docblock line="305">
+          <description>Format the parameters for the logger.</description>
+          <long-description/>
+          <tag name="param" line="305" description="" type="mixed" variable="$message">
+            <type>mixed</type>
+          </tag>
+          <tag name="return" line="305" description="" type="mixed">
+            <type>mixed</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$message</name>
+          <default/>
+          <type>mixed</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Log" line="326" package="Default">
+        <name>parseLevel</name>
+        <full_name>\Illuminate\Log\Writer::parseLevel()</full_name>
+        <docblock line="326">
+          <description>Parse the string level into a Monolog constant.</description>
+          <long-description/>
+          <tag name="param" line="326" description="" type="string" variable="$level">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="326" description="" type="integer">
+            <type>integer</type>
+          </tag>
+          <tag name="throws" line="326" description="" type="\InvalidArgumentException">
+            <type>\InvalidArgumentException</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$level</name>
+          <default/>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Log" line="340" package="Default">
+        <name>getMonolog</name>
+        <full_name>\Illuminate\Log\Writer::getMonolog()</full_name>
+        <docblock line="340">
+          <description>Get the underlying Monolog instance.</description>
+          <long-description/>
+          <tag name="return" line="340" description="" type="\Monolog\Logger">
+            <type>\Monolog\Logger</type>
+          </tag>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Log" line="350" package="Default">
+        <name>getDefaultFormatter</name>
+        <full_name>\Illuminate\Log\Writer::getDefaultFormatter()</full_name>
+        <docblock line="350">
+          <description>Get a default Monolog formatter instance.</description>
+          <long-description/>
+          <tag name="return" line="350" description="" type="\Monolog\Formatter\LineFormatter">
+            <type>\Monolog\Formatter\LineFormatter</type>
+          </tag>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Log" line="360" package="Default">
+        <name>getEventDispatcher</name>
+        <full_name>\Illuminate\Log\Writer::getEventDispatcher()</full_name>
+        <docblock line="360">
+          <description>Get the event dispatcher instance.</description>
+          <long-description/>
+          <tag name="return" line="360" description="" type="\Illuminate\Contracts\Events\Dispatcher">
+            <type>\Illuminate\Contracts\Events\Dispatcher</type>
+          </tag>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Log" line="371" package="Default">
+        <name>setEventDispatcher</name>
+        <full_name>\Illuminate\Log\Writer::setEventDispatcher()</full_name>
+        <docblock line="371">
+          <description>Set the event dispatcher instance.</description>
+          <long-description/>
+          <tag name="param" line="371" description="" type="\Illuminate\Contracts\Events\Dispatcher" variable="$dispatcher">
+            <type>\Illuminate\Contracts\Events\Dispatcher</type>
+          </tag>
+          <tag name="return" line="371" description="" type="void">
+            <type>void</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$dispatcher</name>
+          <default/>
+          <type>\Illuminate\Contracts\Events\Dispatcher</type>
+        </argument>
+      </method>
+    </class>
+    <parse_markers>
+      <error line="0" code="PPC:ERR-50000">No summary was found for this file</error>
+      <error line="20" code="PPC:ERR-50005">No summary for class \Illuminate\Log\Writer</error>
+    </parse_markers>
+    <source>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</source>
+  <type>class</type></file>

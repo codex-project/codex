@@ -1,0 +1,1808 @@
+<file path="codex/vendor/laravel/framework/src/Illuminate/Database/Schema/Blueprint.php" generated-path="codex.vendor.laravel.framework.src.Illuminate.Database.Schema.Blueprint.html" hash="12c9c919c91602a005366491caf98c87" package="Default">
+    <docblock line="0">
+      <description/>
+      <long-description/>
+      <tag name="package" line="0" description="Default"/>
+    </docblock>
+    <namespace-alias name="Closure">\Closure</namespace-alias>
+    <namespace-alias name="Fluent">\Illuminate\Support\Fluent</namespace-alias>
+    <namespace-alias name="Connection">\Illuminate\Database\Connection</namespace-alias>
+    <namespace-alias name="Grammar">\Illuminate\Database\Schema\Grammars\Grammar</namespace-alias>
+    <class final="false" abstract="false" namespace="Illuminate\Database\Schema" line="10" package="Default">
+      <extends/>
+      <name>Blueprint</name>
+      <full_name>\Illuminate\Database\Schema\Blueprint</full_name>
+      <docblock line="10">
+        <description/>
+        <long-description/>
+        <tag name="package" line="10" description="Default"/>
+      </docblock>
+      <property static="false" visibility="protected" namespace="Illuminate\Database\Schema" line="17" package="Default">
+        <name>$table</name>
+        <full_name>\Illuminate\Database\Schema\Blueprint::table</full_name>
+        <default/>
+        <docblock line="17">
+          <description>The table the blueprint describes.</description>
+          <long-description/>
+          <tag name="var" line="17" description="" type="string" variable="">
+            <type>string</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" namespace="Illuminate\Database\Schema" line="24" package="Default">
+        <name>$columns</name>
+        <full_name>\Illuminate\Database\Schema\Blueprint::columns</full_name>
+        <default>array()</default>
+        <docblock line="24">
+          <description>The columns that should be added to the table.</description>
+          <long-description/>
+          <tag name="var" line="24" description="" type="array" variable="">
+            <type>array</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" namespace="Illuminate\Database\Schema" line="31" package="Default">
+        <name>$commands</name>
+        <full_name>\Illuminate\Database\Schema\Blueprint::commands</full_name>
+        <default>array()</default>
+        <docblock line="31">
+          <description>The commands that should be run for the table.</description>
+          <long-description/>
+          <tag name="var" line="31" description="" type="array" variable="">
+            <type>array</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="false" visibility="public" namespace="Illuminate\Database\Schema" line="38" package="Default">
+        <name>$engine</name>
+        <full_name>\Illuminate\Database\Schema\Blueprint::engine</full_name>
+        <default/>
+        <docblock line="38">
+          <description>The storage engine that should be used for the table.</description>
+          <long-description/>
+          <tag name="var" line="38" description="" type="string" variable="">
+            <type>string</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="false" visibility="public" namespace="Illuminate\Database\Schema" line="43" package="Default">
+        <name>$charset</name>
+        <full_name>\Illuminate\Database\Schema\Blueprint::charset</full_name>
+        <default/>
+        <docblock line="43">
+          <description>The default character set that should be used for the table.</description>
+          <long-description/>
+        </docblock>
+      </property>
+      <property static="false" visibility="public" namespace="Illuminate\Database\Schema" line="48" package="Default">
+        <name>$collation</name>
+        <full_name>\Illuminate\Database\Schema\Blueprint::collation</full_name>
+        <default/>
+        <docblock line="48">
+          <description>The collation that should be used for the table.</description>
+          <long-description/>
+        </docblock>
+      </property>
+      <property static="false" visibility="public" namespace="Illuminate\Database\Schema" line="55" package="Default">
+        <name>$temporary</name>
+        <full_name>\Illuminate\Database\Schema\Blueprint::temporary</full_name>
+        <default>false</default>
+        <docblock line="55">
+          <description>Whether to make the table temporary.</description>
+          <long-description/>
+          <tag name="var" line="55" description="" type="boolean" variable="">
+            <type>boolean</type>
+          </tag>
+        </docblock>
+      </property>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Schema" line="64" package="Default">
+        <name>__construct</name>
+        <full_name>\Illuminate\Database\Schema\Blueprint::__construct()</full_name>
+        <docblock line="64">
+          <description>Create a new schema blueprint.</description>
+          <long-description/>
+          <tag name="param" line="64" description="" type="string" variable="$table">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="64" description="" type="\Closure|null" variable="$callback">
+            <type>\Closure</type>
+            <type>null</type>
+          </tag>
+          <tag name="return" line="64" description="" type="void">
+            <type>void</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$table</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$callback</name>
+          <default>null</default>
+          <type>\Closure|null</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Schema" line="80" package="Default">
+        <name>build</name>
+        <full_name>\Illuminate\Database\Schema\Blueprint::build()</full_name>
+        <docblock line="80">
+          <description>Execute the blueprint against the database.</description>
+          <long-description/>
+          <tag name="param" line="80" description="" type="\Illuminate\Database\Connection" variable="$connection">
+            <type>\Illuminate\Database\Connection</type>
+          </tag>
+          <tag name="param" line="80" description="" type="\Illuminate\Database\Schema\Grammars\Grammar" variable="$grammar">
+            <type>\Illuminate\Database\Schema\Grammars\Grammar</type>
+          </tag>
+          <tag name="return" line="80" description="" type="void">
+            <type>void</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$connection</name>
+          <default/>
+          <type>\Illuminate\Database\Connection</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$grammar</name>
+          <default/>
+          <type>\Illuminate\Database\Schema\Grammars\Grammar</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Schema" line="94" package="Default">
+        <name>toSql</name>
+        <full_name>\Illuminate\Database\Schema\Blueprint::toSql()</full_name>
+        <docblock line="94">
+          <description>Get the raw SQL statements for the blueprint.</description>
+          <long-description/>
+          <tag name="param" line="94" description="" type="\Illuminate\Database\Connection" variable="$connection">
+            <type>\Illuminate\Database\Connection</type>
+          </tag>
+          <tag name="param" line="94" description="" type="\Illuminate\Database\Schema\Grammars\Grammar" variable="$grammar">
+            <type>\Illuminate\Database\Schema\Grammars\Grammar</type>
+          </tag>
+          <tag name="return" line="94" description="" type="array">
+            <type>array</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$connection</name>
+          <default/>
+          <type>\Illuminate\Database\Connection</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$grammar</name>
+          <default/>
+          <type>\Illuminate\Database\Schema\Grammars\Grammar</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Database\Schema" line="121" package="Default">
+        <name>addImpliedCommands</name>
+        <full_name>\Illuminate\Database\Schema\Blueprint::addImpliedCommands()</full_name>
+        <docblock line="121">
+          <description>Add the commands that are implied by the blueprint.</description>
+          <long-description/>
+          <tag name="return" line="121" description="" type="void">
+            <type>void</type>
+          </tag>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Database\Schema" line="139" package="Default">
+        <name>addFluentIndexes</name>
+        <full_name>\Illuminate\Database\Schema\Blueprint::addFluentIndexes()</full_name>
+        <docblock line="139">
+          <description>Add the index commands fluently specified on columns.</description>
+          <long-description/>
+          <tag name="return" line="139" description="" type="void">
+            <type>void</type>
+          </tag>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Database\Schema" line="169" package="Default">
+        <name>creating</name>
+        <full_name>\Illuminate\Database\Schema\Blueprint::creating()</full_name>
+        <docblock line="169">
+          <description>Determine if the blueprint has a create command.</description>
+          <long-description/>
+          <tag name="return" line="169" description="" type="boolean">
+            <type>boolean</type>
+          </tag>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Schema" line="185" package="Default">
+        <name>create</name>
+        <full_name>\Illuminate\Database\Schema\Blueprint::create()</full_name>
+        <docblock line="185">
+          <description>Indicate that the table needs to be created.</description>
+          <long-description/>
+          <tag name="return" line="185" description="" type="\Illuminate\Support\Fluent">
+            <type>\Illuminate\Support\Fluent</type>
+          </tag>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Schema" line="195" package="Default">
+        <name>temporary</name>
+        <full_name>\Illuminate\Database\Schema\Blueprint::temporary()</full_name>
+        <docblock line="195">
+          <description>Indicate that the table needs to be temporary.</description>
+          <long-description/>
+          <tag name="return" line="195" description="" type="void">
+            <type>void</type>
+          </tag>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Schema" line="205" package="Default">
+        <name>drop</name>
+        <full_name>\Illuminate\Database\Schema\Blueprint::drop()</full_name>
+        <docblock line="205">
+          <description>Indicate that the table should be dropped.</description>
+          <long-description/>
+          <tag name="return" line="205" description="" type="\Illuminate\Support\Fluent">
+            <type>\Illuminate\Support\Fluent</type>
+          </tag>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Schema" line="215" package="Default">
+        <name>dropIfExists</name>
+        <full_name>\Illuminate\Database\Schema\Blueprint::dropIfExists()</full_name>
+        <docblock line="215">
+          <description>Indicate that the table should be dropped if it exists.</description>
+          <long-description/>
+          <tag name="return" line="215" description="" type="\Illuminate\Support\Fluent">
+            <type>\Illuminate\Support\Fluent</type>
+          </tag>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Schema" line="226" package="Default">
+        <name>dropColumn</name>
+        <full_name>\Illuminate\Database\Schema\Blueprint::dropColumn()</full_name>
+        <docblock line="226">
+          <description>Indicate that the given columns should be dropped.</description>
+          <long-description/>
+          <tag name="param" line="226" description="" type="array|mixed" variable="$columns">
+            <type>array</type>
+            <type>mixed</type>
+          </tag>
+          <tag name="return" line="226" description="" type="\Illuminate\Support\Fluent">
+            <type>\Illuminate\Support\Fluent</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$columns</name>
+          <default/>
+          <type>array|mixed</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Schema" line="240" package="Default">
+        <name>renameColumn</name>
+        <full_name>\Illuminate\Database\Schema\Blueprint::renameColumn()</full_name>
+        <docblock line="240">
+          <description>Indicate that the given columns should be renamed.</description>
+          <long-description/>
+          <tag name="param" line="240" description="" type="string" variable="$from">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="240" description="" type="string" variable="$to">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="240" description="" type="\Illuminate\Support\Fluent">
+            <type>\Illuminate\Support\Fluent</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$from</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$to</name>
+          <default/>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Schema" line="251" package="Default">
+        <name>dropPrimary</name>
+        <full_name>\Illuminate\Database\Schema\Blueprint::dropPrimary()</full_name>
+        <docblock line="251">
+          <description>Indicate that the given primary key should be dropped.</description>
+          <long-description/>
+          <tag name="param" line="251" description="" type="string|array" variable="$index">
+            <type>string</type>
+            <type>array</type>
+          </tag>
+          <tag name="return" line="251" description="" type="\Illuminate\Support\Fluent">
+            <type>\Illuminate\Support\Fluent</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$index</name>
+          <default>null</default>
+          <type>string|array</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Schema" line="262" package="Default">
+        <name>dropUnique</name>
+        <full_name>\Illuminate\Database\Schema\Blueprint::dropUnique()</full_name>
+        <docblock line="262">
+          <description>Indicate that the given unique key should be dropped.</description>
+          <long-description/>
+          <tag name="param" line="262" description="" type="string|array" variable="$index">
+            <type>string</type>
+            <type>array</type>
+          </tag>
+          <tag name="return" line="262" description="" type="\Illuminate\Support\Fluent">
+            <type>\Illuminate\Support\Fluent</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$index</name>
+          <default/>
+          <type>string|array</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Schema" line="273" package="Default">
+        <name>dropIndex</name>
+        <full_name>\Illuminate\Database\Schema\Blueprint::dropIndex()</full_name>
+        <docblock line="273">
+          <description>Indicate that the given index should be dropped.</description>
+          <long-description/>
+          <tag name="param" line="273" description="" type="string|array" variable="$index">
+            <type>string</type>
+            <type>array</type>
+          </tag>
+          <tag name="return" line="273" description="" type="\Illuminate\Support\Fluent">
+            <type>\Illuminate\Support\Fluent</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$index</name>
+          <default/>
+          <type>string|array</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Schema" line="284" package="Default">
+        <name>dropForeign</name>
+        <full_name>\Illuminate\Database\Schema\Blueprint::dropForeign()</full_name>
+        <docblock line="284">
+          <description>Indicate that the given foreign key should be dropped.</description>
+          <long-description/>
+          <tag name="param" line="284" description="" type="string|array" variable="$index">
+            <type>string</type>
+            <type>array</type>
+          </tag>
+          <tag name="return" line="284" description="" type="\Illuminate\Support\Fluent">
+            <type>\Illuminate\Support\Fluent</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$index</name>
+          <default/>
+          <type>string|array</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Schema" line="294" package="Default">
+        <name>dropTimestamps</name>
+        <full_name>\Illuminate\Database\Schema\Blueprint::dropTimestamps()</full_name>
+        <docblock line="294">
+          <description>Indicate that the timestamp columns should be dropped.</description>
+          <long-description/>
+          <tag name="return" line="294" description="" type="void">
+            <type>void</type>
+          </tag>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Schema" line="304" package="Default">
+        <name>dropTimestampsTz</name>
+        <full_name>\Illuminate\Database\Schema\Blueprint::dropTimestampsTz()</full_name>
+        <docblock line="304">
+          <description>Indicate that the timestamp columns should be dropped.</description>
+          <long-description/>
+          <tag name="return" line="304" description="" type="void">
+            <type>void</type>
+          </tag>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Schema" line="314" package="Default">
+        <name>dropSoftDeletes</name>
+        <full_name>\Illuminate\Database\Schema\Blueprint::dropSoftDeletes()</full_name>
+        <docblock line="314">
+          <description>Indicate that the soft delete column should be dropped.</description>
+          <long-description/>
+          <tag name="return" line="314" description="" type="void">
+            <type>void</type>
+          </tag>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Schema" line="324" package="Default">
+        <name>dropRememberToken</name>
+        <full_name>\Illuminate\Database\Schema\Blueprint::dropRememberToken()</full_name>
+        <docblock line="324">
+          <description>Indicate that the remember token column should be dropped.</description>
+          <long-description/>
+          <tag name="return" line="324" description="" type="void">
+            <type>void</type>
+          </tag>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Schema" line="335" package="Default">
+        <name>rename</name>
+        <full_name>\Illuminate\Database\Schema\Blueprint::rename()</full_name>
+        <docblock line="335">
+          <description>Rename the table to a given name.</description>
+          <long-description/>
+          <tag name="param" line="335" description="" type="string" variable="$to">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="335" description="" type="\Illuminate\Support\Fluent">
+            <type>\Illuminate\Support\Fluent</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$to</name>
+          <default/>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Schema" line="347" package="Default">
+        <name>primary</name>
+        <full_name>\Illuminate\Database\Schema\Blueprint::primary()</full_name>
+        <docblock line="347">
+          <description>Specify the primary key(s) for the table.</description>
+          <long-description/>
+          <tag name="param" line="347" description="" type="string|array" variable="$columns">
+            <type>string</type>
+            <type>array</type>
+          </tag>
+          <tag name="param" line="347" description="" type="string" variable="$name">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="347" description="" type="\Illuminate\Support\Fluent">
+            <type>\Illuminate\Support\Fluent</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$columns</name>
+          <default/>
+          <type>string|array</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$name</name>
+          <default>null</default>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Schema" line="359" package="Default">
+        <name>unique</name>
+        <full_name>\Illuminate\Database\Schema\Blueprint::unique()</full_name>
+        <docblock line="359">
+          <description>Specify a unique index for the table.</description>
+          <long-description/>
+          <tag name="param" line="359" description="" type="string|array" variable="$columns">
+            <type>string</type>
+            <type>array</type>
+          </tag>
+          <tag name="param" line="359" description="" type="string" variable="$name">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="359" description="" type="\Illuminate\Support\Fluent">
+            <type>\Illuminate\Support\Fluent</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$columns</name>
+          <default/>
+          <type>string|array</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$name</name>
+          <default>null</default>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Schema" line="371" package="Default">
+        <name>index</name>
+        <full_name>\Illuminate\Database\Schema\Blueprint::index()</full_name>
+        <docblock line="371">
+          <description>Specify an index for the table.</description>
+          <long-description/>
+          <tag name="param" line="371" description="" type="string|array" variable="$columns">
+            <type>string</type>
+            <type>array</type>
+          </tag>
+          <tag name="param" line="371" description="" type="string" variable="$name">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="371" description="" type="\Illuminate\Support\Fluent">
+            <type>\Illuminate\Support\Fluent</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$columns</name>
+          <default/>
+          <type>string|array</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$name</name>
+          <default>null</default>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Schema" line="383" package="Default">
+        <name>foreign</name>
+        <full_name>\Illuminate\Database\Schema\Blueprint::foreign()</full_name>
+        <docblock line="383">
+          <description>Specify a foreign key for the table.</description>
+          <long-description/>
+          <tag name="param" line="383" description="" type="string|array" variable="$columns">
+            <type>string</type>
+            <type>array</type>
+          </tag>
+          <tag name="param" line="383" description="" type="string" variable="$name">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="383" description="" type="\Illuminate\Support\Fluent">
+            <type>\Illuminate\Support\Fluent</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$columns</name>
+          <default/>
+          <type>string|array</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$name</name>
+          <default>null</default>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Schema" line="394" package="Default">
+        <name>increments</name>
+        <full_name>\Illuminate\Database\Schema\Blueprint::increments()</full_name>
+        <docblock line="394">
+          <description>Create a new auto-incrementing integer (4-byte) column on the table.</description>
+          <long-description/>
+          <tag name="param" line="394" description="" type="string" variable="$column">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="394" description="" type="\Illuminate\Support\Fluent">
+            <type>\Illuminate\Support\Fluent</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$column</name>
+          <default/>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Schema" line="405" package="Default">
+        <name>smallIncrements</name>
+        <full_name>\Illuminate\Database\Schema\Blueprint::smallIncrements()</full_name>
+        <docblock line="405">
+          <description>Create a new auto-incrementing small integer (2-byte) column on the table.</description>
+          <long-description/>
+          <tag name="param" line="405" description="" type="string" variable="$column">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="405" description="" type="\Illuminate\Support\Fluent">
+            <type>\Illuminate\Support\Fluent</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$column</name>
+          <default/>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Schema" line="416" package="Default">
+        <name>mediumIncrements</name>
+        <full_name>\Illuminate\Database\Schema\Blueprint::mediumIncrements()</full_name>
+        <docblock line="416">
+          <description>Create a new auto-incrementing medium integer (3-byte) column on the table.</description>
+          <long-description/>
+          <tag name="param" line="416" description="" type="string" variable="$column">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="416" description="" type="\Illuminate\Support\Fluent">
+            <type>\Illuminate\Support\Fluent</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$column</name>
+          <default/>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Schema" line="427" package="Default">
+        <name>bigIncrements</name>
+        <full_name>\Illuminate\Database\Schema\Blueprint::bigIncrements()</full_name>
+        <docblock line="427">
+          <description>Create a new auto-incrementing big integer (8-byte) column on the table.</description>
+          <long-description/>
+          <tag name="param" line="427" description="" type="string" variable="$column">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="427" description="" type="\Illuminate\Support\Fluent">
+            <type>\Illuminate\Support\Fluent</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$column</name>
+          <default/>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Schema" line="439" package="Default">
+        <name>char</name>
+        <full_name>\Illuminate\Database\Schema\Blueprint::char()</full_name>
+        <docblock line="439">
+          <description>Create a new char column on the table.</description>
+          <long-description/>
+          <tag name="param" line="439" description="" type="string" variable="$column">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="439" description="" type="integer" variable="$length">
+            <type>integer</type>
+          </tag>
+          <tag name="return" line="439" description="" type="\Illuminate\Support\Fluent">
+            <type>\Illuminate\Support\Fluent</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$column</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$length</name>
+          <default>255</default>
+          <type>integer</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Schema" line="451" package="Default">
+        <name>string</name>
+        <full_name>\Illuminate\Database\Schema\Blueprint::string()</full_name>
+        <docblock line="451">
+          <description>Create a new string column on the table.</description>
+          <long-description/>
+          <tag name="param" line="451" description="" type="string" variable="$column">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="451" description="" type="integer" variable="$length">
+            <type>integer</type>
+          </tag>
+          <tag name="return" line="451" description="" type="\Illuminate\Support\Fluent">
+            <type>\Illuminate\Support\Fluent</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$column</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$length</name>
+          <default>255</default>
+          <type>integer</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Schema" line="462" package="Default">
+        <name>text</name>
+        <full_name>\Illuminate\Database\Schema\Blueprint::text()</full_name>
+        <docblock line="462">
+          <description>Create a new text column on the table.</description>
+          <long-description/>
+          <tag name="param" line="462" description="" type="string" variable="$column">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="462" description="" type="\Illuminate\Support\Fluent">
+            <type>\Illuminate\Support\Fluent</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$column</name>
+          <default/>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Schema" line="473" package="Default">
+        <name>mediumText</name>
+        <full_name>\Illuminate\Database\Schema\Blueprint::mediumText()</full_name>
+        <docblock line="473">
+          <description>Create a new medium text column on the table.</description>
+          <long-description/>
+          <tag name="param" line="473" description="" type="string" variable="$column">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="473" description="" type="\Illuminate\Support\Fluent">
+            <type>\Illuminate\Support\Fluent</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$column</name>
+          <default/>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Schema" line="484" package="Default">
+        <name>longText</name>
+        <full_name>\Illuminate\Database\Schema\Blueprint::longText()</full_name>
+        <docblock line="484">
+          <description>Create a new long text column on the table.</description>
+          <long-description/>
+          <tag name="param" line="484" description="" type="string" variable="$column">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="484" description="" type="\Illuminate\Support\Fluent">
+            <type>\Illuminate\Support\Fluent</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$column</name>
+          <default/>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Schema" line="497" package="Default">
+        <name>integer</name>
+        <full_name>\Illuminate\Database\Schema\Blueprint::integer()</full_name>
+        <docblock line="497">
+          <description>Create a new integer (4-byte) column on the table.</description>
+          <long-description/>
+          <tag name="param" line="497" description="" type="string" variable="$column">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="497" description="" type="boolean" variable="$autoIncrement">
+            <type>boolean</type>
+          </tag>
+          <tag name="param" line="497" description="" type="boolean" variable="$unsigned">
+            <type>boolean</type>
+          </tag>
+          <tag name="return" line="497" description="" type="\Illuminate\Support\Fluent">
+            <type>\Illuminate\Support\Fluent</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$column</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$autoIncrement</name>
+          <default>false</default>
+          <type>boolean</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$unsigned</name>
+          <default>false</default>
+          <type>boolean</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Schema" line="510" package="Default">
+        <name>tinyInteger</name>
+        <full_name>\Illuminate\Database\Schema\Blueprint::tinyInteger()</full_name>
+        <docblock line="510">
+          <description>Create a new tiny integer (1-byte) column on the table.</description>
+          <long-description/>
+          <tag name="param" line="510" description="" type="string" variable="$column">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="510" description="" type="boolean" variable="$autoIncrement">
+            <type>boolean</type>
+          </tag>
+          <tag name="param" line="510" description="" type="boolean" variable="$unsigned">
+            <type>boolean</type>
+          </tag>
+          <tag name="return" line="510" description="" type="\Illuminate\Support\Fluent">
+            <type>\Illuminate\Support\Fluent</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$column</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$autoIncrement</name>
+          <default>false</default>
+          <type>boolean</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$unsigned</name>
+          <default>false</default>
+          <type>boolean</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Schema" line="523" package="Default">
+        <name>smallInteger</name>
+        <full_name>\Illuminate\Database\Schema\Blueprint::smallInteger()</full_name>
+        <docblock line="523">
+          <description>Create a new small integer (2-byte) column on the table.</description>
+          <long-description/>
+          <tag name="param" line="523" description="" type="string" variable="$column">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="523" description="" type="boolean" variable="$autoIncrement">
+            <type>boolean</type>
+          </tag>
+          <tag name="param" line="523" description="" type="boolean" variable="$unsigned">
+            <type>boolean</type>
+          </tag>
+          <tag name="return" line="523" description="" type="\Illuminate\Support\Fluent">
+            <type>\Illuminate\Support\Fluent</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$column</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$autoIncrement</name>
+          <default>false</default>
+          <type>boolean</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$unsigned</name>
+          <default>false</default>
+          <type>boolean</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Schema" line="536" package="Default">
+        <name>mediumInteger</name>
+        <full_name>\Illuminate\Database\Schema\Blueprint::mediumInteger()</full_name>
+        <docblock line="536">
+          <description>Create a new medium integer (3-byte) column on the table.</description>
+          <long-description/>
+          <tag name="param" line="536" description="" type="string" variable="$column">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="536" description="" type="boolean" variable="$autoIncrement">
+            <type>boolean</type>
+          </tag>
+          <tag name="param" line="536" description="" type="boolean" variable="$unsigned">
+            <type>boolean</type>
+          </tag>
+          <tag name="return" line="536" description="" type="\Illuminate\Support\Fluent">
+            <type>\Illuminate\Support\Fluent</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$column</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$autoIncrement</name>
+          <default>false</default>
+          <type>boolean</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$unsigned</name>
+          <default>false</default>
+          <type>boolean</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Schema" line="549" package="Default">
+        <name>bigInteger</name>
+        <full_name>\Illuminate\Database\Schema\Blueprint::bigInteger()</full_name>
+        <docblock line="549">
+          <description>Create a new big integer (8-byte) column on the table.</description>
+          <long-description/>
+          <tag name="param" line="549" description="" type="string" variable="$column">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="549" description="" type="boolean" variable="$autoIncrement">
+            <type>boolean</type>
+          </tag>
+          <tag name="param" line="549" description="" type="boolean" variable="$unsigned">
+            <type>boolean</type>
+          </tag>
+          <tag name="return" line="549" description="" type="\Illuminate\Support\Fluent">
+            <type>\Illuminate\Support\Fluent</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$column</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$autoIncrement</name>
+          <default>false</default>
+          <type>boolean</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$unsigned</name>
+          <default>false</default>
+          <type>boolean</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Schema" line="561" package="Default">
+        <name>unsignedTinyInteger</name>
+        <full_name>\Illuminate\Database\Schema\Blueprint::unsignedTinyInteger()</full_name>
+        <docblock line="561">
+          <description>Create a new unsigned tiny integer (1-byte) column on the table.</description>
+          <long-description/>
+          <tag name="param" line="561" description="" type="string" variable="$column">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="561" description="" type="boolean" variable="$autoIncrement">
+            <type>boolean</type>
+          </tag>
+          <tag name="return" line="561" description="" type="\Illuminate\Support\Fluent">
+            <type>\Illuminate\Support\Fluent</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$column</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$autoIncrement</name>
+          <default>false</default>
+          <type>boolean</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Schema" line="573" package="Default">
+        <name>unsignedSmallInteger</name>
+        <full_name>\Illuminate\Database\Schema\Blueprint::unsignedSmallInteger()</full_name>
+        <docblock line="573">
+          <description>Create a new unsigned small integer (2-byte) column on the table.</description>
+          <long-description/>
+          <tag name="param" line="573" description="" type="string" variable="$column">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="573" description="" type="boolean" variable="$autoIncrement">
+            <type>boolean</type>
+          </tag>
+          <tag name="return" line="573" description="" type="\Illuminate\Support\Fluent">
+            <type>\Illuminate\Support\Fluent</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$column</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$autoIncrement</name>
+          <default>false</default>
+          <type>boolean</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Schema" line="585" package="Default">
+        <name>unsignedMediumInteger</name>
+        <full_name>\Illuminate\Database\Schema\Blueprint::unsignedMediumInteger()</full_name>
+        <docblock line="585">
+          <description>Create a new unsigned medium integer (3-byte) column on the table.</description>
+          <long-description/>
+          <tag name="param" line="585" description="" type="string" variable="$column">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="585" description="" type="boolean" variable="$autoIncrement">
+            <type>boolean</type>
+          </tag>
+          <tag name="return" line="585" description="" type="\Illuminate\Support\Fluent">
+            <type>\Illuminate\Support\Fluent</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$column</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$autoIncrement</name>
+          <default>false</default>
+          <type>boolean</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Schema" line="597" package="Default">
+        <name>unsignedInteger</name>
+        <full_name>\Illuminate\Database\Schema\Blueprint::unsignedInteger()</full_name>
+        <docblock line="597">
+          <description>Create a new unsigned integer (4-byte) column on the table.</description>
+          <long-description/>
+          <tag name="param" line="597" description="" type="string" variable="$column">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="597" description="" type="boolean" variable="$autoIncrement">
+            <type>boolean</type>
+          </tag>
+          <tag name="return" line="597" description="" type="\Illuminate\Support\Fluent">
+            <type>\Illuminate\Support\Fluent</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$column</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$autoIncrement</name>
+          <default>false</default>
+          <type>boolean</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Schema" line="609" package="Default">
+        <name>unsignedBigInteger</name>
+        <full_name>\Illuminate\Database\Schema\Blueprint::unsignedBigInteger()</full_name>
+        <docblock line="609">
+          <description>Create a new unsigned big integer (8-byte) column on the table.</description>
+          <long-description/>
+          <tag name="param" line="609" description="" type="string" variable="$column">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="609" description="" type="boolean" variable="$autoIncrement">
+            <type>boolean</type>
+          </tag>
+          <tag name="return" line="609" description="" type="\Illuminate\Support\Fluent">
+            <type>\Illuminate\Support\Fluent</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$column</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$autoIncrement</name>
+          <default>false</default>
+          <type>boolean</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Schema" line="622" package="Default">
+        <name>float</name>
+        <full_name>\Illuminate\Database\Schema\Blueprint::float()</full_name>
+        <docblock line="622">
+          <description>Create a new float column on the table.</description>
+          <long-description/>
+          <tag name="param" line="622" description="" type="string" variable="$column">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="622" description="" type="integer" variable="$total">
+            <type>integer</type>
+          </tag>
+          <tag name="param" line="622" description="" type="integer" variable="$places">
+            <type>integer</type>
+          </tag>
+          <tag name="return" line="622" description="" type="\Illuminate\Support\Fluent">
+            <type>\Illuminate\Support\Fluent</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$column</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$total</name>
+          <default>8</default>
+          <type>integer</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$places</name>
+          <default>2</default>
+          <type>integer</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Schema" line="635" package="Default">
+        <name>double</name>
+        <full_name>\Illuminate\Database\Schema\Blueprint::double()</full_name>
+        <docblock line="635">
+          <description>Create a new double column on the table.</description>
+          <long-description/>
+          <tag name="param" line="635" description="" type="string" variable="$column">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="635" description="" type="integer|null" variable="$total">
+            <type>integer</type>
+            <type>null</type>
+          </tag>
+          <tag name="param" line="635" description="" type="integer|null" variable="$places">
+            <type>integer</type>
+            <type>null</type>
+          </tag>
+          <tag name="return" line="635" description="" type="\Illuminate\Support\Fluent">
+            <type>\Illuminate\Support\Fluent</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$column</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$total</name>
+          <default>null</default>
+          <type>integer|null</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$places</name>
+          <default>null</default>
+          <type>integer|null</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Schema" line="648" package="Default">
+        <name>decimal</name>
+        <full_name>\Illuminate\Database\Schema\Blueprint::decimal()</full_name>
+        <docblock line="648">
+          <description>Create a new decimal column on the table.</description>
+          <long-description/>
+          <tag name="param" line="648" description="" type="string" variable="$column">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="648" description="" type="integer" variable="$total">
+            <type>integer</type>
+          </tag>
+          <tag name="param" line="648" description="" type="integer" variable="$places">
+            <type>integer</type>
+          </tag>
+          <tag name="return" line="648" description="" type="\Illuminate\Support\Fluent">
+            <type>\Illuminate\Support\Fluent</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$column</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$total</name>
+          <default>8</default>
+          <type>integer</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$places</name>
+          <default>2</default>
+          <type>integer</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Schema" line="659" package="Default">
+        <name>boolean</name>
+        <full_name>\Illuminate\Database\Schema\Blueprint::boolean()</full_name>
+        <docblock line="659">
+          <description>Create a new boolean column on the table.</description>
+          <long-description/>
+          <tag name="param" line="659" description="" type="string" variable="$column">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="659" description="" type="\Illuminate\Support\Fluent">
+            <type>\Illuminate\Support\Fluent</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$column</name>
+          <default/>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Schema" line="671" package="Default">
+        <name>enum</name>
+        <full_name>\Illuminate\Database\Schema\Blueprint::enum()</full_name>
+        <docblock line="671">
+          <description>Create a new enum column on the table.</description>
+          <long-description/>
+          <tag name="param" line="671" description="" type="string" variable="$column">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="671" description="" type="array" variable="$allowed">
+            <type>array</type>
+          </tag>
+          <tag name="return" line="671" description="" type="\Illuminate\Support\Fluent">
+            <type>\Illuminate\Support\Fluent</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$column</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$allowed</name>
+          <default/>
+          <type>array</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Schema" line="682" package="Default">
+        <name>json</name>
+        <full_name>\Illuminate\Database\Schema\Blueprint::json()</full_name>
+        <docblock line="682">
+          <description>Create a new json column on the table.</description>
+          <long-description/>
+          <tag name="param" line="682" description="" type="string" variable="$column">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="682" description="" type="\Illuminate\Support\Fluent">
+            <type>\Illuminate\Support\Fluent</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$column</name>
+          <default/>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Schema" line="693" package="Default">
+        <name>jsonb</name>
+        <full_name>\Illuminate\Database\Schema\Blueprint::jsonb()</full_name>
+        <docblock line="693">
+          <description>Create a new jsonb column on the table.</description>
+          <long-description/>
+          <tag name="param" line="693" description="" type="string" variable="$column">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="693" description="" type="\Illuminate\Support\Fluent">
+            <type>\Illuminate\Support\Fluent</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$column</name>
+          <default/>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Schema" line="704" package="Default">
+        <name>date</name>
+        <full_name>\Illuminate\Database\Schema\Blueprint::date()</full_name>
+        <docblock line="704">
+          <description>Create a new date column on the table.</description>
+          <long-description/>
+          <tag name="param" line="704" description="" type="string" variable="$column">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="704" description="" type="\Illuminate\Support\Fluent">
+            <type>\Illuminate\Support\Fluent</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$column</name>
+          <default/>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Schema" line="715" package="Default">
+        <name>dateTime</name>
+        <full_name>\Illuminate\Database\Schema\Blueprint::dateTime()</full_name>
+        <docblock line="715">
+          <description>Create a new date-time column on the table.</description>
+          <long-description/>
+          <tag name="param" line="715" description="" type="string" variable="$column">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="715" description="" type="\Illuminate\Support\Fluent">
+            <type>\Illuminate\Support\Fluent</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$column</name>
+          <default/>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Schema" line="726" package="Default">
+        <name>dateTimeTz</name>
+        <full_name>\Illuminate\Database\Schema\Blueprint::dateTimeTz()</full_name>
+        <docblock line="726">
+          <description>Create a new date-time column (with time zone) on the table.</description>
+          <long-description/>
+          <tag name="param" line="726" description="" type="string" variable="$column">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="726" description="" type="\Illuminate\Support\Fluent">
+            <type>\Illuminate\Support\Fluent</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$column</name>
+          <default/>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Schema" line="737" package="Default">
+        <name>time</name>
+        <full_name>\Illuminate\Database\Schema\Blueprint::time()</full_name>
+        <docblock line="737">
+          <description>Create a new time column on the table.</description>
+          <long-description/>
+          <tag name="param" line="737" description="" type="string" variable="$column">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="737" description="" type="\Illuminate\Support\Fluent">
+            <type>\Illuminate\Support\Fluent</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$column</name>
+          <default/>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Schema" line="748" package="Default">
+        <name>timeTz</name>
+        <full_name>\Illuminate\Database\Schema\Blueprint::timeTz()</full_name>
+        <docblock line="748">
+          <description>Create a new time column (with time zone) on the table.</description>
+          <long-description/>
+          <tag name="param" line="748" description="" type="string" variable="$column">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="748" description="" type="\Illuminate\Support\Fluent">
+            <type>\Illuminate\Support\Fluent</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$column</name>
+          <default/>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Schema" line="759" package="Default">
+        <name>timestamp</name>
+        <full_name>\Illuminate\Database\Schema\Blueprint::timestamp()</full_name>
+        <docblock line="759">
+          <description>Create a new timestamp column on the table.</description>
+          <long-description/>
+          <tag name="param" line="759" description="" type="string" variable="$column">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="759" description="" type="\Illuminate\Support\Fluent">
+            <type>\Illuminate\Support\Fluent</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$column</name>
+          <default/>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Schema" line="770" package="Default">
+        <name>timestampTz</name>
+        <full_name>\Illuminate\Database\Schema\Blueprint::timestampTz()</full_name>
+        <docblock line="770">
+          <description>Create a new timestamp (with time zone) column on the table.</description>
+          <long-description/>
+          <tag name="param" line="770" description="" type="string" variable="$column">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="770" description="" type="\Illuminate\Support\Fluent">
+            <type>\Illuminate\Support\Fluent</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$column</name>
+          <default/>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Schema" line="782" package="Default">
+        <name>nullableTimestamps</name>
+        <full_name>\Illuminate\Database\Schema\Blueprint::nullableTimestamps()</full_name>
+        <docblock line="782">
+          <description>Add nullable creation and update timestamps to the table.</description>
+          <long-description>Alias for self::timestamps().</long-description>
+          <tag name="return" line="782" description="" type="void">
+            <type>void</type>
+          </tag>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Schema" line="792" package="Default">
+        <name>timestamps</name>
+        <full_name>\Illuminate\Database\Schema\Blueprint::timestamps()</full_name>
+        <docblock line="792">
+          <description>Add nullable creation and update timestamps to the table.</description>
+          <long-description/>
+          <tag name="return" line="792" description="" type="void">
+            <type>void</type>
+          </tag>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Schema" line="804" package="Default">
+        <name>timestampsTz</name>
+        <full_name>\Illuminate\Database\Schema\Blueprint::timestampsTz()</full_name>
+        <docblock line="804">
+          <description>Add creation and update timestampTz columns to the table.</description>
+          <long-description/>
+          <tag name="return" line="804" description="" type="void">
+            <type>void</type>
+          </tag>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Schema" line="816" package="Default">
+        <name>softDeletes</name>
+        <full_name>\Illuminate\Database\Schema\Blueprint::softDeletes()</full_name>
+        <docblock line="816">
+          <description>Add a "deleted at" timestamp for the table.</description>
+          <long-description/>
+          <tag name="return" line="816" description="" type="\Illuminate\Support\Fluent">
+            <type>\Illuminate\Support\Fluent</type>
+          </tag>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Schema" line="827" package="Default">
+        <name>binary</name>
+        <full_name>\Illuminate\Database\Schema\Blueprint::binary()</full_name>
+        <docblock line="827">
+          <description>Create a new binary column on the table.</description>
+          <long-description/>
+          <tag name="param" line="827" description="" type="string" variable="$column">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="827" description="" type="\Illuminate\Support\Fluent">
+            <type>\Illuminate\Support\Fluent</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$column</name>
+          <default/>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Schema" line="838" package="Default">
+        <name>uuid</name>
+        <full_name>\Illuminate\Database\Schema\Blueprint::uuid()</full_name>
+        <docblock line="838">
+          <description>Create a new uuid column on the table.</description>
+          <long-description/>
+          <tag name="param" line="838" description="" type="string" variable="$column">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="838" description="" type="\Illuminate\Support\Fluent">
+            <type>\Illuminate\Support\Fluent</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$column</name>
+          <default/>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Schema" line="849" package="Default">
+        <name>ipAddress</name>
+        <full_name>\Illuminate\Database\Schema\Blueprint::ipAddress()</full_name>
+        <docblock line="849">
+          <description>Create a new IP address column on the table.</description>
+          <long-description/>
+          <tag name="param" line="849" description="" type="string" variable="$column">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="849" description="" type="\Illuminate\Support\Fluent">
+            <type>\Illuminate\Support\Fluent</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$column</name>
+          <default/>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Schema" line="860" package="Default">
+        <name>macAddress</name>
+        <full_name>\Illuminate\Database\Schema\Blueprint::macAddress()</full_name>
+        <docblock line="860">
+          <description>Create a new MAC address column on the table.</description>
+          <long-description/>
+          <tag name="param" line="860" description="" type="string" variable="$column">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="860" description="" type="\Illuminate\Support\Fluent">
+            <type>\Illuminate\Support\Fluent</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$column</name>
+          <default/>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Schema" line="872" package="Default">
+        <name>morphs</name>
+        <full_name>\Illuminate\Database\Schema\Blueprint::morphs()</full_name>
+        <docblock line="872">
+          <description>Add the proper columns for a polymorphic table.</description>
+          <long-description/>
+          <tag name="param" line="872" description="" type="string" variable="$name">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="872" description="" type="string|null" variable="$indexName">
+            <type>string</type>
+            <type>null</type>
+          </tag>
+          <tag name="return" line="872" description="" type="void">
+            <type>void</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$name</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$indexName</name>
+          <default>null</default>
+          <type>string|null</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Schema" line="886" package="Default">
+        <name>rememberToken</name>
+        <full_name>\Illuminate\Database\Schema\Blueprint::rememberToken()</full_name>
+        <docblock line="886">
+          <description>Adds the `remember_token` column to the table.</description>
+          <long-description/>
+          <tag name="return" line="886" description="" type="\Illuminate\Support\Fluent">
+            <type>\Illuminate\Support\Fluent</type>
+          </tag>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Database\Schema" line="899" package="Default">
+        <name>dropIndexCommand</name>
+        <full_name>\Illuminate\Database\Schema\Blueprint::dropIndexCommand()</full_name>
+        <docblock line="899">
+          <description>Create a new drop index command on the blueprint.</description>
+          <long-description/>
+          <tag name="param" line="899" description="" type="string" variable="$command">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="899" description="" type="string" variable="$type">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="899" description="" type="string|array" variable="$index">
+            <type>string</type>
+            <type>array</type>
+          </tag>
+          <tag name="return" line="899" description="" type="\Illuminate\Support\Fluent">
+            <type>\Illuminate\Support\Fluent</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$command</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$type</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$index</name>
+          <default/>
+          <type>string|array</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Database\Schema" line="923" package="Default">
+        <name>indexCommand</name>
+        <full_name>\Illuminate\Database\Schema\Blueprint::indexCommand()</full_name>
+        <docblock line="923">
+          <description>Add a new index command to the blueprint.</description>
+          <long-description/>
+          <tag name="param" line="923" description="" type="string" variable="$type">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="923" description="" type="string|array" variable="$columns">
+            <type>string</type>
+            <type>array</type>
+          </tag>
+          <tag name="param" line="923" description="" type="string" variable="$index">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="923" description="" type="\Illuminate\Support\Fluent">
+            <type>\Illuminate\Support\Fluent</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$type</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$columns</name>
+          <default/>
+          <type>string|array</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$index</name>
+          <default/>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Database\Schema" line="944" package="Default">
+        <name>createIndexName</name>
+        <full_name>\Illuminate\Database\Schema\Blueprint::createIndexName()</full_name>
+        <docblock line="944">
+          <description>Create a default index name for the table.</description>
+          <long-description/>
+          <tag name="param" line="944" description="" type="string" variable="$type">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="944" description="" type="array" variable="$columns">
+            <type>array</type>
+          </tag>
+          <tag name="return" line="944" description="" type="string">
+            <type>string</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$type</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$columns</name>
+          <default/>
+          <type>array</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Schema" line="959" package="Default">
+        <name>addColumn</name>
+        <full_name>\Illuminate\Database\Schema\Blueprint::addColumn()</full_name>
+        <docblock line="959">
+          <description>Add a new column to the blueprint.</description>
+          <long-description/>
+          <tag name="param" line="959" description="" type="string" variable="$type">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="959" description="" type="string" variable="$name">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="959" description="" type="array" variable="$parameters">
+            <type>array</type>
+          </tag>
+          <tag name="return" line="959" description="" type="\Illuminate\Support\Fluent">
+            <type>\Illuminate\Support\Fluent</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$type</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$name</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$parameters</name>
+          <default>array()</default>
+          <type>array</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Schema" line="974" package="Default">
+        <name>removeColumn</name>
+        <full_name>\Illuminate\Database\Schema\Blueprint::removeColumn()</full_name>
+        <docblock line="974">
+          <description>Remove a column from the schema blueprint.</description>
+          <long-description/>
+          <tag name="param" line="974" description="" type="string" variable="$name">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="974" description="" type="\Illuminate\Database\Schema\Blueprint">
+            <type>\Illuminate\Database\Schema\Blueprint</type>
+          </tag>
+          <tag name="fluent" description="This method is part of a fluent interface and will return the same instance"/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$name</name>
+          <default/>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Database\Schema" line="990" package="Default">
+        <name>addCommand</name>
+        <full_name>\Illuminate\Database\Schema\Blueprint::addCommand()</full_name>
+        <docblock line="990">
+          <description>Add a new command to the blueprint.</description>
+          <long-description/>
+          <tag name="param" line="990" description="" type="string" variable="$name">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="990" description="" type="array" variable="$parameters">
+            <type>array</type>
+          </tag>
+          <tag name="return" line="990" description="" type="\Illuminate\Support\Fluent">
+            <type>\Illuminate\Support\Fluent</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$name</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$parameters</name>
+          <default>array()</default>
+          <type>array</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Database\Schema" line="1004" package="Default">
+        <name>createCommand</name>
+        <full_name>\Illuminate\Database\Schema\Blueprint::createCommand()</full_name>
+        <docblock line="1004">
+          <description>Create a new Fluent command.</description>
+          <long-description/>
+          <tag name="param" line="1004" description="" type="string" variable="$name">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="1004" description="" type="array" variable="$parameters">
+            <type>array</type>
+          </tag>
+          <tag name="return" line="1004" description="" type="\Illuminate\Support\Fluent">
+            <type>\Illuminate\Support\Fluent</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$name</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$parameters</name>
+          <default>array()</default>
+          <type>array</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Schema" line="1014" package="Default">
+        <name>getTable</name>
+        <full_name>\Illuminate\Database\Schema\Blueprint::getTable()</full_name>
+        <docblock line="1014">
+          <description>Get the table the blueprint describes.</description>
+          <long-description/>
+          <tag name="return" line="1014" description="" type="string">
+            <type>string</type>
+          </tag>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Schema" line="1024" package="Default">
+        <name>getColumns</name>
+        <full_name>\Illuminate\Database\Schema\Blueprint::getColumns()</full_name>
+        <docblock line="1024">
+          <description>Get the columns on the blueprint.</description>
+          <long-description/>
+          <tag name="return" line="1024" description="" type="array">
+            <type>array</type>
+          </tag>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Schema" line="1034" package="Default">
+        <name>getCommands</name>
+        <full_name>\Illuminate\Database\Schema\Blueprint::getCommands()</full_name>
+        <docblock line="1034">
+          <description>Get the commands on the blueprint.</description>
+          <long-description/>
+          <tag name="return" line="1034" description="" type="array">
+            <type>array</type>
+          </tag>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Schema" line="1044" package="Default">
+        <name>getAddedColumns</name>
+        <full_name>\Illuminate\Database\Schema\Blueprint::getAddedColumns()</full_name>
+        <docblock line="1044">
+          <description>Get the columns on the blueprint that should be added.</description>
+          <long-description/>
+          <tag name="return" line="1044" description="" type="array">
+            <type>array</type>
+          </tag>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Database\Schema" line="1056" package="Default">
+        <name>getChangedColumns</name>
+        <full_name>\Illuminate\Database\Schema\Blueprint::getChangedColumns()</full_name>
+        <docblock line="1056">
+          <description>Get the columns on the blueprint that should be changed.</description>
+          <long-description/>
+          <tag name="return" line="1056" description="" type="array">
+            <type>array</type>
+          </tag>
+        </docblock>
+      </method>
+    </class>
+    <parse_markers>
+      <error line="0" code="PPC:ERR-50000">No summary was found for this file</error>
+      <error line="10" code="PPC:ERR-50005">No summary for class \Illuminate\Database\Schema\Blueprint</error>
+    </parse_markers>
+    <source>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</source>
+  <type>class</type></file>

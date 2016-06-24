@@ -1,0 +1,440 @@
+<file path="codex/vendor/laravel/framework/src/Illuminate/Queue/QueueManager.php" generated-path="codex.vendor.laravel.framework.src.Illuminate.Queue.QueueManager.html" hash="57009a55430856d9b014cfcaff49d012" package="Default">
+    <docblock line="0">
+      <description/>
+      <long-description/>
+      <tag name="package" line="0" description="Default"/>
+    </docblock>
+    <namespace-alias name="Closure">\Closure</namespace-alias>
+    <namespace-alias name="InvalidArgumentException">\InvalidArgumentException</namespace-alias>
+    <namespace-alias name="FactoryContract">\Illuminate\Contracts\Queue\Factory</namespace-alias>
+    <namespace-alias name="MonitorContract">\Illuminate\Contracts\Queue\Monitor</namespace-alias>
+    <class final="false" abstract="false" namespace="Illuminate\Queue" line="10" package="Default">
+      <extends/>
+      <implements>\Illuminate\Contracts\Queue\Factory</implements>
+      <implements>\Illuminate\Contracts\Queue\Monitor</implements>
+      <name>QueueManager</name>
+      <full_name>\Illuminate\Queue\QueueManager</full_name>
+      <docblock line="10">
+        <description/>
+        <long-description/>
+        <tag name="package" line="10" description="Default"/>
+      </docblock>
+      <property static="false" visibility="protected" namespace="Illuminate\Queue" line="17" package="Default">
+        <name>$app</name>
+        <full_name>\Illuminate\Queue\QueueManager::app</full_name>
+        <default/>
+        <docblock line="17">
+          <description>The application instance.</description>
+          <long-description/>
+          <tag name="var" line="17" description="" type="\Illuminate\Foundation\Application" variable="">
+            <type>\Illuminate\Foundation\Application</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" namespace="Illuminate\Queue" line="24" package="Default">
+        <name>$connections</name>
+        <full_name>\Illuminate\Queue\QueueManager::connections</full_name>
+        <default>array()</default>
+        <docblock line="24">
+          <description>The array of resolved queue connections.</description>
+          <long-description/>
+          <tag name="var" line="24" description="" type="array" variable="">
+            <type>array</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" namespace="Illuminate\Queue" line="31" package="Default">
+        <name>$connectors</name>
+        <full_name>\Illuminate\Queue\QueueManager::connectors</full_name>
+        <default>array()</default>
+        <docblock line="31">
+          <description>The array of resolved queue connectors.</description>
+          <long-description/>
+          <tag name="var" line="31" description="" type="array" variable="">
+            <type>array</type>
+          </tag>
+        </docblock>
+      </property>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Queue" line="39" package="Default">
+        <name>__construct</name>
+        <full_name>\Illuminate\Queue\QueueManager::__construct()</full_name>
+        <docblock line="39">
+          <description>Create a new queue manager instance.</description>
+          <long-description/>
+          <tag name="param" line="39" description="" type="\Illuminate\Foundation\Application" variable="$app">
+            <type>\Illuminate\Foundation\Application</type>
+          </tag>
+          <tag name="return" line="39" description="" type="void">
+            <type>void</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$app</name>
+          <default/>
+          <type>\Illuminate\Foundation\Application</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Queue" line="50" package="Default">
+        <name>before</name>
+        <full_name>\Illuminate\Queue\QueueManager::before()</full_name>
+        <docblock line="50">
+          <description>Register an event listener for the before job event.</description>
+          <long-description/>
+          <tag name="param" line="50" description="" type="mixed" variable="$callback">
+            <type>mixed</type>
+          </tag>
+          <tag name="return" line="50" description="" type="void">
+            <type>void</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$callback</name>
+          <default/>
+          <type>mixed</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Queue" line="61" package="Default">
+        <name>after</name>
+        <full_name>\Illuminate\Queue\QueueManager::after()</full_name>
+        <docblock line="61">
+          <description>Register an event listener for the after job event.</description>
+          <long-description/>
+          <tag name="param" line="61" description="" type="mixed" variable="$callback">
+            <type>mixed</type>
+          </tag>
+          <tag name="return" line="61" description="" type="void">
+            <type>void</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$callback</name>
+          <default/>
+          <type>mixed</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Queue" line="72" package="Default">
+        <name>exceptionOccurred</name>
+        <full_name>\Illuminate\Queue\QueueManager::exceptionOccurred()</full_name>
+        <docblock line="72">
+          <description>Register an event listener for the exception occurred job event.</description>
+          <long-description/>
+          <tag name="param" line="72" description="" type="mixed" variable="$callback">
+            <type>mixed</type>
+          </tag>
+          <tag name="return" line="72" description="" type="void">
+            <type>void</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$callback</name>
+          <default/>
+          <type>mixed</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Queue" line="83" package="Default">
+        <name>looping</name>
+        <full_name>\Illuminate\Queue\QueueManager::looping()</full_name>
+        <docblock line="83">
+          <description>Register an event listener for the daemon queue loop.</description>
+          <long-description/>
+          <tag name="param" line="83" description="" type="mixed" variable="$callback">
+            <type>mixed</type>
+          </tag>
+          <tag name="return" line="83" description="" type="void">
+            <type>void</type>
+          </tag>
+          <tag name="inherited_from" description="\Illuminate\Contracts\Queue\Monitor::looping()" refers="\Illuminate\Contracts\Queue\Monitor::looping()" link="/classes/Illuminate.Contracts.Queue.Monitor.html#method_looping"/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$callback</name>
+          <default/>
+          <type>mixed</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Queue" line="94" package="Default">
+        <name>failing</name>
+        <full_name>\Illuminate\Queue\QueueManager::failing()</full_name>
+        <docblock line="94">
+          <description>Register an event listener for the failed job event.</description>
+          <long-description/>
+          <tag name="param" line="94" description="" type="mixed" variable="$callback">
+            <type>mixed</type>
+          </tag>
+          <tag name="return" line="94" description="" type="void">
+            <type>void</type>
+          </tag>
+          <tag name="inherited_from" description="\Illuminate\Contracts\Queue\Monitor::failing()" refers="\Illuminate\Contracts\Queue\Monitor::failing()" link="/classes/Illuminate.Contracts.Queue.Monitor.html#method_failing"/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$callback</name>
+          <default/>
+          <type>mixed</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Queue" line="105" package="Default">
+        <name>stopping</name>
+        <full_name>\Illuminate\Queue\QueueManager::stopping()</full_name>
+        <docblock line="105">
+          <description>Register an event listener for the daemon queue stopping.</description>
+          <long-description/>
+          <tag name="param" line="105" description="" type="mixed" variable="$callback">
+            <type>mixed</type>
+          </tag>
+          <tag name="return" line="105" description="" type="void">
+            <type>void</type>
+          </tag>
+          <tag name="inherited_from" description="\Illuminate\Contracts\Queue\Monitor::stopping()" refers="\Illuminate\Contracts\Queue\Monitor::stopping()" link="/classes/Illuminate.Contracts.Queue.Monitor.html#method_stopping"/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$callback</name>
+          <default/>
+          <type>mixed</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Queue" line="116" package="Default">
+        <name>connected</name>
+        <full_name>\Illuminate\Queue\QueueManager::connected()</full_name>
+        <docblock line="116">
+          <description>Determine if the driver is connected.</description>
+          <long-description/>
+          <tag name="param" line="116" description="" type="string" variable="$name">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="116" description="" type="boolean">
+            <type>boolean</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$name</name>
+          <default>null</default>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Queue" line="127" package="Default">
+        <name>connection</name>
+        <full_name>\Illuminate\Queue\QueueManager::connection()</full_name>
+        <docblock line="127">
+          <description>Resolve a queue connection instance.</description>
+          <long-description/>
+          <tag name="param" line="127" description="" type="string" variable="$name">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="127" description="" type="\Illuminate\Contracts\Queue\Queue">
+            <type>\Illuminate\Contracts\Queue\Queue</type>
+          </tag>
+          <tag name="inherited_from" description="\Illuminate\Contracts\Queue\Factory::connection()" refers="\Illuminate\Contracts\Queue\Factory::connection()" link="/classes/Illuminate.Contracts.Queue.Factory.html#method_connection"/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$name</name>
+          <default>null</default>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Queue" line="151" package="Default">
+        <name>resolve</name>
+        <full_name>\Illuminate\Queue\QueueManager::resolve()</full_name>
+        <docblock line="151">
+          <description>Resolve a queue connection.</description>
+          <long-description/>
+          <tag name="param" line="151" description="" type="string" variable="$name">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="151" description="" type="\Illuminate\Contracts\Queue\Queue">
+            <type>\Illuminate\Contracts\Queue\Queue</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$name</name>
+          <default/>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Queue" line="166" package="Default">
+        <name>getConnector</name>
+        <full_name>\Illuminate\Queue\QueueManager::getConnector()</full_name>
+        <docblock line="166">
+          <description>Get the connector for a given driver.</description>
+          <long-description/>
+          <tag name="param" line="166" description="" type="string" variable="$driver">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="166" description="" type="\Illuminate\Queue\Connectors\ConnectorInterface">
+            <type>\Illuminate\Queue\Connectors\ConnectorInterface</type>
+          </tag>
+          <tag name="throws" line="166" description="" type="\InvalidArgumentException">
+            <type>\InvalidArgumentException</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$driver</name>
+          <default/>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Queue" line="182" package="Default">
+        <name>extend</name>
+        <full_name>\Illuminate\Queue\QueueManager::extend()</full_name>
+        <docblock line="182">
+          <description>Add a queue connection resolver.</description>
+          <long-description/>
+          <tag name="param" line="182" description="" type="string" variable="$driver">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="182" description="" type="\Closure" variable="$resolver">
+            <type>\Closure</type>
+          </tag>
+          <tag name="return" line="182" description="" type="void">
+            <type>void</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$driver</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$resolver</name>
+          <default/>
+          <type>\Closure</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Queue" line="194" package="Default">
+        <name>addConnector</name>
+        <full_name>\Illuminate\Queue\QueueManager::addConnector()</full_name>
+        <docblock line="194">
+          <description>Add a queue connection resolver.</description>
+          <long-description/>
+          <tag name="param" line="194" description="" type="string" variable="$driver">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="194" description="" type="\Closure" variable="$resolver">
+            <type>\Closure</type>
+          </tag>
+          <tag name="return" line="194" description="" type="void">
+            <type>void</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$driver</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$resolver</name>
+          <default/>
+          <type>\Closure</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Queue" line="205" package="Default">
+        <name>getConfig</name>
+        <full_name>\Illuminate\Queue\QueueManager::getConfig()</full_name>
+        <docblock line="205">
+          <description>Get the queue connection configuration.</description>
+          <long-description/>
+          <tag name="param" line="205" description="" type="string" variable="$name">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="205" description="" type="array">
+            <type>array</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$name</name>
+          <default/>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Queue" line="219" package="Default">
+        <name>getDefaultDriver</name>
+        <full_name>\Illuminate\Queue\QueueManager::getDefaultDriver()</full_name>
+        <docblock line="219">
+          <description>Get the name of the default queue connection.</description>
+          <long-description/>
+          <tag name="return" line="219" description="" type="string">
+            <type>string</type>
+          </tag>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Queue" line="230" package="Default">
+        <name>setDefaultDriver</name>
+        <full_name>\Illuminate\Queue\QueueManager::setDefaultDriver()</full_name>
+        <docblock line="230">
+          <description>Set the name of the default queue connection.</description>
+          <long-description/>
+          <tag name="param" line="230" description="" type="string" variable="$name">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="230" description="" type="void">
+            <type>void</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$name</name>
+          <default/>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Queue" line="241" package="Default">
+        <name>getName</name>
+        <full_name>\Illuminate\Queue\QueueManager::getName()</full_name>
+        <docblock line="241">
+          <description>Get the full name for the given connection.</description>
+          <long-description/>
+          <tag name="param" line="241" description="" type="string" variable="$connection">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="241" description="" type="string">
+            <type>string</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$connection</name>
+          <default>null</default>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Queue" line="251" package="Default">
+        <name>isDownForMaintenance</name>
+        <full_name>\Illuminate\Queue\QueueManager::isDownForMaintenance()</full_name>
+        <docblock line="251">
+          <description>Determine if the application is in maintenance mode.</description>
+          <long-description/>
+          <tag name="return" line="251" description="" type="boolean">
+            <type>boolean</type>
+          </tag>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Queue" line="263" package="Default">
+        <name>__call</name>
+        <full_name>\Illuminate\Queue\QueueManager::__call()</full_name>
+        <docblock line="263">
+          <description>Dynamically pass calls to the default connection.</description>
+          <long-description/>
+          <tag name="param" line="263" description="" type="string" variable="$method">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="263" description="" type="array" variable="$parameters">
+            <type>array</type>
+          </tag>
+          <tag name="return" line="263" description="" type="mixed">
+            <type>mixed</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$method</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$parameters</name>
+          <default/>
+          <type>array</type>
+        </argument>
+      </method>
+    </class>
+    <parse_markers>
+      <error line="0" code="PPC:ERR-50000">No summary was found for this file</error>
+      <error line="10" code="PPC:ERR-50005">No summary for class \Illuminate\Queue\QueueManager</error>
+    </parse_markers>
+    <source>eJzVWFlv4zYQfvevYIMFJAdO8p422QY5ihTI9tgCfbANg5Zom41MqiRlr7Gb/97hJcmSJdlOskD9kEjknN/MkDP66WO6SHs9hpdEpjgi6DFJsiVlWJHRHxnJyI+9XiYJuk24zAS86ZdHtsIJjW/EPFsSpu6/RCRVlDO3W0i45UwJHClpZY0e4JmLDcISuUdP0cn6xBkFBs3qHgvWXpRgKZEhfMIMz4lAdJkmRFtXUzWoCuh97SH4XZyemv/oFP21IAinaUIjrP1ClEmFWUTOHYGn+3mFBRqVrH7gGYsNz+im4HfkF+Z/KrgikSIx+gAqwPhduoXAG8RnSBDJkxXQ/qt9QxFnDHhBpNxpiuFr0lZiRldoOD5KNRfHawbeBsW3ggB6CCNG1k7f0sexCfoUC7xEe6CPDNA5nyAqEwytOI237c2mwIFmGTMYockEzJZKZJEKtYC+obKpon8f1ILKs2vYAadsKPXyS825P8mcSgWuYIbICjISJfqdwcoMEloB6FMCTwT9w6eWosnZJf0CeAKgOEmmOHo+2CmrKMwFNDs1DIwlMhifXVt7w3uzMPqVT38XPCJSUja/vDS1Nyhs6r8CBzzT++8Pg9HzViiQ+G1BIP44RTyKMiHA1fdHJFf6m9P5anTuqxLfFqUYkyXYbQ+LhPP03aDRwiHTjwQkoPn5dG6MPXfygjcCYoZp8l1SRCs6HociMR6Mwe+YDVLxVCP8bkh4Ba+D4m8unon47GQdgMcdATAgpQiiM+u9oCt9VUp/S5O4yXe40EAZGKg7vqrjU86TVsdz8aHhh4uPZUlSdd5Jo3A0wtVpkSg1H0PL+/HSozQn6o7McJaoO+NI2B+35ILpSqBVqHZEnZ1Cq+ujltbT/N0HF3hsBcbvdQPgWiTj/AV6tGEu+bqANphxBfc5YUWntiEKrQlaw5HjFxFVQLjWbTOkVVkorwoFCuhBcmHrBYgGio1ZBjgyELCBDo3EsCu51hTzskRt0BI/AzHboEyLhdsRQ7tfMlxxoxVaRsoz6YJIWHyWcgpFcZ7Lg9QOf+jIoXG/X0K3VHd1So263XMO2kCVgW7lP7sGQ3RiYKg7ERb1fZiEexaJTaq2JMAJ4VcDn/il5C9VVKPsw6vlexRJPgDkdbKNfbU6wLoZnReRmhvEYakeq21ALKEdMUInZhjYUxEgzRHze42nyy9QQKWi4PaCwWgOkpg7ZjuRs2Rt2FnEcpNl8fjIIAtmMIdXlaiF4GsJUhpG7y7ktyGyJlYDoEtuV8GBhUPHUq84556+tCYwwouJVtkmYGeCG/fM9NfkYHjyiVfikss8aQzoTRzvuipcHnbGsh5NP3W67yFA4GUd0XJDMxD7YAz8J5ZCYsO96k+OOK5FdFBi/j9CstunTmCas00fJp6rq+hrkNjDIhP46AOz7atIpTSLY25HVbrG4cq2FejbN1SsBHopaCjL/BREV9eOcrzHDWNuJet+MB6e2Lml/PHpq9H/ctJ483hQjZmu1Yhtj9N9FzljLLStCVPvnNprZsuvwPrlzAoaffn8Gl/2SZPugaPq5u4LdB8nffvZFbiZTjTjsZ+x7CV4gKsF6XGR/QTaw5KU9nGjTNjeWu92vDZVbX0AljBeQHMLPSpheshASx7XJ4195ygq7/iaPXDxVEjsTt2z6918jR5tIH40Mm17qj+Q60fpW3CfwQcEdEnUgsfVbfvFGLbNu0ZRVgExE3crIpOJNi50KgZlYfU+ESjxNNGT1LDWEof9gTd0XG8Yt9uUiTE9zAVuq/WwvvT+A+iijm4=</source>
+  <type>class</type></file>

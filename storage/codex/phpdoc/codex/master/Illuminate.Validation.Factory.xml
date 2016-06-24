@@ -1,0 +1,420 @@
+<file path="codex/vendor/laravel/framework/src/Illuminate/Validation/Factory.php" generated-path="codex.vendor.laravel.framework.src.Illuminate.Validation.Factory.html" hash="9bd0fc3b51991e3a69bc3310c69d012e" package="Default">
+    <docblock line="0">
+      <description/>
+      <long-description/>
+      <tag name="package" line="0" description="Default"/>
+    </docblock>
+    <namespace-alias name="Closure">\Closure</namespace-alias>
+    <namespace-alias name="Str">\Illuminate\Support\Str</namespace-alias>
+    <namespace-alias name="Container">\Illuminate\Contracts\Container\Container</namespace-alias>
+    <namespace-alias name="TranslatorInterface">\Symfony\Component\Translation\TranslatorInterface</namespace-alias>
+    <namespace-alias name="FactoryContract">\Illuminate\Contracts\Validation\Factory</namespace-alias>
+    <class final="false" abstract="false" namespace="Illuminate\Validation" line="11" package="Default">
+      <extends/>
+      <implements>\Illuminate\Contracts\Validation\Factory</implements>
+      <name>Factory</name>
+      <full_name>\Illuminate\Validation\Factory</full_name>
+      <docblock line="11">
+        <description/>
+        <long-description/>
+        <tag name="package" line="11" description="Default"/>
+      </docblock>
+      <property static="false" visibility="protected" namespace="Illuminate\Validation" line="18" package="Default">
+        <name>$translator</name>
+        <full_name>\Illuminate\Validation\Factory::translator</full_name>
+        <default/>
+        <docblock line="18">
+          <description>The Translator implementation.</description>
+          <long-description/>
+          <tag name="var" line="18" description="" type="\Symfony\Component\Translation\TranslatorInterface" variable="">
+            <type>\Symfony\Component\Translation\TranslatorInterface</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" namespace="Illuminate\Validation" line="25" package="Default">
+        <name>$verifier</name>
+        <full_name>\Illuminate\Validation\Factory::verifier</full_name>
+        <default/>
+        <docblock line="25">
+          <description>The Presence Verifier implementation.</description>
+          <long-description/>
+          <tag name="var" line="25" description="" type="\Illuminate\Validation\PresenceVerifierInterface" variable="">
+            <type>\Illuminate\Validation\PresenceVerifierInterface</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" namespace="Illuminate\Validation" line="32" package="Default">
+        <name>$container</name>
+        <full_name>\Illuminate\Validation\Factory::container</full_name>
+        <default/>
+        <docblock line="32">
+          <description>The IoC container instance.</description>
+          <long-description/>
+          <tag name="var" line="32" description="" type="\Illuminate\Contracts\Container\Container" variable="">
+            <type>\Illuminate\Contracts\Container\Container</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" namespace="Illuminate\Validation" line="39" package="Default">
+        <name>$extensions</name>
+        <full_name>\Illuminate\Validation\Factory::extensions</full_name>
+        <default>array()</default>
+        <docblock line="39">
+          <description>All of the custom validator extensions.</description>
+          <long-description/>
+          <tag name="var" line="39" description="" type="array" variable="">
+            <type>array</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" namespace="Illuminate\Validation" line="46" package="Default">
+        <name>$implicitExtensions</name>
+        <full_name>\Illuminate\Validation\Factory::implicitExtensions</full_name>
+        <default>array()</default>
+        <docblock line="46">
+          <description>All of the custom implicit validator extensions.</description>
+          <long-description/>
+          <tag name="var" line="46" description="" type="array" variable="">
+            <type>array</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" namespace="Illuminate\Validation" line="53" package="Default">
+        <name>$replacers</name>
+        <full_name>\Illuminate\Validation\Factory::replacers</full_name>
+        <default>array()</default>
+        <docblock line="53">
+          <description>All of the custom validator message replacers.</description>
+          <long-description/>
+          <tag name="var" line="53" description="" type="array" variable="">
+            <type>array</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" namespace="Illuminate\Validation" line="60" package="Default">
+        <name>$fallbackMessages</name>
+        <full_name>\Illuminate\Validation\Factory::fallbackMessages</full_name>
+        <default>array()</default>
+        <docblock line="60">
+          <description>All of the fallback messages for custom rules.</description>
+          <long-description/>
+          <tag name="var" line="60" description="" type="array" variable="">
+            <type>array</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" namespace="Illuminate\Validation" line="67" package="Default">
+        <name>$resolver</name>
+        <full_name>\Illuminate\Validation\Factory::resolver</full_name>
+        <default/>
+        <docblock line="67">
+          <description>The Validator resolver instance.</description>
+          <long-description/>
+          <tag name="var" line="67" description="" type="\Closure" variable="">
+            <type>\Closure</type>
+          </tag>
+        </docblock>
+      </property>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Validation" line="76" package="Default">
+        <name>__construct</name>
+        <full_name>\Illuminate\Validation\Factory::__construct()</full_name>
+        <docblock line="76">
+          <description>Create a new Validator factory instance.</description>
+          <long-description/>
+          <tag name="param" line="76" description="" type="\Symfony\Component\Translation\TranslatorInterface" variable="$translator">
+            <type>\Symfony\Component\Translation\TranslatorInterface</type>
+          </tag>
+          <tag name="param" line="76" description="" type="\Illuminate\Contracts\Container\Container" variable="$container">
+            <type>\Illuminate\Contracts\Container\Container</type>
+          </tag>
+          <tag name="return" line="76" description="" type="void">
+            <type>void</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$translator</name>
+          <default/>
+          <type>\Symfony\Component\Translation\TranslatorInterface</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$container</name>
+          <default>null</default>
+          <type>\Illuminate\Contracts\Container\Container</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Validation" line="91" package="Default">
+        <name>make</name>
+        <full_name>\Illuminate\Validation\Factory::make()</full_name>
+        <docblock line="91">
+          <description>Create a new Validator instance.</description>
+          <long-description/>
+          <tag name="param" line="91" description="" type="array" variable="$data">
+            <type>array</type>
+          </tag>
+          <tag name="param" line="91" description="" type="array" variable="$rules">
+            <type>array</type>
+          </tag>
+          <tag name="param" line="91" description="" type="array" variable="$messages">
+            <type>array</type>
+          </tag>
+          <tag name="param" line="91" description="" type="array" variable="$customAttributes">
+            <type>array</type>
+          </tag>
+          <tag name="return" line="91" description="" type="\Illuminate\Validation\Validator">
+            <type>\Illuminate\Validation\Validator</type>
+          </tag>
+          <tag name="inherited_from" description="\Illuminate\Contracts\Validation\Factory::make()" refers="\Illuminate\Contracts\Validation\Factory::make()" link="/classes/Illuminate.Contracts.Validation.Factory.html#method_make"/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$data</name>
+          <default/>
+          <type>array</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$rules</name>
+          <default/>
+          <type>array</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$messages</name>
+          <default>array()</default>
+          <type>array</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$customAttributes</name>
+          <default>array()</default>
+          <type>array</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Validation" line="120" package="Default">
+        <name>addExtensions</name>
+        <full_name>\Illuminate\Validation\Factory::addExtensions()</full_name>
+        <docblock line="120">
+          <description>Add the extensions to a validator instance.</description>
+          <long-description/>
+          <tag name="param" line="120" description="" type="\Illuminate\Validation\Validator" variable="$validator">
+            <type>\Illuminate\Validation\Validator</type>
+          </tag>
+          <tag name="return" line="120" description="" type="void">
+            <type>void</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$validator</name>
+          <default/>
+          <type>\Illuminate\Validation\Validator</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Illuminate\Validation" line="145" package="Default">
+        <name>resolve</name>
+        <full_name>\Illuminate\Validation\Factory::resolve()</full_name>
+        <docblock line="145">
+          <description>Resolve a new Validator instance.</description>
+          <long-description/>
+          <tag name="param" line="145" description="" type="array" variable="$data">
+            <type>array</type>
+          </tag>
+          <tag name="param" line="145" description="" type="array" variable="$rules">
+            <type>array</type>
+          </tag>
+          <tag name="param" line="145" description="" type="array" variable="$messages">
+            <type>array</type>
+          </tag>
+          <tag name="param" line="145" description="" type="array" variable="$customAttributes">
+            <type>array</type>
+          </tag>
+          <tag name="return" line="145" description="" type="\Illuminate\Validation\Validator">
+            <type>\Illuminate\Validation\Validator</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$data</name>
+          <default/>
+          <type>array</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$rules</name>
+          <default/>
+          <type>array</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$messages</name>
+          <default/>
+          <type>array</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$customAttributes</name>
+          <default/>
+          <type>array</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Validation" line="162" package="Default">
+        <name>extend</name>
+        <full_name>\Illuminate\Validation\Factory::extend()</full_name>
+        <docblock line="162">
+          <description>Register a custom validator extension.</description>
+          <long-description/>
+          <tag name="param" line="162" description="" type="string" variable="$rule">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="162" description="" type="\Closure|string" variable="$extension">
+            <type>\Closure</type>
+            <type>string</type>
+          </tag>
+          <tag name="param" line="162" description="" type="string" variable="$message">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="162" description="" type="void">
+            <type>void</type>
+          </tag>
+          <tag name="inherited_from" description="\Illuminate\Contracts\Validation\Factory::extend()" refers="\Illuminate\Contracts\Validation\Factory::extend()" link="/classes/Illuminate.Contracts.Validation.Factory.html#method_extend"/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$rule</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$extension</name>
+          <default/>
+          <type>\Closure|string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$message</name>
+          <default>null</default>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Validation" line="179" package="Default">
+        <name>extendImplicit</name>
+        <full_name>\Illuminate\Validation\Factory::extendImplicit()</full_name>
+        <docblock line="179">
+          <description>Register a custom implicit validator extension.</description>
+          <long-description/>
+          <tag name="param" line="179" description="" type="string" variable="$rule">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="179" description="" type="\Closure|string" variable="$extension">
+            <type>\Closure</type>
+            <type>string</type>
+          </tag>
+          <tag name="param" line="179" description="" type="string" variable="$message">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="179" description="" type="void">
+            <type>void</type>
+          </tag>
+          <tag name="inherited_from" description="\Illuminate\Contracts\Validation\Factory::extendImplicit()" refers="\Illuminate\Contracts\Validation\Factory::extendImplicit()" link="/classes/Illuminate.Contracts.Validation.Factory.html#method_extendImplicit"/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$rule</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$extension</name>
+          <default/>
+          <type>\Closure|string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$message</name>
+          <default>null</default>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Validation" line="195" package="Default">
+        <name>replacer</name>
+        <full_name>\Illuminate\Validation\Factory::replacer()</full_name>
+        <docblock line="195">
+          <description>Register a custom implicit validator message replacer.</description>
+          <long-description/>
+          <tag name="param" line="195" description="" type="string" variable="$rule">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="195" description="" type="\Closure|string" variable="$replacer">
+            <type>\Closure</type>
+            <type>string</type>
+          </tag>
+          <tag name="return" line="195" description="" type="void">
+            <type>void</type>
+          </tag>
+          <tag name="inherited_from" description="\Illuminate\Contracts\Validation\Factory::replacer()" refers="\Illuminate\Contracts\Validation\Factory::replacer()" link="/classes/Illuminate.Contracts.Validation.Factory.html#method_replacer"/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$rule</name>
+          <default/>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$replacer</name>
+          <default/>
+          <type>\Closure|string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Validation" line="206" package="Default">
+        <name>resolver</name>
+        <full_name>\Illuminate\Validation\Factory::resolver()</full_name>
+        <docblock line="206">
+          <description>Set the Validator instance resolver.</description>
+          <long-description/>
+          <tag name="param" line="206" description="" type="\Closure" variable="$resolver">
+            <type>\Closure</type>
+          </tag>
+          <tag name="return" line="206" description="" type="void">
+            <type>void</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$resolver</name>
+          <default/>
+          <type>\Closure</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Validation" line="216" package="Default">
+        <name>getTranslator</name>
+        <full_name>\Illuminate\Validation\Factory::getTranslator()</full_name>
+        <docblock line="216">
+          <description>Get the Translator implementation.</description>
+          <long-description/>
+          <tag name="return" line="216" description="" type="\Symfony\Component\Translation\TranslatorInterface">
+            <type>\Symfony\Component\Translation\TranslatorInterface</type>
+          </tag>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Validation" line="226" package="Default">
+        <name>getPresenceVerifier</name>
+        <full_name>\Illuminate\Validation\Factory::getPresenceVerifier()</full_name>
+        <docblock line="226">
+          <description>Get the Presence Verifier implementation.</description>
+          <long-description/>
+          <tag name="return" line="226" description="" type="\Illuminate\Validation\PresenceVerifierInterface">
+            <type>\Illuminate\Validation\PresenceVerifierInterface</type>
+          </tag>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Illuminate\Validation" line="237" package="Default">
+        <name>setPresenceVerifier</name>
+        <full_name>\Illuminate\Validation\Factory::setPresenceVerifier()</full_name>
+        <docblock line="237">
+          <description>Set the Presence Verifier implementation.</description>
+          <long-description/>
+          <tag name="param" line="237" description="" type="\Illuminate\Validation\PresenceVerifierInterface" variable="$presenceVerifier">
+            <type>\Illuminate\Validation\PresenceVerifierInterface</type>
+          </tag>
+          <tag name="return" line="237" description="" type="void">
+            <type>void</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$presenceVerifier</name>
+          <default/>
+          <type>\Illuminate\Validation\PresenceVerifierInterface</type>
+        </argument>
+      </method>
+    </class>
+    <parse_markers>
+      <error line="0" code="PPC:ERR-50000">No summary was found for this file</error>
+      <error line="11" code="PPC:ERR-50005">No summary for class \Illuminate\Validation\Factory</error>
+    </parse_markers>
+    <source>eJzdWFtv2zYUfvevOAMKTA7c5L1dugbBOvhhw9AU2UNcBLREx1wkSiUpZ8aW/75DirdIom/twzY/2LJ07pfvHPGHH5t1M5lwUlHZkJzCvCzbinGi6OKWlKwgitX87WTSSgrXZS1bQd+aPxHhTds0tVCLGyUGz65rrgTJlTRXhHEqwlVHfbOtVjXf4u2qqTnlavFJEC5Lo9pf12LOFRUrNHKHkmDz4gPeqMUWiAR76cjQnbwk0t8HVjUlrVDzgHTy1wTwc3F2Zn7hDD6tKQSbAqtRem6pHPH7DRGwONpBy35hfhtRK5orWsAr5UnRhRG7fhNUUo5ZvKWCrRg9zLzRlC+cLCdqr3EbSzhu2ry+htzlHRiXiqDwvQbtLJ+UJXmor74pV2UJ9QoUWpS3UtUVbDqXMZX0T0W5RN/lqFlECLJNqQy8cAl3nw9RrFPDcqa+kQVO3E/HWxIMQBSQ5IGCoE2JqRYn2OFZ96tfkbJckvzRqZWwQhusUaIt6QnqncxfnMhxK3RJ3nq3sdTrcrOvLi38pR3vhAyVXQuKtQwEOH2KtK4c+qSUNkSQCk7AD4ihYiDu0PaCqJO8EEFVKzhsala8DES7xPKDVctzbRXc3yOvVKLNVTZmYWTgDILKoBETx9uynBrpHQrrzyu1ZvL1u5gs7vceWVCi6WL41ETPh2ZqX4ZMRaJSpCapZ6aeUw9dA6Sedz1xpZRgy1ZFdDYdCQz3HuxMVUUeadZpMh7MrNrOZP+vijvK3+1bZp72k3ZxYRquceNp48eT1L2HRS3ZsqRd+69p/sj4g0GIlrMvLeaDF4iNTOJ8DiHu5GoWTekx7BzmSstd0jVDNsIxe67oZI20REHVlorhYNSGdFBZr2KhCMoVOrek8CSYQjzFS8kK2qlfEknP4Xf6PSIZ439g+2sG1FL3LAnVGBD20pWmhYvMhtwF24d5Nozt1EKL/rAVZN+hn/e6STIr08V1Oo2C/9KA1+8kVf3ZPuAPjfQ8iQPzK04oeDKeoxjj7vhgdxDv9c7gac3ytc4MLm8FqDqWa4MBdaugW810kIvx0QjzlQm4BF4rZwfXX5LGQtW2oTqzES88MTRds2Fum1p2ZVdbZqdON4VzRJ7vDrl3fV/MPcYNOUejbalIUYSJngWZcS1YEAgPU/B2VRQmK1FAsGhJFOa9s2gP0MRu758Zfnh6LHrpbhAbOd4fCFGYe8HqIhicjWNmixnLknZFQWxs/FoW+FztEoEQwipW4jJgm13QLy0TtIjlarQieU4b7Zlua4xqhzvIsTVSRMuBbrBoWdcmJOCnLWtkeYFzHdxiMWu46KQh5QPTQhI5lLBhxP5TLH4B0GHzfnpEGm6QUbx6YZ4PaDMvcZpm++iWw8yjoL2RYsLO+dBb6Rxvf9Wbpsr+o0WX//lYH3aTmzGHD/fkXO+3nQbDHhS6BXiAhNabF8HPBhvaDI4bhU768wAIcyyMe5wy4l5Hom/ebLgcnqJ6rMwecEXBIUh2vFumag1XZb30dBYMUNe+evztqby8pBzrwdGLu5FcZMaOWaQoBGX3Zh5g887I+KwBxt/sbTBO5GB2jnf43Y0Sb95IrhdWI3xqpFshcUkcmqFdL+H7UvVvyZXD4tNzNkT+/2ju+ucX3yqFTt7RGXKMPjfuRiITfh5GCXD3UrhzYzfx4WDzBxvJdc56CuH44gQXO8bMyfKikj7a05bL+NBk3LefrW+Hn7i60fmVh649Jx+oCixZ3zG3gPfnyj6vjj6v3b0XHHhkO3Rt8D6428Fw0ru7II92b/dLRtI9rKym9+zoKh57K04rHOhLlLo/6LgcsrjoPU/+ATtI7hg=</source>
+  <type>class</type></file>
