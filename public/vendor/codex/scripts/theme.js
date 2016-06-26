@@ -50,6 +50,9 @@ var codex;
                 this.$body.on('click', 'a[data-action="sidebar-toggle"]', function (event) {
                     _this.toggleSidebar();
                 });
+                this.$body.tooltip({
+                    selector: '[rel=tooltip]'
+                });
                 $(function () {
                     _this.$article.hasClass('loaded') === false && _this.$article.addClass('loaded');
                     $(window).scroll(function () {
