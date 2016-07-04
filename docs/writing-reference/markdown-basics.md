@@ -1,5 +1,5 @@
 /*
-Title:  Markdown Basics
+title:  Markdown Basics
 Author: The Codex Project
 */
 

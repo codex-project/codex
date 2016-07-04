@@ -1,5 +1,5 @@
 /*
-Title:  Documentation Structure
+title:  Documentation Structure
 Author: The Codex Project
 */
 

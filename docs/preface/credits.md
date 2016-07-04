@@ -1,5 +1,5 @@
 /*
-Title:  Credits
+title:  Credits
 Author: The Codex Project
 */
 

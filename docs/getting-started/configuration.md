@@ -1,5 +1,5 @@
 /*
-Title:  Configuration
+title:  Configuration
 Author: The Codex Project
 */
 

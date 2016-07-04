@@ -1,5 +1,5 @@
 /*
-Title:  Contributing Guidelines
+title:  Contributing Guidelines
 Author: The Codex Project
 */
 

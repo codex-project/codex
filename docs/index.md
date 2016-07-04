@@ -1,5 +1,5 @@
 /*
-Title:  Introduction
+title:  Introduction
 Author: The Codex Project
 */
 

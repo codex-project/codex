@@ -1,5 +1,5 @@
 /*
-Title:  Working Locally
+title:  Working Locally
 Author: The Codex Project
 */
 

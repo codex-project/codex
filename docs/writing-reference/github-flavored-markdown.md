@@ -1,5 +1,5 @@
 /*
-Title:  Github Flavored Markdown
+title:  Github Flavored Markdown
 Author: The Codex Project
 */
 

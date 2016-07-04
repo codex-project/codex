@@ -1,5 +1,5 @@
 /*
-Title:  Navigation
+title:  Navigation
 Author: The Codex Project
 */
 

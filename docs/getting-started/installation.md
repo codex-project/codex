@@ -1,5 +1,5 @@
 /*
-Title:  Installation
+title:  Installation
 Author: The Codex Project
 */
 

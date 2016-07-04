@@ -1,5 +1,5 @@
 /*
-Title:  PSR-1 Coding Style Guide
+title:  PSR-1 Coding Style Guide
 Author: The Codex Project
 */
 
